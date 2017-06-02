@@ -82,7 +82,7 @@ if ($bruise == 'Severe') {
     if (!file_exists($_FILES['bruisingDamageCloseUp']['tmp_name'])) {
         unlink($Filename);
         unlink("assets/uploadedimages/" . $RT . "bitterpit.jpg");
-        die ("<html style='text-align: center'><meta name='viewport' content='width=device-width, initial-scale=1'><h1 style='color: red'>NOT RECEIVED.</h1><h3>There was an error uploading the photo. We did not insert that RT into the QA lab system. Try again.</h3><br>Attempted RT: " . $RT . ", Error listed as: " . mysqli_connect_error() . mysqli_errno($mysqli) . "<br> <a href='' onclick='window.history.back();'><-- Go Back</a></html>");
+        die ("<html style='text-align: center'><meta name='viewport' content='width=device-width, initial-scale=1'><h1 style='color: red'>NOT RECEIVED.</h1><h3>There was an uploading the photo. We did not insert that RT into the QA lab system. Try again.</h3><br>Attempted RT: " . $RT . ", Error listed as: " . mysqli_connect_error() . mysqli_errno($mysqli) . "<br> <a href='' onclick='window.history.back();'><-- Go Back</a></html>");
     }
 
     move_uploaded_file($_FILES['bruisingDamageCloseUp']['tmp_name'], "assets/uploadedimages/" . $RT . "bruising.jpg");
