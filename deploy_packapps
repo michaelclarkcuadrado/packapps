@@ -1,0 +1,9 @@
+docker build -t packapps:dev .
+docker stop packapps
+docker rm packapps
+docker stop packapps-db
+docker rm packapps-db
+docker run --name packapps-db -e MYSQL_ROOT_PASSWORD=r1cefru1t -v /home/mike/build/packapps/database/mysql:/var/lib/mysql -d mariadb:10.2
+docker run -d -p 80:80 --name packapps --link packapps-db:packapps-db packapps:dev
+
+
