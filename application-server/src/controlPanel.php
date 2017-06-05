@@ -16,24 +16,14 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
 //create new User account
 if($checkAllowed['isSystemAdministrator'] > 0 && isset($_POST['newUserName']) && isset($_POST['newRealName']) && isset($_POST['newPassword'])) {
     $isAdministrator = (isset($_POST['newAdministrator']) ? 1 : 0);
-    createNewPackappsUser($newRealName, $newUserName, $newPassword, $isAdministrator);
+    createNewPackappsUser($mysqli, $_POST['newRealName'], $_POST['newUserName'], $_POST['newPassword'], $isAdministrator);
 }
 
 //process password changes
 if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['password2'])) {
-    $hash = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Password` FROM master_users WHERE username = '" . $SecuredUserName . "'"))['Password'];
-    if (APR1_MD5::check($_POST['password0'], $hash) && $_POST['password1'] == $_POST['password2']) {
-        $newHash = APR1_MD5::hash($_POST['password1']);
-        mysqli_query($mysqli, "UPDATE master_users SET Password = '$newHash' WHERE username = '$SecuredUserName'");
-        $passwdChangeErrorMsg = "Password changed to <mark>" . substr($_POST['password1'], 0, 1) . str_repeat("*", strlen($_POST['password1']) - 2) . substr($_POST['password1'], -1) . "</mark>. This will take effect the next time you log in.";
-    } else {
-        $passwdChangeErrorMsg = "Either your current password is incorrect or your new passwords did not match. Try again.";
-    }
+    $passwdChangeMsg = changePassword($mysqli, $SecuredUserName, $_POST['password0'], $_POST['password1'], $_POST['password2']);
 } elseif (isset($_GET['passwordReset']) && $checkAllowed['isSystemAdministrator'] > 0) {
-    $newPassword = mysqli_real_escape_string($mysqli, APR1_MD5::hash($_GET['passwordReset']));
-    $user = mysqli_real_escape_string($mysqli, $_GET['passwordReset']);
-    mysqli_query($mysqli, "UPDATE master_users SET Password='$newPassword' WHERE username='$user'") or die(header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500));
-    die();
+
 }
 ?>
 <!doctype html>
@@ -181,8 +171,8 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
                     <h2 class="mdl-color-text--white mdl-card__title-text">Change your password</h2>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    <? if (isset($passwdChangeErrorMsg)) {
-                        echo "<span style='color: red; text-align: center'>" . $passwdChangeErrorMsg . "</span>";
+                    <? if (isset($passwdChangeMsg)) {
+                        echo "<span style='color: red; text-align: center'>" . $passwdChangeMsg . "</span>";
                     } ?>
                     <form action="controlPanel.php" method="post" class="mdl-grid">
                         <div

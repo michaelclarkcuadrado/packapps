@@ -5,7 +5,6 @@
  * Date: 6/5/17
  * Time: 2:00 PM
  */
-include 'config.php';
 include 'scripts/APR1_MD5.php';
 use WhiteHat101\Crypt\APR1_MD5;
 
@@ -17,7 +16,7 @@ use WhiteHat101\Crypt\APR1_MD5;
  * @param $newPassword
  * @param $isSystemAdministrator
  */
-function createNewPackappsUser($realName, $userName, $newPassword, $isSystemAdministrator){
+function createNewPackappsUser($mysqli, $realName, $userName, $newPassword, $isSystemAdministrator){
         $realName = mysqli_real_escape_string($mysqli, $realName);
         $userName = mysqli_real_escape_string($mysqli, $userName);
         $newPassword = APR1_MD5::hash(mysqli_real_escape_string($mysqli, $newPassword));
@@ -30,21 +29,19 @@ function createNewPackappsUser($realName, $userName, $newPassword, $isSystemAdmi
         }
 }
 
-/**
- * Changes a user's login password. No effect until logout.
- *
- * @param $userName
- * @param $newPassword
- */
-function changePassword($userName, $newPassword, $confirmNewPassword){
+function changePassword($mysqli, $userName, $oldPassword, $newPassword, $confirmNewPassword){
+    $SecuredUserName = mysqli_real_escape_string($mysqli, $userName);
+    $newPassword = mysqli_real_escape_string($mysqli, $newPassword);
+    $confirmNewPassword = mysqli_real_escape_string($mysqli, $confirmNewPassword);
     $hash = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Password` FROM master_users WHERE username = '" . $SecuredUserName . "'"))['Password'];
-    if (APR1_MD5::check($_POST['password0'], $hash) && $_POST['password1'] == $_POST['password2']) {
-        $newHash = APR1_MD5::hash($_POST['password1']);
+    if (APR1_MD5::check($oldPassword, $hash) && $newPassword == $oldPassword) {
+        $newHash = APR1_MD5::hash($newPassword);
         mysqli_query($mysqli, "UPDATE master_users SET Password = '$newHash' WHERE username = '$SecuredUserName'");
-        $passwdChangeErrorMsg = "Password changed to <mark>" . substr($_POST['password1'], 0, 1) . str_repeat("*", strlen($_POST['password1']) - 2) . substr($_POST['password1'], -1) . "</mark>. This will take effect the next time you log in.";
+        $passwdChangeErrorMsg = "Password changed to <mark>" . substr($newPassword, 0, 1) . str_repeat("*", strlen($newPassword) - 2) . substr($newPassword, -1) . "</mark>. This will take effect the next time you log in.";
     } else {
         $passwdChangeErrorMsg = "Either your current password is incorrect or your new passwords did not match. Try again.";
     }
+    return $passwdChangeErrorMsg;
 }
 
 /**
@@ -53,5 +50,8 @@ function changePassword($userName, $newPassword, $confirmNewPassword){
  * @param $userName
  */
 function resetPassword($userName){
-
+    $newPassword = mysqli_real_escape_string($mysqli, APR1_MD5::hash($_GET['passwordReset']));
+    $user = mysqli_real_escape_string($mysqli, $_GET['passwordReset']);
+    mysqli_query($mysqli, "UPDATE master_users SET Password='$newPassword' WHERE username='$user'") or die(header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500));
+    die();
 }
