@@ -1,0 +1,4 @@
+docker exec packapps_database-server_1 sh -c 'exec mysqldump --databases 
+operationsData growerReporting --routines --triggers --no-data -uroot 
+-ppackapps' > output.sql
+

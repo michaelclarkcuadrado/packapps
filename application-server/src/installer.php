@@ -1,40 +1,17 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: mac
- * Date: 7/6/2016
- * Time: 8:55 AM
+ * User: mike
+ * Date: 6/5/17
+ * Time: 1:22 PM
  */
+
 require_once('scripts/Mobile_Detect.php');
-$detect = new Mobile_Detect();
-//stop IE from loading
-if($detect->is('IE')){
-    die("<div style='height: 100%;text-align: center; background-color: white;'><div style='top:20%;position:relative;font-size:25px'>Sorry, Internet Explorer is not supported. Try again with a newer browser, such as Firefox or Chrome.</div></div>");
-}
 
 include 'config.php';
-include 'scripts/APR1_MD5.php';
-use WhiteHat101\Crypt\APR1_MD5;
 
-$errormsg = "";
-if (isset($_COOKIE['auth']) && isset($_COOKIE['username']) && hash_equals($_COOKIE['auth'], crypt($_COOKIE['username'], $securityKey))) {
-    die(header( 'Location: appMenu.php' ));
-} else if (isset($_POST['username']) && isset($_POST['password'])) {
-    $username = mysqli_real_escape_string($mysqli, $_POST['username']);
-    $hash = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Password`, isDisabled FROM master_users WHERE username = '" . $username . "'"));
-    if (APR1_MD5::check($_POST['password'], $hash['Password'])) {
-        if ($hash['isDisabled'] > 0) {
-            $errormsg = "Your account has been disabled. Please contact a system administrator.";
-        } else {
-            setcookie('username', $username);
-            setcookie('auth', crypt($username, $securityKey));
-            mysqli_query($mysqli, "UPDATE master_users SET `lastLogin`=NOW() WHERE username = '$username'");
-            die(header( 'Location: appMenu.php' ));
-        }
-    } else {
-        $errormsg = "Almost there, but not quite. Caps lock?";
-    }
-}
+$errormsg = "Packapps has been installed and the database connection was successful. Please create a new user.";
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -78,8 +55,7 @@ if (isset($_COOKIE['auth']) && isset($_COOKIE['username']) && hash_equals($_COOK
 </head>
 <body class='mdl-color--primary-contrast mdl-grid' style="padding: 0">
 <div class="mdl-layout-spacer"></div>
-<div
-    style=' display: none; margin: 15%;  max-height: 330px; max-width: 425px; position: relative; top: 50%; -moz-transform: translateY(50%)'
+<div style=' display: none; margin: 15%;  max-height: 330px; max-width: 425px; position: relative; top: 50%; -moz-transform: translateY(50%)'
     class="mdl-card mdl-cell mdl-cell--4-col mdl-color--primary mdl-shadow--8dp">
     <div class="mdl-card__title">
         <h2 style="color: white" class="mdl-card__title-text"><i style='margin-right: 5px' class="material-icons">dashboard</i> <?echo $companyName?> PackApps</h2>
@@ -102,9 +78,16 @@ if (isset($_COOKIE['auth']) && isset($_COOKIE['username']) && hash_equals($_COOK
                     <label class="mdl-textfield__label" for="password">Password</label>
                 </div>
             </div>
+            <div class="mdl-color--grey-200" style="margin: 5px; margin-top: 15px; border-radius: 15px">
+                <div style="width: 90%" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input autocomplete="off" class="mdl-textfield__input" type="password" name='password'
+                           id="password">
+                    <label class="mdl-textfield__label" for="password">Reconfirm password</label>
+                </div>
+            </div>
             <button onClick="$('.mdl-card').fadeOut('fast');" style="color: white; margin-top: 15px; width: 100%"
                     class="mdl-button mdl-color--pink-500 mdl-button--raised">
-                Log In to Packapps
+                Create new user and log in
             </button>
         </form>
     </div>

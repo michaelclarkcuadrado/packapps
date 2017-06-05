@@ -506,10 +506,13 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
                     var millisecondsToHold;
                     if (curActiveCard >= numMatchingRuns) {
                         curActiveCard = 1;
-                        millisecondsToHold = 18000
+                        millisecondsToHold = 17000;
                     } else {
+                        millisecondsToHold = 10000;
+                        if (curActiveCard == 2){
+                            millisecondsToHold = 8000;
+                        }
                         curActiveCard++;
-                        millisecondsToHold = 9000
                     }
                     $("#cardID"+curActiveCard).show(0, function () {
                         animateScroll('down');

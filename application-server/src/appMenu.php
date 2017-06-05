@@ -61,8 +61,8 @@ $allowedItems = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT allowedQuality,
 </head>
 <body class='mdl-color--primary-contrast mdl-grid' style="padding: 0">
 <div
-    style='display: none; margin: 15%; position: relative; top: 50%; -moz-transform: translateY(50%)'
-    class="minHeightFix mdl-card mdl-cell mdl-cell--12-col mdl-color--primary mdl-shadow--8dp">
+    style='display: none; margin-left: 15%;margin-right:15%;margin-bottom:15%; position: relative; top: 50%; -moz-transform: translateY(50%)'
+    class="mdl-card mdl-cell mdl-cell--12-col mdl-color--primary mdl-shadow--8dp">
     <div class="mdl-card__title">
         <h2 style="color: white" class="mdl-card__title-text"><i style='margin-right: 5px' class="material-icons">dashboard</i> <?echo $companyName?> PackApps</h2>
     </div>
@@ -71,6 +71,8 @@ $allowedItems = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT allowedQuality,
         <button id='QAbutton' onclick="location.href = '/quality'" class="mdl-button mdl-js-button mdl-color--pink-500 mdl-color-text--white mdl-js-ripple-effect mdl-shadow--6dp mdl-cell mdl-cell--4-col" style="display: initial; height: 200px; float: left; border-radius: 12px; text-align: center; font-size: x-large; vertical-align: middle"><i style="font-size:45px" class="material-icons">check_circle</i><Br>Quality Assurance Panel<p id="QAlock" style='display: none; font-size: small;position: absolute; width: 100%; left: 0; color: white'>(This app is locked.)</p></button>
         <button id='productionButton' onclick="location.href = '/production'" class="mdl-button mdl-js-button mdl-color--pink-500 mdl-color-text--white mdl-js-ripple-effect mdl-shadow--6dp mdl-cell mdl-cell--4-col" style="display: initial; height: 200px; float: left; border-radius: 12px; text-align: center; font-size: x-large; vertical-align: middle"><i style="font-size:45px" class="material-icons">list</i><Br>Production Coordinator<p id="Productionlock"  style='display: none; font-size: small;position: absolute; width: 100%; left: 0; color: white'>(This app is locked.)</p></button>
         <button id='purchasingButton' onclick="location.href = '/purchasing'" class="mdl-button mdl-js-button mdl-color--pink-500 mdl-color-text--white mdl-js-ripple-effect mdl-shadow--6dp mdl-cell mdl-cell--4-col" style="display: initial; height: 200px; float: left; border-radius: 12px; text-align: center; font-size: x-large; vertical-align: middle"><i style="font-size:45px" class="material-icons">dashboard</i><Br>Purchasing Dashboard<p id="Purchasinglock" style='display: none; font-size: small;position: absolute; width: 100%; left: 0; color: white'>(This app is locked.)</p></button>
+        <button id='maintenanceButton' onclick="location.href = '/maintenance'" class="mdl-button mdl-js-button mdl-color--pink-500 mdl-color-text--white mdl-js-ripple-effect mdl-shadow--6dp mdl-cell mdl-cell--4-col" style="display: initial; height: 200px; float: left; border-radius: 12px; text-align: center; font-size: x-large; vertical-align: middle"><i style="font-size:45px" class="material-icons">build</i><Br>Maintenance Dashboard<p id="Maintenancelock" style='display: none; font-size: small;position: absolute; width: 100%; left: 0; color: white'>(This app is locked.)</p></button>
+        <button id='storageButton' onclick="location.href = '/storage'" class="mdl-button mdl-js-button mdl-color--pink-500 mdl-color-text--white mdl-js-ripple-effect mdl-shadow--6dp mdl-cell mdl-cell--4-col" style="display: initial; height: 200px; float: left; border-radius: 12px; text-align: center; font-size: x-large; vertical-align: middle"><i style="font-size:45px" class="material-icons">track_changes</i><Br>Storage Manager<p id="Storagelock" style='display: none; font-size: small;position: absolute; width: 100%; left: 0; color: white'>(This app is locked.)</p></button>
     </div>
     <div class='mdl-card__actions mdl-card__border'>
         <a onclick="logout()" class="mdl-button mdl-js-button mdl-js-ripple-effect">Log out</a>
@@ -84,6 +86,8 @@ $allowedItems = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT allowedQuality,
         var allowedQA = <?echo ($allowedItems['allowedQuality'] > 0 ? 'true' : 'false')?>;
         var allowedPurchasing = <?echo ($allowedItems['allowedPurchasing'] > 0 ? 'true' : 'false')?>;
         var allowedProduction = <?echo ($allowedItems['allowedProduction'] > 0 ? 'true' : 'false')?>;
+        var allowedMaintenance = false;
+        var allowedStorage = false;
 
         if (!allowedQA) {
             $('#QAbutton').attr('disabled', true);
@@ -97,6 +101,14 @@ $allowedItems = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT allowedQuality,
             $('#productionButton').attr('disabled', true);
             $('#Productionlock').show();
         }
+        if (!allowedMaintenance) {
+            $('#maintenanceButton').attr('disabled', true);
+            $('#Maintenancelock').show();
+        }
+        if (!allowedStorage) {
+            $('#storageButton').attr('disabled', true);
+            $('#Storagelock').show();
+        }
         $('.mdl-card').fadeIn('slow');
     });
 
@@ -107,6 +119,6 @@ $allowedItems = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT allowedQuality,
     }
 </script>
 <i style='position: absolute; cursor: pointer; right: 0; bottom:0;color: white; font-size: larger' class="material-icons mdl-cell--hide-phone" onclick="$(this).hide();$('#about').slideDown()">info_outline</i>
-<div id="about" style="display: none; position: fixed; right: 4px; bottom:0;color: white; font-size: smaller;">Made with &#10084; by <a style="color:white" href="//michaelclarkcuadrado.com">Michael Clark-Cuadrado</a><br>PackApps is <a style="color: white" href="//github.com/michaelclarkcuadrado/packapps">open source</a> under a GPL license.</div>
+<div id="about" style="display: none; position: fixed; right: 4px; bottom:0;color: white; font-size: smaller;">Made with &#10084; by <a style="color:white" href="//michaelclarkcuadrado.com">Michael Clark-Cuadrado</a><br>Copyright, 2015, 2016, 2017</div>
 </body>
 </html>

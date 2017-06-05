@@ -1,7 +1,6 @@
 <?php
-include 'config.php';
-include 'scripts/APR1_MD5.php';
-use WhiteHat101\Crypt\APR1_MD5;
+include 'user_api.php';
+
 
 //authentication
 if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
@@ -16,17 +15,8 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
 
 //create new User account
 if($checkAllowed['isSystemAdministrator'] > 0 && isset($_POST['newUserName']) && isset($_POST['newRealName']) && isset($_POST['newPassword'])) {
-    $newUserName = mysqli_real_escape_string($mysqli, $_POST['newUserName']);
-    $newRealName = mysqli_real_escape_string($mysqli, $_POST['newRealName']);
-    $newPassword = mysqli_real_escape_string($mysqli, $_POST['newPassword']);
     $isAdministrator = (isset($_POST['newAdministrator']) ? 1 : 0);
-    mysqli_query($mysqli, "INSERT INTO master_users (username, `Real Name`, `Password`, isSystemAdministrator) VALUES ('$newUserName', '$newRealName', '$newPassword', '$isAdministrator')");
-    mysqli_query($mysqli, "INSERT INTO quality_UserData (username, DateCreated) VALUES ('$newUserName', NOW())");
-    mysqli_query($mysqli, "INSERT INTO production_UserData (username) VALUES ('$newUserName')");
-    mysqli_query($mysqli, "INSERT INTO purchasing_UserData (username) VALUES ('$newUserName')");
-    if(mysqli_errno($mysqli)){
-        $passwdChangeErrorMsg = "Could not set info for new user.";
-    }
+    createNewPackappsUser($newRealName, $newUserName, $newPassword, $isAdministrator);
 }
 
 //process password changes
@@ -44,20 +34,6 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
     $user = mysqli_real_escape_string($mysqli, $_GET['passwordReset']);
     mysqli_query($mysqli, "UPDATE master_users SET Password='$newPassword' WHERE username='$user'") or die(header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500));
     die();
-}
-
-//serve config.php to administrators
-if ($checkAllowed['isSystemAdministrator'] > 0 && isset($_GET['dlConfig'])) {
-    $file = 'config.php';
-    header('Content-Description: File Transfer');
-    header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename="' . basename($file) . '"');
-    header('Expires: 0');
-    header('Cache-Control: must-revalidate');
-    header('Pragma: public');
-    header('Content-Length: ' . filesize($file));
-    readfile($file);
-    exit;
 }
 ?>
 <!doctype html>
@@ -125,14 +101,6 @@ if ($checkAllowed['isSystemAdministrator'] > 0 && isset($_GET['dlConfig'])) {
                href="quality/usermgmt.php"><i
                     class="mdl-color-text--cyan-300 material-icons"
                     role="presentation">mail_outline</i>Email Alerts</a>
-            <a class="mdl-navigation__link" <?php echo($checkAllowed['isSystemAdministrator'] > 0 ? '' : "style='display: none !important'"); ?>
-               href="/fruitdb"><i
-                    class="mdl-color-text--amber-300 material-icons"
-                    role="presentation">developer_board</i>FruitDB</a>
-            <a class="mdl-navigation__link" <?php echo($checkAllowed['isSystemAdministrator'] > 0 ? '' : "style='display: none !important'"); ?>
-               href="controlPanel.php?dlConfig=1"><i
-                    class="mdl-color-text--deep-orange-400 material-icons"
-                    role="presentation">cloud_download</i>Download config.php</a>
 
         </nav>
     </div>

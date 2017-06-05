@@ -9,7 +9,7 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     die("<script>window.location.replace('/')</script>");
 } else {
     $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Real Name`, Role, isSectionManager as isAdmin, allowedQuality FROM master_users JOIN quality_UserData ON master_users.username=quality_UserData.UserName WHERE master_users.username = '$SecuredUserName'"));
+    $checkAllowed = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Real Name`, Role, allowedQuality FROM master_users JOIN quality_UserData ON master_users.username=quality_UserData.UserName WHERE master_users.username = '$SecuredUserName'"));
     if (!$checkAllowed['allowedQuality'] > 0) {
         die ("<script>window.location.replace('/')</script>");
     } else {
@@ -98,9 +98,6 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
                 <p><i class="icon fa-star"></i> <? echo $total_count['Weight']+$total_count_runs['Weight'] ?> pounds of fruit
                     from <? echo $total_count['countSamp']+$total_count_runs['countSamp'] ?> samples (<? echo $total_count['countRT'] ?> RTs and <?echo $total_count_runs['countRuns']?> runs) analyzed
                     so far!<br>
-                    <? if ($RealName[2] == 1) {
-                        echo "<a style='font-size: large' href='usermgmt.php'> <SampleNum class='fa fa-cogs'></SampleNum> Control Panel </a><br>";
-                    } ?>
                 </p>
             </header>
             <a href="#QA" class="jumplink pic">

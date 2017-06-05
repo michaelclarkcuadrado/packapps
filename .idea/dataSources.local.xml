@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="packapps mariadb" uuid="cfc97d8a-0932-4a39-a56c-bbe18895074a">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+    <data-source name="@127.0.0.1" uuid="4b48a8cd-df7d-41ba-a78b-0b9c3912ecfd">
+      <database-info product="MySQL" version="5.5.5-10.2.6-MariaDB-10.2.6+maria~jessie" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.40 ( Revision: 402933ef52cad9aa82624e80acbea46e3a701ce6 )">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
       <introspection-schemas>*:growerReporting,operationsData</introspection-schemas>
     </data-source>
   </component>

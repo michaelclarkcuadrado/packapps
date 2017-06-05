@@ -1,6 +1,7 @@
 # packapps dockerization
 
 FROM php:apache
+WORKDIR /var/www  #get around crazy php image bug
 RUN docker-php-ext-install mysqli
 
 COPY src /var/www/

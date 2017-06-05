@@ -5,11 +5,25 @@ services:
   ports:
    - "80:80"
   #simplify development by allowing instantaneous code changes. Remove for deployment
-#  volumes:
-#  - .application-server/src:/var/www/
+  volumes:
+  - ./application-server/src:/var/www
   depends_on:
    - database-server
  database-server:
+  ports:
+   - "3306:3306"
   build: ./database-server
   volumes: 
-   - ./database-server/database/mysql:/var/lib/mysql
+   - packapps-db:/var/lib/mysql
+ phpmyadmin:
+  image: phpmyadmin/phpmyadmin
+  container_name: phpmyadmin
+  environment:
+   - PMA_HOST=database-server
+  restart: always
+  ports:
+   - 8080:80
+  volumes:
+   - /sessions
+volumes:
+ packapps-db:
