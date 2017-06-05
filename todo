@@ -1,5 +1,1 @@
 -move database to persistent volume
--seperate dockerfile for database
-	-copy my.cnf
--move --link flag into a docker network
-

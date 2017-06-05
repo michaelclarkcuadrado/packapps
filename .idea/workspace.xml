@@ -1,0 +1,1239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fc9cf440-d41f-463b-aeba-7bb29d2a7f06" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Dockerfile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/adjustUserPermissions.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/appMenu.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/browserconfig.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/config.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/config/000-default.conf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/config/my.cnf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/config/php.ini" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/controlPanel.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/deploy_packapps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/android-chrome-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/android-chrome-192x192.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/android-chrome-36x36.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/android-chrome-48x48.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/android-chrome-72x72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/android-chrome-96x96.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/apple-touch-icon-114x114.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/apple-touch-icon-120x120.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/apple-touch-icon-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/apple-touch-icon-152x152.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/apple-touch-icon-180x180.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/apple-touch-icon-57x57.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/apple-touch-icon-60x60.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/apple-touch-icon-72x72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/apple-touch-icon-76x76.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/apple-touch-icon-precomposed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/favicon-16x16.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/favicon-32x32.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/favicon-96x96.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/mstile-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/mstile-150x150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/mstile-310x150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/mstile-310x310.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/mstile-70x70.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/favicons/safari-pinned-tab.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/getUserAccountList.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/API/BULKOH.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/API/PSOH.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/API/autoFillRun.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/API/curRuns.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/API/markRunAsBad.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/API/rebootDisplays.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/API/runFromJsonBULKOH.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/API/runFromJsonPSOH.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/API/runHistory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/API/singleRun.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/chat_backend.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/editRun.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/editedRunSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/hamburger.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/touch/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/touch/chrome-touch-icon-192x192.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/touch/icon-128x128.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/touch/ms-touch-icon-144x144-precomposed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/manageRun.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/manifest.webapp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/newRun.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/newRunSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/runQADrillDown.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/scripts/Mobile_Detect.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/scripts/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/scripts/jstree.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/scripts/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/scripts/material.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/scripts/sw/runtime-caching.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/scripts/themes/default-dark/32px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/scripts/themes/default-dark/40px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/scripts/themes/default-dark/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/scripts/themes/default-dark/style.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/scripts/themes/default-dark/throbber.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/scripts/themes/default/32px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/scripts/themes/default/40px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/scripts/themes/default/check.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/scripts/themes/default/cross.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/scripts/themes/default/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/scripts/themes/default/style.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/scripts/themes/default/throbber.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/service-worker.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/splash.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/styles/Material-icons.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/styles/main.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/styles/material.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/styles/materialIcons/MaterialIcons-Regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/styles/materialIcons/MaterialIcons-Regular.ijmap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/styles/materialIcons/MaterialIcons-Regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/styles/materialIcons/MaterialIcons-Regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/styles/materialIcons/MaterialIcons-Regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/styles/materialIcons/MaterialIcons-Regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/styles/materialIcons/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/styles/materialIcons/codepoints" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/styles/materialIcons/material-icons.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/styles/overpass.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/styles/roboto.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/usermgmt.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/addBOMitem.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/adjustBomItemAtoms.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/bomItemSearchProvider.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/deleteBOMitem.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/editInventoryItem.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/editSupplierSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/getBOMs.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/getDeletedInventoryItems.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/getInventoryItems.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/getItemInventoryHistory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/getItemPrices.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/getItemTypes.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/getItemsBySupplier.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/getPurchaseHistory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/getSpendingByType.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/getSuppliers.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/inventorySearch.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/loadSuppliersForItem.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/loadSuppliersNotAssociated.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/newItemSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/newSupplierSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/orderSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/receive_confirmations.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/renameItem.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/setReceived.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/submitSupplierAssociations.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/subtractBOMfromInventory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/API/supplierSearch.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/ItemRecycle.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/assets/Order_Confirmations/2_confirm.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/assets/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/bomEditor.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/browserconfig.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/checkout.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/editSupplier.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/android-chrome-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/android-chrome-192x192.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/android-chrome-36x36.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/android-chrome-48x48.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/android-chrome-72x72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/android-chrome-96x96.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/apple-touch-icon-114x114.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/apple-touch-icon-120x120.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/apple-touch-icon-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/apple-touch-icon-152x152.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/apple-touch-icon-180x180.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/apple-touch-icon-57x57.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/apple-touch-icon-60x60.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/apple-touch-icon-72x72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/apple-touch-icon-76x76.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/apple-touch-icon-precomposed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/favicon-16x16.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/favicon-32x32.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/favicon-96x96.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/mstile-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/mstile-150x150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/mstile-310x150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/mstile-310x310.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/mstile-70x70.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/favicons/safari-pinned-tab.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/filemanager.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/forecastReport.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/inventory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/login.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/logout/logoutheader.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/newSupplierSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/purchasehistory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/scripts/Chart.bundle.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/scripts/Chart.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/scripts/Chart.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/scripts/Mobile_Detect.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/scripts/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/scripts/material.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/scripts/moment.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/scripts/select2.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/scripts/stepper.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/scripts/stepper.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/styles/material.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/styles/materialIcons/MaterialIcons-Regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/styles/materialIcons/MaterialIcons-Regular.ijmap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/styles/materialIcons/MaterialIcons-Regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/styles/materialIcons/MaterialIcons-Regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/styles/materialIcons/MaterialIcons-Regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/styles/materialIcons/MaterialIcons-Regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/styles/materialIcons/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/styles/materialIcons/codepoints" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/styles/materialIcons/material-icons.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/styles/select2.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/styles/stepper.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/styles/stepper.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/styles/styles.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/supplierProductsView.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/purchasing/suppliers.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/API/RTlist.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/API/barcodeAndTicketInfo.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/API/blockiddata.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/API/blockinfoqa.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/API/deleteTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/API/getTestingHistory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/API/rtinfoins.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/API/rtinfoqa.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/Classes/Mobile_Detect.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/Classes/excel_reader2.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/Classes/ssp.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/DA.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/DAsubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/Inspector.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/Inspectorsubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/QA.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/QAsubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/WeightSamples.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/css/font-awesome.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/css/ie8.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/css/images/bg.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/css/images/details_close.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/css/images/details_open.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/css/images/overlay.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/css/inspector.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/css/jquery.dataTables.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/css/main.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/css/noscript.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/fonts/FontAwesome.otf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/fonts/fontawesome-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/fonts/fontawesome-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/fonts/fontawesome-webfont.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/fonts/fontawesome-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/fonts/fontawesome-webfont.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/js/ie/backgroundsize.min.htc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/js/ie/html5shiv.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/js/ie/respond.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/js/jquery.dataTables.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/js/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/js/jstree.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/js/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/js/skel-viewport.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/js/skel.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/js/themes/default-dark/32px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/js/themes/default-dark/40px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/js/themes/default-dark/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/js/themes/default-dark/style.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/js/themes/default-dark/throbber.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/js/themes/default/32px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/js/themes/default/40px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/js/themes/default/check.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/js/themes/default/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/js/themes/default/style.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/js/themes/default/throbber.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/assets/js/util.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/barcodeDecode.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/emailAlerts/EmergencyAlert.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/emailAlerts/class.phpmailer.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/emailAlerts/class.smtp.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/ftadata.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/images/Apple.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/images/Nectarine.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/images/Peach.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/images/Pear.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/images/Pluot.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/images/sort_asc.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/images/sort_asc_disabled.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/images/sort_both.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/images/sort_desc.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/images/sort_desc_disabled.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/mobileAlert.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/mobileQA.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/mobilestarch.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/noticeSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/preharvest/Preharvestsubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/preharvest/blockidfinder.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/preharvest/ftadata.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/preharvest/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/preharvest/mobilestarch.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/preharvest/starchsubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/runPhoto.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/runPhotoSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/runSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/runftareturn.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/starchsubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/usermgmt.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quality/weightsubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/APR1_MD5.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/Mobile_Detect.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/material.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/adjustUserPermissions.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/appMenu.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/browserconfig.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/config.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/controlPanel.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/android-chrome-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/android-chrome-192x192.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/android-chrome-36x36.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/android-chrome-48x48.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/android-chrome-72x72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/android-chrome-96x96.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/apple-touch-icon-114x114.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/apple-touch-icon-120x120.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/apple-touch-icon-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/apple-touch-icon-152x152.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/apple-touch-icon-180x180.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/apple-touch-icon-57x57.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/apple-touch-icon-60x60.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/apple-touch-icon-72x72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/apple-touch-icon-76x76.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/apple-touch-icon-precomposed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/favicon-16x16.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/favicon-32x32.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/favicon-96x96.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/mstile-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/mstile-150x150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/mstile-310x150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/mstile-310x310.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/mstile-70x70.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/favicons/safari-pinned-tab.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/getUserAccountList.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/API/BULKOH.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/API/PSOH.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/API/autoFillRun.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/API/curRuns.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/API/markRunAsBad.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/API/rebootDisplays.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/API/runFromJsonBULKOH.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/API/runFromJsonPSOH.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/API/runHistory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/API/singleRun.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/chat_backend.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/editRun.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/editedRunSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/images/hamburger.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/images/touch/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/images/touch/chrome-touch-icon-192x192.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/images/touch/icon-128x128.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/images/touch/ms-touch-icon-144x144-precomposed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/manageRun.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/manifest.webapp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/newRun.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/newRunSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/runQADrillDown.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/scripts/Mobile_Detect.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/scripts/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/scripts/jstree.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/scripts/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/scripts/material.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/scripts/sw/runtime-caching.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/scripts/themes/default-dark/32px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/scripts/themes/default-dark/40px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/scripts/themes/default-dark/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/scripts/themes/default-dark/style.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/scripts/themes/default-dark/throbber.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/scripts/themes/default/32px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/scripts/themes/default/40px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/scripts/themes/default/check.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/scripts/themes/default/cross.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/scripts/themes/default/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/scripts/themes/default/style.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/scripts/themes/default/throbber.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/service-worker.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/splash.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/styles/Material-icons.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/styles/main.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/styles/material.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/styles/materialIcons/MaterialIcons-Regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/styles/materialIcons/MaterialIcons-Regular.ijmap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/styles/materialIcons/MaterialIcons-Regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/styles/materialIcons/MaterialIcons-Regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/styles/materialIcons/MaterialIcons-Regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/styles/materialIcons/MaterialIcons-Regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/styles/materialIcons/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/styles/materialIcons/codepoints" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/styles/materialIcons/material-icons.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/styles/overpass.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/styles/roboto.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/production/usermgmt.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/addBOMitem.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/adjustBomItemAtoms.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/bomItemSearchProvider.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/deleteBOMitem.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/editInventoryItem.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/editSupplierSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/getBOMs.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/getDeletedInventoryItems.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/getInventoryItems.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/getItemInventoryHistory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/getItemPrices.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/getItemTypes.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/getItemsBySupplier.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/getPurchaseHistory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/getSpendingByType.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/getSuppliers.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/inventorySearch.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/loadSuppliersForItem.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/loadSuppliersNotAssociated.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/newItemSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/newSupplierSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/orderSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/receive_confirmations.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/renameItem.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/setReceived.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/submitSupplierAssociations.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/subtractBOMfromInventory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/API/supplierSearch.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/ItemRecycle.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/assets/Order_Confirmations/2_confirm.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/assets/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/bomEditor.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/browserconfig.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/checkout.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/editSupplier.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/android-chrome-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/android-chrome-192x192.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/android-chrome-36x36.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/android-chrome-48x48.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/android-chrome-72x72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/android-chrome-96x96.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/apple-touch-icon-114x114.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/apple-touch-icon-120x120.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/apple-touch-icon-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/apple-touch-icon-152x152.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/apple-touch-icon-180x180.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/apple-touch-icon-57x57.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/apple-touch-icon-60x60.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/apple-touch-icon-72x72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/apple-touch-icon-76x76.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/apple-touch-icon-precomposed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/favicon-16x16.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/favicon-32x32.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/favicon-96x96.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/mstile-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/mstile-150x150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/mstile-310x150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/mstile-310x310.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/mstile-70x70.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/favicons/safari-pinned-tab.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/filemanager.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/forecastReport.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/inventory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/login.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/logout/logoutheader.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/newSupplierSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/purchasehistory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/scripts/Chart.bundle.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/scripts/Chart.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/scripts/Chart.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/scripts/Mobile_Detect.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/scripts/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/scripts/material.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/scripts/moment.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/scripts/select2.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/scripts/stepper.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/scripts/stepper.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/styles/material.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/styles/materialIcons/MaterialIcons-Regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/styles/materialIcons/MaterialIcons-Regular.ijmap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/styles/materialIcons/MaterialIcons-Regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/styles/materialIcons/MaterialIcons-Regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/styles/materialIcons/MaterialIcons-Regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/styles/materialIcons/MaterialIcons-Regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/styles/materialIcons/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/styles/materialIcons/codepoints" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/styles/materialIcons/material-icons.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/styles/select2.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/styles/stepper.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/styles/stepper.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/styles/styles.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/supplierProductsView.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/purchasing/suppliers.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/API/RTlist.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/API/barcodeAndTicketInfo.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/API/blockiddata.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/API/blockinfoqa.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/API/deleteTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/API/getTestingHistory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/API/rtinfoins.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/API/rtinfoqa.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/Classes/Mobile_Detect.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/Classes/excel_reader2.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/Classes/ssp.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/DA.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/DAsubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/Inspector.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/Inspectorsubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/QA.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/QAsubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/WeightSamples.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/css/font-awesome.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/css/ie8.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/css/images/bg.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/css/images/details_close.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/css/images/details_open.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/css/images/overlay.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/css/inspector.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/css/jquery.dataTables.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/css/main.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/css/noscript.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/fonts/FontAwesome.otf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/fonts/fontawesome-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/fonts/fontawesome-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/fonts/fontawesome-webfont.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/fonts/fontawesome-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/fonts/fontawesome-webfont.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/js/ie/backgroundsize.min.htc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/js/ie/html5shiv.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/js/ie/respond.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/js/jquery.dataTables.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/js/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/js/jstree.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/js/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/js/skel-viewport.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/js/skel.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/js/themes/default-dark/32px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/js/themes/default-dark/40px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/js/themes/default-dark/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/js/themes/default-dark/style.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/js/themes/default-dark/throbber.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/js/themes/default/32px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/js/themes/default/40px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/js/themes/default/check.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/js/themes/default/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/js/themes/default/style.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/js/themes/default/throbber.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/assets/js/util.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/barcodeDecode.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/emailAlerts/EmergencyAlert.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/emailAlerts/class.phpmailer.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/emailAlerts/class.smtp.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/ftadata.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/images/Apple.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/images/Nectarine.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/images/Peach.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/images/Pear.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/images/Pluot.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/images/sort_asc.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/images/sort_asc_disabled.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/images/sort_both.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/images/sort_desc.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/images/sort_desc_disabled.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/mobileAlert.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/mobileQA.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/mobilestarch.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/noticeSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/preharvest/Preharvestsubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/preharvest/blockidfinder.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/preharvest/ftadata.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/preharvest/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/preharvest/mobilestarch.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/preharvest/starchsubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/runPhoto.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/runPhotoSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/runSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/runftareturn.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/starchsubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/usermgmt.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/quality/weightsubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/scripts/APR1_MD5.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/scripts/Mobile_Detect.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/scripts/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/scripts/material.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/styles/material.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/styles/materialIcons/MaterialIcons-Regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/styles/materialIcons/MaterialIcons-Regular.ijmap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/styles/materialIcons/MaterialIcons-Regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/styles/materialIcons/MaterialIcons-Regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/styles/materialIcons/MaterialIcons-Regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/styles/materialIcons/MaterialIcons-Regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/styles/materialIcons/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/styles/materialIcons/codepoints" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/styles/materialIcons/material-icons.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/styles/styles.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/styles/material.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/styles/materialIcons/MaterialIcons-Regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/styles/materialIcons/MaterialIcons-Regular.ijmap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/styles/materialIcons/MaterialIcons-Regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/styles/materialIcons/MaterialIcons-Regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/styles/materialIcons/MaterialIcons-Regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/styles/materialIcons/MaterialIcons-Regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/styles/materialIcons/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/styles/materialIcons/codepoints" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/styles/materialIcons/material-icons.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/styles/styles.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/adjustUserPermissions.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/appMenu.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/browserconfig.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/config.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/controlPanel.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/android-chrome-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/android-chrome-192x192.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/android-chrome-36x36.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/android-chrome-48x48.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/android-chrome-72x72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/android-chrome-96x96.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/apple-touch-icon-114x114.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/apple-touch-icon-120x120.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/apple-touch-icon-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/apple-touch-icon-152x152.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/apple-touch-icon-180x180.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/apple-touch-icon-57x57.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/apple-touch-icon-60x60.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/apple-touch-icon-72x72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/apple-touch-icon-76x76.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/apple-touch-icon-precomposed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/favicon-16x16.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/favicon-32x32.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/favicon-96x96.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/mstile-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/mstile-150x150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/mstile-310x150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/mstile-310x310.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/mstile-70x70.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/favicons/safari-pinned-tab.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/getUserAccountList.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/API/BULKOH.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/API/PSOH.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/API/autoFillRun.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/API/curRuns.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/API/markRunAsBad.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/API/rebootDisplays.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/API/runFromJsonBULKOH.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/API/runFromJsonPSOH.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/API/runHistory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/API/singleRun.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/chat_backend.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/editRun.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/editedRunSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/images/hamburger.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/images/touch/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/images/touch/chrome-touch-icon-192x192.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/images/touch/icon-128x128.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/images/touch/ms-touch-icon-144x144-precomposed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/manageRun.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/manifest.webapp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/newRun.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/newRunSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/runQADrillDown.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/scripts/Mobile_Detect.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/scripts/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/scripts/jstree.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/scripts/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/scripts/material.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/scripts/sw/runtime-caching.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/scripts/themes/default-dark/32px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/scripts/themes/default-dark/40px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/scripts/themes/default-dark/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/scripts/themes/default-dark/style.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/scripts/themes/default-dark/throbber.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/scripts/themes/default/32px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/scripts/themes/default/40px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/scripts/themes/default/check.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/scripts/themes/default/cross.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/scripts/themes/default/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/scripts/themes/default/style.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/scripts/themes/default/throbber.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/service-worker.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/splash.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/styles/Material-icons.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/styles/main.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/styles/material.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/styles/materialIcons/MaterialIcons-Regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/styles/materialIcons/MaterialIcons-Regular.ijmap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/styles/materialIcons/MaterialIcons-Regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/styles/materialIcons/MaterialIcons-Regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/styles/materialIcons/MaterialIcons-Regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/styles/materialIcons/MaterialIcons-Regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/styles/materialIcons/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/styles/materialIcons/codepoints" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/styles/materialIcons/material-icons.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/styles/overpass.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/styles/roboto.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/production/usermgmt.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/addBOMitem.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/adjustBomItemAtoms.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/bomItemSearchProvider.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/deleteBOMitem.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/editInventoryItem.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/editSupplierSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/getBOMs.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/getDeletedInventoryItems.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/getInventoryItems.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/getItemInventoryHistory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/getItemPrices.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/getItemTypes.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/getItemsBySupplier.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/getPurchaseHistory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/getSpendingByType.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/getSuppliers.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/inventorySearch.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/loadSuppliersForItem.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/loadSuppliersNotAssociated.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/newItemSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/newSupplierSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/orderSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/receive_confirmations.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/renameItem.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/setReceived.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/submitSupplierAssociations.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/subtractBOMfromInventory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/API/supplierSearch.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/ItemRecycle.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/assets/Order_Confirmations/2_confirm.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/assets/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/bomEditor.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/browserconfig.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/checkout.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/editSupplier.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/android-chrome-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/android-chrome-192x192.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/android-chrome-36x36.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/android-chrome-48x48.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/android-chrome-72x72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/android-chrome-96x96.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/apple-touch-icon-114x114.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/apple-touch-icon-120x120.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/apple-touch-icon-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/apple-touch-icon-152x152.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/apple-touch-icon-180x180.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/apple-touch-icon-57x57.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/apple-touch-icon-60x60.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/apple-touch-icon-72x72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/apple-touch-icon-76x76.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/apple-touch-icon-precomposed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/favicon-16x16.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/favicon-32x32.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/favicon-96x96.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/mstile-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/mstile-150x150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/mstile-310x150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/mstile-310x310.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/mstile-70x70.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/favicons/safari-pinned-tab.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/filemanager.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/forecastReport.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/inventory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/login.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/logout/logoutheader.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/newSupplierSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/purchasehistory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/scripts/Chart.bundle.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/scripts/Chart.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/scripts/Chart.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/scripts/Mobile_Detect.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/scripts/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/scripts/material.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/scripts/moment.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/scripts/select2.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/scripts/stepper.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/scripts/stepper.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/styles/material.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/styles/materialIcons/MaterialIcons-Regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/styles/materialIcons/MaterialIcons-Regular.ijmap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/styles/materialIcons/MaterialIcons-Regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/styles/materialIcons/MaterialIcons-Regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/styles/materialIcons/MaterialIcons-Regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/styles/materialIcons/MaterialIcons-Regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/styles/materialIcons/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/styles/materialIcons/codepoints" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/styles/materialIcons/material-icons.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/styles/select2.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/styles/stepper.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/styles/stepper.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/styles/styles.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/supplierProductsView.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/purchasing/suppliers.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/API/RTlist.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/API/barcodeAndTicketInfo.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/API/blockiddata.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/API/blockinfoqa.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/API/deleteTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/API/getTestingHistory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/API/rtinfoins.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/API/rtinfoqa.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/Classes/Mobile_Detect.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/Classes/excel_reader2.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/Classes/ssp.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/DA.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/DAsubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/Inspector.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/Inspectorsubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/QA.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/QAsubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/WeightSamples.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/css/font-awesome.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/css/ie8.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/css/images/bg.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/css/images/details_close.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/css/images/details_open.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/css/images/overlay.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/css/inspector.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/css/jquery.dataTables.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/css/main.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/css/noscript.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/fonts/FontAwesome.otf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/fonts/fontawesome-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/fonts/fontawesome-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/fonts/fontawesome-webfont.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/fonts/fontawesome-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/fonts/fontawesome-webfont.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/js/ie/backgroundsize.min.htc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/js/ie/html5shiv.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/js/ie/respond.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/js/jquery.dataTables.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/js/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/js/jstree.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/js/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/js/skel-viewport.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/js/skel.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/js/themes/default-dark/32px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/js/themes/default-dark/40px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/js/themes/default-dark/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/js/themes/default-dark/style.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/js/themes/default-dark/throbber.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/js/themes/default/32px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/js/themes/default/40px.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/js/themes/default/check.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/js/themes/default/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/js/themes/default/style.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/js/themes/default/throbber.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/assets/js/util.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/barcodeDecode.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/emailAlerts/EmergencyAlert.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/emailAlerts/class.phpmailer.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/emailAlerts/class.smtp.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/ftadata.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/images/Apple.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/images/Nectarine.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/images/Peach.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/images/Pear.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/images/Pluot.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/images/sort_asc.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/images/sort_asc_disabled.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/images/sort_both.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/images/sort_desc.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/images/sort_desc_disabled.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/mobileAlert.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/mobileQA.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/mobilestarch.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/noticeSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/preharvest/Preharvestsubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/preharvest/blockidfinder.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/preharvest/ftadata.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/preharvest/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/preharvest/mobilestarch.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/preharvest/starchsubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/runPhoto.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/runPhotoSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/runSubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/runftareturn.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/starchsubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/usermgmt.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/quality/weightsubmit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/scripts/APR1_MD5.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/scripts/Mobile_Detect.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/scripts/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/scripts/material.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/styles/material.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/styles/materialIcons/MaterialIcons-Regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/styles/materialIcons/MaterialIcons-Regular.ijmap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/styles/materialIcons/MaterialIcons-Regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/styles/materialIcons/MaterialIcons-Regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/styles/materialIcons/MaterialIcons-Regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/styles/materialIcons/MaterialIcons-Regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/styles/materialIcons/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/styles/materialIcons/codepoints" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/styles/materialIcons/material-icons.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/styles/styles.css" afterPath="" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="packapps mariadb" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="my.cnf" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/database-server/config/my.cnf">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/database-server/config/my.cnf" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="27" />
+    <option name="width" value="1680" />
+    <option name="height" value="1023" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="packapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="packapps" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="packapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="packapps" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="database-server" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="packapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="packapps" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="database-server" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="database" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="packapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="packapps" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="database-server" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="CodeceptionConfigurationType" factoryName="Codeception">
+      <PhpTestRunnerSettings />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpSpecConfigurationType" factoryName="PHPSpec">
+      <PhpTestRunnerSettings />
+      <method />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="Docker Deployment">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fc9cf440-d41f-463b-aeba-7bb29d2a7f06" name="Default" comment="" />
+      <created>1496591510001</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1496591510001</updated>
+      <workItem from="1496591512392" duration="2992000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="2992000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="27" width="1680" height="1023" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12678571" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14821428" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/favicon.ico">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/appMenu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="16" column="31" lean-forward="true" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controlPanel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-server/config/my.cnf.untouched">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-server/config/my.cnf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

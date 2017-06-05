@@ -1,0 +1,15 @@
+version: '2'
+services:
+ application-server:
+  build: ./application-server
+  ports:
+   - "80:80"
+  #simplify development by allowing instantaneous code changes. Remove for deployment
+#  volumes:
+#  - .application-server/src:/var/www/
+  depends_on:
+   - database-server
+ database-server:
+  build: ./database-server
+  volumes: 
+   - ./database-server/database/mysql:/var/lib/mysql
