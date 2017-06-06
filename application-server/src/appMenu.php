@@ -16,8 +16,9 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
 }
 
-$allowedItems = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT allowedQuality, allowedPurchasing, allowedProduction, isSystemAdministrator FROM master_users WHERE username = '$SecuredUserName'"));
+$allowedItems = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT allowedQuality, allowedPurchasing, allowedProduction, allowedMaintenance, allowedStorage, isSystemAdministrator FROM master_users WHERE username = '$SecuredUserName'"));
 
+$errormsg = "DEVELOPMENT ENVIRONMENT - DEVELOPMENT ENVIRONMENT - DEVELOPMENT ENVIRONMENT - DEVELOPMENT ENVIRONMENT";
 ?>
 <!doctype html>
 <html lang="en">
@@ -67,12 +68,18 @@ $allowedItems = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT allowedQuality,
         <h2 style="color: white" class="mdl-card__title-text"><i style='margin-right: 5px' class="material-icons">dashboard</i> <?echo $companyName?> PackApps</h2>
     </div>
     <p style="margin: 0; text-align: center; color: #e91e63; font-weight: 900; font-size larger"><? echo $errormsg ?></p>
-    <div style="text-align: center" class="mdl-gridmdl-card__supporting-text">
-        <button id='QAbutton' onclick="location.href = '/quality'" class="mdl-button mdl-js-button mdl-color--pink-500 mdl-color-text--white mdl-js-ripple-effect mdl-shadow--6dp mdl-cell mdl-cell--4-col" style="display: initial; height: 200px; float: left; border-radius: 12px; text-align: center; font-size: x-large; vertical-align: middle"><i style="font-size:45px" class="material-icons">check_circle</i><Br>Quality Assurance Panel<p id="QAlock" style='display: none; font-size: small;position: absolute; width: 100%; left: 0; color: white'>(This app is locked.)</p></button>
-        <button id='productionButton' onclick="location.href = '/production'" class="mdl-button mdl-js-button mdl-color--pink-500 mdl-color-text--white mdl-js-ripple-effect mdl-shadow--6dp mdl-cell mdl-cell--4-col" style="display: initial; height: 200px; float: left; border-radius: 12px; text-align: center; font-size: x-large; vertical-align: middle"><i style="font-size:45px" class="material-icons">list</i><Br>Production Coordinator<p id="Productionlock"  style='display: none; font-size: small;position: absolute; width: 100%; left: 0; color: white'>(This app is locked.)</p></button>
-        <button id='purchasingButton' onclick="location.href = '/purchasing'" class="mdl-button mdl-js-button mdl-color--pink-500 mdl-color-text--white mdl-js-ripple-effect mdl-shadow--6dp mdl-cell mdl-cell--4-col" style="display: initial; height: 200px; float: left; border-radius: 12px; text-align: center; font-size: x-large; vertical-align: middle"><i style="font-size:45px" class="material-icons">dashboard</i><Br>Purchasing Dashboard<p id="Purchasinglock" style='display: none; font-size: small;position: absolute; width: 100%; left: 0; color: white'>(This app is locked.)</p></button>
-        <button id='maintenanceButton' onclick="location.href = '/maintenance'" class="mdl-button mdl-js-button mdl-color--pink-500 mdl-color-text--white mdl-js-ripple-effect mdl-shadow--6dp mdl-cell mdl-cell--4-col" style="display: initial; height: 200px; float: left; border-radius: 12px; text-align: center; font-size: x-large; vertical-align: middle"><i style="font-size:45px" class="material-icons">build</i><Br>Maintenance Dashboard<p id="Maintenancelock" style='display: none; font-size: small;position: absolute; width: 100%; left: 0; color: white'>(This app is locked.)</p></button>
-        <button id='storageButton' onclick="location.href = '/storage'" class="mdl-button mdl-js-button mdl-color--pink-500 mdl-color-text--white mdl-js-ripple-effect mdl-shadow--6dp mdl-cell mdl-cell--4-col" style="display: initial; height: 200px; float: left; border-radius: 12px; text-align: center; font-size: x-large; vertical-align: middle"><i style="font-size:45px" class="material-icons">track_changes</i><Br>Storage Manager<p id="Storagelock" style='display: none; font-size: small;position: absolute; width: 100%; left: 0; color: white'>(This app is locked.)</p></button>
+    <div style="text-align: center" class="mdl-grid mdl-card__supporting-text">
+        <?php
+           $packappsList = mysqli_query($mysqli, "SELECT short_app_name, long_app_name, material_icon_name, isEnabled FROM packapps_appProperties");
+           while($row = mysqli_fetch_assoc($packappsList)){
+               //determine if app is locked to user or system
+               $allowed = false;
+               if($allowedItems['allowed'.ucfirst($row['short_app_name'])] > 0 && $row['isEnabled'] > 0){
+                   $allowed = true;
+               }
+               echo "<button ".($allowed ? '' : 'disabled')." id='".$row['short_app_name']."button' onclick=\"location.href = '/".$row['short_app_name']."'\" class=\"mdl-button mdl-js-button mdl-color--pink-500 mdl-color-text--white mdl-js-ripple-effect mdl-shadow--6dp mdl-cell mdl-cell--4-col\" style=\"display: initial; height: 200px; float: left; border-radius: 12px; text-align: center; font-size: x-large; vertical-align: middle\"><i style=\"font-size:45px\" class=\"material-icons\">".$row['material_icon_name']."</i><br>".$row['long_app_name']."<p style='".($allowed ? 'display: none;' : '')." font-size: small;position: absolute; width: 100%; left: 0; color: white'>(This app is locked.)</p></button>";
+           }
+        ?>
     </div>
     <div class='mdl-card__actions mdl-card__border'>
         <a onclick="logout()" class="mdl-button mdl-js-button mdl-js-ripple-effect">Log out</a>
@@ -83,32 +90,32 @@ $allowedItems = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT allowedQuality,
 <script src="scripts/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
-        var allowedQA = <?echo ($allowedItems['allowedQuality'] > 0 ? 'true' : 'false')?>;
-        var allowedPurchasing = <?echo ($allowedItems['allowedPurchasing'] > 0 ? 'true' : 'false')?>;
-        var allowedProduction = <?echo ($allowedItems['allowedProduction'] > 0 ? 'true' : 'false')?>;
-        var allowedMaintenance = false;
-        var allowedStorage = false;
-
-        if (!allowedQA) {
-            $('#QAbutton').attr('disabled', true);
-            $('#QAlock').show();
-        }
-        if (!allowedPurchasing) {
-            $('#purchasingButton').attr('disabled', true);
-            $('#Purchasinglock').show();
-        }
-        if (!allowedProduction) {
-            $('#productionButton').attr('disabled', true);
-            $('#Productionlock').show();
-        }
-        if (!allowedMaintenance) {
-            $('#maintenanceButton').attr('disabled', true);
-            $('#Maintenancelock').show();
-        }
-        if (!allowedStorage) {
-            $('#storageButton').attr('disabled', true);
-            $('#Storagelock').show();
-        }
+//        var allowedQA = <?//echo ($allowedItems['allowedQuality'] > 0 ? 'true' : 'false')?>//;
+//        var allowedPurchasing = <?//echo ($allowedItems['allowedPurchasing'] > 0 ? 'true' : 'false')?>//;
+//        var allowedProduction = <?//echo ($allowedItems['allowedProduction'] > 0 ? 'true' : 'false')?>//;
+//        var allowedMaintenance = <?//echo ($allowedItems['allowedMaintenance'] > 0 ? 'true' : 'false')?>//;
+//        var allowedStorage = <?//echo ($allowedItems['allowedStorage'] > 0 ? 'true' : 'false')?>//;
+//
+//        if (!allowedQA) {
+//            $('#QAbutton').attr('disabled', true);
+//            $('#QAlock').show();
+//        }
+//        if (!allowedPurchasing) {
+//            $('#purchasingButton').attr('disabled', true);
+//            $('#Purchasinglock').show();
+//        }
+//        if (!allowedProduction) {
+//            $('#productionButton').attr('disabled', true);
+//            $('#Productionlock').show();
+//        }
+//        if (!allowedMaintenance) {
+//            $('#maintenanceButton').attr('disabled', true);
+//            $('#Maintenancelock').show();
+//        }
+//        if (!allowedStorage) {
+//            $('#storageButton').attr('disabled', true);
+//            $('#Storagelock').show();
+//        }
         $('.mdl-card').fadeIn('slow');
     });
 

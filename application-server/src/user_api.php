@@ -27,11 +27,14 @@ function createNewPackappsUser($mysqli, $realName, $userName, $newPassword, $isS
         mysqli_query($mysqli, "INSERT INTO quality_UserData (username, DateCreated) VALUES ('$userName', NOW())");
         mysqli_query($mysqli, "INSERT INTO production_UserData (username) VALUES ('$userName')");
         mysqli_query($mysqli, "INSERT INTO purchasing_UserData (username) VALUES ('$userName')");
-        if(mysqli_errno($mysqli)){
+        mysqli_query($mysqli, "INSERT INTO storage_UserData (username) VALUES ('$userName')");
+        mysqli_query($mysqli, "INSERT INTO maintenance_UserData (username) VALUES ('$userName')");
+
+    if(mysqli_errno($mysqli)){
             $passwdChangeErrorMsg = "Could not set info for new user.";
         } elseif ($isFirstUser){
             //first run setup
-            if(false === file_put_contents('packapps_installed', date(DATE_RFC2822))){
+            if(false === file_put_contents('packapps_installed', date("D M j G:i:s T Y"))){
                 mysqli_query($mysqli, "DELETE FROM master_users");
                 $passwdChangeErrorMsg = "No write permission. Setup cannot complete.";
             } else {

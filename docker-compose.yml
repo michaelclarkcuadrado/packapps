@@ -4,6 +4,7 @@ services:
   build: ./application-server
   ports:
    - "80:80"
+  restart: always
   #simplify development by allowing instantaneous code changes. Remove for deployment
   volumes:
   - ./application-server/src:/var/www
@@ -12,6 +13,7 @@ services:
  database-server:
   ports:
    - "3306:3306"
+  restart: always
   build: ./database-server
   volumes: 
    - packapps-db:/var/lib/mysql

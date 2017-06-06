@@ -2,3 +2,10 @@ docker exec packapps_database-server_1 sh -c 'exec mysqldump --databases
 operationsData growerReporting --routines --triggers --no-data -uroot 
 -ppackapps' > output.sql
 
+To add a packapp
+-Add an entry to packapps_appProperties
+-Add a column to master users
+-create the app in a folder named it's short name
+-prefix its tables based on it's short name
+-create a [shortname]_UserData table and a foreign key to master_users
+-Add permissions logic to adjustUserPermissions.php and to controlPanel.php

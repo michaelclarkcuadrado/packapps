@@ -130,7 +130,7 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
                                 data-stepper-next>
                             Continue
                         </button>
-                        <button onclick="location.href= '/inventory.php'"
+                        <button onclick="location.href= 'inventory.php'"
                                 class="mdl-button mdl-js-button mdl-js-ripple-effect" data-stepper-cancel>
                             Cancel
                         </button>
