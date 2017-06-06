@@ -1,6 +1,6 @@
 <?php
+include 'config.php';
 include 'user_api.php';
-
 
 //authentication
 if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
@@ -16,14 +16,14 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
 //create new User account
 if($checkAllowed['isSystemAdministrator'] > 0 && isset($_POST['newUserName']) && isset($_POST['newRealName']) && isset($_POST['newPassword'])) {
     $isAdministrator = (isset($_POST['newAdministrator']) ? 1 : 0);
-    createNewPackappsUser($mysqli, $_POST['newRealName'], $_POST['newUserName'], $_POST['newPassword'], $isAdministrator);
+    $passwdChangeMsg = createNewPackappsUser($mysqli, $_POST['newRealName'], $_POST['newUserName'], $_POST['newPassword'], $isAdministrator);
 }
 
 //process password changes
 if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['password2'])) {
     $passwdChangeMsg = changePassword($mysqli, $SecuredUserName, $_POST['password0'], $_POST['password1'], $_POST['password2']);
 } elseif (isset($_GET['passwordReset']) && $checkAllowed['isSystemAdministrator'] > 0) {
-
+    $passwdChangeMsg = resetPassword($mysqli, $_GET['passwordReset']);
 }
 ?>
 <!doctype html>

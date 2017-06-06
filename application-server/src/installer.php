@@ -7,10 +7,23 @@
  */
 
 require_once('scripts/Mobile_Detect.php');
-
 include 'config.php';
+include 'user_api.php';
 
-$errormsg = "Packapps has been installed and the database connection was successful. Please create a new user.";
+$errormsg = "Packapps has been installed and the database connection was successful. You must create an administrator account before proceeding.";
+
+//catch own form
+if(isset($_POST['username']) && isset($_POST['realname']) && isset($_POST['password']) && isset($_POST['password_confirm'])){
+    if($_POST['password'] != $_POST['password_confirm']){
+        $errormsg = "Those passwords did not match. Please try again.";
+    } else {
+        $errormsg = createNewPackappsUser($mysqli, $_POST['realname'], $_POST['username'], $_POST['password'], 1);
+        if ($errormsg === 0){
+            die("<script>window.location.replace('/')</script>");
+        }
+    }
+}
+
 
 ?>
 <!doctype html>
@@ -55,7 +68,7 @@ $errormsg = "Packapps has been installed and the database connection was success
 </head>
 <body class='mdl-color--primary-contrast mdl-grid' style="padding: 0">
 <div class="mdl-layout-spacer"></div>
-<div style=' display: none; margin: 15%;  max-height: 330px; max-width: 425px; position: relative; top: 50%; -moz-transform: translateY(50%)'
+<div style=' display: none; margin: 15%; '
     class="mdl-card mdl-cell mdl-cell--4-col mdl-color--primary mdl-shadow--8dp">
     <div class="mdl-card__title">
         <h2 style="color: white" class="mdl-card__title-text"><i style='margin-right: 5px' class="material-icons">dashboard</i> <?echo $companyName?> PackApps</h2>
@@ -63,11 +76,18 @@ $errormsg = "Packapps has been installed and the database connection was success
     <p style="margin: 0; text-align: center; color: #e91e63; font-weight: 900; font-size larger"><? echo $errormsg ?></p>
     <div style="text-align: center" class="mdl-card__supporting-text">
 
-        <form action="index.php" method="post">
+        <form action="installer.php" method="post">
+            <div class="mdl-color--grey-200" style="margin: 5px; margin-top: 15px; border-radius: 15px">
+                <div style="width: 90%" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input autocomplete="off" class="mdl-textfield__input" type="text" name='realname'
+                           id="realname" autofocus>
+                    <label class="mdl-textfield__label" for="password">Real Name</label>
+                </div>
+            </div>
             <div class="mdl-color--grey-200" style="margin: 5px;  border-radius: 15px">
                 <div style="width: 90%" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input autocomplete="off" autocapitalize="none" class="mdl-textfield__input" type="text"
-                           name='username' id="username" autofocus>
+                           name='username' id="username">
                     <label class="mdl-textfield__label" for="username">Username</label>
                 </div>
             </div>
@@ -80,14 +100,14 @@ $errormsg = "Packapps has been installed and the database connection was success
             </div>
             <div class="mdl-color--grey-200" style="margin: 5px; margin-top: 15px; border-radius: 15px">
                 <div style="width: 90%" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input autocomplete="off" class="mdl-textfield__input" type="password" name='password'
-                           id="password">
+                    <input autocomplete="off" class="mdl-textfield__input" type="password" name='password_confirm'
+                           id="password_confirm">
                     <label class="mdl-textfield__label" for="password">Reconfirm password</label>
                 </div>
             </div>
             <button onClick="$('.mdl-card').fadeOut('fast');" style="color: white; margin-top: 15px; width: 100%"
                     class="mdl-button mdl-color--pink-500 mdl-button--raised">
-                Create new user and log in
+                Create new user and finish setup
             </button>
         </form>
     </div>

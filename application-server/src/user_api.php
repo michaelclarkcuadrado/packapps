@@ -5,6 +5,7 @@
  * Date: 6/5/17
  * Time: 2:00 PM
  */
+
 include 'scripts/APR1_MD5.php';
 use WhiteHat101\Crypt\APR1_MD5;
 
@@ -15,8 +16,10 @@ use WhiteHat101\Crypt\APR1_MD5;
  * @param $userName
  * @param $newPassword
  * @param $isSystemAdministrator
+ * @return string
  */
 function createNewPackappsUser($mysqli, $realName, $userName, $newPassword, $isSystemAdministrator){
+        $isFirstUser = !mysqli_num_rows(mysqli_query($mysqli, "SELECT username FROM master_users"));
         $realName = mysqli_real_escape_string($mysqli, $realName);
         $userName = mysqli_real_escape_string($mysqli, $userName);
         $newPassword = APR1_MD5::hash(mysqli_real_escape_string($mysqli, $newPassword));
@@ -26,7 +29,19 @@ function createNewPackappsUser($mysqli, $realName, $userName, $newPassword, $isS
         mysqli_query($mysqli, "INSERT INTO purchasing_UserData (username) VALUES ('$userName')");
         if(mysqli_errno($mysqli)){
             $passwdChangeErrorMsg = "Could not set info for new user.";
+        } elseif ($isFirstUser){
+            //first run setup
+            if(false === file_put_contents('packapps_installed', date(DATE_RFC2822))){
+                mysqli_query($mysqli, "DELETE FROM master_users");
+                $passwdChangeErrorMsg = "No write permission. Setup cannot complete.";
+            } else {
+                //success
+                $passwdChangeErrorMsg = 0;
+            }
+        } else {
+            $passwdChangeErrorMsg = 'User created';
         }
+        return $passwdChangeErrorMsg;
 }
 
 function changePassword($mysqli, $userName, $oldPassword, $newPassword, $confirmNewPassword){
@@ -34,7 +49,7 @@ function changePassword($mysqli, $userName, $oldPassword, $newPassword, $confirm
     $newPassword = mysqli_real_escape_string($mysqli, $newPassword);
     $confirmNewPassword = mysqli_real_escape_string($mysqli, $confirmNewPassword);
     $hash = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Password` FROM master_users WHERE username = '" . $SecuredUserName . "'"))['Password'];
-    if (APR1_MD5::check($oldPassword, $hash) && $newPassword == $oldPassword) {
+    if (APR1_MD5::check($oldPassword, $hash) && $newPassword == $confirmNewPassword) {
         $newHash = APR1_MD5::hash($newPassword);
         mysqli_query($mysqli, "UPDATE master_users SET Password = '$newHash' WHERE username = '$SecuredUserName'");
         $passwdChangeErrorMsg = "Password changed to <mark>" . substr($newPassword, 0, 1) . str_repeat("*", strlen($newPassword) - 2) . substr($newPassword, -1) . "</mark>. This will take effect the next time you log in.";
@@ -48,10 +63,11 @@ function changePassword($mysqli, $userName, $oldPassword, $newPassword, $confirm
  * Reset a user's password to their own username, for forgotten passwords
  *
  * @param $userName
+ * @return string
  */
-function resetPassword($userName){
-    $newPassword = mysqli_real_escape_string($mysqli, APR1_MD5::hash($_GET['passwordReset']));
-    $user = mysqli_real_escape_string($mysqli, $_GET['passwordReset']);
+function resetPassword($mysqli, $userName){
+    $newPassword = mysqli_real_escape_string($mysqli, APR1_MD5::hash($userName));
+    $user = mysqli_real_escape_string($mysqli, $userName);
     mysqli_query($mysqli, "UPDATE master_users SET Password='$newPassword' WHERE username='$user'") or die(header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500));
-    die();
+    return "Password reset.";
 }
