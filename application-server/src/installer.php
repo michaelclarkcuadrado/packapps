@@ -10,17 +10,15 @@ require_once('scripts/Mobile_Detect.php');
 include 'config.php';
 include 'user_api.php';
 
-$errormsg = "Packapps has been installed and the database connection was successful. You must create an administrator account before proceeding.";
+$errormsg = "To finish setup, create the administrator account.";
 
 //catch own form
 if(isset($_POST['username']) && isset($_POST['realname']) && isset($_POST['password']) && isset($_POST['password_confirm'])){
     if($_POST['password'] != $_POST['password_confirm']){
         $errormsg = "Those passwords did not match. Please try again.";
     } else {
-        $errormsg = createNewPackappsUser($mysqli, $_POST['realname'], $_POST['username'], $_POST['password'], 1);
-        if ($errormsg === 0){
-            die("<script>window.location.replace('/')</script>");
-        }
+        initialize_packapps($mysqli);
+        createNewPackappsUser($mysqli, $_POST['realname'], $_POST['username'], $_POST['password'], 1);
     }
 }
 

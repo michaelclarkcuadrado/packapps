@@ -3,7 +3,7 @@ include_once("Classes/Mobile_Detect.php");
 $detect = new Mobile_Detect();
 include '../config.php';
 
-$rts = mysqli_query($mysqli, "SELECT InspectedRTs.RTNum AS `RT#`, ifnull(BULKOHCSV.Grower,'?') AS Grower, ifnull(`CommDesc`, '?') AS CommDesc, ifnull(BULKOHCSV.VarDesc,'?') AS VarDesc, ifnull(BULKOHCSV.Date, date(InspectedRTs.DateInspected)) AS Date,`#Samples` as NumSamples FROM InspectedRTs LEFT JOIN BULKOHCSV ON InspectedRTs.RTNum=BULKOHCSV.`RT#` WHERE InspectedRTs.DAFinished = '0' AND (`#Samples` = '20' OR `#Samples` = '10') ORDER BY InspectedRTs.DateInspected ASC ");
+$rts = mysqli_query($mysqli, "SELECT quality_InspectedRTs.RTNum AS `RT#`, ifnull(BULKOHCSV.Grower,'?') AS Grower, ifnull(`CommDesc`, '?') AS CommDesc, ifnull(BULKOHCSV.VarDesc,'?') AS VarDesc, ifnull(BULKOHCSV.Date, date(quality_InspectedRTs.DateInspected)) AS Date,`#Samples` as NumSamples FROM quality_InspectedRTs LEFT JOIN BULKOHCSV ON quality_InspectedRTs.RTNum=BULKOHCSV.`RT#` WHERE quality_InspectedRTs.DAFinished = '0' AND (`#Samples` = '20' OR `#Samples` = '10') ORDER BY quality_InspectedRTs.DateInspected ASC ");
 ?>
 <html style="width: 100%">
 <head>

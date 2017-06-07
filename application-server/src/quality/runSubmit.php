@@ -26,7 +26,7 @@ $xlsdata = new Spreadsheet_Excel_Reader($_FILES['xlsupload']['tmp_name'],false);
         mysqli_query($mysqli, "UPDATE production_runs SET isQA = 1 WHERE RunID= '" . $_POST['RunID'] . "'");
     }
 
-    $stmt = mysqli_prepare($mysqli, "INSERT INTO run_inspections VALUES (?, ?, ?, ?, ?, ?, ?, default, default)");
+    $stmt = mysqli_prepare($mysqli, "INSERT INTO quality_run_inspections VALUES (?, ?, ?, ?, ?, ?, ?, default, default)");
     mysqli_stmt_bind_param($stmt, 'iddddsi', $RunID, $Weight, $Pressure1, $Pressure2, $Brix, $Note, $isPreInspection);
 
     $NumSamples = ($xlsdata->rowcount()-13)/2;

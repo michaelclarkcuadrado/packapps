@@ -1,5 +1,6 @@
 -- This defines the schema as it existed in v1.0 of packapps. For compatability, it may not be changed.
 -- To change the database, find the version number you are targeting and migrate from the one below it.
+-- Tp upgrade an existing server, delete the schema version it uses from this folder, and any older schemas, before building. 
 
 -- MySQL dump 10.16  Distrib 10.2.6-MariaDB, for debian-linux-gnu (x86_64)
 --

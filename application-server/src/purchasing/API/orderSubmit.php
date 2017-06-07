@@ -15,7 +15,7 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
 } else {
     $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
 }
-$RealName = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Real Name`, isAuthorizedForPurchases FROM purchasing_UserData JOIN master_users ON master_users.username=purchasing_UserData.UserName WHERE purchasing_UserData.UserName='" . $SecuredUserName . "'"));
+$RealName = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Real Name`, isAuthorizedForPurchases FROM purchasing_UserData JOIN packapps_master_users ON packapps_master_users.username=purchasing_UserData.UserName WHERE purchasing_UserData.UserName='" . $SecuredUserName . "'"));
 if($RealName['isAuthorizedForPurchases'] == 0) {
     die();
 }

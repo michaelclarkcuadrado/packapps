@@ -1,6 +1,6 @@
 <?
 include '../config.php';
-$count_total = mysqli_query($mysqli, "SELECT COUNT(*) AS countRT, (SELECT count(*) FROM AppleSamples) AS countSamp FROM InspectedRTs");
+$count_total = mysqli_query($mysqli, "SELECT COUNT(*) AS countRT, (SELECT count(*) FROM quality_AppleSamples) AS countSamp FROM quality_InspectedRTs");
 $total_count = mysqli_fetch_assoc($count_total);
 //authentication
 if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
@@ -9,7 +9,7 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     die("<script>window.location.replace('/')</script>");
 } else {
     $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Real Name`, Role, isSectionManager as isAdmin, allowedQuality FROM master_users JOIN quality_UserData ON master_users.username=quality_UserData.UserName WHERE master_users.username = '$SecuredUserName'"));
+    $checkAllowed = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Real Name`, Role, isSectionManager as isAdmin, allowedQuality FROM packapps_master_users JOIN quality_UserData ON packapps_master_users.username=quality_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
     if (!$checkAllowed['allowedQuality'] > 0) {
         die ("<script>window.location.replace('/')</script>");
     } else {
@@ -65,9 +65,6 @@ if ($RealName[1] <> 'QA') {
 <button style='height: 25px; width: 48%; margin-left: auto; display: block; margin-right: auto'
         onclick="location.replace('QA.php')">View Desktop Version
 </button>
-<? if ($RealName[2] == 1) {
-    echo "<br><button onclick='location.replace(\"usermgmt.php\")'>Quality System Control Panel</button><br>";
-} ?>
 <button onclick="location.replace('chpasswd.php')">Change Password</button>
 <br>
 <button value="Logout" onclick="location.href = '/'">Main Menu</button>

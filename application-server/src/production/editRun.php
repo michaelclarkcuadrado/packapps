@@ -7,7 +7,7 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     die("<script>window.location.replace('/')</script>");
 } else {
     $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Real Name` as UserRealName, Role, isSectionManager as isAdmin, allowedProduction FROM master_users JOIN production_UserData ON master_users.username=production_UserData.UserName WHERE master_users.username = '$SecuredUserName'"));
+    $checkAllowed = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Real Name` as UserRealName, Role, isSectionManager as isAdmin, allowedProduction FROM packapps_master_users JOIN production_UserData ON packapps_master_users.username=production_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
     if (!$checkAllowed['allowedProduction'] > 0) {
         die ("<script>window.location.replace('/')</script>");
     } else {

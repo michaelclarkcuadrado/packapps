@@ -21,14 +21,14 @@ if (isset($_COOKIE['auth']) && isset($_COOKIE['username']) && hash_equals($_COOK
     die(header( 'Location: appMenu.php' ));
 } else if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = mysqli_real_escape_string($mysqli, $_POST['username']);
-    $hash = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Password`, isDisabled FROM master_users WHERE username = '" . $username . "'"));
+    $hash = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Password`, isDisabled FROM packapps_master_users WHERE username = '" . $username . "'"));
     if (APR1_MD5::check($_POST['password'], $hash['Password'])) {
         if ($hash['isDisabled'] > 0) {
             $errormsg = "Your account has been disabled. Please contact a system administrator.";
         } else {
             setcookie('username', $username);
             setcookie('auth', crypt($username, $securityKey));
-            mysqli_query($mysqli, "UPDATE master_users SET `lastLogin`=NOW() WHERE username = '$username'");
+            mysqli_query($mysqli, "UPDATE packapps_master_users SET `lastLogin`=NOW() WHERE username = '$username'");
             die(header( 'Location: appMenu.php' ));
         }
     } else {

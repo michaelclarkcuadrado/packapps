@@ -15,7 +15,7 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     die("<script>window.location.replace('/')</script>");
 } else {
     $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Real Name`, isSystemAdministrator, purchasing_UserData.isAuthorizedForPurchases as purchasingRole, production_UserData.Role as productionRole, quality_UserData.Role as qualityRole, purchasing_UserData.isSectionManager as purchasingManager, production_UserData.isSectionManager as productionManager, quality_UserData.isSectionManager as qualityManager, allowedProduction, allowedPurchasing, allowedQuality FROM master_users LEFT JOIN purchasing_UserData ON master_users.username=purchasing_UserData.Username LEFT JOIN quality_UserData ON master_users.username = quality_UserData.UserName LEFT JOIN production_UserData ON master_users.username = production_UserData.UserName WHERE master_users.username = '$SecuredUserName'"));
+    $checkAllowed = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Real Name`, isSystemAdministrator, purchasing_UserData.isAuthorizedForPurchases as purchasingRole, production_UserData.Role as productionRole, quality_UserData.Role as qualityRole, purchasing_UserData.isSectionManager as purchasingManager, production_UserData.isSectionManager as productionManager, quality_UserData.isSectionManager as qualityManager, allowedProduction, allowedPurchasing, allowedQuality FROM packapps_master_users LEFT JOIN purchasing_UserData ON packapps_master_users.username=purchasing_UserData.Username LEFT JOIN quality_UserData ON packapps_master_users.username = quality_UserData.UserName LEFT JOIN production_UserData ON packapps_master_users.username = production_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
     //Only admins can edit
     if ($checkAllowed['isSystemAdministrator'] == 0) {
         header($_SERVER['SERVER_PROTOCOL'] . '500 Internal Server Error', true, 500);
@@ -27,7 +27,7 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
 //disable user
 if (isset($_GET['disableToggle'])) {
     $user = mysqli_real_escape_string($mysqli, $_GET['disableToggle']);
-    mysqli_query($mysqli, "UPDATE master_users SET isDisabled = !isDisabled WHERE username = '$user'") or die(header($_SERVER['SERVER_PROTOCOL'] . '500 Internal Server Error', true, 500));
+    mysqli_query($mysqli, "UPDATE packapps_master_users SET isDisabled = !isDisabled WHERE username = '$user'") or die(header($_SERVER['SERVER_PROTOCOL'] . '500 Internal Server Error', true, 500));
 } else {
 
 //change packapps permissions per user
@@ -35,7 +35,7 @@ if (isset($_GET['disableToggle'])) {
         $userUnderEdit = mysqli_real_escape_string($mysqli, $_POST['userUnderEdit']);
         $packapp = mysqli_real_escape_string($mysqli, $_POST['packapp']);
         $tablename = $packapp . "_UserData";
-        $userData = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * FROM master_users LEFT JOIN `$tablename` ON master_users.`username`=`$tablename`.UserName WHERE master_users.`username` = '$userUnderEdit'"));
+        $userData = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * FROM packapps_master_users LEFT JOIN `$tablename` ON packapps_master_users.`username`=`$tablename`.UserName WHERE packapps_master_users.`username` = '$userUnderEdit'"));
 
         //check if user making edits is either the section manager or admin
         if ($checkAllowed[$packapp . 'Manager'] > 0 || $checkAllowed['isSystemAdministrator'] > 0) {
@@ -44,7 +44,7 @@ if (isset($_GET['disableToggle'])) {
                 $packapp = ucfirst($packapp);
                 $propValue = (mysqli_real_escape_string($mysqli, $_POST['propValue']) == 'true' ? '1' : '0');
                 //unlock app in menu
-                mysqli_query($mysqli, "UPDATE master_users SET allowed$packapp='$propValue' WHERE `username`='$userUnderEdit'") or die(header($_SERVER['SERVER_PROTOCOL'] . ' 502 Internal Server Error', true, 500));
+                mysqli_query($mysqli, "UPDATE packapps_master_users SET allowed$packapp='$propValue' WHERE `username`='$userUnderEdit'") or die(header($_SERVER['SERVER_PROTOCOL'] . ' 502 Internal Server Error', true, 500));
                 //auto-grant lowest permissions
                 //adjust for purchasing packapp with different permissions name
                 $columnName = ($packapp == 'Purchasing' ? 'isAuthorizedForPurchases' : 'Role');

@@ -10,7 +10,7 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     die("<script>window.location.replace('/')</script>");
 } else {
     $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Real Name`, Role, isSectionManager as isAdmin, allowedQuality FROM master_users JOIN quality_UserData ON master_users.username=quality_UserData.UserName WHERE master_users.username = '$SecuredUserName'"));
+    $checkAllowed = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Real Name`, Role, isSectionManager as isAdmin, allowedQuality FROM packapps_master_users JOIN quality_UserData ON packapps_master_users.username=quality_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
     if (!$checkAllowed['allowedQuality'] > 0) {
         die ("<script>window.location.replace('/')</script>");
     } else {
@@ -27,16 +27,16 @@ $RT = $_POST['RT'];
 
 //void RT
 if (isset($_GET['del'])) {
-    mysqli_query($mysqli, "DELETE FROM InspectedRTs WHERE RTNum='" . $_GET['del'] . "'");
+    mysqli_query($mysqli, "DELETE FROM quality_InspectedRTs WHERE RTNum='" . $_GET['del'] . "'");
     exec("rm assets/uploadedimages/" . $_GET['del'] . ".jpg assets/uploadedimages/" . $_GET['del'] . "starch.jpg assets/uploadedimages/" . $_GET['del'] . "bitterpit.jpg ../assets/uploadedimages/" . $_GET['del'] . "bruising.jpg");
     echo "<script>location.replace('QA.php?qa=" . $_GET['del'] . " has been <mark>voided</mark> and not #QA')</script>";
 } else {
 
     //insert final inspection info
-    mysqli_query($mysqli, "UPDATE `InspectedRTs` SET `Note`='" . $Note . "', `isFinalInspected`='1' WHERE RTNum='" . $RT . "'");
+    mysqli_query($mysqli, "UPDATE `quality_InspectedRTs` SET `Note`='" . $Note . "', `isFinalInspected`='1' WHERE RTNum='" . $RT . "'");
 
     //Prepare Statement
-    $stmt = mysqli_prepare($mysqli, "UPDATE `AppleSamples` SET `Pressure1`=?, `Pressure2`=?, `Brix`=?, `Weight`=?,`FinalTestedBy`=? WHERE `RT#`=? AND SampleNum=?");
+    $stmt = mysqli_prepare($mysqli, "UPDATE `quality_AppleSamples` SET `Pressure1`=?, `Pressure2`=?, `Brix`=?, `Weight`=?,`FinalTestedBy`=? WHERE `RT#`=? AND SampleNum=?");
     mysqli_stmt_bind_param($stmt, 'ddddsii', $Pressure1, $Pressure2, $Brix, $Weight, $RealName[0], $RT, $Num);
     for ($i = 1; $i < $_POST['NumSamples'] + 1; $i++) {
         $Num = $i;

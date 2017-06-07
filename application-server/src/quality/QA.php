@@ -9,7 +9,7 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     die("<script>window.location.replace('/')</script>");
 } else {
     $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Real Name`, Role, allowedQuality FROM master_users JOIN quality_UserData ON master_users.username=quality_UserData.UserName WHERE master_users.username = '$SecuredUserName'"));
+    $checkAllowed = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Real Name`, Role, allowedQuality FROM packapps_master_users JOIN quality_UserData ON packapps_master_users.username=quality_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
     if (!$checkAllowed['allowedQuality'] > 0) {
         die ("<script>window.location.replace('/')</script>");
     } else {
@@ -23,11 +23,11 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
 if ($Role !== "QA") {
     die("Unauthorized. This page is for the QA lab team.");
 }
-$rts = mysqli_query($mysqli, "SELECT InspectedRTs.RTNum AS `RT#`, ifnull(BULKOHCSV.Grower,'?') AS Grower, ifnull(BULKOHCSV.VarDesc,'?') AS VarDesc, ifnull(BULKOHCSV.Date, date(InspectedRTs.DateInspected)) AS Date FROM InspectedRTs LEFT JOIN BULKOHCSV ON InspectedRTs.RTNum=BULKOHCSV.`RT#` WHERE InspectedRTs.isFinalInspected = '0' ORDER BY InspectedRTs.DateInspected ASC ");
+$rts = mysqli_query($mysqli, "SELECT quality_InspectedRTs.RTNum AS `RT#`, ifnull(BULKOHCSV.Grower,'?') AS Grower, ifnull(BULKOHCSV.VarDesc,'?') AS VarDesc, ifnull(BULKOHCSV.Date, date(quality_InspectedRTs.DateInspected)) AS Date FROM quality_InspectedRTs LEFT JOIN BULKOHCSV ON quality_InspectedRTs.RTNum=BULKOHCSV.`RT#` WHERE quality_InspectedRTs.isFinalInspected = '0' ORDER BY quality_InspectedRTs.DateInspected ASC ");
 $runs = mysqli_query($mysqli, "SELECT RunID, RunNumber, Line FROM `production_runs` WHERE isQA != 1 and lastEdited >= NOW() - INTERVAL 7 DAY ORDER BY RunID DESC Limit 6;");
-$count_total = mysqli_query($mysqli, "SELECT COUNT(*) AS countRT, (SELECT count(*) FROM AppleSamples) AS countSamp, ifnull(round((SELECT sum(Weight) FROM AppleSamples),2), 0) AS Weight FROM InspectedRTs");
+$count_total = mysqli_query($mysqli, "SELECT COUNT(*) AS countRT, (SELECT count(*) FROM quality_AppleSamples) AS countSamp, ifnull(round((SELECT sum(Weight) FROM quality_AppleSamples),2), 0) AS Weight FROM quality_InspectedRTs");
 $total_count = mysqli_fetch_assoc($count_total);
-$count_total_runs = mysqli_query($mysqli, "SELECT COUNT(DISTINCT RunID) AS countRuns, Count(*) as countSamp, ifnull(round(sum(Weight),2), 0) AS Weight FROM run_inspections");
+$count_total_runs = mysqli_query($mysqli, "SELECT COUNT(DISTINCT RunID) AS countRuns, Count(*) as countSamp, ifnull(round(sum(Weight),2), 0) AS Weight FROM quality_run_inspections");
 $total_count_runs = mysqli_fetch_assoc($count_total_runs);
 ?>
 <html>

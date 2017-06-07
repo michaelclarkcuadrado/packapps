@@ -7,7 +7,7 @@ if($RT == ''){
     die("<html style='text-align: center'><meta name='viewport' content='width=device-width, initial-scale=1'><h1 style='color: red'>NOT RECEIVED.</h1><h3>This is not a valid RT.</h3><br> <a href='' onclick='window.history.back();'><-- Go Back</a></html>");
 
 }
-mysqli_query($mysqli, "UPDATE InspectedRTs SET `StarchFinished` = 1 WHERE RTNum='" . $RT . "'");
+mysqli_query($mysqli, "UPDATE quality_InspectedRTs SET `StarchFinished` = 1 WHERE RTNum='" . $RT . "'");
 
 //move starch photo
 if ($_FILES['starchupload']['tmp_name'] != "") {
@@ -19,7 +19,7 @@ if ($_FILES['starchupload']['tmp_name'] != "") {
 }
 
 //Prepare Statement
-$stmt = mysqli_prepare($mysqli, "UPDATE `AppleSamples` SET `Starch`=? WHERE `RT#`=? AND SampleNum=?");
+$stmt = mysqli_prepare($mysqli, "UPDATE `quality_AppleSamples` SET `Starch`=? WHERE `RT#`=? AND SampleNum=?");
 mysqli_stmt_bind_param($stmt, 'sii', $Starch, $RT, $SampleNum);
 
 

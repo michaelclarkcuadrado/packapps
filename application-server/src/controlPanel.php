@@ -9,7 +9,7 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     die("<script>window.location.replace('/')</script>");
 } else {
     $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Real Name`, isSystemAdministrator, purchasing_UserData.isAuthorizedForPurchases as purchasingRole, production_UserData.Role as productionRole, quality_UserData.Role as qualityRole, allowedProduction, allowedPurchasing, allowedQuality FROM master_users LEFT JOIN purchasing_UserData ON master_users.username=purchasing_UserData.Username LEFT JOIN quality_UserData ON master_users.username = quality_UserData.UserName LEFT JOIN production_UserData ON master_users.username = production_UserData.UserName WHERE master_users.username = '$SecuredUserName'"));
+    $checkAllowed = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Real Name`, isSystemAdministrator, purchasing_UserData.isAuthorizedForPurchases as purchasingRole, production_UserData.Role as productionRole, quality_UserData.Role as qualityRole, allowedProduction, allowedPurchasing, allowedQuality FROM packapps_master_users LEFT JOIN purchasing_UserData ON packapps_master_users.username=purchasing_UserData.Username LEFT JOIN quality_UserData ON packapps_master_users.username = quality_UserData.UserName LEFT JOIN production_UserData ON packapps_master_users.username = production_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
 }
 // end authentication
 
@@ -88,7 +88,7 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
                     class="mdl-color-text--pink-300 material-icons"
                     role="presentation">cached</i><span>Reboot Displays</span></a>
             <a class="mdl-navigation__link" <?php echo($checkAllowed['isSystemAdministrator'] > 0 ? '' : "style='display: none !important'"); ?>
-               href="quality/usermgmt.php"><i
+               href="quality/emailmgmt.php"><i
                     class="mdl-color-text--cyan-300 material-icons"
                     role="presentation">mail_outline</i>Email Alerts</a>
 

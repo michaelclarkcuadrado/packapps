@@ -16,7 +16,7 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
 }
 
-$allowedItems = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT allowedQuality, allowedPurchasing, allowedProduction, allowedMaintenance, allowedStorage, isSystemAdministrator FROM master_users WHERE username = '$SecuredUserName'"));
+$allowedItems = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT allowedQuality, allowedPurchasing, allowedProduction, allowedMaintenance, allowedStorage, isSystemAdministrator FROM packapps_master_users WHERE username = '$SecuredUserName'"));
 
 $errormsg = "DEVELOPMENT ENVIRONMENT - DEVELOPMENT ENVIRONMENT - DEVELOPMENT ENVIRONMENT - DEVELOPMENT ENVIRONMENT";
 ?>

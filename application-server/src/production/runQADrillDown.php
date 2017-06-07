@@ -7,7 +7,7 @@
  */
 if (isset($_GET['q'])) {
     include '../config.php';
-    $sampleData = mysqli_query($mysqli, "SELECT Weight, Pressure1, Pressure2, Brix, Note, isPhotographed FROM run_inspections WHERE RunID='" . mysqli_real_escape_string($mysqli, $_GET['q']) . "'");
+    $sampleData = mysqli_query($mysqli, "SELECT Weight, Pressure1, Pressure2, Brix, Note, isPhotographed FROM quality_run_inspections WHERE RunID='" . mysqli_real_escape_string($mysqli, $_GET['q']) . "'");
     $Note = '';
     $photographed = false;
 } else {

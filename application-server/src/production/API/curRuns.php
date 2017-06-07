@@ -33,13 +33,13 @@ while($data = mysqli_fetch_assoc($query))
 
     if($data['isQA'] > 0)
     {
-        $QAquery = mysqli_query($mysqli, "SELECT format(avg(Weight),3) as Weight, ifnull(format(avg(Brix),1), 'N/A') as Brix, Note, format((sum(Pressure1) + sum(Pressure2))/(count(*)*2),2) as Pressure from run_inspections WHERE RunID='".$data['RunID']."' AND `isPreInspection`=0");
+        $QAquery = mysqli_query($mysqli, "SELECT format(avg(Weight),3) as Weight, ifnull(format(avg(Brix),1), 'N/A') as Brix, Note, format((sum(Pressure1) + sum(Pressure2))/(count(*)*2),2) as Pressure from quality_run_inspections WHERE RunID='".$data['RunID']."' AND `isPreInspection`=0");
         $RunArray['QA'] = mysqli_fetch_assoc($QAquery);
     }
 
     if($data['isPreInspected'] > 0)
     {
-        $PIquery = mysqli_query($mysqli, "SELECT format(avg(Weight),3) as Weight, ifnull(format(avg(Brix),1), 'N/A') as Brix, Note, format((sum(Pressure1) + sum(Pressure2))/(count(*)*2),2) as Pressure from run_inspections WHERE RunID='".$data['RunID']."' AND `isPreInspection`>0");
+        $PIquery = mysqli_query($mysqli, "SELECT format(avg(Weight),3) as Weight, ifnull(format(avg(Brix),1), 'N/A') as Brix, Note, format((sum(Pressure1) + sum(Pressure2))/(count(*)*2),2) as Pressure from quality_run_inspections WHERE RunID='".$data['RunID']."' AND `isPreInspection`>0");
         $RunArray['PreInspection'] = mysqli_fetch_assoc($PIquery);
     }
     array_push($allRunsArray, $RunArray);

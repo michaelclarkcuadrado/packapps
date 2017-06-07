@@ -4,7 +4,7 @@ operationsData growerReporting --routines --triggers --no-data -uroot
 
 To add a packapp
 -Add an entry to packapps_appProperties
--Add a column to master users
+-Add a column to packapps_master_users
 -create the app in a folder named it's short name
 -prefix its tables based on it's short name
 -create a [shortname]_UserData table and a foreign key to master_users
