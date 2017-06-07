@@ -1,0 +1,41 @@
+#!/bin/bash
+#Creates and maintains all the CSVs in SizerDB.
+#Written throughout spring and summer 2015, Michael Clark-Cuadrado
+
+
+#RT Quality Data
+rm /var/www/csvs/receiving_QA.csv
+mysql -u root -pr1cefru1t -e "select * into outfile '/var/www/csvs/receiving_QA.csv' fields terminated by ',' enclosed by '\"' lines terminated by '\n' from \`RTsWQuality\`" operationsData
+echo "RT#,Sort Code,Crop Year,Grower,Grower Name,Class,Class Desc,Commodity,Comm Desc,Variety,Var Desc,Strain,Str Desc,Farm,Farm Desc,Block,Block Desc,Lot,Date,Size,Pack,QtyOnHand,BuOnHand,Initial Location,Co#,Company Name,isQAInspected,Pressure Avg,DA Avg,Brix Avg,Starch Avg,Color Quality,Bruising,Bitter Pit,Russeting,Sunburn,San Jose Scale,Scab,Stink Bug,Weight Avg,Avg Size (Estimated),Notes,Tested By, Date Tested (QA)" > /media/Share1/SizerDB/receiving_QA.csv
+cat /var/www/csvs/receiving_QA.csv >> /media/Share1/SizerDB/receiving_QA.csv
+unix2dos /media/Share1/SizerDB/receiving_QA.csv
+
+#Grower Estimates
+rm /var/www/csvs/grower_estimates.csv
+mysql -u root -pr1cefru1t -e "select * into outfile '/var/www/csvs/grower_estimates.csv' fields terminated by ',' enclosed by '\"' lines terminated by '\n' from \`ReceivedandEstimates\`" growerReporting
+echo "BlockID,GrowerCode,Commodity,Farm,FarmCode,Block,BlockCode,Variety,Strain,Received "$(($(date +"%Y") -3))",Received "$(($(date +"%Y") -2))",Received "$(($(date +"%Y") -1))",Estimate "$(date +"%Y")",Received "$(date +"%Y")",isDeletedBlock,isDonePicking,isUserConfirmedEstimate" > /media/Share1/SizerDB/ReceivedAndEstimates.csv
+cat /var/www/csvs/grower_estimates.csv >> /media/Share1/SizerDB/ReceivedAndEstimates.csv
+unix2dos /media/Share1/SizerDB/ReceivedAndEstimates.csv
+
+#grower estimate changelog
+rm /var/www/csvs/grower_estimate_changes.csv
+mysql -u root -pr1cefru1t -e "select * into outfile '/var/www/csvs/grower_estimate_changes.csv' fields terminated by ',' enclosed by '\"' lines terminated by '\n' from \`changes_this_year\`" growerReporting
+echo "PK,Comm,Variety,Farm,Block,Strain,Date Changed,Crop Year,Grower,Changed By,New Estimate" > /media/Share1/SizerDB/grower_estimate_changes.csv
+cat /var/www/csvs/grower_estimate_changes.csv >> /media/Share1/SizerDB/grower_estimate_changes.csv
+unix2dos /media/Share1/SizerDB/grower_estimate_changes.csv
+
+#Pre-Harvest Data
+rm /var/www/csvs/pre-harvest_testing.csv
+mysql -u root -pr1cefru1t -e "select \`Preharvest_Samples\`.Grower, FarmDesc, BlockDesc, VarDesc, \`Str Desc\`, Retain, SampleNum, Pressure1, Pressure2, Brix, Weight, Starch, DA, DA2, date(Date) as Date, Inspector, Notes, NumSamples into outfile '/var/www/csvs/pre-harvest_testing.csv' fields terminated by ',' enclosed by '\"' lines terminated by '\n' from \`Preharvest_Samples\` join \`crop-estimates\` on \`crop-estimates\`.PK=\`Preharvest_Samples\`.PK" growerReporting
+echo "Grower,Farm,Block,Variety,Strain,Retain,SampleNum,Pressure 1,Pressure 2,Brix,Weight,Starch,DA 1,DA 2,Date,Inspector,Notes,Number of Samples" > /media/Share1/SizerDB/pre-harvest_testing.csv
+cat /var/www/csvs/pre-harvest_testing.csv >> /media/Share1/SizerDB/pre-harvest_testing.csv
+unix2dos /media/Share1/SizerDB/pre-harvest_testing.csv
+
+#Block QA for GCP
+rm /var/www/csvs/BlockQA.csv
+mysql -u root -pr1cefru1t -e "select * into outfile '/var/www/csvs/BlockQA.csv' fields terminated by ',' enclosed by '\"' lines terminated by '\n' from \`Block_Receiving\`" operationsData
+mysql -u root -pr1cefru1t -e "truncate table Block_QA; load data local infile '/var/www/csvs/BlockQA.csv' ignore into table \`Block_QA\` fields terminated by ',' OPTIONALLY ENCLOSED BY '\"' lines terminated by '\n' IGNORE 1 ROWS;" growerReporting
+
+#edge-case clean-up -  accounts for file locks on CSVs, thanks excel
+echo "Warning should follow during normal operation:"
+rm /media/Share1/SizerDB/d2*

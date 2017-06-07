@@ -41,17 +41,17 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
 <?
 //delete email from list
 if ($_GET['delemail'] <> '') {
-    mysqli_query($mysqli, "DELETE FROM AlertEmails WHERE ID='" . mysqli_real_escape_string($mysqli, $_GET['delemail']) . "'");
+    mysqli_query($mysqli, "DELETE FROM quality_AlertEmails WHERE ID='" . mysqli_real_escape_string($mysqli, $_GET['delemail']) . "'");
     echo "<mark>Email Removed!</mark>";
 }
 
 //subscribe new email
 if ($_POST['newEmailAddress'] <> '') {
-    mysqli_query($mysqli, "INSERT INTO AlertEmails (FullName, EmailAddress) VALUES ('" . mysqli_real_escape_string($mysqli, $_POST['newFullName']) . "','" . mysqli_real_escape_string($mysqli, $_POST['newEmailAddress']) . "'); ") or error_log(mysqli_error($mysqli));
+    mysqli_query($mysqli, "INSERT INTO quality_AlertEmails (FullName, EmailAddress) VALUES ('" . mysqli_real_escape_string($mysqli, $_POST['newFullName']) . "','" . mysqli_real_escape_string($mysqli, $_POST['newEmailAddress']) . "'); ") or error_log(mysqli_error($mysqli));
     echo "<br><mark>New User Created!</mark>";
 }
 
-$email_list = mysqli_query($mysqli, "SELECT ID, FullName, EmailAddress FROM AlertEmails");
+$email_list = mysqli_query($mysqli, "SELECT ID, FullName, EmailAddress FROM quality_AlertEmails");
 ?>
 <h2>Email Alert Subscription List</h2>
 <h3>Subscribe new email to alerts</h3>

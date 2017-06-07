@@ -1,12 +1,11 @@
 <?php
-
 class EmergencyAlert
 {
     function prepareMail()
     {
         include '../../config.php';
 
-        $email_list = mysqli_query($mysqli, "SELECT FullName, EmailAddress FROM AlertEmails");
+        $email_list = mysqli_query($mysqli, "SELECT FullName, EmailAddress FROM quality_AlertEmails");
         require_once("class.phpmailer.php");
         require_once("class.smtp.php");
 

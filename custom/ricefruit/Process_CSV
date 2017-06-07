@@ -1,0 +1,50 @@
+#!/bin/bash
+#Rice Fruit Company CSV merger and database insert for FROGS
+#Written by Michael Clark-Cuadrado 3/31/14
+
+echo "Merging CSVs..."
+OutFileName="output"                       # Fix the output name
+Append="new.csv"
+i=0                                       # Reset a counter
+for filename in CSV_data/*.csv; do
+ if [ "$filename"  != "$OutName" ] ;      # Avoid recursion
+ then
+   if [[ $i -eq 0 ]] ; then
+      head -1  $filename >   $OutFileName # Copy header if it is the first file
+   fi
+   tail -n +2  $filename >>  $OutFileName # Append from the 2nd line each file
+   i=$(( $i + 1 ))                        # Increase the counter
+ fi
+done
+echo "CSVs Merged!"
+echo "Sanitizing CSV..."
+sed 's/\"//g' $OutFileName >> $OutFileName$Append		#Remove all quotes from output file
+rm $OutFileName
+echo "CSV Sanitized!"
+echo "Inserting into MYSQL..."
+wc -l outputnew.csv
+mysql -u root -pr1cefru1t -e "LOAD DATA LOCAL INFILE 'outputnew.csv' INTO TABLE \`frogs-presizer\` FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 ROWS;" growerReporting
+echo "Inserted into MYSQL!"
+
+
+sudo mount /media/Share1
+cp '/media/Share1/RFC400 Data/GA770.csv' .
+dos2unix GA770.csv
+mysql -u root -pr1cefru1t -e "load data local infile 'GA770.csv' ignore into table GA770 fields terminated by ',' OPTIONALLY ENCLOSED BY '\"' lines terminated by '\n' IGNORE 1 ROWS;DELETE FROM \`GA770\` WHERE \`Crop Year\`<>5" growerReporting
+#clean up
+rm GA770.csv
+echo "Processing New CSV data and dumping..."
+mysql -u root -pr1cefru1t -e "insert ignore into computed_blockdata (RunNumber,Date,Grower,FarmDesc,BlockDesc,VarietyDesc,StrainDesc,\`Vision Grade\`,\`TotalWeightlbs\`, \`VolumemL\`,\`count\`)  select \`Run#\`,date_format(\`Start Time\`, '%a %b-%e-%y'), \`Grower\`,\`FarmDesc\`,\`BlockDesc\`,\`VarDesc\`,\`StrDesc\`,t.VisionGrade, round(((sum(t.Weight))/453.592)), round(avg(t.Volume),2),count(*) from \`frogs-presizer\` t join GA770 on right(\`Run#\`,(length(\`Run#\`)-1))=t.BatchName where VisionGrade <> '' and BatchName <> '0' and t.GrowerName <> 'PS'  group by GA770.\`GrowerName\`,\`FarmDesc\`,\`BlockDesc\`,\`VarDesc\`,\`StrDesc\`,t.VisionGrade; truncate \`frogs-presizer\`; select * into outfile '/var/www/csvs/computed_rundata.csv' fields terminated by ',' lines terminated by '\n' from computed_blockdata" growerReporting
+echo "Data Processed..."
+echo "Run Number,Date,Grower,FarmDesc,BlockDesc,VarietyDesc,StrainDesc,Vision Grade,Total Weight (lbs),Average Volume of fruit (mL),Average Weight of fruit (g)" > /media/Share1/SizerDB/computed_rundata.csv
+cat /var/www/csvs/computed_rundata.csv >> /media/Share1/SizerDB/computed_rundata.csv
+unix2dos /media/Share1/SizerDB/computed_rundata.csv
+echo "Data dumped..."
+echo "Deleting CSV..."
+rm outputnew.csv
+echo "CSV Deleted!"
+echo "Cleaning up..."
+rm -rf CSV_data/*
+rm /var/www/csvs/computed_rundata.csv
+
+

@@ -1,0 +1,11 @@
+#!/bin/bash
+#copies over ibm files to the fruitdb once a minute
+sudo mount /media/Share1
+cp '/media/Share1/RFC400 Data/BULKRTCSV.csv' '/media/Share1/RFC400 Data/BULKOHCSV.csv' '/media/Share1/RFC400 Data/PSOHCSV.csv' '/media/Share1/RFC400 Data/BULKTKCSV.csv' .
+dos2unix BULKRTCSV.csv BULKOHCSV.csv PSOHCSV.csv BULKTKCSV.csv
+mysql -u root -pr1cefru1t -e "truncate table BULKOHCSV; load data local infile 'BULKOHCSV.csv' ignore into table BULKOHCSV fields terminated by ',' OPTIONALLY ENCLOSED BY '\"' lines terminated by '\n' IGNORE 1 ROWS;" operationsData
+mysql -u root -pr1cefru1t -e "truncate table PSOHCSV; load data local infile 'PSOHCSV.csv' ignore into table PSOHCSV fields terminated by ',' OPTIONALLY ENCLOSED BY '\"' lines terminated by '\n' IGNORE 1 ROWS;" operationsData
+mysql -u root -pr1cefru1t -e "truncate table BULKTKCSV; load data local infile 'BULKTKCSV.csv' into table BULKTKCSV fields terminated by ',' OPTIONALLY ENCLOSED BY '\"' lines terminated by '\n' IGNORE 1 ROWS;" operationsData
+mysql -u root -pr1cefru1t -e "load data local infile 'BULKRTCSV.csv' ignore into table BULKRTCSV fields terminated by ',' OPTIONALLY ENCLOSED BY '\"' lines terminated by '\n' IGNORE 1 ROWS;" growerReporting
+#clean up
+rm BULKRTCSV.csv BULKOHCSV.csv PSOHCSV.csv BULKTKCSV.csv
