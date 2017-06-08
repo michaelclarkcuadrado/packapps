@@ -10,16 +10,15 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     die("<script>window.location.replace('/')</script>");
 } else {
     $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Real Name`, Role, isSectionManager as isAdmin, allowedQuality FROM packapps_master_users JOIN quality_UserData ON packapps_master_users.username=quality_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
+    $checkAllowed = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Real Name` AS 'UserRealName', Role, allowedQuality FROM packapps_master_users JOIN quality_UserData ON packapps_master_users.username=quality_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
     if (!$checkAllowed['allowedQuality'] > 0) {
         die ("<script>window.location.replace('/')</script>");
     } else {
         $RealName = $checkAllowed;
-        $Role = $checkAllowed['Role'];
     }
 }
 // end authentication
-if ($RealName[1] !== "QA") {
+if ($RealName['Role'] !== "QA") {
     die("UNAUTHORIZED");
 };
 $Note = $_POST['Notes'];
@@ -31,13 +30,12 @@ if (isset($_GET['del'])) {
     exec("rm assets/uploadedimages/" . $_GET['del'] . ".jpg assets/uploadedimages/" . $_GET['del'] . "starch.jpg assets/uploadedimages/" . $_GET['del'] . "bitterpit.jpg ../assets/uploadedimages/" . $_GET['del'] . "bruising.jpg");
     echo "<script>location.replace('QA.php?qa=" . $_GET['del'] . " has been <mark>voided</mark> and not #QA')</script>";
 } else {
-
     //insert final inspection info
     mysqli_query($mysqli, "UPDATE `quality_InspectedRTs` SET `Note`='" . $Note . "', `isFinalInspected`='1' WHERE RTNum='" . $RT . "'");
 
     //Prepare Statement
     $stmt = mysqli_prepare($mysqli, "UPDATE `quality_AppleSamples` SET `Pressure1`=?, `Pressure2`=?, `Brix`=?, `Weight`=?,`FinalTestedBy`=? WHERE `RT#`=? AND SampleNum=?");
-    mysqli_stmt_bind_param($stmt, 'ddddsii', $Pressure1, $Pressure2, $Brix, $Weight, $RealName[0], $RT, $Num);
+    mysqli_stmt_bind_param($stmt, 'ddddsii', $Pressure1, $Pressure2, $Brix, $Weight, $RealName['UserRealName'], $RT, $Num);
     for ($i = 1; $i < $_POST['NumSamples'] + 1; $i++) {
         $Num = $i;
         $Pressure1 = $_POST['pressure' . $i . '-1'];
@@ -54,7 +52,7 @@ if (isset($_GET['del'])) {
 //    //works but is disabled because annoying and largely useless
 //    //test to see if fruit is large to send warning
 //    $variety = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT rtrim(VarDesc) AS VarDesc, rtrim(`CommDesc`) FROM BULKOHCSV WHERE `RT#`='" . $RT . "'"));
-//    $size = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT SizefromAverage FROM RTsWQuality WHERE `RT#`='" . $RT . "'"));
+//    $size = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT SizefromAverage FROM quality_RTsWQuality WHERE `RT#`='" . $RT . "'"));
 //    if ($variety['VarDesc'] == 'Jonagold' || $variety['VarDesc'] == 'Golden Delicious' || $variety['VarDesc'] == 'Red Delicious') {
 //        if ($size['SizefromAverage'] <= 64) {
 //            $alert = new EmergencyAlert();

@@ -8,11 +8,11 @@ if ((!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) && !isset($_GET['
     die("<script>window.location.replace('/')</script>");
 } else {
     if (isset($_GET['displayLine'])) {
-        $RealName = array('Display Board', 'Restricted', 0, 1);
+        $RealName = array("UserRealName" => 'Display Board', "Role" => 'Restricted', "allowedProduction" => 1);
         $SecuredUserName = 'Display Board';
     } else {
         $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-        $checkAllowed = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Real Name` as UserRealName, Role, isSectionManager as isAdmin, allowedProduction FROM packapps_master_users JOIN production_UserData ON packapps_master_users.username=production_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
+        $checkAllowed = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Real Name` as UserRealName, Role, allowedProduction FROM packapps_master_users JOIN production_UserData ON packapps_master_users.username=production_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
         if (!$checkAllowed['allowedProduction'] > 0) {
             die ("<script>window.location.replace('/')</script>");
         } else {
@@ -44,7 +44,7 @@ if (isset($_GET['displayLine'])) {
 Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url will activate a 10-foot view of the current runs, for Wide-area tv display boards
 -->
 <!doctype html>
-<html lang="" <? echo($RealName[1] == 'Restricted' ? "style='zoom:140%'" : '') ?>>
+<html lang="" <? echo($RealName['Role'] == 'Restricted' ? "style='zoom:140%'" : '') ?>>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -87,11 +87,12 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
 </head>
 <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header <? echo($RealName[1] == 'Restricted' ? "style='display: none'" : '') ?>
+    <header <? echo($RealName['Role'] == 'Restricted' ? "style='display: none'" : '') ?>
         class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
         <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-            <h3>Production Dashboard
-                <small style='vertical-align:middle'><? echo $RealName[0] ?></small>
+            <h3>
+                Production Dashboard
+                <small style='vertical-align:bottom; font-size: small'><? echo $companyName ?></small>
             </h3>
         </div>
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
@@ -103,17 +104,17 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
         </div>
     </header>
     <?
-    if ($RealName[1] == 'Production') {
+    if ($RealName['Role'] == 'Production') {
         echo "<button class=\"mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent\" style='z-index:99; position: fixed' id=\"add\" onclick=\"addNewBlockModal()\"><i class=\"material-icons\" role=\"presentation\">add</i><span class=\"visuallyhidden\">Add</span></button>";
     }
     ?>
-    <main  id="scrollingpane" class="mdl-layout__content <? echo($RealName[1] == 'Restricted' ? (($_GET['displayLine'] == 'blue') ? "mdl-color--light-blue-300\"" : ($_GET['displayLine'] == 'gray' ? "mdl-color--grey-600\"" : '"')) : '"') ?>>
-<? echo($RealName[1] == 'Restricted' ? "<div id='updatedFlasher' style='position: fixed; display: none; top: 0; min-height:20%; width: 100%;text-align: center' class='mdl-color--yellow-600 notify-blink'></div>" : '') ?>
+    <main  id="scrollingpane" class="mdl-layout__content <? echo($RealName['Role'] == 'Restricted' ? (($_GET['displayLine'] == 'blue') ? "mdl-color--light-blue-300\"" : ($_GET['displayLine'] == 'gray' ? "mdl-color--grey-600\"" : '"')) : '"') ?>>
+<? echo($RealName['Role'] == 'Restricted' ? "<div id='updatedFlasher' style='position: fixed; display: none; top: 0; min-height:20%; width: 100%;text-align: center' class='mdl-color--yellow-600 notify-blink'></div>" : '') ?>
 
         <!-- CURRENT RUN INFORMATION -->
         <div
             class=" mdl-layout__tab-panel
-        is-active <? echo($RealName[1] == 'Restricted' ? (($_GET['displayLine'] == 'blue') ? "mdl-color--light-blue-300" : ($_GET['displayLine'] == 'gray' ? 'mdl-color--grey-600' : '')) : '') ?>
+        is-active <? echo($RealName['Role'] == 'Restricted' ? (($_GET['displayLine'] == 'blue') ? "mdl-color--light-blue-300" : ($_GET['displayLine'] == 'gray' ? 'mdl-color--grey-600' : '')) : '') ?>
     "
     id="curRunContent">
 
@@ -123,7 +124,7 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
 </div>
 
 <!-- HISTORY -->
-<div <? echo($RealName[1] == 'Restricted' ? "style='display: none'" : '') ?> class="mdl-layout__tab-panel"
+<div <? echo($RealName['Role'] == 'Restricted' ? "style='display: none'" : '') ?> class="mdl-layout__tab-panel"
                                                                              id="runHistory">
     <h1 style="text-align: center">Run History</h1>
     <div style="margin: 50px" id="runCardsHere">
@@ -144,7 +145,7 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
 </div>
 
 <!-- Inventory Navigator -->
-<div <? echo($RealName[1] == 'Restricted' ? "style='display: none'" : '') ?> class="mdl-layout__tab-panel"
+<div <? echo($RealName['Role'] == 'Restricted' ? "style='display: none'" : '') ?> class="mdl-layout__tab-panel"
                                                                              id="Navigator">
     <h1 style="text-align: center">Inventory Explorer</h1>
     <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--8dp">
@@ -153,7 +154,7 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
                 <h4>Presized Inventory</h4>
                 <div id="PStree"></div>
             </div>
-            <? echo($RealName[1] == 'Production' ? "<div class=\"mdl-card__actions\"><a onclick=\"makeRun($('#PStree').jstree(true).get_selected(), 'PSOH');\" class=\"mdl-button\">Run selected items</a>|<a style='display:none' id='markAsBadButton' onclick=\"markBadRun($('#PStree').jstree(true).get_selected());\" class=\"mdl-button\">Toggle quality status</a></div>" : '') ?>
+            <? echo($RealName['Role'] == 'Production' ? "<div class=\"mdl-card__actions\"><a onclick=\"makeRun($('#PStree').jstree(true).get_selected(), 'PSOH');\" class=\"mdl-button\">Run selected items</a>|<a style='display:none' id='markAsBadButton' onclick=\"markBadRun($('#PStree').jstree(true).get_selected());\" class=\"mdl-button\">Toggle quality status</a></div>" : '') ?>
         </div>
     </section>
     <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--16dp">
@@ -162,13 +163,13 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
                 <h4>Bulk Inventory</h4>
                 <div id="Bulktree"></div>
             </div>
-            <? echo($RealName[1] == 'Production' ? "<div class=\"mdl-card__actions\"><a onclick=\"makeRun($('#Bulktree').jstree(true).get_selected(), 'BULKOH');\" class=\"mdl-button\">Run selected items</a></div>" : '') ?>
+            <? echo($RealName['Role'] == 'Production' ? "<div class=\"mdl-card__actions\"><a onclick=\"makeRun($('#Bulktree').jstree(true).get_selected(), 'BULKOH');\" class=\"mdl-button\">Run selected items</a></div>" : '') ?>
         </div>
     </section>
 </div>
 
 <!-- SETTINGS-->
-<div <? echo($RealName[1] == 'Restricted' ? "style='display: none'" : '') ?> class="mdl-layout__tab-panel"
+<div <? echo($RealName['Role'] == 'Restricted' ? "style='display: none'" : '') ?> class="mdl-layout__tab-panel"
                                                                              id="Settings">
     <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--16dp">
         <div class="mdl-card mdl-cell mdl-cell--12-col">
@@ -237,7 +238,7 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
         loadRuns();
         createInventoryTrees();
 
-    <?echo($RealName[1] != 'Restricted' ? "setInterval(refreshChat, 2000);" : '')?>
+    <?echo($RealName['Role'] != 'Restricted' ? "setInterval(refreshChat, 2000);" : '')?>
 
         var debug = setInterval(loadRuns, 7000);
 
@@ -327,18 +328,18 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
         for (var i = 0; i < data.length; i++) {
             if (line == data[i]['line'] || line == 'asdf' || line == 'singleRun') {
                 numMatchingRuns++;
-                stringToReturn = stringToReturn + "<section id='cardID" + numMatchingRuns + "' " + ((data[i]['isQA'] > 0 || data[i]['isPreInspected'] > 0) <?echo($RealName[1] == 'Restricted' ? '&& false' : '')?> ? "style='margin-top: 125px;'" : "style='margin-bottom: 20px;'") + "class=\"section--center mdl-grid runcard mdl-grid--no-spacing mdl-shadow--16dp\">" +
+                stringToReturn = stringToReturn + "<section id='cardID" + numMatchingRuns + "' " + ((data[i]['isQA'] > 0 || data[i]['isPreInspected'] > 0) <?echo($RealName['Role'] == 'Restricted' ? '&& false' : '')?> ? "style='margin-top: 125px;'" : "style='margin-bottom: 20px;'") + "class=\"section--center mdl-grid runcard mdl-grid--no-spacing mdl-shadow--16dp\">" +
 
-                    (data[i]['isQA'] > 0 <?echo($detect->isMobile() || $RealName[1] == 'Restricted' ? '&& false' : '')?> ? "<a onclick='viewQADetails(" + data[i]['RunID'] + ")'><div style='cursor: pointer;color: black; position: absolute; border-top-right-radius: 40%; border-top-left-radius: 40%; text-align: center; background-color: #8eff96; right:5%; bottom: 100%; z-index:3; padding-top: 20px; padding-left: 10px; padding-right:10px; padding-bottom: 5px' class='mdl-shadow--2dp'>QA Averages: <br> Pres: " + data[i]['QA']['Pressure'] + ", Brix: " + data[i]['QA']['Brix'] + ", Weight (lb): " + data[i]['QA']['Weight'] + "<br>" + data[i]['QA']['Note'] + "</div></a>" : '') +
+                    (data[i]['isQA'] > 0 <?echo($detect->isMobile() || $RealName['Role'] == 'Restricted' ? '&& false' : '')?> ? "<a onclick='viewQADetails(" + data[i]['RunID'] + ")'><div style='cursor: pointer;color: black; position: absolute; border-top-right-radius: 40%; border-top-left-radius: 40%; text-align: center; background-color: #8eff96; right:5%; bottom: 100%; z-index:3; padding-top: 20px; padding-left: 10px; padding-right:10px; padding-bottom: 5px' class='mdl-shadow--2dp'>QA Averages: <br> Pres: " + data[i]['QA']['Pressure'] + ", Brix: " + data[i]['QA']['Brix'] + ", Weight (lb): " + data[i]['QA']['Weight'] + "<br>" + data[i]['QA']['Note'] + "</div></a>" : '') +
 
-                    (data[i]['isPreInspected'] > 0 <?echo($detect->isMobile() || $RealName[1] == 'Restricted' ? '&& false' : '')?> ? "<a onclick='viewQADetails(" + data[i]['RunID'] + ")'><div style='cursor: pointer;color: white; position: absolute; border-top-right-radius: 40%; border-top-left-radius: 40%; text-align: center; background-color:rgba(255, 64, 129, 0.85); left:5%; bottom: 100%; z-index:2; padding-top: 20px; padding-left: 10px; padding-right:10px; padding-bottom: 5px' class='mdl-shadow--2dp'>Pre-Inspection Averages: <br> Pres: " + data[i]['PreInspection']['Pressure'] + ", Brix: " + data[i]['PreInspection']['Brix'] + ", Weight (lb): " + data[i]['PreInspection']['Weight'] + "<br>" + data[i]['PreInspection']['Note'] + "</div></a>" : '') +
+                    (data[i]['isPreInspected'] > 0 <?echo($detect->isMobile() || $RealName['Role'] == 'Restricted' ? '&& false' : '')?> ? "<a onclick='viewQADetails(" + data[i]['RunID'] + ")'><div style='cursor: pointer;color: white; position: absolute; border-top-right-radius: 40%; border-top-left-radius: 40%; text-align: center; background-color:rgba(255, 64, 129, 0.85); left:5%; bottom: 100%; z-index:2; padding-top: 20px; padding-left: 10px; padding-right:10px; padding-bottom: 5px' class='mdl-shadow--2dp'>Pre-Inspection Averages: <br> Pres: " + data[i]['PreInspection']['Pressure'] + ", Brix: " + data[i]['PreInspection']['Brix'] + ", Weight (lb): " + data[i]['PreInspection']['Weight'] + "<br>" + data[i]['PreInspection']['Note'] + "</div></a>" : '') +
 
-                    (numMatchingRuns == 1 && line != 'asdf' && line != 'singleRun' <?echo($RealName[1] == 'Restricted' ? '&& false' : '')?> ? "<header style='display: block' class=\"smdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white\"><h4 style='text-align: center; color: #616161'>Chat</h4><textarea id='" + line + "chat' style='width:98%; opacity:.6; filter: alpha(opacity=60);' rows='20'></textarea><div style='width: 98%;color:black; margin: 2%' class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'><input id='" + line + "message' class='mdl-textfield__input' size='20' type='text'><label class='mdl-textfield__label' for='" + line + "message'>Message</label></div>" : "<header <?echo($RealName[1] == 'Restricted' ? "style='display: none;'" : "")?> class=\"smdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white\"><h1 style='text-align:center; color: #616161'>" + ordinal_suffix_of(numMatchingRuns) + " Run</h1></header>") + "</header> <div <?echo($RealName[1] == 'Restricted' ? "style='width: 100%; font-family: Overpass'" : '')?> class=\"mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone\"><div style=\"margin-right: 0\" class=\"mdl-card__supporting-text\">" +
-                    "<h4 <?echo($RealName[1] == 'Restricted' ? "style='font-size: 300%;line-height:70px'" : '')?>>" + (numMatchingRuns == 1 && line != 'asdf'&& line != 'singleRun' ? "Current Run: " : (numMatchingRuns == 2 && line != 'asdf' && line != 'singleRun' ? "<mark>Next Run:</mark> " : (line != 'asdf' && line != 'singleRun' ?  "<mark>" + ordinal_suffix_of(numMatchingRuns) + " Run:</mark> " : 'Run Number: '))) + data[i]['RunNumber'] + "</h4><B>Dumping</B><ul class=\"mdl-list\">";
+                    (numMatchingRuns == 1 && line != 'asdf' && line != 'singleRun' <?echo($RealName['Role'] == 'Restricted' ? '&& false' : '')?> ? "<header style='display: block' class=\"smdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white\"><h4 style='text-align: center; color: #616161'>Chat</h4><textarea id='" + line + "chat' style='width:98%; opacity:.6; filter: alpha(opacity=60);' rows='20'></textarea><div style='width: 98%;color:black; margin: 2%' class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'><input id='" + line + "message' class='mdl-textfield__input' size='20' type='text'><label class='mdl-textfield__label' for='" + line + "message'>Message</label></div>" : "<header <?echo($RealName['Role'] == 'Restricted' ? "style='display: none;'" : "")?> class=\"smdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white\"><h1 style='text-align:center; color: #616161'>" + ordinal_suffix_of(numMatchingRuns) + " Run</h1></header>") + "</header> <div <?echo($RealName['Role'] == 'Restricted' ? "style='width: 100%; font-family: Overpass'" : '')?> class=\"mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone\"><div style=\"margin-right: 0\" class=\"mdl-card__supporting-text\">" +
+                    "<h4 <?echo($RealName['Role'] == 'Restricted' ? "style='font-size: 300%;line-height:70px'" : '')?>>" + (numMatchingRuns == 1 && line != 'asdf'&& line != 'singleRun' ? "Current Run: " : (numMatchingRuns == 2 && line != 'asdf' && line != 'singleRun' ? "<mark>Next Run:</mark> " : (line != 'asdf' && line != 'singleRun' ?  "<mark>" + ordinal_suffix_of(numMatchingRuns) + " Run:</mark> " : 'Run Number: '))) + data[i]['RunNumber'] + "</h4><B>Dumping</B><ul class=\"mdl-list\">";
 
                 //dumped fruit
                 for (var j = 0; j < data[i]['dumpedArray'].length; j++) {
-                    stringToReturn += "<li " + (data[i]['dumpedArray'][j][7] == '1' ? "style='background-color: rgb(255, 153, 144); padding:0; <?echo($RealName[1] == 'Restricted' ? "line-height: 65px" : '')?>'" : "style='padding: 0; <?echo($RealName[1] == 'Restricted' ? "line-height: 65px" : '')?>'") + " class=\"mdl-list__item\"><span <?echo($RealName[1] == 'Restricted' ? "style='word-wrap: break-word; width: 100%; margin: 0; font-size: 255%;font-family: Overpass'" : '')?> class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">" + (data[i]['dumpedArray'][j][7] == '1' ? "close" : "chevron_right") + "</i>" +
+                    stringToReturn += "<li " + (data[i]['dumpedArray'][j][7] == '1' ? "style='background-color: rgb(255, 153, 144); padding:0; <?echo($RealName['Role'] == 'Restricted' ? "line-height: 65px" : '')?>'" : "style='padding: 0; <?echo($RealName['Role'] == 'Restricted' ? "line-height: 65px" : '')?>'") + " class=\"mdl-list__item\"><span <?echo($RealName['Role'] == 'Restricted' ? "style='word-wrap: break-word; width: 100%; margin: 0; font-size: 255%;font-family: Overpass'" : '')?> class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">" + (data[i]['dumpedArray'][j][7] == '1' ? "close" : "chevron_right") + "</i>" +
                         (data[i]['dumpedArray'][j][0] + data[i]['dumpedArray'][j][1] + data[i]['dumpedArray'][j][2] + data[i]['dumpedArray'][j][3]) + data[i]['dumpedArray'][j][4] + data[i]['dumpedArray'][j][5] +
                         ((data[i]['dumpedArray'][j][6]) > 0 || (data[i]['dumpedArray'][j][6]) == -1 ? "<span style='margin-left:5px;padding:4px;background-color:#ff4081;color:white;font-weight:600;font-size:larger; border-radius:5px'>"+(data[i]['dumpedArray'][j][6] == '-1' ? 'RUN OUT' : data[i]['dumpedArray'][j][6])+"</span>" : '')
                         "</span></li>";
@@ -347,17 +348,17 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
 
                 //product made
                 for (j = 0; j < data[i]['madeArray'].length; j++) {
-                    stringToReturn += " <li style='padding: 0; <?echo($RealName[1] == 'Restricted' ? "line-height: 65px" : '')?>' class=\"mdl-list__item\"><span <?echo($RealName[1] == 'Restricted' ? "style='margin:0; word-wrap: break-word; font-size: 255%; font-family: Overpass';" : '')?> class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">chevron_right</i>" +
+                    stringToReturn += " <li style='padding: 0; <?echo($RealName['Role'] == 'Restricted' ? "line-height: 65px" : '')?>' class=\"mdl-list__item\"><span <?echo($RealName['Role'] == 'Restricted' ? "style='margin:0; word-wrap: break-word; font-size: 255%; font-family: Overpass';" : '')?> class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">chevron_right</i>" +
                         data[i]['madeArray'][j][0] + ' | ' + data[i]['madeArray'][j][2] + (data[i]['madeArray'][j][1] > 0 || data[i]['madeArray'][j][1].charAt(0) == '(' ? "<span style='margin-left:5px;padding:4px;background-color:#ff4081;color:white;font-weight:600;font-size:larger; border-radius:5px'>" + data[i]['madeArray'][j][1] + "</span>" : '') + "</span></li>";
                 }
-                stringToReturn += "</ul>Updated on " + data[i]['lastEdited'] + "</div>" + (numMatchingRuns == 1 && line != 'asdf' && line != 'singleRun' <?echo($RealName[1] != 'Production' ? "&& 1 == 2" : "")?>? "<div class=\"mdl-card__actions\"><a href=\"#\" onclick='$.get(\"manageRun.php\", {finish: " + data[i]['RunID'] + "});snack(\"One moment, please. Finishing run...\", 3000);$(this).parent().parent().parent().slideUp();' class=\"mdl-button\">FINISH AND LOAD NEXT RUN</a></div>" : '') + "</div><button class=\"mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon\" id=\"" + data[i]['RunID'] + "\"><i class=\"material-icons\">more_vert</i></button><ul class=\"mdl-menu mdl-js-menu mdl-menu--bottom-right\" for=\"" + data[i]['RunID'] + "\"><li onclick='window.open(\"editRun.php?run=" + data[i]['RunID'] + "\", \"Edit Run\", \"scrollbars=1,height=700,width=1050\");' class=\"mdl-menu__item\">Edit</li><li onclick='window.open(\"editRun.php?run=" + data[i]['RunID'] + "&duplicate=1\", \"Edit Run\", \"scrollbars=1,height=700,width=1050\");' class=\"mdl-menu__item\">Copy into new run</li><li onclick='$.get(\"manageRun.php\", {delete: " + data[i]['RunID'] + "});snack(\"One moment... Deleting Run.\", 3000);$(this).parent().parent().parent().slideUp();' class=\"mdl-menu__item\">Delete</li>" + (line == 'asdf' || line == 'singleRun' ? "<li onclick='$.get(\"manageRun.php\", {finish: " + data[i]['RunID'] + "});snack(\"One moment, please. Restoring run...\", 3000);$(this).parent().parent().parent().slideUp();' class=\"mdl-menu__item\">Unfinish run</li>" : '') + "</ul></section>";
+                stringToReturn += "</ul>Updated on " + data[i]['lastEdited'] + "</div>" + (numMatchingRuns == 1 && line != 'asdf' && line != 'singleRun' <?echo($RealName['Role'] != 'Production' ? "&& 1 == 2" : "")?>? "<div class=\"mdl-card__actions\"><a href=\"#\" onclick='$.get(\"manageRun.php\", {finish: " + data[i]['RunID'] + "});snack(\"One moment, please. Finishing run...\", 3000);$(this).parent().parent().parent().slideUp();' class=\"mdl-button\">FINISH AND LOAD NEXT RUN</a></div>" : '') + "</div><button class=\"mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon\" id=\"" + data[i]['RunID'] + "\"><i class=\"material-icons\">more_vert</i></button><ul class=\"mdl-menu mdl-js-menu mdl-menu--bottom-right\" for=\"" + data[i]['RunID'] + "\"><li onclick='window.open(\"editRun.php?run=" + data[i]['RunID'] + "\", \"Edit Run\", \"scrollbars=1,height=700,width=1050\");' class=\"mdl-menu__item\">Edit</li><li onclick='window.open(\"editRun.php?run=" + data[i]['RunID'] + "&duplicate=1\", \"Edit Run\", \"scrollbars=1,height=700,width=1050\");' class=\"mdl-menu__item\">Copy into new run</li><li onclick='$.get(\"manageRun.php\", {delete: " + data[i]['RunID'] + "});snack(\"One moment... Deleting Run.\", 3000);$(this).parent().parent().parent().slideUp();' class=\"mdl-menu__item\">Delete</li>" + (line == 'asdf' || line == 'singleRun' ? "<li onclick='$.get(\"manageRun.php\", {finish: " + data[i]['RunID'] + "});snack(\"One moment, please. Restoring run...\", 3000);$(this).parent().parent().parent().slideUp();' class=\"mdl-menu__item\">Unfinish run</li>" : '') + "</ul></section>";
             }
         }
         if (numMatchingRuns == 0) {
             if (data['refreshpl0x'] > 0) {
                 stringToReturn = "<center><h1>Updating Production Coordinator. Please wait...</h1></center>";
             } else {
-                stringToReturn = <?echo($RealName[1] == 'Restricted' ? "\"<img src='splash.jpg' style='position: fixed; top: 0; bottom: 0; left: 0; right: 0; max-width: 100%; max-height: 100%; margin: auto; overflow: auto'>\"" : "\"<center>No active runs on this line.</center>\"")?>;
+                stringToReturn = <?echo($RealName['Role'] == 'Restricted' ? "\"<img src='splash.jpg' style='position: fixed; top: 0; bottom: 0; left: 0; right: 0; max-width: 100%; max-height: 100%; margin: auto; overflow: auto'>\"" : "\"<center>No active runs on this line.</center>\"")?>;
             }
         }
         return stringToReturn;
@@ -402,9 +403,9 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
 
                     //generate all the run cards
                     $("#tableForRuns").html(
-                        (readCookie('blue') != null ? "<td style='vertical-align: top'><h1 id='title0' " + (blinkLineTitle[0] ? "class='notify-blink'" : '') + " style=\"text-align: center; <?echo($RealName[1] == 'Restricted' ? "display: none" : '')?>\"><?echo $Line1Name?></h1>" + generateRunCards(data, "Blue") + "<section></section></td>" : '') +
-                        (readCookie('gray') != null ? "<td style='vertical-align: top'><h1 id='title1' " + (blinkLineTitle[1] ? "class='notify-blink'" : '') + " style=\"text-align: center; <?echo($RealName[1] == 'Restricted' ? "display: none" : '')?>\"><?echo $Line2Name?></h1>" + generateRunCards(data, 'Gray') + "<section></section></td>" : '') +
-                        (readCookie('presizer') != null ? "<td style='vertical-align: top'><h1 id='title2' " + (blinkLineTitle[2] ? "class='notify-blink'" : '') + " style=\"text-align: center; <?echo($RealName[1] == 'Restricted' ? "display: none" : '')?>\"><?echo $Line3Name?></h1>" + generateRunCards(data, 'Presizer') + "<section></section></td>" : '')
+                        (readCookie('blue') != null ? "<td style='vertical-align: top'><h1 id='title0' " + (blinkLineTitle[0] ? "class='notify-blink'" : '') + " style=\"text-align: center; <?echo($RealName['Role'] == 'Restricted' ? "display: none" : '')?>\"><?echo $Line1Name?></h1>" + generateRunCards(data, "Blue") + "<section></section></td>" : '') +
+                        (readCookie('gray') != null ? "<td style='vertical-align: top'><h1 id='title1' " + (blinkLineTitle[1] ? "class='notify-blink'" : '') + " style=\"text-align: center; <?echo($RealName['Role'] == 'Restricted' ? "display: none" : '')?>\"><?echo $Line2Name?></h1>" + generateRunCards(data, 'Gray') + "<section></section></td>" : '') +
+                        (readCookie('presizer') != null ? "<td style='vertical-align: top'><h1 id='title2' " + (blinkLineTitle[2] ? "class='notify-blink'" : '') + " style=\"text-align: center; <?echo($RealName['Role'] == 'Restricted' ? "display: none" : '')?>\"><?echo $Line3Name?></h1>" + generateRunCards(data, 'Presizer') + "<section></section></td>" : '')
                     );
 
                     if (readCookie('blue') == null && readCookie('gray') == null && readCookie('presizer') == null) {
@@ -436,9 +437,9 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
                     //restart animation
                     curActiveCard = 1;
                     //start auto scroll if display view
-                    <?echo($RealName[1] == 'Restricted' ? "$(\"#cardID1\").show();animateScroll('down');var nextCollapseTimeout = setTimeout(function() {collapseCards()}, 12000);" : '')?>
+                    <?echo($RealName['Role'] == 'Restricted' ? "$(\"#cardID1\").show();animateScroll('down');var nextCollapseTimeout = setTimeout(function() {collapseCards()}, 12000);" : '')?>
 
-                <?echo($RealName[1] != 'Restricted' ? "refreshChat();" : '')?>
+                <?echo($RealName['Role'] != 'Restricted' ? "refreshChat();" : '')?>
                     componentHandler.upgradeDom();
                     //don't interrupt chat typing during refresh
                     if (focused != 'undefined') {

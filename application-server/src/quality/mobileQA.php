@@ -9,16 +9,15 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     die("<script>window.location.replace('/')</script>");
 } else {
     $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Real Name`, Role, isSectionManager as isAdmin, allowedQuality FROM packapps_master_users JOIN quality_UserData ON packapps_master_users.username=quality_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
+    $checkAllowed = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Real Name` AS 'UserRealName', Role, allowedQuality FROM packapps_master_users JOIN quality_UserData ON packapps_master_users.username=quality_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
     if (!$checkAllowed['allowedQuality'] > 0) {
         die ("<script>window.location.replace('/')</script>");
     } else {
         $RealName = $checkAllowed;
-        $Role = $checkAllowed['Role'];
     }
 }
 // end authentication
-if ($RealName[1] <> 'QA') {
+if ($RealName['Role'] <> 'QA') {
     echo "<script>window.location.href='index.php'</script>";
 } ?>
 <!DOCTYPE html>
@@ -36,7 +35,7 @@ if ($RealName[1] <> 'QA') {
 <h1>Mobile QA Lab</h1>
 <h3 style="text-align: center"><?echo $companyName?> Quality Assurance Lab</h3>
 <br>
-<h2>Welcome back, <strong><? echo $RealName[0] ?></strong></h2>
+<h2>Welcome back, <strong><? echo $RealName['UserRealName'] ?></strong></h2>
 <br>
 <h2>This Year: <? echo $total_count['countSamp'] ?> individual samples across <? echo $total_count['countRT'] ?>
     RTs!</h2>
@@ -62,12 +61,12 @@ if ($RealName[1] <> 'QA') {
 <hr>
 <h2 style="text-align: center">Options</h2>
 <br>
+<button value="Logout" onclick="location.href = '/'">Main Menu</button>
+<br>
 <button style='height: 25px; width: 48%; margin-left: auto; display: block; margin-right: auto'
         onclick="location.replace('QA.php')">View Desktop Version
 </button>
-<button onclick="location.replace('chpasswd.php')">Change Password</button>
-<br>
-<button value="Logout" onclick="location.href = '/'">Main Menu</button>
+
 
 <script>
     function logout() {

@@ -5,7 +5,8 @@ if (!$_GET['RT'])
 }
 else{
 include '../../config.php';
-$blockphotos = mysqli_query($mysqli, "SELECT concat('uploadedimages/',`RT#`,'.jpg') AS link, `RT#` AS RT, (CASE WHEN `Block Desc`='' THEN '[No Block]' ELSE `Block Desc` END) AS `Block Desc`, rtrim(`Grower Name`) AS `Grower Name`, (CASE WHEN `Farm Desc`='' THEN '[No Farm]' ELSE `Farm Desc` END) AS `Farm Desc`, `Var Desc`, (CASE WHEN `Str Desc`='' THEN 'No Strain' ELSE rtrim(`Str Desc`) END) AS `Str Desc` FROM (SELECT SortCode FROM BULKOHCSV WHERE `RT#`='" . $_GET['RT'] . "') AS t JOIN RTsWQuality ON t.SortCode=`RTsWQuality`.SortCode WHERE isQA='TRUE' ORDER BY `RT#` DESC LIMIT 20;") or die(mysqli_errno($mysqli));
+$_GET['RT'] = mysqli_real_escape_string($mysqli, $_GET['RT']);
+$blockphotos = mysqli_query($mysqli, "SELECT concat('uploadedimages/',`RT#`,'.jpg') AS link, `RT#` AS RT, (CASE WHEN `Block Desc`='' THEN '[No Block]' ELSE `Block Desc` END) AS `Block Desc`, rtrim(`Grower Name`) AS `Grower Name`, (CASE WHEN `Farm Desc`='' THEN '[No Farm]' ELSE `Farm Desc` END) AS `Farm Desc`, `Var Desc`, (CASE WHEN `Str Desc`='' THEN 'No Strain' ELSE rtrim(`Str Desc`) END) AS `Str Desc` FROM (SELECT SortCode FROM BULKOHCSV WHERE `RT#`='" . $_GET['RT'] . "') AS t JOIN quality_RTsWQuality ON t.SortCode=`quality_RTsWQuality`.SortCode WHERE isQA='TRUE' ORDER BY `RT#` DESC LIMIT 20;") or die(mysqli_errno($mysqli));
 $blockphotoarray = mysqli_fetch_assoc($blockphotos);
 ?>
 

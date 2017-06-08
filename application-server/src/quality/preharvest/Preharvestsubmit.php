@@ -11,23 +11,23 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     die("<script>window.location.replace('/')</script>");
 } else {
     $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Real Name`, Role, isSectionManager as isAdmin, allowedQuality FROM packapps_master_users JOIN quality_UserData ON packapps_master_users.username=quality_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
+    $checkAllowed = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Real Name` AS 'UserRealName', Role, allowedQuality FROM packapps_master_users JOIN quality_UserData ON packapps_master_users.username=quality_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
     if (!$checkAllowed['allowedQuality'] > 0) {
         die ("<script>window.location.replace('/')</script>");
     } else {
         $RealName = $checkAllowed;
-        $Role = $checkAllowed['Role'];
     }
 }
-// end authentication
-if ($RealName[1] !== "QA") {
+if ($RealName['Role'] !== "QA") {
     die("UNAUTHORIZED");
 };
+// end authentication
+
 
 //set constants
 $Notes = $_POST['notes'];
 $PK = $_POST['Block'];
-$Inspector = $RealName[0];
+$Inspector = $RealName['UserRealName'];
 $Grower = $_POST['Grower'];
 $Retain = 0;
 if ($_POST['Retain']) {

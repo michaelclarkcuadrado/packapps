@@ -19,7 +19,7 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
         die();
     } else {
         // end authentication
-        $userPrivileges = mysqli_query($mysqli, "SELECT concat(`Real Name`, CASE WHEN isSystemAdministrator > 0 THEN ' **' ELSE '' END) as `Real Name`, packapps_master_users.username, ifnull(DATE_FORMAT(lastLogin,'%b %d %Y %h:%i %p'), 'Never') as lastLogin, isSystemAdministrator, isDisabled, purchasing_UserData.isAuthorizedForPurchases as purchasingRole, production_UserData.Role as productionRole, quality_UserData.Role as qualityRole, allowedProduction, allowedPurchasing, allowedQuality FROM packapps_master_users LEFT JOIN purchasing_UserData ON packapps_master_users.username=purchasing_UserData.Username LEFT JOIN quality_UserData ON packapps_master_users.username = quality_UserData.UserName LEFT JOIN production_UserData ON packapps_master_users.username = production_UserData.UserName");
+        $userPrivileges = mysqli_query($mysqli, "SELECT concat(`Real Name`, CASE WHEN isSystemAdministrator > 0 THEN ' **' ELSE '' END) as `Real Name`,packapps_master_users.username, ifnull(DATE_FORMAT(lastLogin,'%b %d %Y %h:%i %p'), 'Never') as lastLogin, isSystemAdministrator, isDisabled, purchasing_UserData.isAuthorizedForPurchases as purchasingRole, production_UserData.Role as productionRole, quality_UserData.Role as qualityRole, maintenance_UserData.Role as maintenanceRole, storage_UserData.Role as storageRole, allowedProduction, allowedPurchasing, allowedQuality, allowedMaintenance, allowedStorage FROM packapps_master_users LEFT JOIN purchasing_UserData ON packapps_master_users.username=purchasing_UserData.Username LEFT JOIN quality_UserData ON packapps_master_users.username = quality_UserData.UserName LEFT JOIN production_UserData ON packapps_master_users.username = production_UserData.UserName LEFT JOIN maintenance_UserData ON packapps_master_users.username = maintenance_UserData.username LEFT JOIN storage_UserData ON packapps_master_users.username = storage_UserData.username");
         $arrayToReturn = array();
         while ($user = mysqli_fetch_assoc($userPrivileges)){
             //convert purchasing
@@ -41,6 +41,20 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
                 $user['qualityRole'] = 1;
             } else {
                 $user['qualityRole'] = 1;
+            }
+            //convert maintenance
+            if ($user['maintenanceRole' == 'readwrite']){
+                $user['maintenanceRole'] = 3;
+            } elseif ($user['maintenanceRole' == 'worker']) {
+                $user['maintenanceRole'] = 2;
+            } else {
+                $user['maintenanceRole'] = 1;
+            }
+            //convert storage
+            if ($user['storageRole'] == 'full'){
+                $user['storageRole'] = 2;
+            } else {
+                $user['storageRole'] = 1;
             }
             array_push($arrayToReturn, $user);
         }

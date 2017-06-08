@@ -17,16 +17,15 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     die("<script>window.location.replace('/')</script>");
 } else {
     $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Real Name`, Role, isSectionManager as isAdmin, allowedQuality FROM packapps_master_users JOIN quality_UserData ON packapps_master_users.username=quality_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
+    $checkAllowed = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Real Name` AS 'UserRealName', Role, allowedQuality FROM packapps_master_users JOIN quality_UserData ON packapps_master_users.username=quality_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
     if (!$checkAllowed['allowedQuality'] > 0) {
         die ("<script>window.location.replace('/')</script>");
     } else {
         $RealName = $checkAllowed;
-        $Role = $checkAllowed['Role'];
     }
 }
 // end authentication
-if ($RealName[1] !== "QA") {
+if ($RealName['Role'] !== "QA") {
     die("UNAUTHORIZED");
 };
 
@@ -45,7 +44,7 @@ if($xlsdata->val($NumSamples*2+8,'B') != $_POST['RT'])
 $rt= mysqli_real_escape_string($mysqli,$_POST['RT']);
 
 $updatestmt = mysqli_prepare($mysqli, "UPDATE quality_AppleSamples SET Weight=?, Pressure1=?, Pressure2=?, `FinalTestedBy`=? WHERE `RT#`= ? AND SampleNum= ?");
-mysqli_stmt_bind_param($updatestmt, "ssssii", $Weight, $Press1, $Press2, $RealName[0], $rt, $SampleNum);
+mysqli_stmt_bind_param($updatestmt, "ssssii", $Weight, $Press1, $Press2, $RealName['UserRealName'], $rt, $SampleNum);
 //execute statements
 for($i = 1; $i <= $NumSamples; $i++)
 {

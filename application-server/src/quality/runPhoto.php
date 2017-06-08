@@ -10,12 +10,11 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     die("<script>window.location.replace('/')</script>");
 } else {
     $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Real Name`, Role, isSectionManager as isAdmin, allowedQuality FROM packapps_master_users JOIN quality_UserData ON packapps_master_users.username=quality_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
+    $checkAllowed = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Real Name` AS 'UserRealName', Role, allowedQuality FROM packapps_master_users JOIN quality_UserData ON packapps_master_users.username=quality_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
     if (!$checkAllowed['allowedQuality'] > 0) {
         die ("<script>window.location.replace('/')</script>");
     } else {
         $RealName = $checkAllowed;
-        $Role = $checkAllowed['Role'];
     }
 }
 // end authentication
@@ -43,7 +42,7 @@ $runsAvailable = mysqli_query($mysqli, "SELECT Line, RunNumber, `production_runs
 
 <body>
 <div id="wrapper">
-    <? if ($RealName[1] == 'QA' && $detect->isMobile()) {
+    <? if ($RealName['Role'] == 'QA' && $detect->isMobile()) {
         echo "<p style='position: fixed; top: 0; width: 100%'><button onclick=\"location.replace('/quality')\"><<< Go back</button></p>";
     } ?>
     <h1>Run Sample Photos</h1>
@@ -74,7 +73,7 @@ $runsAvailable = mysqli_query($mysqli, "SELECT Line, RunNumber, `production_runs
             <button class="submitbtn" disabled>Submit photo to QA Lab</button>
             <br>
             <label style="border: dashed black 1px; vertical-align: middle">Inspected
-                by <? echo $RealName[0] . " on " . date('l, F jS Y') ?></label>
+                by <? echo $RealName['UserRealName'] . " on " . date('l, F jS Y') ?></label>
         </div>
     </form>
 </div>

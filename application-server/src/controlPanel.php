@@ -198,8 +198,7 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
                 </div>
             </div>
             <h2 style="text-align: center; width: 100%; <?php echo($checkAllowed['isSystemAdministrator'] > 0 ? '' : "display: none;"); ?>"
-                class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">Users on
-                Packapps</h2>
+                class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">System Users</h2>
             <hr>
             <!--Inject user cards here-->
         </div>
@@ -303,7 +302,23 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
                     + data[user]['purchasingRole']
                     + "'><div style='text-align: center' id='"
                     + data[user]['username']
-                    + "_purchasing_accesslevel'></div></p></td></tr></tbody></table><div style='margin-left: 17px;' class='mdl-card__subtitle-text'>User Name: "
+                    + "_purchasing_accesslevel'></div></p></td></tr><tr><td class='mdl-data-table__cell--non-numeric'>Maintenance</td><td class='mdl-data-table__cell--non-numeric'><label class='mdl-switch mdl-js-switch mdl-js-ripple-effect' for='switch-maintenance-"
+                    + data[user]['username']
+                    + "'><input type='checkbox' id='switch-maintenance-"
+                    + data[user]['username']
+                    + "' name='maintenance_"
+                    + data[user]['username']
+                    + "_switch' class='enableSwitch mdl-switch__input' "
+                    + (data[user]['allowedMaintenance'] > 0 ? 'checked' : '')
+                    + "></label></td><td style='padding-left:0; padding-right: 0'><p style='width:100%; margin-bottom: 0; text-align: center'><input class='maintenance_slider mdl-slider mdl-js-slider' id='"
+                    + data[user]['username']
+                    + "_maintenance_slider' name='"
+                    + data[user]['username']
+                    + "_maintenance_slider' type='range' min='1' max='3' value='"
+                    + data[user]['maintenanceRole']
+                    + "'><div style='text-align: center' id='"
+                    + data[user]['username']
+                    + "_maintenance_accesslevel'></div></p></td></tr></tbody></table><div style='margin-left: 17px;' class='mdl-card__subtitle-text'>User Name: "
                     + data[user]['username']
                     + "<br>Last Login: "
                     + data[user]['lastLogin']
@@ -358,7 +373,7 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
                 });
             });
 
-            $('.quality_slider, .production_slider, .purchasing_slider').on('input', function () {
+            $('.quality_slider, .production_slider, .purchasing_slider, .maintenance_slider').on('input', function () {
                 var infoArray = $(this).attr('name').split('_');
                 var numericLevel = $(this).val();
                 $.ajax({
@@ -421,6 +436,16 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
             } else {
                 return 'error';
             }
+        }  else if (packApp == 'maintenance') {
+            if (numericLevel == '1') {
+                return 'ReadOnly';
+            } else if (numericLevel == '2') {
+                return 'worker';
+            } else if (numericLevel == '3'){
+                return 'Full'
+            } else {
+                return 'error';
+            }
         } else if (packApp == 'purchasing') {
             //purchasing uses a boolean 1 or 0 as access level
             return numericLevel - 1;
@@ -448,6 +473,16 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
                 return "<span style='color: green'>Full</span>";
             } else if (level == "ReadOnly") {
                 return "<span style='color: orange'>Read-Only</span>";
+            } else {
+                return "error";
+            }
+        } else if (packApp == 'maintenance') {
+            if (level == 'Full') {
+                return "<span style='color: green'>Full</span>";
+            } else if (level == "worker") {
+                return "<span style='color: orange'>Worker</span>";
+            } else if (level == "ReadOnly") {
+                return "<span style='color: red'>Read-Only</span>";
             } else {
                 return "error";
             }
