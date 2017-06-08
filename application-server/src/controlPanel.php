@@ -9,9 +9,17 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     die("<script>window.location.replace('/')</script>");
 } else {
     $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Real Name`, isSystemAdministrator, purchasing_UserData.isAuthorizedForPurchases as purchasingRole, production_UserData.Role as productionRole, quality_UserData.Role as qualityRole, allowedProduction, allowedPurchasing, allowedQuality FROM packapps_master_users LEFT JOIN purchasing_UserData ON packapps_master_users.username=purchasing_UserData.Username LEFT JOIN quality_UserData ON packapps_master_users.username = quality_UserData.UserName LEFT JOIN production_UserData ON packapps_master_users.username = production_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
+    $checkAllowed = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Real Name`, isSystemAdministrator, purchasing_UserData.Role as purchasingRole, production_UserData.Role+0 as productionRole, quality_UserData.Role+0 as qualityRole, storage_UserData.Role+0 as storageRole, maintenance_UserData.Role+0 as maintenanceRole, allowedProduction, allowedPurchasing, allowedQuality, allowedStorage, allowedMaintenance FROM packapps_master_users LEFT JOIN purchasing_UserData ON packapps_master_users.username=purchasing_UserData.Username LEFT JOIN quality_UserData ON packapps_master_users.username = quality_UserData.UserName LEFT JOIN production_UserData ON packapps_master_users.username = production_UserData.UserName LEFT JOIN maintenance_UserData ON packapps_master_users.username = maintenance_UserData.username LEFT JOIN storage_UserData ON packapps_master_users.username = storage_UserData.username WHERE packapps_master_users.username = '$SecuredUserName'"));
+
 }
 // end authentication
+
+//enumerate packapps
+$packapps_query = mysqli_query($mysqli, "SELECT short_app_name, long_app_name FROM packapps_appProperties WHERE isEnabled = 1");
+$installedPackapps = array();
+while($packapp = mysqli_fetch_array($packapps_query)){
+    array_push($installedPackapps, array('short_app_name' => $packapp['short_app_name'], 'long_app_name' => $packapp['long_app_name']));
+}
 
 //create new User account
 if($checkAllowed['isSystemAdministrator'] > 0 && isset($_POST['newUserName']) && isset($_POST['newRealName']) && isset($_POST['newPassword'])) {
@@ -146,7 +154,7 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
                         <th class="mdl-data-table__cell--non-numeric">Access Level</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="selfAccountPrivilegesTable">
                     <tr>
                         <td class="mdl-data-table__cell--non-numeric">Quality Panel</td>
                         <td id="qualityEnabled" class="mdl-data-table__cell--non-numeric"></td>
@@ -212,10 +220,30 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
 <script src="scripts/material.min.js"></script>
 <script src="scripts/jquery.min.js"></script>
 <script>
+    var installedPackapps;
+    var privilegeBlob;
     $(document).ready(function () {
-        //set self privileges box to correct values
-        var privilegeBlob = "<?echo addslashes(json_encode($checkAllowed))?>";
+        //get self account info
+        installedPackapps = "<?echo addslashes(json_encode($installedPackapps))?>";
+        privilegeBlob = "<?echo addslashes(json_encode($checkAllowed))?>";
         privilegeBlob = JSON.parse(privilegeBlob);
+        installedPackapps = JSON.parse(installedPackapps);
+
+        //create self account info box
+        populateSelfInfoBox(privilegeBlob, installedPackapps);
+
+        console.log(installedPackapps);
+        console.log(privilegeBlob);
+        for(var i = 0; i < installedPackapps.length; i++){
+            var appAllowed = privilegeBlob['allowed'+capitalizeFirstLetter(installedPackapps[i]['short_app_name'])];
+            if(appAllowed > 0){
+                $('#'+installedPackapps[i]['short_app_name']+'Enabled').html("<span style='color: green'>Enabled</span>");
+                //$('#productionRole').html(getPrivilegeDescriptionHTML('production', privilegeBlob.productionRole));
+            } else {
+                $('#'+installedPackapps[i]['short_app_name']+'Enabled').html("<span style='color: red'>Disabled</span>");
+                $('#productionRole').html(getPrivilegeDescriptionHTML('production', 'Disabled'));
+            }
+        }
         if (privilegeBlob.allowedProduction > 0) {
             $('#productionEnabled').html("<span style='color: green'>Enabled</span>");
             $('#productionRole').html(getPrivilegeDescriptionHTML('production', privilegeBlob.productionRole));
@@ -416,6 +444,10 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
         });
     }
 
+    function populateSelfInfoBox(privilegeBlob, installedPackapps){
+
+    }
+
     //converts slider value into a level that can be passed to getPrivilegeDescriptionHTML() or inserted into database
     function numericAccessLeveltoDescription(packApp, numericLevel) {
         if (packApp == 'quality') {
@@ -495,6 +527,10 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
                 return "error";
             }
         }
+    }
+
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
     function showNewForm() {

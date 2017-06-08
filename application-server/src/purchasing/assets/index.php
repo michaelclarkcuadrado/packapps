@@ -4,6 +4,7 @@ Simple PHP File Manager
 Copyright John Campbell (jcampbell1)
 
 Liscense: MIT
+ * Modified 2016 Michael Clark-Cuadrado for packapps
  ********************************/
 
 // Set to false to disable delete button and delete POST request.

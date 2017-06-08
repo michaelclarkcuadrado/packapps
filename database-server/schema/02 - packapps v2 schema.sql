@@ -30,6 +30,11 @@ ALTER TABLE `quality_UserData` DROP `isSectionManager`;
 ALTER TABLE `production_UserData` DROP `isSectionManager`;
 ALTER TABLE `purchasing_UserData` DROP `isSectionManager`;
 
+/* Update purchasing permissions */
+ALTER TABLE `purchasing_UserData` ADD `Role` INT NOT NULL AFTER `isAuthorizedForPurchases`;
+UPDATE `purchasing_UserData` SET Role=isAuthorizedForPurchases+1;
+ALTER TABLE `purchasing_UserData` DROP `isAuthorizedForPurchases`;
+
 /* Add maintenance, storage columns to master_users */
 ALTER TABLE master_users ADD COLUMN allowedStorage TINYINT(1) DEFAULT 0 NOT NULL AFTER allowedProduction;
 ALTER TABLE master_users ADD COLUMN allowedMaintenance TINYINT(1) DEFAULT 0 NOT NULL AFTER allowedStorage;
@@ -127,3 +132,15 @@ RENAME TABLE run_inspections TO quality_run_inspections;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 /* END MIGRATE OLD QUALITY TABLES */
+
+/* MAINTENANCE PACKAPP TABLES */
+
+
+
+/* END MAINTENANCE PACKAPP TABLES */
+
+/* STORAGE PACKAPP TABLES */
+
+
+
+/* END STORAGE PACKAPP TABLES */

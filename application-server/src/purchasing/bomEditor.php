@@ -8,7 +8,7 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     die("<script>window.location.replace('/')</script>");
 } else {
     $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_array(mysqli_query($mysqli, "SELECT allowedPurchasing, `Real Name` as RealName, isAuthorizedForPurchases FROM packapps_master_users JOIN purchasing_UserData ON packapps_master_users.username=purchasing_UserData.Username WHERE packapps_master_users.username = '$SecuredUserName'"));
+    $checkAllowed = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT allowedPurchasing, `Real Name` as RealName, Role FROM packapps_master_users JOIN purchasing_UserData ON packapps_master_users.username=purchasing_UserData.Username WHERE packapps_master_users.username = '$SecuredUserName'"));
     if (!$checkAllowed['allowedPurchasing'] > 0) {
         die ("<script>window.location.replace('/')</script>");
     } else {
@@ -81,7 +81,7 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
                     <span class="visuallyhidden">Accounts</span>
                 </button>
                 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-                    <? echo($RealName['isAuthorizedForPurchases'] != 0 ? "<li class=\"mdl-menu__item\"><i class=\"material-icons\">verified_user</i>Authorized for Purchases</li>" : '') ?>
+                    <? echo($RealName['Role'] > 1 ? "<li class=\"mdl-menu__item\"><i class=\"material-icons\">verified_user</i>Authorized for Purchases</li>" : '') ?>
                     <li onclick="location.href = '/appMenu.php'" class="mdl-menu__item"><i class="material-icons">exit_to_app</i>Exit
                         to menu
                     </li>
