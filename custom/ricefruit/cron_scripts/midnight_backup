@@ -1,0 +1,3 @@
+#!/bin/bash
+mysqldump -u root -pr1cefru1t --databases operationsData growerReporting --routines --triggers > "/media/backup/packapps/Packapps_database_backup_v1_$(date).sql"
+

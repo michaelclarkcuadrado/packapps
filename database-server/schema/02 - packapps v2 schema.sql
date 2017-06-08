@@ -4,11 +4,33 @@
 
 USE operationsData;
 
+/* SYSTEM RECORD KEEPING */
+
 /* Create systeminfo table for versioning */
 CREATE TABLE `operationsData`.`packapps_system_info` ( `packapps_version` INT NOT NULL , `systemInstalled` TINYINT(1) NOT NULL , `dateInstalled` DATETIME NOT NULL , `Notes` VARCHAR(1023) NULL ) ENGINE = InnoDB;
 INSERT INTO `operationsData`.`packapps_system_info` (packapps_version, systemInstalled, dateInstalled) VALUES (2, 0, '0000-00-00 00:00:00');
 
-/* Add permissions columns to master_users */
+/* Create new packapp_appProperties table to support more standardized modules */
+CREATE TABLE `operationsData`.`packapps_appProperties` ( `app_id` INT NOT NULL AUTO_INCREMENT, `short_app_name` VARCHAR(255) NOT NULL , `long_app_name` VARCHAR(255) NOT NULL , `material_icon_name` VARCHAR(255) NOT NULL , `isEnabled` TINYINT(1) NOT NULL DEFAULT '1' , `Notes` VARCHAR(255) NOT NULL, PRIMARY KEY (app_id) ) ENGINE = InnoDB;
+ALTER TABLE `operationsData`.`packapps_appProperties` ADD UNIQUE `unique_app_short_names` (`short_app_name`);
+
+/* Add existing packapps to above table */
+INSERT INTO packapps_appProperties (short_app_name, long_app_name, material_icon_name, isEnabled, Notes) VALUES ('quality', 'Quality Assurance Panel', 'check_circle', 1, '');
+INSERT INTO packapps_appProperties (short_app_name, long_app_name, material_icon_name, isEnabled, Notes) VALUES ('production', 'Production Coordinator', 'list', 1, '');
+INSERT INTO packapps_appProperties (short_app_name, long_app_name, material_icon_name, isEnabled, Notes) VALUES ('purchasing', 'Purchasing Dashboard', 'dashboard', 1, '');
+INSERT INTO packapps_appProperties (short_app_name, long_app_name, material_icon_name, isEnabled, Notes) VALUES ('maintenance', 'Maintenance Dashboard', 'build', 1, '');
+INSERT INTO packapps_appProperties (short_app_name, long_app_name, material_icon_name, isEnabled, Notes) VALUES ('storage', 'Storage Insights', 'track_changes', 1, '');
+
+/* END SYSTEM RECORD KEEPING */
+
+/* PERMISSIONS */
+
+/* Remove deprecated isSectionManager columns that only cause misery */
+ALTER TABLE `quality_UserData` DROP `isSectionManager`;
+ALTER TABLE `production_UserData` DROP `isSectionManager`;
+ALTER TABLE `purchasing_UserData` DROP `isSectionManager`;
+
+/* Add maintenance, storage columns to master_users */
 ALTER TABLE master_users ADD COLUMN allowedStorage TINYINT(1) DEFAULT 0 NOT NULL AFTER allowedProduction;
 ALTER TABLE master_users ADD COLUMN allowedMaintenance TINYINT(1) DEFAULT 0 NOT NULL AFTER allowedStorage;
 
@@ -23,42 +45,31 @@ ALTER TABLE `operationsData`.`maintenance_UserData` ADD PRIMARY KEY (`username`)
 ALTER TABLE `maintenance_UserData` ADD CONSTRAINT `maintenanceuserdata2masterusers` FOREIGN KEY (`username`) REFERENCES `master_users`(`username`) ON DELETE CASCADE ON UPDATE CASCADE;
 INSERT INTO maintenance_UserData (username) SELECT username FROM master_users;
 
-/* Create new packapp_appProperties table to support more standardized modules */
-CREATE TABLE `operationsData`.`packapps_appProperties` ( `app_id` INT NOT NULL AUTO_INCREMENT, `short_app_name` VARCHAR(255) NOT NULL , `long_app_name` VARCHAR(255) NOT NULL , `material_icon_name` VARCHAR(255) NOT NULL , `isEnabled` TINYINT(1) NOT NULL DEFAULT '1' , `Notes` VARCHAR(255) NOT NULL, PRIMARY KEY (app_id) ) ENGINE = InnoDB;
-ALTER TABLE `operationsData`.`packapps_appProperties` ADD UNIQUE `unique_app_short_names` (`short_app_name`);
-
-/* Add existing packapps to above table */
-INSERT INTO packapps_appProperties (short_app_name, long_app_name, material_icon_name, isEnabled, Notes) VALUES ('quality', 'Quality Assurance Panel', 'check_circle', 1, '');
-INSERT INTO packapps_appProperties (short_app_name, long_app_name, material_icon_name, isEnabled, Notes) VALUES ('production', 'Production Coordinator', 'list', 1, '');
-INSERT INTO packapps_appProperties (short_app_name, long_app_name, material_icon_name, isEnabled, Notes) VALUES ('purchasing', 'Purchasing Dashboard', 'dashboard', 1, '');
-INSERT INTO packapps_appProperties (short_app_name, long_app_name, material_icon_name, isEnabled, Notes) VALUES ('maintenance', 'Maintenance Dashboard', 'build', 1, '');
-INSERT INTO packapps_appProperties (short_app_name, long_app_name, material_icon_name, isEnabled, Notes) VALUES ('storage', 'Storage Insights', 'track_changes', 1, '');
-
 /* Create new permissions table, prepopulate with existing packapps */
-CREATE TABLE `operationsData`.`packapps_app_permissions` ( `packapp` VARCHAR(255) NOT NULL , `permissionLevel` INT NOT NULL , `Meaning` VARCHAR(255) NOT NULL , `Color` VARCHAR(255) NOT NULL ) ENGINE = InnoDB;
-ALTER TABLE `operationsData`.`packapps_app_permissions` ADD PRIMARY KEY (`packapp`, `permissionLevel`);
+CREATE TABLE `operationsData`.`packapps_app_permissions` ( `packapp` VARCHAR(255) NOT NULL , `Role` INT NOT NULL , `Meaning` VARCHAR(255) NOT NULL , `Color` VARCHAR(255) NOT NULL , `Notes` VARCHAR(1023) NULL) ENGINE = InnoDB;
+ALTER TABLE `operationsData`.`packapps_app_permissions` ADD PRIMARY KEY (`packapp`, `Role`);
 ALTER TABLE `packapps_app_permissions` ADD CONSTRAINT `app_permissions_2_appProperties` FOREIGN KEY (`packapp`) REFERENCES `packapps_appProperties`(`short_app_name`) ON DELETE CASCADE ON UPDATE CASCADE;
-INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color) VALUES ('quality', '0', 'Weight Input Only', 'Red');
-INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color) VALUES ('quality', '1', 'Receipt Inspector', 'Orange');
-INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color) VALUES ('quality', '2', 'Full', 'Green');
-INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color) VALUES ('production', '0', 'Read-Only', 'Orange');
-INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color) VALUES ('production', '1', 'Full', 'Green');
-INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color) VALUES ('purchasing', '0', 'No Purchases', 'Orange');
-INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color) VALUES ('purchasing', '1', 'Full', 'Green');
-INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color) VALUES ('maintenance', '0', 'Read-Only', 'Red');
-INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color) VALUES ('maintenance', '1', 'Worker', 'Orange');
-INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color) VALUES ('maintenance', '2', 'Full', 'Green');
-INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color) VALUES ('storage', '0', 'Read-Only', 'Red');
-INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color) VALUES ('storage', '1', 'Receiving', 'Yellow');
-INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color) VALUES ('storage', '2', 'Full', 'Green');
+INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('quality', '1', 'Weight Input Only', 'Red', 'Redirects immediately to phone-based RT weighing.');
+INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('quality', '2', 'Receipt Inspector', 'Orange', 'Redirects to phone-based RT inspection.');
+INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('quality', '3', 'Full', 'Green', 'Complete access to QA system functions');
+INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('production', '1', 'Read-Only', 'Orange', 'Access to schedule, inventory, and chat, but no edits.');
+INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('production', '2', 'Full', 'Green', 'Complete access to production system with edits.');
+INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('purchasing', '0', 'No Purchases', 'Orange', 'Can create items, take inventory, and receive inventory, but cannot register new purchases.');
+INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('purchasing', '1', 'Full', 'Green', 'Full access to all purchasing functions.');
+INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('maintenance', '1', 'Read-Only', 'Red', '');
+INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('maintenance', '2', 'Worker', 'Orange', '');
+INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('maintenance', '3', 'Full', 'Green', '');
+INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('storage', '1', 'Read-Only', 'Red', '');
+INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('storage', '2', 'Receiving', 'Yellow', '');
+INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('storage', '3', 'Full', 'Green', '');
+
 
 /* rename master_users table to reflect it is part of packapps framework */
 RENAME TABLE master_users TO packapps_master_users;
 
-/* Remove deprecated isSectionManager columns that only cause misery */
-ALTER TABLE `quality_UserData` DROP `isSectionManager`;
-ALTER TABLE `production_UserData` DROP `isSectionManager`;
-ALTER TABLE `purchasing_UserData` DROP `isSectionManager`;
+/* END PERMISSIONS */
+
+/* MIGRATE OLD QUALITY TABLES */
 
 /* quality tables did not have prefixes as they predate packapps. Add prefixes to quality tables */
 RENAME TABLE AggregateWeightSamples TO quality_AggregateWeightSamples;
@@ -114,3 +125,5 @@ RENAME TABLE run_inspections TO quality_run_inspections;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
+
+/* END MIGRATE OLD QUALITY TABLES */
