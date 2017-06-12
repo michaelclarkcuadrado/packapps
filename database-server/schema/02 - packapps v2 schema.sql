@@ -7,7 +7,7 @@ USE operationsData;
 /* SYSTEM RECORD KEEPING */
 
 /* Create systeminfo table for versioning */
-CREATE TABLE `operationsData`.`packapps_system_info` ( `packapps_version` INT NOT NULL , `systemInstalled` TINYINT(1) NOT NULL , `dateInstalled` DATETIME NOT NULL , `Notes` VARCHAR(1023) NULL ) ENGINE = InnoDB;
+CREATE TABLE `operationsData`.`packapps_system_info` ( `packapps_version` INT NOT NULL , `systemInstalled` TINYINT(1) NOT NULL , `dateInstalled` DATETIME NOT NULL , `client_name` VARCHAR(255), `Notes` VARCHAR(1023) NULL ) ENGINE = InnoDB;
 INSERT INTO `operationsData`.`packapps_system_info` (packapps_version, systemInstalled, dateInstalled) VALUES (2, 0, '0000-00-00 00:00:00');
 
 /* Create new packapp_appProperties table to support more standardized modules */
@@ -31,7 +31,7 @@ ALTER TABLE `production_UserData` DROP `isSectionManager`;
 ALTER TABLE `purchasing_UserData` DROP `isSectionManager`;
 
 /* Update purchasing permissions */
-ALTER TABLE `purchasing_UserData` ADD `Role` INT NOT NULL AFTER `isAuthorizedForPurchases`;
+ALTER TABLE `purchasing_UserData` ADD `Role` INT NOT NULL DEFAULT '1' AFTER `isAuthorizedForPurchases`;
 UPDATE `purchasing_UserData` SET Role=isAuthorizedForPurchases+1;
 ALTER TABLE `purchasing_UserData` DROP `isAuthorizedForPurchases`;
 
@@ -40,33 +40,33 @@ ALTER TABLE master_users ADD COLUMN allowedStorage TINYINT(1) DEFAULT 0 NOT NULL
 ALTER TABLE master_users ADD COLUMN allowedMaintenance TINYINT(1) DEFAULT 0 NOT NULL AFTER allowedStorage;
 
 /* Create new UserData tables for new packapps and pre-populate with usernames */
-CREATE TABLE `operationsData`.`storage_UserData` ( `username` VARCHAR(255) NOT NULL , `Role` ENUM('readonly','full') NOT NULL ) ENGINE = InnoDB;
-ALTER TABLE `operationsData`.`storage_UserData` ADD PRIMARY KEY (`username`);
-ALTER TABLE `storage_UserData` ADD CONSTRAINT `storageuserdata2masterusers` FOREIGN KEY (`username`) REFERENCES `master_users`(`username`) ON DELETE CASCADE ON UPDATE CASCADE;
-INSERT INTO storage_UserData (username) SELECT username FROM master_users;
+CREATE TABLE `operationsData`.`storage_UserData` ( `UserName` VARCHAR(255) NOT NULL , `Role` ENUM('readonly','receiving','full') NOT NULL ) ENGINE = InnoDB;
+ALTER TABLE `operationsData`.`storage_UserData` ADD PRIMARY KEY (`UserName`);
+ALTER TABLE `storage_UserData` ADD CONSTRAINT `storageuserdata2masterusers` FOREIGN KEY (`UserName`) REFERENCES `master_users`(`username`) ON DELETE CASCADE ON UPDATE CASCADE;
+INSERT INTO storage_UserData (UserName) SELECT username FROM master_users;
 
-CREATE TABLE `operationsData`.`maintenance_UserData` ( `username` VARCHAR(255) NOT NULL , `Role` ENUM('readonly','worker','readwrite') NOT NULL ) ENGINE = InnoDB;
-ALTER TABLE `operationsData`.`maintenance_UserData` ADD PRIMARY KEY (`username`);
-ALTER TABLE `maintenance_UserData` ADD CONSTRAINT `maintenanceuserdata2masterusers` FOREIGN KEY (`username`) REFERENCES `master_users`(`username`) ON DELETE CASCADE ON UPDATE CASCADE;
-INSERT INTO maintenance_UserData (username) SELECT username FROM master_users;
+CREATE TABLE `operationsData`.`maintenance_UserData` ( `UserName` VARCHAR(255) NOT NULL , `Role` ENUM('readonly','worker','readwrite') NOT NULL ) ENGINE = InnoDB;
+ALTER TABLE `operationsData`.`maintenance_UserData` ADD PRIMARY KEY (`UserName`);
+ALTER TABLE `maintenance_UserData` ADD CONSTRAINT `maintenanceuserdata2masterusers` FOREIGN KEY (`UserName`) REFERENCES `master_users`(`username`) ON DELETE CASCADE ON UPDATE CASCADE;
+INSERT INTO maintenance_UserData (UserName) SELECT username FROM master_users;
 
 /* Create new permissions table, prepopulate with existing packapps */
-CREATE TABLE `operationsData`.`packapps_app_permissions` ( `packapp` VARCHAR(255) NOT NULL , `Role` INT NOT NULL , `Meaning` VARCHAR(255) NOT NULL , `Color` VARCHAR(255) NOT NULL , `Notes` VARCHAR(1023) NULL) ENGINE = InnoDB;
-ALTER TABLE `operationsData`.`packapps_app_permissions` ADD PRIMARY KEY (`packapp`, `Role`);
+CREATE TABLE `operationsData`.`packapps_app_permissions` ( `packapp` VARCHAR(255) NOT NULL , `permissionLevel` INT NOT NULL , `Meaning` VARCHAR(255) NOT NULL , `Color` VARCHAR(255) NOT NULL , `Notes` VARCHAR(1023) NULL) ENGINE = InnoDB;
+ALTER TABLE `operationsData`.`packapps_app_permissions` ADD PRIMARY KEY (`packapp`, `permissionLevel`);
 ALTER TABLE `packapps_app_permissions` ADD CONSTRAINT `app_permissions_2_appProperties` FOREIGN KEY (`packapp`) REFERENCES `packapps_appProperties`(`short_app_name`) ON DELETE CASCADE ON UPDATE CASCADE;
-INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('quality', '1', 'Weight Input Only', 'Red', 'Redirects immediately to phone-based RT weighing.');
-INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('quality', '2', 'Receipt Inspector', 'Orange', 'Redirects to phone-based RT inspection.');
-INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('quality', '3', 'Full', 'Green', 'Complete access to QA system functions');
-INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('production', '1', 'Read-Only', 'Orange', 'Access to schedule, inventory, and chat, but no edits.');
-INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('production', '2', 'Full', 'Green', 'Complete access to production system with edits.');
-INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('purchasing', '0', 'No Purchases', 'Orange', 'Can create items, take inventory, and receive inventory, but cannot register new purchases.');
-INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('purchasing', '1', 'Full', 'Green', 'Full access to all purchasing functions.');
-INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('maintenance', '1', 'Read-Only', 'Red', '');
-INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('maintenance', '2', 'Worker', 'Orange', '');
-INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('maintenance', '3', 'Full', 'Green', '');
-INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('storage', '1', 'Read-Only', 'Red', '');
-INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('storage', '2', 'Receiving', 'Yellow', '');
-INSERT INTO packapps_app_permissions (packapp, Role, Meaning, Color, Notes) VALUES ('storage', '3', 'Full', 'Green', '');
+INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('quality', '1', 'Weight Input Only', 'Red', 'Redirects immediately to phone-based RT weighing.');
+INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('quality', '2', 'Receipt Inspector', 'Orange', 'Redirects to phone-based RT inspection.');
+INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('quality', '3', 'Full', 'Green', 'Complete access to QA system functions');
+INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('production', '1', 'Read-Only', 'Orange', 'Access to schedule, inventory, and chat, but no edits.');
+INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('production', '2', 'Full', 'Green', 'Complete access to production system with edits.');
+INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('purchasing', '1', 'No Purchases', 'Orange', 'Can create items, take inventory, and receive inventory, but cannot register new purchases.');
+INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('purchasing', '2', 'Full', 'Green', 'Full access to all purchasing functions.');
+INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('maintenance', '1', 'Read-Only', 'Red', '');
+INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('maintenance', '2', 'Worker', 'Orange', '');
+INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('maintenance', '3', 'Full', 'Green', '');
+INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('storage', '1', 'Read-Only', 'Red', '');
+INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('storage', '2', 'Receiving', 'Orange', '');
+INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('storage', '3', 'Full', 'Green', '');
 
 
 /* rename master_users table to reflect it is part of packapps framework */
@@ -82,6 +82,8 @@ RENAME TABLE AlertEmails TO quality_AlertEmails;
 RENAME TABLE AppleSamples TO quality_AppleSamples;
 RENAME TABLE InspectedRTs TO quality_InspectedRTs;
 RENAME TABLE run_inspections TO quality_run_inspections;
+/* Remove unused quality column */
+ALTER TABLE `quality_UserData` DROP `DateCreated`;
 
 /* Update views to match new table names */
 

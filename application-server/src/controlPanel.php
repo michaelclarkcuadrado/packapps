@@ -1,6 +1,6 @@
 <?php
 include 'config.php';
-include 'user_api.php';
+include 'packapps_api.php';
 
 //authentication
 if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
@@ -9,8 +9,6 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     die("<script>window.location.replace('/')</script>");
 } else {
     $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Real Name`, isSystemAdministrator, purchasing_UserData.Role as purchasingRole, production_UserData.Role+0 as productionRole, quality_UserData.Role+0 as qualityRole, storage_UserData.Role+0 as storageRole, maintenance_UserData.Role+0 as maintenanceRole, allowedProduction, allowedPurchasing, allowedQuality, allowedStorage, allowedMaintenance FROM packapps_master_users LEFT JOIN purchasing_UserData ON packapps_master_users.username=purchasing_UserData.Username LEFT JOIN quality_UserData ON packapps_master_users.username = quality_UserData.UserName LEFT JOIN production_UserData ON packapps_master_users.username = production_UserData.UserName LEFT JOIN maintenance_UserData ON packapps_master_users.username = maintenance_UserData.username LEFT JOIN storage_UserData ON packapps_master_users.username = storage_UserData.username WHERE packapps_master_users.username = '$SecuredUserName'"));
-
 }
 // end authentication
 
@@ -20,6 +18,35 @@ $installedPackapps = array();
 while($packapp = mysqli_fetch_array($packapps_query)){
     array_push($installedPackapps, array('short_app_name' => $packapp['short_app_name'], 'long_app_name' => $packapp['long_app_name']));
 }
+
+//create CheckAllowed query
+$checkAllowedQuery = "SELECT `Real Name`, isSystemAdministrator";
+//add table fields to query
+foreach($installedPackapps as $packapp){
+    $checkAllowedQuery .= ", ".$packapp['short_app_name']."_UserData.Role+0 AS ".$packapp['short_app_name']."Role";
+    $checkAllowedQuery .= ", allowed".ucfirst($packapp['short_app_name']);
+}
+$checkAllowedQuery .= " FROM packapps_master_users";
+//add table joins to query
+foreach($installedPackapps as $packapp){
+    $checkAllowedQuery .= " LEFT JOIN ".$packapp['short_app_name']."_UserData ON packapps_master_users.username=".$packapp['short_app_name']."_UserData.UserName";
+}
+$checkAllowed = mysqli_fetch_assoc(mysqli_query($mysqli, $checkAllowedQuery." WHERE packapps_master_users.username = '".$SecuredUserName."'"));
+
+
+//get permissions table
+$permissionsQuery = mysqli_query($mysqli, "SELECT packapp, permissionLevel, Meaning, Color FROM packapps_app_permissions");
+$permissionstable = array();
+while ($row = mysqli_fetch_assoc($permissionsQuery)){
+    if(isset($permissionstable[$row['packapp']])){
+        $permissionstable[$row['packapp']][$row['permissionLevel']] = array('Color' => $row['Color'], 'Meaning' => $row['Meaning']);
+    } else {
+        $permissionstable[$row['packapp']] = array($row['permissionLevel'] =>  array('Color' => $row['Color'], 'Meaning' => $row['Meaning']));
+    }
+}
+unset($permissionsQuery);
+
+/*Handle form requests here*/
 
 //create new User account
 if($checkAllowed['isSystemAdministrator'] > 0 && isset($_POST['newUserName']) && isset($_POST['newRealName']) && isset($_POST['newPassword'])) {
@@ -75,7 +102,7 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
             <span
-                class="mdl-layout-title">PackApps System Settings<?php echo($checkAllowed['isSystemAdministrator'] > 0 ? ': <mark>Administrator Mode</mark>' : ""); ?></span>
+                class="mdl-layout-title">PackApps System Settings<?php echo($checkAllowed['isSystemAdministrator'] > 0 ? ': <mark>Admin</mark>' : ""); ?></span>
             <div class="mdl-layout-spacer"></div>
         </div>
     </header>
@@ -142,7 +169,7 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
                     </form>
                 </div>
             </div>
-            <div class="mdl-cell--4-col mdl-cell mdl-card mdl-shadow--4dp">
+            <div class="mdl-cell--6-col mdl-cell mdl-cell--8-col-tablet mdl-card mdl-shadow--4dp">
                 <div class="mdl-card__title mdl-color--teal-300">
                     <h2 class="mdl-color-text--white mdl-card__title-text">Your Account Privileges</h2>
                 </div>
@@ -155,26 +182,11 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
                     </tr>
                     </thead>
                     <tbody id="selfAccountPrivilegesTable">
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Quality Panel</td>
-                        <td id="qualityEnabled" class="mdl-data-table__cell--non-numeric"></td>
-                        <td id="qualityRole" class="mdl-data-table__cell--non-numeric"></td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Production</td>
-                        <td id="productionEnabled" class="mdl-data-table__cell--non-numeric"></td>
-                        <td id="productionRole" class="mdl-data-table__cell--non-numeric"></td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Purchasing</td>
-                        <td id="purchasingEnabled" class="mdl-data-table__cell--non-numeric"></td>
-                        <td id="purchasingRole" class="mdl-data-table__cell--non-numeric"></td>
-                    </tr>
                     </tbody>
                 </table>
             </div>
             <div id='changeOwnPasswdCard'
-                 class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                 class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
                 <div class="mdl-card__title mdl-color--teal-300">
                     <h2 class="mdl-color-text--white mdl-card__title-text">Change your password</h2>
                 </div>
@@ -222,51 +234,17 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
 <script>
     var installedPackapps;
     var privilegeBlob;
+    var permissionsTable;
     $(document).ready(function () {
-        //get self account info
+        //get self account info and server state
         installedPackapps = "<?echo addslashes(json_encode($installedPackapps))?>";
         privilegeBlob = "<?echo addslashes(json_encode($checkAllowed))?>";
+        permissionsTable = "<?echo addslashes(json_encode($permissionstable))?>";
         privilegeBlob = JSON.parse(privilegeBlob);
         installedPackapps = JSON.parse(installedPackapps);
-
+        permissionsTable = JSON.parse(permissionsTable);
         //create self account info box
-        populateSelfInfoBox(privilegeBlob, installedPackapps);
-
-        console.log(installedPackapps);
-        console.log(privilegeBlob);
-        for(var i = 0; i < installedPackapps.length; i++){
-            var appAllowed = privilegeBlob['allowed'+capitalizeFirstLetter(installedPackapps[i]['short_app_name'])];
-            if(appAllowed > 0){
-                $('#'+installedPackapps[i]['short_app_name']+'Enabled').html("<span style='color: green'>Enabled</span>");
-                //$('#productionRole').html(getPrivilegeDescriptionHTML('production', privilegeBlob.productionRole));
-            } else {
-                $('#'+installedPackapps[i]['short_app_name']+'Enabled').html("<span style='color: red'>Disabled</span>");
-                $('#productionRole').html(getPrivilegeDescriptionHTML('production', 'Disabled'));
-            }
-        }
-        if (privilegeBlob.allowedProduction > 0) {
-            $('#productionEnabled').html("<span style='color: green'>Enabled</span>");
-            $('#productionRole').html(getPrivilegeDescriptionHTML('production', privilegeBlob.productionRole));
-        } else {
-            $('#productionEnabled').html("<span style='color: red'>Disabled</span>");
-            $('#productionRole').html(getPrivilegeDescriptionHTML('production', 'Disabled'));
-        }
-
-        if (privilegeBlob.allowedPurchasing > 0) {
-            $('#purchasingEnabled').html("<span style='color: green'>Enabled</span>");
-            $('#purchasingRole').html(getPrivilegeDescriptionHTML('purchasing', privilegeBlob.purchasingRole));
-        } else {
-            $('#purchasingEnabled').html("<span style='color: red'>Disabled</span>");
-            $('#purchasingRole').html(getPrivilegeDescriptionHTML('purchasing', 'Disabled'));
-        }
-
-        if (privilegeBlob.allowedQuality > 0) {
-            $('#qualityEnabled').html("<span style='color: green'>Enabled</span>");
-            $('#qualityRole').html(getPrivilegeDescriptionHTML('quality', privilegeBlob.qualityRole));
-        } else {
-            $('#qualityEnabled').html("<span style='color: red'>Disabled</span>");
-            $('#qualityRole').html(getPrivilegeDescriptionHTML('quality', 'Disabled'));
-        }
+        populateSelfInfoBox();
 
         if (<?echo($checkAllowed['isSystemAdministrator'] > 0 ? 'true' : 'false')?>) {
             setupUserCards();
@@ -278,98 +256,39 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
         $.getJSON('getUserAccountList.php', function (data) {
             var stringToInject = "";
             for (var user in data) {
-                stringToInject += "<div class='mdl-cell mdl-cell--4-col mdl-card mdl-shadow--4dp'"
-                    + (data[user]['isDisabled'] > 0 ? "style='opacity: .5'" : '')
-                    + "><div class='mdl-card__title mdl-color--yellow-300'><h2 class='mdl-card__title-text'>"
-                    + data[user]['Real Name']
-                    + "</h2></div><table style='width:100%;' class='mdl-card__supporting-text mdl-data-table mdl-js-data-table'><thead><tr><th class='mdl-data-table__cell--non-numeric'>App</th><th class='mdl-data-table__cell--non-numeric'>Status</th><th class='mdl-data-table__cell--non-numeric'>Access Level</th></tr></thead><tbody><tr><td class='mdl-data-table__cell--non-numeric'>Quality</td><td class='mdl-data-table__cell--non-numeric'><label class='mdl-switch mdl-js-switch mdl-js-ripple-effect' for='switch-quality-"
-                    + data[user]['username']
-                    + "'><input type='checkbox' id='switch-quality-"
-                    + data[user]['username']
-                    + "' name='quality_"
-                    + data[user]['username']
-                    + "_switch' class='enableSwitch mdl-switch__input' "
-                    + (data[user]['allowedQuality'] > 0 ? 'checked' : '')
-                    + "></label></td><td style='padding-left:0; padding-right: 0'><p style='width:100%; margin-bottom: 0; text-align: center'><input class='quality_slider mdl-slider mdl-js-slider' id='"
-                    + data[user]['username']
-                    + "_quality_slider' name='"
-                    + data[user]['username']
-                    + "_quality_slider' type='range' min='1' max='3' value='"
-                    + data[user]['qualityRole']
-                    + "'><div style='text-align: center' id='"
-                    + data[user]['username']
-                    + "_quality_accesslevel'></div></p></td></tr><tr><td class='mdl-data-table__cell--non-numeric'>Production</td><td class='mdl-data-table__cell--non-numeric'><label class='mdl-switch mdl-js-switch mdl-js-ripple-effect' for='switch-production-"
-                    + data[user]['username']
-                    + "'><input type='checkbox' id='switch-production-"
-                    + data[user]['username']
-                    + "' name='production_"
-                    + data[user]['username']
-                    + "_switch' class='enableSwitch mdl-switch__input' "
-                    + (data[user]['allowedProduction'] > 0 ? 'checked' : '')
-                    + "></label></td><td style='padding-left:0; padding-right: 0'><p style='width:100%; margin-bottom: 0; text-align: center'><input class='production_slider mdl-slider mdl-js-slider' id='"
-                    + data[user]['username']
-                    + "_production_slider' name='"
-                    + data[user]['username']
-                    + "_production_slider' type='range' min='1' max='2' value='"
-                    + data[user]['productionRole']
-                    + "'><div style='text-align: center' id='"
-                    + data[user]['username']
-                    + "_production_accesslevel'></div></p></td></tr><tr><td class='mdl-data-table__cell--non-numeric'>Purchasing</td><td class='mdl-data-table__cell--non-numeric'><label class='mdl-switch mdl-js-switch mdl-js-ripple-effect' for='switch-purchasing-"
-                    + data[user]['username']
-                    + "'><input type='checkbox' id='switch-purchasing-"
-                    + data[user]['username']
-                    + "' name='purchasing_"
-                    + data[user]['username']
-                    + "_switch' class='enableSwitch mdl-switch__input' "
-                    + (data[user]['allowedPurchasing'] > 0 ? 'checked' : '')
-                    + "></label></td><td style='padding-left:0; padding-right: 0'><p style='width:100%; margin-bottom: 0; text-align: center'><input class='purchasing_slider mdl-slider mdl-js-slider' id='"
-                    + data[user]['username']
-                    + "_purchasing_slider' name='"
-                    + data[user]['username']
-                    + "_purchasing_slider' type='range' min='1' max='2' value='"
-                    + data[user]['purchasingRole']
-                    + "'><div style='text-align: center' id='"
-                    + data[user]['username']
-                    + "_purchasing_accesslevel'></div></p></td></tr><tr><td class='mdl-data-table__cell--non-numeric'>Maintenance</td><td class='mdl-data-table__cell--non-numeric'><label class='mdl-switch mdl-js-switch mdl-js-ripple-effect' for='switch-maintenance-"
-                    + data[user]['username']
-                    + "'><input type='checkbox' id='switch-maintenance-"
-                    + data[user]['username']
-                    + "' name='maintenance_"
-                    + data[user]['username']
-                    + "_switch' class='enableSwitch mdl-switch__input' "
-                    + (data[user]['allowedMaintenance'] > 0 ? 'checked' : '')
-                    + "></label></td><td style='padding-left:0; padding-right: 0'><p style='width:100%; margin-bottom: 0; text-align: center'><input class='maintenance_slider mdl-slider mdl-js-slider' id='"
-                    + data[user]['username']
-                    + "_maintenance_slider' name='"
-                    + data[user]['username']
-                    + "_maintenance_slider' type='range' min='1' max='3' value='"
-                    + data[user]['maintenanceRole']
-                    + "'><div style='text-align: center' id='"
-                    + data[user]['username']
-                    + "_maintenance_accesslevel'></div></p></td></tr></tbody></table><div style='margin-left: 17px;' class='mdl-card__subtitle-text'>User Name: "
-                    + data[user]['username']
-                    + "<br>Last Login: "
-                    + data[user]['lastLogin']
-                    + "</div><div class='mdl-card--border mdl-card__actions'><a data-username='"
-                    + data[user]['username']
-                    + "' class='mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect password-resetter'>Reset Password </a></div><div class='mdl-card__menu'><button id='toggle_disable_"
-                    + data[user]['username']
-                    + "' class='mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect user-toggle'><i class='material-icons'>"
-                    + (data[user]['isDisabled'] > 0 ? 'lock' : 'lock_open')
-                    + "</i></button><div class='mdl-tooltip' for='toggle_disable_"
-                    + data[user]['username']
-                    + "'>"
-                    + (data[user]['isDisabled'] > 0 ? 'Unlock User' : 'Lock User')
-                    + "</div></div></div>";
+                if(data.hasOwnProperty(user)){
+                    stringToInject += "<div class='mdl-cell mdl-cell--4-col mdl-card mdl-shadow--4dp'"
+                        + (data[user]['isDisabled'] > 0 ? "style='opacity: .5'" : '')
+                        + "><div class='mdl-card__title mdl-color--yellow-300'><h2 class='mdl-card__title-text'>"
+                        + data[user]['Real Name']
+                        + "</h2></div><table style='width:100%;' class='mdl-card__supporting-text mdl-data-table mdl-js-data-table'><thead><tr><th class='mdl-data-table__cell--non-numeric'>App</th><th class='mdl-data-table__cell--non-numeric'>Status</th><th class='mdl-data-table__cell--non-numeric'>Access Level</th></tr></thead><tbody>"
+                        + createUserCardAppRows(data[user])
+                        + "</tbody></table><div style='margin-left: 17px;' class='mdl-card__subtitle-text'>User Name: "
+                        + data[user]['username']
+                        + "<br>Last Login: "
+                        + data[user]['lastLogin']
+                        + "</div><div class='mdl-card--border mdl-card__actions'><a data-username='"
+                        + data[user]['username']
+                        + "' class='mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect password-resetter'>Reset Password </a></div><div class='mdl-card__menu'><button id='toggle_disable_"
+                        + data[user]['username']
+                        + "' class='mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect user-toggle'><i class='material-icons'>"
+                        + (data[user]['isDisabled'] > 0 ? 'lock' : 'lock_open')
+                        + "</i></button><div class='mdl-tooltip' for='toggle_disable_"
+                        + data[user]['username']
+                        + "'>"
+                        + (data[user]['isDisabled'] > 0 ? 'Unlock User' : 'Lock User')
+                        + "</div></div></div>";
+                }
             }
             $('#injectUsersHere').append(stringToInject);
             componentHandler.upgradeDom();
             //label access levels on usercards, plus attach listeners
             $('.enableSwitch').each(function (index) {
+                //get info from switch, 0=packapp, 1=username, 2='switch'
                 var curElemData = $(this).attr('name').split('_');
                 if ($(this).is(':checked')) {
-                    var level = $('#' + curElemData[1] + '_' + curElemData[0] + '_slider').val()
-                    $('#' + curElemData[1] + '_' + curElemData[0] + '_accesslevel').html(getPrivilegeDescriptionHTML(curElemData[0], numericAccessLeveltoDescription(curElemData[0], level)));
+                    var level = $('#' + curElemData[1] + '_' + curElemData[0] + '_slider').val();
+                    $('#' + curElemData[1] + '_' + curElemData[0] + '_accesslevel').html(getPrivilegeDescriptionHTML(curElemData[0], level));
                 } else {
                     $('#' + curElemData[1] + '_' + curElemData[0] + '_accesslevel').html(getPrivilegeDescriptionHTML(curElemData[0], 'Disabled'));
                     $('#' + curElemData[1] + '_' + curElemData[0] + '_slider').attr('disabled', true);
@@ -389,19 +308,18 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
                     success: function () {
                         if (checkboxValue) {
                             $('#' + infoArray[1] + '_' + infoArray[0] + '_slider').val(1).attr('disabled', false);
-                            $('#' + infoArray[1] + '_' + infoArray[0] + '_accesslevel').html(getPrivilegeDescriptionHTML(infoArray[0], numericAccessLeveltoDescription(infoArray[0], 1)));
+                            $('#' + infoArray[1] + '_' + infoArray[0] + '_accesslevel').html(getPrivilegeDescriptionHTML(infoArray[0], 1));
                         } else {
                             $('#' + infoArray[1] + '_' + infoArray[0] + '_slider').val(1).attr('disabled', true);
                             $('#' + infoArray[1] + '_' + infoArray[0] + '_accesslevel').html("<span style='color: red'>Disabled</span>");
                         }
                     },
                     error: function () {
-                        $('#' + infoArray[0] + '_' + infoArray[1] + '_accesslevel').html("<span style='color: red'>ERROR</span>");
+                        $('#' + infoArray[1] + '_' + infoArray[0] + '_accesslevel').html("<span style='color: red'>ERROR</span>");
                     }
                 });
             });
-
-            $('.quality_slider, .production_slider, .purchasing_slider, .maintenance_slider').on('input', function () {
+            $('.slider').on('input', function () {
                 var infoArray = $(this).attr('name').split('_');
                 var numericLevel = $(this).val();
                 $.ajax({
@@ -411,10 +329,10 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
                         'packapp': infoArray[1],
                         'userUnderEdit': infoArray[0],
                         'propUnderEdit': 'AccessLevel',
-                        'propValue': numericAccessLeveltoDescription(infoArray[1], numericLevel)
+                        'propValue': numericLevel
                     },
                     success: function () {
-                        $('#' + infoArray[0] + '_' + infoArray[1] + '_accesslevel').html(getPrivilegeDescriptionHTML(infoArray[1], numericAccessLeveltoDescription(infoArray[1], numericLevel)));
+                        $('#' + infoArray[0] + '_' + infoArray[1] + '_accesslevel').html(getPrivilegeDescriptionHTML(infoArray[1], numericLevel));
                     },
                     error: function () {
                         $('#' + infoArray[0] + '_' + infoArray[1] + '_accesslevel').html("<span style='color: red'>ERROR</span>");
@@ -444,89 +362,60 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
         });
     }
 
-    function populateSelfInfoBox(privilegeBlob, installedPackapps){
-
+    function createUserCardAppRows(userData){
+        var userCardAppRowsToInject = "";
+        for(var packapp in installedPackapps){
+            userCardAppRowsToInject += "<tr><td class='mdl-data-table__cell--non-numeric'>"
+            + capitalizeFirstLetter(installedPackapps[packapp]['short_app_name']) + "</td><td class='mdl-data-table__cell--non-numeric'><label class='mdl-switch mdl-js-switch mdl-js-ripple-effect' for='switch-"
+            + installedPackapps[packapp]['short_app_name']+"-"
+            + userData['username']
+            + "'><input type='checkbox' id='switch-"+installedPackapps[packapp]['short_app_name']+"-"
+            + userData['username']
+            + "' name='"+installedPackapps[packapp]['short_app_name']+"_"
+            + userData['username']
+            + "_switch' class='enableSwitch mdl-switch__input' "
+            + (userData['allowed'+capitalizeFirstLetter(installedPackapps[packapp]['short_app_name'])] > 0 ? 'checked' : '')
+            + "></label></td><td style='padding-left:0; padding-right: 0'><p style='width:100%; margin-bottom: 0; text-align: center'><input class='slider mdl-slider mdl-js-slider' id='"
+            + userData['username']
+            + "_"+installedPackapps[packapp]['short_app_name']+"_slider' name='"
+            + userData['username']
+            + "_"+installedPackapps[packapp]['short_app_name']+"_slider' type='range' min='1' max='"
+            + Object.keys(permissionsTable[installedPackapps[packapp]['short_app_name']]).length
+            + "' value='"
+            + userData[installedPackapps[packapp]['short_app_name']+'Role']
+            + "'><div style='text-align: center' id='"
+            + userData['username']
+            + "_"+installedPackapps[packapp]['short_app_name']+"_accesslevel'></div></p></td></tr>";
+        }
+        return userCardAppRowsToInject;
     }
 
-    //converts slider value into a level that can be passed to getPrivilegeDescriptionHTML() or inserted into database
-    function numericAccessLeveltoDescription(packApp, numericLevel) {
-        if (packApp == 'quality') {
-            if (numericLevel == '1') {
-                return 'Weight';
-            } else if (numericLevel == '2') {
-                return 'INS';
-            } else if (numericLevel == '3') {
-                return 'QA';
+    function populateSelfInfoBox(){
+        //create "Your account privileges rows"
+        var stringToInsert = "";
+        for(var packapp in installedPackapps){
+            stringToInsert += "<tr><td class=\"mdl-data-table__cell--non-numeric\">"+installedPackapps[packapp]['long_app_name']+"</td><td id=\""+installedPackapps[packapp]['short_app_name']+"Enabled\" class=\"mdl-data-table__cell--non-numeric\"></td><td id=\""+installedPackapps[packapp]['short_app_name']+"Role\" class=\"mdl-data-table__cell--non-numeric\"></td></tr>";
+        }
+        $("#selfAccountPrivilegesTable").html(stringToInsert);
+
+        //fill the rows
+        for(var i = 0; i < installedPackapps.length; i++){
+            var appAllowed = privilegeBlob['allowed'+capitalizeFirstLetter(installedPackapps[i]['short_app_name'])];
+            if(appAllowed > 0){
+                $('#'+installedPackapps[i]['short_app_name']+'Enabled').html("<span style='color: green'>Enabled</span>");
+                $('#'+installedPackapps[i]['short_app_name']+'Role').html(getPrivilegeDescriptionHTML(installedPackapps[i]['short_app_name'], privilegeBlob[installedPackapps[i]['short_app_name']+'Role']));
             } else {
-                return 'error';
+                $('#'+installedPackapps[i]['short_app_name']+'Enabled').html("<span style='color: red'>Disabled</span>");
+                $('#'+installedPackapps[i]['short_app_name']+'Role').html(getPrivilegeDescriptionHTML(installedPackapps[i]['short_app_name'], 'Disabled'));
             }
-        } else if (packApp == 'production') {
-            if (numericLevel == '1') {
-                return 'ReadOnly';
-            } else if (numericLevel == '2') {
-                return 'Production';
-            } else {
-                return 'error';
-            }
-        }  else if (packApp == 'maintenance') {
-            if (numericLevel == '1') {
-                return 'ReadOnly';
-            } else if (numericLevel == '2') {
-                return 'worker';
-            } else if (numericLevel == '3'){
-                return 'Full'
-            } else {
-                return 'error';
-            }
-        } else if (packApp == 'purchasing') {
-            //purchasing uses a boolean 1 or 0 as access level
-            return numericLevel - 1;
-        } else {
-            return 'error';
         }
     }
 
     function getPrivilegeDescriptionHTML(packApp, level) {
-        if (level == 'Disabled') {
+        if (level == 'Disabled' || level == 0) {
             return "<span style='color: red'>Disabled</span>";
         }
-        if (packApp == 'quality') {
-            if (level == "QA") {
-                return "<span style='color: green'>Full</span>";
-            } else if (level == "INS") {
-                return "<span style='color: orange'>Receipt Inspector</span>";
-            } else if (level == "Weight") {
-                return "<span style='color: red'>Weight Input Only</span>";
-            } else {
-                return "error";
-            }
-        } else if (packApp == 'production') {
-            if (level == 'Production') {
-                return "<span style='color: green'>Full</span>";
-            } else if (level == "ReadOnly") {
-                return "<span style='color: orange'>Read-Only</span>";
-            } else {
-                return "error";
-            }
-        } else if (packApp == 'maintenance') {
-            if (level == 'Full') {
-                return "<span style='color: green'>Full</span>";
-            } else if (level == "worker") {
-                return "<span style='color: orange'>Worker</span>";
-            } else if (level == "ReadOnly") {
-                return "<span style='color: red'>Read-Only</span>";
-            } else {
-                return "error";
-            }
-        } else if (packApp == 'purchasing') {
-            if (level == 1) {
-                return "<span style='color: green'>Full</span>";
-            } else if (level == 0) {
-                return "<span style='color: orange'>No Purchases</span>";
-            } else {
-                return "error";
-            }
-        }
+        return "<span style='color: "+permissionsTable[packApp][level]['Color']+"'>"+permissionsTable[packApp][level]['Meaning']+"</span>";
     }
 
     function capitalizeFirstLetter(string) {

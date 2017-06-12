@@ -8,7 +8,7 @@
 
 require_once('scripts/Mobile_Detect.php');
 include 'config.php';
-include 'user_api.php';
+include 'packapps_api.php';
 
 $errormsg = "To finish setup, create the administrator account.";
 

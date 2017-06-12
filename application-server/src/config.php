@@ -1,5 +1,16 @@
 <?php
-//These are the settings for the packapps server. Any setting in quotes may be changed to reflect the current operating environment.
+//Internal packapps variables
+$packapps_version = 2;
+$isOnAWSBackend = false;
+$isManagedByOrchestration = false;
+$orchestraionServerURL = '';
+$AWS_ACCESS_KEY_ID = 0;
+$AWS_SECRET_ACCESS_KEY = 0;
+//companyName is user presentable, companyShortName is internal and the deployment ID
+$companyShortName = 'devenv';
+$companyName = 'DEVELOPMENT ENV';
+
+
 //MYSQL Server Details
 $dbhost = "database-server";
 $dbusername = "packapps";
@@ -7,8 +18,6 @@ $dbpassword = "packapps";
 $dbport = "3306";
 $operationsDatabase = 'operationsData';
 $growerDB = 'growerReporting';
-$companyName = 'DEVELOPMENT ENV';
-$packapps_version = 2;
 
 //QA SMTP Server Details
 $smtpHost = '';

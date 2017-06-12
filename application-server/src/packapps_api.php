@@ -9,7 +9,31 @@
 include 'scripts/APR1_MD5.php';
 use WhiteHat101\Crypt\APR1_MD5;
 
-/* Only runs once. Updates the system_info row */
+/**
+ * Authorizes a user to be logged into packapps, or a certain packapp if specified
+ * @param null $packapp
+ */
+function packapps_authenticate_user($packapp = null){
+    if($packapp != null){
+
+    } else {
+
+    }
+}
+
+/**
+ *  Authenticates if a user is a system administrator
+ */
+function packapps_authenticate_admin(){
+
+}
+
+
+
+/**
+ * Only runs once, initializes system_info row and folders if necessary
+ * @param $mysqli
+ */
 function initialize_packapps($mysqli){
     mysqli_query($mysqli, "UPDATE packapps_system_info SET systemInstalled=1, dateInstalled=CURRENT_TIMESTAMP()");
 }
@@ -24,21 +48,30 @@ function initialize_packapps($mysqli){
  * @return string
  */
 function createNewPackappsUser($mysqli, $realName, $userName, $newPassword, $isSystemAdministrator){
-        $isFirstUser = !mysqli_num_rows(mysqli_query($mysqli, "SELECT username FROM packapps_master_users"));
         $realName = mysqli_real_escape_string($mysqli, $realName);
         $userName = mysqli_real_escape_string($mysqli, $userName);
         $newPassword = APR1_MD5::hash(mysqli_real_escape_string($mysqli, $newPassword));
         mysqli_query($mysqli, "INSERT INTO packapps_master_users (username, `Real Name`, `Password`, isSystemAdministrator) VALUES ('$userName', '$realName', '$newPassword', '$isSystemAdministrator')");
-        mysqli_query($mysqli, "INSERT INTO quality_UserData (username, DateCreated) VALUES ('$userName', NOW())");
-        mysqli_query($mysqli, "INSERT INTO production_UserData (username) VALUES ('$userName')");
-        mysqli_query($mysqli, "INSERT INTO purchasing_UserData (username) VALUES ('$userName')");
-        mysqli_query($mysqli, "INSERT INTO storage_UserData (username) VALUES ('$userName')");
-        mysqli_query($mysqli, "INSERT INTO maintenance_UserData (username) VALUES ('$userName')");
-    if(mysqli_errno($mysqli)){
+        //enumerate packapps
+        $packapps_query = mysqli_query($mysqli, "SELECT short_app_name, long_app_name FROM packapps_appProperties WHERE isEnabled = 1");
+        while($packapp = mysqli_fetch_assoc($packapps_query)){
+            mysqli_query($mysqli, "INSERT INTO ".$packapp['short_app_name']."_UserData (username) VALUES ('$userName')");
+        }
+        if(mysqli_errno($mysqli)){
             die("Could not set info for new user.");
         }
 }
 
+/**
+ * changes a user's password
+ *
+ * @param $mysqli
+ * @param $userName
+ * @param $oldPassword
+ * @param $newPassword
+ * @param $confirmNewPassword - should be same as newPassword
+ * @return string - Returns a user-displayable html status message
+ */
 function changePassword($mysqli, $userName, $oldPassword, $newPassword, $confirmNewPassword){
     $SecuredUserName = mysqli_real_escape_string($mysqli, $userName);
     $newPassword = mysqli_real_escape_string($mysqli, $newPassword);
