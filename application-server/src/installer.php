@@ -17,9 +17,13 @@ if(isset($_POST['username']) && isset($_POST['realname']) && isset($_POST['passw
     if($_POST['password'] != $_POST['password_confirm']){
         $errormsg = "Those passwords did not match. Please try again.";
     } else {
-        initialize_packapps($mysqli);
-        createNewPackappsUser($mysqli, $_POST['realname'], $_POST['username'], $_POST['password'], 1);
-        die ("<script>window.location.replace('/')</script>");
+        if (initialize_packapps($mysqli)){
+
+        } else {
+            createNewPackappsUser($mysqli, $_POST['realname'], $_POST['username'], $_POST['password'], 1);
+            die ("<script>window.location.replace('/')</script>");
+        }
+
     }
 }
 

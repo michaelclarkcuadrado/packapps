@@ -43,9 +43,6 @@ $pendingstarchdata=mysqli_query($mysqli2, "select Preharvest_Samples.Grower as G
     <!--[if lte IE 8]><script src="../assets/js/ie/respond.min.js"></script><![endif]-->
 </head>
 <body>
-<div style="float: right; text-align: right; background-color: deepskyblue; border-radius: 5px; padding: 3px; border: 2px solid gray" id="username">
-    <i class="fa fa-lock"></i> Logged in as <u><?echo $RealName['UserRealName']?></u>
-</div>
 <!-- Wrapper-->
 <div id="wrapper">
     <!-- Nav -->
@@ -65,7 +62,7 @@ $pendingstarchdata=mysqli_query($mysqli2, "select Preharvest_Samples.Grower as G
     <div id="main">
 
         <!-- Welcome Screen -->
-        <article id="welcome" class="panel">
+        <article id="welcome" class="panel" style="margin-bottom: 0">
             <header>
                 <h1><i class="fa fa-stethoscope"></i> Pre-Harvest Publishing Mode</h1>
 	            <p>Logged in as <i class="icon fa-leaf"></i><?echo $RealName['UserRealName']?></p>
@@ -80,7 +77,7 @@ $pendingstarchdata=mysqli_query($mysqli2, "select Preharvest_Samples.Grower as G
         <article id="preharvest" class="panel">
             <header>
                 <h2>Pre-Harvest Sample Evaluation</h2>
-                <p>Rice Fruit Company Quality Assurance Lab</p>
+                <p><?echo $companyName?> Quality Assurance Lab</p>
             </header>
             <? if(isset($_GET['ph-block'])){echo "<h2><span class='fa fa-check-circle'></span><b> Data for Block ID-".$_GET['ph-block']." received.</b></h2><br>";}?>
             <hr>
@@ -119,7 +116,7 @@ $pendingstarchdata=mysqli_query($mysqli2, "select Preharvest_Samples.Grower as G
         <article id="FTApreharvest" class="panel">
             <header>
                 <h2>Pre-Harvest Sample Evaluation</h2>
-                <p>Rice Fruit Company Quality Assurance Lab</p>
+                <p><?echo $companyName?> Quality Assurance Lab</p>
             </header>
             <? if(isset($_GET['phfta-block'])){echo "<h2><span class='fa fa-check-circle'></span><b> Data for Block ID-".$_GET['ph-block']." received.</b></h2><br>";}?>
             <hr><form enctype='multipart/form-data' id="ftaup" action='ftadata.php' method='post'><table>

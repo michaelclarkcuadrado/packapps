@@ -35,7 +35,12 @@ function packapps_authenticate_admin(){
  * @param $mysqli
  */
 function initialize_packapps($mysqli){
+
     mysqli_query($mysqli, "UPDATE packapps_system_info SET systemInstalled=1, dateInstalled=CURRENT_TIMESTAMP()");
+    if (mysqli_errno($mysqli)){
+        die("Could not install system.");
+
+    }
 }
 
 /**
