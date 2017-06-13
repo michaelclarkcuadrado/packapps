@@ -1,5 +1,5 @@
 <?php
-include '../config.php';
+require '../config.php';
 
 //authentication
 if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
@@ -421,7 +421,7 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
                             + item
                             + ", '"
                             + data[item]['ItemDesc']
-                            + "')\" class='mdl-menu__item'>Edit Suppliers and Quotes</li><li onclick=\"location.href='filemanager.php#Item_Docs/"
+                            + "')\" class='mdl-menu__item'>Edit Suppliers and Quotes</li><li onclick=\"location.href='filemanager.php#Assets/Item_Docs/"
                             + item
                             + "'\" class='mdl-menu__item'>Item Assets & Art</li><li class='mdl-menu__item' onclick='disableItem("
                             + item

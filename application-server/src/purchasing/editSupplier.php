@@ -5,7 +5,7 @@
  * Date: 6/30/2016
  * Time: 9:43 AM
  */
-include '../config.php';
+require '../config.php';
 
 //authentication
 if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {

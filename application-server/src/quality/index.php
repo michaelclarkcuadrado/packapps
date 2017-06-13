@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <?php
-include '../config.php';
+require '../config.php';
 
 //authentication
 if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {

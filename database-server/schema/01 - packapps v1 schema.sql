@@ -55,7 +55,7 @@ CREATE TABLE `AlertEmails` (
   `EmailAddress` varchar(255) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `FullName` (`FullName`,`EmailAddress`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -434,7 +434,7 @@ CREATE TABLE `production_chat` (
   PRIMARY KEY (`ID`),
   KEY `Line` (`Line`),
   KEY `User` (`User`)
-) ENGINE=InnoDB AUTO_INCREMENT=4990 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -498,7 +498,7 @@ CREATE TABLE `production_runs` (
   KEY `Line` (`Line`),
   KEY `lastEdited` (`lastEdited`),
   KEY `RunNumber` (`RunNumber`)
-) ENGINE=InnoDB AUTO_INCREMENT=2329 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -601,7 +601,7 @@ CREATE TABLE `purchasing_ItemTypes` (
   `UnitOfMeasure` varchar(255) NOT NULL DEFAULT 'Units',
   `WeeksToResupply` int(11) NOT NULL,
   PRIMARY KEY (`Type_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -621,7 +621,7 @@ CREATE TABLE `purchasing_Items` (
   PRIMARY KEY (`Item_ID`),
   KEY `Type_ID` (`Type_ID`),
   CONSTRAINT `purchasing_Items_ibfk_1` FOREIGN KEY (`Type_ID`) REFERENCES `purchasing_ItemTypes` (`Type_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=224 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -642,7 +642,7 @@ CREATE TABLE `purchasing_Suppliers` (
   `preferredContactMethod` enum('Phone','Email','Website','') NOT NULL,
   `lastInteracted` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`SupplierID`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -699,7 +699,7 @@ CREATE TABLE `purchasing_purchase_history` (
   PRIMARY KEY (`Purchase_ID`),
   KEY `SupplierID` (`SupplierID`),
   CONSTRAINT `purchasing_purchase_history_ibfk_2` FOREIGN KEY (`SupplierID`) REFERENCES `purchasing_Suppliers` (`SupplierID`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -965,7 +965,7 @@ CREATE TABLE `GrowerGroups` (
   `GroupID` int(11) NOT NULL,
   `GrowerCode` varchar(2) NOT NULL,
   PRIMARY KEY (`PK`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1082,7 +1082,7 @@ CREATE TABLE `crop-estimates` (
   `2016hail` int(11) NOT NULL,
   PRIMARY KEY (`PK`),
   KEY `Grower` (`Grower`)
-) ENGINE=InnoDB AUTO_INCREMENT=3744 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1121,7 +1121,7 @@ CREATE TABLE `growerCalendar` (
   `EndDate` date DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `Grower` (`Grower`)
-) ENGINE=InnoDB AUTO_INCREMENT=144 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

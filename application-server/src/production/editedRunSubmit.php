@@ -1,6 +1,6 @@
 <?php
 //uploads an edited run
-include '../config.php';
+require '../config.php';
 //authentication
 if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     die("<script>window.location.replace('/')</script>");
@@ -36,6 +36,6 @@ for ($i = 1; $_POST['productMade' . $i]; $i++) {
     mysqli_query($mysqli, "INSERT INTO production_product_needed VALUES ('" . $ID . "', '" . mysqli_real_escape_string($mysqli, $_POST['productMade' . $i]) . "', '" . mysqli_real_escape_string($mysqli, $_POST['packSize' . $i]) . "', '" . mysqli_real_escape_string($mysqli, $_POST['madeAmount' . $i]) . "', '" . mysqli_real_escape_string($mysqli, $_POST['amountType' . $i]) . "')") or die(mysqli_error($mysqli));
 }
 if(!isset($_GET['duplicate'])) {
-    mysqli_query($mysqli, "INSERT INTO production_chat VALUES ('', '" . $_POST['Line'] . "', '" . mysqli_real_escape_string($mysqli, $SecuredUserName) . "', 'Run #" . mysqli_real_escape_string($mysqli, $_POST['runNum']) . " edited.')");
+    mysqli_query($mysqli, "INSERT INTO production_chat VALUES ('', '" . $_POST['Line'] . "', '" . mysqli_real_escape_string($mysqli, $SecuredUserName) . "', 'Run #" . mysqli_real_escape_string($mysqli, $_POST['runNum']) . " added to schedule.')");
 }
 echo "<script>window.close()</script>";

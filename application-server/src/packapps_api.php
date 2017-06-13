@@ -14,6 +14,7 @@ use WhiteHat101\Crypt\APR1_MD5;
  * @param null $packapp
  */
 function packapps_authenticate_user($packapp = null){
+
     if($packapp != null){
 
     } else {
@@ -28,7 +29,71 @@ function packapps_authenticate_admin(){
 
 }
 
+/**
+ * Uploads a file to an S3 bucket
+ * @param $bucketName - bucket to upload to
+ * @param $fileToUpload - path to file
+ * @param $fileNewName - new file name, including directory
+ * @return string url of file
+ */
+function uploadToS3($bucketName, $fileToUpload, $fileNewName){
+    require 'config.php';
+    if(!in_array($bucketName, $availableBuckets)){
+        die("Bucket not found!");
+    }
+    require_once 'scripts/aws/aws-autoloader.php';
+    $s3client = new Aws\S3\S3Client([
+        'version' => 'latest',
+        'region'  => 'us-east-2'
+    ]);
+    try{
+        $status = $s3client->putObject(array(
+            'Bucket' => $bucketName,
+            'Key' => $companyShortName.'-'.$fileNewName,
+            'SourceFile' => $fileToUpload
+        ));
+        return $status;
+    } catch (S3Exception $e) {
+        echo $e->getMessage() . "\n Failed!";
+        die();
+    }
+}
 
+/**
+ * Download a stored file from S3.
+ *
+ * Example usage:
+ * $result = downloadFromS3('packapps-quality-uploadedimages', 'test.jpg');
+ * header("Content-Type: {$result['ContentType']}");
+ * echo $result['Body'];
+ *
+ * @param $bucketName
+ * @param $filename
+ * @return \Aws\Result Useful attribs: ['ContentType'], ['Body']. Null if no key
+ */
+function downloadFromS3($bucketName, $filename){
+    require 'config.php';
+    if(!in_array($bucketName, $availableBuckets)){
+        die("Bucket not found!");
+    }
+    require_once 'scripts/aws/aws-autoloader.php';
+    $s3client = new Aws\S3\S3Client([
+        'version' => 'latest',
+        'region'  => 'us-east-2'
+    ]);
+    try {
+        $status = $s3client->getObject([
+            'Bucket' => $bucketName,
+            'Key' => $companyShortName . '-' . $filename
+        ]);
+        return $status;
+    } catch (NoSuchKeyException $e){
+        return null;
+    } catch (S3Exception $e) {
+        echo $e->getMessage() . "\n Failed!";
+        die();
+    }
+}
 
 /**
  * Only runs once, initializes system_info row and folders if necessary
@@ -39,7 +104,6 @@ function initialize_packapps($mysqli){
     mysqli_query($mysqli, "UPDATE packapps_system_info SET systemInstalled=1, dateInstalled=CURRENT_TIMESTAMP()");
     if (mysqli_errno($mysqli)){
         die("Could not install system.");
-
     }
 }
 

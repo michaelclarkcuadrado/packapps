@@ -1,5 +1,5 @@
 <?
-include '../config.php';
+require '../config.php';
 $count_total = mysqli_query($mysqli, "SELECT COUNT(*) AS countRT, (SELECT count(*) FROM quality_AppleSamples) AS countSamp FROM quality_InspectedRTs");
 $total_count = mysqli_fetch_assoc($count_total);
 //authentication

@@ -5,7 +5,7 @@
  * Date: 6/3/2016
  * Time: 12:29 PM
  */
-include '../config.php';
+require '../config.php';
 include_once("Classes/excel_reader2.php");
 $xlsdata = new Spreadsheet_Excel_Reader($_FILES['xlsupload']['tmp_name'],false);
 

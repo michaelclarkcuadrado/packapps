@@ -1,5 +1,5 @@
 <?
-include '../config.php';
+require '../config.php';
 
 
 $RT = mysqli_real_escape_string($mysqli,$_POST['RT']);

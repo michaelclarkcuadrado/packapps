@@ -1,7 +1,7 @@
 <?php
 include_once("Classes/Mobile_Detect.php");
 $detect = new Mobile_Detect();
-include '../config.php';
+require '../config.php';
 
 $rts = mysqli_query($mysqli, "SELECT quality_InspectedRTs.RTNum AS `RT#`, ifnull(BULKOHCSV.Grower,'?') AS Grower, ifnull(`CommDesc`, '?') AS CommDesc, ifnull(BULKOHCSV.VarDesc,'?') AS VarDesc, ifnull(BULKOHCSV.Date, date(quality_InspectedRTs.DateInspected)) AS Date FROM quality_InspectedRTs LEFT JOIN BULKOHCSV ON quality_InspectedRTs.RTNum=BULKOHCSV.`RT#` WHERE quality_InspectedRTs.`#Samples`=20 AND StarchFinished=0 AND CommDesc != 'Peach' AND CommDesc != 'Nectarine' ORDER BY quality_InspectedRTs.DateInspected ASC ");
 

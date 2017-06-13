@@ -1,5 +1,5 @@
 <?php
-include '../config.php';
+require '../config.php';
 
 //authentication
 if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
@@ -235,7 +235,7 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
                         + "&suppName="
                         + data[key]['Name']
                         + "' class='mdl-button mdl-js-button mdl-js-ripple-effect'>View past purchases</a></div><div class='mdl-card__menu'><button style='color: white' id='demo-menu-lower-right" + key + "' class='mdl-button mdl-js-button mdl-button--icon'><i class='material-icons'>more_vert</i></button><ul class='mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect' for='demo-menu-lower-right" + key + "'>"
-                        + "<li onclick='openEditBox(" + data[key]['SupplierID'] + ");' class='mdl-menu__item'>Edit Supplier</li><li onclick=\"location.href='filemanager.php#Food_Safety_Docs/"
+                        + "<li onclick='openEditBox(" + data[key]['SupplierID'] + ");' class='mdl-menu__item'>Edit Supplier</li><li onclick=\"location.href='filemanager.php#Assets/Food_Safety_Docs/"
                         + data[key]['SupplierID']
                         + "'\" class='mdl-menu__item'>Food Safety Documents</li></ul></div></div>";
                 }

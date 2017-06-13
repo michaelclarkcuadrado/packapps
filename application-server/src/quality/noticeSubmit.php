@@ -6,7 +6,7 @@
  * Time: 10:16 AM
  */
 
-include '../config.php';
+require '../config.php';
 require_once('emailAlerts/EmergencyAlert.php');
 
 //authentication

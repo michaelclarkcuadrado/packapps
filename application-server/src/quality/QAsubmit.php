@@ -1,5 +1,5 @@
 <?php
-include '../config.php';
+require '../config.php';
 require_once('emailAlerts/EmergencyAlert.php');
 
 //get real name for logging accountability

@@ -5,7 +5,7 @@
  * Date: 6/13/2016
  * Time: 1:15 PM
  */
-include '../config.php';
+require '../config.php';
 
 if(isset($_FILES['photo']))
 {

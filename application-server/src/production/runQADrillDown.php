@@ -6,7 +6,7 @@
  * Time: 1:05 PM
  */
 if (isset($_GET['q'])) {
-    include '../config.php';
+    require '../config.php';
     $sampleData = mysqli_query($mysqli, "SELECT Weight, Pressure1, Pressure2, Brix, Note, isPhotographed FROM quality_run_inspections WHERE RunID='" . mysqli_real_escape_string($mysqli, $_GET['q']) . "'");
     $Note = '';
     $photographed = false;

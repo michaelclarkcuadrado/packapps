@@ -1,7 +1,8 @@
 # packapps dockerization
 
 FROM php:apache
-WORKDIR /var/www  #get around crazy php image bug
+#get around crazy php image bug
+WORKDIR /var/www  
 RUN docker-php-ext-install mysqli
 RUN apt-get update; apt-get install zbar-tools -y
 

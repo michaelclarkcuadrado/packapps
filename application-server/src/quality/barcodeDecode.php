@@ -6,7 +6,7 @@
  * Time: 12:04 PM
  */
 if (isset($_FILES['0'])) {
-    include '../config.php';
+    require '../config.php';
     $result = exec("zbarimg -q --raw " . $_FILES['0']['tmp_name']);
     if(strlen($result) != 12)
     {

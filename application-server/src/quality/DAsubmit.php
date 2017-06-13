@@ -1,5 +1,5 @@
 <?php
-include '../config.php';
+require '../config.php';
 
 $DA = 0;
 $DA2 = 0;

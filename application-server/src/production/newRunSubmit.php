@@ -5,7 +5,7 @@
  * Date: 5/25/2016
  * Time: 11:24 AM
  */
-include '../config.php';
+require '../config.php';
 //authentication
 if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     die("<script>window.location.replace('/')</script>");
@@ -37,6 +37,9 @@ for ($i = 1; $_POST['Variety' . $i]; $i++) {
 for ($i = 1; $_POST['productMade' . $i]; $i++) {
     mysqli_query($mysqli, "INSERT INTO production_product_needed VALUES ('" . $ID . "', '" . mysqli_real_escape_string($mysqli, $_POST['productMade' . $i]) . "', '" . mysqli_real_escape_string($mysqli, $_POST['packSize' . $i]) . "', '" . mysqli_real_escape_string($mysqli, $_POST['madeAmount' . $i]) . "', '" . mysqli_real_escape_string($mysqli, $_POST['amountType'.$i]) . "')") or die(mysqli_error($mysqli));
 }
+
+mysqli_query($mysqli, "INSERT INTO production_chat VALUES ('', '" . $_POST['Line'] . "', '" . mysqli_real_escape_string($mysqli, $SecuredUserName) . "', 'New run #" . mysqli_real_escape_string($mysqli, $_POST['runNum']) . " added to schedule.')");
+
 
 if (strpos($_SERVER['HTTP_REFERER'], "newRun") === false) {
     echo "<script>location.replace('/')</script>";

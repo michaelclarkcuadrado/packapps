@@ -5,7 +5,7 @@
  * Date: 5/25/2016
  * Time: 11:24 AM
  */
-include '../config.php';
+require '../config.php';
 //authentication
 if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     die("<script>window.location.replace('/')</script>");
@@ -28,8 +28,11 @@ if ($RealName['Role'] != 'Production')
 
 if($_GET['delete'])
 {
+    //runinfo[0] = line, runinfo[1] = runnumber
+    $runInfo = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Line`, RunNumber from `production_runs` where RunID='".$_GET['delete']."'"));
     mysqli_query($mysqli, "DELETE FROM production_runs WHERE RunID='".$_GET['delete']."'");
     mysqli_query($mysqli, "DELETE FROM quality_run_inspections WHERE RunID='".$_GET['delete']."'");
+    mysqli_query($mysqli, "INSERT INTO production_chat VALUES ('', '" . $runInfo[0] . "', '" . mysqli_real_escape_string($mysqli, $SecuredUserName) . "', 'Run #" . $runInfo[1] . " deleted.')");
     unlink("../quality/assets/uploadedimages/runs/".$_GET['delete'].".jpg");
 }
 else if($_GET['finish'])

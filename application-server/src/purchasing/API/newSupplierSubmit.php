@@ -20,5 +20,5 @@ if(isset($_POST['editID'])) {
 } elseif (isset($_POST['newCompanyName']) && isset($_POST['newContactName']) && isset($_POST['newContactPhone']) && isset($_POST['newContactEmail']) && isset($_POST['newInternalContact'])){
     mysqli_query($mysqli, "INSERT INTO purchasing_Suppliers (`Name`, `ContactName`, `ContactPhone`, `ContactEmail`, `InternalContact`) VALUES ('".mysqli_real_escape_string($mysqli, str_replace( array( '"',"'" ),'',$_POST['newCompanyName'] ))."', '".mysqli_real_escape_string($mysqli, $_POST['newContactName'])."',  '".mysqli_real_escape_string($mysqli, $_POST['newContactPhone'])."', '".mysqli_real_escape_string($mysqli, $_POST['newContactEmail'])."', '".mysqli_real_escape_string($mysqli, $_POST['newInternalContact'])."' )") or die(header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500));
     $supplierID = mysqli_insert_id($mysqli);
-    mkdir('../assets/Food_Safety_Docs/'.$supplierID, 0700, true);
+    mkdir('../assets/Assets/Food_Safety_Docs/'.$supplierID, 0700, true);
 }

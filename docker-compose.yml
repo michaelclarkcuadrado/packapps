@@ -5,19 +5,25 @@ services:
   ports:
    - "80:80"
   restart: always
-  #simplify development by allowing instantaneous code changes. Unsafe. Remove for deployment
+  # TODO: set credentials from orchestration server instead of hard code
+  environment:
+   - AWS_ACCESS_KEY_ID=AKIAJUY2TJYONM67CUNQ
+   - AWS_SECRET_ACCESS_KEY=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
+  # Allow uploads to persist to disk, unused or empty ideally if using AWS backend config flag
   volumes:
-  - ./application-server/src:/var/www
+   # simplify development by allowing instantaneous code changes. Unsafe. Remove for deployment
+   - ./application-server/src:/var/www
   depends_on:
    - database-server
  database-server:
+  # db access currently world-exposed. (Cover with ufw on host? Test if accessible in docker cluster without expose?)
   ports:
    - "3306:3306"
   restart: always
   build: ./database-server
   volumes: 
    - packapps-db:/var/lib/mysql
- #phpmyadmin for database visualization. remove for deployment
+ # phpmyadmin for database visualization. remove (ideally) or at least don't expose for deployment
  phpmyadmin:
   image: phpmyadmin/phpmyadmin
   container_name: phpmyadmin

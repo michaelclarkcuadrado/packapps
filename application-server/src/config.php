@@ -1,15 +1,16 @@
 <?php
+
 //Internal packapps variables
 $packapps_version = 2;
-$isOnAWSBackend = false;
+$isOnAWSBackend = true;
 $isManagedByOrchestration = false;
 $orchestraionServerURL = '';
-$AWS_ACCESS_KEY_ID = 0;
-$AWS_SECRET_ACCESS_KEY = 0;
-//companyName is user presentable, companyShortName is internal and the deployment ID
+//companyName is user presentable, companyShortName is internal slug and the deployment ID
 $companyShortName = 'devenv';
 $companyName = 'DEVELOPMENT ENV';
 
+//AWS S3 buckets
+$availableBuckets = array('packapps-purchasing-assets', 'packapps-quality-uploadedimages', 'packapps-sqldump-backups');
 
 //MYSQL Server Details
 $dbhost = "database-server";
@@ -48,3 +49,4 @@ if($systemRow['packapps_version'] != $packapps_version){
 if($_SERVER['SCRIPT_NAME'] != '/installer.php' && $systemRow['systemInstalled'] == 0){
     die("<script>window.location.replace('/installer.php')</script>");
 }
+require_once 'packapps_api.php';
