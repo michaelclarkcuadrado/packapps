@@ -82,6 +82,8 @@ RENAME TABLE AlertEmails TO quality_AlertEmails;
 RENAME TABLE AppleSamples TO quality_AppleSamples;
 RENAME TABLE InspectedRTs TO quality_InspectedRTs;
 RENAME TABLE run_inspections TO quality_run_inspections;
+ALTER TABLE `quality_run_inspections` ADD CONSTRAINT `run_inspections_2_runs` FOREIGN KEY (`RunID`) REFERENCES `production_runs`(`RunID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 /* Remove unused quality column */
 ALTER TABLE `quality_UserData` DROP `DateCreated`;
 

@@ -21,13 +21,14 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
 if ($RealName['Role'] !== "QA") {
     die("UNAUTHORIZED");
 };
-$Note = $_POST['Notes'];
-$RT = $_POST['RT'];
+$Note = mysqli_real_escape_string($mysqli, $_POST['Notes']);
+$RT = mysqli_real_escape_string($mysqli, $_POST['RT']);
 
 //void RT
 if (isset($_GET['del'])) {
+    $_GET['del'] = mysqli_real_escape_string($mysqli, $_GET['del']);
     mysqli_query($mysqli, "DELETE FROM quality_InspectedRTs WHERE RTNum='" . $_GET['del'] . "'");
-    exec("rm assets/uploadedimages/" . $_GET['del'] . ".jpg assets/uploadedimages/" . $_GET['del'] . "starch.jpg assets/uploadedimages/" . $_GET['del'] . "bitterpit.jpg ../assets/uploadedimages/" . $_GET['del'] . "bruising.jpg");
+    packapps_deleteFromS3($availableBuckets['quality'], 'quality-rtnum-'.$_GET['del'].'.jpg');
     echo "<script>location.replace('QA.php?qa=" . $_GET['del'] . " has been <mark>voided</mark> and not #QA')</script>";
 } else {
     //insert final inspection info
@@ -48,32 +49,5 @@ if (isset($_GET['del'])) {
         }
         mysqli_stmt_execute($stmt);
     }
-
-//    //works but is disabled because annoying and largely useless
-//    //test to see if fruit is large to send warning
-//    $variety = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT rtrim(VarDesc) AS VarDesc, rtrim(`CommDesc`) FROM BULKOHCSV WHERE `RT#`='" . $RT . "'"));
-//    $size = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT SizefromAverage FROM quality_RTsWQuality WHERE `RT#`='" . $RT . "'"));
-//    if ($variety['VarDesc'] == 'Jonagold' || $variety['VarDesc'] == 'Golden Delicious' || $variety['VarDesc'] == 'Red Delicious') {
-//        if ($size['SizefromAverage'] <= 64) {
-//            $alert = new EmergencyAlert();
-//            $mail = $alert->prepareMail();
-//            $alert->setSubject($mail, "Extremely large fruit detected on newly-received RT!");
-//            $RTinfo = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT rtrim(GrowerName) AS 'GrowerName', rtrim(FarmDesc) AS FarmDesc, rtrim(Farm) AS Farm, rtrim(BlockDesc) AS 'BlockDesc', rtrim(Block) AS Block, rtrim(VarDesc) AS 'VarDesc', rtrim(StrDesc) AS 'StrDesc', rtrim(LocationDesc) AS 'LocationDesc', rtrim(RoomNum) AS RoomNum FROM BULKOHCSV WHERE `RT#`='" . $RT . "'"));
-//            $RTstats = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT count(`RT#`) AS numRTs, sum(BuOnHand) AS sumReceived FROM BULKOHCSV WHERE rtrim(GrowerName)='" . $RTinfo['GrowerName'] . "' AND rtrim(Farm)='" . $RTinfo['Farm'] . "' AND rtrim(BLOCK)='" . $RTinfo['Block'] . "' AND rtrim(VarDesc)='" . $RTinfo['VarDesc'] . "' AND rtrim(StrDesc)='" . $RTinfo['StrDesc'] . "'"));
-//            $alert->setBody($mail, "<html><p>Extremely large fruit was found on a newly received RT.</p><br><table border='1' cellpadding='3' cellspacing='0'><thead><th>Time</th><th>RT #</th><th>Grower</th><th>Farm</th><th>Block</th><th>Variety</th><th>Strain</th><th>Headed to</th></thead><tr><td>" . date('Y-m-d H:m:s') . "</td><td>" . $RT . "</td><td>" . $RTinfo['GrowerName'] . "</td><td>" . $RTinfo['Farm'] . ", " . $RTinfo['FarmDesc'] . "</td><td>" . $RTinfo['Block'] . ", " . $RTinfo['BlockDesc'] . "</td><td>" . $RTinfo['VarDesc'] . "</td><td>" . $RTinfo['StrDesc'] . "</td><td>" . $RTinfo['LocationDesc'] . ", " . $RTinfo['RoomNum'] . "</td></tr></table><br><p>Year to date, we've received " . $RTstats['numRTs'] . " RTs from this block, a total of " . $RTstats['sumReceived'] . " bushels. A photo of the bin is below.</p><br><img width='65%' src='cid:attach-bin'</html>");
-//            $mail->AddEmbeddedImage("assets/uploadedimages/" . $RT . ".jpg", "attach-bin", $RT . ".jpg");
-//            $alert->sendMail($mail);
-//        }
-//    } else if ($size['SizefromAverage'] <= 72 && $variety['CommDesc'] != 'Peach' && $variety['CommDesc'] != 'Nectarine') {
-//        $alert = new EmergencyAlert();
-//        $mail = $alert->prepareMail();
-//        $alert->setSubject($mail, "Extremely large fruit detected on newly-received RT!");
-//        $RTinfo = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT rtrim(GrowerName) AS 'GrowerName', rtrim(FarmDesc) AS FarmDesc, rtrim(Farm) AS Farm, rtrim(BlockDesc) AS 'BlockDesc', rtrim(Block) AS Block, rtrim(VarDesc) AS 'VarDesc', rtrim(StrDesc) AS 'StrDesc', rtrim(LocationDesc) AS 'LocationDesc', rtrim(RoomNum) AS RoomNum FROM BULKOHCSV WHERE `RT#`='" . $RT . "'"));
-//        $RTstats = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT count(`RT#`) AS numRTs, sum(BuOnHand) AS sumReceived FROM BULKOHCSV WHERE rtrim(GrowerName)='" . $RTinfo['GrowerName'] . "' AND rtrim(Farm)='" . $RTinfo['Farm'] . "' AND rtrim(BLOCK)='" . $RTinfo['Block'] . "' AND rtrim(VarDesc)='" . $RTinfo['VarDesc'] . "' AND rtrim(StrDesc)='" . $RTinfo['StrDesc'] . "'"));
-//        $alert->setBody($mail, "<html><p>Extremely large fruit was found on a newly received RT.</p><br><table border='1' cellpadding='3' cellspacing='0'><thead><th>Time</th><th>RT #</th><th>Grower</th><th>Farm</th><th>Block</th><th>Variety</th><th>Strain</th><th>Headed to</th></thead><tr><td>" . date('Y-m-d H:m:s') . "</td><td>" . $RT . "</td><td>" . $RTinfo['GrowerName'] . "</td><td>" . $RTinfo['Farm'] . ", " . $RTinfo['FarmDesc'] . "</td><td>" . $RTinfo['Block'] . ", " . $RTinfo['BlockDesc'] . "</td><td>" . $RTinfo['VarDesc'] . "</td><td>" . $RTinfo['StrDesc'] . "</td><td>" . $RTinfo['LocationDesc'] . ", " . $RTinfo['RoomNum'] . "</td></tr></table><br><p>Year to date, we've received " . $RTstats['numRTs'] . " RTs from this block, a total of " . $RTstats['sumReceived'] . " bushels. A photo of the bin is below.</p><br><img width='65%' src='cid:attach-bin'</html>");
-//        $mail->AddEmbeddedImage("assets/uploadedimages/" . $RT . ".jpg", "attach-bin", $RT . ".jpg");
-//        $alert->sendMail($mail);
-//    }
-
     echo "<script>location.replace('QA.php?qa=$RT#QA')</script>";
 }

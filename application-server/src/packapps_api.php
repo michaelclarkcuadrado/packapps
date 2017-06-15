@@ -6,7 +6,7 @@
  * Time: 2:00 PM
  */
 
-include 'scripts/APR1_MD5.php';
+include_once 'scripts/APR1_MD5.php';
 use WhiteHat101\Crypt\APR1_MD5;
 
 /**
@@ -34,9 +34,10 @@ function packapps_authenticate_admin(){
  * @param $bucketName - bucket to upload to
  * @param $fileToUpload - path to file
  * @param $fileNewName - new file name, including directory
+ * @param $acl - optional, set to 'private' for non-public uploads
  * @return string url of file
  */
-function uploadToS3($bucketName, $fileToUpload, $fileNewName){
+function packapps_uploadToS3($bucketName, $fileToUpload, $fileNewName, $acl = 'public-read'){
     require 'config.php';
     if(!in_array($bucketName, $availableBuckets)){
         die("Bucket not found!");
@@ -50,9 +51,38 @@ function uploadToS3($bucketName, $fileToUpload, $fileNewName){
         $status = $s3client->putObject(array(
             'Bucket' => $bucketName,
             'Key' => $companyShortName.'-'.$fileNewName,
-            'SourceFile' => $fileToUpload
+            'SourceFile' => $fileToUpload,
+            'ACL' => $acl
         ));
         return $status;
+    } catch (S3Exception $e) {
+        echo $e->getMessage() . "\n Failed!";
+        die();
+    }
+}
+
+/**
+ * Delete a stored file from S3.
+ *
+ *
+ * @param $bucketName
+ * @param $filename
+ */
+function packapps_deleteFromS3($bucketName, $filename){
+    require 'config.php';
+    if(!in_array($bucketName, $availableBuckets)){
+        die("Bucket not found!");
+    }
+    require_once 'scripts/aws/aws-autoloader.php';
+    $s3client = new Aws\S3\S3Client([
+        'version' => 'latest',
+        'region'  => 'us-east-2'
+    ]);
+    try {
+        $status = $s3client->deleteObject([
+            'Bucket' => $bucketName,
+            'Key' => $companyShortName . '-' . $filename
+        ]);
     } catch (S3Exception $e) {
         echo $e->getMessage() . "\n Failed!";
         die();
@@ -67,11 +97,12 @@ function uploadToS3($bucketName, $fileToUpload, $fileNewName){
  * header("Content-Type: {$result['ContentType']}");
  * echo $result['Body'];
  *
+It's getting to the point where PA landscape is starting to feel like, familiar
  * @param $bucketName
  * @param $filename
  * @return \Aws\Result Useful attribs: ['ContentType'], ['Body']. Null if no key
  */
-function downloadFromS3($bucketName, $filename){
+function packapps_downloadFromS3($bucketName, $filename){
     require 'config.php';
     if(!in_array($bucketName, $availableBuckets)){
         die("Bucket not found!");
@@ -117,8 +148,8 @@ function initialize_packapps($mysqli){
  * @return string
  */
 function createNewPackappsUser($mysqli, $realName, $userName, $newPassword, $isSystemAdministrator){
-        $realName = mysqli_real_escape_string($mysqli, $realName);
-        $userName = mysqli_real_escape_string($mysqli, $userName);
+        $realName = trim(mysqli_real_escape_string($mysqli, $realName));
+        $userName = trim(mysqli_real_escape_string($mysqli, $userName));
         $newPassword = APR1_MD5::hash(mysqli_real_escape_string($mysqli, $newPassword));
         mysqli_query($mysqli, "INSERT INTO packapps_master_users (username, `Real Name`, `Password`, isSystemAdministrator) VALUES ('$userName', '$realName', '$newPassword', '$isSystemAdministrator')");
         //enumerate packapps

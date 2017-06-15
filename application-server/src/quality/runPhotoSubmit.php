@@ -10,11 +10,9 @@ require '../config.php';
 if(isset($_FILES['photo']))
 {
     mysqli_query($mysqli, "UPDATE quality_run_inspections SET isPhotographed=1 WHERE RunID='".mysqli_real_escape_string($mysqli, $_POST['RunID'])."'");
-    if (file_exists("assets/uploadedimages/runs/" . escapeshellcmd($_POST['RunID']) . ".jpg"))
-    {
-        unlink("assets/uploadedimages/run/" . escapeshellcmd($_POST['RunID']) . ".jpg");
-    }
-    move_uploaded_file($_FILES['photo']['tmp_name'], "assets/uploadedimages/runs/" . escapeshellcmd($_POST['RunID']) . ".jpg");
+    packapps_uploadToS3($availableBuckets['quality'], $_FILES['photo']['tmp_name'], 'runPhoto-runid-'.$_POST['RunID'].'.jpg');
+    echo "<script>location.replace('runPhoto.php?success=1')</script>";
+} else {
+    echo 'Photo did not upload!';
 }
 
-echo "<script>location.replace('runPhoto.php?success=1')</script>";

@@ -1,6 +1,5 @@
 <?php
-include 'config.php';
-include 'packapps_api.php';
+require 'config.php';
 
 //authentication
 if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
@@ -114,7 +113,7 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
             </div>
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-            <a class="mdl-navigation__link" onClick="$('.mdl-card').fadeOut('fast');" href="index.php"><i
+            <a class="mdl-navigation__link" onClick="$('.mdl-card').fadeOut('fast');" href="appMenu.php"><i
                     class="mdl-color-text--teal-400 material-icons"
                     role="presentation">dashboard</i>Return to Menu</a>
             <a class="mdl-navigation__link" <?php echo($checkAllowed['isSystemAdministrator'] > 0 ? '' : "style='display: none !important'"); ?>
@@ -290,6 +289,7 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
                     var level = $('#' + curElemData[1] + '_' + curElemData[0] + '_slider').val();
                     $('#' + curElemData[1] + '_' + curElemData[0] + '_accesslevel').html(getPrivilegeDescriptionHTML(curElemData[0], level));
                 } else {
+                    console.log('#' + curElemData[1] + '_' + curElemData[0] + '_accesslevel');
                     $('#' + curElemData[1] + '_' + curElemData[0] + '_accesslevel').html(getPrivilegeDescriptionHTML(curElemData[0], 'Disabled'));
                     $('#' + curElemData[1] + '_' + curElemData[0] + '_slider').attr('disabled', true);
                 }

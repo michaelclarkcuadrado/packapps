@@ -16,9 +16,9 @@ if (isset($_GET['testType']) && isset($_GET['testID'])) {
         mysqli_query($mysqli, "UPDATE production_runs SET isQA = 0 WHERE RunNumber = '$ID'");
         $runNum = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT RunID FROM production_runs WHERE RunNumber = '$ID'"))['RunID'];
         mysqli_query($mysqli, "DELETE FROM quality_run_inspections WHERE RunID = '$runNum' AND isPreInspection = 0");
-        unlink('../assets/uploadedimages/runs/'.$ID.'.jpg');
+        packapps_deleteFromS3($availableBuckets['quality'], 'runPhoto-runid-'.$ID.'.jpg');
     } elseif ($_GET['testType'] == 'RT') {
         mysqli_query($mysqli, "DELETE FROM quality_InspectedRTs WHERE RTNum='" . $ID . "'");
-        exec("rm ../assets/uploadedimages/" . $ID . ".jpg ../assets/uploadedimages/" . $ID . "starch.jpg ../assets/uploadedimages/" . $ID . "bitterpit.jpg ../assets/uploadedimages/" . $ID . "bruising.jpg");
+        packapps_deleteFromS3($availableBuckets['quality'], 'quality-rtnum-'.$ID.'.jpg');
     }
 }

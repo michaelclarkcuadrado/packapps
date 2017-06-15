@@ -10,15 +10,21 @@ $companyShortName = 'devenv';
 $companyName = 'DEVELOPMENT ENV';
 
 //AWS S3 buckets
-$availableBuckets = array('packapps-purchasing-assets', 'packapps-quality-uploadedimages', 'packapps-sqldump-backups');
+$availableBuckets = array(
+    'purchasing' => 'packapps-purchasing-assets',
+    'quality' => 'packapps-quality-uploadedimages',
+    'backup' => 'packapps-sqldump-backups');
+//To access a public obj, prepend bucket name and append object key.
+$amazonAWSURL = '.s3.amazonaws.com/';
 
 //MYSQL Server Details
-$dbhost = "database-server";
+$dbhost = "p:database-server";
 $dbusername = "packapps";
 $dbpassword = "packapps";
 $dbport = "3306";
 $operationsDatabase = 'operationsData';
 $growerDB = 'growerReporting';
+
 
 //QA SMTP Server Details
 $smtpHost = '';

@@ -20,23 +20,20 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
         $RealName = $checkAllowed;
     }
 }
-if ($RealName['Role'] != 'Production')
-{
+if ($RealName['Role'] != 'Production') {
     die();
 }
 // end authentication
 
-if($_GET['delete'])
-{
+if($_GET['delete']) {
     //runinfo[0] = line, runinfo[1] = runnumber
+    $_GET['delete'] = mysqli_real_escape_string($mysqli, $_GET['delete']);
     $runInfo = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Line`, RunNumber from `production_runs` where RunID='".$_GET['delete']."'"));
     mysqli_query($mysqli, "DELETE FROM production_runs WHERE RunID='".$_GET['delete']."'");
-    mysqli_query($mysqli, "DELETE FROM quality_run_inspections WHERE RunID='".$_GET['delete']."'");
     mysqli_query($mysqli, "INSERT INTO production_chat VALUES ('', '" . $runInfo[0] . "', '" . mysqli_real_escape_string($mysqli, $SecuredUserName) . "', 'Run #" . $runInfo[1] . " deleted.')");
-    unlink("../quality/assets/uploadedimages/runs/".$_GET['delete'].".jpg");
+    packapps_deleteFromS3($availableBuckets['quality'], 'runPhoto-runid-'.$_GET['delete'].'.jpg');
 }
-else if($_GET['finish'])
-{
+else if($_GET['finish']) {
     mysqli_query($mysqli, "UPDATE `production_runs` SET `isCompleted` = NOT isCompleted WHERE RunID='".$_GET['finish']."'") or die(mysqli_error($mysqli));
     $line = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Line` from `production_runs` where RunID='".$_GET['finish']."'"));
     mysqli_query($mysqli, "INSERT INTO production_chat VALUES ('', '".$line[0]."', '".mysqli_real_escape_string($mysqli, $SecuredUserName)."', 'Run change @ ".date('g:ia').".')");

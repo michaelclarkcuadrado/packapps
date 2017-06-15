@@ -71,7 +71,7 @@ if (isset($_GET['q'])) {
 <p style="margin: 25px">Note: <?echo $Note;?></p>
 <?if ($photographed)
 {
-    echo "<a href='/quality/assets/uploadedimages/runs/".$_GET['q'].".jpg'><img style='margin: 15px; width: 94%' src='/quality/assets/uploadedimages/runs/".$_GET['q'].".jpg'></a>";
+    echo "<a href='//".$availableBuckets['quality'].$amazonAWSURL.$companyShortName."-runPhoto-runid-".$_GET['q'].".jpg'><img style='margin: 15px; width: 94%' src='//".$availableBuckets['quality'].".s3.amazonaws.com/".$companyShortName."-runPhoto-runid-".$_GET['q'].".jpg'></a>";
 } else {
     echo "<p style='margin: 25px'>No photo attached.</p>";
 }

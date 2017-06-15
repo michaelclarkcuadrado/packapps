@@ -12,8 +12,7 @@ if($detect->is('IE')){
     die("<div style='height: 100%;text-align: center; background-color: white;'><div style='top:20%;position:relative;font-size:25px'>Sorry, Internet Explorer is not supported. Try again with a newer browser, such as Firefox or Chrome.</div></div>");
 }
 
-include 'config.php';
-include 'scripts/APR1_MD5.php';
+require 'config.php';
 use WhiteHat101\Crypt\APR1_MD5;
 
 $errormsg = "";
