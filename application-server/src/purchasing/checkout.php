@@ -54,10 +54,10 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
 
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <link rel="stylesheet" href="styles/materialIcons/material-icons.css">
-    <link rel="stylesheet" href="styles/material.min.css">
-    <link rel="stylesheet" href="styles/stepper.css">
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="../styles-common/materialIcons/material-icons.css">
+    <link rel="stylesheet" href="../styles-common/material.min.css">
+    <link rel="stylesheet" href="../styles-common/stepper.css">
+    <link rel="stylesheet" href="../styles-common/styles.css">
 </head>
 <body>
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
@@ -276,9 +276,9 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     <div class="mdl-snackbar__text"></div>
     <button class="mdl-snackbar__action" type="button"></button>
 </div>
-<script src="scripts/material.min.js"></script>
-<script src="scripts/stepper.js"></script>
-<script src="scripts/jquery.min.js"></script>
+<script src="../scripts-common/material.min.js"></script>
+<script src="../scripts-common/stepper.js"></script>
+<script src="../scripts-common/jquery.min.js"></script>
 <script>
     var activeVendor = '';
     var curStep = 1;

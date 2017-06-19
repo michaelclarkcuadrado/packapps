@@ -30,9 +30,9 @@ if (isset($_GET['supplier'])) {
 </head>
 <link rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-<link rel="stylesheet" href="styles/materialIcons/material-icons.css">
-<link rel="stylesheet" href="styles/material.min.css">
-<link rel="stylesheet" href="styles/styles.css">
+<link rel="stylesheet" href="../styles-common/materialIcons/material-icons.css">
+<link rel="stylesheet" href="../styles-common/material.min.css">
+<link rel="stylesheet" href="../styles-common/styles.css">
 <div class="widthfixer mdl-grid demo-cards">
             <div id="newSupplierForm" class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
                 <div class="mdl-card__title mdl-color--deep-purple-300">
@@ -78,8 +78,8 @@ Submit Edits
                 </div>
             </div>
         </div>
-<script src="scripts/material.min.js"></script>
-<script src="scripts/jquery.min.js"></script>
+<script src="../scripts-common/material.min.js"></script>
+<script src="../scripts-common/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#newSupplierSubmitter').submit(function(e) {

@@ -18,7 +18,8 @@ $availableBuckets = array(
 $amazonAWSURL = '.s3.amazonaws.com/';
 
 //MYSQL Server Details
-$dbhost = "p:database-server";
+$dbhost = "database-server";
+//$dbhost = "p:database-server";
 $dbusername = "packapps";
 $dbpassword = "packapps";
 $dbport = "3306";

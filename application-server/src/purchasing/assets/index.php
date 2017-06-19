@@ -169,7 +169,7 @@ $MAX_UPLOAD_SIZE = min(asBytes(ini_get('post_max_size')), asBytes(ini_get('uploa
             padding:4px 0 4px 20px;
         }
     </style>
-    <script src="../scripts/jquery.min.js"></script>
+    <script src="../../scripts-common/jquery.min.js"></script>
     <script>
         (function($){
             $.fn.tablesorter = function() {

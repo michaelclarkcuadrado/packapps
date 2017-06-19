@@ -2494,7 +2494,7 @@ module.exports = function(Chart) {
 				}
 			});
 
-			// Trick to reset the styles of the point
+			// Trick to reset the styles-common of the point
 			Chart.DatasetController.prototype.removeHoverStyle.call(me, point, pointElementOptions);
 
 			var model = point._model;
@@ -2754,7 +2754,7 @@ module.exports = function(Chart) {
 			});
 
 			var model = arc._model;
-			// Resets the visual styles
+			// Resets the visual styles-common
 			this.removeHoverStyle(arc);
 
 			// Set correct angles if not resetting
