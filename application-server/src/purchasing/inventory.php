@@ -421,9 +421,7 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
                             + item
                             + ", '"
                             + data[item]['ItemDesc']
-                            + "')\" class='mdl-menu__item'>Edit Suppliers and Quotes</li><li onclick=\"location.href='filemanager.php#Assets/Item_Docs/"
-                            + item
-                            + "'\" class='mdl-menu__item'>Item Assets & Art</li><li class='mdl-menu__item' onclick='disableItem("
+                            + "')\" class='mdl-menu__item'>Edit Suppliers and Quotes</li><li class='mdl-menu__item' onclick='disableItem("
                             + item
                             + ")'>Retire Item</li></ul></div></div>";
                     } else {

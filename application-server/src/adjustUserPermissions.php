@@ -27,7 +27,18 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
 //disable user
 if (isset($_GET['disableToggle'])) {
     $user = mysqli_real_escape_string($mysqli, $_GET['disableToggle']);
-    mysqli_query($mysqli, "UPDATE packapps_master_users SET isDisabled = !isDisabled WHERE username = '$user'") or die(header($_SERVER['SERVER_PROTOCOL'] . '500 Internal Server Error', true, 500));
+
+    //check if you are disabling the last admin account
+    $checkIfDeletingAdmin = mysqli_query($mysqli,"SELECT isSystemAdministrator, isDisabled FROM packapps_master_users WHERE username = '$user'");
+    $checkIfDeletingAdmin = mysqli_fetch_assoc($checkIfDeletingAdmin);
+    if($checkIfDeletingAdmin['isSystemAdministrator'] > 0 && $checkIfDeletingAdmin['isDisabled'] == 0){
+        $result = mysqli_query($mysqli, "SELECT username FROM packapps_master_users WHERE isDisabled=0 AND isSystemAdministrator=1");
+        if (mysqli_num_rows($result) == 1){
+            header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
+            die();
+        }
+    }
+mysqli_query($mysqli, "UPDATE packapps_master_users SET isDisabled = !isDisabled WHERE username = '$user'") or die(header($_SERVER['SERVER_PROTOCOL'] . '500 Internal Server Error', true, 500));
 } else {
 
 //change packapps permissions per user

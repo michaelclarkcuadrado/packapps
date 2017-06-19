@@ -168,7 +168,7 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
                             + "</small><br><small>Purchased by: "
                             + data[history]['InitiatedBy']
                             + "</small></div><div class='mdl-card__actions mdl-card--border'><label><a "
-                            + (data[history]['invoice_attached'] == 0 ? "" : "href='filemanager.php?path=Assets/Order_Confirmations/"+data[history]['Purchase_ID']+"_confirm.pdf'")
+                            + (data[history]['invoice_attached'] == 0 ? "" : "href='//<?echo $availableBuckets['purchasing'].$amazonAWSURL.$companyShortName."-purchasing-purchaseid-"?>"+data[history]['Purchase_ID']+"-confirmation.pdf'")
                             + " class='mdl-button mdl-js-button mdl-js-ripple-effect'><i class='material-icons'>"
                             + (data[history]['invoice_attached'] == 0 ? 'attach_file' : 'picture_as_pdf')
                             + "</i>"

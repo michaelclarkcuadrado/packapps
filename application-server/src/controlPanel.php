@@ -223,6 +223,10 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
         </div>
     </main>
 </div>
+<div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+    <div class="mdl-snackbar__text"></div>
+    <button class="mdl-snackbar__action" type="button"></button>
+</div>
 <button id="addButton" onclick="showNewForm()"
         style="position: fixed; right: 24px; bottom: 24px; padding-top: 24px; margin-bottom: 0; z-index: 90; <?php echo($checkAllowed['isSystemAdministrator'] > 0 ? '' : "display: none;"); ?>"
         class="mdl-button mdl-shadow--8dp mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--yellow-300">
@@ -349,6 +353,8 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
                     } else {
                         elem.children('i').text('lock').parent().parent().parent().css('opacity', '.5').find('.enableSwitch').attr('disabled', true);
                     }
+                }).fail(function(){
+                    snack("Cannot disable last admin user.", 8000);
                 });
             });
 
@@ -409,6 +415,14 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
                 $('#'+installedPackapps[i]['short_app_name']+'Role').html(getPrivilegeDescriptionHTML(installedPackapps[i]['short_app_name'], 'Disabled'));
             }
         }
+    }
+
+    function snack(message, length) {
+        var data = {
+            message: message,
+            timeout: length
+        };
+        document.querySelector('#snackbar').MaterialSnackbar.showSnackbar(data);
     }
 
     function getPrivilegeDescriptionHTML(packApp, level) {
