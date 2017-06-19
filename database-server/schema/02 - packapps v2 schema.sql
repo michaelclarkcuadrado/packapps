@@ -139,6 +139,101 @@ ALTER TABLE `quality_UserData` DROP `DateCreated`;
 
 /* MAINTENANCE PACKAPP TABLES */
 
+/* Add integration into purchasing */
+INSERT INTO purchasing_ItemTypes (Type_Description, UnitOfMeasure, WeeksToResupply) VALUES ('Maintenance', 'Parts', 0);
+
+CREATE TABLE `maintenance_purposes` (
+  `purpose_id` int(11) NOT NULL AUTO_INCREMENT,
+  `Purpose` varchar(255) NOT NULL,
+  PRIMARY KEY (`purpose_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `maintenance_issues` (
+  `issue_id` int(11) NOT NULL AUTO_INCREMENT,
+  `purpose_id` int(11) NOT NULL,
+  `createdBy` varchar(255) NOT NULL,
+  `dateCreated` datetime NOT NULL,
+  `isConfirmed` tinyint(1) NOT NULL,
+  `confirmedBy` varchar(255) NOT NULL,
+  `dateConfirmed` datetime NOT NULL,
+  `isInProgress` tinyint(1) NOT NULL,
+  `inProgressBy` varchar(255) NOT NULL,
+  `dateInProgress` datetime NOT NULL,
+  `isCompleted` tinyint(1) NOT NULL,
+  `completedBy` varchar(255) NOT NULL,
+  `dateCompleted` datetime NOT NULL,
+  `assignedTo` varchar(255) NOT NULL,
+  `Location` int(11) NOT NULL,
+  `hasPhotoAttached` tinyint(1) NOT NULL,
+  `needsParts` tinyint(1) NOT NULL,
+  PRIMARY KEY (`issue_id`),
+  KEY `createdBy` (`createdBy`),
+  KEY `confirmedBy` (`confirmedBy`),
+  KEY `inProgressBy` (`inProgressBy`),
+  KEY `completedBy` (`completedBy`),
+  KEY `Assignee` (`assignedTo`),
+  KEY `Location` (`Location`),
+  KEY `partsNeeded` (`needsParts`),
+  KEY `purpose` (`purpose_id`),
+  CONSTRAINT `maintenance_issues_ibfk_1` FOREIGN KEY (`assignedTo`) REFERENCES `packapps_master_users` (`username`),
+  CONSTRAINT `maintenance_issues_ibfk_2` FOREIGN KEY (`completedBy`) REFERENCES `packapps_master_users` (`username`),
+  CONSTRAINT `maintenance_issues_ibfk_3` FOREIGN KEY (`confirmedBy`) REFERENCES `packapps_master_users` (`username`),
+  CONSTRAINT `maintenance_issues_ibfk_4` FOREIGN KEY (`createdBy`) REFERENCES `packapps_master_users` (`username`),
+  CONSTRAINT `maintenance_issues_ibfk_5` FOREIGN KEY (`inProgressBy`) REFERENCES `packapps_master_users` (`username`),
+  CONSTRAINT `purpose` FOREIGN KEY (`purpose_id`) REFERENCES `maintenance_purposes` (`purpose_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `maintenance_issues2purchasing_items` (
+  `issue_id` int(11) NOT NULL,
+  `part_id` int(11) NOT NULL,
+  `numberNeeded` int(11) NOT NULL,
+  KEY `issue_id` (`issue_id`),
+  KEY `part_id` (`part_id`),
+  CONSTRAINT `issueid` FOREIGN KEY (`issue_id`) REFERENCES `maintenance_issues` (`issue_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `itemid` FOREIGN KEY (`part_id`) REFERENCES `purchasing_Items` (`Item_ID`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `maintenance_systems` (
+  `system_id` int(11) NOT NULL AUTO_INCREMENT,
+  `system_name` varchar(255) NOT NULL,
+  `location_id` int(11) NOT NULL,
+  PRIMARY KEY (`system_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `maintenance_subsystems` (
+  `system_id` int(11) NOT NULL,
+  `subsystem_id` int(11) NOT NULL AUTO_INCREMENT,
+  `subsystem_name` varchar(255) NOT NULL,
+  PRIMARY KEY (`subsystem_id`),
+  KEY `subsystem2systems` (`system_id`),
+  CONSTRAINT `subsystem2systems` FOREIGN KEY (`system_id`) REFERENCES `maintenance_systems` (`system_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `maintenance_subsystemComponents` (
+  `subsystem_id` int(11) NOT NULL,
+  `component_id` int(11) NOT NULL AUTO_INCREMENT,
+  `component_name` int(11) NOT NULL,
+  PRIMARY KEY (`component_id`),
+  KEY `components2subsystems` (`subsystem_id`),
+  CONSTRAINT `components2subsystems` FOREIGN KEY (`subsystem_id`) REFERENCES `maintenance_subsystems` (`subsystem_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `maintenance_part_info` (
+  `item_id` int(11) NOT NULL,
+  `Manufacturer` varchar(255) NOT NULL,
+  `Part_number` varchar(255) NOT NULL,
+  `system_id` int(11) DEFAULT NULL,
+  `subsystem_id` int(11) DEFAULT NULL,
+  `component_id` int(11) DEFAULT NULL,
+  KEY `part_id` (`item_id`),
+  KEY `system` (`system_id`),
+  KEY `subsystem` (`subsystem_id`),
+  KEY `component` (`component_id`),
+  CONSTRAINT `component` FOREIGN KEY (`component_id`) REFERENCES `maintenance_subsystemComponents` (`component_id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `part_id` FOREIGN KEY (`item_id`) REFERENCES `purchasing_Items` (`Item_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `subsystem` FOREIGN KEY (`subsystem_id`) REFERENCES `maintenance_subsystems` (`subsystem_id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `system` FOREIGN KEY (`system_id`) REFERENCES `maintenance_systems` (`system_id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 /* END MAINTENANCE PACKAPP TABLES */
