@@ -8,25 +8,32 @@
 
 include_once 'scripts/APR1_MD5.php';
 use WhiteHat101\Crypt\APR1_MD5;
-
 /**
  * Authorizes a user to be logged into packapps, or a certain packapp if specified
  * @param null $packapp
+ * @return array userinfo
  */
 function packapps_authenticate_user($packapp = null){
-
-    if($packapp != null){
-
+    require 'config.php';
+    if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
+        die("<script>window.location.replace('/')</script>");
+    } else if (!hash_equals($_COOKIE['auth'], crypt($_COOKIE['username'], $securityKey))) {
+        die("<script>window.location.replace('/')</script>");
     } else {
-
+        $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
+        $userInfo = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT username, `Real Name`, lastLogin, isSystemAdministrator FROM packapps_master_users WHERE username = '$SecuredUserName'"));
+        if($packapp != null){
+            //check if specific Packapp allowed
+            $check = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT allowed" . ucfirst($packapp) . " FROM packapps_master_users WHERE username = '$SecuredUserName'"));
+            if($check['allowed'.ucfirst($packapp)] == 0){
+                die("<script>window.location.replace('/')</script>");
+            } else {
+                $roleArray = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT * FROM ".$packapp."_UserData WHERE username='$SecuredUserName'"));
+                $userInfo = array_merge($userInfo,$roleArray);
+            }
+        }
+        return $userInfo;
     }
-}
-
-/**
- *  Authenticates if a user is a system administrator
- */
-function packapps_authenticate_admin(){
-
 }
 
 /**

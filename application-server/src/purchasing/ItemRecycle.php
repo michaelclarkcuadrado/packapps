@@ -93,9 +93,6 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
             <a class="mdl-navigation__link" onClick="$('.mdl-card').fadeOut('fast');" href="filemanager.php"><i
                     class="mdl-color-text--amber-400 material-icons"
                     role="presentation">folder</i>Shared Folder</a>
-            <a class="mdl-navigation__link" onClick="$('.mdl-card').fadeOut('fast');" href="bomEditor.php"><i
-                    class="mdl-color-text--blue-grey-400 material-icons"
-                    role="presentation">receipt</i>BOMs</a>
         </nav>
     </div>
     <main class="mdl-layout__content mdl-color--grey-400">

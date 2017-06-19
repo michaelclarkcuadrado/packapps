@@ -145,12 +145,14 @@ INSERT INTO purchasing_ItemTypes (Type_Description, UnitOfMeasure, WeeksToResupp
 CREATE TABLE `maintenance_purposes` (
   `purpose_id` int(11) NOT NULL AUTO_INCREMENT,
   `Purpose` varchar(255) NOT NULL,
+  `Color` varchar(255) NOT NULL,
   PRIMARY KEY (`purpose_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `maintenance_issues` (
   `issue_id` int(11) NOT NULL AUTO_INCREMENT,
   `purpose_id` int(11) NOT NULL,
+  `issue_description` varchar(1023) NOT NULL,
   `createdBy` varchar(255) NOT NULL,
   `dateCreated` datetime NOT NULL,
   `isConfirmed` tinyint(1) NOT NULL,
@@ -161,6 +163,7 @@ CREATE TABLE `maintenance_issues` (
   `dateInProgress` datetime NOT NULL,
   `isCompleted` tinyint(1) NOT NULL,
   `completedBy` varchar(255) NOT NULL,
+  `solution_description` varchar(1023) NOT NULL,
   `dateCompleted` datetime NOT NULL,
   `assignedTo` varchar(255) NOT NULL,
   `Location` int(11) NOT NULL,

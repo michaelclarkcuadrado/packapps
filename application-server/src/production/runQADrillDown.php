@@ -23,16 +23,6 @@ if (isset($_GET['q'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Production</title>
 
-    <!-- Disable tap highlight on IE -->
-    <meta name="msapplication-tap-highlight" content="no">
-
-    <!-- Web Application Manifest -->
-    <link rel="manifest" href="manifest.json">
-
-    <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-    <meta name="msapplication-TileColor" content="#2F3BA2">
-
     <!-- Color the status bar on mobile devices -->
     <meta name="theme-color" content="#2F3BA2">
 

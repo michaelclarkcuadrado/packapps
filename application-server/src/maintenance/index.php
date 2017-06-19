@@ -1,0 +1,92 @@
+<?php
+require '../config.php';
+$userInfo = packapps_authenticate_user('maintenance');
+?>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content='Purchasing dashboard'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Maintenance Dashboard</title>
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="../styles-common/materialIcons/material-icons.css">
+    <link rel="stylesheet" href="../styles-common/material.min.css">
+    <link rel="stylesheet" href="../styles-common/styles.css">
+</head>
+<body>
+<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+    <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
+        <div class="mdl-layout__header-row">
+            <span class="mdl-layout-title">Home - Maintenance</span>
+            <div class="mdl-layout-spacer"></div>
+            <? echo $companyName ?>
+        </div>
+    </header>
+    <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+        <header class="demo-drawer-header">
+            <div class="demo-avatar-dropdown">
+                <i style="margin: 2px" class="material-icons">account_circle</i>
+                <span style='text-align: center;'><? echo $userInfo['Real Name'] ?></span>
+                <div class="mdl-layout-spacer"></div>
+                <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i class="material-icons" role="presentation">arrow_drop_down</i>
+                    <span class="visuallyhidden">Accounts</span>
+                </button>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+                    <? echo($RealName['Role'] > 1 ? "<li class=\"mdl-menu__item\"><i class=\"material-icons\">verified_user</i>Authorized for Purchases</li>" : '') ?>
+                    <li onclick="location.href = '/appMenu.php'" class="mdl-menu__item"><i class="material-icons">exit_to_app</i>Exit
+                        to menu
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+            <div id="shopping_cart_tag" style='text-align: center; display: none'>
+                <button onclick="$('.mdl-card').fadeOut('fast'),location.href='checkout.php'"
+                        class='mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--accent'><i
+                        style='vertical-align: middle' class='material-icons'>shopping_cart</i> Checkout orders
+                </button>
+                <p style="margin-top: 3px; margin-bottom: 0; font-size: smaller; color: rgba(255, 255, 255, 0.46); cursor: pointer"
+                   onclick="clearShoppingCart()">(Delete Cart)</p>
+            </div>
+            <a class="mdl-navigation__link" onClick="$('.mdl-card').fadeOut('fast');" href="index.php"><i
+                    class="mdl-color-text--teal-400 material-icons"
+                    role="presentation">home</i>Home</a>
+            <a class="mdl-navigation__link" onClick="$('.mdl-card').fadeOut('fast');" href="inventory.php"><i
+                    class="mdl-color-text--deep-orange-400 material-icons"
+                    role="presentation">view_comfy</i>Inventory</a>
+            <a class="mdl-navigation__link" onClick="$('.mdl-card').fadeOut('fast');" href="purchasehistory.php"><i
+                    class="mdl-color-text--yellow-400 material-icons" role="presentation">history</i>Purchases</a>
+            <a class="mdl-navigation__link" onClick="$('.mdl-card').fadeOut('fast');" href="suppliers.php"><i
+                    class="mdl-color-text--deep-purple-400 material-icons"
+                    role="presentation">contacts</i>Suppliers</a>
+            <a class="mdl-navigation__link" onClick="$('.mdl-card').fadeOut('fast');" href="filemanager.php"><i
+                    class="mdl-color-text--amber-400 material-icons"
+                    role="presentation">folder</i>Shared Folder</a>
+            <a class="mdl-navigation__link" onClick="$('.mdl-card').fadeOut('fast');" href="bomEditor.php"><i
+                    class="mdl-color-text--blue-grey-400 material-icons"
+                    role="presentation">receipt</i>BOMs</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content mdl-color--grey-400">
+        <div class="widthfixer mdl-grid demo-cards">
+
+        </div>
+    </main>
+</div>
+<script src="../scripts-common/material.min.js"></script>
+<script src="../scripts-common/jquery.min.js"></script>
+<!--<script src='../scripts-common/Chart.js'></script>-->
+<script>
+    var itemPieChart;
+    $(document).ready(function () {
+        $('.mdl-card').fadeIn('fast');
+
+    });
+</script>
+</body>
+</html>
