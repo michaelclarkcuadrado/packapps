@@ -12,7 +12,7 @@ if ((!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) && !isset($_GET['
         $SecuredUserName = 'Display Board';
     } else {
         $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-        $checkAllowed = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Real Name` as UserRealName, Role, allowedProduction FROM packapps_master_users JOIN production_UserData ON packapps_master_users.username=production_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
+        $checkAllowed = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Real Name` as UserRealName, isSystemAdministrator, Role, allowedProduction FROM packapps_master_users JOIN production_UserData ON packapps_master_users.username=production_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
         if (!$checkAllowed['allowedProduction'] > 0) {
             die ("<script>window.location.replace('/')</script>");
         } else {
@@ -21,6 +21,13 @@ if ((!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) && !isset($_GET['
     }
 }
 // end authentication
+
+//get Line Names
+$lines = mysqli_query($mysqli, "SELECT lineID, lineName FROM production_lineNames");
+while($line = mysqli_fetch_assoc($lines)){
+    $varName = 'Line'.$line['lineID'].'Name';
+    $$varName = $line['lineName'];
+}
 
 require_once('scripts/Mobile_Detect.php');
 $detect = new Mobile_Detect();
@@ -154,8 +161,12 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
         <div class="mdl-card mdl-cell mdl-cell--12-col">
             <div class="mdl-card__supporting-text">
                 <h4>Settings</h4>
-                <h5>Current Run View</h5>
                 <table width="100%" cellpadding="0">
+                    <tr>
+                        <td colspan="3">
+                            <h5>Current Run View</h5>
+                        </td>
+                    </tr>
                     <tr>
                         <td>
                             <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
@@ -181,6 +192,39 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
                                     type="checkbox" id="switch-3" class="mdl-switch__input">
                                 <span class="mdl-switch__label"><? echo $Line3Name ?></span>
                             </label></td>
+                    </tr>
+                    <tr <? echo($RealName['isSystemAdministrator'] == 0 ? "style='display: none'" : '') ?>>
+                        <td colspan="3">
+                            <h5 style="margin-bottom: 0">Line Names</h5>
+                            <p style="margin-top:0; font-size: small">Affects all users</p>
+                        </td>
+                    </tr>
+                    <tr <? echo($RealName['isSystemAdministrator'] == 0 ? "style='display: none'" : '') ?>>
+                        <td>
+                            <div data-index="1" class="mdl-textfield is-dirty mdl-js-textfield mdl-textfield--floating-label linerenamer">
+                                <input class="mdl-textfield__input" type="text" value="<?echo $Line1Name?>" id="line1renamer">
+                                <label class="mdl-textfield__label" for="line1renamer">Line 1 Name</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div data-index="2" class="mdl-textfield is-dirty mdl-js-textfield mdl-textfield--floating-label linerenamer">
+                                <input class="mdl-textfield__input" type="text" value="<?echo $Line2Name?>" id="line2renamer">
+                                <label class="mdl-textfield__label" for="line2renamer">Line 2 Name</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div data-index="3" class="mdl-textfield is-dirty mdl-js-textfield mdl-textfield--floating-label linerenamer">
+                                <input class="mdl-textfield__input" type="text" value="<?echo $Line3Name?>" id="line3renamer">
+                                <label class="mdl-textfield__label" for="line3renamer">Line 3 Name</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr <? echo($RealName['isSystemAdministrator'] == 0 ? "style='display: none'" : '') ?>>
+                        <td colspan="3">
+                            <button onclick="submitLineNames()" style="float: right" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                                Apply Names
+                            </button>
+                        </td>
                     </tr>
                 </table>
 
@@ -337,7 +381,7 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
             if (data['refreshpl0x'] > 0) {
                 stringToReturn = "<center><h1>Updating Production Coordinator. Please wait...</h1></center>";
             } else {
-                stringToReturn = <?echo($RealName['Role'] == 'Restricted' ? "\"<img src='splash.jpg' style='position: fixed; top: 0; bottom: 0; left: 0; right: 0; max-width: 100%; max-height: 100%; margin: auto; overflow: auto'>\"" : "\"<center>No active runs on this line.</center>\"")?>;
+                stringToReturn = <?echo($RealName['Role'] == 'Restricted' ? "\"<img src='splash.jpg' style='position: fixed; top: 0; bottom: 0; left: 0; right: 0; max-width: 100%; max-height: 100%; margin: auto; overflow: auto'>\"" : "\"<center>No runs available.</center>\"")?>;
             }
         }
         return stringToReturn;
@@ -536,7 +580,7 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
         if ("Notification" in window) {
             if (Notification.permission === "granted") {
                 var notification = new Notification(title, {
-                    icon: 'apple-touch-icon.png',
+                    icon: '../favicons/apple-touch-icon.png',
                     body: text
                 });
             }
@@ -544,7 +588,7 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
                 Notification.requestPermission(function (permission) {
                     if (permission === "granted") {
                         var notification = new Notification(title, {
-                            icon: 'apple-touch-icon.png',
+                            icon: '../favicons/apple-touch-icon.png',
                             body: text
                         });
                     }
@@ -553,6 +597,18 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
                 snack(text, 10000);
             }
         }
+    }
+
+    function submitLineNames(){
+        var linenames = [];
+        $('.linerenamer').each(function(index) {
+            linenames[index] = $(this).children('input').val();
+        });
+        $.post("API/renameLines.php", {'lineNames' : JSON.stringify(linenames)}, function(){
+            location.reload(true);
+        }).fail(function() {
+            snack("Could not reach server.", 6000);
+        });
     }
 
     function sendMessage(line, message) {

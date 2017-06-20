@@ -2,7 +2,6 @@
 
 //Internal packapps variables
 $packapps_version = 2;
-$isOnAWSBackend = true;
 $isManagedByOrchestration = false;
 $orchestraionServerURL = '';
 //companyName is user presentable, companyShortName is internal slug and the deployment ID
@@ -28,15 +27,11 @@ $growerDB = 'growerReporting';
 
 
 //QA SMTP Server Details
-$smtpHost = '';
-$smtpUser = '';
-$smtpPassword = '';
-$smtpPort = '';
-
-//Line names
-$Line1Name = "Blue Line";
-$Line2Name = "Gray Line";
-$Line3Name = "Presizer";
+$smtpHost = 'smtp.gmail.com';
+$smtpUser = 'michael@packercloud.com';
+$smtpPassword = 'gglo xjiy nwou ghpx';
+$smtpPort = '587';
+$smtpSendAs = 'notifications@packercloud.com';
 
 //security key to encrypt cookies with, if changed everyone will log out
 $securityKey = "vQSrLcADNgwtyG20dxiwHmw0PmtGK4XNHgdci8pUAB5pDU";

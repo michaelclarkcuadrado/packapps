@@ -18,7 +18,7 @@ class EmergencyAlert
         $mail->Password = $smtpPassword;
         $mail->Port = $smtpPort;
         $mail->isHTML();
-        $mail->setFrom($smtpUser, 'QA');
+        $mail->setFrom($smtpSendAs, 'Packer Cloud');
         while ($emaildata = mysqli_fetch_assoc($email_list))
         {
             $mail->AddAddress($emaildata['EmailAddress'], $emaildata['FullName']);

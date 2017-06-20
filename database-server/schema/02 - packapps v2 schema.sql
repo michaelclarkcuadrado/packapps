@@ -7,7 +7,7 @@ USE operationsData;
 /* SYSTEM RECORD KEEPING */
 
 /* Create systeminfo table for versioning */
-CREATE TABLE `operationsData`.`packapps_system_info` ( `packapps_version` INT NOT NULL , `systemInstalled` TINYINT(1) NOT NULL , `dateInstalled` DATETIME NOT NULL , `client_name` VARCHAR(255), `Notes` VARCHAR(1023) NULL ) ENGINE = InnoDB;
+CREATE TABLE `operationsData`.`packapps_system_info` ( `packapps_version` INT NOT NULL , `systemInstalled` TINYINT(1) NOT NULL , `dateInstalled` DATETIME NOT NULL , `company_slug` VARCHAR(255), `Notes` VARCHAR(1023) NULL ) ENGINE = InnoDB;
 INSERT INTO `operationsData`.`packapps_system_info` (packapps_version, systemInstalled, dateInstalled) VALUES (2, 0, '0000-00-00 00:00:00');
 
 /* Create new packapp_appProperties table to support more standardized modules */
@@ -73,6 +73,21 @@ INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, 
 RENAME TABLE master_users TO packapps_master_users;
 
 /* END PERMISSIONS */
+
+/* MOVE CONFIG INFO TO DATABASE */
+
+CREATE TABLE `production_lineNames` (
+  `lineID` int(11) NOT NULL AUTO_INCREMENT,
+  `lineName` varchar(255) NOT NULL,
+  PRIMARY KEY (`lineID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `production_lineNames` (lineID, lineName) VALUES (1, 'Blue Line');
+INSERT INTO `production_lineNames` (lineID, lineName) VALUES (2, 'Gray Line');
+INSERT INTO `production_lineNames` (lineID, lineName) VALUES (3, 'Presizer');
+
+/* END MOVE CONFIG INFO TO DATABASE */
+
 
 /* MIGRATE OLD QUALITY TABLES */
 

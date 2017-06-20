@@ -14,6 +14,12 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
         $RealName = $checkAllowed;
     }
 }
+//get Line Names
+$lines = mysqli_query($mysqli, "SELECT lineID, lineName FROM production_lineNames");
+while($line = mysqli_fetch_assoc($lines)){
+    $varName = 'Line'.$line['lineID'].'Name';
+    $$varName = $line['lineName'];
+}
 // end authentication
 ?>
 <!doctype html>

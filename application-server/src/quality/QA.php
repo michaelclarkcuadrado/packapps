@@ -24,7 +24,7 @@ if ($Role !== "QA") {
     die("Unauthorized. This page is for the QA lab team.");
 }
 $rts = mysqli_query($mysqli, "SELECT quality_InspectedRTs.RTNum AS `RT#`, ifnull(BULKOHCSV.Grower,'?') AS Grower, ifnull(BULKOHCSV.VarDesc,'?') AS VarDesc, ifnull(BULKOHCSV.Date, date(quality_InspectedRTs.DateInspected)) AS Date FROM quality_InspectedRTs LEFT JOIN BULKOHCSV ON quality_InspectedRTs.RTNum=BULKOHCSV.`RT#` WHERE quality_InspectedRTs.isFinalInspected = '0' ORDER BY quality_InspectedRTs.DateInspected ASC ");
-$runs = mysqli_query($mysqli, "SELECT RunID, RunNumber, Line FROM `production_runs` WHERE isQA != 1 and lastEdited >= NOW() - INTERVAL 7 DAY ORDER BY RunID DESC Limit 6;");
+$runs = mysqli_query($mysqli, "SELECT RunID, RunNumber, lineName AS Line FROM `production_runs` JOIN production_lineNames ON Line+0=lineID WHERE isQA != 1 and lastEdited >= NOW() - INTERVAL 7 DAY ORDER BY RunID DESC Limit 6;");
 $count_total = mysqli_query($mysqli, "SELECT COUNT(*) AS countRT, (SELECT count(*) FROM quality_AppleSamples) AS countSamp, ifnull(round((SELECT sum(Weight) FROM quality_AppleSamples),2), 0) AS Weight FROM quality_InspectedRTs");
 $total_count = mysqli_fetch_assoc($count_total);
 $count_total_runs = mysqli_query($mysqli, "SELECT COUNT(DISTINCT RunID) AS countRuns, Count(*) as countSamp, ifnull(round(sum(Weight),2), 0) AS Weight FROM quality_run_inspections");

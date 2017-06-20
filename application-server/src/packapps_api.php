@@ -11,7 +11,7 @@ use WhiteHat101\Crypt\APR1_MD5;
 /**
  * Authorizes a user to be logged into packapps, or a certain packapp if specified
  * @param null $packapp
- * @return array userinfo
+ * @return array userinfo ['username', 'Real Name', 'lastLogin', 'isSystemAdministrator', [UserData Columns if packapp specified]]
  */
 function packapps_authenticate_user($packapp = null){
     require 'config.php';
@@ -136,10 +136,11 @@ function packapps_downloadFromS3($bucketName, $filename){
 /**
  * Only runs once, initializes system_info row and folders if necessary
  * @param $mysqli
+ * @param $companyShortName
  */
-function initialize_packapps($mysqli){
+function initialize_packapps($mysqli, $companyShortName){
 
-    mysqli_query($mysqli, "UPDATE packapps_system_info SET systemInstalled=1, dateInstalled=CURRENT_TIMESTAMP()");
+    mysqli_query($mysqli, "UPDATE packapps_system_info SET systemInstalled=1, dateInstalled=CURRENT_TIMESTAMP(), company_slug='$companyShortName'");
     if (mysqli_errno($mysqli)){
         die("Could not install system.");
     }

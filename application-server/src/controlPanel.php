@@ -354,7 +354,7 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
                         elem.children('i').text('lock').parent().parent().parent().css('opacity', '.5').find('.enableSwitch').attr('disabled', true);
                     }
                 }).fail(function(){
-                    snack("Cannot disable last admin user.", 8000);
+                    snack("Cannot disable the last admin user.", 8000);
                 });
             });
 
