@@ -28,7 +28,7 @@ function packapps_authenticate_user($packapp = null){
             if($check['allowed'.ucfirst($packapp)] == 0){
                 die("<script>window.location.replace('/')</script>");
             } else {
-                $roleArray = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT * FROM ".$packapp."_UserData WHERE username='$SecuredUserName'"));
+                $roleArray = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT * FROM ".$packapp."_UserData JOIN packapps_app_permissions ON packapp='$packapp' AND Role=permissionLevel WHERE username='$SecuredUserName'"));
                 $userInfo = array_merge($userInfo,$roleArray);
             }
         }

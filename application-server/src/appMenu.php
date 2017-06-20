@@ -90,32 +90,6 @@ $errormsg = "DEVELOPMENT ENVIRONMENT - DEVELOPMENT ENVIRONMENT - DEVELOPMENT ENV
 <script src="scripts/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
-//        var allowedQA = <?//echo ($allowedItems['allowedQuality'] > 0 ? 'true' : 'false')?>//;
-//        var allowedPurchasing = <?//echo ($allowedItems['allowedPurchasing'] > 0 ? 'true' : 'false')?>//;
-//        var allowedProduction = <?//echo ($allowedItems['allowedProduction'] > 0 ? 'true' : 'false')?>//;
-//        var allowedMaintenance = <?//echo ($allowedItems['allowedMaintenance'] > 0 ? 'true' : 'false')?>//;
-//        var allowedStorage = <?//echo ($allowedItems['allowedStorage'] > 0 ? 'true' : 'false')?>//;
-//
-//        if (!allowedQA) {
-//            $('#QAbutton').attr('disabled', true);
-//            $('#QAlock').show();
-//        }
-//        if (!allowedPurchasing) {
-//            $('#purchasingButton').attr('disabled', true);
-//            $('#Purchasinglock').show();
-//        }
-//        if (!allowedProduction) {
-//            $('#productionButton').attr('disabled', true);
-//            $('#Productionlock').show();
-//        }
-//        if (!allowedMaintenance) {
-//            $('#maintenanceButton').attr('disabled', true);
-//            $('#Maintenancelock').show();
-//        }
-//        if (!allowedStorage) {
-//            $('#storageButton').attr('disabled', true);
-//            $('#Storagelock').show();
-//        }
         $('.mdl-card').fadeIn('slow');
     });
 

@@ -30,14 +30,14 @@ $userInfo = packapps_authenticate_user('maintenance');
         <header class="demo-drawer-header">
             <div class="demo-avatar-dropdown">
                 <i style="margin: 2px" class="material-icons">account_circle</i>
-                <span style='text-align: center;'><? echo $userInfo['Real Name'] ?></span>
+                <span style='text-align: center;width:100%'><? echo $userInfo['Real Name'] ?></span>
                 <div class="mdl-layout-spacer"></div>
                 <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                     <i class="material-icons" role="presentation">arrow_drop_down</i>
                     <span class="visuallyhidden">Accounts</span>
                 </button>
                 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-                    <? echo($RealName['Role'] > 1 ? "<li class=\"mdl-menu__item\"><i class=\"material-icons\">verified_user</i>Authorized for Purchases</li>" : '') ?>
+                    <li class="mdl-menu__item"><i class="material-icons">verified_user</i><?echo $userInfo['Meaning']?> Access</li>
                     <li onclick="location.href = '/appMenu.php'" class="mdl-menu__item"><i class="material-icons">exit_to_app</i>Exit
                         to menu
                     </li>
@@ -56,20 +56,6 @@ $userInfo = packapps_authenticate_user('maintenance');
             <a class="mdl-navigation__link" onClick="$('.mdl-card').fadeOut('fast');" href="index.php"><i
                     class="mdl-color-text--teal-400 material-icons"
                     role="presentation">home</i>Home</a>
-            <a class="mdl-navigation__link" onClick="$('.mdl-card').fadeOut('fast');" href="inventory.php"><i
-                    class="mdl-color-text--deep-orange-400 material-icons"
-                    role="presentation">view_comfy</i>Inventory</a>
-            <a class="mdl-navigation__link" onClick="$('.mdl-card').fadeOut('fast');" href="purchasehistory.php"><i
-                    class="mdl-color-text--yellow-400 material-icons" role="presentation">history</i>Purchases</a>
-            <a class="mdl-navigation__link" onClick="$('.mdl-card').fadeOut('fast');" href="suppliers.php"><i
-                    class="mdl-color-text--deep-purple-400 material-icons"
-                    role="presentation">contacts</i>Suppliers</a>
-            <a class="mdl-navigation__link" onClick="$('.mdl-card').fadeOut('fast');" href="filemanager.php"><i
-                    class="mdl-color-text--amber-400 material-icons"
-                    role="presentation">folder</i>Shared Folder</a>
-            <a class="mdl-navigation__link" onClick="$('.mdl-card').fadeOut('fast');" href="bomEditor.php"><i
-                    class="mdl-color-text--blue-grey-400 material-icons"
-                    role="presentation">receipt</i>BOMs</a>
         </nav>
     </div>
     <main class="mdl-layout__content mdl-color--grey-400">
@@ -82,7 +68,6 @@ $userInfo = packapps_authenticate_user('maintenance');
 <script src="../scripts-common/jquery.min.js"></script>
 <!--<script src='../scripts-common/Chart.js'></script>-->
 <script>
-    var itemPieChart;
     $(document).ready(function () {
         $('.mdl-card').fadeIn('fast');
 

@@ -52,7 +52,7 @@ $yearToDateStats = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT count(DISTIN
         <header class="demo-drawer-header">
             <div class="demo-avatar-dropdown">
                 <i style="margin: 2px" class="material-icons">account_circle</i>
-                <span style='text-align: center;'><? echo $RealName['RealName'] ?></span>
+                <span style='text-align: center;width:100%'><? echo $RealName['RealName'] ?></span>
                 <div class="mdl-layout-spacer"></div>
                 <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                     <i class="material-icons" role="presentation">arrow_drop_down</i>
@@ -86,9 +86,6 @@ $yearToDateStats = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT count(DISTIN
             <a class="mdl-navigation__link" onClick="$('.mdl-card').fadeOut('fast');" href="suppliers.php"><i
                     class="mdl-color-text--deep-purple-400 material-icons"
                     role="presentation">contacts</i>Suppliers</a>
-            <a class="mdl-navigation__link" onClick="$('.mdl-card').fadeOut('fast');" href="filemanager.php"><i
-                    class="mdl-color-text--amber-400 material-icons"
-                    role="presentation">folder</i>Shared Folder</a>
         </nav>
     </div>
     <main class="mdl-layout__content mdl-color--grey-400">

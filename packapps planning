@@ -1,0 +1,34 @@
+DigitalOcean?
+
+Front end server 
+Web, billing, account management
+
+
+Orchestration server
+- Deployment management
+- Usage tracking
+- Source code repo
+ 8d6cfc84dc613a85a29f7889297184760ef51167b0611c24ced5d72865043e9e
+
+Yearly Expenses
+-----------------------------------------------
+Baseline:
+Paypal: 2.9% of revenue
+Domain: $12
+AWS S3 - 5-20/month = $240 max
+Wildcard SSL: $150~
+GSuite: $5 (necessary??)
+Hosting:
+	Orchestration:
+		$120
+	Front end:
+		$120
+
+Per client:
+		$480 + marginal s3 fees
+
+NRE:
+	html5up license fix: $20
+	LLC filings: $300
+	Trademarks: $180
+	Phpstorm: $200
