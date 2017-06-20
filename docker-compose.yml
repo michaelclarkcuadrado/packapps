@@ -9,7 +9,6 @@ services:
   environment:
    - AWS_ACCESS_KEY_ID=AKIAJUY2TJYONM67CUNQ
    - AWS_SECRET_ACCESS_KEY=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
-  # Allow uploads to persist to disk, unused or empty ideally if using AWS backend config flag
   volumes:
    # simplify development by allowing instantaneous code changes. Unsafe. Remove for deployment
    - ./application-server/src:/var/www
