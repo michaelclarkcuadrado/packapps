@@ -15,8 +15,26 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
 } else {
     $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
 }
+//enumerate packapps
+$packapps_query = mysqli_query($mysqli, "SELECT short_app_name, long_app_name, isEnabled, material_icon_name FROM packapps_appProperties");
+$installedPackapps = array();
+while($packapp = mysqli_fetch_assoc($packapps_query)){
+    array_push($installedPackapps, $packapp);
+}
 
-$allowedItems = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT allowedQuality, allowedPurchasing, allowedProduction, allowedMaintenance, allowedStorage, isSystemAdministrator FROM packapps_master_users WHERE username = '$SecuredUserName'"));
+//create CheckAllowed query
+$checkAllowedQuery = "SELECT `isSystemAdministrator`";
+//add table fields to query
+foreach($installedPackapps as $packapp){
+    $checkAllowedQuery .= ", ".$packapp['short_app_name']."_UserData.Role+0 AS ".$packapp['short_app_name']."Role";
+    $checkAllowedQuery .= ", allowed".ucfirst($packapp['short_app_name']);
+}
+$checkAllowedQuery .= " FROM packapps_master_users";
+//add table joins to query
+foreach($installedPackapps as $packapp){
+    $checkAllowedQuery .= " LEFT JOIN ".$packapp['short_app_name']."_UserData ON packapps_master_users.username=".$packapp['short_app_name']."_UserData.UserName";
+}
+$allowedItems = mysqli_fetch_assoc(mysqli_query($mysqli, $checkAllowedQuery." WHERE packapps_master_users.username = '".$SecuredUserName."'"));
 
 $errormsg = "DEVELOPMENT ENVIRONMENT - DEVELOPMENT ENVIRONMENT - DEVELOPMENT ENVIRONMENT - DEVELOPMENT ENVIRONMENT";
 ?>
@@ -70,15 +88,14 @@ $errormsg = "DEVELOPMENT ENVIRONMENT - DEVELOPMENT ENVIRONMENT - DEVELOPMENT ENV
     <p style="margin: 0; text-align: center; color: #e91e63; font-weight: 900; font-size larger"><? echo $errormsg ?></p>
     <div style="text-align: center" class="mdl-grid mdl-card__supporting-text">
         <?php
-           $packappsList = mysqli_query($mysqli, "SELECT short_app_name, long_app_name, material_icon_name, isEnabled FROM packapps_appProperties");
-           while($row = mysqli_fetch_assoc($packappsList)){
-               //determine if app is locked to user or system
-               $allowed = false;
-               if($allowedItems['allowed'.ucfirst($row['short_app_name'])] > 0 && $row['isEnabled'] > 0){
-                   $allowed = true;
-               }
-               echo "<button ".($allowed ? '' : 'disabled')." id='".$row['short_app_name']."button' onclick=\"location.href = '/".$row['short_app_name']."'\" class=\"mdl-button mdl-js-button mdl-color--pink-500 mdl-color-text--white mdl-js-ripple-effect mdl-shadow--6dp mdl-cell mdl-cell--4-col\" style=\"display: initial; height: 200px; float: left; border-radius: 12px; text-align: center; font-size: x-large; vertical-align: middle\"><i style=\"font-size:45px\" class=\"material-icons\">".$row['material_icon_name']."</i><br>".$row['long_app_name']."<p style='".($allowed ? 'display: none;' : '')." font-size: small;position: absolute; width: 100%; left: 0; color: white'>(This app is locked.)</p></button>";
-           }
+        foreach($installedPackapps as $row){
+            //determine if app is locked to user or system
+            $allowed = false;
+            if($allowedItems['allowed'.ucfirst($row['short_app_name'])] > 0 && $row['isEnabled'] > 0){
+                $allowed = true;
+            }
+            echo "<button ".($allowed ? '' : 'disabled')." id='".$row['short_app_name']."button' onclick=\"location.href = '/".$row['short_app_name']."'\" class=\"mdl-button mdl-js-button mdl-color--pink-500 mdl-color-text--white mdl-js-ripple-effect mdl-shadow--6dp mdl-cell mdl-cell--4-col\" style=\"display: initial; height: 200px; float: left; border-radius: 12px; text-align: center; font-size: x-large; vertical-align: middle\"><i style=\"font-size:45px\" class=\"material-icons\">".$row['material_icon_name']."</i><br>".$row['long_app_name']."<p style='".($allowed ? 'display: none;' : '')." font-size: small;position: absolute; width: 100%; left: 0; color: white'>(This app is locked)</p></button>";
+        }
         ?>
     </div>
     <div class='mdl-card__actions mdl-card__border'>
@@ -96,6 +113,7 @@ $errormsg = "DEVELOPMENT ENVIRONMENT - DEVELOPMENT ENVIRONMENT - DEVELOPMENT ENV
     function logout() {
         document.cookie = "auth=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
         document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+        document.cookie = "grower=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
         window.location.replace('/');
     }
 </script>

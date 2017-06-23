@@ -134,7 +134,7 @@ function packapps_downloadFromS3($bucketName, $filename){
 }
 
 /**
- * Only runs once, initializes system_info row and folders if necessary
+ * Only runs once, initializes system_info row
  * @param $mysqli
  * @param $companyShortName
  */
@@ -142,7 +142,7 @@ function initialize_packapps($mysqli, $companyShortName){
 
     mysqli_query($mysqli, "UPDATE packapps_system_info SET systemInstalled=1, dateInstalled=CURRENT_TIMESTAMP(), company_slug='$companyShortName'");
     if (mysqli_errno($mysqli)){
-        die("Could not install system.");
+        die(mysqli_error($mysqli));
     }
 }
 

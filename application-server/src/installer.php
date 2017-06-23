@@ -11,6 +11,12 @@ require 'config.php';
 
 $errormsg = "To finish setup, create the administrator account.";
 
+//make sure it only runs once
+$firstRunCheck = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT systemInstalled FROM packapps_system_info"));
+if($firstRunCheck['systemInstalled'] > 0){
+    die ("<script>window.location.replace('/')</script>");
+}
+
 //catch own form
 if(isset($_POST['username']) && isset($_POST['realname']) && isset($_POST['password']) && isset($_POST['password_confirm'])){
     if($_POST['password'] != $_POST['password_confirm']){

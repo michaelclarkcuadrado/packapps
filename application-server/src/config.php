@@ -8,6 +8,14 @@ $orchestraionServerURL = '';
 $companyShortName = 'devenv';
 $companyName = 'DEVELOPMENT ENV';
 
+//MYSQL Server Details
+$dbhost = "database-server";
+//$dbhost = "p:database-server";
+$dbusername = "packapps";
+$dbpassword = "packapps";
+$dbport = "3306";
+$operationsDatabase = 'operationsData';
+
 //AWS S3 buckets
 $availableBuckets = array(
     'purchasing' => 'packapps-purchasing-assets',
@@ -16,21 +24,17 @@ $availableBuckets = array(
 //To access a public obj, prepend bucket name and append object key.
 $amazonAWSURL = '.s3.amazonaws.com/';
 
-//MYSQL Server Details
-$dbhost = "database-server";
-//$dbhost = "p:database-server";
-$dbusername = "packapps";
-$dbpassword = "packapps";
-$dbport = "3306";
-$operationsDatabase = 'operationsData';
-$growerDB = 'growerReporting';
-
+//analytics
+$piwikHost = '//grower.ricefruit.com/analytics';
+$piwikUser = 'ricefruit';
+$piwikPassword = 'r1cefru1t';
 
 //QA SMTP Server Details
 $smtpHost = 'smtp.gmail.com';
 $smtpUser = 'michael@packercloud.com';
 $smtpPassword = 'gglo xjiy nwou ghpx';
 $smtpPort = '587';
+//Not respected by Gsuite
 $smtpSendAs = 'notifications@packercloud.com';
 
 //security key to encrypt cookies with, if changed everyone will log out

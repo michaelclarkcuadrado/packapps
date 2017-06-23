@@ -3,7 +3,7 @@ class EmergencyAlert
 {
     function prepareMail()
     {
-        include '../../config.php';
+        require($_SERVER['DOCUMENT_ROOT'].'/config.php');
 
         $email_list = mysqli_query($mysqli, "SELECT FullName, EmailAddress FROM quality_AlertEmails");
         require_once("class.phpmailer.php");

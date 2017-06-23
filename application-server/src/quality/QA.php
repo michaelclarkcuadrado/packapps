@@ -78,8 +78,8 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
            class="icon">]</p>
         <a href="#RTHistory" target="_blank" class="icon
         fa-history"><span>History</span></a>
-        <a href="#TODO" target="_blank" class="icon
-        fa-camera"><span>Img Archive</span></a>
+<!--        <a href="#TODO" target="_blank" class="icon-->
+<!--        fa-camera"><span>Img Archive</span></a>-->
         <p style="font-size: 2em; text-align: center; display: inline-block; width: 5px; color: #ffffff; opacity: 0.75"
            class="icon">[</p>
         <a href="#runQA" class="icon fa-list"><span>Runs</span></a>

@@ -15,9 +15,18 @@ if($detect->is('IE')){
 require 'config.php';
 use WhiteHat101\Crypt\APR1_MD5;
 
+//try to perform login
 $errormsg = "";
-if (isset($_COOKIE['auth']) && isset($_COOKIE['username']) && hash_equals($_COOKIE['auth'], crypt($_COOKIE['username'], $securityKey))) {
-    die(header( 'Location: appMenu.php' ));
+if (isset($_COOKIE['auth']) && isset($_COOKIE['username'])) {
+    if(hash_equals($_COOKIE['auth'], crypt($_COOKIE['username'], $securityKey))){
+        die(header('Location: appMenu.php'));
+    } else {
+        //Hash mismatch, clear all cookies and try to login again
+        echo "<script>document.cookie = \"auth=; expires=Thu, 01 Jan 1970 00:00:01 GMT;\";
+        document.cookie = \"username=; expires=Thu, 01 Jan 1970 00:00:01 GMT;\";
+        document.cookie = \"grower=; expires=Thu, 01 Jan 1970 00:00:01 GMT;\";
+        window.location.replace('/');</script>";
+    }
 } else if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = mysqli_real_escape_string($mysqli, $_POST['username']);
     $hash = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Password`, isDisabled FROM packapps_master_users WHERE username = '" . $username . "'"));

@@ -14,8 +14,8 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
 //enumerate packapps
 $packapps_query = mysqli_query($mysqli, "SELECT short_app_name, long_app_name FROM packapps_appProperties WHERE isEnabled = 1");
 $installedPackapps = array();
-while($packapp = mysqli_fetch_array($packapps_query)){
-    array_push($installedPackapps, array('short_app_name' => $packapp['short_app_name'], 'long_app_name' => $packapp['long_app_name']));
+while($packapp = mysqli_fetch_assoc($packapps_query)){
+    array_push($installedPackapps, $packapp);
 }
 
 //create CheckAllowed query

@@ -46,6 +46,10 @@ html, body {
     transition: .6s;
     transform: rotate(-180deg);
 }
+
+.mdl-data-table td {
+    padding: 3px 18px;
+}
 .demo-avatar {
     width: 48px;
     height: 48px;
