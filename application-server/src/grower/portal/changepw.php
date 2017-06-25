@@ -3,9 +3,8 @@
 <head>
     <?php
     include '../../config.php';
-    $namecnct = mysqli_query($mysqli, "select GrowerName from `grower_growerLogins` where GrowerCode='" . $_SERVER['PHP_AUTH_USER'] . "' limit 1");
-    $growername = mysqli_fetch_array($namecnct);
-    echo "<title>Change Password for " . $growername[0] . "</title>";
+    $userinfo = packapps_authenticate_grower();
+    echo "<title>Change Password for " . $userinfo['GrowerName'] . "</title>";
     ?>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="description" content="<?echo $companyName?> Grower Control Panel"/>
@@ -38,7 +37,7 @@
         var u = "<?php echo $piwikHost?>/";
         _paq.push(['setTrackerUrl', u + 'piwik.php']);
         _paq.push(['setSiteId', 1]);
-        _paq.push(['setUserId', '<?echo ($admin[0] == 1 && $_GET['pretend']) ? "Admin: " . $_SERVER['PHP_AUTH_USER'] . " logged in as " . addcslashes($growername, "'") : addcslashes($growername, "'")?>']);
+        _paq.push(['setUserId', '<?echo addcslashes($growername, "'")?>']);
         var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
         g.type = 'text/javascript';
         g.async = true;
@@ -55,25 +54,12 @@
         <!-- Logo -->
         <div id="logo">
             <span class="image"><img src="images/avatar.png" alt=""/></span>
-            <h1 id="title"><? echo $growername[0] ?></h1>
+            <h1 id="title"><? echo $userinfo['GrowerName'] ?></h1>
             <p><?echo $companyName?> Grower</p>
         </div>
 
         <!-- Nav -->
         <nav id="nav">
-            <!--
-
-                Prologue's nav expects links in one of two formats:
-
-                1. Hash link (scrolls to a different section within the page)
-
-                   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
-
-                2. Standard link (sends the user to another page/site)
-
-                   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
-
-            -->
             <ul>
                 <li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-key">Change Password</span></a>
                 </li>
@@ -93,7 +79,7 @@
         <div class="container">
 
             <header>
-                <h2 class="alt">Password change for account <strong><? echo $growername[0] ?></strong><br/></h2>
+                <h2 class="alt">Password change for account <strong><? echo $userinfo['GrowerName'] ?></strong><br/></h2>
             </header>
             <form class='12u' action="changepw2.php" method="POST"><input name="NewPassword" placeholder="New Password"
                                                                           type="password" size="15" required autofocus>
@@ -115,7 +101,7 @@
 
     <!-- Copyright -->
     <ul class="copyright">
-        <li>&copy; MCC.</li>
+        <li></li>
     </ul>
 
 </div>

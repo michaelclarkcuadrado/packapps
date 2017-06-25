@@ -7,14 +7,9 @@
  */
 include 'config.php';
 
-//authentication
-if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
-    die("<script>window.location.replace('/')</script>");
-} else if (!hash_equals($_COOKIE['auth'], crypt($_COOKIE['username'], $securityKey))) {
-    die("<script>window.location.replace('/')</script>");
-} else {
-    $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-}
+$userinfo = packapps_authenticate_user();
+$SecuredUserName = $userinfo['username'];
+
 //enumerate packapps
 $packapps_query = mysqli_query($mysqli, "SELECT short_app_name, long_app_name, isEnabled, material_icon_name FROM packapps_appProperties");
 $installedPackapps = array();

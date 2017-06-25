@@ -38,7 +38,10 @@ $smtpPort = '587';
 $smtpSendAs = 'notifications@packercloud.com';
 
 //security key to encrypt cookies with, if changed everyone will log out
-$securityKey = "vQSrLcADNgwtyG20dxiwHmw0PmtGK4XNHgdci8pUAB5pDU";
+//seperate user and grower keys to prevent a logged in grower from appearing logged into packapps, and vice versa
+//as user user accounts for both are seperate and incompatible
+$securityKey = "lH2OzVPQ0K9/By66YygFosxxszSgET4p/L0l18bpZPXRGCt5U5VCybYaVk9vn15c";
+$growerSecurityKey = "/u0HDuaq9WgBvcEsBGeU+j3pZ5Vr5nFu91f+axiQRpYux3t6xFXQvou4Uawu51pN";
 
 //do db connection
 $mysqli = mysqli_connect($dbhost, $dbusername, $dbpassword, $operationsDatabase, $dbport);

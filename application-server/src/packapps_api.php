@@ -14,6 +14,9 @@ use WhiteHat101\Crypt\APR1_MD5;
  * @return array userinfo ['username', 'Real Name', 'lastLogin', 'isSystemAdministrator', [UserData Columns if packapp specified]]
  */
 function packapps_authenticate_user($packapp = null){
+    if(isset($_COOKIE['grower'])){
+        return packapps_authenticate_grower();
+    }
     require 'config.php';
     if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
         die("<script>window.location.replace('/')</script>");
@@ -33,6 +36,21 @@ function packapps_authenticate_user($packapp = null){
             }
         }
         return $userInfo;
+    }
+}
+
+function packapps_authenticate_grower(){
+    require 'config.php';
+    if(isset($_COOKIE['grower']) && isset($_COOKIE['auth']) && isset($_COOKIE['username'])){
+        if(!hash_equals($_COOKIE['auth'], crypt($_COOKIE['username'], $growerSecurityKey))){
+            die("<script>window.location.replace('/')</script>");
+        } else {
+            $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
+            $userInfo = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT GrowerID, GrowerCode, GrowerName FROM grower_GrowerLogins WHERE GrowerCode='$SecuredUserName'"));
+            return $userInfo;
+        }
+    } else {
+        die("<script>window.location.replace('/')</script>");
     }
 }
 

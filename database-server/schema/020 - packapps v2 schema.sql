@@ -97,76 +97,6 @@ INSERT INTO `production_lineNames` (lineID, lineName) VALUES (3, 'Presizer');
 
 /* END MOVE CONFIG INFO TO DATABASE */
 
-/* MOVE GROWER_PORTAL TABLES into operationsData, for packapp-erization of grower portal */
-
-ALTER TABLE growerReporting.BULKRTCSV RENAME operationsData.BULKRTCSV;
-ALTER TABLE growerReporting.`crop-estimates` RENAME operationsData.`grower_crop-estimates`;
-ALTER TABLE growerReporting.crop_estimates_changes_timeseries RENAME operationsData.grower_crop_estimates_changes_timeseries;
-ALTER TABLE growerReporting.growerCalendar RENAME operationsData.grower_growerCalendar;
-ALTER TABLE growerReporting.GrowerData RENAME operationsData.grower_GrowerLogins;
-ALTER TABLE growerReporting.GrowerGroups RENAME operationsData.grower_GrowerGroups;
-ALTER TABLE growerReporting.Preharvest_Samples RENAME operationsData.grower_Preharvest_Samples;
-
-/* Table transformations and additions for new Grower Portal */
-ALTER TABLE `grower_GrowerLogins` DROP PRIMARY KEY;
-DELETE FROM `grower_GrowerLogins` WHERE isAdmin > 0;
-ALTER TABLE `grower_GrowerLogins` ADD `GrowerID` INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`GrowerID`);
-ALTER TABLE `grower_GrowerLogins` ADD `login_email` VARCHAR(255) NOT NULL AFTER `GrowerName`, ADD INDEX (`login_email`);
-CREATE TABLE `grower_farms` (
-  `growerID` int(11) NOT NULL,
-  `commodityID` int(11) NOT NULL,
-  `farmID` int(11) NOT NULL AUTO_INCREMENT,
-  `farmName` varchar(255) NOT NULL,
-  PRIMARY KEY (`farmID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-CREATE TABLE `operationsData`.`grower_strains` ( `strain_ID` INT NOT NULL AUTO_INCREMENT , `variety_ID` INT NOT NULL , `strainName` VARCHAR(255) NOT NULL , PRIMARY KEY (`strain_ID`)) ENGINE = InnoDB;
-CREATE TABLE `operationsData`.`grower_varieties` ( `commodityID` INT NOT NULL , `VarietyID` INT NOT NULL AUTO_INCREMENT , `VarietyName` INT NOT NULL , PRIMARY KEY (`VarietyID`)) ENGINE = InnoDB;
-CREATE TABLE `operationsData`.`grower_commodities` ( `commodity_ID` INT NOT NULL AUTO_INCREMENT , `commodity_name` VARCHAR(255) NOT NULL , PRIMARY KEY (`commodity_ID`)) ENGINE = InnoDB;
-ALTER TABLE `grower_farms` ADD FOREIGN KEY (`growerID`) REFERENCES `grower_GrowerLogins`(`GrowerID`) ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE `grower_varieties` ADD FOREIGN KEY (`commodityID`) REFERENCES `grower_commodities`(`commodity_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE `grower_strains` ADD FOREIGN KEY (`variety_ID`) REFERENCES `grower_varieties`(`VarietyID`) ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE `grower_crop-estimates` ADD `farmID` INT NOT NULL AFTER `PK`;
-/* create commodities */
-INSERT INTO grower_commodities (commodity_name) (SELECT DISTINCT `Comm Desc` FROM `grower_crop-estimates`);
-/* create farms */
-INSERT INTO grower_farms (growerID, farmName) (SELECT DISTINCT grower_GrowerLogins.GrowerID, FarmDesc FROM `grower_crop-estimates` JOIN grower_GrowerLogins ON Grower=grower_GrowerLogins.GrowerCode);
-
-/* Rename Views */
-/*!50001 DROP TABLE IF EXISTS `CurYearReceived`*/;
-/*!50001 DROP VIEW IF EXISTS `CurYearReceived`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-  /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-  /*!50001 VIEW `grower_CurYearReceived` AS (select `BULKRTCSV`.`RT#` AS `RT#`,`BULKRTCSV`.`Sort Code` AS `Sort Code`,`BULKRTCSV`.`Crop Year` AS `Crop Year`,`BULKRTCSV`.`Grower` AS `Grower`,`BULKRTCSV`.`GrowerName` AS `GrowerName`,`BULKRTCSV`.`Class` AS `Class`,`BULKRTCSV`.`ClassDesc` AS `ClassDesc`,`BULKRTCSV`.`Commodity` AS `Commodity`,`BULKRTCSV`.`Comm Desc` AS `Comm Desc`,`BULKRTCSV`.`Variety` AS `Variety`,`BULKRTCSV`.`VarDesc` AS `VarDesc`,`BULKRTCSV`.`Strain` AS `Strain`,`BULKRTCSV`.`StrDesc` AS `StrDesc`,`BULKRTCSV`.`Farm` AS `Farm`,`BULKRTCSV`.`FarmDesc` AS `FarmDesc`,`BULKRTCSV`.`Block` AS `Block`,`BULKRTCSV`.`BlockDesc` AS `BlockDesc`,`BULKRTCSV`.`Lot` AS `Lot`,`BULKRTCSV`.`Date` AS `Date`,`BULKRTCSV`.`Pack` AS `Pack`,`BULKRTCSV`.`Size` AS `Size`,`BULKRTCSV`.`Qty` AS `Qty`,`BULKRTCSV`.`Bu` AS `Bu`,`BULKRTCSV`.`ItemNum` AS `ItemNum` from `BULKRTCSV` where `BULKRTCSV`.`Crop Year` = convert(substr(year(curdate()),4,1) using latin1)) */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
-
-/*!50001 DROP TABLE IF EXISTS `ReceivedandEstimates`*/;
-/*!50001 DROP VIEW IF EXISTS `ReceivedandEstimates`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = latin1 */;
-/*!50001 SET character_set_results     = latin1 */;
-/*!50001 SET collation_connection      = latin1_swedish_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-  /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-  /*!50001 VIEW `grower_ReceivedandEstimates` AS (select rtrim(`grower_crop-estimates`.`PK`) AS `BlockID`,rtrim(`grower_crop-estimates`.`Grower`) AS `Code`,rtrim(`grower_crop-estimates`.`Comm Desc`) AS `Commodity`,rtrim(`grower_crop-estimates`.`FarmDesc`) AS `Farm`,ifnull(rtrim(`grower_CurYearReceived`.`Farm`),'') AS `FarmCode`,rtrim(`grower_crop-estimates`.`BlockDesc`) AS `Block`,ifnull(rtrim(`grower_CurYearReceived`.`Block`),'') AS `BlockCode`,rtrim(`grower_crop-estimates`.`VarDesc`) AS `Variety`,rtrim(`grower_crop-estimates`.`Str Desc`) AS `Strain`,rtrim(`grower_crop-estimates`.`2014act`) AS `2014 Received`,rtrim(`grower_crop-estimates`.`2015act`) AS `2015 Received`,rtrim(`grower_crop-estimates`.`2016act`) AS `2016 Received`,rtrim(case when `grower_crop-estimates`.`isDeleted` = 0 then `grower_crop-estimates`.`2016est` else 0 end) AS `2016 Estimate`,ifnull(sum(`grower_CurYearReceived`.`Bu`),'0') AS `2017 Received`,case when `grower_crop-estimates`.`isDeleted` = 0 then 'false' else 'true' end AS `isDeletedBlock`,case when `grower_crop-estimates`.`isFinished` = 0 then 'false' else 'true' end AS `isDonePicking`,case when (`grower_crop-estimates`.`2017est` <> `grower_crop-estimates`.`2016act` or `grower_crop-estimates`.`isSameAsLastYear` = 1) then 'true' else 'false' end AS `isUserConfirmedEstimate` from (`grower_crop-estimates` left join `grower_CurYearReceived` on(rtrim(`grower_CurYearReceived`.`Comm Desc`) = rtrim(`grower_crop-estimates`.`Comm Desc`) and rtrim(`grower_CurYearReceived`.`VarDesc` = rtrim(`grower_crop-estimates`.`VarDesc`)) and rtrim(`grower_CurYearReceived`.`StrDesc` = rtrim(`grower_crop-estimates`.`Str Desc`)) and rtrim(`grower_CurYearReceived`.`BlockDesc` = rtrim(`grower_crop-estimates`.`BlockDesc`)) and rtrim(`grower_CurYearReceived`.`FarmDesc` = rtrim(`grower_crop-estimates`.`FarmDesc`)) and rtrim(`grower_CurYearReceived`.`Grower` = rtrim(`grower_crop-estimates`.`Grower`)))) group by `grower_crop-estimates`.`PK`) union (select 'Unmatched Block' AS `BlockID`,rtrim(`BULKRTCSV`.`Grower`) AS `Code`,rtrim(`BULKRTCSV`.`Comm Desc`) AS `Commodity`,rtrim(`BULKRTCSV`.`FarmDesc`) AS `Farm`,rtrim(`BULKRTCSV`.`Farm`) AS `FarmCode`,rtrim(`BULKRTCSV`.`BlockDesc`) AS `Block`,rtrim(`BULKRTCSV`.`Block`) AS `BlockCode`,rtrim(`BULKRTCSV`.`VarDesc`) AS `Variety`,rtrim(`BULKRTCSV`.`StrDesc`) AS `Strain`,'0' AS `2014 Received`,'0' AS `2015 Received`,'0' AS `2016 Received`,'0' AS `2017 Estimate`,sum(`BULKRTCSV`.`Bu`) AS `2017 Received`,'false' AS `isDeletedBlock`,'false' AS `isDonePicking`,'false' AS `isUserConfirmedEstimate` from (`BULKRTCSV` left join `grower_crop-estimates` on(rtrim(`BULKRTCSV`.`Comm Desc`) = rtrim(`grower_crop-estimates`.`Comm Desc`) and rtrim(`BULKRTCSV`.`VarDesc` = rtrim(`grower_crop-estimates`.`VarDesc`)) and rtrim(`BULKRTCSV`.`StrDesc` = rtrim(`grower_crop-estimates`.`Str Desc`)) and rtrim(`BULKRTCSV`.`BlockDesc` = rtrim(`grower_crop-estimates`.`BlockDesc`)) and rtrim(`BULKRTCSV`.`FarmDesc` = rtrim(`grower_crop-estimates`.`FarmDesc`)) and rtrim(`BULKRTCSV`.`Grower` = rtrim(`grower_crop-estimates`.`Grower`)))) where `grower_crop-estimates`.`PK` is null and `BULKRTCSV`.`Crop Year` = convert(substr(year(curdate()),4,1) using latin1) group by `BULKRTCSV`.`Grower`,`BULKRTCSV`.`Comm Desc`,`BULKRTCSV`.`FarmDesc`,`BULKRTCSV`.`BlockDesc`,`BULKRTCSV`.`VarDesc`,`BULKRTCSV`.`StrDesc`) */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
-
-DROP DATABASE growerReporting;
-
-/* END MOVE GROWER_PORTAL TABLES */
-
-
 /* MIGRATE OLD QUALITY TABLES */
 
 /* quality tables did not have prefixes as they predate packapps. Add prefixes to quality tables */
@@ -339,3 +269,97 @@ CREATE TABLE `maintenance_part_info` (
 
 
 /* END STORAGE PACKAPP TABLES */
+
+/* MOVE GROWER_PORTAL TABLES into operationsData, for packapp-erization of grower portal */
+
+ALTER TABLE growerReporting.BULKRTCSV RENAME operationsData.BULKRTCSV;
+ALTER TABLE growerReporting.`crop-estimates` RENAME operationsData.`grower_crop-estimates`;
+ALTER TABLE growerReporting.crop_estimates_changes_timeseries RENAME operationsData.grower_crop_estimates_changes_timeseries;
+ALTER TABLE growerReporting.growerCalendar RENAME operationsData.grower_growerCalendar;
+ALTER TABLE growerReporting.GrowerData RENAME operationsData.grower_GrowerLogins;
+ALTER TABLE growerReporting.GrowerGroups RENAME operationsData.grower_GrowerGroups;
+ALTER TABLE growerReporting.Preharvest_Samples RENAME operationsData.grower_Preharvest_Samples;
+
+DROP DATABASE growerReporting;
+
+/* Table transformations and additions for new Grower Portal */
+ALTER TABLE `grower_GrowerLogins` DROP PRIMARY KEY;
+DELETE FROM `grower_GrowerLogins` WHERE isAdmin > 0;
+/* Edge case: grower has crop-estimates tables but no login */
+ALTER TABLE `grower_GrowerLogins` ADD `GrowerID` INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`GrowerID`);
+ALTER TABLE `grower_GrowerLogins` ADD `login_email` VARCHAR(255) NOT NULL AFTER `GrowerName`, ADD INDEX (`login_email`);
+ALTER TABLE `grower_GrowerLogins` ADD `lastLogin` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `isMultiAccountUser`;
+UPDATE `grower_GrowerLogins` SET `lastLogin`='0000-00-00';
+INSERT INTO grower_GrowerLogins (GrowerCode, GrowerName, login_email, Password, isAdmin, isMultiAccountUser) (SELECT DISTINCT Grower, Grower, '', '', 0, 0 FROM `grower_crop-estimates` LEFT JOIN grower_GrowerLogins ON `grower_crop-estimates`.Grower=`grower_GrowerLogins`.GrowerCode WHERE GrowerCode IS NULL);
+CREATE TABLE `grower_farms` (
+  `growerID` int(11) NOT NULL,
+  `farmID` int(11) NOT NULL AUTO_INCREMENT,
+  `farmName` varchar(255) NOT NULL,
+  PRIMARY KEY (`farmID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `operationsData`.`grower_strains` ( `strain_ID` INT NOT NULL AUTO_INCREMENT , `variety_ID` INT NOT NULL , `strainName` VARCHAR(255) NOT NULL , PRIMARY KEY (`strain_ID`)) ENGINE = InnoDB;
+CREATE TABLE `operationsData`.`grower_varieties` ( `commodityID` INT NOT NULL , `VarietyID` INT NOT NULL AUTO_INCREMENT , `VarietyName` VARCHAR(255) NOT NULL , PRIMARY KEY (`VarietyID`)) ENGINE = InnoDB;
+CREATE TABLE `operationsData`.`grower_commodities` ( `commodity_ID` INT NOT NULL AUTO_INCREMENT , `commodity_name` VARCHAR(255) NOT NULL , PRIMARY KEY (`commodity_ID`)) ENGINE = InnoDB;
+ALTER TABLE `grower_farms` ADD FOREIGN KEY (`growerID`) REFERENCES `grower_GrowerLogins`(`GrowerID`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `grower_varieties` ADD FOREIGN KEY (`commodityID`) REFERENCES `grower_commodities`(`commodity_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `grower_strains` ADD FOREIGN KEY (`variety_ID`) REFERENCES `grower_varieties`(`VarietyID`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `grower_crop-estimates` ADD `farmID` INT NOT NULL AFTER `PK`;
+ALTER TABLE `grower_crop-estimates` ADD `strainID` INT NOT NULL AFTER `farmID`;
+/* create commodities */
+INSERT INTO grower_commodities (commodity_name) (SELECT DISTINCT `Comm Desc` FROM `grower_crop-estimates`);
+/* create farms */
+INSERT INTO grower_farms (growerID, farmName) (SELECT DISTINCT grower_GrowerLogins.GrowerID, FarmDesc FROM `grower_crop-estimates` JOIN grower_GrowerLogins ON Grower=grower_GrowerLogins.GrowerCode);
+/* Create Varieties */
+INSERT INTO grower_varieties (commodityID, VarietyName) (SELECT DISTINCT commodity_ID, VarDesc FROM `grower_crop-estimates` JOIN `grower_commodities` ON `Comm Desc`=commodity_name);
+/* create strains */
+INSERT INTO grower_strains (variety_ID, strainName) (SELECT DISTINCT VarietyID, `Str Desc` FROM `grower_crop-estimates` JOIN grower_varieties ON VarDesc=VarietyName);
+/* point blocks to strains and farms */
+UPDATE `grower_crop-estimates`
+  JOIN (SELECT farmID, grower_GrowerLogins.GrowerCode, farmname FROM grower_farms JOIN grower_GrowerLogins ON grower_farms.growerID = grower_GrowerLogins.GrowerID) t
+    ON t.GrowerCode=`grower_crop-estimates`.Grower AND t.farmName=`grower_crop-estimates`.FarmDesc
+SET `grower_crop-estimates`.farmID=t.farmID;
+ALTER TABLE `grower_crop-estimates` ADD FOREIGN KEY (`farmID`) REFERENCES `grower_farms`(`farmID`) ON DELETE CASCADE ON UPDATE CASCADE;
+UPDATE `grower_crop-estimates` JOIN grower_strains ON grower_strains.strainName=`Str Desc` SET strainID=strain_ID;
+ALTER TABLE `grower_crop-estimates` ADD FOREIGN KEY (`strainID`) REFERENCES `grower_strains`(`strain_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+/* Remove redundant columns */
+ALTER TABLE `grower_crop-estimates`
+  DROP `Grower`,
+  DROP `Comm Desc`,
+  DROP `VarDesc`,
+  DROP `FarmDesc`,
+  DROP `Str Desc`,
+  DROP `2016hail`;
+
+/* Rename Views */
+/*!50001 DROP TABLE IF EXISTS `CurYearReceived`*/;
+/*!50001 DROP VIEW IF EXISTS `CurYearReceived`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+  /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+  /*!50001 VIEW `grower_CurYearReceived` AS (select `BULKRTCSV`.`RT#` AS `RT#`,`BULKRTCSV`.`Sort Code` AS `Sort Code`,`BULKRTCSV`.`Crop Year` AS `Crop Year`,`BULKRTCSV`.`Grower` AS `Grower`,`BULKRTCSV`.`GrowerName` AS `GrowerName`,`BULKRTCSV`.`Class` AS `Class`,`BULKRTCSV`.`ClassDesc` AS `ClassDesc`,`BULKRTCSV`.`Commodity` AS `Commodity`,`BULKRTCSV`.`Comm Desc` AS `Comm Desc`,`BULKRTCSV`.`Variety` AS `Variety`,`BULKRTCSV`.`VarDesc` AS `VarDesc`,`BULKRTCSV`.`Strain` AS `Strain`,`BULKRTCSV`.`StrDesc` AS `StrDesc`,`BULKRTCSV`.`Farm` AS `Farm`,`BULKRTCSV`.`FarmDesc` AS `FarmDesc`,`BULKRTCSV`.`Block` AS `Block`,`BULKRTCSV`.`BlockDesc` AS `BlockDesc`,`BULKRTCSV`.`Lot` AS `Lot`,`BULKRTCSV`.`Date` AS `Date`,`BULKRTCSV`.`Pack` AS `Pack`,`BULKRTCSV`.`Size` AS `Size`,`BULKRTCSV`.`Qty` AS `Qty`,`BULKRTCSV`.`Bu` AS `Bu`,`BULKRTCSV`.`ItemNum` AS `ItemNum` from `BULKRTCSV` where `BULKRTCSV`.`Crop Year` = convert(substr(year(curdate()),4,1) using latin1)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+/*!50001 DROP TABLE IF EXISTS `ReceivedandEstimates`*/;
+/*!50001 DROP VIEW IF EXISTS `ReceivedandEstimates`*/;
+# /*!50001 SET @saved_cs_client          = @@character_set_client */;
+# /*!50001 SET @saved_cs_results         = @@character_set_results */;
+# /*!50001 SET @saved_col_connection     = @@collation_connection */;
+# /*!50001 SET character_set_client      = latin1 */;
+# /*!50001 SET character_set_results     = latin1 */;
+# /*!50001 SET collation_connection      = latin1_swedish_ci */;
+# /*!50001 CREATE ALGORITHM=UNDEFINED */
+#   /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+#   /*!50001 VIEW `grower_ReceivedandEstimates` AS (select rtrim(`grower_crop-estimates`.`PK`) AS `BlockID`,rtrim(`grower_crop-estimates`.`Grower`) AS `Code`,rtrim(`grower_crop-estimates`.`Comm Desc`) AS `Commodity`,rtrim(`grower_crop-estimates`.`FarmDesc`) AS `Farm`,ifnull(rtrim(`grower_CurYearReceived`.`Farm`),'') AS `FarmCode`,rtrim(`grower_crop-estimates`.`BlockDesc`) AS `Block`,ifnull(rtrim(`grower_CurYearReceived`.`Block`),'') AS `BlockCode`,rtrim(`grower_crop-estimates`.`VarDesc`) AS `Variety`,rtrim(`grower_crop-estimates`.`Str Desc`) AS `Strain`,rtrim(`grower_crop-estimates`.`2014act`) AS `2014 Received`,rtrim(`grower_crop-estimates`.`2015act`) AS `2015 Received`,rtrim(`grower_crop-estimates`.`2016act`) AS `2016 Received`,rtrim(case when `grower_crop-estimates`.`isDeleted` = 0 then `grower_crop-estimates`.`2016est` else 0 end) AS `2016 Estimate`,ifnull(sum(`grower_CurYearReceived`.`Bu`),'0') AS `2017 Received`,case when `grower_crop-estimates`.`isDeleted` = 0 then 'false' else 'true' end AS `isDeletedBlock`,case when `grower_crop-estimates`.`isFinished` = 0 then 'false' else 'true' end AS `isDonePicking`,case when (`grower_crop-estimates`.`2017est` <> `grower_crop-estimates`.`2016act` or `grower_crop-estimates`.`isSameAsLastYear` = 1) then 'true' else 'false' end AS `isUserConfirmedEstimate` from (`grower_crop-estimates` left join `grower_CurYearReceived` on(rtrim(`grower_CurYearReceived`.`Comm Desc`) = rtrim(`grower_crop-estimates`.`Comm Desc`) and rtrim(`grower_CurYearReceived`.`VarDesc` = rtrim(`grower_crop-estimates`.`VarDesc`)) and rtrim(`grower_CurYearReceived`.`StrDesc` = rtrim(`grower_crop-estimates`.`Str Desc`)) and rtrim(`grower_CurYearReceived`.`BlockDesc` = rtrim(`grower_crop-estimates`.`BlockDesc`)) and rtrim(`grower_CurYearReceived`.`FarmDesc` = rtrim(`grower_crop-estimates`.`FarmDesc`)) and rtrim(`grower_CurYearReceived`.`Grower` = rtrim(`grower_crop-estimates`.`Grower`)))) group by `grower_crop-estimates`.`PK`) union (select 'Unmatched Block' AS `BlockID`,rtrim(`BULKRTCSV`.`Grower`) AS `Code`,rtrim(`BULKRTCSV`.`Comm Desc`) AS `Commodity`,rtrim(`BULKRTCSV`.`FarmDesc`) AS `Farm`,rtrim(`BULKRTCSV`.`Farm`) AS `FarmCode`,rtrim(`BULKRTCSV`.`BlockDesc`) AS `Block`,rtrim(`BULKRTCSV`.`Block`) AS `BlockCode`,rtrim(`BULKRTCSV`.`VarDesc`) AS `Variety`,rtrim(`BULKRTCSV`.`StrDesc`) AS `Strain`,'0' AS `2014 Received`,'0' AS `2015 Received`,'0' AS `2016 Received`,'0' AS `2017 Estimate`,sum(`BULKRTCSV`.`Bu`) AS `2017 Received`,'false' AS `isDeletedBlock`,'false' AS `isDonePicking`,'false' AS `isUserConfirmedEstimate` from (`BULKRTCSV` left join `grower_crop-estimates` on(rtrim(`BULKRTCSV`.`Comm Desc`) = rtrim(`grower_crop-estimates`.`Comm Desc`) and rtrim(`BULKRTCSV`.`VarDesc` = rtrim(`grower_crop-estimates`.`VarDesc`)) and rtrim(`BULKRTCSV`.`StrDesc` = rtrim(`grower_crop-estimates`.`Str Desc`)) and rtrim(`BULKRTCSV`.`BlockDesc` = rtrim(`grower_crop-estimates`.`BlockDesc`)) and rtrim(`BULKRTCSV`.`FarmDesc` = rtrim(`grower_crop-estimates`.`FarmDesc`)) and rtrim(`BULKRTCSV`.`Grower` = rtrim(`grower_crop-estimates`.`Grower`)))) where `grower_crop-estimates`.`PK` is null and `BULKRTCSV`.`Crop Year` = convert(substr(year(curdate()),4,1) using latin1) group by `BULKRTCSV`.`Grower`,`BULKRTCSV`.`Comm Desc`,`BULKRTCSV`.`FarmDesc`,`BULKRTCSV`.`BlockDesc`,`BULKRTCSV`.`VarDesc`,`BULKRTCSV`.`StrDesc`) */;
+# /*!50001 SET character_set_client      = @saved_cs_client */;
+# /*!50001 SET character_set_results     = @saved_cs_results */;
+# /*!50001 SET collation_connection      = @saved_col_connection */;
+
+/* END MOVE GROWER_PORTAL TABLES */

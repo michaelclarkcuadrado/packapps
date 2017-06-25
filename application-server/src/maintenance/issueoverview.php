@@ -21,7 +21,7 @@ $userInfo = packapps_authenticate_user('maintenance');
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
-            <span class="mdl-layout-title">Home - Maintenance</span>
+            <span class="mdl-layout-title">Issue Overview</span>
             <div class="mdl-layout-spacer"></div>
             <? echo $companyName ?>
         </div>
@@ -58,7 +58,15 @@ $userInfo = packapps_authenticate_user('maintenance');
     </div>
     <main class="mdl-layout__content mdl-color--grey-400">
         <div class="widthfixer mdl-grid demo-cards">
-
+            <div id='issueTypeSelector' style='display: none'
+                 class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                <div style="" class="mdl-card__title mdl-color--yellow-400">
+                    <h2 class="mdl-card__title-text">Filter issues</h2>
+                </div>
+                <div class="mdl-grid mdl-card__supporting-text">
+                    
+                </div>
+            </div>
         </div>
     </main>
 </div>

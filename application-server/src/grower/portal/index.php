@@ -5,25 +5,23 @@
     require_once 'Mobile_Detect.php';
     require_once 'incrementYearInDB.php';
     include '../../config.php';
+    $userinfo = packapps_authenticate_grower();
+
     $detect = new Mobile_Detect;
     $year = new Year();
     if (!$year->isCurrent($mysqli)) {
         error_log("First access since new year, incrementing year.");
 	$year->increment($mysqli);
     }
-    $adminauth = mysqli_query($mysqli, "SELECT isAdmin, isMultiAccountUser FROM grower_growerLogins WHERE GrowerCode='" . $_SERVER['PHP_AUTH_USER'] . "'");
-    $admin = mysqli_fetch_array($adminauth);
-    //redirect staff to admin panel
-    if ($admin[0] == 1 && !$_GET['pretend']) {
-        die("<script>location.replace('usermgmt.php')</script>");
-    }
+    $adminauth = mysqli_query($mysqli, "SELECT isMultiAccountUser FROM grower_growerLogins WHERE GrowerCode='" . $userinfo['GrowerCode'] . "'");
+    $admin = mysqli_fetch_assoc($adminauth);
     //perform check on multi account users
     if ($admin['isMultiAccountUser'] == 1) {
-        $groupID = mysqli_fetch_array(mysqli_query($mysqli, "SELECT GroupID from grower_GrowerGroups where GrowerCode='" . $_SERVER['PHP_AUTH_USER'] . "'"))[0];
+        $groupID = mysqli_fetch_array(mysqli_query($mysqli, "SELECT GroupID from grower_GrowerGroups where GrowerCode='" . $userinfo['GrowerCode'] . "'"))[0];
         if (isset($_GET['alt_acc'])) {
             $checkIfOnList = mysqli_query($mysqli, "SELECT GrowerCode FROM grower_GrowerGroups where GroupID = '" . $groupID . "'");
             $isLegit = false;
-            while ($checkLegit = mysqli_fetch_array($checkIfOnList)) {
+            while ($checkLegit = mysqli_fetch_assoc($checkIfOnList)) {
                 if ($checkLegit['GrowerCode'] == base64_decode($_GET['alt_acc'])) {
                     $isLegit = true;
                     break;
@@ -35,7 +33,7 @@
         }
     }
 
-    $namecnct = mysqli_query($mysqli, "SELECT GrowerName FROM `grower_growerLogins` WHERE GrowerCode='" . ($admin[0] == 1 && ($_GET['pretend']) ? $_GET['pretend'] : (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $_SERVER['PHP_AUTH_USER'])) . "' LIMIT 1");
+    $namecnct = mysqli_query($mysqli, "SELECT GrowerName FROM `grower_growerLogins` WHERE GrowerCode='" . (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $userinfo['GrowerCode']) . "' LIMIT 1");
     $growername = mysqli_fetch_array($namecnct);
     $growername = $growername[0];
 
@@ -59,28 +57,21 @@
           and (trim(`BULKRTCSV`.`FarmDesc`) = trim(`grower_crop-estimates`.`FarmDesc`)) 
           and (trim(`BULKRTCSV`.`Grower`) = trim(`grower_crop-estimates`.`Grower`))))) 
   where ((`crop-estimates`.`isDeleted` = '0') 
-         and `crop-estimates`.Grower = '" . ($admin[0] == 1 && isset($_GET['pretend']) ? $_GET['pretend'] : (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $_SERVER['PHP_AUTH_USER'])) . "'
+         and `crop-estimates`.Grower = '" . (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $userinfo['GrowerCode']) . "'
          and `Crop Year`= substr(YEAR(CURDATE()), 4,1))
   group by `crop-estimates`.`PK`
         ORDER BY isFinished, Percent ASC") or error_log(mysqli_error($mysqli));
 
-    $estimates = mysqli_query($mysqli, "SELECT PK,`Comm Desc`,VarDesc,FarmDesc,BlockDesc,`Str Desc`,isDeleted,isSameAsLastYear," . (date('Y') - 3) . "act," . (date('Y') - 2) . "act," . (date('Y') - 1) . "est," . (date('Y') - 1) . "act," . (date('Y')) . "est from `crop-estimates` where Grower='" . ($admin[0] == 1 && ($_GET['pretend']) ? $_GET['pretend'] : (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $_SERVER['PHP_AUTH_USER'])) . "' Order by isDeleted, `Comm Desc`, VarDesc, FarmDesc, BlockDesc, `Str Desc` ASC;");
+    $estimates = mysqli_query($mysqli, "SELECT PK,`Comm Desc`,VarDesc,FarmDesc,BlockDesc,`Str Desc`,isDeleted,isSameAsLastYear," . (date('Y') - 3) . "act," . (date('Y') - 2) . "act," . (date('Y') - 1) . "est," . (date('Y') - 1) . "act," . (date('Y')) . "est from `crop-estimates` where Grower='" . (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $userinfo['GrowerCode']) . "' Order by isDeleted, `Comm Desc`, VarDesc, FarmDesc, BlockDesc, `Str Desc` ASC;");
 
-    $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) as count FROM (SELECT PK FROM `grower_Preharvest_Samples` WHERE Grower= '" . ($admin[0] == 1 && isset($_GET['pretend']) ? $_GET['pretend'] : (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $_SERVER['PHP_AUTH_USER'])) . "' AND `Date` >= (NOW() - INTERVAL 7 DAY) GROUP BY `Date`, `PK`) t1"))['count'];
+    $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) as count FROM (SELECT PK FROM `grower_Preharvest_Samples` WHERE Grower= '" . (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $userinfo['GrowerCode']) . "' AND `Date` >= (NOW() - INTERVAL 7 DAY) GROUP BY `Date`, `PK`) t1"))['count'];
 
-    $receiptdata = mysqli_query($mysqli, "SELECT `RT#` AS RTNum, `Comm Desc`,`VarDesc`,`StrDesc`,`FarmDesc`,`BlockDesc`,`Date`,`Qty`,`Bu` FROM `BULKRTCSV` WHERE Grower='" . ($admin[0] == 1 && ($_GET['pretend']) ? $_GET['pretend'] : (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $_SERVER['PHP_AUTH_USER'])) . "' AND Class='1' AND Bu <> 0 AND `Crop Year` = '".substr(date('y'), -1)."' ORDER BY DATE DESC LIMIT 75");
+    $receiptdata = mysqli_query($mysqli, "SELECT `RT#` AS RTNum, `Comm Desc`,`VarDesc`,`StrDesc`,`FarmDesc`,`BlockDesc`,`Date`,`Qty`,`Bu` FROM `BULKRTCSV` WHERE Grower='" . (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $userinfo['GrowerCode']) . "' AND Class='1' AND Bu <> 0 AND `Crop Year` = '".substr(date('y'), -1)."' ORDER BY DATE DESC LIMIT 75");
 
     echo "<title>" . $companyName . " Portal: " . $growername . "</title>";
     ?>
 
     <link rel="stylesheet" href="css/select2.min.css">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <meta name="apple-mobile-web-app-title" content="<? echo $companyName ?>">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="icon" sizes="196x196" href="apple-touch-icon.png">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="description" content="<? echo $companyName ?> Grower Control Panel"/>
     <!--[if lte IE 8]>
     <script src="css/ie/html5shiv.js"></script><![endif]-->
     <script src="js/jquery.min.js"></script>
@@ -110,7 +101,7 @@
             var u = "<?php echo $piwikHost?>/";
             _paq.push(['setTrackerUrl', u + 'piwik.php']);
             _paq.push(['setSiteId', 1]);
-            _paq.push(['setUserId', '<?echo ($admin[0] == 1 && $_GET['pretend']) ? "Admin: " . $_SERVER['PHP_AUTH_USER'] . " logged in as " . addcslashes($growername, "'") : addcslashes($growername, "'")?>']);
+            _paq.push(['setUserId', '<?echo addcslashes($growername, "'")?>']);
             var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
             g.type = 'text/javascript';
             g.async = true;
@@ -164,9 +155,7 @@
     });
     //attach event listeners to estimates table
     $(document).on("change", ".estimatesubmitter, .blocknamer", function () {
-        $.post("processEstimates.php<?if ($admin[0] == 1 && ($_GET['pretend'])) {
-            echo '?pretend=' . $_GET['pretend'];
-        } else if (isset($_GET['alt_acc'])) {
+        $.post("processEstimates.php<?if (isset($_GET['alt_acc'])) {
             echo '?alt_acc=' . $_GET['alt_acc'];
         }
             ?>", $(this).serialize(), function () {
@@ -177,28 +166,10 @@
     });
 
     function logout() {
-        var xmlhttp;
-        if (window.XMLHttpRequest) {
-            xmlhttp = new XMLHttpRequest();
-        }
-        // code for IE
-        else if (window.ActiveXObject) {
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        if (window.ActiveXObject) {
-            // IE clear HTTP Authentication
-            document.execCommand("ClearAuthenticationCache", false);
-            window.location.href = 'logout/logoutheader.php';
-        } else {
-            xmlhttp.open("GET", 'logout/logoutheader.php', true, "User Name", "logout");
-            xmlhttp.send("");
-            xmlhttp.onreadystatechange = function () {
-                if (xmlhttp.readyState == 4) {
-                    window.location.href = 'logout/logoutheader.php';
-                }
-            }
-        }
-        return false;
+        document.cookie = "auth=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+        document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+        document.cookie = "grower=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+        window.location.replace('/');
     }
 </script>
 <body>
@@ -227,25 +198,19 @@
                 <li><a href="#estimates" id="estimates-link" class="skel-layers-ignoreHref"><span
                             class="icon fa-sliders">Blocks & Estimates</span></a></li>
                 <li><hr style='width: 75%; margin-top: 0; margin-bottom:0; border-top: solid 1px rgba(255,255,255,0.5)'></li>
-                <li <?php echo ( $detect->isMobile() ? "style='display: none'" : '')?>><a onclick="_paq.push(['trackEvent', 'Calendar', 'Open Calendar']);" href="growerCalendar.php<? if ($admin[0] == 1 && ($_GET['pretend'])) {
-                        echo '?pretend=' . $_GET['pretend'];
-                    } else if (isset($_GET['alt_acc'])) {
+                <li <?php echo ( $detect->isMobile() ? "style='display: none'" : '')?>><a onclick="_paq.push(['trackEvent', 'Calendar', 'Open Calendar']);" href="growerCalendar.php<?if (isset($_GET['alt_acc'])) {
                         echo '?alt_acc=' . $_GET['alt_acc'];
                     } ?>" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-calendar">Picking Calendar</span></a></li>
-                <li><a href="QAview.php<? if ($admin[0] == 1 && ($_GET['pretend'])) {
-                        echo '?pretend=' . $_GET['pretend'];
-                    } else if (isset($_GET['alt_acc'])) {
+                <li><a href="QAview.php<?if (isset($_GET['alt_acc'])) {
                         echo '?alt_acc=' . $_GET['alt_acc'];
                     } ?>" onclick="_paq.push(['trackEvent', 'QA', 'View page']);"><span class="icon fa-area-chart">Block-by-Block QA</span></a>
                 </li>
-                <li><a href="preharvest.php<? if ($admin[0] == 1 && ($_GET['pretend'])) {
-                        echo '?pretend=' . $_GET['pretend'];
-                    } else if (isset($_GET['alt_acc'])) {
+                <li><a href="preharvest.php<?if (isset($_GET['alt_acc'])) {
                         echo '?alt_acc=' . $_GET['alt_acc'];
                     } ?>" onclick="_paq.push(['trackEvent', 'Pre-Harvest', 'View Reports']);"><span
                             class="icon fa-stethoscope <?if($numPreHarvest > 0){echo 'phbadge';}?>" data-badge="<?echo $numPreHarvest?>">Pre-Harvest Checkup</span></a></li>
                 <li><a href="growerfileshare/" onclick="_paq.push(['trackEvent', 'Grower File Share', 'View Files']);"><span
-                            class="icon fa-cloud-download">Grower Files</span></a></li>
+                            class="icon fa-cloud-download">Shared Files</span></a></li>
                 <? if ($detect->isMobile()) {
                     echo " <div id='options' style='background: rgba(0,0,0,0.15);'>
                                 <li><a href='changepw.php'><span  class=\"icon fa-key\">Change Password</span></a></li>
@@ -255,7 +220,7 @@
                     echo "<li id='optiontoggle'><a href='#' ><span id='optionstab' class=\"icon fa-chevron-down\">Options</span></a></li>
                                 <div id='options' style='display: none; background: rgba(0,0,0,0.15);'>
                                 <li><a href='changepw.php'><span  class=\"icon fa-key\">Change Password</span></a></li>
-                                <li><a href='csvExport.php" . (($admin[0] == 1 && ($_GET['pretend'])) ? '?pretend=' . $_GET['pretend'] : (isset($_GET['alt_acc']) ? ('?alt_acc=' . $_GET['alt_acc']) : '')) . "' onclick=\"_paq.push(['trackEvent', 'Options', 'Download Orchard Report']);\" id='export1' class='skel-layers-ignoreHref'><span class='icon fa-download'>Download My Blocks</a></span></li>
+                                <li><a href='csvExport.php" . (isset($_GET['alt_acc']) ? ('?alt_acc=' . $_GET['alt_acc']) : '') . "' onclick=\"_paq.push(['trackEvent', 'Options', 'Download Orchard Report']);\" id='export1' class='skel-layers-ignoreHref'><span class='icon fa-download'>Download My Blocks</a></span></li>
                                 <li><a href=# onclick=\"_paq.push(['trackEvent', 'Options', 'Logged out']);logout();\" id=\"logout-link\"><span class=\"icon fa-sign-out\">Logout / Switch User</span></a></li>
                                 </div>";
                 }
@@ -269,13 +234,11 @@
 <!-- Main -->
 <div id="main">
     <?
-    if ($admin[0] == 1 && $_GET['pretend']) {
-        echo "<div style='position: fixed; top: 0; text-align: center; margin 0 auto; display: block; background-color: black; color: red; opacity: .78; padding: 3px'>Viewing as: \"" . $_GET['pretend'] . "\"<br><a href='usermgmt.php'><button><i class='fa fa-times-circle'></i> Return to Menu</button></a></div>";
-    } else if ($admin[1] == 1) {
-        echo "<div style='position: fixed; top: 0; text-align: center; margin 0 auto; display: block; background-color: black; color: red; opacity: .78; padding: 3px'>Viewing as: \"" . (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $_SERVER['PHP_AUTH_USER']) . "\"<br><small>Switch to: </small><select onchange=\"window.location = portal+$(this).val() \"><option disabled selected>" . (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $_SERVER['PHP_AUTH_USER']) . "</option>";
+    if ($admin['isMultiAccountUser'] == 1) {
+        echo "<div style='position: fixed; top: 0; text-align: center; margin 0 auto; display: block; background-color: black; color: red; opacity: .78; padding: 3px'>Viewing as: \"" . (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $userinfo['GrowerCode']) . "\"<br><small>Switch to: </small><select onchange=\"window.location = portal+$(this).val() \"><option disabled selected>" . (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $userinfo['GrowerCode']) . "</option>";
         $growerAuthedList = mysqli_query($mysqli, "SELECT GrowerCode FROM grower_GrowerGroups where GroupID = '" . $groupID . "'");
         while ($data = mysqli_fetch_array($growerAuthedList)) {
-            if ($data['GrowerCode'] != base64_decode($_GET['alt_acc']) && (isset($_GET['alt_acc']) ? 'true' : $data['GrowerCode'] != $_SERVER['PHP_AUTH_USER'])) {
+            if ($data['GrowerCode'] != base64_decode($_GET['alt_acc']) && (isset($_GET['alt_acc']) ? 'true' : $data['GrowerCode'] != $userinfo['GrowerCode'])) {
                 echo "<option value='" . base64_encode($data['GrowerCode']) . "'>" . $data['GrowerCode'] . "</option>";
             }
         }
@@ -359,19 +322,17 @@
                         echo "
                             <table border='1 px'>
                                 <tr>
-
                                     <td><b>Farm</td>
                                     <td><b>Block</td>
                                     <td><b>Variety</td>
                                     <td><b>Total Bushels</td>
                                     <td><b>Block Progress</b></td>
                                     <td><b>Mark as Done Picking</b></td></tr>";
-                        while ($blockCompletionTempArray = mysqli_fetch_array($blockCompletionData)) {
+                        while ($blockCompletionTempArray = mysqli_fetch_assoc($blockCompletionData)) {
                             if ($blockCompletionTempArray['isFinished'] == 0) {
-                                echo "<tr id='" . $blockCompletionTempArray['PK'] . "'><td>" . $blockCompletionTempArray['FarmDesc'] . "</td><td>" . $blockCompletionTempArray['BlockDesc'] . "</td><td><abbr title='" . rtrim($blockCompletionTempArray['Comm Desc']) . "'><img src='images'" . rtrim($blockCompletionTempArray['Comm Desc']) . ".png' height='25px' width='25px'/></abbr> " . $blockCompletionTempArray['VarDesc'] . "</td><td>" . $blockCompletionTempArray['Total'] . "</td><td><div class='noload'><div class='load' style='width: " . ($blockCompletionTempArray['Percent'] > 100 ? 100 : $blockCompletionTempArray['Percent']) . "%'></div></div></td><td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (($admin[0] == 1 && ($_GET['pretend'])) ? '?pretend=' . $_GET['pretend'] . "&" : (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : $_SERVER['PHP_AUTH_USER'])) . "', { Done: " . $blockCompletionTempArray['PK'] . "});_paq.push(['trackEvent', 'Blocks', 'Marked Done']);$('#" . $blockCompletionTempArray['PK'] . "').slideUp();$.notify('Thanks! We won\'t expect any more from that block.', 'success');\"  class='icon fa-unlock-alt' ></a></td><tr>";
+                                echo "<tr id='" . $blockCompletionTempArray['PK'] . "'><td>" . $blockCompletionTempArray['FarmDesc'] . "</td><td>" . $blockCompletionTempArray['BlockDesc'] . "</td><td><abbr title='" . rtrim($blockCompletionTempArray['Comm Desc']) . "'><img src='images'" . rtrim($blockCompletionTempArray['Comm Desc']) . ".png' height='25px' width='25px'/></abbr> " . $blockCompletionTempArray['VarDesc'] . "</td><td>" . $blockCompletionTempArray['Total'] . "</td><td><div class='noload'><div class='load' style='width: " . ($blockCompletionTempArray['Percent'] > 100 ? 100 : $blockCompletionTempArray['Percent']) . "%'></div></div></td><td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : $userinfo['GrowerCode']) . "', { Done: " . $blockCompletionTempArray['PK'] . "});_paq.push(['trackEvent', 'Blocks', 'Marked Done']);$('#" . $blockCompletionTempArray['PK'] . "').slideUp();$.notify('Thanks! We won\'t expect any more from that block.', 'success');\"  class='icon fa-unlock-alt' ></a></td><tr>";
                             } else {
-                                echo "<tr id='" . $blockCompletionTempArray['PK'] . "' style='color: #5897fb'><td>" . $blockCompletionTempArray['FarmDesc'] . "</td><td>" . $blockCompletionTempArray['BlockDesc'] . "</td><td><abbr title='" . rtrim($blockCompletionTempArray['Comm Desc']) . "'><img src='images/" . rtrim($blockCompletionTempArray['Comm Desc']) . ".png' height='25px' width='25px'/></abbr> " . $blockCompletionTempArray['VarDesc'] . "</td><td>" . $blockCompletionTempArray['Total'] . "</td><td><div class='noload'><div class='load' style='width: " . ($blockCompletionTempArray['Percent'] > 100 ? 100 : $blockCompletionTempArray['Percent']) . "%'></div></div></td><td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (($admin[0] == 1 && ($_GET['pretend'])) ? '?pretend=' . $_GET['pretend'] . "&" : (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : $_SERVER['PHP_AUTH_USER'])) . "', { Done: " . $blockCompletionTempArray['PK'] . "});_paq.push(['trackEvent', 'Blocks', 'Marked unDone']);$('#" . $blockCompletionTempArray['PK'] . "').slideUp();$.notify('Thanks! We\'ll open that one again...', 'success');\"  class='icon fa-lock' ></a></td><tr>";
-
+                                echo "<tr id='" . $blockCompletionTempArray['PK'] . "' style='color: #5897fb'><td>" . $blockCompletionTempArray['FarmDesc'] . "</td><td>" . $blockCompletionTempArray['BlockDesc'] . "</td><td><abbr title='" . rtrim($blockCompletionTempArray['Comm Desc']) . "'><img src='images/" . rtrim($blockCompletionTempArray['Comm Desc']) . ".png' height='25px' width='25px'/></abbr> " . $blockCompletionTempArray['VarDesc'] . "</td><td>" . $blockCompletionTempArray['Total'] . "</td><td><div class='noload'><div class='load' style='width: " . ($blockCompletionTempArray['Percent'] > 100 ? 100 : $blockCompletionTempArray['Percent']) . "%'></div></div></td><td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : $userinfo['GrowerCode']) . "', { Done: " . $blockCompletionTempArray['PK'] . "});_paq.push(['trackEvent', 'Blocks', 'Marked unDone']);$('#" . $blockCompletionTempArray['PK'] . "').slideUp();$.notify('Thanks! We\'ll open that one again...', 'success');\"  class='icon fa-lock' ></a></td><tr>";
                             }
                         }
                     } else {
@@ -390,9 +351,9 @@
                                     <td><b>Mark as <br>Done Picking</b></td></tr>";
                         while ($blockCompletionTempArray = mysqli_fetch_array($blockCompletionData)) {
                             if ($blockCompletionTempArray['isFinished'] == 0) {
-                                echo "<tr id='" . $blockCompletionTempArray['PK'] . "'><td>" . $blockCompletionTempArray['PK'] . "</td><td>" . $blockCompletionTempArray['FarmDesc'] . "</td><td>" . $blockCompletionTempArray['BlockDesc'] . "</td><td><abbr title='" . rtrim($blockCompletionTempArray['Comm Desc']) . "'><img src='images/" . rtrim($blockCompletionTempArray['Comm Desc']) . ".png' height='25px' width='25px'/></abbr> " . $blockCompletionTempArray['VarDesc'] . "</td><td>" . $blockCompletionTempArray['Str Desc'] . "</td><td>" . $blockCompletionTempArray['Total'] . "</td><td>" . $blockCompletionTempArray['Est'] . "</td><td>" . $blockCompletionTempArray['Percent'] . "%</td><td><div class='noload'><div class='load' style='width: " . ($blockCompletionTempArray['Percent'] > 100 ? 100 : $blockCompletionTempArray['Percent']) . "%'></div></div></td><td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (($admin[0] == 1 && ($_GET['pretend'])) ? '?pretend=' . $_GET['pretend'] . "&" : (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '')) . "', {Done: " . $blockCompletionTempArray['PK'] . "});_paq.push(['trackEvent', 'Blocks', 'Marked Done']);$('#" . $blockCompletionTempArray['PK'] . "').slideUp();$.notify('Thanks! We won\'t expect any more from that block.', 'success');\"  class='icon fa-unlock-alt' ></a></td><tr>";
+                                echo "<tr id='" . $blockCompletionTempArray['PK'] . "'><td>" . $blockCompletionTempArray['PK'] . "</td><td>" . $blockCompletionTempArray['FarmDesc'] . "</td><td>" . $blockCompletionTempArray['BlockDesc'] . "</td><td><abbr title='" . rtrim($blockCompletionTempArray['Comm Desc']) . "'><img src='images/" . rtrim($blockCompletionTempArray['Comm Desc']) . ".png' height='25px' width='25px'/></abbr> " . $blockCompletionTempArray['VarDesc'] . "</td><td>" . $blockCompletionTempArray['Str Desc'] . "</td><td>" . $blockCompletionTempArray['Total'] . "</td><td>" . $blockCompletionTempArray['Est'] . "</td><td>" . $blockCompletionTempArray['Percent'] . "%</td><td><div class='noload'><div class='load' style='width: " . ($blockCompletionTempArray['Percent'] > 100 ? 100 : $blockCompletionTempArray['Percent']) . "%'></div></div></td><td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', {Done: " . $blockCompletionTempArray['PK'] . "});_paq.push(['trackEvent', 'Blocks', 'Marked Done']);$('#" . $blockCompletionTempArray['PK'] . "').slideUp();$.notify('Thanks! We won\'t expect any more from that block.', 'success');\"  class='icon fa-unlock-alt' ></a></td><tr>";
                             } else {
-                                echo "<tr id='" . $blockCompletionTempArray['PK'] . "' style='color: #5897fb'><td>" . $blockCompletionTempArray['PK'] . "</td><td>" . $blockCompletionTempArray['FarmDesc'] . "</td><td>" . $blockCompletionTempArray['BlockDesc'] . "</td><td><abbr title='" . rtrim($blockCompletionTempArray['Comm Desc']) . "'><img src='images/" . rtrim($blockCompletionTempArray['Comm Desc']) . ".png' height='25px' width='25px'/></abbr> " . $blockCompletionTempArray['VarDesc'] . "</td><td>" . $blockCompletionTempArray['Str Desc'] . "</td><td>" . $blockCompletionTempArray['Total'] . "</td><td>" . $blockCompletionTempArray['Est'] . "</td><td>" . $blockCompletionTempArray['Percent'] . "%</td><td><div class='noload'><div class='load' style='width: " . ($blockCompletionTempArray['Percent'] > 100 ? 100 : $blockCompletionTempArray['Percent']) . "%'></div></div></td><td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (($admin[0] == 1 && ($_GET['pretend'])) ? '?pretend=' . $_GET['pretend'] . "&" : (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '')) . "', {Done:" . $blockCompletionTempArray['PK'] . "});_paq.push(['trackEvent', 'Blocks', 'Marked unDone']);$('#" . $blockCompletionTempArray['PK'] . "').slideUp();$.notify('Thanks! We\'ll open that one again...', 'success');\"  class='icon fa-lock' ></a></td><tr>";
+                                echo "<tr id='" . $blockCompletionTempArray['PK'] . "' style='color: #5897fb'><td>" . $blockCompletionTempArray['PK'] . "</td><td>" . $blockCompletionTempArray['FarmDesc'] . "</td><td>" . $blockCompletionTempArray['BlockDesc'] . "</td><td><abbr title='" . rtrim($blockCompletionTempArray['Comm Desc']) . "'><img src='images/" . rtrim($blockCompletionTempArray['Comm Desc']) . ".png' height='25px' width='25px'/></abbr> " . $blockCompletionTempArray['VarDesc'] . "</td><td>" . $blockCompletionTempArray['Str Desc'] . "</td><td>" . $blockCompletionTempArray['Total'] . "</td><td>" . $blockCompletionTempArray['Est'] . "</td><td>" . $blockCompletionTempArray['Percent'] . "%</td><td><div class='noload'><div class='load' style='width: " . ($blockCompletionTempArray['Percent'] > 100 ? 100 : $blockCompletionTempArray['Percent']) . "%'></div></div></td><td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', {Done:" . $blockCompletionTempArray['PK'] . "});_paq.push(['trackEvent', 'Blocks', 'Marked unDone']);$('#" . $blockCompletionTempArray['PK'] . "').slideUp();$.notify('Thanks! We\'ll open that one again...', 'success');\"  class='icon fa-lock' ></a></td><tr>";
                             }
                         }
 
@@ -422,9 +383,7 @@
                         onclick="_paq.push(['trackEvent', 'Shipping', 'Toggle New Block Panel']);"><span
                         class="icon fa-plus"> New Block</span></button>
                 <div id="addblockpanel" style="display: none">
-                    <form name="newBlock" action="addBlock.php<? if ($admin[0] == 1 && ($_GET['pretend'])) {
-                        echo '?pretend=' . $_GET['pretend'];
-                    } else if (isset($_GET['alt_acc'])) {
+                    <form name="newBlock" action="addBlock.php<?if (isset($_GET['alt_acc'])) {
                         echo '?alt_acc=' . $_GET['alt_acc'];
                     } ?>" method="post">
                         <table border='1px'>
@@ -517,7 +476,7 @@
                         if ($detect->isMobile()) {
                             if ($growerdata['isDeleted'] == "0") {
                                 echo "<tr id=\"est" . $growerdata['PK'] . "\" " . (($growerdata[date('Y') . 'est'] <> $growerdata[(date('Y') - 1) . 'act'] || $growerdata['isSameAsLastYear']) ? "bgcolor='#9ef939'" : "") . ">
-                                <td><a href='javascript:void(0)'  onclick=\"$.get('processBlock.php" . (($admin[0] == 1 && ($_GET['pretend'])) ? '?pretend=' . $_GET['pretend'] . "&" : (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '')) . "', { PK: " . $growerdata['PK'] . "}, function() {_paq.push(['trackEvent', 'Estimates', 'DeleteBlock']);$.notify('Block Deleted. Refresh to see changes.', 'error');$('#est" . $growerdata['PK'] . "').slideUp();});\"  class=\"icon fa-trash-o\"></a></td>
+                                <td><a href='javascript:void(0)'  onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { PK: " . $growerdata['PK'] . "}, function() {_paq.push(['trackEvent', 'Estimates', 'DeleteBlock']);$.notify('Block Deleted. Refresh to see changes.', 'error');$('#est" . $growerdata['PK'] . "').slideUp();});\"  class=\"icon fa-trash-o\"></a></td>
                                 <td>" . (($growerdata['Comm Desc'] != "Apple") ? "<abbr title=" . rtrim($growerdata['Comm Desc']) . "><img src='images/" . rtrim($growerdata['Comm Desc']) . ".png' width='25px' height'25px'/></abbr>" : "") . " " . $growerdata['VarDesc'] . "</td>
                                 <td>" . $growerdata['FarmDesc'] . "</td>
                                 <td><input class='blocknamer' placeholder='Name this block...' type=text name='" . $growerdata['PK'] . "bn' value='" . rtrim($growerdata['BlockDesc']) . "'></td>
@@ -529,10 +488,10 @@
                                 style='width:110px;' type='number' class='estimatesubmitter' id='" . $growerdata['PK'] . "estbox' name='" . $growerdata['PK'] . "' value='" . $growerdata[date('Y') . 'est'] . "' placeholder='Bushels' " . (($growerdata['isSameAsLastYear']) ? 'readonly' : '') . ">
                                 </input><br>
                                 <div style='font-size: medium; " . (($growerdata[date('Y') . 'est'] <> $growerdata[(date('Y') - 1) . 'act']) ? 'display: none' : '') . "' id='" . $growerdata['PK'] . "sameCheckbox'>
-                                <input onChange=\"(this.checked) ? ($.get('processBlock.php" . (($admin[0] == 1 && ($_GET['pretend'])) ? '?pretend=' . $_GET['pretend'] . "&" : (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '')) . "', { sameEst: " . $growerdata['PK'] . "}), $('#est" . $growerdata['PK'] . "').attr('bgcolor', '#9ef939'), $('#" . $growerdata['PK'] . "estbox').attr('readonly', true)) : ($.get('processBlock.php" . (($admin[0] == 1 && ($_GET['pretend'])) ? '?pretend=' . $_GET['pretend'] . "&" : (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '')) . "', { sameEst: " . $growerdata['PK'] . "}), $('#est" . $growerdata['PK'] . "').removeAttr('bgcolor'), $('#" . $growerdata['PK'] . "estbox').attr('readonly', false))\" type='checkbox' " . (($growerdata['isSameAsLastYear']) ? 'checked' : '') . ">Keep last year's deliveries as your estimate?</input></div></td>
+                                <input onChange=\"(this.checked) ? ($.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { sameEst: " . $growerdata['PK'] . "}), $('#est" . $growerdata['PK'] . "').attr('bgcolor', '#9ef939'), $('#" . $growerdata['PK'] . "estbox').attr('readonly', true)) : ($.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { sameEst: " . $growerdata['PK'] . "}), $('#est" . $growerdata['PK'] . "').removeAttr('bgcolor'), $('#" . $growerdata['PK'] . "estbox').attr('readonly', false))\" type='checkbox' " . (($growerdata['isSameAsLastYear']) ? 'checked' : '') . ">Keep last year's deliveries as your estimate?</input></div></td>
                                 </tr>";
                             } else {
-                                echo "<tr id=\"est" . $growerdata['PK'] . "\" bgcolor='#FF999'><td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (($admin[0] == 1 && ($_GET['pretend'])) ? '?pretend=' . $_GET['pretend'] . "&" : (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '')) . "', { PK: " . $growerdata['PK'] . "}, function() {_paq.push(['trackEvent', 'Estimates', 'RestoreBlock']);$.notify('Block Restored. Refresh to see changes.', 'success');$('#est" . $growerdata['PK'] . "').slideUp();});\"  class='icon fa-undo' ></a></td
+                                echo "<tr id=\"est" . $growerdata['PK'] . "\" bgcolor='#FF999'><td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { PK: " . $growerdata['PK'] . "}, function() {_paq.push(['trackEvent', 'Estimates', 'RestoreBlock']);$.notify('Block Restored. Refresh to see changes.', 'success');$('#est" . $growerdata['PK'] . "').slideUp();});\"  class='icon fa-undo' ></a></td
                                 ><td>ID-" . $growerdata['PK'] . ":<br>" . (($growerdata['Comm Desc'] != "Apple") ? "<abbr title=" . rtrim($growerdata['Comm Desc']) . "><img src='images/" . rtrim($growerdata['Comm Desc']) . ".png' width='25px' height'25px'/></abbr>" : "") . " " . $growerdata['VarDesc'] . "</td>
                                 <td>" . $growerdata['FarmDesc'] . "</td>
                                 <td>" . $growerdata['BlockDesc'] . "</td>
@@ -546,7 +505,7 @@
                         {
                             if ($growerdata['isDeleted'] == "0") {
                                 echo "<tr id=\"est" . $growerdata['PK'] . "\" " . (($growerdata[date('Y') . 'est'] <> $growerdata[(date('Y') - 1) . 'act'] || $growerdata['isSameAsLastYear']) ? "bgcolor='#9ef939'" : "") . ">
-                                <td><a href='javascript:void(0)'  onclick=\"$.get('processBlock.php" . (($admin[0] == 1 && ($_GET['pretend'])) ? '?pretend=' . $_GET['pretend'] . "&" : (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '')) . "', { PK: " . $growerdata['PK'] . "}, function(){_paq.push(['trackEvent', 'Estimates', 'DeleteBlock']);$.notify('Block Deleted. Refresh to see changes.', 'error');$('#est" . $growerdata['PK'] . "').slideUp()});\"  class=\"icon fa-trash-o\"></a></td>
+                                <td><a href='javascript:void(0)'  onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { PK: " . $growerdata['PK'] . "}, function(){_paq.push(['trackEvent', 'Estimates', 'DeleteBlock']);$.notify('Block Deleted. Refresh to see changes.', 'error');$('#est" . $growerdata['PK'] . "').slideUp()});\"  class=\"icon fa-trash-o\"></a></td>
                                 <td>" . (($growerdata['Comm Desc'] != "Apple") ? "<abbr title=" . rtrim($growerdata['Comm Desc']) . "><img src='images/" . rtrim($growerdata['Comm Desc']) . ".png' width='25px' height='25px'/></abbr>" : "") . " " . $growerdata['VarDesc'] . "</td>
                                 <td>" . $growerdata['FarmDesc'] . "</td>
                                 <td><input class='blocknamer' placeholder='Name this block...' type=text name='" . $growerdata['PK'] . "bn' value='" . rtrim($growerdata['BlockDesc']) . "'></td>
@@ -560,11 +519,11 @@
                                 style='width:110px;' type='number' class='estimatesubmitter' id='" . $growerdata['PK'] . "estbox' name='" . $growerdata['PK'] . "' value='" . $growerdata[date('Y') . 'est'] . "' placeholder='Bushels' " . (($growerdata['isSameAsLastYear']) ? 'readonly' : '') . ">
                                 </input><br>
                                 <div style='font-size: medium; " . (($growerdata[date('Y') . 'est'] <> $growerdata[(date('Y') - 1) . 'act']) ? 'display: none' : '') . "' id='" . $growerdata['PK'] . "sameCheckbox'>
-                                <input onChange=\"(this.checked) ? ($.get('processBlock.php" . (($admin[0] == 1 && ($_GET['pretend'])) ? '?pretend=' . $_GET['pretend'] . "&" : (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '')) . "', { sameEst: " . $growerdata['PK'] . "}), $('#est" . $growerdata['PK'] . "').attr('bgcolor', '#9ef939'), $('#" . $growerdata['PK'] . "estbox').attr('readonly', true),$.notify('Information Received', 'success')) : ($.get('processBlock.php" . (($admin[0] == 1 && ($_GET['pretend'])) ? '?pretend=' . $_GET['pretend'] . "&" : (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '')) . "', { sameEst: " . $growerdata['PK'] . "}), $('#est" . $growerdata['PK'] . "').removeAttr('bgcolor'), $('#" . $growerdata['PK'] . "estbox').attr('readonly', false), $.notify('Information Received', 'success'))\" type='checkbox' " . (($growerdata['isSameAsLastYear']) ? 'checked' : '') . ">Keep last year's deliveries as your estimate?</input></div></td>
+                                <input onChange=\"(this.checked) ? ($.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { sameEst: " . $growerdata['PK'] . "}), $('#est" . $growerdata['PK'] . "').attr('bgcolor', '#9ef939'), $('#" . $growerdata['PK'] . "estbox').attr('readonly', true),$.notify('Information Received', 'success')) : ($.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { sameEst: " . $growerdata['PK'] . "}), $('#est" . $growerdata['PK'] . "').removeAttr('bgcolor'), $('#" . $growerdata['PK'] . "estbox').attr('readonly', false), $.notify('Information Received', 'success'))\" type='checkbox' " . (($growerdata['isSameAsLastYear']) ? 'checked' : '') . ">Keep last year's deliveries as your estimate?</input></div></td>
                                 </tr>";
                             } else {
                                 echo "<tr id=\"est" . $growerdata['PK'] . "\" bgcolor='#FF999'>
-                                <td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (($admin[0] == 1 && ($_GET['pretend'])) ? '?pretend=' . $_GET['pretend'] . "&" : (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '')) . "', { PK: " . $growerdata['PK'] . "}, function(){_paq.push(['trackEvent', 'Estimates', 'RestoreBlock']);$.notify('Block Restored. Refresh to see changes.', 'success');$('#est" . $growerdata['PK'] . "').slideUp();})\"  class='icon fa-undo' ></a></td>
+                                <td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { PK: " . $growerdata['PK'] . "}, function(){_paq.push(['trackEvent', 'Estimates', 'RestoreBlock']);$.notify('Block Restored. Refresh to see changes.', 'success');$('#est" . $growerdata['PK'] . "').slideUp();})\"  class='icon fa-undo' ></a></td>
                                 <td>ID-" . $growerdata['PK'] . ":<br>" . (($growerdata['Comm Desc'] != "Apple") ? "<abbr title=" . rtrim($growerdata['Comm Desc']) . "><img src='images/" . rtrim($growerdata['Comm Desc']) . ".png' width='25px' height'25px'/></abbr>" : "") . " " . $growerdata['VarDesc'] . "</td>
                                 <td>" . $growerdata['FarmDesc'] . "</td>
                                 <td>" . $growerdata['BlockDesc'] . "</td>

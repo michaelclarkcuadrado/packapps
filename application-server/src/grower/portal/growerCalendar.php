@@ -3,9 +3,7 @@
 <head>
     <?php
     include '../../config.php';
-    $adminauth = mysqli_query($mysqli, "SELECT isAdmin FROM grower_growerLogins WHERE GrowerCode='" . $_SERVER['PHP_AUTH_USER'] . "'");
-    $admin = mysqli_fetch_array($adminauth);
-    $namecnct = mysqli_query($mysqli, "SELECT GrowerName FROM `grower_growerLogins` WHERE GrowerCode='" . ($admin[0] == 1 && ($_GET['pretend']) ? $_GET['pretend'] : (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $_SERVER['PHP_AUTH_USER'])) . "' LIMIT 1");
+    $namecnct = mysqli_query($mysqli, "SELECT GrowerName FROM `grower_growerLogins` WHERE GrowerCode='" . (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $_SERVER['PHP_AUTH_USER']) . "' LIMIT 1");
     $growername = mysqli_fetch_array($namecnct);
 
     echo "<title>Grower Calendar: " . $growername[0] . "</title>";
@@ -52,7 +50,7 @@
         var u = "<?php echo $piwikHost?>/";
         _paq.push(['setTrackerUrl', u + 'piwik.php']);
         _paq.push(['setSiteId', 1]);
-        _paq.push(['setUserId', '<?echo ($admin[0] == 1 && $_GET['pretend']) ? "Admin: " . $_SERVER['PHP_AUTH_USER'] . " logged in as " . addcslashes($growername[0], "'") : addcslashes($growername[0], "'")?>']);
+        _paq.push(['setUserId', '<?echo addcslashes($growername[0], "'")?>']);
         var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
         g.type = 'text/javascript';
         g.async = true;
@@ -81,9 +79,7 @@
             <ul>
                 <li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-calendar">Picking Calendar</span></a>
                 </li>
-                <li><a href="index.php<? if ($admin[0] == 1 && ($_GET['pretend'])) {
-                        echo '?pretend=' . $_GET['pretend'];
-                    } else if (isset($_GET['alt_acc'])){
+                <li><a href="index.php<?if (isset($_GET['alt_acc'])){
                         echo '?alt_acc=' . $_GET['alt_acc'];
                     }?>" id="top-link"><span class="icon fa-arrow-left">Back</span></a></li>
             </ul>
@@ -94,7 +90,7 @@
 
 <!-- Main -->
 <div id="main">
-        <section <?echo ($admin[0] == 1 && !isset($_GET['pretend'])  ? "style='display: none'" : '') ?> id="estimates" class="one dark cover">
+        <section id="estimates" class="one dark cover">
             <div>
                 <h2>Your picking calendar</h2>
                 <p style='width: 80%; margin: auto'>You can use this tool to share your picking plans with us and to organize them. This helps us plan for when deliveries will arrive and helps us sell your fruit.</p>
@@ -114,7 +110,7 @@
                 </thead>
                 <tr>
                     <form id="newForm">
-                        <td><input required type="text" id="Grower" maxlength="2" <?echo ($admin[0] == 0 ? "value='".($admin[0] == 1 && ($_GET['pretend']) ? $_GET['pretend'] : (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $_SERVER['PHP_AUTH_USER']))."' readonly" : '')?> style='width:50px;'></td>
+                        <td><input required type="text" id="Grower" maxlength="2" <?echo isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $_SERVER['PHP_AUTH_USER']."' readonly"?> style='width:50px;'></td>
                         <td><input required type="text" id="Variety" style='width:150px;'></td>
                         <td><input required type="text" id="Strain" style='width:110px;'></td>
                     </form>
