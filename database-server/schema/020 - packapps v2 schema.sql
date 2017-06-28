@@ -172,9 +172,18 @@ CREATE TABLE `maintenance_purposes` (
   PRIMARY KEY (`purpose_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+/* Fill in seed data */
+INSERT INTO maintenance_purposes (Purpose, Color) VALUES ('Replacement', 'yellow');
+INSERT INTO maintenance_purposes (Purpose, Color) VALUES ('Repair', 'blue');
+INSERT INTO maintenance_purposes (Purpose, Color) VALUES ('Improvement', 'green');
+INSERT INTO maintenance_purposes (Purpose, Color) VALUES ('New System', 'orange');
+INSERT INTO maintenance_purposes (Purpose, Color) VALUES ('R&D', 'red');
+
+
 CREATE TABLE `maintenance_issues` (
   `issue_id` int(11) NOT NULL AUTO_INCREMENT,
   `purpose_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
   `issue_description` varchar(1023) NOT NULL,
   `createdBy` varchar(255) NOT NULL,
   `dateCreated` datetime NOT NULL,
@@ -194,6 +203,7 @@ CREATE TABLE `maintenance_issues` (
   `needsParts` tinyint(1) NOT NULL,
   PRIMARY KEY (`issue_id`),
   KEY `createdBy` (`createdBy`),
+  KEY `title` (`title`),
   KEY `confirmedBy` (`confirmedBy`),
   KEY `inProgressBy` (`inProgressBy`),
   KEY `completedBy` (`completedBy`),

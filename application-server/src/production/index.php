@@ -552,7 +552,6 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
     function animateScroll(direction){
        var content = $("#scrollingpane");
        clearInterval(scrollerInterval);
-       console.log("scroll");
         if(direction == 'down'){
             scrollerInterval = setInterval(function(){
                 content.scrollTop(content.scrollTop() + 1);

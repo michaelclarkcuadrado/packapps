@@ -532,7 +532,7 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
             for (var key in data) {
                 if (data.hasOwnProperty(key)) {
                     string += "<tr><td class='mdl-data-table__cell--non-numeric'>" + data[key]['Name'] + "</td>";
-                    string += "<td>$<input value='" + data[key]['quotedPricePerUnit'] + "' name='" + data[key]['SupplierID'] + "' placeholder='Not offered' style='width: 80px' maxlength='6' type='number'></td></tr>";
+                    string += "<td>$<input value='" + data[key]['quotedPricePerUnit'] + "' name='" + data[key]['SupplierID'] + "' placeholder='No offer' style='width: 80px' maxlength='6' type='number'></td></tr>";
                 }
             }
             $('#fillMeWithPotentialSuppliers_' + itemID).empty().append(string);

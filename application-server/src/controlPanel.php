@@ -293,7 +293,6 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
                     var level = $('#' + curElemData[1] + '_' + curElemData[0] + '_slider').val();
                     $('#' + curElemData[1] + '_' + curElemData[0] + '_accesslevel').html(getPrivilegeDescriptionHTML(curElemData[0], level));
                 } else {
-                    console.log('#' + curElemData[1] + '_' + curElemData[0] + '_accesslevel');
                     $('#' + curElemData[1] + '_' + curElemData[0] + '_accesslevel').html(getPrivilegeDescriptionHTML(curElemData[0], 'Disabled'));
                     $('#' + curElemData[1] + '_' + curElemData[0] + '_slider').attr('disabled', true);
                 }

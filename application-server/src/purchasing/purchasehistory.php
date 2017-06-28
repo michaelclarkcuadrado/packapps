@@ -173,8 +173,6 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
                     formData.append(key, value);
                 });
                 formData.append('ID', event.target.name);
-                console.log(event);
-                console.log(formData);
                 $.ajax({
                     type: 'post',
                     url: 'API/receive_confirmations.php',
