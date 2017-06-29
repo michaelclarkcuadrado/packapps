@@ -40,5 +40,5 @@ while($data = mysqli_fetch_assoc($query))
 
     array_push($allRunsArray, $RunArray);
 }
-
+header('Content-type: application/json');
 echo json_encode($allRunsArray);

@@ -21,7 +21,7 @@ $userInfo = packapps_authenticate_user('maintenance');
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
-            <span class="mdl-layout-title">Maintenance: Issues Overview</span>
+            <span class="mdl-layout-title">Issues Overview</span>
             <div class="mdl-layout-spacer"></div>
             <button id="openFilterBoxButton" class="mdl-button mdl-js-button mdl-button--icon">
                 <i class="material-icons">filter_list</i>
@@ -83,19 +83,19 @@ $userInfo = packapps_authenticate_user('maintenance');
                                 </td>
                                 <td style="text-align:center" class="td-only-border">
                                     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" style="width: initial; margin-right: 15px" for="checkbox-status-new">
-                                        <input type="checkbox" name="status-checkbox" id="checkbox-status-new" class="mdl-checkbox__input">
+                                        <input type="checkbox" value="new" id="checkbox-status-new" class="status_checkbox issue_filter_input mdl-checkbox__input">
                                         <span class="mdl-checkbox__label">New</span>
                                     </label>
                                     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" style="width: initial; margin-right: 15px" for="checkbox-status-confirmed">
-                                        <input type="checkbox" name="status-checkbox" id="checkbox-status-confirmed" class="mdl-checkbox__input">
+                                        <input type="checkbox" value="confirmed" id="checkbox-status-confirmed" class="status_checkbox issue_filter_input mdl-checkbox__input">
                                         <span class="mdl-checkbox__label">Confirmed</span>
                                     </label>
                                     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" style="width: initial; margin-right: 15px" for="checkbox-status-inprogress">
-                                        <input type="checkbox" name="status-checkbox" id="checkbox-status-inprogress" class="mdl-checkbox__input">
+                                        <input type="checkbox" value="inprogress" id="checkbox-status-inprogress" class="status_checkbox issue_filter_input mdl-checkbox__input">
                                         <span class="mdl-checkbox__label">In-Progress</span>
                                     </label>
                                     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" style="width: initial; margin-right: 15px" for="checkbox-status-completed">
-                                        <input type="checkbox" name="status-checkbox" id="checkbox-status-completed" class="mdl-checkbox__input">
+                                        <input type="checkbox" value="completed" id="checkbox-status-completed" class="status_checkbox issue_filter_input mdl-checkbox__input">
                                         <span class="mdl-checkbox__label">Completed</span>
                                     </label>
                                 </td>
@@ -106,21 +106,21 @@ $userInfo = packapps_authenticate_user('maintenance');
                                 </td>
                                 <td style="text-align: center" class="td-only-border">
                                     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" style="width: initial; margin-right: 15px" for="checkbox-assignment-unassigned">
-                                        <input type="checkbox" name="assignment-checkbox" id="checkbox-assignment-unassigned" class="mdl-checkbox__input">
+                                        <input type="checkbox" name="assignment-checkbox" id="checkbox-assignment-unassigned" class="issue_filter_input mdl-checkbox__input">
                                         <span class="mdl-checkbox__label">Unassigned</span>
                                     </label>
                                     <div style="display:initial">
                                         <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" style="width: initial; margin-right: 15px" for="checkbox-assignment-assignedto">
-                                            <input type="checkbox" name="assignment-checkbox" id="checkbox-assignment-assignedto" class="mdl-checkbox__input">
+                                            <input type="checkbox" name="assignment-checkbox" id="checkbox-assignment-assignedto" class="issue_filter_input mdl-checkbox__input">
                                             <span class="mdl-checkbox__label">Assigned To:</span>
                                         </label>
                                         <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--3-col">
-                                            <input class="mdl-textfield__input" type="text" maxlength="20" id="assignedto-text">
+                                            <input class="issue_filter_input mdl-textfield__input" type="text" maxlength="20" id="assignedto-text">
                                             <label class="mdl-textfield__label" for="assignto-text">User</label>
                                         </div>
                                     </div>
                                     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" style="width: initial; margin-right: 15px" for="checkbox-assignment-assignedtoself">
-                                        <input type="checkbox" name="assignment-checkbox" id="checkbox-assignment-assignedtoself" class="mdl-checkbox__input">
+                                        <input type="checkbox" name="assignment-checkbox" id="checkbox-assignment-assignedtoself" class="issue_filter_input mdl-checkbox__input">
                                         <span class="mdl-checkbox__label">Assigned To Me</span>
                                     </label>
                                 </td>
@@ -139,19 +139,29 @@ $userInfo = packapps_authenticate_user('maintenance');
                     <h2 class="mdl-card__title-text">#ID - TITLE</h2>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    <div>
-                    <div style="color: white;" class="chip mdl-color--blue-500">
-                        PURPOSE
-                    </div>
-                    <div style="color: white;" class="chip mdl-color--blue-500">
-                        <button id="back-status-button-ISSUEID" onclick="statusIncrease(ISSUEID)" class="mdl-button mdl-js-button mdl-button--icon">
-                            <i class="material-icons">chevron_left</i>
-                        </button>
-                        <span id="status-display-ISSUEID">STATUS</span>
-                        <button id="forward-status-button-ISSUEID" onclick="statusDecrease(ISSUEID)" class="mdl-button mdl-js-button mdl-button--icon">
-                            <i class="material-icons">chevron_right</i>
-                        </button>
-                    </div>
+                    <div class="issue-buttons">
+                        <div style="color: white; white-space: nowrap" class="chip mdl-color--green-500">
+                            PURPOSE
+                        </div>
+                        <div style="color: white; white-space: nowrap" class="chip mdl-color--blue-500">
+                            <button id="back-status-button-ISSUEID" onclick="statusIncrease(ISSUEID)" class="mdl-button mdl-js-button mdl-button--icon">
+                                <i class="material-icons">chevron_left</i>
+                            </button>
+                            <span id="status-display-ISSUEID">STATUS</span>
+                            <button id="forward-status-button-ISSUEID" onclick="statusDecrease(ISSUEID)" class="mdl-button mdl-js-button mdl-button--icon">
+                                <i class="material-icons">chevron_right</i>
+                            </button>
+                        </div>
+                        <div style="color:white; white-space: nowrap" class="chip mdl-color--red-600">
+                            Parts Needed: ##
+                            <button id="partsneeded-button-ISSUEID" class="mdl-button mdl-js-button mdl-button--icon">
+                                <i class="material-icons">more_horiz</i>
+                            </button>
+                            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="partsneeded-button-ISSUEID">
+                                <li class="mdl-menu__item">ITEM DESC</li>
+                                <li class="mdl-menu__item" onclick="addAllItemstoCart(ISSUEID)">Add all to card</li>
+                            </ul>
+                        </div>
                     </div>
                     <ul class="mdl-list">
                         <li class="mdl-list__item mdl-list__item" style="padding:6px">
@@ -227,9 +237,40 @@ $userInfo = packapps_authenticate_user('maintenance');
 <script>
     $(document).ready(function () {
         $('.mdl-card').fadeIn('fast');
-        $('#issueFilterbox').hide();
+        $('#issueFilterbox').hide()
 
-        //Listeners
+        //get all purposes
+        $.getJSON('API/getPurposes.php', function(data) {
+            //code before function:
+//            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" style="width: initial; margin-right: 15px" for="checkbox-purpose-PURPOSE">
+//                <input type="checkbox" value='PURPOSE' name="purpose-checkbox" id="checkbox-purpose-PURPOSE" class="issue_filter_input purpose_checkbox mdl-checkbox__input">
+//                <span class="mdl-checkbox__label">PURPOSE</span>
+//                </label>
+            var htmlStringToInject = "";
+            for(var index in data){
+                if(data.hasOwnProperty(index)){
+                    htmlStringToInject += "<label class=\"mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect\" style=\"width: initial; margin-right: 15px\" for=\"checkbox-purpose-"
+                        + data[index]
+                        + "\"><input type=\"checkbox\" value='"
+                        + index
+                        + "' name=\"purpose-checkbox\" id=\"checkbox-purpose-"
+                        + data[index]
+                        + "\" class=\"mdl-checkbox__input issue_filter_input purpose_checkbox\"><span class=\"mdl-checkbox__label\">"
+                        + data[index]
+                        + "</span></label>";
+                }
+            }
+            $("#purposeCheckboxesInsertHere").html(htmlStringToInject);
+            componentHandler.upgradeDom();
+            //automatically change issues displayed on any filter change
+            $('.issue_filter_input').on('change', function(){
+                updateIssues(createJsonFromFilter());
+            });
+        }).fail(function() {
+            $('#openFilterBoxButton').hide();
+        });
+
+        //Start Listeners
 
         //show filter box when hit
         $('#openFilterBoxButton').on("click", function(){
@@ -244,7 +285,7 @@ $userInfo = packapps_authenticate_user('maintenance');
         });
 
         //automatically focus user box if hitting assigned to checkbox
-        $('#checkbox-assignment-assignedto').on('change', function(){
+        $('#checkbox-assignment-assignedto').on('change, keydown', function(){
             if($(this).is(':checked')){
                 $("#assignedto-text").focus();
             }
@@ -252,125 +293,18 @@ $userInfo = packapps_authenticate_user('maintenance');
 
         //end listeners
 
-        //get all purposes
-        $.getJSON('API/getPurposes.php', function(data) {
-            //code before function:
-//            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" style="width: initial; margin-right: 15px" for="checkbox-purpose-PURPOSE">
-//                <input type="checkbox" value='PURPOSE' name="purpose-checkbox" id="checkbox-purpose-PURPOSE" class="mdl-checkbox__input">
-//                <span class="mdl-checkbox__label">PURPOSE</span>
-//                </label>
-            var htmlStringToInject = "";
-            for(var index in data){
-                if(data.hasOwnProperty(index)){
-                    htmlStringToInject += "<label class=\"mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect\" style=\"width: initial; margin-right: 15px\" for=\"checkbox-purpose-"
-                        + data[index]
-                        + "\"><input type=\"checkbox\" value='"
-                        + index
-                        + "' name=\"purpose-checkbox\" id=\"checkbox-purpose-"
-                        + data[index]
-                        + "\" class=\"mdl-checkbox__input\"><span class=\"mdl-checkbox__label\">"
-                        + data[index]
-                        + "</span></label>";
-                }
-            }
-            $("#purposeCheckboxesInsertHere").html(htmlStringToInject);
-            componentHandler.upgradeDom();
-        }).fail(function() {
-            $('#openFilterBoxButton').hide();
-        });
+        //init page with issues
         updateIssues(createJsonFromFilter());
     });
 
     function updateIssues(jsonfilter){
         //Code before function
-//    <div class="mdl-card issue-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-phone">
-//            <div class="mdl-card__title mdl-color--yellow-400">
-//            <h2 class="mdl-card__title-text">#ID - TITLE</h2>
-//        </div>
-//        <div class="mdl-card__supporting-text">
-//            <div>
-//            <div style="color: white;" class="chip mdl-color--blue-500">
-//            PURPOSE
-//            </div>
-//            <div style="color: white;" class="chip mdl-color--blue-500">
-//            <button id="back-status-button-ISSUEID" onclick="statusIncrease(ISSUEID)" class="mdl-button mdl-js-button mdl-button--icon">
-//            <i class="material-icons">chevron_left</i>
-//            </button>
-//            <span id="status-display-ISSUEID">STATUS</span>
-//            <button id="forward-status-button-ISSUEID" onclick="statusDecrease(ISSUEID)" class="mdl-button mdl-js-button mdl-button--icon">
-//            <i class="material-icons">chevron_right</i>
-//            </button>
-//            </div>
-//            </div>
-//            <ul class="mdl-list">
-//            <li class="mdl-list__item mdl-list__item" style="padding:6px">
-//            <span class="mdl-list__item-primary-content">
-//            <i class="material-icons mdl-list__item-icon">assignment_late</i>
-//            <span><p>Issue description. Blue line destroyed!</p></span>
-//        </span>
-//        </li>
-//        <li id="solution-description-ISSUEID" class="mdl-list__item mdl-list__item" style="padding:6px">
-//            <span class="mdl-list__item-primary-content">
-//            <i class="material-icons mdl-list__item-icon">assignment_turned_in</i>
-//            <span><p>Solution description. Blue line glued back together</p></span>
-//        </span>
-//        </li>
-//        <li class="mdl-list__item mdl-list__item" onclick="issuePhoto(issueid, PHOTO_EXISTS)" style="cursor:pointer;padding:6px">
-//            <span class="mdl-list__item-primary-content">
-//            <i class="material-icons mdl-list__item-icon">add_a_photo</i> <!--photo_camera-->
-//            <span>Add a Photo / View Photo</span>
-//        </span>
-//        </li>
-//        <li class="mdl-list__item mdl-list__item" style="padding:6px">
-//            <span class="mdl-list__item-primary-content">
-//            <i class="material-icons mdl-list__item-icon">history</i>
-//            <span>Issue History</span>
-//        </span>
-//        <span class="mdl-list__item-secondary-content">
-//            <i id="expand-button-history-ISSUEID" onclick="expandHistory(issueID, $(this))" class="material-icons mdl-list__item-secondary-action">expand_more</i>
-//            </span>
-//            </li>
-//            <div id="history-panel-ISSUEID" class="sublist_supplier">
-//            <li class="mdl-list__item" style="padding:6px; min-height: initial">
-//            Created: DATE_CREATED By CREATOR_NAME
-//        </li>
-//        <li class="mdl-list__item" style="padding:6px; min-height: initial">
-//            Confirmed: DATE_CONFIRMED By CONFIRMER_NAME
-//        </li>
-//        <li class="mdl-list__item" style="padding:6px; min-height: initial">
-//            Work Started: DATE_STARTED By STARTER_NAME
-//        </li>
-//        <li class="mdl-list__item" style="padding:6px; min-height: initial">
-//            Completed: DATE_COMPLETED By COMPLETER_NAME
-//        </li>
-//        </div>
-//        <li class="mdl-list__item mdl-list__item" style="padding:6px">
-//            <span class="mdl-list__item-primary-content">
-//            <i class="material-icons mdl-list__item-icon">location_on</i>
-//            <span>Location</span>
-//            </span>
-//            <span class="mdl-list__item-secondary-content">
-//            <i id="issue-location-button-ISSUEID" class="material-icons mdl-list__item-secondary-action">expand_more</i>
-//            </span>
-//            </li>
-//            </ul>
-//            <small class="mdl-card__subtitle-text">Assigned to: ASSIGNEE</small>
-//        </div>
-//        <div class="mdl-card__menu">
-//            <button id="issue-menu-button-ISSUEID" class="mdl-button mdl-js-button mdl-button--icon">
-//            <i class="material-icons">more_vert</i>
-//            </button>
-//            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="issue-menu-button-ISSUEID">
-//            <li onclick="editItem(ISSUEID)" class="mdl-menu__item">Edit Issue</li>
-//        <li <?php //if($userInfo['permissionLevel'] < 3){echo "style='display:none'";}?>// onclick="reassignItem(ISSUEID)" class="mdl-menu__item">Reassign</li>
-//            <li <?php //if($userInfo['permissionLevel'] < 3){echo "style='display:none'";}?>// onclick="deleteItem(ISSUEID)"class="mdl-menu__item">Delete Issue</li>
-//        </ul>
-//        </div>
-//        </div>
+        //TODO COPY ME!!!
+
         //TODO UNCOMMENT FOLLOWING LINE
         //$('.issue-card').remove();
         //get issues and display
-        $.getJSON('API/getIssues.php', jsonfilter, function(data){
+        $.getJSON('API/getIssues.php', {'filterJson' : jsonfilter}, function(data){
             var htmlStringToInject = "";
             for(var issue in data){
                 htmlStringToInject += "";
@@ -380,7 +314,33 @@ $userInfo = packapps_authenticate_user('maintenance');
     }
 
     function createJsonFromFilter(){
-        //TODO
+        var filterObj = {};
+        //check purpose boxes
+        filterObj['purposes'] = [];
+        $('.purpose_checkbox').each(function() {
+            if($(this).is(':checked')){
+                filterObj['purposes'].push($(this).val());
+            }
+        });
+        //check status boxes
+        filterObj['statuses'] = [];
+        $('.status_checkbox').each(function() {
+            if($(this).is(':checked')){
+                filterObj['statuses'].push($(this).val());
+            }
+        });
+        //check assignment filters
+        filterObj['assignments'] = {};
+        filterObj['assignments']['unassigned'] = $('#checkbox-assignment-unassigned').is(':checked');
+        filterObj['assignments']['assignedto'] = $('#checkbox-assignment-assignedto').is(':checked');
+        filterObj['assignments']['assignedtoname'] = $('#assignedto-text').val();
+        filterObj['assignments']['assignedtoself'] = $('#checkbox-assignment-assignedtoself').is(':checked');
+        console.log(filterObj);
+        return JSON.stringify(filterObj);
+    }
+
+    function addAllItemstoCart(issueID){
+
     }
 
     function statusIncrease(issueID){

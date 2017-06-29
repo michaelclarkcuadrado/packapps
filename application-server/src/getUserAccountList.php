@@ -43,6 +43,7 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
         while($user = mysqli_fetch_assoc($userListPrivileges)){
             array_push($arrayToReturn, $user);
         }
+        header('Content-type: application/json');
         echo json_encode($arrayToReturn);
     }
 }

@@ -40,4 +40,5 @@ while ($bom = mysqli_fetch_assoc($rawBomData)) {
 if(count($currentEditingBom) != 0){
     array_push($finalData, $currentEditingBom);
 }
+header('Content-type: application/json');
 echo json_encode($finalData);

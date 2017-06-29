@@ -64,7 +64,7 @@ $pendingstarchdata=mysqli_query($mysqli2, "select Preharvest_Samples.Grower as G
         <!-- Welcome Screen -->
         <article id="welcome" class="panel" style="margin-bottom: 0">
             <header>
-                <h1><i class="fa fa-stethoscope"></i> Pre-Harvest Publishing Mode</h1>
+                <h1><i class="fa fa-stethoscope"></i> Pre-harvest Check-ups</h1>
 	            <p>Logged in as <i class="icon fa-leaf"></i><?echo $RealName['UserRealName']?></p>
             </header>
             <a href="#preharvest" class="jumplink pic">

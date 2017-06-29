@@ -39,5 +39,6 @@ foreach ($orders as $data) {
         $finalArray[$data['Purchase_ID']]['ItemsOrdered'][$data['Item_ID']] = array('QuantityOrdered' => $data['QuantityOrdered'], 'PricePerUnit' => $data['PricePerUnit'], 'ItemDesc' => $data['ItemDesc']);
     }
 }
+header('Content-type: application/json');
 //reverse the array because the order by in sql wasn't working :(
 echo json_encode(array_reverse($finalArray));

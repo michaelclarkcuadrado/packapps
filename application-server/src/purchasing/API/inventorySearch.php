@@ -21,5 +21,6 @@ if (isset($_GET['TypeID']) && isset($_GET['q'])) {
             $finishedArray[$key['Item_ID']]['Suppliers'][$key['SupplierID']] = array("SupplierID"=> $key['SupplierID'], "Name" => $key['Name'], "quotedPricePerUnit" => $key['quotedPricePerUnit']);
         }
     }
+    header('Content-type: application/json');
    echo json_encode($finishedArray);
 }

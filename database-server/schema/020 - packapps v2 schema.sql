@@ -197,7 +197,7 @@ CREATE TABLE `maintenance_issues` (
   `completedBy` varchar(255) NOT NULL,
   `solution_description` varchar(1023) NOT NULL,
   `dateCompleted` datetime NOT NULL,
-  `assignedTo` varchar(255) NOT NULL,
+  `assignedTo` varchar(255) NULL,
   `Location` int(11) NOT NULL,
   `hasPhotoAttached` tinyint(1) NOT NULL,
   `needsParts` tinyint(1) NOT NULL,

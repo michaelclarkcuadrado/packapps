@@ -7,4 +7,5 @@ while($RunArray = mysqli_fetch_array($query))
 {
     array_push($array, $RunArray);
 }
+header('Content-type: application/json');
 echo json_encode($array);

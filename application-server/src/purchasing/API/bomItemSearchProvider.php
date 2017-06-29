@@ -17,4 +17,5 @@ while($item = mysqli_fetch_assoc($itemquery)){
 
     array_push($returnArray, $item);
 }
+header('Content-type: application/json');
 echo json_encode($returnArray);

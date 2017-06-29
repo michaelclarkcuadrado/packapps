@@ -9,7 +9,7 @@
 //only supports 5, 10, or 15 samples in a file
 include_once("../Classes/excel_reader2.php");
 $xlsdata = new Spreadsheet_Excel_Reader($_FILES['0']['tmp_name'],false);
-
+header('Content-type: application/json');
 if($xlsdata->rowcount() == 23) {
     //5 samples
     //creates array of weight, press1, press2

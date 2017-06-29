@@ -17,6 +17,7 @@ if (isset($_GET['q'])) {
 } else {
     die(http_response_code(400));
 }
+header('Content-type: application/json');
 //test if it is presized
 $info = mysqli_query($mysqli, "SELECT rtrim(`Commodity Desc`) AS CommDesc, rtrim(`Run#`) as `Run`, concat('PS SubGw: ',rtrim(`Grower Desc`)) AS GrowerName, rtrim(`Grade Desc`) AS FarmDesc, rtrim(`Size Desc`) AS BlockDesc, rtrim(`Var Desc`) AS VarDesc FROM PSOHCSV WHERE `Ticket#` = " . $result);
 if (mysqli_num_rows($info) == 0) {

@@ -49,4 +49,5 @@ while($data = mysqli_fetch_assoc($query))
 //
 //$allRunsArray['refreshpl0x'] = '30';
 //
+header('Content-type: application/json');
 echo json_encode($allRunsArray);

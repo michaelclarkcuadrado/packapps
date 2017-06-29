@@ -6,6 +6,7 @@
  * Time: 10:59 AM
  */
 include '../../config.php';
+header('Content-type: application/json');
 if(!isset($_GET['supplier'])) {
     echo json_encode(mysqli_fetch_all(mysqli_query($mysqli, "SELECT * FROM purchasing_Suppliers ORDER BY Name ASC"), MYSQLI_ASSOC));
 } else {

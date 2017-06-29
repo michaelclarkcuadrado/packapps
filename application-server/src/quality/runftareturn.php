@@ -13,6 +13,7 @@ $xlsdata = new Spreadsheet_Excel_Reader($_FILES['0']['tmp_name'],false);
 if($xlsdata->rowcount() == 23) {
     //5 samples
     //creates array of weight, press1, press2
+    header('Content-type: application/json');
     echo json_encode(array_merge(array("NumSamples"=>"5","BlockID"=>$xlsdata->val('18', 'B')),
     array(
     array($xlsdata->val('2', 'C'),$xlsdata->val('2', 'B'),$xlsdata->val('3', 'B')),

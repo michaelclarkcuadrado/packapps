@@ -6,4 +6,5 @@ while ($array = mysqli_fetch_assoc($data))
 {
     $finishedArray[$array['Type_Description']] = $array['Spending'];
 }
+header('Content-type: application/json');
 echo json_encode($finishedArray);

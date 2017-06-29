@@ -21,5 +21,6 @@ if(isset($_POST['suppName']) && isset($_POST['items']) && isset($_POST['suppID']
         $array['Name'] = $value;
         $finalArray[$key] = $array;
     }
+    header('Content-type: application/json');
     echo json_encode($finalArray);
 }

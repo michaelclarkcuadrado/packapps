@@ -12,4 +12,5 @@ $output = array();
 while($purpose = mysqli_fetch_assoc($purposes)){
     $output[$purpose['purpose_id']] = $purpose['Purpose'];
 }
+header('Content-type: application/json');
 echo json_encode($output);

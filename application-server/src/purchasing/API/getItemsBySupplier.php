@@ -30,6 +30,6 @@ if (isset($_GET['q'])) {
             unset($finishedArray[$itemID]);
         }
     }
-
+    header('Content-type: application/json');
     echo json_encode($finishedArray);
 }

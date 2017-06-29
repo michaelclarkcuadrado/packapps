@@ -9,6 +9,7 @@ if (!strpos($_GET['id'], ':')) {
     while ($resultArray = mysqli_fetch_assoc($query)) {
         array_push($array, array('text' => "<span class='mdl-badge mdl-badge--no-background' data-badge='".$resultArray['OH']."'>".$resultArray['Var']."</span>", 'children' => true, 'id' => 'variety:' . $resultArray['Var']));
     }
+    header('Content-type: application/json');
     echo json_encode($array);
 } else {
     //prepare parameters from request
@@ -26,6 +27,7 @@ if (!strpos($_GET['id'], ':')) {
         while ($resultArray = mysqli_fetch_assoc($query)) {
             array_push($array, array('text' => "<span class='mdl-badge mdl-badge--no-background' data-badge='".$resultArray['OH']."'>".$resultArray['Grower']."</span>", 'children' => true, 'id' => $_GET['id'] . ":" . 'grower:' . $resultArray['Grower']));
         }
+        header('Content-type: application/json');
         echo json_encode($array);
     } //load farm
     else if (count($params) == 2) {
@@ -33,6 +35,7 @@ if (!strpos($_GET['id'], ':')) {
         while ($resultArray = mysqli_fetch_assoc($query)) {
             array_push($array, array('text' => "<span class='mdl-badge mdl-badge--no-background' data-badge='".$resultArray['OH']."'>Farm: ".$resultArray['Farm']."</span>", 'children' => true, 'id' => $_GET['id'] . ":" . 'Farm:' . $resultArray['Farm']));
         }
+        header('Content-type: application/json');
         echo json_encode($array);
     } //load Block
     else if (count($params) == 3) {

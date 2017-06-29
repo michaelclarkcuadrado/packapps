@@ -13,5 +13,5 @@ $data = mysqli_fetch_assoc($query);
     $madeArray = mysqli_fetch_all($madeQuery);
 
     $RunArray = array( (isset($_GET['duplicate']) ? 'DEFAULT' : $data['RunID']), $data['Line'], mysqli_num_rows($dumpedQuery), mysqli_num_rows($madeQuery), $dumpedArray, $madeArray, (isset($_GET['duplicate']) ? '' : $data['RunNumber']), (isset($_GET['duplicate']) ? '0' : $data['isQA']), (isset($_GET['duplicate']) ? '0' : $data['isPreInspected']));
-
+header('Content-type: application/json');
 echo json_encode($RunArray);
