@@ -13,8 +13,8 @@ services:
   environment:
    VIRTUAL_HOST: REPLACE.packercloud.com
    LETSENCRYPT_HOST: REPLACE.packercloud.com
-   LETSENCRYPT_EMAIL: michael@packercloud.
-   
+   LETSENCRYPT_EMAIL: michael@packercloud.com
+
  letsencrypt-nginx-proxy-companion:
    image: jrcs/letsencrypt-nginx-proxy-companion
    volumes:
@@ -24,12 +24,13 @@ services:
 
  application-server:
   build: ./application-server
-  ports:
   restart: always
   # TODO: set credentials from orchestration server instead of hard code
   environment:
-   - AWS_ACCESS_KEY_ID=AKIAJUY2TJYONM67CUNQ
-   - AWS_SECRET_ACCESS_KEY=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
+   - "COMPANY_SLUG_NAME=devenv"
+   - "COMPANY_LONG_NAME=DEVELOPMENT ENV"
+   - "AWS_ACCESS_KEY_ID=AKIAJUY2TJYONM67CUNQ"
+   - "AWS_SECRET_ACCESS_KEY=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"
   volumes:
    # simplify development by allowing instantaneous code changes. Unsafe. Remove for deployment
    - ./application-server/src:/var/www
