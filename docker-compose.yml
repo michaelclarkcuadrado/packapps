@@ -2,22 +2,23 @@ version: '2'
 
 services:
  nginx-proxy:
+  restart: always
   image: jwilder/nginx-proxy
   ports:
    - "80:80"
    - "443:443"
   volumes:
-   - "/etc/nginx/vhost.d"
-   - "/usr/share/nginx/html"
+   - "nginx-vhost:/etc/nginx/vhost.d"
+   - "nginx-html:/usr/share/nginx/html"
+   - "nginx-certs:/etc/nginx/certs"
    - "/var/run/docker.sock:/tmp/docker.sock:ro"
-   - "/etc/nginx/certs"
   extends:
    file: base.yml
    service: base
 
-
  letsencrypt-nginx-proxy-companion:
    image: jrcs/letsencrypt-nginx-proxy-companion
+   restart: always
    volumes:
      - "/var/run/docker.sock:/var/run/docker.sock:ro"
    volumes_from:
@@ -39,7 +40,7 @@ services:
    - database-server
 
  database-server:
-  # db access currently world-exposed. Accessible in docker cluster without expose)
+  # db access currently world-exposed. Accessible in docker cluster without expose
   ports:
    - "3306:3306"
   restart: always
@@ -61,3 +62,6 @@ services:
 
 volumes:
  packapps-db:
+ nginx-certs:
+ nginx-vhost:
+ nginx-html:
