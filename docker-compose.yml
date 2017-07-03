@@ -1,38 +1,43 @@
 version: '2'
 
 services:
- nginx-proxy:
-  restart: always
-  image: jwilder/nginx-proxy
-  ports:
-   - "80:80"
-   - "443:443"
-  volumes:
-   - "nginx-vhost:/etc/nginx/vhost.d"
-   - "nginx-html:/usr/share/nginx/html"
-   - "nginx-certs:/etc/nginx/certs"
-   - "/var/run/docker.sock:/tmp/docker.sock:ro"
-  extends:
-   file: base.yml
-   service: base
+# working ssl implementation. Uncomment for deployment
 
- letsencrypt-nginx-proxy-companion:
-   image: jrcs/letsencrypt-nginx-proxy-companion
-   restart: always
-   volumes:
-     - "/var/run/docker.sock:/var/run/docker.sock:ro"
-   volumes_from:
-     - "nginx-proxy"
-   extends:
-    file: base.yml
-    service: base
+# nginx-proxy:
+#  restart: always
+#  image: jwilder/nginx-proxy
+#  ports:
+#   - "80:80"
+#   - "443:443"
+#  volumes:
+#   - "nginx-vhost:/etc/nginx/vhost.d"
+#   - "nginx-html:/usr/share/nginx/html"
+#   - "nginx-certs:/etc/nginx/certs"
+#   - "/var/run/docker.sock:/tmp/docker.sock:ro"
+#  extends:
+#   file: settings.yml
+#   service: base
+#
+# letsencrypt-nginx-proxy-companion:
+#   image: jrcs/letsencrypt-nginx-proxy-companion
+#   restart: always
+#   volumes:
+#     - "/var/run/docker.sock:/var/run/docker.sock:ro"
+#   volumes_from:
+#     - "nginx-proxy"
+#   extends:
+#    file: settings.yml
+#    service: base
 
  application-server:
   build: ./application-server
   restart: always
   extends:
-   file: base.yml
+   file: settings.yml
    service: hostname
+  # delete ports for deployment
+  ports:
+   - 80:80
   volumes:
    # simplify development by allowing instantaneous code changes. Unsafe. Remove for deployment
    - ./application-server/src:/var/www
@@ -40,7 +45,7 @@ services:
    - database-server
 
  database-server:
-  # db access currently world-exposed. Accessible in docker cluster without expose
+  # delete ports for deployment
   ports:
    - "3306:3306"
   restart: always
@@ -48,7 +53,7 @@ services:
   volumes: 
    - packapps-db:/var/lib/mysql
 
- # phpmyadmin for database visualization. remove (ideally) or at least don't expose for deployment
+ # phpmyadmin for database visualization. comment out for deployment
  phpmyadmin:
   image: phpmyadmin/phpmyadmin
   container_name: phpmyadmin
