@@ -6,37 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="fc9cf440-d41f-463b-aeba-7bb29d2a7f06" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/getUserAccountList.php" afterPath="$PROJECT_DIR$/application-server/src/getUserAccountList.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/grower/portal/getCalendarEvents.php" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/getCalendarEvents.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/config.php" afterPath="$PROJECT_DIR$/application-server/src/config.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/maintenance/API/getIssues.php" afterPath="$PROJECT_DIR$/application-server/src/maintenance/API/getIssues.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/maintenance/API/getPurposes.php" afterPath="$PROJECT_DIR$/application-server/src/maintenance/API/getPurposes.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php" afterPath="$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/production/API/BULKOH.php" afterPath="$PROJECT_DIR$/application-server/src/production/API/BULKOH.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/production/API/autoFillRun.php" afterPath="$PROJECT_DIR$/application-server/src/production/API/autoFillRun.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/production/API/curRuns.php" afterPath="$PROJECT_DIR$/application-server/src/production/API/curRuns.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/production/API/runHistory.php" afterPath="$PROJECT_DIR$/application-server/src/production/API/runHistory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/production/API/singleRun.php" afterPath="$PROJECT_DIR$/application-server/src/production/API/singleRun.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/purchasing/API/bomItemSearchProvider.php" afterPath="$PROJECT_DIR$/application-server/src/purchasing/API/bomItemSearchProvider.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/purchasing/API/getBOMs.php" afterPath="$PROJECT_DIR$/application-server/src/purchasing/API/getBOMs.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/purchasing/API/getDeletedInventoryItems.php" afterPath="$PROJECT_DIR$/application-server/src/purchasing/API/getDeletedInventoryItems.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/purchasing/API/getInventoryItems.php" afterPath="$PROJECT_DIR$/application-server/src/purchasing/API/getInventoryItems.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/purchasing/API/getItemInventoryHistory.php" afterPath="$PROJECT_DIR$/application-server/src/purchasing/API/getItemInventoryHistory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/purchasing/API/getItemPrices.php" afterPath="$PROJECT_DIR$/application-server/src/purchasing/API/getItemPrices.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/purchasing/API/getItemTypes.php" afterPath="$PROJECT_DIR$/application-server/src/purchasing/API/getItemTypes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/purchasing/API/getItemsBySupplier.php" afterPath="$PROJECT_DIR$/application-server/src/purchasing/API/getItemsBySupplier.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/purchasing/API/getPurchaseHistory.php" afterPath="$PROJECT_DIR$/application-server/src/purchasing/API/getPurchaseHistory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/purchasing/API/getSpendingByType.php" afterPath="$PROJECT_DIR$/application-server/src/purchasing/API/getSpendingByType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/purchasing/API/getSuppliers.php" afterPath="$PROJECT_DIR$/application-server/src/purchasing/API/getSuppliers.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/purchasing/API/inventorySearch.php" afterPath="$PROJECT_DIR$/application-server/src/purchasing/API/inventorySearch.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/purchasing/API/loadSuppliersForItem.php" afterPath="$PROJECT_DIR$/application-server/src/purchasing/API/loadSuppliersForItem.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/purchasing/API/loadSuppliersNotAssociated.php" afterPath="$PROJECT_DIR$/application-server/src/purchasing/API/loadSuppliersNotAssociated.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/purchasing/API/supplierSearch.php" afterPath="$PROJECT_DIR$/application-server/src/purchasing/API/supplierSearch.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/API/barcodeAndTicketInfo.php" afterPath="$PROJECT_DIR$/application-server/src/quality/API/barcodeAndTicketInfo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/API/getTestingHistory.php" afterPath="$PROJECT_DIR$/application-server/src/quality/API/getTestingHistory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/preharvest/ftadata.php" afterPath="$PROJECT_DIR$/application-server/src/quality/preharvest/ftadata.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/preharvest/index.php" afterPath="$PROJECT_DIR$/application-server/src/quality/preharvest/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/runftareturn.php" afterPath="$PROJECT_DIR$/application-server/src/quality/runftareturn.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql" afterPath="$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -101,96 +73,70 @@
     <favorites_list name="packapps" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.33762887">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="issueoverview.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="200">
-                  <caret line="342" column="0" lean-forward="false" selection-start-line="342" selection-start-column="0" selection-end-line="342" selection-end-column="0" />
-                  <folding>
-                    <marker date="1498766368961" expanded="true" signature="17089:19024" ph="{...}" />
-                    <marker date="1498766368961" expanded="true" signature="17955:17989" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="getIssues.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/getIssues.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-229">
-                  <caret line="120" column="3" lean-forward="false" selection-start-line="120" selection-start-column="3" selection-end-line="120" selection-end-column="3" />
-                  <folding>
-                    <element signature="e#6#85#0#PHP" expanded="true" />
-                    <marker date="1498765428867" expanded="true" signature="295:1156" ph="SELECT issue... maintenance_issues" />
-                    <marker date="1498765428867" expanded="true" signature="295:2230" ph="SELECT maint... maintenance_issues" />
-                    <marker date="1498765428867" expanded="true" signature="295:2353" ph="SELECT maint... maintenance_issues" />
-                    <marker date="1498765428867" expanded="true" signature="295:2354" ph="SELECT issue... maintenance_issues" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
-            <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="1451" lean-forward="false" selection-start-line="0" selection-start-column="1451" selection-end-line="0" selection-end-column="1451" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="issueoverview.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="244">
-                  <caret line="163" column="30" lean-forward="true" selection-start-line="163" selection-start-column="30" selection-end-line="163" selection-end-column="30" />
-                  <folding>
-                    <marker date="1498766368961" expanded="true" signature="17089:19024" ph="{...}" />
-                    <marker date="1498766368961" expanded="true" signature="17955:17989" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="getInventoryItems.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/application-server/src/purchasing/API/getInventoryItems.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="172">
-                  <caret line="17" column="34" lean-forward="false" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
-                  <folding>
-                    <marker date="1498743278431" expanded="true" signature="292:948" ph="SELECT Item_... purchasing_Items" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="inventorySearch.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/application-server/src/purchasing/API/inventorySearch.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="200">
-                  <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
-                  <folding>
-                    <marker date="1498743371350" expanded="true" signature="339:1015" ph="SELECT Item_... purchasing_Items" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="issueoverview.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-27">
+              <caret line="395" column="18" lean-forward="false" selection-start-line="395" selection-start-column="18" selection-end-line="395" selection-end-column="18" />
+              <folding>
+                <marker date="1499089021203" expanded="true" signature="17211:19147" ph="{...}" />
+                <marker date="1499089021203" expanded="true" signature="18078:18112" ph="..." />
+                <marker date="1499089021203" expanded="true" signature="26299:26332" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application-server/src/config.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <folding>
+                <marker date="1499090128352" expanded="true" signature="1949:2015" ph="SELECT packa... packapps_system_info" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scratch.html" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="4479" lean-forward="false" selection-start-line="0" selection-start-column="4479" selection-end-line="0" selection-end-column="4479" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#2;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#0;n#div#0;n#ul#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#1;n#div#0;n#ul#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#2;n#div#0;n#ul#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#3;n#div#0;n#ul#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="getIssues.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/getIssues.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="639">
+              <caret line="148" column="48" lean-forward="false" selection-start-line="148" selection-start-column="48" selection-end-line="148" selection-end-column="48" />
+              <folding>
+                <marker date="1499083189664" expanded="true" signature="295:1156" ph="SELECT issue... maintenance_issues" />
+                <marker date="1499083189664" expanded="true" signature="295:2230" ph="SELECT maint... maintenance_issues" />
+                <marker date="1499083189664" expanded="true" signature="295:2353" ph="SELECT maint... maintenance_issues" />
+                <marker date="1499083189664" expanded="true" signature="295:2354" ph="SELECT issue... maintenance_issues" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>td</find>
       <find>company</find>
       <find>hasOwnPro</find>
       <find>hasOwnProperty</find>
@@ -220,6 +166,7 @@
       <find>maintenance_issues</find>
       <find>parts ne</find>
       <find>LIKE</find>
+      <find>&quot;</find>
     </findStrings>
     <replaceStrings>
       <replace>$RealName['Role']</replace>
@@ -244,6 +191,8 @@
       <replace>$userinfo['GrowerCode']</replace>
       <replace>$userinfo['GrowerName']</replace>
       <replace>Description</replace>
+      <replace>/&quot;</replace>
+      <replace>\&quot;</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/application-server/src/purchasing</dir>
@@ -261,7 +210,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application-server/src/appMenu.php" />
         <option value="$PROJECT_DIR$/application-server/src/maintenance/partoverview.php" />
         <option value="$PROJECT_DIR$/application-server/src/maintenance/index.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/addBlock.php" />
@@ -278,7 +226,6 @@
         <option value="$PROJECT_DIR$/application-server/src/maintenance/API/getPuporses.php" />
         <option value="$PROJECT_DIR$/application-server/src/styles-common/styles.css" />
         <option value="$PROJECT_DIR$/application-server/src/purchasing/inventory.php" />
-        <option value="$PROJECT_DIR$/application-server/src/config.php" />
         <option value="$PROJECT_DIR$/application-server/src/packapps_api.php" />
         <option value="$PROJECT_DIR$/application-server/src/getUserAccountList.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/getCalendarEvents.php" />
@@ -311,7 +258,9 @@
         <option value="$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql" />
         <option value="$PROJECT_DIR$/application-server/src/maintenance/API/getIssues.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.html" />
         <option value="$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php" />
+        <option value="$PROJECT_DIR$/application-server/src/config.php" />
       </list>
     </option>
   </component>
@@ -465,98 +414,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application-server" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="styles-common" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application-server" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="quality" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application-server" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="purchasing" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application-server" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="purchasing" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="API" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -746,17 +603,17 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Database" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/mike/.PhpStorm2017.1/config/scratches/buffer1" />
-    <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="MySQL" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="HTML&#10;MySQL" />
     <property name="database.data.extractors.current" value="Comma-separated (CSV)" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/application-server/src/maintenance" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/application-server/src/" />
       <recent name="$PROJECT_DIR$/application-server/src/packapps_api" />
       <recent name="$PROJECT_DIR$/application-server/src/quality/assets" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/application-server/src/maintenance" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -917,7 +774,9 @@
       <workItem from="1498672394215" duration="6538000" />
       <workItem from="1498736244743" duration="10082000" />
       <workItem from="1498747233810" duration="10111000" />
-      <workItem from="1498760832049" duration="5746000" />
+      <workItem from="1498760832049" duration="5949000" />
+      <workItem from="1498794167074" duration="1174000" />
+      <workItem from="1499080105005" duration="8264000" />
     </task>
     <task id="LOCAL-00001" summary="Add clean db and phpmyadmin">
       <created>1496689406220</created>
@@ -930,7 +789,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="400941000" />
+    <option name="totallyTimeSpent" value="410582000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -945,17 +804,16 @@
     <frame x="0" y="27" width="1920" height="1173" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24733269" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.113247864" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21435499" sideWeight="0.50213677" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18963675" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13355593" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34917557" sideWeight="0.49786323" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968536" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -963,6 +821,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12311901" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976827" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24733269" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4714795" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35499516" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -977,20 +836,20 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21435499" sideWeight="0.50213677" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12311901" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13355593" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976827" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34917557" sideWeight="0.49786323" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24733269" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.113247864" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4714795" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18963675" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18963675" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35499516" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1036,14 +895,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="962">
-          <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/partoverview.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="460">
@@ -1298,21 +1149,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="28" column="48" lean-forward="true" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
-          <folding>
-            <marker date="1498663384071" expanded="true" signature="2044:2110" ph="SELECT packa... packapps_system_info" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/styles-common/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="800">
           <caret line="40" column="1" lean-forward="false" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1352,16 +1192,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/getNeededParts.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <marker date="1498017504572" expanded="true" signature="203:407" ph="SELECT item_... purchasing_Items" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/getUserAccountList.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="109">
@@ -1377,16 +1207,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-140">
           <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/getPurposes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="14" column="41" lean-forward="false" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
-          <folding>
-            <marker date="1498743193771" expanded="true" signature="149:201" ph="SELECT Purpo... maintenance_purposes" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1492,7 +1312,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="11" column="41" lean-forward="false" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1557,26 +1376,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="66" column="72" lean-forward="false" selection-start-line="66" selection-start-column="72" selection-end-line="66" selection-end-column="72" />
-          <folding>
-            <marker date="1498749326056" expanded="true" signature="558:783" ph="SELECT `Real... packapps_master_users" />
-            <marker date="1498749326056" expanded="true" signature="1124:1377" ph="select Preha... Preharvest_Samples" />
-            <marker date="1498749326056" expanded="true" signature="33009:33027" ph="..." />
-            <marker date="1498749326056" expanded="true" signature="33743:33761" ph="..." />
-            <marker date="1498749326056" expanded="true" signature="36975:36993" ph="..." />
-            <marker date="1498749326056" expanded="true" signature="37709:37727" ph="..." />
-            <marker date="1498749326056" expanded="true" signature="41738:41756" ph="..." />
-            <marker date="1498749326056" expanded="true" signature="42473:42491" ph="..." />
-            <marker date="1498749326056" expanded="true" signature="45020:45038" ph="..." />
-            <marker date="1498749326056" expanded="true" signature="45566:45584" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="199" column="32" lean-forward="false" selection-start-line="199" selection-start-column="32" selection-end-line="199" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1584,32 +1383,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="1451" lean-forward="false" selection-start-line="0" selection-start-column="1451" selection-end-line="0" selection-end-column="1451" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/getIssues.php">
+    <entry file="file://$PROJECT_DIR$/application-server/src/purchasing/API/inventorySearch.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-229">
-          <caret line="120" column="3" lean-forward="false" selection-start-line="120" selection-start-column="3" selection-end-line="120" selection-end-column="3" />
-          <folding>
-            <element signature="e#6#85#0#PHP" expanded="true" />
-            <marker date="1498765428867" expanded="true" signature="295:1156" ph="SELECT issue... maintenance_issues" />
-            <marker date="1498765428867" expanded="true" signature="295:2230" ph="SELECT maint... maintenance_issues" />
-            <marker date="1498765428867" expanded="true" signature="295:2353" ph="SELECT maint... maintenance_issues" />
-            <marker date="1498765428867" expanded="true" signature="295:2354" ph="SELECT issue... maintenance_issues" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="163" column="30" lean-forward="true" selection-start-line="163" selection-start-column="30" selection-end-line="163" selection-end-column="30" />
-          <folding>
-            <marker date="1498766368961" expanded="true" signature="17089:19024" ph="{...}" />
-            <marker date="1498766368961" expanded="true" signature="17955:17989" ph="..." />
-          </folding>
+        <state relative-caret-position="200">
+          <caret line="10" column="30" lean-forward="false" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -1617,18 +1397,84 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
           <caret line="17" column="34" lean-forward="false" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/getPurposes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="41" lean-forward="false" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
           <folding>
-            <marker date="1498743278431" expanded="true" signature="292:948" ph="SELECT Item_... purchasing_Items" />
+            <marker date="1498743193771" expanded="true" signature="149:201" ph="SELECT Purpo... maintenance_purposes" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/purchasing/API/inventorySearch.php">
+    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/getNeededParts.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+        <state relative-caret-position="300">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
-            <marker date="1498743371350" expanded="true" signature="339:1015" ph="SELECT Item_... purchasing_Items" />
+            <marker date="1498017504572" expanded="true" signature="203:407" ph="SELECT item_... purchasing_Items" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="512">
+          <caret line="202" column="34" lean-forward="true" selection-start-line="202" selection-start-column="34" selection-end-line="202" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/getIssues.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="639">
+          <caret line="148" column="48" lean-forward="false" selection-start-line="148" selection-start-column="48" selection-end-line="148" selection-end-column="48" />
+          <folding>
+            <marker date="1499083189664" expanded="true" signature="295:1156" ph="SELECT issue... maintenance_issues" />
+            <marker date="1499083189664" expanded="true" signature="295:2230" ph="SELECT maint... maintenance_issues" />
+            <marker date="1499083189664" expanded="true" signature="295:2353" ph="SELECT maint... maintenance_issues" />
+            <marker date="1499083189664" expanded="true" signature="295:2354" ph="SELECT issue... maintenance_issues" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="4479" lean-forward="false" selection-start-line="0" selection-start-column="4479" selection-end-line="0" selection-end-column="4479" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#div#0;n#ul#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#1;n#div#0;n#ul#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#2;n#div#0;n#ul#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#3;n#div#0;n#ul#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-27">
+          <caret line="395" column="18" lean-forward="false" selection-start-line="395" selection-start-column="18" selection-end-line="395" selection-end-column="18" />
+          <folding>
+            <marker date="1499089021203" expanded="true" signature="17211:19147" ph="{...}" />
+            <marker date="1499089021203" expanded="true" signature="18078:18112" ph="..." />
+            <marker date="1499089021203" expanded="true" signature="26299:26332" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <marker date="1499090128352" expanded="true" signature="1949:2015" ph="SELECT packa... packapps_system_info" />
           </folding>
         </state>
       </provider>

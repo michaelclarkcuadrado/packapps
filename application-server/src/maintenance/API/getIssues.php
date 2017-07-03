@@ -136,9 +136,6 @@ if(isset($_GET['filterJson'])){
     }
 }
 
-echo $queryText;
-die();
-
 $issuesReturned = mysqli_query($mysqli, $queryText);
 
 //create array where issues are grouped together
@@ -148,6 +145,9 @@ while($issue = mysqli_fetch_assoc($issuesReturned)){
     if(array_key_exists($issue['issue_id'], $issueArray)){
         $issueArray[$issue['issue_id']]['partsNeeded'][$issue['NeededItemID']] = $issue['NeededItemDesc'];
     } else {
+        if($issue['assignedTo'] == null){
+            $issue['assignedTo'] = 'Unassigned';
+        }
         if($issue['needsParts'] > 0){
             $issue['partsNeeded'] = array($issue['NeededItemID'] => $issue['NeededItemDesc']);
         }

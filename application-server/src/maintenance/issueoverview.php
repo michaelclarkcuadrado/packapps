@@ -158,8 +158,9 @@ $userInfo = packapps_authenticate_user('maintenance');
                                 <i class="material-icons">more_horiz</i>
                             </button>
                             <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="partsneeded-button-ISSUEID">
-                                <li class="mdl-menu__item">ITEM DESC</li>
-                                <li class="mdl-menu__item" onclick="addAllItemstoCart(ISSUEID)">Add all to card</li>
+                                <li class="mdl-menu__item" disabled><u>Add To Cart</u></li>
+                                <li class="mdl-menu__item" onclick="addAllItemstoCart(ISSUEID)">Add All Items</li>
+                                <li class="mdl-menu__item" onclick="addItemToCart(ITEMID)">ITEM DESC</li>
                             </ul>
                         </div>
                     </div>
@@ -237,7 +238,7 @@ $userInfo = packapps_authenticate_user('maintenance');
 <script>
     $(document).ready(function () {
         $('.mdl-card').fadeIn('fast');
-        $('#issueFilterbox').hide()
+        $('#issueFilterbox').hide();
 
         //get all purposes
         $.getJSON('API/getPurposes.php', function(data) {
@@ -299,7 +300,101 @@ $userInfo = packapps_authenticate_user('maintenance');
 
     function updateIssues(jsonfilter){
         //Code before function
-        //TODO COPY ME!!!
+//    <div class="mdl-card issue-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-phone">
+//            <div class="mdl-card__title mdl-color--yellow-400">
+//            <h2 class="mdl-card__title-text">#ID - TITLE</h2>
+//        </div>
+//        <div class="mdl-card__supporting-text">
+//            <div class="issue-buttons">
+//            <div style="color: white; white-space: nowrap" class="chip mdl-color--green-500">
+//            PURPOSE
+//            </div>
+//            <div style="color: white; white-space: nowrap" class="chip mdl-color--blue-500">
+//            <button id="back-status-button-ISSUEID" onclick="statusIncrease(ISSUEID)" class="mdl-button mdl-js-button mdl-button--icon">
+//            <i class="material-icons">chevron_left</i>
+//            </button>
+//            <span id="status-display-ISSUEID">STATUS</span>
+//            <button id="forward-status-button-ISSUEID" onclick="statusDecrease(ISSUEID)" class="mdl-button mdl-js-button mdl-button--icon">
+//            <i class="material-icons">chevron_right</i>
+//            </button>
+//            </div>
+//            <div style="color:white; white-space: nowrap" class="chip mdl-color--red-600">
+//            Parts Needed: ##
+//    <button id="partsneeded-button-ISSUEID" class="mdl-button mdl-js-button mdl-button--icon">
+//            <i class="material-icons">more_horiz</i>
+//            </button>
+//            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="partsneeded-button-ISSUEID">
+//            <li class="mdl-menu__item" disabled><u>Add To Cart</u></li>
+//        <li class="mdl-menu__item" onclick="addAllItemstoCart(ISSUEID)">Add All Items</li>
+//        <li class="mdl-menu__item" onclick="addItemToCart(ITEMID)">ITEM DESC</li>
+//        </ul>
+//        </div>
+//        </div>
+//        <ul class="mdl-list">
+//            <li class="mdl-list__item mdl-list__item" style="padding:6px">
+//            <span class="mdl-list__item-primary-content">
+//            <i class="material-icons mdl-list__item-icon">assignment_late</i>
+//            <span><p>Issue description. Blue line destroyed!</p></span>
+//        </span>
+//        </li>
+//        <li id="solution-description-ISSUEID" class="mdl-list__item mdl-list__item" style="padding:6px">
+//            <span class="mdl-list__item-primary-content">
+//            <i class="material-icons mdl-list__item-icon">assignment_turned_in</i>
+//            <span><p>Solution description. Blue line glued back together</p></span>
+//        </span>
+//        </li>
+//        <li class="mdl-list__item mdl-list__item" onclick="issuePhoto(issueid, PHOTO_EXISTS)" style="cursor:pointer;padding:6px">
+//            <span class="mdl-list__item-primary-content">
+//            <i class="material-icons mdl-list__item-icon">add_a_photo</i> <!--photo_camera-->
+//            <span>Add a Photo / View Photo</span>
+//        </span>
+//        </li>
+//        <li class="mdl-list__item mdl-list__item" style="padding:6px">
+//            <span class="mdl-list__item-primary-content">
+//            <i class="material-icons mdl-list__item-icon">history</i>
+//            <span>Issue History</span>
+//        </span>
+//        <span class="mdl-list__item-secondary-content">
+//            <i id="expand-button-history-ISSUEID" onclick="expandHistory(issueID, $(this))" class="material-icons mdl-list__item-secondary-action">expand_more</i>
+//            </span>
+//            </li>
+//            <div id="history-panel-ISSUEID" class="sublist_supplier">
+//            <li class="mdl-list__item" style="padding:6px; min-height: initial">
+//            Created: DATE_CREATED By CREATOR_NAME
+//        </li>
+//        <li class="mdl-list__item" style="padding:6px; min-height: initial">
+//            Confirmed: DATE_CONFIRMED By CONFIRMER_NAME
+//        </li>
+//        <li class="mdl-list__item" style="padding:6px; min-height: initial">
+//            Work Started: DATE_STARTED By STARTER_NAME
+//        </li>
+//        <li class="mdl-list__item" style="padding:6px; min-height: initial">
+//            Completed: DATE_COMPLETED By COMPLETER_NAME
+//        </li>
+//        </div>
+//        <li class="mdl-list__item mdl-list__item" style="padding:6px">
+//            <span class="mdl-list__item-primary-content">
+//            <i class="material-icons mdl-list__item-icon">location_on</i>
+//            <span>Location</span>
+//            </span>
+//            <span class="mdl-list__item-secondary-content">
+//            <i id="issue-location-button-ISSUEID" class="material-icons mdl-list__item-secondary-action">expand_more</i>
+//            </span>
+//            </li>
+//            </ul>
+//            <small class="mdl-card__subtitle-text">Assigned to: ASSIGNEE</small>
+//        </div>
+//        <div class="mdl-card__menu">
+//            <button id="issue-menu-button-ISSUEID" class="mdl-button mdl-js-button mdl-button--icon">
+//            <i class="material-icons">more_vert</i>
+//            </button>
+//            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="issue-menu-button-ISSUEID">
+//            <li onclick="editItem(ISSUEID)" class="mdl-menu__item">Edit Issue</li>
+//        <li <?php //if($userInfo['permissionLevel'] < 3){echo "style='display:none'";}?>// onclick="reassignItem(ISSUEID)" class="mdl-menu__item">Reassign</li>
+//            <li <?php //if($userInfo['permissionLevel'] < 3){echo "style='display:none'";}?>// onclick="deleteItem(ISSUEID)"class="mdl-menu__item">Delete Issue</li>
+//        </ul>
+//        </div>dd
+//        </div>
 
         //TODO UNCOMMENT FOLLOWING LINE
         //$('.issue-card').remove();
@@ -307,7 +402,15 @@ $userInfo = packapps_authenticate_user('maintenance');
         $.getJSON('API/getIssues.php', {'filterJson' : jsonfilter}, function(data){
             var htmlStringToInject = "";
             for(var issue in data){
-                htmlStringToInject += "";
+                if(data.hasOwnProperty(issue)){
+                    htmlStringToInject += "<div class=\"mdl-card issue-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-phone\"><div class=\"mdl-card__title mdl-color--yellow-400\"><h2 class=\"mdl-card__title-text\">#"
+                    + data[issue]['issue_id']
+                    + " - "
+                    + data[issue]['title']
+                    + "</h2></div><div class=\"mdl-card__supporting-text\"><div class=\"issue-buttons\"><div style=\"color: white; white-space: nowrap\" class=\"chip mdl-color--green-500\">"
+                    + data[issue]['Purpose']
+                    + "</div><div style=\"color: white; white-space: nowrap\" class=\"chip mdl-color--blue-500\"><button id=\"back-status-button-ISSUEID\" onclick=\"statusIncrease(ISSUEID)\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">chevron_left</i></button><span id=\"status-display-ISSUEID\">STATUS</span><button id=\"forward-status-button-ISSUEID\" onclick=\"statusDecrease(ISSUEID)\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">chevron_right</i></button></div><div style=\"color:white; white-space: nowrap\" class=\"chip mdl-color--red-600\">Parts Needed: ##<button id=\"partsneeded-button-ISSUEID\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">more_horiz</i></button><ul class=\"mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect\" for=\"partsneeded-button-ISSUEID\"><li class=\"mdl-menu__item\" disabled><u>Add To Cart</u></li><li class=\"mdl-menu__item\" onclick=\"addAllItemstoCart(ISSUEID)\">Add All Items</li><li class=\"mdl-menu__item\" onclick=\"addItemToCart(ITEMID)\">ITEM DESC</li></ul></div></div><ul class=\"mdl-list\"><li class=\"mdl-list__item mdl-list__item\" style=\"padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">assignment_late</i><span><p>Issue description. Blue line destroyed!</p></span></span></li><li id=\"solution-description-ISSUEID\" class=\"mdl-list__item mdl-list__item\" style=\"padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">assignment_turned_in</i><span><p>Solution description. Blue line glued back together</p></span></span></li><li class=\"mdl-list__item mdl-list__item\" onclick=\"issuePhoto(issueid, PHOTO_EXISTS)\" style=\"cursor:pointer;padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">add_a_photo</i> <!--photo_camera--><span>Add a Photo / View Photo</span></span></li><li class=\"mdl-list__item mdl-list__item\" style=\"padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">history</i><span>Issue History</span></span><span class=\"mdl-list__item-secondary-content\"><i id=\"expand-button-history-ISSUEID\" onclick=\"expandHistory(issueID, $(this))\" class=\"material-icons mdl-list__item-secondary-action\">expand_more</i></span></li><div id=\"history-panel-ISSUEID\" class=\"sublist_supplier\"><li class=\"mdl-list__item\" style=\"padding:6px; min-height: initial\">Created: DATE_CREATED By CREATOR_NAME</li><li class=\"mdl-list__item\" style=\"padding:6px; min-height: initial\">Confirmed: DATE_CONFIRMED By CONFIRMER_NAME</li><li class=\"mdl-list__item\" style=\"padding:6px; min-height: initial\">Work Started: DATE_STARTED By STARTER_NAME</li><li class=\"mdl-list__item\" style=\"padding:6px; min-height: initial\">Completed: DATE_COMPLETED By COMPLETER_NAME</li></div><li class=\"mdl-list__item mdl-list__item\" style=\"padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">location_on</i><span>Location</span></span><span class=\"mdl-list__item-secondary-content\"><i id=\"issue-location-button-ISSUEID\" class=\"material-icons mdl-list__item-secondary-action\">expand_more</i></span></li></ul><small class=\"mdl-card__subtitle-text\">Assigned to: ASSIGNEE</small></div><div class=\"mdl-card__menu\"><button id=\"issue-menu-button-ISSUEID\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">more_vert</i></button><ul class=\"mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect\" for=\"issue-menu-button-ISSUEID\"><li onclick=\"editItem(ISSUEID)\" class=\"mdl-menu__item\">Edit Issue</li><li <?php if($userInfo['permissionLevel'] < 3){echo "style='display:none'";}?> onclick=\"reassignItem(ISSUEID)\" class=\"mdl-menu__item\">Reassign</li><li <?php if($userInfo['permissionLevel'] < 3){echo "style='display:none";}?> onclick=\"deleteItem(ISSUEID)\"class=\"mdl-menu__item\">Delete Issue</li></ul></div></div>";
+                }
             }
         $('#insertIssuesHere').append(htmlStringToInject);
         });
@@ -340,6 +443,10 @@ $userInfo = packapps_authenticate_user('maintenance');
     }
 
     function addAllItemstoCart(issueID){
+
+    }
+
+    function addItemToCart(issueID){
 
     }
 

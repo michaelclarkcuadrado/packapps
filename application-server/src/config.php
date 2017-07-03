@@ -2,15 +2,12 @@
 
 //Internal packapps variables
 $packapps_version = 2;
-$isManagedByOrchestration = false;
-$orchestraionServerURL = '';
 //companyName is user presentable, companyShortName is internal slug and the deployment ID
 $companyShortName = 'devenv';
 $companyName = 'DEVELOPMENT ENV';
 
 //MYSQL Server Details
-$dbhost = "database-server";
-//$dbhost = "p:database-server";
+$dbhost = "p:database-server";
 $dbusername = "packapps";
 $dbpassword = "packapps";
 $dbport = "3306";
