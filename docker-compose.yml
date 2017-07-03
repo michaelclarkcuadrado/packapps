@@ -1,9 +1,30 @@
 version: '2'
 services:
+ nginx-proxy:
+  image: jwilder/nginx-proxy
+  ports:
+   - "80:80"
+   - "443:443"
+  volumes:
+   - "/etc/nginx/vhost.d"
+   - "/usr/share/nginx/html"
+   - "/var/run/docker.sock:/tmp/docker.sock:ro"
+   - "/etc/nginx/certs"
+  environment:
+   VIRTUAL_HOST: REPLACE.packercloud.com
+   LETSENCRYPT_HOST: REPLACE.packercloud.com
+   LETSENCRYPT_EMAIL: michael@packercloud.
+   
+ letsencrypt-nginx-proxy-companion:
+   image: jrcs/letsencrypt-nginx-proxy-companion
+   volumes:
+     - "/var/run/docker.sock:/var/run/docker.sock:ro"
+   volumes_from:
+     - "nginx-proxy"
+
  application-server:
   build: ./application-server
   ports:
-   - "80:80"
   restart: always
   # TODO: set credentials from orchestration server instead of hard code
   environment:
@@ -14,14 +35,16 @@ services:
    - ./application-server/src:/var/www
   depends_on:
    - database-server
+
  database-server:
-  # db access currently world-exposed. (Cover with ufw on host? Test if accessible in docker cluster without expose?)
+  # db access currently world-exposed. Accessible in docker cluster without expose)
   ports:
    - "3306:3306"
   restart: always
   build: ./database-server
   volumes: 
    - packapps-db:/var/lib/mysql
+
  # phpmyadmin for database visualization. remove (ideally) or at least don't expose for deployment
  phpmyadmin:
   image: phpmyadmin/phpmyadmin
@@ -33,5 +56,6 @@ services:
    - 8080:80
   volumes:
    - /sessions
+
 volumes:
  packapps-db:
