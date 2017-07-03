@@ -1,4 +1,7 @@
 version: '2'
+args:
+ - "COMPANY_SLUG_NAME=devenv"
+ - "COMPANY_LONG_NAME=DEVELOPMENT ENV"
 services:
  nginx-proxy:
   image: jwilder/nginx-proxy
@@ -27,8 +30,8 @@ services:
   restart: always
   # TODO: set credentials from orchestration server instead of hard code
   environment:
-   - "COMPANY_SLUG_NAME=devenv"
-   - "COMPANY_LONG_NAME=DEVELOPMENT ENV"
+   - COMPANY_SLUG_NAME=$COMPANY_SLUG_NAME
+   - COMPANY_LONG_NAME=$COMPANY_LONG_NAME
    - "AWS_ACCESS_KEY_ID=AKIAJUY2TJYONM67CUNQ"
    - "AWS_SECRET_ACCESS_KEY=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"
   volumes:
