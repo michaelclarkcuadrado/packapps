@@ -3,8 +3,8 @@
 //Internal packapps variables
 $packapps_version = 2;
 //companyName is user presentable, companyShortName is internal slug and the deployment ID
-$companyShortName = 'devenv';
-$companyName = 'DEVELOPMENT ENV';
+$companyShortName = getenv('COMPANY_SLUG_NAME');
+$companyName = getenv('COMPANY_LONG_NAME');
 
 //MYSQL Server Details
 $dbhost = "p:database-server";

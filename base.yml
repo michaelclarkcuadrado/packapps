@@ -1,0 +1,10 @@
+services:
+ base:
+  environment:
+   - VIRTUAL_HOST: REPLACE.packercloud.com
+   - LETSENCRYPT_HOST: REPLACE.packercloud.com
+   - LETSENCRYPT_EMAIL: michael@packercloud.com
+   - "COMPANY_SLUG_NAME=devenv"
+   - "COMPANY_LONG_NAME=DEVELOPMENT ENV"
+   - "AWS_ACCESS_KEY_ID=AKIAJUY2TJYONM67CUNQ"
+   - "AWS_SECRET_ACCESS_KEY=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"

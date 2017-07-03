@@ -1,7 +1,5 @@
 version: '2'
-args:
- - "COMPANY_SLUG_NAME=devenv"
- - "COMPANY_LONG_NAME=DEVELOPMENT ENV"
+
 services:
  nginx-proxy:
   image: jwilder/nginx-proxy
@@ -13,10 +11,10 @@ services:
    - "/usr/share/nginx/html"
    - "/var/run/docker.sock:/tmp/docker.sock:ro"
    - "/etc/nginx/certs"
-  environment:
-   VIRTUAL_HOST: REPLACE.packercloud.com
-   LETSENCRYPT_HOST: REPLACE.packercloud.com
-   LETSENCRYPT_EMAIL: michael@packercloud.com
+  extends:
+   file: base.yml
+   service: base
+
 
  letsencrypt-nginx-proxy-companion:
    image: jrcs/letsencrypt-nginx-proxy-companion
@@ -24,16 +22,16 @@ services:
      - "/var/run/docker.sock:/var/run/docker.sock:ro"
    volumes_from:
      - "nginx-proxy"
+   extends:
+    file: base.yml
+    service: base
 
  application-server:
   build: ./application-server
   restart: always
-  # TODO: set credentials from orchestration server instead of hard code
-  environment:
-   - COMPANY_SLUG_NAME=$COMPANY_SLUG_NAME
-   - COMPANY_LONG_NAME=$COMPANY_LONG_NAME
-   - "AWS_ACCESS_KEY_ID=AKIAJUY2TJYONM67CUNQ"
-   - "AWS_SECRET_ACCESS_KEY=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"
+  extends:
+   file: base.yml
+   service: base
   volumes:
    # simplify development by allowing instantaneous code changes. Unsafe. Remove for deployment
    - ./application-server/src:/var/www

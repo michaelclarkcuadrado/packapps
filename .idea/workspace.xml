@@ -7,8 +7,7 @@
     <list default="true" id="fc9cf440-d41f-463b-aeba-7bb29d2a7f06" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/config.php" afterPath="$PROJECT_DIR$/application-server/src/config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/maintenance/API/getIssues.php" afterPath="$PROJECT_DIR$/application-server/src/maintenance/API/getIssues.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php" afterPath="$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docker-compose.yml" afterPath="$PROJECT_DIR$/docker-compose.yml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -88,32 +87,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application-server/src/config.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
               <folding>
-                <marker date="1499090128352" expanded="true" signature="1949:2015" ph="SELECT packa... packapps_system_info" />
+                <marker date="1499093937018" expanded="true" signature="1978:2044" ph="SELECT packa... packapps_system_info" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scratch.html" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.html">
+      <file leaf-file-name="docker-compose.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/docker-compose.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="4479" lean-forward="false" selection-start-line="0" selection-start-column="4479" selection-end-line="0" selection-end-column="4479" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#2;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#li#0;n#div#0;n#ul#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#li#1;n#div#0;n#ul#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#li#2;n#div#0;n#ul#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#li#3;n#div#0;n#ul#1;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="340">
+              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -121,7 +112,7 @@
       <file leaf-file-name="getIssues.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/getIssues.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="639">
+            <state relative-caret-position="653">
               <caret line="148" column="48" lean-forward="false" selection-start-line="148" selection-start-column="48" selection-end-line="148" selection-end-column="48" />
               <folding>
                 <marker date="1499083189664" expanded="true" signature="295:1156" ph="SELECT issue... maintenance_issues" />
@@ -210,7 +201,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application-server/src/maintenance/partoverview.php" />
         <option value="$PROJECT_DIR$/application-server/src/maintenance/index.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/addBlock.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/index.php" />
@@ -260,6 +250,7 @@
         <option value="$PROJECT_DIR$/application-server/src/maintenance/API/getIssues.php" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.html" />
         <option value="$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php" />
+        <option value="$PROJECT_DIR$/docker-compose.yml" />
         <option value="$PROJECT_DIR$/application-server/src/config.php" />
       </list>
     </option>
@@ -377,91 +368,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="database-server" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="schema" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="application-server" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application-server" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application-server" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="maintenance" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application-server" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="maintenance" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="API" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -776,7 +683,7 @@
       <workItem from="1498747233810" duration="10111000" />
       <workItem from="1498760832049" duration="5949000" />
       <workItem from="1498794167074" duration="1174000" />
-      <workItem from="1499080105005" duration="8264000" />
+      <workItem from="1499080105005" duration="12907000" />
     </task>
     <task id="LOCAL-00001" summary="Add clean db and phpmyadmin">
       <created>1496689406220</created>
@@ -789,7 +696,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="410582000" />
+    <option name="totallyTimeSpent" value="415225000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -895,38 +802,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/partoverview.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="23" column="57" lean-forward="false" selection-start-line="23" selection-start-column="57" selection-end-line="23" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/controlPanel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="266" column="88" lean-forward="false" selection-start-line="266" selection-start-column="88" selection-end-line="266" selection-end-column="88" />
-          <folding>
-            <marker date="1498479670631" expanded="true" signature="491:575" ph="SELECT short... packapps_appProperties" />
-            <marker date="1498479670631" expanded="true" signature="1568:1645" ph="SELECT packa... packapps_app_permissions" />
-            <marker date="1498479670631" expanded="true" signature="12018:12048" ph="..." />
-            <marker date="1498479670631" expanded="true" signature="16334:16345" ph="..." />
-            <marker date="1498479670631" expanded="true" signature="16736:16754" ph="..." />
-            <marker date="1498479670631" expanded="true" signature="19981:19991" ph="..." />
-            <marker date="1498479670631" expanded="true" signature="20205:20215" ph="..." />
-            <marker date="1498479670631" expanded="true" signature="21188:21198" ph="..." />
-            <marker date="1498479670631" expanded="true" signature="23441:23473" ph="..." />
-            <marker date="1498479670631" expanded="true" signature="23485:23533" ph="..." />
-            <marker date="1498479670631" expanded="true" signature="24068:24086" ph="..." />
-            <marker date="1498479670631" expanded="true" signature="25220:25232" ph="..." />
-            <marker date="1498479670631" expanded="true" signature="25570:25580" ph="..." />
-            <marker date="1498479670631" expanded="true" signature="26145:26155" ph="..." />
-            <marker date="1498479670631" expanded="true" signature="26214:26221" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1428,16 +1303,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/getIssues.php">
+    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="639">
-          <caret line="148" column="48" lean-forward="false" selection-start-line="148" selection-start-column="48" selection-end-line="148" selection-end-column="48" />
+        <state relative-caret-position="-27">
+          <caret line="395" column="18" lean-forward="false" selection-start-line="395" selection-start-column="18" selection-end-line="395" selection-end-column="18" />
           <folding>
-            <marker date="1499083189664" expanded="true" signature="295:1156" ph="SELECT issue... maintenance_issues" />
-            <marker date="1499083189664" expanded="true" signature="295:2230" ph="SELECT maint... maintenance_issues" />
-            <marker date="1499083189664" expanded="true" signature="295:2353" ph="SELECT maint... maintenance_issues" />
-            <marker date="1499083189664" expanded="true" signature="295:2354" ph="SELECT issue... maintenance_issues" />
+            <marker date="1499089021203" expanded="true" signature="17211:19147" ph="{...}" />
+            <marker date="1499089021203" expanded="true" signature="18078:18112" ph="..." />
+            <marker date="1499089021203" expanded="true" signature="26299:26332" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1457,14 +1339,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php">
+    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/getIssues.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-27">
-          <caret line="395" column="18" lean-forward="false" selection-start-line="395" selection-start-column="18" selection-end-line="395" selection-end-column="18" />
+        <state relative-caret-position="653">
+          <caret line="148" column="48" lean-forward="false" selection-start-line="148" selection-start-column="48" selection-end-line="148" selection-end-column="48" />
           <folding>
-            <marker date="1499089021203" expanded="true" signature="17211:19147" ph="{...}" />
-            <marker date="1499089021203" expanded="true" signature="18078:18112" ph="..." />
-            <marker date="1499089021203" expanded="true" signature="26299:26332" ph="..." />
+            <marker date="1499083189664" expanded="true" signature="295:1156" ph="SELECT issue... maintenance_issues" />
+            <marker date="1499083189664" expanded="true" signature="295:2230" ph="SELECT maint... maintenance_issues" />
+            <marker date="1499083189664" expanded="true" signature="295:2353" ph="SELECT maint... maintenance_issues" />
+            <marker date="1499083189664" expanded="true" signature="295:2354" ph="SELECT issue... maintenance_issues" />
           </folding>
         </state>
       </provider>
@@ -1472,10 +1355,18 @@
     <entry file="file://$PROJECT_DIR$/application-server/src/config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
           <folding>
-            <marker date="1499090128352" expanded="true" signature="1949:2015" ph="SELECT packa... packapps_system_info" />
+            <marker date="1499093937018" expanded="true" signature="1978:2044" ph="SELECT packa... packapps_system_info" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
