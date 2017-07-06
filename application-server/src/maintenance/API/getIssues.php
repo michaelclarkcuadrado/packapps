@@ -11,7 +11,7 @@
 
 require_once '../../config.php';
 $userInfo = packapps_authenticate_user('maintenance');
-$queryText = "SELECT maintenance_issues.issue_id, Purpose, title, issue_description, createdByUser.`Real Name` as createdBy, dateCreated, isConfirmed, 
+$queryText = "SELECT maintenance_issues.issue_id, upper(Purpose) as Purpose, title, issue_description, createdByUser.`Real Name` as createdBy, dateCreated, isConfirmed, 
                             confirmedByUser.`Real Name` AS confirmedBy, dateConfirmed, isInProgress, inProgressUser.`Real Name` as inProgressBy, DateInProgress, 
                             isCompleted, completedByUser.`Real Name` As completedBy, dateCompleted, 
                             solution_description, assignedToUser.`Real Name` as assignedTo, Location, hasPhotoAttached, needsParts, 

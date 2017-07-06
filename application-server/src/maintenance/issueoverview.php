@@ -275,6 +275,7 @@ $userInfo = packapps_authenticate_user('maintenance');
 
         //show filter box when hit
         $('#openFilterBoxButton').on("click", function(){
+            $('main').animate({scrollTop: 0}, 'fast', 'swing')
             $('#issueFilterbox').slideDown();
             $(this).hide();
         });
@@ -310,11 +311,11 @@ $userInfo = packapps_authenticate_user('maintenance');
 //            PURPOSE
 //            </div>
 //            <div style="color: white; white-space: nowrap" class="chip mdl-color--blue-500">
-//            <button id="back-status-button-ISSUEID" onclick="statusIncrease(ISSUEID)" class="mdl-button mdl-js-button mdl-button--icon">
+//            <button id="back-status-button-ISSUEID" onclick="statusDecrease(ISSUEID)" class="mdl-button mdl-js-button mdl-button--icon">
 //            <i class="material-icons">chevron_left</i>
 //            </button>
 //            <span id="status-display-ISSUEID">STATUS</span>
-//            <button id="forward-status-button-ISSUEID" onclick="statusDecrease(ISSUEID)" class="mdl-button mdl-js-button mdl-button--icon">
+//            <button id="forward-status-button-ISSUEID" onclick="statusIncrease(ISSUEID)" class="mdl-button mdl-js-button mdl-button--icon">
 //            <i class="material-icons">chevron_right</i>
 //            </button>
 //            </div>
@@ -404,16 +405,93 @@ $userInfo = packapps_authenticate_user('maintenance');
             for(var issue in data){
                 if(data.hasOwnProperty(issue)){
                     htmlStringToInject += "<div class=\"mdl-card issue-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-phone\"><div class=\"mdl-card__title mdl-color--yellow-400\"><h2 class=\"mdl-card__title-text\">#"
-                    + data[issue]['issue_id']
-                    + " - "
-                    + data[issue]['title']
-                    + "</h2></div><div class=\"mdl-card__supporting-text\"><div class=\"issue-buttons\"><div style=\"color: white; white-space: nowrap\" class=\"chip mdl-color--green-500\">"
-                    + data[issue]['Purpose']
-                    + "</div><div style=\"color: white; white-space: nowrap\" class=\"chip mdl-color--blue-500\"><button id=\"back-status-button-ISSUEID\" onclick=\"statusIncrease(ISSUEID)\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">chevron_left</i></button><span id=\"status-display-ISSUEID\">STATUS</span><button id=\"forward-status-button-ISSUEID\" onclick=\"statusDecrease(ISSUEID)\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">chevron_right</i></button></div><div style=\"color:white; white-space: nowrap\" class=\"chip mdl-color--red-600\">Parts Needed: ##<button id=\"partsneeded-button-ISSUEID\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">more_horiz</i></button><ul class=\"mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect\" for=\"partsneeded-button-ISSUEID\"><li class=\"mdl-menu__item\" disabled><u>Add To Cart</u></li><li class=\"mdl-menu__item\" onclick=\"addAllItemstoCart(ISSUEID)\">Add All Items</li><li class=\"mdl-menu__item\" onclick=\"addItemToCart(ITEMID)\">ITEM DESC</li></ul></div></div><ul class=\"mdl-list\"><li class=\"mdl-list__item mdl-list__item\" style=\"padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">assignment_late</i><span><p>Issue description. Blue line destroyed!</p></span></span></li><li id=\"solution-description-ISSUEID\" class=\"mdl-list__item mdl-list__item\" style=\"padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">assignment_turned_in</i><span><p>Solution description. Blue line glued back together</p></span></span></li><li class=\"mdl-list__item mdl-list__item\" onclick=\"issuePhoto(issueid, PHOTO_EXISTS)\" style=\"cursor:pointer;padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">add_a_photo</i> <!--photo_camera--><span>Add a Photo / View Photo</span></span></li><li class=\"mdl-list__item mdl-list__item\" style=\"padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">history</i><span>Issue History</span></span><span class=\"mdl-list__item-secondary-content\"><i id=\"expand-button-history-ISSUEID\" onclick=\"expandHistory(issueID, $(this))\" class=\"material-icons mdl-list__item-secondary-action\">expand_more</i></span></li><div id=\"history-panel-ISSUEID\" class=\"sublist_supplier\"><li class=\"mdl-list__item\" style=\"padding:6px; min-height: initial\">Created: DATE_CREATED By CREATOR_NAME</li><li class=\"mdl-list__item\" style=\"padding:6px; min-height: initial\">Confirmed: DATE_CONFIRMED By CONFIRMER_NAME</li><li class=\"mdl-list__item\" style=\"padding:6px; min-height: initial\">Work Started: DATE_STARTED By STARTER_NAME</li><li class=\"mdl-list__item\" style=\"padding:6px; min-height: initial\">Completed: DATE_COMPLETED By COMPLETER_NAME</li></div><li class=\"mdl-list__item mdl-list__item\" style=\"padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">location_on</i><span>Location</span></span><span class=\"mdl-list__item-secondary-content\"><i id=\"issue-location-button-ISSUEID\" class=\"material-icons mdl-list__item-secondary-action\">expand_more</i></span></li></ul><small class=\"mdl-card__subtitle-text\">Assigned to: ASSIGNEE</small></div><div class=\"mdl-card__menu\"><button id=\"issue-menu-button-ISSUEID\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">more_vert</i></button><ul class=\"mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect\" for=\"issue-menu-button-ISSUEID\"><li onclick=\"editItem(ISSUEID)\" class=\"mdl-menu__item\">Edit Issue</li><li <?php if($userInfo['permissionLevel'] < 3){echo "style='display:none'";}?> onclick=\"reassignItem(ISSUEID)\" class=\"mdl-menu__item\">Reassign</li><li <?php if($userInfo['permissionLevel'] < 3){echo "style='display:none";}?> onclick=\"deleteItem(ISSUEID)\"class=\"mdl-menu__item\">Delete Issue</li></ul></div></div>";
+                        + data[issue]['issue_id']
+                        + " - "
+                        + data[issue]['title']
+                        + "</h2></div><div class=\"mdl-card__supporting-text\"><div class=\"issue-buttons\"><div style=\"color: white; white-space: nowrap\" class=\"chip mdl-color--green-500\">"
+                        + data[issue]['Purpose']
+                        + "</div><div style=\"color: white; white-space: nowrap\" class=\"chip mdl-color--blue-500\"><button id=\"back-status-button-"
+                        + data[issue]['issue_id']
+                        + "\" onclick=\"statusDecrease("
+                        + data[issue]['issue_id']
+                        + ")\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">chevron_left</i></button><span id=\"status-display-"
+                        + data[issue]['issue_id']
+                        + "\">"
+                        + getStatusDesc(data[issue])
+                        + "</span><button id=\"forward-status-button-"
+                        + data[issue]['issue_id']
+                        + "\" onclick=\"statusIncrease("
+                        + data[issue]['issue_id']
+                        + ")\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">chevron_right</i></button></div>"
+                        + (data[issue]['needsParts'] < 1 ? "" : "<div style=\"color:white; white-space: nowrap\" class=\"chip mdl-color--red-600\">Parts Needed: "
+                            + Object.keys(data[issue]['partsNeeded']).length
+                            + "<button id=\"partsneeded-button-"
+                            + data[issue]['issue_id']
+                            + "\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">more_horiz</i></button><ul class=\"mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect\" for=\"partsneeded-button-"
+                            + data[issue]['issue_id']
+                            + "\"><li class=\"mdl-menu__item\" disabled><u>Add To Cart</u></li><li class=\"mdl-menu__item\" onclick=\"addAllItemstoCart("
+                            + data[issue]['issue_id']
+                            + ")\">Add All Items</li>"
+                            + generateItemMenuList(data[issue]['partsNeeded'])
+                            + "</ul></div>")
+                        + "</div><ul class=\"mdl-list\"><li class=\"mdl-list__item mdl-list__item\" style=\"padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">assignment_late</i><span><p>"
+                        + data[issue]['issue_description']
+                        + "</p></span></span></li>"
+                        + (data[issue]['isCompleted'] < 1 ? "" : "<li id=\"solution-description-"
+                            + data[issue]['issue_id']
+                            + "\" class=\"mdl-list__item mdl-list__item\" style=\"padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">assignment_turned_in</i><span><p>"
+                            + data[issue]['solution_description']
+                            + "</p></span></span></li>")
+                        + "<li class=\"mdl-list__item mdl-list__item\" onclick=\"issuePhoto("
+                        + data[issue]['issue_id']
+                        + ", "
+                        + (data[issue]['hasPhotoAttached'] > 0)
+                        + ")\" style=\"cursor:pointer;padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">"
+                        + (data[issue]['hasPhotoAttached'] > 0 ? "photo_camera" : "add_a_photo")
+                        + "</i><span>"
+                        + (data[issue]['hasPhotoAttached'] > 0 ? "View Photo" : "Add a Photo")
+                        + "</span></span></li><li class=\"mdl-list__item mdl-list__item\" style=\"padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">history</i><span>Issue History</span></span><span class=\"mdl-list__item-secondary-content\"><i id=\"expand-button-history-"
+                        + data[issue]['issue_id']
+                        + "\" onclick=\"expandHistory("
+                        + data[issue]['issue_id']
+                        + ", $(this))\" class=\"material-icons mdl-list__item-secondary-action\">expand_more</i></span></li><div style=\"display: none\" id=\"history-panel-"
+                        + data[issue]['issue_id']
+                        + "\" class=\"sublist_supplier\">"
+                        + "<li class=\"mdl-list__item\" style=\"padding:6px; min-height: initial\">Created: "
+                        + data[issue]['dateCreated']
+                        + " By "
+                        + data[issue]['createdBy']
+                        + "</li>"
+                        + (data[issue]['isConfirmed'] > 0 ? "<li class=\"mdl-list__item\" style=\"padding:6px; min-height: initial\">Confirmed: "
+                            + data[issue]['dateConfirmed']
+                            + " By "
+                            + data[issue]['confirmedBy']
+                            + "</li>" : "")
+                        + (data[issue]['isInProgress'] > 0 ? "<li class=\"mdl-list__item\" style=\"padding:6px; min-height: initial\">Work Started: "
+                            + data[issue]['DateInProgress']
+                            + " By "
+                            + data[issue]['inProgressBy']
+                            + "</li>" : "")
+                        + (data[issue]['isCompleted'] > 0 ? "<li class=\"mdl-list__item\" style=\"padding:6px; min-height: initial\">Completed: "
+                            + data[issue]['dateCompleted']
+                            + " By "
+                            + data[issue]['completedBy']
+                            + "</li>" : "")
+                        + "</div><li class=\"mdl-list__item mdl-list__item\" style=\"padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">location_on</i><span>Location</span></span><span class=\"mdl-list__item-secondary-content\"><i id=\"issue-location-button-ISSUEID\" class=\"material-icons mdl-list__item-secondary-action\">expand_more</i></span></li></ul><small class=\"mdl-card__subtitle-text\">Assigned to: ASSIGNEE</small></div><div class=\"mdl-card__menu\"><button id=\"issue-menu-button-ISSUEID\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">more_vert</i></button><ul class=\"mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect\" for=\"issue-menu-button-ISSUEID\"><li onclick=\"editItem(ISSUEID)\" class=\"mdl-menu__item\">Edit Issue</li><li <?php if($userInfo['permissionLevel'] < 3){echo "style='display:none'";}?> onclick=\"reassignItem(ISSUEID)\" class=\"mdl-menu__item\">Reassign</li><li <?php if($userInfo['permissionLevel'] < 3){echo "style='display:none";}?> onclick=\"deleteItem(ISSUEID)\"class=\"mdl-menu__item\">Delete Issue</li></ul></div></div>";
                 }
             }
         $('#insertIssuesHere').append(htmlStringToInject);
+        componentHandler.upgradeDom();
         });
+    }
+
+    function generateItemMenuList(parts){
+        var indexes = Object.keys(parts);
+        var partsString = "";
+        for(var itemID in indexes){
+            partsString += "<li class=\"mdl-menu__item\" onclick=\"addItemToCart("+ itemID + ")\">" + parts[indexes[itemID]] + "</li>";
+        }
+        return partsString;
     }
 
     function createJsonFromFilter(){
@@ -438,8 +516,21 @@ $userInfo = packapps_authenticate_user('maintenance');
         filterObj['assignments']['assignedto'] = $('#checkbox-assignment-assignedto').is(':checked');
         filterObj['assignments']['assignedtoname'] = $('#assignedto-text').val();
         filterObj['assignments']['assignedtoself'] = $('#checkbox-assignment-assignedtoself').is(':checked');
-        console.log(filterObj);
         return JSON.stringify(filterObj);
+    }
+
+    function getStatusDesc(issue){
+        var status = "New";
+        if(issue['isConfirmed'] > 0){
+            status = "Confirmed";
+        }
+        if(issue['isInProgress'] > 0){
+            status = "In Progress";
+        }
+        if(issue['isCompleted'] > 0){
+            status = "Completed";
+        }
+        return status;
     }
 
     function addAllItemstoCart(issueID){
@@ -463,7 +554,9 @@ $userInfo = packapps_authenticate_user('maintenance');
     }
 
     function expandHistory(issueID, button){
-
+        console.log(issueID);
+        $("#history-panel-"+issueID).slideToggle();
+        button.toggleClass('rotate');
     }
 
     function editItem(issueID){

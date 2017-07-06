@@ -122,7 +122,6 @@ function packapps_deleteFromS3($bucketName, $filename){
  * header("Content-Type: {$result['ContentType']}");
  * echo $result['Body'];
  *
-It's getting to the point where PA landscape is starting to feel like, familiar
  * @param $bucketName
  * @param $filename
  * @return \Aws\Result Useful attribs: ['ContentType'], ['Body']. Null if no key
