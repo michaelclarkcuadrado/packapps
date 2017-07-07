@@ -11,10 +11,10 @@
 
 require_once '../../config.php';
 $userInfo = packapps_authenticate_user('maintenance');
-$queryText = "SELECT maintenance_issues.issue_id, upper(Purpose) as Purpose, title, issue_description, createdByUser.`Real Name` as createdBy, dateCreated, isConfirmed, 
-                            confirmedByUser.`Real Name` AS confirmedBy, dateConfirmed, isInProgress, inProgressUser.`Real Name` as inProgressBy, DateInProgress, 
-                            isCompleted, completedByUser.`Real Name` As completedBy, dateCompleted, 
-                            solution_description, assignedToUser.`Real Name` as assignedTo, Location, hasPhotoAttached, needsParts, 
+$queryText = "SELECT maintenance_issues.issue_id, upper(Purpose) as Purpose, title, issue_description, createdByUser.`Real Name` as createdBy, DATE_FORMAT(dateCreated,'%c/%e/%Y %H:%i%p') AS dateCreated,
+                      isConfirmed, confirmedByUser.`Real Name` AS confirmedBy, DATE_FORMAT(dateConfirmed,'%c/%e/%Y %H:%i%p') as dateConfirmed, isInProgress, inProgressUser.`Real Name` as inProgressBy,
+                       DATE_FORMAT(DateInProgress, '%c/%e/%Y %H:%i%p') as DateInProgress, isCompleted, completedByUser.`Real Name` As completedBy, DATE_FORMAT(dateCompleted,'%c/%e/%Y %H:%i%p') as dateCompleted, 
+                            solution_description, IFNULL(assignedToUser.`Real Name`, 'Unassigned') as assignedTo, Location, hasPhotoAttached, needsParts, 
                             purchasing_Items.Item_ID as NeededItemID, purchasing_Items.ItemDesc as NeededItemDesc
                             FROM maintenance_issues 
                               LEFT JOIN maintenance_purposes 

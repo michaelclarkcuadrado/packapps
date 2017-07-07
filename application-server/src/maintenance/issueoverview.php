@@ -134,111 +134,21 @@ $userInfo = packapps_authenticate_user('maintenance');
                     </button>
                 </div>
             </div>
-            <div class="mdl-card issue-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-phone">
-                <div class="mdl-card__title mdl-color--yellow-400">
-                    <h2 class="mdl-card__title-text">#ID - TITLE</h2>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    <div class="issue-buttons">
-                        <div style="color: white; white-space: nowrap" class="chip mdl-color--green-500">
-                            PURPOSE
-                        </div>
-                        <div style="color: white; white-space: nowrap" class="chip mdl-color--blue-500">
-                            <button id="back-status-button-ISSUEID" onclick="statusIncrease(ISSUEID)" class="mdl-button mdl-js-button mdl-button--icon">
-                                <i class="material-icons">chevron_left</i>
-                            </button>
-                            <span id="status-display-ISSUEID">STATUS</span>
-                            <button id="forward-status-button-ISSUEID" onclick="statusDecrease(ISSUEID)" class="mdl-button mdl-js-button mdl-button--icon">
-                                <i class="material-icons">chevron_right</i>
-                            </button>
-                        </div>
-                        <div style="color:white; white-space: nowrap" class="chip mdl-color--red-600">
-                            Parts Needed: ##
-                            <button id="partsneeded-button-ISSUEID" class="mdl-button mdl-js-button mdl-button--icon">
-                                <i class="material-icons">more_horiz</i>
-                            </button>
-                            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="partsneeded-button-ISSUEID">
-                                <li class="mdl-menu__item" disabled><u>Add To Cart</u></li>
-                                <li class="mdl-menu__item" onclick="addAllItemstoCart(ISSUEID)">Add All Items</li>
-                                <li class="mdl-menu__item" onclick="addItemToCart(ITEMID)">ITEM DESC</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <ul class="mdl-list">
-                        <li class="mdl-list__item mdl-list__item" style="padding:6px">
-                            <span class="mdl-list__item-primary-content">
-                                <i class="material-icons mdl-list__item-icon">assignment_late</i>
-                                <span><p>Issue description. Blue line destroyed!</p></span>
-                            </span>
-                        </li>
-                        <li id="solution-description-ISSUEID" class="mdl-list__item mdl-list__item" style="padding:6px">
-                            <span class="mdl-list__item-primary-content">
-                                <i class="material-icons mdl-list__item-icon">assignment_turned_in</i>
-                                <span><p>Solution description. Blue line glued back together</p></span>
-                            </span>
-                        </li>
-                        <li class="mdl-list__item mdl-list__item" onclick="issuePhoto(issueid, PHOTO_EXISTS)" style="cursor:pointer;padding:6px">
-                            <span class="mdl-list__item-primary-content">
-                                <i class="material-icons mdl-list__item-icon">add_a_photo</i> <!--photo_camera-->
-                                <span>Add a Photo / View Photo</span>
-                            </span>
-                        </li>
-                        <li class="mdl-list__item mdl-list__item" style="padding:6px">
-                            <span class="mdl-list__item-primary-content">
-                                <i class="material-icons mdl-list__item-icon">history</i>
-                                <span>Issue History</span>
-                            </span>
-                            <span class="mdl-list__item-secondary-content">
-                                <i id="expand-button-history-ISSUEID" onclick="expandHistory(issueID, $(this))" class="material-icons mdl-list__item-secondary-action">expand_more</i>
-                            </span>
-                        </li>
-                        <div id="history-panel-ISSUEID" class="sublist_supplier">
-                            <li class="mdl-list__item" style="padding:6px; min-height: initial">
-                                Created: DATE_CREATED By CREATOR_NAME
-                            </li>
-                            <li class="mdl-list__item" style="padding:6px; min-height: initial">
-                                Confirmed: DATE_CONFIRMED By CONFIRMER_NAME
-                            </li>
-                            <li class="mdl-list__item" style="padding:6px; min-height: initial">
-                                Work Started: DATE_STARTED By STARTER_NAME
-                            </li>
-                            <li class="mdl-list__item" style="padding:6px; min-height: initial">
-                                Completed: DATE_COMPLETED By COMPLETER_NAME
-                            </li>
-                        </div>
-                        <li class="mdl-list__item mdl-list__item" style="padding:6px">
-                            <span class="mdl-list__item-primary-content">
-                                <i class="material-icons mdl-list__item-icon">location_on</i>
-                                <span>Location</span>
-                            </span>
-                            <span class="mdl-list__item-secondary-content">
-                                <i id="issue-location-button-ISSUEID" class="material-icons mdl-list__item-secondary-action">expand_more</i>
-                            </span>
-                        </li>
-                    </ul>
-                    <small class="mdl-card__subtitle-text">Assigned to: ASSIGNEE</small>
-                </div>
-                <div class="mdl-card__menu">
-                    <button id="issue-menu-button-ISSUEID" class="mdl-button mdl-js-button mdl-button--icon">
-                        <i class="material-icons">more_vert</i>
-                    </button>
-                    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="issue-menu-button-ISSUEID">
-                        <li onclick="editItem(ISSUEID)" class="mdl-menu__item">Edit Issue</li>
-                        <li <?php if($userInfo['permissionLevel'] < 3){echo "style='display:none'";}?> onclick="reassignItem(ISSUEID)" class="mdl-menu__item">Reassign</li>
-                        <li <?php if($userInfo['permissionLevel'] < 3){echo "style='display:none'";}?> onclick="deleteItem(ISSUEID)"class="mdl-menu__item">Delete Issue</li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </main>
+</div>
+<div id='snackbar' style='z-index: 100' class="mdl-js-snackbar mdl-snackbar">
+    <div class="mdl-snackbar__text"></div>
+    <button class="mdl-snackbar__action" type="button"></button>
 </div>
 <script src="../scripts-common/material.min.js"></script>
 <script src="../scripts-common/jquery.min.js"></script>
 <!--<script src='../scripts-common/Chart.js'></script>-->
 <script>
     $(document).ready(function () {
-        $('.mdl-card').fadeIn('fast');
         $('#issueFilterbox').hide();
+        //init page with issues
+        updateIssues(createJsonFromFilter());
 
         //get all purposes
         $.getJSON('API/getPurposes.php', function(data) {
@@ -294,14 +204,12 @@ $userInfo = packapps_authenticate_user('maintenance');
         });
 
         //end listeners
-
-        //init page with issues
-        updateIssues(createJsonFromFilter());
     });
+    var statuses = ['New', 'Confirmed', 'In Progress', 'Completed'];
 
     function updateIssues(jsonfilter){
         //Code before function
-//    <div class="mdl-card issue-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-phone">
+//    <div style="display: none" id="issue-card-ISSUEID" class="mdl-card issue-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-phone">
 //            <div class="mdl-card__title mdl-color--yellow-400">
 //            <h2 class="mdl-card__title-text">#ID - TITLE</h2>
 //        </div>
@@ -396,15 +304,15 @@ $userInfo = packapps_authenticate_user('maintenance');
 //        </ul>
 //        </div>dd
 //        </div>
-
-        //TODO UNCOMMENT FOLLOWING LINE
-        //$('.issue-card').remove();
+        $('.issue-card').remove();
         //get issues and display
         $.getJSON('API/getIssues.php', {'filterJson' : jsonfilter}, function(data){
             var htmlStringToInject = "";
             for(var issue in data){
                 if(data.hasOwnProperty(issue)){
-                    htmlStringToInject += "<div class=\"mdl-card issue-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-phone\"><div class=\"mdl-card__title mdl-color--yellow-400\"><h2 class=\"mdl-card__title-text\">#"
+                    htmlStringToInject += "<div style=\"display: none\" id=\"issue-card-"
+                        + data[issue]['issue_id']
+                        + "\" class=\"mdl-card issue-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-phone\"><div class=\"mdl-card__title mdl-color--yellow-400\"><h2 class=\"mdl-card__title-text\">#"
                         + data[issue]['issue_id']
                         + " - "
                         + data[issue]['title']
@@ -477,12 +385,35 @@ $userInfo = packapps_authenticate_user('maintenance');
                             + " By "
                             + data[issue]['completedBy']
                             + "</li>" : "")
-                        + "</div><li class=\"mdl-list__item mdl-list__item\" style=\"padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">location_on</i><span>Location</span></span><span class=\"mdl-list__item-secondary-content\"><i id=\"issue-location-button-ISSUEID\" class=\"material-icons mdl-list__item-secondary-action\">expand_more</i></span></li></ul><small class=\"mdl-card__subtitle-text\">Assigned to: ASSIGNEE</small></div><div class=\"mdl-card__menu\"><button id=\"issue-menu-button-ISSUEID\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">more_vert</i></button><ul class=\"mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect\" for=\"issue-menu-button-ISSUEID\"><li onclick=\"editItem(ISSUEID)\" class=\"mdl-menu__item\">Edit Issue</li><li <?php if($userInfo['permissionLevel'] < 3){echo "style='display:none'";}?> onclick=\"reassignItem(ISSUEID)\" class=\"mdl-menu__item\">Reassign</li><li <?php if($userInfo['permissionLevel'] < 3){echo "style='display:none";}?> onclick=\"deleteItem(ISSUEID)\"class=\"mdl-menu__item\">Delete Issue</li></ul></div></div>";
+                        + "</div><li class=\"mdl-list__item mdl-list__item\" style=\"padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">location_on</i><span>Location</span></span><span class=\"mdl-list__item-secondary-content\"><i id=\"issue-location-button-"
+                        + data[issue]['issue_id']
+                        + "\" class=\"material-icons mdl-list__item-secondary-action\">close</i></span></li></ul><small class=\"mdl-card__subtitle-text\">Assigned to: "
+                        + data[issue]['assignedTo']
+                        + "</small></div><div class=\"mdl-card__menu\"><button id=\"issue-menu-button-"
+                        + data[issue]['issue_id']
+                        + "\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">more_vert</i></button><ul class=\"mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect\" for=\"issue-menu-button-"
+                        + data[issue]['issue_id']
+                        + "\"><li onclick=\"editItem("
+                        + data[issue]['issue_id']
+                        + ")\" class=\"mdl-menu__item\">Edit Issue</li><li <?php if($userInfo['permissionLevel'] < 3){echo "style='display:none'";}?> onclick=\"reassignItem("
+                        + data[issue]['issue_id']
+                        + ")\" class=\"mdl-menu__item\">Reassign</li><li <?php if($userInfo['permissionLevel'] < 3){echo "style='display:none'";}?> onclick=\"deleteItem("
+                        + data[issue]['issue_id']
+                        + ", $(this))\"class=\"mdl-menu__item\">Delete Issue</li></ul></div></div>";
                 }
             }
         $('#insertIssuesHere').append(htmlStringToInject);
         componentHandler.upgradeDom();
+        $(".issue-card").fadeIn('fast');
         });
+    }
+
+    function snack(message, length) {
+        var data = {
+            message: message,
+            timeout: length
+        };
+        document.querySelector('#snackbar').MaterialSnackbar.showSnackbar(data);
     }
 
     function generateItemMenuList(parts){
@@ -554,7 +485,6 @@ $userInfo = packapps_authenticate_user('maintenance');
     }
 
     function expandHistory(issueID, button){
-        console.log(issueID);
         $("#history-panel-"+issueID).slideToggle();
         button.toggleClass('rotate');
     }
@@ -567,8 +497,11 @@ $userInfo = packapps_authenticate_user('maintenance');
 
     }
 
-    function deleteItem(issueID){
-
+    function deleteItem(issueID, button){
+        $.get('API/deleteIssue.php', {issue: issueID}, function(data){
+            $('#issue-card-'+issueID).slideUp('slow');
+            snack('Issue deleted.', 5000);
+        });
     }
 </script>
 </body>

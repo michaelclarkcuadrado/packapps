@@ -226,7 +226,7 @@ CREATE TABLE `maintenance_issues2purchasing_items` (
   KEY `issue_id` (`issue_id`),
   KEY `part_id` (`part_id`),
   CONSTRAINT `issueid` FOREIGN KEY (`issue_id`) REFERENCES `maintenance_issues` (`issue_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `itemid` FOREIGN KEY (`part_id`) REFERENCES `purchasing_Items` (`Item_ID`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `itemid` FOREIGN KEY (`part_id`) REFERENCES `purchasing_Items` (`Item_ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `maintenance_systems` (
