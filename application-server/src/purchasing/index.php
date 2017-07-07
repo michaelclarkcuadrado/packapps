@@ -22,7 +22,7 @@ $last2yearschartdata = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT IFNULL(S
 
 //subtitle stats
 $last30DaysStats = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT count(DISTINCT purchasing_purchase_history.Purchase_ID) AS amount, FORMAT(sum(ifnull(PricePerUnit*QuantityOrdered, 0.00)), 2) AS totalPrice FROM purchasing_purchase_history JOIN operationsData.purchasing_purchases2items ON purchasing_purchase_history.Purchase_ID=operationsData.purchasing_purchases2items.Purchase_ID WHERE DateOrdered >= (NOW() - INTERVAL 30 DAY)"));
-$yearToDateStats = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT count(DISTINCT purchasing_purchase_history.Purchase_ID) AS amount, FORMAT(sum(ifnull(PricePerUnit*QuantityOrdered, 0.00)), 2) AS totalPrice FROM purchasing_purchase_history JOIN operationsData.purchasing_purchases2items ON purchasing_purchase_history.Purchase_ID=operationsData.purchasing_purchases2items.Purchase_ID WHERE DateOrdered BETWEEN " . date('Y') . "-01-01 AND NOW()"));
+$yearToDateStats = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT count(DISTINCT purchasing_purchase_history.Purchase_ID) AS amount, FORMAT(sum(ifnull(PricePerUnit*QuantityOrdered, 0.00)), 2) AS totalPrice FROM purchasing_purchase_history JOIN operationsData.purchasing_purchases2items ON purchasing_purchase_history.Purchase_ID=operationsData.purchasing_purchases2items.Purchase_ID WHERE YEAR(DateOrdered)=YEAR(NOW())"));
 ?>
 <!doctype html>
 <html lang="en">

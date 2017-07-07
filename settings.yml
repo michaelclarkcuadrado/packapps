@@ -2,12 +2,15 @@ version: '2'
 services:
  base:
   environment:
-   - "LETSENCRYPT_HOST=REPLACE.packercloud.com"
-   - "LETSENCRYPT_EMAIL=michael@packercloud.com"
    - "COMPANY_SLUG_NAME=devenv"
    - "COMPANY_LONG_NAME=DEVELOPMENT ENV"
+   - "PACKAPPS_SECURITY_KEY=lH2OzVPQ0K9/By66YygFosxxszSgET4p/L0l18bpZPXRGCt5U5VCybYaVk9vn15c"
+   - "PACKAPPS_GROWER_SECURITY_KEY=u0HDuaq9WgBvcEsBGeU+j3pZ5Vr5nFu91f+axiQRpYux3t6xFXQvou4Uawu51pN"
    - "AWS_ACCESS_KEY_ID=AKIAJUY2TJYONM67CUNQ"
    - "AWS_SECRET_ACCESS_KEY=K/ZGPFjffHMDWzkXXNcEXELLH1cgNfIpqjXC7/Qw"
+   - "LETSENCRYPT_HOST=REPLACE.packercloud.com"
+   - "LETSENCRYPT_EMAIL=michael@packercloud.com"
+
  hostname:
   extends:
    service: base
