@@ -6,37 +6,12 @@
     require_once 'incrementYearInDB.php';
     include '../../config.php';
     $userinfo = packapps_authenticate_grower();
-
     $detect = new Mobile_Detect;
     $year = new Year();
     if (!$year->isCurrent($mysqli)) {
         error_log("First access since new year, incrementing year.");
 	$year->increment($mysqli);
     }
-    $adminauth = mysqli_query($mysqli, "SELECT isMultiAccountUser FROM grower_growerLogins WHERE GrowerCode='" . $userinfo['GrowerCode'] . "'");
-    $admin = mysqli_fetch_assoc($adminauth);
-    //perform check on multi account users
-    if ($admin['isMultiAccountUser'] == 1) {
-        $groupID = mysqli_fetch_array(mysqli_query($mysqli, "SELECT GroupID from grower_GrowerGroups where GrowerCode='" . $userinfo['GrowerCode'] . "'"))[0];
-        if (isset($_GET['alt_acc'])) {
-            $checkIfOnList = mysqli_query($mysqli, "SELECT GrowerCode FROM grower_GrowerGroups where GroupID = '" . $groupID . "'");
-            $isLegit = false;
-            while ($checkLegit = mysqli_fetch_assoc($checkIfOnList)) {
-                if ($checkLegit['GrowerCode'] == base64_decode($_GET['alt_acc'])) {
-                    $isLegit = true;
-                    break;
-                }
-            }
-            if (!$isLegit) {
-                die('An error occurred. Try logging in and out.');
-            }
-        }
-    }
-
-    $namecnct = mysqli_query($mysqli, "SELECT GrowerName FROM `grower_growerLogins` WHERE GrowerCode='" . (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $userinfo['GrowerCode']) . "' LIMIT 1");
-    $growername = mysqli_fetch_array($namecnct);
-    $growername = $growername[0];
-
 
     $blockCompletionData = mysqli_query($mysqli, "select `grower_crop-estimates`.`PK` AS `PK`,
     `grower_crop-estimates`.`Comm Desc` AS `Comm Desc`,
@@ -57,18 +32,18 @@
           and (trim(`BULKRTCSV`.`FarmDesc`) = trim(`grower_crop-estimates`.`FarmDesc`)) 
           and (trim(`BULKRTCSV`.`Grower`) = trim(`grower_crop-estimates`.`Grower`))))) 
   where ((`crop-estimates`.`isDeleted` = '0') 
-         and `crop-estimates`.Grower = '" . (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $userinfo['GrowerCode']) . "'
+         and `crop-estimates`.Grower = '" . $userinfo['GrowerCode'] . "'
          and `Crop Year`= substr(YEAR(CURDATE()), 4,1))
   group by `crop-estimates`.`PK`
         ORDER BY isFinished, Percent ASC") or error_log(mysqli_error($mysqli));
 
-    $estimates = mysqli_query($mysqli, "SELECT PK,`Comm Desc`,VarDesc,FarmDesc,BlockDesc,`Str Desc`,isDeleted,isSameAsLastYear," . (date('Y') - 3) . "act," . (date('Y') - 2) . "act," . (date('Y') - 1) . "est," . (date('Y') - 1) . "act," . (date('Y')) . "est from `crop-estimates` where Grower='" . (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $userinfo['GrowerCode']) . "' Order by isDeleted, `Comm Desc`, VarDesc, FarmDesc, BlockDesc, `Str Desc` ASC;");
+    $estimates = mysqli_query($mysqli, "SELECT PK,`Comm Desc`,VarDesc,FarmDesc,BlockDesc,`Str Desc`,isDeleted,isSameAsLastYear," . (date('Y') - 3) . "act," . (date('Y') - 2) . "act," . (date('Y') - 1) . "est," . (date('Y') - 1) . "act," . (date('Y')) . "est from `crop-estimates` where Grower='" . $userinfo['GrowerCode'] . "' Order by isDeleted, `Comm Desc`, VarDesc, FarmDesc, BlockDesc, `Str Desc` ASC;");
 
-    $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) as count FROM (SELECT PK FROM `grower_Preharvest_Samples` WHERE Grower= '" . (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $userinfo['GrowerCode']) . "' AND `Date` >= (NOW() - INTERVAL 7 DAY) GROUP BY `Date`, `PK`) t1"))['count'];
+    $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) as count FROM (SELECT PK FROM `grower_Preharvest_Samples` WHERE Grower= '" . $userinfo['GrowerCode'] . "' AND `Date` >= (NOW() - INTERVAL 7 DAY) GROUP BY `Date`, `PK`) t1"))['count'];
 
-    $receiptdata = mysqli_query($mysqli, "SELECT `RT#` AS RTNum, `Comm Desc`,`VarDesc`,`StrDesc`,`FarmDesc`,`BlockDesc`,`Date`,`Qty`,`Bu` FROM `BULKRTCSV` WHERE Grower='" . (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $userinfo['GrowerCode']) . "' AND Class='1' AND Bu <> 0 AND `Crop Year` = '".substr(date('y'), -1)."' ORDER BY DATE DESC LIMIT 75");
+    $receiptdata = mysqli_query($mysqli, "SELECT `RT#` AS RTNum, `Comm Desc`,`VarDesc`,`StrDesc`,`FarmDesc`,`BlockDesc`,`Date`,`Qty`,`Bu` FROM `BULKRTCSV` WHERE Grower='" . $userinfo['GrowerCode'] . "' AND Class='1' AND Bu <> 0 AND `Crop Year` = '".substr(date('y'), -1)."' ORDER BY DATE DESC LIMIT 75");
 
-    echo "<title>" . $companyName . " Portal: " . $growername . "</title>";
+    echo "<title>" . $companyName . " Portal: " . $userinfo['GrowerName'] . "</title>";
     ?>
 
     <link rel="stylesheet" href="css/select2.min.css">
@@ -92,27 +67,6 @@
     <link rel="stylesheet" href="css/ie/v9.css"/><![endif]-->
     <!--[if lte IE 8]>
     <link rel="stylesheet" href="css/ie/v8.css"/><![endif]-->
-    <!-- Piwik -->
-    <script type="text/javascript">
-        var _paq = _paq || [];
-        _paq.push(['trackPageView']);
-        _paq.push(['enableLinkTracking']);
-        (function () {
-            var u = "<?php echo $piwikHost?>/";
-            _paq.push(['setTrackerUrl', u + 'piwik.php']);
-            _paq.push(['setSiteId', 1]);
-            _paq.push(['setUserId', '<?echo addcslashes($growername, "'")?>']);
-            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
-            g.type = 'text/javascript';
-            g.async = true;
-            g.defer = true;
-            g.src = u + 'piwik.js';
-            s.parentNode.insertBefore(g, s);
-        })();
-    </script>
-    <noscript><p><img src="<?php echo $piwikHost?>/piwik.php?idsite=1" style="border:0;" alt=""/></p>
-    </noscript>
-    <!-- End Piwik Code -->
 </head>
 <script>
     $(document).ready(function () {
@@ -182,7 +136,7 @@
         <!-- Logo -->
         <div id="logo">
             <span class="image"><img src="images/avatar.png" alt=""/></span>
-            <h1 id="title"><? echo $growername ?></h1>
+            <h1 id="title"><? echo $userinfo['GrowerName'] ?></h1>
             <p><? echo $companyName ?><br></p>
         </div>
 
@@ -198,30 +152,24 @@
                 <li><a href="#estimates" id="estimates-link" class="skel-layers-ignoreHref"><span
                             class="icon fa-sliders">Blocks & Estimates</span></a></li>
                 <li><hr style='width: 75%; margin-top: 0; margin-bottom:0; border-top: solid 1px rgba(255,255,255,0.5)'></li>
-                <li <?php echo ( $detect->isMobile() ? "style='display: none'" : '')?>><a onclick="_paq.push(['trackEvent', 'Calendar', 'Open Calendar']);" href="growerCalendar.php<?if (isset($_GET['alt_acc'])) {
-                        echo '?alt_acc=' . $_GET['alt_acc'];
-                    } ?>" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-calendar">Picking Calendar</span></a></li>
-                <li><a href="QAview.php<?if (isset($_GET['alt_acc'])) {
-                        echo '?alt_acc=' . $_GET['alt_acc'];
-                    } ?>" onclick="_paq.push(['trackEvent', 'QA', 'View page']);"><span class="icon fa-area-chart">Block-by-Block QA</span></a>
+                <li <?php echo ( $detect->isMobile() ? "style='display: none'" : '')?>><a href="growerCalendar.php" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-calendar">Picking Calendar</span></a></li>
+                <li><a href="QAview.php"><span class="icon fa-area-chart">Block-by-Block QA</span></a>
                 </li>
-                <li><a href="preharvest.php<?if (isset($_GET['alt_acc'])) {
-                        echo '?alt_acc=' . $_GET['alt_acc'];
-                    } ?>" onclick="_paq.push(['trackEvent', 'Pre-Harvest', 'View Reports']);"><span
+                <li><a href="preharvest.php"><span
                             class="icon fa-stethoscope <?if($numPreHarvest > 0){echo 'phbadge';}?>" data-badge="<?echo $numPreHarvest?>">Pre-Harvest Checkup</span></a></li>
-                <li><a href="growerfileshare/" onclick="_paq.push(['trackEvent', 'Grower File Share', 'View Files']);"><span
+                <li><a href="growerfileshare/"><span
                             class="icon fa-cloud-download">Shared Files</span></a></li>
                 <? if ($detect->isMobile()) {
                     echo " <div id='options' style='background: rgba(0,0,0,0.15);'>
                                 <li><a href='changepw.php'><span  class=\"icon fa-key\">Change Password</span></a></li>
-                                <li><a href=\"#\" onclick=\"_paq.push(['trackEvent', 'Options', 'Logged out']);logout();\" id=\"logout-link\"><span class=\"icon fa-sign-out\">Log Out</span></a></li>
+                                <li><a href=\"#\" onclick=\"logout();\" id=\"logout-link\"><span class=\"icon fa-sign-out\">Log Out</span></a></li>
                                 </div>";
                 } else {
                     echo "<li id='optiontoggle'><a href='#' ><span id='optionstab' class=\"icon fa-chevron-down\">Options</span></a></li>
                                 <div id='options' style='display: none; background: rgba(0,0,0,0.15);'>
                                 <li><a href='changepw.php'><span  class=\"icon fa-key\">Change Password</span></a></li>
-                                <li><a href='csvExport.php" . (isset($_GET['alt_acc']) ? ('?alt_acc=' . $_GET['alt_acc']) : '') . "' onclick=\"_paq.push(['trackEvent', 'Options', 'Download Orchard Report']);\" id='export1' class='skel-layers-ignoreHref'><span class='icon fa-download'>Download My Blocks</a></span></li>
-                                <li><a href=# onclick=\"_paq.push(['trackEvent', 'Options', 'Logged out']);logout();\" id=\"logout-link\"><span class=\"icon fa-sign-out\">Logout / Switch User</span></a></li>
+                                <li><a href='csvExport.php' id='export1' class='skel-layers-ignoreHref'><span class='icon fa-download'>Download My Blocks</a></span></li>
+                                <li><a href=# onclick=\"logout();\" id=\"logout-link\"><span class=\"icon fa-sign-out\">Logout / Switch User</span></a></li>
                                 </div>";
                 }
                 ?>
@@ -233,30 +181,17 @@
 
 <!-- Main -->
 <div id="main">
-    <?
-    if ($admin['isMultiAccountUser'] == 1) {
-        echo "<div style='position: fixed; top: 0; text-align: center; margin 0 auto; display: block; background-color: black; color: red; opacity: .78; padding: 3px'>Viewing as: \"" . (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $userinfo['GrowerCode']) . "\"<br><small>Switch to: </small><select onchange=\"window.location = portal+$(this).val() \"><option disabled selected>" . (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $userinfo['GrowerCode']) . "</option>";
-        $growerAuthedList = mysqli_query($mysqli, "SELECT GrowerCode FROM grower_GrowerGroups where GroupID = '" . $groupID . "'");
-        while ($data = mysqli_fetch_array($growerAuthedList)) {
-            if ($data['GrowerCode'] != base64_decode($_GET['alt_acc']) && (isset($_GET['alt_acc']) ? 'true' : $data['GrowerCode'] != $userinfo['GrowerCode'])) {
-                echo "<option value='" . base64_encode($data['GrowerCode']) . "'>" . $data['GrowerCode'] . "</option>";
-            }
-        }
-        echo "</select></div>";
-    }
-    ?>
     <!-- Intro -->
     <section id="top" class="one dark cover">
         <div class="container">
 
             <header>
-                <h2 class="alt"><strong><?php echo $growername ?></strong> Grower Control Panel<br/>
+                <h2 class="alt"><strong><?php echo $userinfo['GrowerName'] ?></strong> Grower Control Panel<br/>
                     at <strong><? echo $companyName ?></strong></h2>
                 <p>Access grower tools and information, review your shipments, and track your estimates.</p>
             </header>
             <footer>
-                <a href="#estimates" class="button scrolly"
-                   onclick="_paq.push(['trackEvent', 'Estimates', 'Hit Estimates Button']);"><span
+                <a href="#estimates" class="button scrolly"><span
                         class="icon fa-pencil"> Let's do my Estimates</a>
             </footer>
 
@@ -271,7 +206,7 @@
             </header>
             <p>The last 75 trucks you sent to us.</p>
             <p>
-                <button onclick="_paq.push(['trackEvent', 'Shipping', 'View Shipping Stats']);" id="hider"
+                <button id="hider"
                         class="button"><span
                         class="icon fa-eye-slash"> View/Hide Receiving Data <? echo "(" . mysqli_num_rows($receiptdata) . " receipts)" ?></span>
                 </button>
@@ -292,7 +227,7 @@
                     </thead>
                     <tbody>
                     <?php while ($ReceivingArray = mysqli_fetch_array($receiptdata)) {
-                        echo "<tr><td><abbr title='View Delivery #" . $ReceivingArray['RTNum'] . "'><a onclick=\"_paq.push(['trackEvent', 'Shipping', 'View Bin Photo']);\" href='img.php?q=../" . $ReceivingArray['RTNum'] . ".jpg' class='icon fa-camera'></a></td></abbr></td><td>" . date('D, jS M Y', strtotime($ReceivingArray['Date'])) . "</td><td>" . $ReceivingArray['FarmDesc'] . "</td><td>" . $ReceivingArray['BlockDesc'] . "</td><td><abbr title=" . rtrim($ReceivingArray['Comm Desc']) . "><img src='images/" . rtrim($ReceivingArray['Comm Desc']) . ".png' height='25px' width='25px'/></abbr>" . $ReceivingArray['VarDesc'] . "</td><td>" . $ReceivingArray['StrDesc'] . "</td><td>" . $ReceivingArray['Qty'] . "</td><td>" . $ReceivingArray['Bu'] . "</td><tr>";
+                        echo "<tr><td><abbr title='View Delivery #" . $ReceivingArray['RTNum'] . "'><a href='img.php?q=../" . $ReceivingArray['RTNum'] . ".jpg' class='icon fa-camera'></a></td></abbr></td><td>" . date('D, jS M Y', strtotime($ReceivingArray['Date'])) . "</td><td>" . $ReceivingArray['FarmDesc'] . "</td><td>" . $ReceivingArray['BlockDesc'] . "</td><td><abbr title=" . rtrim($ReceivingArray['Comm Desc']) . "><img src='images/" . rtrim($ReceivingArray['Comm Desc']) . ".png' height='25px' width='25px'/></abbr>" . $ReceivingArray['VarDesc'] . "</td><td>" . $ReceivingArray['StrDesc'] . "</td><td>" . $ReceivingArray['Qty'] . "</td><td>" . $ReceivingArray['Bu'] . "</td><tr>";
                     } ?></tbody>
                 </table>
             </div>
@@ -309,13 +244,10 @@
                 tool to see how much of a block you've picked according to your estimate, and to refine your estimate
                 during picking.</p>
             <p>
-                <button id="hider2" class="button" style="text-align: left"
-                        onclick="_paq.push(['trackEvent', 'Shipping', 'Toggle Picking Stats']);"><span
+                <button id="hider2" class="button" style="text-align: left"><span
                         class="icon fa-eye-slash"> View/Hide Picking Stats</span></button>
             </p>
             <div id="longtab2" style="display: none">
-                <!--Remove on season start
-                <p><strong><span class="icon fa-exclamation-circle"></span> This is currently last season's data.</strong></p> -->
                 <?
                 if (mysqli_num_rows($blockCompletionData) > 0) {
                     if ($detect->isMobile()) {
@@ -379,13 +311,10 @@
                 records.<br> Deleted blocks may be restored if needed.</p>
             <div id="estimatestable">
 
-                <button id="hider3" class="button" style="text-align: left"
-                        onclick="_paq.push(['trackEvent', 'Shipping', 'Toggle New Block Panel']);"><span
+                <button id="hider3" class="button" style="text-align: left"><span
                         class="icon fa-plus"> New Block</span></button>
                 <div id="addblockpanel" style="display: none">
-                    <form name="newBlock" action="addBlock.php<?if (isset($_GET['alt_acc'])) {
-                        echo '?alt_acc=' . $_GET['alt_acc'];
-                    } ?>" method="post">
+                    <form name="newBlock" action="addBlock.php" method="post">
                         <table border='1px'>
                             <thead>
                             <tr>
@@ -413,8 +342,7 @@
                                 </td>
                             </tr>
                         </table>
-                        <input type=submit value="Submit New Block"
-                               onclick="_paq.push(['trackEvent', 'Estimates', 'AddBlock']);">
+                        <input type=submit value="Submit New Block">
                     </form>
                 </div>
                 <br>
@@ -551,7 +479,7 @@
 
     <!-- Copyright -->
     <ul class="copyright">
-        <li>&copy; MCC.</li>
+        <li>&copy;</li>
     </ul>
 
 </div>

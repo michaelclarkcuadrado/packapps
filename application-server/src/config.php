@@ -28,11 +28,6 @@ $availableBuckets = array(
 //To access a public obj, prepend bucket name and append object key.
 $amazonAWSURL = '.s3.amazonaws.com/';
 
-//analytics
-$piwikHost = '//grower.ricefruit.com/analytics';
-$piwikUser = 'ricefruit';
-$piwikPassword = 'r1cefru1t';
-
 //QA SMTP Server Details
 $smtpHost = 'smtp.gmail.com';
 $smtpUser = 'michael@packercloud.com';

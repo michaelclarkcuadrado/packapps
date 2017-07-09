@@ -3,15 +3,14 @@
 <head>
     <?php
     include '../../config.php';
-    $namecnct = mysqli_query($mysqli, "SELECT GrowerName FROM `grower_growerLogins` WHERE GrowerCode='" . $_SERVER['PHP_AUTH_USER'] . "' LIMIT 1");
-    $growername = mysqli_fetch_array($namecnct);
-    echo "<title>Password Management: " . $growername[0] . "</title>";
+    $userinfo = packapps_authenticate_grower();
+    echo "<title>Password Management: " . $userinfo['GrowerName'] . "</title>";
 
     $stat = "Passwords didn't match!";
+    $indicator = false;
     if ($_POST['NewPassword'] == $_POST['NewPassword2']) {
-        escapeshellarg($_POST['NewPassword']);
-        mysqli_query($mysqli, "UPDATE grower_growerLogins SET `Password`='".mysqli_real_escape_string($mysqli, $_POST['NewPassword'])."' WHERE GrowerCode='".$_SERVER['PHP_AUTH_USER']."'");
-        exec("htpasswd -b /etc/apache2/.growerpasswds " . $_SERVER['PHP_AUTH_USER'] . " " . $_POST['NewPassword']);
+        $passHash = \WhiteHat101\Crypt\APR1_MD5::hash($_POST['NewPassword']);
+        mysqli_query($mysqli, "UPDATE grower_growerLogins SET `Password`='$passHash' WHERE GrowerCode='".$userinfo['GrowerCode']."'");
         $stat = "Password Change Successful!";
         $indicator = true;
     }
@@ -38,34 +37,15 @@
     <link rel="stylesheet" href="css/ie/v8.css"/><![endif]-->
 </head>
 <body>
-<script type="text/javascript">
-    var _paq = _paq || [];
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    _paq.push(['trackVisibleContentImpressions']);
-    (function () {
-        var u = "<?php echo $piwikHost?>/";
-        _paq.push(['setTrackerUrl', u + 'piwik.php']);
-        _paq.push(['setSiteId', 1]);
-        _paq.push(['setUserId', '<?echo ($admin[0] == 1 && $_GET['pretend']) ? "Admin: " . $_SERVER['PHP_AUTH_USER'] . " logged in as " . addcslashes($growername, "'") : addcslashes($growername, "'")?>']);
-        var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
-        g.type = 'text/javascript';
-        g.async = true;
-        g.defer = true;
-        g.src = u + 'piwik.js';
-        s.parentNode.insertBefore(g, s);
-    })();
-</script>
 <!-- Header -->
 <div id="header" class="skel-layers-fixed">
 
     <div class="top">
-
         <!-- Logo -->
         <div id="logo">
             <span class="image"><img src="images/avatar.png" alt=""/></span>
-            <h1 id="title"><? echo $growername[0] ?></h1>
-            <p><?echo $companyName?> Grower</p>
+            <h1 id="title"><? echo $userinfo['GrowerName'] ?></h1>
+            <p><?echo $companyName?></p>
         </div>
 
         <!-- Nav -->

@@ -28,24 +28,6 @@
     <link rel="stylesheet" href="css/ie/v8.css"/><![endif]-->
 </head>
 <body>
-<script type="text/javascript">
-    var _paq = _paq || [];
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    _paq.push(['trackVisibleContentImpressions']);
-    (function () {
-        var u = "<?php echo $piwikHost?>/";
-        _paq.push(['setTrackerUrl', u + 'piwik.php']);
-        _paq.push(['setSiteId', 1]);
-        _paq.push(['setUserId', '<?echo addcslashes($growername, "'")?>']);
-        var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
-        g.type = 'text/javascript';
-        g.async = true;
-        g.defer = true;
-        g.src = u + 'piwik.js';
-        s.parentNode.insertBefore(g, s);
-    })();
-</script>
 <!-- Header -->
 <div id="header" class="skel-layers-fixed">
 

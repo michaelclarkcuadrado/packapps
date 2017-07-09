@@ -6,10 +6,9 @@
  * Time: 12:30 PM
  */
 include '../../config.php';
-$adminauth = mysqli_query($mysqli, "SELECT isAdmin FROM grower_growerLogins WHERE GrowerCode='" . $_SERVER['PHP_AUTH_USER'] . "'");
-$admin = mysqli_fetch_array($adminauth);
+$userinfo = packapps_authenticate_grower();
 if($_POST['operation'] == 'add'){
-    $Grower = mysqli_real_escape_string($mysqli, $_POST['grower']);
+    $Grower = $userinfo['GrowerCode'];
     $Variety = mysqli_real_escape_string($mysqli, $_POST['variety']);
     $Strain = mysqli_real_escape_string($mysqli, $_POST['strain']);
     $start = date('Y-m-d');

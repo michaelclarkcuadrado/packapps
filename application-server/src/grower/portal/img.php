@@ -5,6 +5,8 @@
  * Date: 8/13/2015
  * Time: 2:48 PM
  */
+//TODO
+die("Deprecated");
 // define absolute path to image folder
 if (isset($_GET['q'])) {
     $pic = 'http://192.168.1.61/quality/assets/uploadedimages/preharvest/' . $_GET['q'];

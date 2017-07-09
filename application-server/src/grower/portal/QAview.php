@@ -3,12 +3,9 @@
 <head>
     <?php
     include '../../config.php';
-    $adminauth = mysqli_query($mysqli, "SELECT isAdmin FROM grower_growerLogins WHERE GrowerCode='" . $_SERVER['PHP_AUTH_USER'] . "'");
-    $admin = mysqli_fetch_array($adminauth);
-    $BlockQA = mysqli_query($mysqli, "SELECT CommDesc AS Commodity, CASE WHEN trim(Farm)<>'' THEN Farm ELSE 'No Farm Listed' END AS Farm, CASE WHEN trim(Block)<>'' THEN Block ELSE 'No Block Listed' END AS Block, VarDesc AS Variety, Strain, Pressure1, Pressure2, Brix, DA, DA2, `Count`, Weight, CASE WHEN isnull(Starch) THEN 'Not Tested' ELSE Starch END AS Starch FROM quality_Block_Receiving WHERE Grower='" . ($admin[0] == 1 && ($_GET['pretend']) ? $_GET['pretend'] : (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $_SERVER['PHP_AUTH_USER'])) . "' ORDER BY `Commodity` ASC, Variety ASC, `Count` DESC");
-    $namecnct = mysqli_query($mysqli, "SELECT GrowerName FROM `grower_growerLogins` WHERE GrowerCode='" . ($admin[0] == 1 && ($_GET['pretend']) ? $_GET['pretend'] : (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $_SERVER['PHP_AUTH_USER'])) . "' LIMIT 1");
-    $growername = mysqli_fetch_array($namecnct);
-    echo "<title>Receiving Quality Info: " . $growername[0] . "</title>";
+    $userinfo = packapps_authenticate_grower();
+    $BlockQA = mysqli_query($mysqli, "SELECT CommDesc AS Commodity, CASE WHEN trim(Farm)<>'' THEN Farm ELSE 'No Farm Listed' END AS Farm, CASE WHEN trim(Block)<>'' THEN Block ELSE 'No Block Listed' END AS Block, VarDesc AS Variety, Strain, Pressure1, Pressure2, Brix, DA, DA2, `Count`, Weight, CASE WHEN isnull(Starch) THEN 'Not Tested' ELSE Starch END AS Starch FROM quality_Block_Receiving WHERE Grower='" . $userinfo['GrowerCode'] . "' ORDER BY `Commodity` ASC, Variety ASC, `Count` DESC");
+    echo "<title>Receiving Quality Info: " . $userinfo['GrowerCode'] . "</title>";
     ?>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="description" content="<?echo $companyName?> Grower Control Panel"/>
@@ -35,27 +32,6 @@
 </head>
 <body>
 
-<!-- Piwik -->
-<script type="text/javascript">
-    var _paq = _paq || [];
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    (function () {
-        var u = "<?php echo $piwikHost?>/";
-        _paq.push(['setTrackerUrl', u + 'piwik.php']);
-        _paq.push(['setSiteId', 1]);
-        _paq.push(['setUserId', '<?echo ($admin[0] == 1 && $_GET['pretend']) ? "Admin: " . $_SERVER['PHP_AUTH_USER'] . " logged in as " . addcslashes($growername[0], "'") : addcslashes($growername[0], "'")?>']);
-        var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
-        g.type = 'text/javascript';
-        g.async = true;
-        g.defer = true;
-        g.src = u + 'piwik.js';
-        s.parentNode.insertBefore(g, s);
-    })();
-</script>
-
-<noscript><p><img src="<?php echo $piwikHost?>/piwik.php?idsite=1" style="border:0;" alt=""/></p></noscript>
-<!-- End Piwik Code -->
 <!-- Header -->
 <div id="header" class="skel-layers-fixed">
 
@@ -64,7 +40,7 @@
         <!-- Logo -->
         <div id="logo">
             <span class="image"><img src="images/avatar.png" alt=""/></span>
-            <h1 id="title"><? echo $growername[0] ?></h1>
+            <h1 id="title"><? echo $userinfo['GrowerCode'] ?></h1>
             <p><?echo $companyName?> Grower</p>
         </div>
 
@@ -73,11 +49,7 @@
             <ul>
                 <li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-area-chart">Block-by-Block QA</span></a>
                 </li>
-                <li><a href="index.php<? if ($admin[0] == 1 && ($_GET['pretend'])) {
-                        echo '?pretend=' . $_GET['pretend'];
-                    } else if (isset($_GET['alt_acc'])){
-                        echo '?alt_acc=' . $_GET['alt_acc'];
-                    }?>" id="top-link"><span class="icon fa-arrow-left">Back</span></a></li>
+                <li><a href="index.php" id="top-link"><span class="icon fa-arrow-left">Back</span></a></li>
             </ul>
         </nav>
 
@@ -135,7 +107,7 @@
 
     <!-- Copyright -->
     <ul class="copyright">
-        <li>&copy; MCC</li>
+        <li>&copy;</li>
     </ul>
 
 </div>

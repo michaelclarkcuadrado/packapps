@@ -3,10 +3,9 @@
 <head>
     <?php
     include '../../config.php';
-    $namecnct = mysqli_query($mysqli, "SELECT GrowerName FROM `grower_growerLogins` WHERE GrowerCode='" . (isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $_SERVER['PHP_AUTH_USER']) . "' LIMIT 1");
-    $growername = mysqli_fetch_array($namecnct);
+    $userinfo = packapps_authenticate_grower();
 
-    echo "<title>Grower Calendar: " . $growername[0] . "</title>";
+    echo "<title>Grower Calendar: " . $userinfo['GrowerName'] . "</title>";
     ?>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="description" content="<?echo $companyName?> Grower Control Panel"/>
@@ -40,28 +39,6 @@
     <link rel="stylesheet" href="css/ie/v8.css"/><![endif]-->
 </head>
 <body>
-
-<!-- Piwik -->
-<script type="text/javascript">
-    var _paq = _paq || [];
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    (function () {
-        var u = "<?php echo $piwikHost?>/";
-        _paq.push(['setTrackerUrl', u + 'piwik.php']);
-        _paq.push(['setSiteId', 1]);
-        _paq.push(['setUserId', '<?echo addcslashes($growername[0], "'")?>']);
-        var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
-        g.type = 'text/javascript';
-        g.async = true;
-        g.defer = true;
-        g.src = u + 'piwik.js';
-        s.parentNode.insertBefore(g, s);
-    })();
-</script>
-
-<noscript><p><img src="<?php echo $piwikHost?>/piwik.php?idsite=1" style="border:0;" alt=""/></p></noscript>
-<!-- End Piwik Code -->
 <!-- Header -->
 <div id="header" class="skel-layers-fixed" style="z-index: 0">
 
@@ -70,7 +47,7 @@
         <!-- Logo -->
         <div id="logo">
             <span class="image"><img src="images/avatar.png" alt=""/></span>
-            <h1 id="title"><? echo $growername[0] ?></h1>
+            <h1 id="title"><? echo $userinfo['GrowerName'] ?></h1>
             <p><?echo $companyName?> Grower</p>
         </div>
 
@@ -79,9 +56,7 @@
             <ul>
                 <li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-calendar">Picking Calendar</span></a>
                 </li>
-                <li><a href="index.php<?if (isset($_GET['alt_acc'])){
-                        echo '?alt_acc=' . $_GET['alt_acc'];
-                    }?>" id="top-link"><span class="icon fa-arrow-left">Back</span></a></li>
+                <li><a href="index.php" id="top-link"><span class="icon fa-arrow-left">Back</span></a></li>
             </ul>
         </nav>
 
@@ -110,7 +85,7 @@
                 </thead>
                 <tr>
                     <form id="newForm">
-                        <td><input required type="text" id="Grower" maxlength="2" <?echo isset($_GET['alt_acc']) ? base64_decode($_GET['alt_acc']) : $_SERVER['PHP_AUTH_USER']."' readonly"?> style='width:50px;'></td>
+                        <td><input required type="text" id="Grower" maxlength="2" value="<?echo $userinfo['GrowerCode']?>" readonly style='width:50px;'></td>
                         <td><input required type="text" id="Variety" style='width:150px;'></td>
                         <td><input required type="text" id="Strain" style='width:110px;'></td>
                     </form>
