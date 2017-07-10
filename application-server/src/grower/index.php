@@ -6,5 +6,4 @@
         echo "window.location = \"manage/\"";
     }
     ?>
-
 </script>
