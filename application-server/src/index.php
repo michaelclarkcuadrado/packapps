@@ -15,32 +15,59 @@ if($detect->is('IE')){
 require 'config.php';
 use WhiteHat101\Crypt\APR1_MD5;
 
-//try to perform login
+//try to perform login, or redirect if already logged in
 $errormsg = "";
-if (isset($_COOKIE['auth']) && isset($_COOKIE['username'])) {
-    if(hash_equals($_COOKIE['auth'], crypt($_COOKIE['username'], $securityKey))){
-        die(header('Location: appMenu.php'));
-    } else {
-        //Hash mismatch, clear all cookies and try to login again
-        echo "<script>document.cookie = \"auth=; expires=Thu, 01 Jan 1970 00:00:01 GMT;\";
-        document.cookie = \"username=; expires=Thu, 01 Jan 1970 00:00:01 GMT;\";
-        document.cookie = \"grower=; expires=Thu, 01 Jan 1970 00:00:01 GMT;\";
-        window.location.replace('/');</script>";
-    }
-} else if (isset($_POST['username']) && isset($_POST['password'])) {
-    $username = mysqli_real_escape_string($mysqli, $_POST['username']);
-    $hash = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Password`, isDisabled FROM packapps_master_users WHERE username = '" . $username . "'"));
-    if (APR1_MD5::check($_POST['password'], $hash['Password'])) {
-        if ($hash['isDisabled'] > 0) {
-            $errormsg = "Your account has been disabled. Please contact a system administrator.";
+if (isset($_COOKIE['auth']) && isset($_COOKIE['username'])) { //do redirect
+    if(isset($_COOKIE['grower']) && $_COOKIE['grower'] == 'true'){
+        if(hash_equals($_COOKIE['auth'], crypt($_COOKIE['username'], $growerSecurityKey))){
+            die(header('Location: /grower'));
         } else {
-            setcookie('username', $username);
-            setcookie('auth', crypt($username, $securityKey));
-            mysqli_query($mysqli, "UPDATE packapps_master_users SET `lastLogin`=NOW() WHERE username = '$username'");
-            die(header( 'Location: appMenu.php' ));
+            //Hash mismatch, clear all cookies and try to login again
+            echo "<script>document.cookie = \"auth=; expires=Thu, 01 Jan 1970 00:00:01 GMT;\";
+                document.cookie = \"username=; expires=Thu, 01 Jan 1970 00:00:01 GMT;\";
+                document.cookie = \"grower=; expires=Thu, 01 Jan 1970 00:00:01 GMT;\";
+                window.location.replace('/');</script>";
         }
     } else {
-        $errormsg = "Almost there, but not quite. Caps lock?";
+        if(hash_equals($_COOKIE['auth'], crypt($_COOKIE['username'], $securityKey))){
+            die(header('Location: appMenu.php'));
+        } else {
+            //Hash mismatch, clear all cookies and try to login again
+            echo "<script>document.cookie = \"auth=; expires=Thu, 01 Jan 1970 00:00:01 GMT;\";
+                document.cookie = \"username=; expires=Thu, 01 Jan 1970 00:00:01 GMT;\";
+                document.cookie = \"grower=; expires=Thu, 01 Jan 1970 00:00:01 GMT;\";
+                window.location.replace('/');</script>";
+        }
+    }
+} else if (isset($_POST['username']) && isset($_POST['password'])) { //do login
+    if(isset($_POST['grower']) && $_POST['grower'] == 'true'){
+        //do grower account login
+        $username = mysqli_real_escape_string($mysqli, $_POST['username']);
+        $hash = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Password` FROM grower_GrowerLogins WHERE GrowerCode = '$username'"))['Password'];
+        if(APR1_MD5::check($_POST['password'], $hash)){
+            setcookie('username', $username);
+            setcookie('auth', crypt($username, $growerSecurityKey));
+            setcookie('grower', 'true');
+            die(header('Location: grower/portal'));
+        } else {
+            $errormsg = "Sorry, We Couldn't Confirm Those Credentials. Try Again.";
+        }
+    } else {
+        //Do packhouse account login    window.location = "portal/"
+        $username = mysqli_real_escape_string($mysqli, $_POST['username']);
+        $hash = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Password`, isDisabled FROM packapps_master_users WHERE username = '" . $username . "'"));
+        if (APR1_MD5::check($_POST['password'], $hash['Password'])) {
+            if ($hash['isDisabled'] > 0) {
+                $errormsg = "Your account has been disabled. Please contact a system administrator.";
+            } else {
+                setcookie('username', $username);
+                setcookie('auth', crypt($username, $securityKey));
+                mysqli_query($mysqli, "UPDATE packapps_master_users SET `lastLogin`=NOW() WHERE username = '$username'");
+                die(header( 'Location: appMenu.php' ));
+            }
+        } else {
+            $errormsg = "Sorry, We Couldn't Confirm Those Credentials. Try Again.";
+        }
     }
 }
 ?>
@@ -49,7 +76,7 @@ if (isset($_COOKIE['auth']) && isset($_COOKIE['username'])) {
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content='Purchasing dashboard'>
+    <meta name="description" content='Packapps by Packercloud'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Log In - PackApps</title>
 
@@ -88,15 +115,31 @@ if (isset($_COOKIE['auth']) && isset($_COOKIE['username'])) {
 <div class="mdl-layout mdl-js-layout" style="align-items: center;justify-content: center">
     <div class="mdl-layout__content" style="padding:24px;flex-grow:0">
         <div
-            style=' display: none; width:initial; max-width: 1150px'
-            class="mdl-card mdl-color--primary mdl-shadow--8dp">
+                style=' display: none; width:initial; max-width: 1150px'
+                class="mdl-card mdl-color--primary mdl-shadow--8dp">
             <div class="mdl-card__title">
                 <h2 style="color: white" class="mdl-card__title-text"><i style='margin-right: 5px' class="material-icons">dashboard</i> <?echo $companyName?> PackApps</h2>
             </div>
-            <p style="margin: 0; text-align: center; color: #e91e63; font-weight: 900; font-size larger"><? echo $errormsg ?></p>
+            <p id="errorBox" style="margin: 0; text-align: center; color: #e91e63; font-weight: 900; font-size larger"><? echo $errormsg ?></p>
             <div style="text-align: center" class="mdl-card__supporting-text">
-
-                <form action="index.php" method="post">
+                <div id="loginTypeChooser">
+                    <table style="width:100%;height:100%">
+                        <tr>
+                            <td>
+                                <button onclick="showLoginForm(false)" style="width:100%; min-height: 60px; margin: 3px" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+                                    Packhouse Login
+                                </button>
+                            </td>
+                        </tr><tr>
+                            <td>
+                                <button onclick="showLoginForm(true)" style="width:100%; min-height: 60px; margin: 3px" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+                                    Grower Login
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <form style="display:none" id="loginForm" action="index.php" method="post">
                     <div class="mdl-color--grey-200" style="margin: 5px;  border-radius: 15px">
                         <div style="width: 90%" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                             <input autocomplete="off" autocapitalize="none" class="mdl-textfield__input" type="text"
@@ -111,6 +154,7 @@ if (isset($_COOKIE['auth']) && isset($_COOKIE['username'])) {
                             <label class="mdl-textfield__label" for="password">Password</label>
                         </div>
                     </div>
+                    <input id="growerInputSend" type="hidden" name="grower" value="true" disabled>
                     <button onClick="$('.mdl-card').fadeOut('fast');" style="color: white; margin-top: 15px; width: 100%"
                             class="mdl-button mdl-color--pink-500 mdl-button--raised">
                         Log In to Packapps
@@ -126,7 +170,17 @@ if (isset($_COOKIE['auth']) && isset($_COOKIE['username'])) {
     $(document).ready(function() {
         $('.mdl-card').fadeIn('slow');
     });
+
+    function showLoginForm(isGrower){
+        $('#loginTypeChooser').hide();
+        $('#loginForm').slideDown();
+        if(isGrower){
+            $("#errorBox").html("Grower Portal Login");
+            $("#growerInputSend").prop('disabled', false);
+        } else {
+            $("#errorBox").html("Packhouse Login");
+        }
+    }
 </script>
-<i style='position: absolute; cursor: pointer; right: 0; bottom:0;color: white; font-size: larger' class="material-icons mdl-cell--hide-phone" onclick="$(this).hide();$('#about').slideDown()">info_outline</i>
-<div id="about" style="display: none;text-align: right; position: fixed; right: 4px; bottom:0;color: white; font-size: smaller;">PackApps is powered by <a style="color:white" href="https://packercloud.com">PackerCloud</a> Platform<br>Copyright 2015-<?echo date('Y')?></div></body>
+<div id="about" style="text-align: right; position: fixed; right: 4px; bottom:0;color: white; font-size: smaller;">PackApps is powered by the <a style="color:white" target="_blank" href="https://packercloud.com">PackerCloud</a> Platform<br>Copyright 2015-<?echo date('Y')?>, PackerCloud LLC.</div></body>
 </html>

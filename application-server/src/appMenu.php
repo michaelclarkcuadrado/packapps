@@ -117,6 +117,6 @@ $errormsg = "DEVELOPMENT ENVIRONMENT - DEVELOPMENT ENVIRONMENT - DEVELOPMENT ENV
     }
 </script>
 <i style='position: absolute;cursor: pointer; right: 0; bottom:0;color: white; font-size: larger' class="material-icons mdl-cell--hide-phone" onclick="$(this).hide();$('#about').slideDown()">info_outline</i>
-<div id="about" style="display: none;text-align: right;  position: fixed; right: 4px; bottom:0;color: white; font-size: smaller;">PackApps is powered by <a style="color:white" href="https://packercloud.com">PackerCloud</a> Platform<br>Copyright 2015-<?echo date('Y')?></div></body>
+<div id="about" style="display: none;text-align: right;  position: fixed; right: 4px; bottom:0;color: white; font-size: smaller;">PackApps is powered by the <a style="color:white" target="_blank" href="https://packercloud.com">PackerCloud</a> Platform<br>Copyright 2015-<?echo date('Y')?>, PackerCloud LLC.</div></body>
 </body>
 </html>

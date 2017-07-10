@@ -1,7 +1,10 @@
-<?php
-#TODO Route growers and packhouse logins to grower portal and mangement page, respectively
-?>
-
 <script type="text/javascript">
-window.location = "portal/"
+    <?php
+    if(isset($_COOKIE['grower']) && $_COOKIE['grower'] == 'true'){
+        echo "window.location = \"portal/\"";
+    } else {
+        echo "window.location = \"manage/\"";
+    }
+    ?>
+
 </script>
