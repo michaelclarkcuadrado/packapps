@@ -84,40 +84,42 @@ if (isset($_COOKIE['auth']) && isset($_COOKIE['username'])) {
     <link rel="stylesheet" href="styles/material.min.css">
     <link rel="stylesheet" href="styles/styles.css">
 </head>
-<body class='mdl-color--primary-contrast mdl-grid' style="padding: 0">
-<div class="mdl-layout-spacer"></div>
-<div
-    style=' display: none; margin: 15%;  max-height: 330px; max-width: 425px; position: relative; top: 50%; -moz-transform: translateY(50%)'
-    class="mdl-card mdl-cell mdl-cell--4-col mdl-color--primary mdl-shadow--8dp">
-    <div class="mdl-card__title">
-        <h2 style="color: white" class="mdl-card__title-text"><i style='margin-right: 5px' class="material-icons">dashboard</i> <?echo $companyName?> PackApps</h2>
-    </div>
-    <p style="margin: 0; text-align: center; color: #e91e63; font-weight: 900; font-size larger"><? echo $errormsg ?></p>
-    <div style="text-align: center" class="mdl-card__supporting-text">
+<body class='mdl-color--primary-contrast mdl-layout__container' style="padding: 0">
+<div class="mdl-layout mdl-js-layout" style="align-items: center;justify-content: center">
+    <div class="mdl-layout__content" style="padding:24px;flex-grow:0">
+        <div
+            style=' display: none; width:initial; max-width: 1150px'
+            class="mdl-card mdl-color--primary mdl-shadow--8dp">
+            <div class="mdl-card__title">
+                <h2 style="color: white" class="mdl-card__title-text"><i style='margin-right: 5px' class="material-icons">dashboard</i> <?echo $companyName?> PackApps</h2>
+            </div>
+            <p style="margin: 0; text-align: center; color: #e91e63; font-weight: 900; font-size larger"><? echo $errormsg ?></p>
+            <div style="text-align: center" class="mdl-card__supporting-text">
 
-        <form action="index.php" method="post">
-            <div class="mdl-color--grey-200" style="margin: 5px;  border-radius: 15px">
-                <div style="width: 90%" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input autocomplete="off" autocapitalize="none" class="mdl-textfield__input" type="text"
-                           name='username' id="username" autofocus>
-                    <label class="mdl-textfield__label" for="username">Username</label>
-                </div>
+                <form action="index.php" method="post">
+                    <div class="mdl-color--grey-200" style="margin: 5px;  border-radius: 15px">
+                        <div style="width: 90%" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input autocomplete="off" autocapitalize="none" class="mdl-textfield__input" type="text"
+                                   name='username' id="username" autofocus>
+                            <label class="mdl-textfield__label" for="username">Username</label>
+                        </div>
+                    </div>
+                    <div class="mdl-color--grey-200" style="margin: 5px; margin-top: 15px; border-radius: 15px">
+                        <div style="width: 90%" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input autocomplete="off" class="mdl-textfield__input" type="password" name='password'
+                                   id="password">
+                            <label class="mdl-textfield__label" for="password">Password</label>
+                        </div>
+                    </div>
+                    <button onClick="$('.mdl-card').fadeOut('fast');" style="color: white; margin-top: 15px; width: 100%"
+                            class="mdl-button mdl-color--pink-500 mdl-button--raised">
+                        Log In to Packapps
+                    </button>
+                </form>
             </div>
-            <div class="mdl-color--grey-200" style="margin: 5px; margin-top: 15px; border-radius: 15px">
-                <div style="width: 90%" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input autocomplete="off" class="mdl-textfield__input" type="password" name='password'
-                           id="password">
-                    <label class="mdl-textfield__label" for="password">Password</label>
-                </div>
-            </div>
-            <button onClick="$('.mdl-card').fadeOut('fast');" style="color: white; margin-top: 15px; width: 100%"
-                    class="mdl-button mdl-color--pink-500 mdl-button--raised">
-                Log In to Packapps
-            </button>
-        </form>
+        </div>
     </div>
 </div>
-<div class="mdl-layout-spacer"></div>
 <script src="scripts/material.min.js"></script>
 <script src="scripts/jquery.min.js"></script>
 <script>
@@ -126,5 +128,5 @@ if (isset($_COOKIE['auth']) && isset($_COOKIE['username'])) {
     });
 </script>
 <i style='position: absolute; cursor: pointer; right: 0; bottom:0;color: white; font-size: larger' class="material-icons mdl-cell--hide-phone" onclick="$(this).hide();$('#about').slideDown()">info_outline</i>
-<div id="about" style="display: none; position: fixed; right: 4px; bottom:0;color: white; font-size: smaller;">Made with &#10084; by <a style="color:white" href="//michaelclarkcuadrado.com">Michael Clark-Cuadrado</a><br>Copyright, 2015, 2016, 2017</div></body>
+<div id="about" style="display: none;text-align: right; position: fixed; right: 4px; bottom:0;color: white; font-size: smaller;">PackApps is powered by <a style="color:white" href="https://packercloud.com">PackerCloud</a> Platform<br>Copyright 2015-<?echo date('Y')?></div></body>
 </html>
