@@ -188,17 +188,17 @@ CREATE TABLE `maintenance_issues` (
   `createdBy` varchar(255) NOT NULL,
   `dateCreated` datetime NOT NULL,
   `isConfirmed` tinyint(1) NOT NULL,
-  `confirmedBy` varchar(255) NOT NULL,
+  `confirmedBy` varchar(255) NULL,
   `dateConfirmed` datetime NOT NULL,
   `isInProgress` tinyint(1) NOT NULL,
-  `inProgressBy` varchar(255) NOT NULL,
+  `inProgressBy` varchar(255) NULL,
   `dateInProgress` datetime NOT NULL,
   `isCompleted` tinyint(1) NOT NULL,
-  `completedBy` varchar(255) NOT NULL,
+  `completedBy` varchar(255) NULL,
   `solution_description` varchar(1023) NOT NULL,
   `dateCompleted` datetime NOT NULL,
   `assignedTo` varchar(255) NULL,
-  `Location` int(11) NOT NULL,
+  `Location` int(11) NULL,
   `hasPhotoAttached` tinyint(1) NOT NULL,
   `needsParts` tinyint(1) NOT NULL,
   PRIMARY KEY (`issue_id`),
@@ -287,7 +287,8 @@ ALTER TABLE growerReporting.`crop-estimates` RENAME operationsData.`grower_crop-
 ALTER TABLE growerReporting.crop_estimates_changes_timeseries RENAME operationsData.grower_crop_estimates_changes_timeseries;
 ALTER TABLE growerReporting.growerCalendar RENAME operationsData.grower_growerCalendar;
 ALTER TABLE growerReporting.GrowerData RENAME operationsData.grower_GrowerLogins;
-ALTER TABLE growerReporting.GrowerGroups RENAME operationsData.grower_GrowerGroups;
+/* "delete" growergroups table by not copying it*/
+/*ALTER TABLE growerReporting.GrowerGroups RENAME operationsData.grower_GrowerGroups;*/
 ALTER TABLE growerReporting.Preharvest_Samples RENAME operationsData.grower_Preharvest_Samples;
 
 DROP DATABASE growerReporting;

@@ -15,6 +15,7 @@ $userInfo = packapps_authenticate_user('maintenance');
           href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="../styles-common/materialIcons/material-icons.css">
     <link rel="stylesheet" href="../styles-common/material.min.css">
+    <link rel="stylesheet" href="../styles-common/select2.min.css">
     <link rel="stylesheet" href="../styles-common/styles.css">
 </head>
 <body>
@@ -143,8 +144,10 @@ $userInfo = packapps_authenticate_user('maintenance');
 </div>
 <script src="../scripts-common/material.min.js"></script>
 <script src="../scripts-common/jquery.min.js"></script>
+<script src="../scripts-common/select2.min.js"></script>
 <!--<script src='../scripts-common/Chart.js'></script>-->
 <script>
+    var issues = {};
     $(document).ready(function () {
         $('#issueFilterbox').hide();
         //init page with issues
@@ -213,7 +216,8 @@ $userInfo = packapps_authenticate_user('maintenance');
 //            <div class="mdl-card__title mdl-color--yellow-400">
 //            <h2 class="mdl-card__title-text">#ID - TITLE</h2>
 //        </div>
-//        <div class="mdl-card__supporting-text">
+//        <div class="mdl-card__supporting-text" style="position: relative">
+//    <div id='cardCover-issue-ISSUEID' class=\"mdl-card\" style='display: none;position: absolute; top:0px;left:0px;width:100%;height:100%'></div>
 //            <div class="issue-buttons">
 //            <div style="color: white; white-space: nowrap" class="chip mdl-color--green-500">
 //            PURPOSE
@@ -291,7 +295,7 @@ $userInfo = packapps_authenticate_user('maintenance');
 //            </span>
 //            </li>
 //            </ul>
-//            <small class="mdl-card__subtitle-text">Assigned to: ASSIGNEE</small>
+//            <small id="issue-assignedto-text-ISSUEID" class="mdl-card__subtitle-text">Assigned to: ASSIGNEE</small>
 //        </div>
 //        <div class="mdl-card__menu">
 //            <button id="issue-menu-button-ISSUEID" class="mdl-button mdl-js-button mdl-button--icon">
@@ -299,7 +303,7 @@ $userInfo = packapps_authenticate_user('maintenance');
 //            </button>
 //            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="issue-menu-button-ISSUEID">
 //            <li onclick="editItem(ISSUEID)" class="mdl-menu__item">Edit Issue</li>
-//        <li <?php //if($userInfo['permissionLevel'] < 3){echo "style='display:none'";}?>// onclick="reassignItem(ISSUEID)" class="mdl-menu__item">Reassign</li>
+//        <li <?php //if($userInfo['permissionLevel'] < 3){echo "style='display:none'";}?>// onclick="reassignItem(ISSUEID)" class="mdl-menu__item">Assign / Reassign</li>
 //            <li <?php //if($userInfo['permissionLevel'] < 3){echo "style='display:none'";}?>// onclick="deleteItem(ISSUEID)"class="mdl-menu__item">Delete Issue</li>
 //        </ul>
 //        </div>dd
@@ -307,6 +311,7 @@ $userInfo = packapps_authenticate_user('maintenance');
         $('.issue-card').remove();
         //get issues and display
         $.getJSON('API/getIssues.php', {'filterJson' : jsonfilter}, function(data){
+            issues = data;
             var htmlStringToInject = "";
             for(var issue in data){
                 if(data.hasOwnProperty(issue)){
@@ -316,7 +321,9 @@ $userInfo = packapps_authenticate_user('maintenance');
                         + data[issue]['issue_id']
                         + " - "
                         + data[issue]['title']
-                        + "</h2></div><div class=\"mdl-card__supporting-text\"><div class=\"issue-buttons\"><div style=\"color: white; white-space: nowrap\" class=\"chip mdl-color--green-500\">"
+                        + "</h2></div><div class=\"mdl-card__supporting-text\" style=\"position: relative\"><div id='cardCover-issue-"
+                        + data[issue]['issue_id']
+                        + "' class=\"mdl-card\" style='display: none;position: absolute; top:0px;left:0px;width:100%;height:100%'></div><div class=\"issue-buttons\"><div style=\"color: white; white-space: nowrap\" class=\"chip mdl-color--green-500\">"
                         + data[issue]['Purpose']
                         + "</div><div style=\"color: white; white-space: nowrap\" class=\"chip mdl-color--blue-500\"><button id=\"back-status-button-"
                         + data[issue]['issue_id']
@@ -387,7 +394,9 @@ $userInfo = packapps_authenticate_user('maintenance');
                             + "</li>" : "")
                         + "</div><li class=\"mdl-list__item mdl-list__item\" style=\"padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">location_on</i><span>Location</span></span><span class=\"mdl-list__item-secondary-content\"><i id=\"issue-location-button-"
                         + data[issue]['issue_id']
-                        + "\" class=\"material-icons mdl-list__item-secondary-action\">close</i></span></li></ul><small class=\"mdl-card__subtitle-text\">Assigned to: "
+                        + "\" class=\"material-icons mdl-list__item-secondary-action\">close</i></span></li></ul><small id=\"issue-assignedto-text-"
+                        + data[issue]['issue_id']
+                        + "\" class=\"mdl-card__subtitle-text\">Assigned to: "
                         + data[issue]['assignedTo']
                         + "</small></div><div class=\"mdl-card__menu\"><button id=\"issue-menu-button-"
                         + data[issue]['issue_id']
@@ -397,7 +406,7 @@ $userInfo = packapps_authenticate_user('maintenance');
                         + data[issue]['issue_id']
                         + ")\" class=\"mdl-menu__item\">Edit Issue</li><li <?php if($userInfo['permissionLevel'] < 3){echo "style='display:none'";}?> onclick=\"reassignItem("
                         + data[issue]['issue_id']
-                        + ")\" class=\"mdl-menu__item\">Reassign</li><li <?php if($userInfo['permissionLevel'] < 3){echo "style='display:none'";}?> onclick=\"deleteItem("
+                        + ")\" class=\"mdl-menu__item\">Assign / Reassign</li><li <?php if($userInfo['permissionLevel'] < 3){echo "style='display:none'";}?> onclick=\"deleteItem("
                         + data[issue]['issue_id']
                         + ", $(this))\"class=\"mdl-menu__item\">Delete Issue</li></ul></div></div>";
                 }
@@ -493,14 +502,45 @@ $userInfo = packapps_authenticate_user('maintenance');
 
     }
 
-    function reassignItem(issueID){
+    /*
+    * Clears all html from cover pane and recedes it
+    * */
+    function clearCardCover(issueID){
+        $('#cardCover-issue-'+issueID).fadeOut().html("");
+    }
 
+    /*
+    * Creates a dropdown screen on the card and populates it with a dropdown dialog of users.
+    * When user is picked, it fires to assignToIssue.php and updates the card.
+    * */
+    function reassignItem(issueID){
+        clearCardCover(issueID);
+        var cardCover = $("#cardCover-issue-"+issueID);
+        cardCover.html("<div onclick='clearCardCover("
+            + issueID
+            + ")' style='position: absolute; cursor:pointer; top: 5px; right:10px;'><i class='material-icons'>close</i></div><ul class='mdl-list'><li class='mdl-list__item'><span class='mdl-list__item-primary-content'><i class='material-icons mdl-list__item-icon'>chevron_right</i>Assign the following person as the lead on this issue:</span></li><li class='mdl-list__item'><span class='mdl-list__item-primary-content'><i class='material-icons mdl-list__item-icon'>person</i><select style='width: 100%' id='assignee-select2-"
+            + issueID
+            + "'><option disabled selected>Choose a user:</option></select></span></li></ul>");
+        $.getJSON('API/getMaintenanceUsers.php', function(data){
+            $('#assignee-select2-'+issueID).select2({
+                data: data
+            }).on('select2:select', function(evt){
+                $.post('API/setAssignee.php', {'name' : evt.params.data.id, 'issueID': issueID}, function(){
+                    $("#issue-assignedto-text-"+issueID).html("Assigned to: "+evt.params.data.text);
+                }).fail(function(){
+                    snack("Could not set assignee. Check your permissions.", 10000);
+                });
+            });
+        });
+        cardCover.fadeIn();
     }
 
     function deleteItem(issueID, button){
         $.get('API/deleteIssue.php', {issue: issueID}, function(data){
             $('#issue-card-'+issueID).slideUp('slow');
             snack('Issue deleted.', 5000);
+        }).fail(function(){
+            snack('Insufficient permissions.', 6000);
         });
     }
 </script>

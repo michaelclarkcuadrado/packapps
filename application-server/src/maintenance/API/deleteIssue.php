@@ -7,7 +7,7 @@
  */
 require '../../config.php';
 $userinfo = packapps_authenticate_user('maintenance');
-if($userinfo['permissionLevel'] > 3){
+if($userinfo['permissionLevel'] < 3){
     die(header($_SERVER['SERVER_PROTOCOL'] . ' 403 UNAUTHORIZED', true, 403));
 } else {
     if(isset($_GET['issue'])){
