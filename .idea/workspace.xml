@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php" line="67" />
-    <bookmark url="file://$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php" line="335" />
+    <bookmark url="file://$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php" line="68" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc9cf440-d41f-463b-aeba-7bb29d2a7f06" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application-server/src/maintenance/API/getMaintenanceUsers.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application-server/src/maintenance/API/setAssignee.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application-server/src/scripts-common/dropify/fonts/dropify.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application-server/src/scripts-common/dropify/fonts/dropify.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application-server/src/scripts-common/dropify/fonts/dropify.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application-server/src/maintenance/API/deleteImage.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application-server/src/maintenance/API/getImage.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application-server/src/maintenance/API/uploadImage.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application-server/src/scripts-common/dropify/css/dropify.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application-server/src/scripts-common/dropify/fonts/dropify.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application-server/src/scripts-common/dropify/js/dropify.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/php.xml" afterPath="$PROJECT_DIR$/.idea/php.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/maintenance/API/deleteIssue.php" afterPath="$PROJECT_DIR$/application-server/src/maintenance/API/deleteIssue.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php" afterPath="$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql" afterPath="$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/packapps_api.php" afterPath="$PROJECT_DIR$/application-server/src/packapps_api.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -93,7 +99,6 @@
       </PATH_ELEMENT>
     </PATH>
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="packapps" />
   </component>
@@ -102,22 +107,55 @@
       <file leaf-file-name="issueoverview.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="739">
-              <caret line="542" column="53" lean-forward="true" selection-start-line="542" selection-start-column="53" selection-end-line="542" selection-end-column="53" />
+            <state relative-caret-position="772">
+              <caret line="549" column="6" lean-forward="true" selection-start-line="549" selection-start-column="6" selection-end-line="549" selection-end-column="6" />
               <folding>
-                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1499717476274" expanded="true" signature="11576:11610" ph="..." />
-                <marker date="1499717476274" expanded="true" signature="19681:19694" ph="..." />
-                <marker date="1499717476274" expanded="true" signature="20479:20512" ph="..." />
-                <marker date="1499717476274" expanded="true" signature="20648:20681" ph="..." />
-                <marker date="1499717476274" expanded="true" signature="21660:21672" ph="..." />
-                <marker date="1499717476274" expanded="true" signature="21660:21692" ph="..." />
-                <marker date="1499717476274" expanded="true" signature="23217:23228" ph="..." />
-                <marker date="1499717476274" expanded="true" signature="25269:25301" ph="..." />
-                <marker date="1499717476274" expanded="true" signature="25613:25645" ph="..." />
-                <marker date="1499717476274" expanded="true" signature="25961:25993" ph="..." />
-                <marker date="1499717476274" expanded="true" signature="31160:31217" ph="..." />
-                <marker date="1499717476274" expanded="true" signature="31625:31636" ph="..." />
+                <marker date="1500558316562" expanded="true" signature="11725:11759" ph="..." />
+                <marker date="1500558316562" expanded="true" signature="22196:22228" ph="..." />
+                <marker date="1500558316562" expanded="true" signature="23561:23572" ph="..." />
+                <marker date="1500558316562" expanded="true" signature="25416:25448" ph="..." />
+                <marker date="1500558316562" expanded="true" signature="25700:25732" ph="..." />
+                <marker date="1500558316562" expanded="true" signature="25988:26020" ph="..." />
+                <marker date="1500558316562" expanded="true" signature="30258:30272" ph="..." />
+                <marker date="1500558316562" expanded="true" signature="33125:33182" ph="..." />
+                <marker date="1500558316562" expanded="true" signature="33590:33601" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="getImage.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/getImage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deleteImage.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/deleteImage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="102" />
+              <folding>
+                <marker date="1499790123817" expanded="true" signature="304:333" ph="UPDATE maint... " />
+                <marker date="1499790123817" expanded="true" signature="304:368" ph="UPDATE maint... " />
+                <marker date="1499790123817" expanded="true" signature="304:369" ph="UPDATE maint... " />
+                <marker date="1499790123817" expanded="true" signature="304:376" ph="UPDATE maint... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="uploadImage.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/uploadImage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="9" column="37" lean-forward="false" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="37" />
+              <folding>
+                <marker date="1500553815829" expanded="true" signature="430:502" ph="UPDATE maint... " />
               </folding>
             </state>
           </provider>
@@ -126,8 +164,8 @@
       <file leaf-file-name="setAssignee.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/setAssignee.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+            <state relative-caret-position="252">
+              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="15" selection-end-column="10" />
               <folding>
                 <marker date="1499717422170" expanded="true" signature="421:469" ph="UPDATE maint... " />
                 <marker date="1499717422170" expanded="true" signature="421:495" ph="UPDATE maint... " />
@@ -139,7 +177,7 @@
       <file leaf-file-name="getMaintenanceUsers.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/getMaintenanceUsers.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
+            <state relative-caret-position="306">
               <caret line="17" column="37" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding>
                 <marker date="1499705480659" expanded="true" signature="255:339" ph="SELECT usern... packapps_master_users" />
@@ -151,8 +189,8 @@
       <file leaf-file-name="deleteIssue.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/deleteIssue.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="9" column="33" lean-forward="false" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+            <state relative-caret-position="288">
+              <caret line="16" column="68" lean-forward="false" selection-start-line="16" selection-start-column="68" selection-end-line="16" selection-end-column="112" />
               <folding>
                 <marker date="1499696092898" expanded="true" signature="443:513" ph="SELECT hasPh... maintenance_issues" />
                 <marker date="1499696092898" expanded="true" signature="748:796" ph="DELETE FROM " />
@@ -165,14 +203,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>CONSO</find>
-      <find>snack</find>
-      <find>function snack</find>
-      <find>function</find>
-      <find>function sn</find>
-      <find>deleteitem</find>
-      <find>APR</find>
-      <find>grower</find>
       <find>growername</find>
       <find>$growername</find>
       <find>php_auth</find>
@@ -195,6 +225,14 @@
       <find>account</find>
       <find>growergr</find>
       <find>reassign</find>
+      <find>edit</find>
+      <find>image-dropper-</find>
+      <find>deleteimage</find>
+      <find>beforecl</find>
+      <find>refresh</find>
+      <find>dropper</find>
+      <find>snack</find>
+      <find>snackbar</find>
     </findStrings>
     <replaceStrings>
       <replace>$RealName['Role']</replace>
@@ -240,9 +278,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application-server/src/purchasing/API/getItemsBySupplier.php" />
-        <option value="$PROJECT_DIR$/application-server/src/purchasing/API/getItemTypes.php" />
-        <option value="$PROJECT_DIR$/application-server/src/purchasing/API/getPurchaseHistory.php" />
         <option value="$PROJECT_DIR$/application-server/src/purchasing/API/getSpendingByType.php" />
         <option value="$PROJECT_DIR$/application-server/src/purchasing/API/getSuppliers.php" />
         <option value="$PROJECT_DIR$/application-server/src/purchasing/API/inventorySearch.php" />
@@ -258,7 +293,6 @@
         <option value="$PROJECT_DIR$/base.yml" />
         <option value="$PROJECT_DIR$/docker-compose.yml" />
         <option value="$PROJECT_DIR$/application-server/src/purchasing/inventory.php" />
-        <option value="$PROJECT_DIR$/application-server/src/packapps_api.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql" />
         <option value="$PROJECT_DIR$/application-server/src/purchasing/index.php" />
         <option value="$PROJECT_DIR$/application-server/src/maintenance/API/getIssues.php" />
@@ -290,6 +324,10 @@
         <option value="$PROJECT_DIR$/application-server/src/maintenance/API/deleteIssue.php" />
         <option value="$PROJECT_DIR$/application-server/src/maintenance/API/getMaintenanceUsers.php" />
         <option value="$PROJECT_DIR$/application-server/src/maintenance/API/setAssignee.php" />
+        <option value="$PROJECT_DIR$/application-server/src/packapps_api.php" />
+        <option value="$PROJECT_DIR$/application-server/src/maintenance/API/deleteImage.php" />
+        <option value="$PROJECT_DIR$/application-server/src/maintenance/API/uploadImage.php" />
+        <option value="$PROJECT_DIR$/application-server/src/maintenance/API/getImage.php" />
         <option value="$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php" />
       </list>
     </option>
@@ -300,8 +338,8 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds">
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP 7.1" />
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="y" value="27" />
     <option name="width" value="1920" />
     <option name="height" value="1173" />
@@ -350,6 +388,11 @@
             <id>XML</id>
           </State>
         </expanded-state>
+        <selected-state>
+          <State>
+            <id>AngularJS</id>
+          </State>
+        </selected-state>
       </profile-state>
     </entry>
   </component>
@@ -371,301 +414,66 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="packapps">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="packapps">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="database-server">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="packapps">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="database-server">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="schema">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="packapps">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application-server">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="packapps">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application-server">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="packapps">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application-server">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="purchasing">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="packapps">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application-server">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="purchasing">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="assets">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="maintenance" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="maintenance" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="API" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database-server" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database-server" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="schema" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application-server" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application-server" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application-server" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts-common" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application-server" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="maintenance" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packapps" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application-server" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="maintenance" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="API" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="settings.editor.selected.configurable" value="Docker" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/mike/.PhpStorm2017.1/config/scratches/buffer1" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="HTML&#10;MySQL" />
     <property name="database.data.extractors.current" value="Comma-separated (CSV)" />
+    <property name="nodejs.protractor.protractor_package" value="" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/application-server/src/maintenance" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/application-server/src/" />
       <recent name="$PROJECT_DIR$/application-server/src/packapps_api" />
       <recent name="$PROJECT_DIR$/application-server/src/quality/assets" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/application-server/src/maintenance" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -680,7 +488,39 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Docker Deployment.Packapps on Docker">
+    <configuration name="Packapps on Docker" type="docker-deploy" factoryName="Docker Deployment" server-name="Docker">
+      <deployment type="docker-compose.yml" path="$PROJECT_DIR$/docker-compose.yml">
+        <settings>
+          <option name="JSONFilePath" value="" />
+          <option name="command" value="" />
+          <option name="entrypoint" value="" />
+          <option name="startBrowserSettings">
+            <browser url="http://127.0.0.1" />
+          </option>
+        </settings>
+      </deployment>
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="Docker Deployment" server-name="Docker">
+      <deployment type="docker-compose.yml" path="$PROJECT_DIR$/docker-compose.yml">
+        <settings>
+          <option name="JSONFilePath" value="" />
+          <option name="command" value="" />
+          <option name="entrypoint" value="" />
+          <option name="startBrowserSettings">
+            <browser url="http://127.0.0.1" />
+          </option>
+        </settings>
+      </deployment>
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+    </configuration>
     <configuration default="true" type="CodeceptionConfigurationType" factoryName="Codeception">
       <PhpTestRunnerSettings />
       <method />
@@ -719,18 +559,6 @@
       <PhpTestRunnerSettings />
       <method />
     </configuration>
-    <configuration default="true" type="docker-deploy" factoryName="Docker Deployment">
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
       <command value="run" />
       <scripts />
@@ -751,6 +579,18 @@
       <recursive>false</recursive>
       <method />
     </configuration>
+    <configuration name="packapps" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner directory="$PROJECT_DIR$" />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Docker Deployment.Packapps on Docker" />
+      <item index="1" class="java.lang.String" itemvalue="PHPUnit.packapps" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="PHPUnit.packapps" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -840,7 +680,21 @@
       <workItem from="1499579508013" duration="2318000" />
       <workItem from="1499652278326" duration="14476000" />
       <workItem from="1499687042738" duration="3315000" />
-      <workItem from="1499690993452" duration="14019000" />
+      <workItem from="1499690993452" duration="14288000" />
+      <workItem from="1499772291330" duration="1365000" />
+      <workItem from="1499773682364" duration="48000" />
+      <workItem from="1499773989676" duration="5368000" />
+      <workItem from="1499779978085" duration="58000" />
+      <workItem from="1499780196404" duration="541000" />
+      <workItem from="1499780778300" duration="1239000" />
+      <workItem from="1499782255936" duration="55000" />
+      <workItem from="1499782361749" duration="5569000" />
+      <workItem from="1499787960551" duration="13431000" />
+      <workItem from="1499946779966" duration="1998000" />
+      <workItem from="1500486032757" duration="4293000" />
+      <workItem from="1500513716571" duration="127000" />
+      <workItem from="1500551816665" duration="2030000" />
+      <workItem from="1500553877292" duration="4852000" />
     </task>
     <task id="LOCAL-00001" summary="Add clean db and phpmyadmin">
       <created>1496689406220</created>
@@ -905,11 +759,18 @@
       <option name="project" value="LOCAL" />
       <updated>1499687272241</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="maintenance app: Enable assigning issues to users">
+      <created>1499717779886</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1499717779887</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="509121000" />
+    <option name="totallyTimeSpent" value="550364000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -921,15 +782,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1920" height="1173" extended-state="6" />
+    <frame x="0" y="-37" width="1920" height="1237" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13675214" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21435499" sideWeight="0.50213677" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12446581" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291262" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291262" sideWeight="0.491453" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291262" sideWeight="0.508547" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39209402" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35499516" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13355593" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1330097" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34917557" sideWeight="0.49786323" order="12" side_tool="false" content_ui="tabs" />
@@ -945,15 +806,16 @@
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24733269" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4714795" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35499516" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291262" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32888147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21435499" sideWeight="0.50213677" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291262" sideWeight="0.508547" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12311901" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13355593" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -961,8 +823,9 @@
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976827" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34917557" sideWeight="0.49786323" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24733269" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13675214" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.075854704" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291262" sideWeight="0.491453" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4714795" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39209402" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35499516" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -973,7 +836,7 @@
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="processedProjectFiles" value="true" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -1014,7 +877,8 @@
     <MESSAGE value="Fix menu formatting" />
     <MESSAGE value="Complete Grower-Portal login mechanism" />
     <MESSAGE value="small cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="small cleanup" />
+    <MESSAGE value="maintenance app: Enable assigning issues to users" />
+    <option name="LAST_COMMIT_MESSAGE" value="maintenance app: Enable assigning issues to users" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1023,48 +887,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application-server/config/php.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1140">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database-server/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="27" column="12" lean-forward="false" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/purchasing/bomEditor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/purchasing/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="24" column="390" lean-forward="false" selection-start-line="24" selection-start-column="390" selection-end-line="24" selection-end-column="390" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="359" lean-forward="true" selection-start-line="0" selection-start-column="324" selection-end-line="0" selection-end-column="359" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/getNeededParts.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
@@ -1083,7 +905,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="418" column="0" lean-forward="false" selection-start-line="418" selection-start-column="0" selection-end-line="424" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1140,7 +961,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="6" column="64" lean-forward="false" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1148,28 +968,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="3" column="43" lean-forward="false" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
-          <folding>
-            <marker date="1498242376177" expanded="true" signature="453:613" ph="INSERT INTO `grower_crop-estimates`... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/packapps_api.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-399">
-          <caret line="16" column="34" lean-forward="true" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
-          <folding>
-            <marker date="1499367474200" expanded="true" signature="1013:1138" ph="SELECT usern... packapps_master_users" />
-            <marker date="1499367474200" expanded="true" signature="1611:1757" ph="SELECT * FRO... ${$packapp}" />
-            <marker date="1499367474200" expanded="true" signature="2375:2475" ph="SELECT Growe... grower_GrowerLogins" />
-            <marker date="1499367474200" expanded="true" signature="5504:5622" ph="UPDATE packa... " />
-            <marker date="1499367474200" expanded="true" signature="6263:6431" ph="INSERT INTO packapps_master_users... " />
-            <marker date="1499367474200" expanded="true" signature="6513:6597" ph="SELECT short... packapps_appProperties" />
-            <marker date="1499367474200" expanded="true" signature="6699:6782" ph="INSERT INTO ${$packapp['short_app_name']}_UserData... " />
-            <marker date="1499367474200" expanded="true" signature="7520:7608" ph="SELECT `Pass... packapps_master_users" />
-            <marker date="1499367474200" expanded="true" signature="7792:7882" ph="UPDATE packa... " />
-            <marker date="1499367474200" expanded="true" signature="8625:8704" ph="UPDATE packa... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1177,7 +975,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="6" column="31" lean-forward="false" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1185,15 +982,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="19" column="76" lean-forward="false" selection-start-line="19" selection-start-column="76" selection-end-line="19" selection-end-column="76" />
-          <folding>
-            <marker date="1498145768870" expanded="true" signature="476:581" ph="ALTER TABLE `crop-estimates`... " />
-            <marker date="1498145768870" expanded="true" signature="630:729" ph="ALTER TABLE `crop-estimates`... " />
-            <marker date="1498145768870" expanded="true" signature="833:900" ph="UPDATE `grow... " />
-            <marker date="1498145768870" expanded="true" signature="1073:1959" ph="UPDATE `grow... " />
-            <marker date="1498145768870" expanded="true" signature="1110:1845" ph="SELECT rtrim... BULKRTCSV" />
-            <marker date="1498145768870" expanded="true" signature="2070:2307" ph="INSERT INTO `grower_crop_estimates_changes_timeseries`... " />
-            <marker date="1498145768870" expanded="true" signature="2205:2307" ph="SELECT `PK`,... crop-estimates" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1201,11 +989,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-          <folding>
-            <marker date="1499580158426" expanded="true" signature="199:1142" ph="SELECT growe... grower_Preharvest_Samples" />
-            <marker date="1499580158426" expanded="true" signature="1239:1380" ph="SELECT Sampl... grower_Preharvest_Samples" />
-            <marker date="1499580158426" expanded="true" signature="1239:1520" ph="SELECT Sampl... grower_Preharvest_Samples" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1213,11 +996,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="70" column="99" lean-forward="false" selection-start-line="70" selection-start-column="99" selection-end-line="70" selection-end-column="99" />
-          <folding>
-            <element signature="e#6911#6917#1#HTML" expanded="false" />
-            <marker date="1499580009397" expanded="true" signature="165:972" ph="SELECT growe... grower_Preharvest_Samples" />
-            <marker date="1499580009397" expanded="true" signature="165:1201" ph="SELECT growe... grower_Preharvest_Samples" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1225,18 +1003,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="287">
           <caret line="482" column="5" lean-forward="false" selection-start-line="482" selection-start-column="5" selection-end-line="482" selection-end-column="5" />
-          <folding>
-            <marker date="1499575167300" expanded="true" signature="2377:2563" ph="SELECT COUNT... PK" />
-            <marker date="1499575167300" expanded="true" signature="2408:2559" ph="SELECT PK FR... grower_Preharvest_Samples" />
-            <marker date="1499575167300" expanded="true" signature="2620:2747" ph="SELECT `RT##`... BULKRTCSV" />
-            <marker date="1499575167300" expanded="true" signature="2620:2879" ph="SELECT `RT##`... BULKRTCSV" />
-            <marker date="1499575167300" expanded="true" signature="7880:7909" ph="..." />
-            <marker date="1499575167300" expanded="true" signature="7910:8217" ph="..." />
-            <marker date="1499575167300" expanded="false" signature="8441:8485" ph="..." />
-            <marker date="1499575167300" expanded="true" signature="8486:8665" ph="..." />
-            <marker date="1499575167300" expanded="true" signature="8486:8972" ph="..." />
-            <marker date="1499575167300" expanded="true" signature="9094:9095" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1244,7 +1010,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="14" column="21" lean-forward="false" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1252,7 +1017,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="87" column="79" lean-forward="false" selection-start-line="87" selection-start-column="79" selection-end-line="87" selection-end-column="79" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1260,9 +1024,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="8" column="25" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-          <folding>
-            <marker date="1499571018851" expanded="true" signature="269:338" ph="SELECT * FRO... grower_growerCalendar" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1270,12 +1031,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
           <caret line="15" column="14" lean-forward="false" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
-          <folding>
-            <marker date="1499570965890" expanded="true" signature="426:580" ph="INSERT INTO grower_GrowerCalendar... " />
-            <marker date="1499570965890" expanded="true" signature="885:1022" ph="UPDATE growe... " />
-            <marker date="1499570965890" expanded="true" signature="1337:1429" ph="UPDATE growe... " />
-            <marker date="1499570965890" expanded="true" signature="1670:1717" ph="DELETE FROM " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1283,10 +1038,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="5" column="47" lean-forward="false" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
-          <folding>
-            <marker date="1499570080086" expanded="true" signature="432:504" ph="UPDATE growe... " />
-            <marker date="1499570080086" expanded="true" signature="432:532" ph="UPDATE growe... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1295,7 +1046,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1303,13 +1053,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
           <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-          <folding>
-            <marker date="1499580554399" expanded="true" signature="353:481" ph="UPDATE `grow... " />
-            <marker date="1499580554399" expanded="true" signature="353:513" ph="UPDATE `grow... " />
-            <marker date="1499580554399" expanded="true" signature="562:710" ph="UPDATE `grow... " />
-            <marker date="1499580554399" expanded="true" signature="745:932" ph="INSERT INTO grower_crop_estimates_changes_timeseries... " />
-            <marker date="1499580554399" expanded="true" signature="745:1016" ph="INSERT INTO grower_crop_estimates_changes_timeseries... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1317,11 +1060,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="18" column="41" lean-forward="false" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
-          <folding>
-            <marker date="1499580355592" expanded="true" signature="254:394" ph="UPDATE `grow... " />
-            <marker date="1499580355592" expanded="true" signature="495:638" ph="UPDATE `grow... " />
-            <marker date="1499580355592" expanded="true" signature="752:909" ph="UPDATE `grow... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1614,19 +1352,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2280">
           <caret line="119" column="10" lean-forward="true" selection-start-line="119" selection-start-column="10" selection-end-line="119" selection-end-column="10" />
-          <folding>
-            <marker date="1499676406940" expanded="true" signature="308:356" ph="SELECT syste... packapps_system_info" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="28" column="37" lean-forward="false" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
-          <folding>
-            <marker date="1499580900287" expanded="true" signature="1798:1864" ph="SELECT packa... packapps_system_info" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1634,9 +1359,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1820">
           <caret line="91" column="108" lean-forward="false" selection-start-line="91" selection-start-column="108" selection-end-line="91" selection-end-column="108" />
-          <folding>
-            <marker date="1499580724975" expanded="true" signature="158:610" ph="SELECT CommD... quality_Block_Receiving" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1644,9 +1366,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="119" column="306" lean-forward="false" selection-start-line="119" selection-start-column="306" selection-end-line="119" selection-end-column="306" />
-          <folding>
-            <marker date="1499680287993" expanded="true" signature="276:371" ph="SELECT short... packapps_appProperties" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1654,15 +1373,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="28" column="12" lean-forward="false" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
-          <folding>
-            <marker date="1499681446940" expanded="true" signature="246:303" ph="..." />
-            <marker date="1499681446940" expanded="true" signature="317:357" ph="..." />
-            <marker date="1499681446940" expanded="true" signature="1000:1299" ph="..." />
-            <marker date="1499681446940" expanded="true" signature="1574:1873" ph="..." />
-            <marker date="1499681446940" expanded="true" signature="2204:2277" ph="SELECT `Pass... grower_GrowerLogins" />
-            <marker date="1499681446940" expanded="true" signature="2884:2977" ph="SELECT `Pass... packapps_master_users" />
-            <marker date="1499681446940" expanded="true" signature="3374:3453" ph="UPDATE packa... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1677,7 +1387,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1692,7 +1401,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1700,9 +1408,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1800">
           <caret line="101" column="25" lean-forward="true" selection-start-line="101" selection-start-column="25" selection-end-line="101" selection-end-column="25" />
-          <folding>
-            <marker date="1499435829804" expanded="true" signature="295:2576" ph="SELECT maint... maintenance_issues" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1710,20 +1415,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="14" column="41" lean-forward="false" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
-          <folding>
-            <marker date="1498743193771" expanded="true" signature="149:201" ph="SELECT purpo... maintenance_purposes" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/deleteIssue.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="33" lean-forward="false" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
-          <folding>
-            <marker date="1499696092898" expanded="true" signature="443:513" ph="SELECT hasPh... maintenance_issues" />
-            <marker date="1499696092898" expanded="true" signature="748:796" ph="DELETE FROM " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1731,13 +1422,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
           <caret line="57" column="7" lean-forward="true" selection-start-line="57" selection-start-column="7" selection-end-line="57" selection-end-column="7" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/DA.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/QA.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/getMaintenanceUsers.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
+        <state relative-caret-position="306">
           <caret line="17" column="37" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
             <marker date="1499705480659" expanded="true" signature="255:339" ph="SELECT usern... packapps_master_users" />
@@ -1745,10 +1449,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="729">
+          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/setAssignee.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+        <state relative-caret-position="252">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="15" selection-end-column="10" />
           <folding>
             <marker date="1499717422170" expanded="true" signature="421:469" ph="UPDATE maint... " />
             <marker date="1499717422170" expanded="true" signature="421:495" ph="UPDATE maint... " />
@@ -1756,24 +1474,81 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/deleteIssue.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="68" lean-forward="false" selection-start-line="16" selection-start-column="68" selection-end-line="16" selection-end-column="112" />
+          <folding>
+            <marker date="1499696092898" expanded="true" signature="443:513" ph="SELECT hasPh... maintenance_issues" />
+            <marker date="1499696092898" expanded="true" signature="748:796" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/deleteImage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="102" />
+          <folding>
+            <marker date="1499790123817" expanded="true" signature="304:333" ph="UPDATE maint... " />
+            <marker date="1499790123817" expanded="true" signature="304:368" ph="UPDATE maint... " />
+            <marker date="1499790123817" expanded="true" signature="304:369" ph="UPDATE maint... " />
+            <marker date="1499790123817" expanded="true" signature="304:376" ph="UPDATE maint... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/uploadImage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="37" lean-forward="false" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="37" />
+          <folding>
+            <marker date="1500553815829" expanded="true" signature="430:502" ph="UPDATE maint... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/getImage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/packapps_api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-260">
+          <caret line="95" column="9" lean-forward="false" selection-start-line="95" selection-start-column="9" selection-end-line="95" selection-end-column="9" />
+          <folding>
+            <marker date="1499774854013" expanded="true" signature="1013:1138" ph="SELECT usern... packapps_master_users" />
+            <marker date="1499774854013" expanded="true" signature="1611:1757" ph="SELECT * FRO... ${$packapp}" />
+            <marker date="1499774854013" expanded="true" signature="2375:2475" ph="SELECT Growe... grower_GrowerLogins" />
+            <marker date="1499774854013" expanded="true" signature="5512:5630" ph="UPDATE packa... " />
+            <marker date="1499774854013" expanded="true" signature="6271:6439" ph="INSERT INTO packapps_master_users... " />
+            <marker date="1499774854013" expanded="true" signature="6521:6605" ph="SELECT short... packapps_appProperties" />
+            <marker date="1499774854013" expanded="true" signature="6707:6790" ph="INSERT INTO ${$packapp['short_app_name']}_UserData... " />
+            <marker date="1499774854013" expanded="true" signature="7528:7616" ph="SELECT `Pass... packapps_master_users" />
+            <marker date="1499774854013" expanded="true" signature="7800:7890" ph="UPDATE packa... " />
+            <marker date="1499774854013" expanded="true" signature="8633:8712" ph="UPDATE packa... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="739">
-          <caret line="542" column="53" lean-forward="true" selection-start-line="542" selection-start-column="53" selection-end-line="542" selection-end-column="53" />
+        <state relative-caret-position="772">
+          <caret line="549" column="6" lean-forward="true" selection-start-line="549" selection-start-column="6" selection-end-line="549" selection-end-column="6" />
           <folding>
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1499717476274" expanded="true" signature="11576:11610" ph="..." />
-            <marker date="1499717476274" expanded="true" signature="19681:19694" ph="..." />
-            <marker date="1499717476274" expanded="true" signature="20479:20512" ph="..." />
-            <marker date="1499717476274" expanded="true" signature="20648:20681" ph="..." />
-            <marker date="1499717476274" expanded="true" signature="21660:21672" ph="..." />
-            <marker date="1499717476274" expanded="true" signature="21660:21692" ph="..." />
-            <marker date="1499717476274" expanded="true" signature="23217:23228" ph="..." />
-            <marker date="1499717476274" expanded="true" signature="25269:25301" ph="..." />
-            <marker date="1499717476274" expanded="true" signature="25613:25645" ph="..." />
-            <marker date="1499717476274" expanded="true" signature="25961:25993" ph="..." />
-            <marker date="1499717476274" expanded="true" signature="31160:31217" ph="..." />
-            <marker date="1499717476274" expanded="true" signature="31625:31636" ph="..." />
+            <marker date="1500558316562" expanded="true" signature="11725:11759" ph="..." />
+            <marker date="1500558316562" expanded="true" signature="22196:22228" ph="..." />
+            <marker date="1500558316562" expanded="true" signature="23561:23572" ph="..." />
+            <marker date="1500558316562" expanded="true" signature="25416:25448" ph="..." />
+            <marker date="1500558316562" expanded="true" signature="25700:25732" ph="..." />
+            <marker date="1500558316562" expanded="true" signature="25988:26020" ph="..." />
+            <marker date="1500558316562" expanded="true" signature="30258:30272" ph="..." />
+            <marker date="1500558316562" expanded="true" signature="33125:33182" ph="..." />
+            <marker date="1500558316562" expanded="true" signature="33590:33601" ph="..." />
           </folding>
         </state>
       </provider>

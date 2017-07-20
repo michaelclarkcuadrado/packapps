@@ -118,8 +118,8 @@ function packapps_deleteFromS3($bucketName, $filename){
  * Download a stored file from S3.
  *
  * Example usage:
- * $result = downloadFromS3('packapps-quality-uploadedimages', 'test.jpg');
- * header("Content-Type: {$result['ContentType']}");
+ * $result = packapps_downloadFromS3('packapps-quality-uploadedimages', 'test.jpg');
+ * header("Content-Type: ".$result['ContentType']);
  * echo $result['Body'];
  *
  * @param $bucketName

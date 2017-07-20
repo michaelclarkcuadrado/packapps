@@ -16,6 +16,7 @@ $userInfo = packapps_authenticate_user('maintenance');
     <link rel="stylesheet" href="../styles-common/materialIcons/material-icons.css">
     <link rel="stylesheet" href="../styles-common/material.min.css">
     <link rel="stylesheet" href="../styles-common/select2.min.css">
+    <link rel="stylesheet" href="../scripts-common/dropify/css/dropify.min.css">
     <link rel="stylesheet" href="../styles-common/styles.css">
 </head>
 <body>
@@ -145,6 +146,7 @@ $userInfo = packapps_authenticate_user('maintenance');
 <script src="../scripts-common/material.min.js"></script>
 <script src="../scripts-common/jquery.min.js"></script>
 <script src="../scripts-common/select2.min.js"></script>
+<script src="../scripts-common/dropify/js/dropify.min.js"></script>
 <!--<script src='../scripts-common/Chart.js'></script>-->
 <script>
     var issues = {};
@@ -188,7 +190,7 @@ $userInfo = packapps_authenticate_user('maintenance');
 
         //show filter box when hit
         $('#openFilterBoxButton').on("click", function(){
-            $('main').animate({scrollTop: 0}, 'fast', 'swing')
+            $('main').animate({scrollTop: 0}, 'fast', 'swing');
             $('#issueFilterbox').slideDown();
             $(this).hide();
         });
@@ -210,7 +212,33 @@ $userInfo = packapps_authenticate_user('maintenance');
     });
     var statuses = ['New', 'Confirmed', 'In Progress', 'Completed'];
 
+    function refreshIssueCard(issueID) {
+        var jsonfilter = createJsonFromFilter();
+        $.getJSON('API/getIssues.php', {'filterJson': jsonfilter}, function (data) {
+            issues = data;
+            $("#issue-card-"+issueID).replaceWith(genIssueCard(issues, issueID));
+            $("#issue-card-"+issueID).show();
+        });
+    }
+
     function updateIssues(jsonfilter){
+        $('.issue-card').remove();
+        //get issues and display
+        $.getJSON('API/getIssues.php', {'filterJson' : jsonfilter}, function(data){
+            issues = data;
+            var htmlStringToInject = "";
+            for(var issue in data){
+                if(data.hasOwnProperty(issue)){
+                    htmlStringToInject += genIssueCard(data, issue);
+                }
+            }
+            $('#insertIssuesHere').append(htmlStringToInject);
+            componentHandler.upgradeDom();
+            $(".issue-card").fadeIn('fast');
+        });
+    }
+
+    function genIssueCard(data, issue){
         //Code before function
 //    <div style="display: none" id="issue-card-ISSUEID" class="mdl-card issue-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-phone">
 //            <div class="mdl-card__title mdl-color--yellow-400">
@@ -256,7 +284,7 @@ $userInfo = packapps_authenticate_user('maintenance');
 //            <span><p>Solution description. Blue line glued back together</p></span>
 //        </span>
 //        </li>
-//        <li class="mdl-list__item mdl-list__item" onclick="issuePhoto(issueid, PHOTO_EXISTS)" style="cursor:pointer;padding:6px">
+//        <li id="issue-photo-bar-ISSUEID" class="mdl-list__item mdl-list__item" onclick="issuePhoto(issueid, PHOTO_EXISTS)" style="cursor:pointer;padding:6px">
 //            <span class="mdl-list__item-primary-content">
 //            <i class="material-icons mdl-list__item-icon">add_a_photo</i> <!--photo_camera-->
 //            <span>Add a Photo / View Photo</span>
@@ -308,113 +336,100 @@ $userInfo = packapps_authenticate_user('maintenance');
 //        </ul>
 //        </div>dd
 //        </div>
-        $('.issue-card').remove();
-        //get issues and display
-        $.getJSON('API/getIssues.php', {'filterJson' : jsonfilter}, function(data){
-            issues = data;
-            var htmlStringToInject = "";
-            for(var issue in data){
-                if(data.hasOwnProperty(issue)){
-                    htmlStringToInject += "<div style=\"display: none\" id=\"issue-card-"
-                        + data[issue]['issue_id']
-                        + "\" class=\"mdl-card issue-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-phone\"><div class=\"mdl-card__title mdl-color--yellow-400\"><h2 class=\"mdl-card__title-text\">#"
-                        + data[issue]['issue_id']
-                        + " - "
-                        + data[issue]['title']
-                        + "</h2></div><div class=\"mdl-card__supporting-text\" style=\"position: relative\"><div id='cardCover-issue-"
-                        + data[issue]['issue_id']
-                        + "' class=\"mdl-card\" style='display: none;position: absolute; top:0px;left:0px;width:100%;height:100%'></div><div class=\"issue-buttons\"><div style=\"color: white; white-space: nowrap\" class=\"chip mdl-color--green-500\">"
-                        + data[issue]['Purpose']
-                        + "</div><div style=\"color: white; white-space: nowrap\" class=\"chip mdl-color--blue-500\"><button id=\"back-status-button-"
-                        + data[issue]['issue_id']
-                        + "\" onclick=\"statusDecrease("
-                        + data[issue]['issue_id']
-                        + ")\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">chevron_left</i></button><span id=\"status-display-"
-                        + data[issue]['issue_id']
-                        + "\">"
-                        + getStatusDesc(data[issue])
-                        + "</span><button id=\"forward-status-button-"
-                        + data[issue]['issue_id']
-                        + "\" onclick=\"statusIncrease("
-                        + data[issue]['issue_id']
-                        + ")\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">chevron_right</i></button></div>"
-                        + (data[issue]['needsParts'] < 1 ? "" : "<div style=\"color:white; white-space: nowrap\" class=\"chip mdl-color--red-600\">Parts Needed: "
-                            + Object.keys(data[issue]['partsNeeded']).length
-                            + "<button id=\"partsneeded-button-"
-                            + data[issue]['issue_id']
-                            + "\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">more_horiz</i></button><ul class=\"mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect\" for=\"partsneeded-button-"
-                            + data[issue]['issue_id']
-                            + "\"><li class=\"mdl-menu__item\" disabled><u>Add To Cart</u></li><li class=\"mdl-menu__item\" onclick=\"addAllItemstoCart("
-                            + data[issue]['issue_id']
-                            + ")\">Add All Items</li>"
-                            + generateItemMenuList(data[issue]['partsNeeded'])
-                            + "</ul></div>")
-                        + "</div><ul class=\"mdl-list\"><li class=\"mdl-list__item mdl-list__item\" style=\"padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">assignment_late</i><span><p>"
-                        + data[issue]['issue_description']
-                        + "</p></span></span></li>"
-                        + (data[issue]['isCompleted'] < 1 ? "" : "<li id=\"solution-description-"
-                            + data[issue]['issue_id']
-                            + "\" class=\"mdl-list__item mdl-list__item\" style=\"padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">assignment_turned_in</i><span><p>"
-                            + data[issue]['solution_description']
-                            + "</p></span></span></li>")
-                        + "<li class=\"mdl-list__item mdl-list__item\" onclick=\"issuePhoto("
-                        + data[issue]['issue_id']
-                        + ", "
-                        + (data[issue]['hasPhotoAttached'] > 0)
-                        + ")\" style=\"cursor:pointer;padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">"
-                        + (data[issue]['hasPhotoAttached'] > 0 ? "photo_camera" : "add_a_photo")
-                        + "</i><span>"
-                        + (data[issue]['hasPhotoAttached'] > 0 ? "View Photo" : "Add a Photo")
-                        + "</span></span></li><li class=\"mdl-list__item mdl-list__item\" style=\"padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">history</i><span>Issue History</span></span><span class=\"mdl-list__item-secondary-content\"><i id=\"expand-button-history-"
-                        + data[issue]['issue_id']
-                        + "\" onclick=\"expandHistory("
-                        + data[issue]['issue_id']
-                        + ", $(this))\" class=\"material-icons mdl-list__item-secondary-action\">expand_more</i></span></li><div style=\"display: none\" id=\"history-panel-"
-                        + data[issue]['issue_id']
-                        + "\" class=\"sublist_supplier\">"
-                        + "<li class=\"mdl-list__item\" style=\"padding:6px; min-height: initial\">Created: "
-                        + data[issue]['dateCreated']
-                        + " By "
-                        + data[issue]['createdBy']
-                        + "</li>"
-                        + (data[issue]['isConfirmed'] > 0 ? "<li class=\"mdl-list__item\" style=\"padding:6px; min-height: initial\">Confirmed: "
-                            + data[issue]['dateConfirmed']
-                            + " By "
-                            + data[issue]['confirmedBy']
-                            + "</li>" : "")
-                        + (data[issue]['isInProgress'] > 0 ? "<li class=\"mdl-list__item\" style=\"padding:6px; min-height: initial\">Work Started: "
-                            + data[issue]['DateInProgress']
-                            + " By "
-                            + data[issue]['inProgressBy']
-                            + "</li>" : "")
-                        + (data[issue]['isCompleted'] > 0 ? "<li class=\"mdl-list__item\" style=\"padding:6px; min-height: initial\">Completed: "
-                            + data[issue]['dateCompleted']
-                            + " By "
-                            + data[issue]['completedBy']
-                            + "</li>" : "")
-                        + "</div><li class=\"mdl-list__item mdl-list__item\" style=\"padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">location_on</i><span>Location</span></span><span class=\"mdl-list__item-secondary-content\"><i id=\"issue-location-button-"
-                        + data[issue]['issue_id']
-                        + "\" class=\"material-icons mdl-list__item-secondary-action\">close</i></span></li></ul><small id=\"issue-assignedto-text-"
-                        + data[issue]['issue_id']
-                        + "\" class=\"mdl-card__subtitle-text\">Assigned to: "
-                        + data[issue]['assignedTo']
-                        + "</small></div><div class=\"mdl-card__menu\"><button id=\"issue-menu-button-"
-                        + data[issue]['issue_id']
-                        + "\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">more_vert</i></button><ul class=\"mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect\" for=\"issue-menu-button-"
-                        + data[issue]['issue_id']
-                        + "\"><li onclick=\"editItem("
-                        + data[issue]['issue_id']
-                        + ")\" class=\"mdl-menu__item\">Edit Issue</li><li <?php if($userInfo['permissionLevel'] < 3){echo "style='display:none'";}?> onclick=\"reassignItem("
-                        + data[issue]['issue_id']
-                        + ")\" class=\"mdl-menu__item\">Assign / Reassign</li><li <?php if($userInfo['permissionLevel'] < 3){echo "style='display:none'";}?> onclick=\"deleteItem("
-                        + data[issue]['issue_id']
-                        + ", $(this))\"class=\"mdl-menu__item\">Delete Issue</li></ul></div></div>";
-                }
-            }
-        $('#insertIssuesHere').append(htmlStringToInject);
-        componentHandler.upgradeDom();
-        $(".issue-card").fadeIn('fast');
-        });
+        return "<div style=\"display: none\" id=\"issue-card-"
+            + data[issue]['issue_id']
+            + "\" class=\"mdl-card issue-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-phone\"><div class=\"mdl-card__title mdl-color--yellow-400\"><h2 class=\"mdl-card__title-text\">#"
+            + data[issue]['issue_id']
+            + " - "
+            + data[issue]['title']
+            + "</h2></div><div class=\"mdl-card__supporting-text\" style=\"position: relative\"><div id='cardCover-issue-"
+            + data[issue]['issue_id']
+            + "' class=\"mdl-card\" style='display: none;position: absolute; top:0px;left:0px;width:100%;height:100%'></div><div class=\"issue-buttons\"><div style=\"color: white; white-space: nowrap\" class=\"chip mdl-color--green-500\">"
+            + data[issue]['Purpose']
+            + "</div><div style=\"color: white; white-space: nowrap\" class=\"chip mdl-color--blue-500\"><button id=\"back-status-button-"
+            + data[issue]['issue_id']
+            + "\" onclick=\"statusDecrease("
+            + data[issue]['issue_id']
+            + ")\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">chevron_left</i></button><span id=\"status-display-"
+            + data[issue]['issue_id']
+            + "\">"
+            + getStatusDesc(data[issue])
+            + "</span><button id=\"forward-status-button-"
+            + data[issue]['issue_id']
+            + "\" onclick=\"statusIncrease("
+            + data[issue]['issue_id']
+            + ")\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">chevron_right</i></button></div>"
+            + (data[issue]['needsParts'] < 1 ? "" : "<div style=\"color:white; white-space: nowrap\" class=\"chip mdl-color--red-600\">Parts Needed: "
+                + Object.keys(data[issue]['partsNeeded']).length
+                + "<button id=\"partsneeded-button-"
+                + data[issue]['issue_id']
+                + "\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">more_horiz</i></button><ul class=\"mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect\" for=\"partsneeded-button-"
+                + data[issue]['issue_id']
+                + "\"><li class=\"mdl-menu__item\" disabled><u>Add To Cart</u></li><li class=\"mdl-menu__item\" onclick=\"addAllItemstoCart("
+                + data[issue]['issue_id']
+                + ")\">Add All Items</li>"
+                + generateItemMenuList(data[issue]['partsNeeded'])
+                + "</ul></div>")
+            + "</div><ul class=\"mdl-list\"><li class=\"mdl-list__item mdl-list__item\" style=\"padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">assignment_late</i><span><p>"
+            + data[issue]['issue_description']
+            + "</p></span></span></li>"
+            + (data[issue]['isCompleted'] < 1 ? "" : "<li id=\"solution-description-"
+                + data[issue]['issue_id']
+                + "\" class=\"mdl-list__item mdl-list__item\" style=\"padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">assignment_turned_in</i><span><p>"
+                + data[issue]['solution_description']
+                + "</p></span></span></li>")
+            + "<li id=\"issue-photo-bar-"
+            + data[issue]['issue_id']
+            + "\" class=\"mdl-list__item mdl-list__item\" onclick=\"issuePhoto("
+            + data[issue]['issue_id']
+            + ", "
+            + (data[issue]['hasPhotoAttached'] > 0)
+            + ")\" style=\"cursor:pointer;padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">"
+            + (data[issue]['hasPhotoAttached'] > 0 ? "photo_camera" : "add_a_photo")
+            + "</i><span>"
+            + (data[issue]['hasPhotoAttached'] > 0 ? "View Photo" : "Add a Photo")
+            + "</span></span></li><li class=\"mdl-list__item mdl-list__item\" style=\"padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">history</i><span>Issue History</span></span><span class=\"mdl-list__item-secondary-content\"><i id=\"expand-button-history-"
+            + data[issue]['issue_id']
+            + "\" onclick=\"expandHistory("
+            + data[issue]['issue_id']
+            + ", $(this))\" class=\"material-icons mdl-list__item-secondary-action\">expand_more</i></span></li><div style=\"display: none\" id=\"history-panel-"
+            + data[issue]['issue_id']
+            + "\" class=\"sublist_supplier\">"
+            + "<li class=\"mdl-list__item\" style=\"padding:6px; min-height: initial\">Created: "
+            + data[issue]['dateCreated']
+            + " By "
+            + data[issue]['createdBy']
+            + "</li>"
+            + (data[issue]['isConfirmed'] > 0 ? "<li class=\"mdl-list__item\" style=\"padding:6px; min-height: initial\">Confirmed: "
+                + data[issue]['dateConfirmed']
+                + " By "
+                + data[issue]['confirmedBy']
+                + "</li>" : "")
+            + (data[issue]['isInProgress'] > 0 ? "<li class=\"mdl-list__item\" style=\"padding:6px; min-height: initial\">Work Started: "
+                + data[issue]['DateInProgress']
+                + " By "
+                + data[issue]['inProgressBy']
+                + "</li>" : "")
+            + (data[issue]['isCompleted'] > 0 ? "<li class=\"mdl-list__item\" style=\"padding:6px; min-height: initial\">Completed: "
+                + data[issue]['dateCompleted']
+                + " By "
+                + data[issue]['completedBy']
+                + "</li>" : "")
+            + "</div><li class=\"mdl-list__item mdl-list__item\" style=\"padding:6px\"><span class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">location_on</i><span>Location</span></span><span class=\"mdl-list__item-secondary-content\"><i id=\"issue-location-button-"
+            + data[issue]['issue_id']
+            + "\" class=\"material-icons mdl-list__item-secondary-action\">close</i></span></li></ul><small id=\"issue-assignedto-text-"
+            + data[issue]['issue_id']
+            + "\" class=\"mdl-card__subtitle-text\">Assigned to: "
+            + data[issue]['assignedTo']
+            + "</small></div><div class=\"mdl-card__menu\"><button id=\"issue-menu-button-"
+            + data[issue]['issue_id']
+            + "\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">more_vert</i></button><ul class=\"mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect\" for=\"issue-menu-button-"
+            + data[issue]['issue_id']
+            + "\"><li <?php if($userInfo['permissionLevel'] < 3){echo "style='display:none'";}?> onclick=\"reassignItem("
+            + data[issue]['issue_id']
+            + ")\" class=\"mdl-menu__item\">Assign / Reassign</li><li <?php if($userInfo['permissionLevel'] < 3){echo "style='display:none'";}?> onclick=\"deleteItem("
+            + data[issue]['issue_id']
+            + ", $(this))\"class=\"mdl-menu__item\">Delete Issue</li></ul></div></div>";
     }
 
     function snack(message, length) {
@@ -489,17 +504,66 @@ $userInfo = packapps_authenticate_user('maintenance');
 
     }
 
-    function issuePhoto(issue, isPhotographed){
+    function issuePhoto(issueID, isPhotographed){
+        if(isPhotographed){
+            var panel = $('#issue-photo-bar-'+issueID);
+            panel.html("<button onclick=deleteImage("
+                + issueID
+                + ") class='mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab'><i class='material-icons'>delete</i></button><a target='_blank' href='API/getImage.php?i="
+                + issueID
+                + "'><img style='max-width:100%' src='API/getImage.php?i="
+                + issueID
+                + "'></a>").off('click').css('cursor', 'initial');
+        } else {
+            clearCardCover(issueID);
+            var cardCover = $("#cardCover-issue-"+issueID);
+            cardCover.html("<input type='file' data-show-remove=\"false\" accept='image/jpeg' class='dropify' id='image-dropper-"
+                + issueID
+                + "'></input><button onclick=refreshIssueCard("
+                + issueID
+                + ") class='mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab'><i class='material-icons'>backspace</i></button>");
+            var dropper = $('#image-dropper-'+issueID).dropify();
+            dropper.on('change', function(changeevent){
+                dropper.addClass("mdl-spinner");
+                dropper.addClass("mdl-js-spinner");
+                var form = new FormData();
+                form.append("picture", ($("#image-dropper-"+issueID))[0].files[0]);
+                form.append("issue", issueID);
+                $.ajax({
+                    url: 'API/uploadImage.php',
+                    type: 'POST',
+                    data: form,
+                    processData: false,
+                    contentType: false,
+                    success: function() {
+                        snack('Image uploaded.', 2500);
+                    }
+                }).fail(function(){
+                    changeevent.preventDefault();
+                });
+            });
+            cardCover.fadeIn();
+            $('.dropify-wrapper').css('width', 'initial');
+        }
+    }
 
+    /*
+     * Hide image and send delete request
+     */
+    function deleteImage(issueID){
+        var go = confirm("Are you sure you want to delete this image?");
+        if(go){
+            $('#issue-photo-bar-'+issueID).replaceWith("<div id='spinner' class='mdl-spinner mdl-js-spinner is-active'></div>");
+            componentHandler.upgradeElement(document.getElementById('spinner'));
+            $.get('API/deleteImage.php', {i: issueID}, function(){
+                refreshIssueCard(issueID);
+            });
+        }
     }
 
     function expandHistory(issueID, button){
         $("#history-panel-"+issueID).slideToggle();
         button.toggleClass('rotate');
-    }
-
-    function editItem(issueID){
-
     }
 
     /*
@@ -511,7 +575,7 @@ $userInfo = packapps_authenticate_user('maintenance');
 
     /*
     * Creates a dropdown screen on the card and populates it with a dropdown dialog of users.
-    * When user is picked, it fires to assignToIssue.php and updates the card.
+    * When user is picked, it fires to setAssignee.php and updates the card.
     * */
     function reassignItem(issueID){
         clearCardCover(issueID);
@@ -535,6 +599,9 @@ $userInfo = packapps_authenticate_user('maintenance');
         cardCover.fadeIn();
     }
 
+    /*
+    * Deletes issue card and removes it from the deck
+    * */
     function deleteItem(issueID, button){
         $.get('API/deleteIssue.php', {issue: issueID}, function(data){
             $('#issue-card-'+issueID).slideUp('slow');
