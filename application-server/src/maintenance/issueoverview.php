@@ -218,6 +218,7 @@ $userInfo = packapps_authenticate_user('maintenance');
             issues = data;
             $("#issue-card-"+issueID).replaceWith(genIssueCard(issues, issueID));
             $("#issue-card-"+issueID).show();
+            componentHandler.upgradeDom();
         });
     }
 
@@ -254,7 +255,7 @@ $userInfo = packapps_authenticate_user('maintenance');
 //            <button id="back-status-button-ISSUEID" onclick="statusDecrease(ISSUEID)" class="mdl-button mdl-js-button mdl-button--icon">
 //            <i class="material-icons">chevron_left</i>
 //            </button>
-//            <span id="status-display-ISSUEID">STATUS</span>
+//            <span style='margin:5px' id="status-display-ISSUEID">STATUS</span>
 //            <button id="forward-status-button-ISSUEID" onclick="statusIncrease(ISSUEID)" class="mdl-button mdl-js-button mdl-button--icon">
 //            <i class="material-icons">chevron_right</i>
 //            </button>
@@ -346,15 +347,19 @@ $userInfo = packapps_authenticate_user('maintenance');
             + data[issue]['issue_id']
             + "' class=\"mdl-card\" style='display: none;position: absolute; top:0px;left:0px;width:100%;height:100%'></div><div class=\"issue-buttons\"><div style=\"color: white; white-space: nowrap\" class=\"chip mdl-color--green-500\">"
             + data[issue]['Purpose']
-            + "</div><div style=\"color: white; white-space: nowrap\" class=\"chip mdl-color--blue-500\"><button id=\"back-status-button-"
+            + "</div><div style=\"color: white; white-space: nowrap\" class=\"chip mdl-color--blue-500\"><button "
+            + (getStatusDesc(data[issue]) == 'New' ? "style='display:none'" : '')
+            + " id=\"back-status-button-"
             + data[issue]['issue_id']
             + "\" onclick=\"statusDecrease("
             + data[issue]['issue_id']
-            + ")\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">chevron_left</i></button><span id=\"status-display-"
+            + ")\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">chevron_left</i></button><span style='margin:5px' id=\"status-display-"
             + data[issue]['issue_id']
             + "\">"
             + getStatusDesc(data[issue])
-            + "</span><button id=\"forward-status-button-"
+            + "</span><button "
+            + (getStatusDesc(data[issue]) == 'Completed' ? "style='display:none'" : '')
+            + " id=\"forward-status-button-"
             + data[issue]['issue_id']
             + "\" onclick=\"statusIncrease("
             + data[issue]['issue_id']
@@ -497,11 +502,28 @@ $userInfo = packapps_authenticate_user('maintenance');
     }
 
     function statusIncrease(issueID){
-
+        if(getStatusDesc(issues[issueID]) == 'In Progress'){
+            var solDesc = prompt("Describe the solution applied:")
+        }
+        $.post('API/statusChange.php', {direction: 1, issue: issueID, solDesc: solDesc}, function(data){
+            refreshIssueCard(issueID);
+        }).fail(function() {
+            snack("Issue already completed.", 4000)
+        });
     }
 
     function statusDecrease(issueID){
-
+        var go = true;
+        if(getStatusDesc(issues[issueID]) == 'Completed'){
+            go = confirm("Are you sure you want to re-open this issue?");
+        }
+        if(go){
+            $.post('API/statusChange.php', {direction: 0, issue: issueID}, function(data){
+                refreshIssueCard(issueID);
+            }).fail(function() {
+                snack("Issue is new.", 4000)
+            });
+        }
     }
 
     function issuePhoto(issueID, isPhotographed){
@@ -521,11 +543,11 @@ $userInfo = packapps_authenticate_user('maintenance');
                 + issueID
                 + "'></input><button onclick=refreshIssueCard("
                 + issueID
-                + ") class='mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab'><i class='material-icons'>backspace</i></button>");
+                + ") class='mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab'><i class='material-icons'><div id='spinner-imageload-"
+                + issueID
+                + "'></div>backspace</i></button>");
             var dropper = $('#image-dropper-'+issueID).dropify();
             dropper.on('change', function(changeevent){
-                dropper.addClass("mdl-spinner");
-                dropper.addClass("mdl-js-spinner");
                 var form = new FormData();
                 form.append("picture", ($("#image-dropper-"+issueID))[0].files[0]);
                 form.append("issue", issueID);
