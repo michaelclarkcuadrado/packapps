@@ -143,6 +143,12 @@ $userInfo = packapps_authenticate_user('maintenance');
     <div class="mdl-snackbar__text"></div>
     <button class="mdl-snackbar__action" type="button"></button>
 </div>
+<!--Spinner overlay-->
+<div class="overlay" style="display:none;z-index:100">
+    <div style="display:flex;justify-content:center;align-items:center;width:100%;height:100%;">
+        <div class="mdl-spinner mdl-js-spinner is-active"></div>
+    </div>
+</div>
 <script src="../scripts-common/material.min.js"></script>
 <script src="../scripts-common/jquery.min.js"></script>
 <script src="../scripts-common/select2.min.js"></script>
@@ -337,18 +343,22 @@ $userInfo = packapps_authenticate_user('maintenance');
 //        </ul>
 //        </div>dd
 //        </div>
+        var statusDesc = getStatusDesc(data[issue]);
         return "<div style=\"display: none\" id=\"issue-card-"
             + data[issue]['issue_id']
-            + "\" class=\"mdl-card issue-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-phone\"><div class=\"mdl-card__title mdl-color--yellow-400\"><h2 class=\"mdl-card__title-text\">#"
+            + "\" class=\"mdl-card issue-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-phone\"><div class=\"mdl-card__title mdl-color--yellow-400\"><h2 class=\"mdl-card__title-text\">"
+            + (statusDesc == 'Completed' ? "<i class='material-icons'>done</i><s> " : "")
+            + "#"
             + data[issue]['issue_id']
             + " - "
             + data[issue]['title']
+            + (statusDesc == 'Completed' ? "</s>" : "")
             + "</h2></div><div class=\"mdl-card__supporting-text\" style=\"position: relative\"><div id='cardCover-issue-"
             + data[issue]['issue_id']
             + "' class=\"mdl-card\" style='display: none;position: absolute; top:0px;left:0px;width:100%;height:100%'></div><div class=\"issue-buttons\"><div style=\"color: white; white-space: nowrap\" class=\"chip mdl-color--green-500\">"
             + data[issue]['Purpose']
             + "</div><div style=\"color: white; white-space: nowrap\" class=\"chip mdl-color--blue-500\"><button "
-            + (getStatusDesc(data[issue]) == 'New' ? "style='display:none'" : '')
+            + (statusDesc == 'New' ? "style='display:none'" : '')
             + " id=\"back-status-button-"
             + data[issue]['issue_id']
             + "\" onclick=\"statusDecrease("
@@ -356,9 +366,9 @@ $userInfo = packapps_authenticate_user('maintenance');
             + ")\" class=\"mdl-button mdl-js-button mdl-button--icon\"><i class=\"material-icons\">chevron_left</i></button><span style='margin:5px' id=\"status-display-"
             + data[issue]['issue_id']
             + "\">"
-            + getStatusDesc(data[issue])
+            + statusDesc
             + "</span><button "
-            + (getStatusDesc(data[issue]) == 'Completed' ? "style='display:none'" : '')
+            + (statusDesc == 'Completed' ? "style='display:none'" : '')
             + " id=\"forward-status-button-"
             + data[issue]['issue_id']
             + "\" onclick=\"statusIncrease("
@@ -548,6 +558,7 @@ $userInfo = packapps_authenticate_user('maintenance');
                 + "'></div>backspace</i></button>");
             var dropper = $('#image-dropper-'+issueID).dropify();
             dropper.on('change', function(changeevent){
+                $('.overlay').show();
                 var form = new FormData();
                 form.append("picture", ($("#image-dropper-"+issueID))[0].files[0]);
                 form.append("issue", issueID);
@@ -558,10 +569,13 @@ $userInfo = packapps_authenticate_user('maintenance');
                     processData: false,
                     contentType: false,
                     success: function() {
+                        $('.overlay').hide();
                         snack('Image uploaded.', 2500);
                     }
                 }).fail(function(){
                     changeevent.preventDefault();
+                    $('.overlay').hide();
+                    snack('Image upload failed.', 2500);
                 });
             });
             cardCover.fadeIn();
@@ -575,10 +589,13 @@ $userInfo = packapps_authenticate_user('maintenance');
     function deleteImage(issueID){
         var go = confirm("Are you sure you want to delete this image?");
         if(go){
-            $('#issue-photo-bar-'+issueID).replaceWith("<div id='spinner' class='mdl-spinner mdl-js-spinner is-active'></div>");
-            componentHandler.upgradeElement(document.getElementById('spinner'));
+            $('.overlay').show();
             $.get('API/deleteImage.php', {i: issueID}, function(){
                 refreshIssueCard(issueID);
+                $('.overlay').hide();
+            }).fail(function(){
+                $('.overlay').hide();
+                snack("Server communication failed.", 2500);
             });
         }
     }
@@ -625,12 +642,14 @@ $userInfo = packapps_authenticate_user('maintenance');
     * Deletes issue card and removes it from the deck
     * */
     function deleteItem(issueID, button){
-        $.get('API/deleteIssue.php', {issue: issueID}, function(data){
-            $('#issue-card-'+issueID).slideUp('slow');
-            snack('Issue deleted.', 5000);
-        }).fail(function(){
-            snack('Insufficient permissions.', 6000);
-        });
+        if(confirm("Are you sure you want to permanently delete this issue?")){
+            $.get('API/deleteIssue.php', {issue: issueID}, function(data){
+                $('#issue-card-'+issueID).slideUp('slow');
+                snack('Issue deleted.', 5000);
+            }).fail(function(){
+                snack('Insufficient permissions.', 6000);
+            });
+        }
     }
 </script>
 </body>
