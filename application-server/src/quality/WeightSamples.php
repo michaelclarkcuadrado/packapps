@@ -48,7 +48,7 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
         echo "<h1><mark>&#x2713; Data for RT#" . $_GET['ins'] . " received.</mark></h1>";
     } ?>
 
-    <h2>Rice Fruit Company Quality Assurance Lab</h2>
+    <h2><?echo $companyName?> Quality Assurance Lab</h2>
     <form action="weightsubmit.php" method="post" enctype="multipart/form-data">
         <div class="col-2">
             <label>

@@ -15,7 +15,7 @@ $queryText = "SELECT maintenance_issues.issue_id, upper(Purpose) as Purpose, tit
                       isConfirmed, confirmedByUser.`Real Name` AS confirmedBy, DATE_FORMAT(dateConfirmed,'%c/%e/%Y %H:%i%p') as dateConfirmed, isInProgress, inProgressUser.`Real Name` as inProgressBy,
                        DATE_FORMAT(DateInProgress, '%c/%e/%Y %H:%i%p') as DateInProgress, isCompleted, completedByUser.`Real Name` As completedBy, DATE_FORMAT(dateCompleted,'%c/%e/%Y %H:%i%p') as dateCompleted, 
                             solution_description, IFNULL(assignedToUser.`Real Name`, 'Unassigned') as assignedTo, Location, hasPhotoAttached, needsParts, 
-                            purchasing_Items.Item_ID as NeededItemID, purchasing_Items.ItemDesc as NeededItemDesc
+                            purchasing_Items.Item_ID as NeededItemID, purchasing_Items.ItemDesc as NeededItemDesc, maintenance_issues2purchasing_items.numberNeeded as NeededItemQty
                             FROM maintenance_issues 
                               LEFT JOIN maintenance_purposes 
                                 ON maintenance_issues.purpose_id = maintenance_purposes.purpose_id 
@@ -143,15 +143,15 @@ $issuesReturned = mysqli_query($mysqli, $queryText);
 $issueArray = array();
 while($issue = mysqli_fetch_assoc($issuesReturned)){
     if(array_key_exists($issue['issue_id'], $issueArray)){
-        $issueArray[$issue['issue_id']]['partsNeeded'][$issue['NeededItemID']] = $issue['NeededItemDesc'];
+        $issueArray[$issue['issue_id']]['partsNeeded'][$issue['NeededItemID']] = array('NeededItemDesc' => $issue['NeededItemDesc'], 'NeededItemQty' => $issue['NeededItemQty']);
     } else {
         if($issue['assignedTo'] == null){
             $issue['assignedTo'] = 'Unassigned';
         }
         if($issue['needsParts'] > 0){
-            $issue['partsNeeded'] = array($issue['NeededItemID'] => $issue['NeededItemDesc']);
+            $issue['partsNeeded'] = array($issue['NeededItemID'] => array('NeededItemDesc' => $issue['NeededItemDesc'], 'NeededItemQty' => $issue['NeededItemQty']));
         }
-        unset($issue['NeededItemID'], $issue['NeededItemDesc']);
+        unset($issue['NeededItemID'], $issue['NeededItemDesc'], $issue['NeededItemQty']);
         $issueArray[$issue['issue_id']] = $issue;
     }
 }

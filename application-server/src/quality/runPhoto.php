@@ -48,7 +48,7 @@ $runsAvailable = mysqli_query($mysqli, "SELECT Line, RunNumber, `production_runs
     <? if (isset($_GET['success'])) {
         echo "<h1><mark>&#x2713; Photo archived.</mark></h1>";
     } ?>
-    <h2>Rice Fruit Company Quality Assurance Lab</h2>
+    <h2><?echo $companyName?> Quality Assurance Lab</h2>
     <form action="runPhotoSubmit.php" method="post" enctype="multipart/form-data">
         <div class="col-4">
             <label>

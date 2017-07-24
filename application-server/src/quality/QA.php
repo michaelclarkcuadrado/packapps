@@ -208,18 +208,6 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
             </div>
         </article>
 
-        <!-- About Screen -->
-        <article id="about" class="panel">
-            <header>
-                <h2>About</h2>
-                <p>"Quality" system</p>
-            </header>
-            <hr>
-            <p>This system was designed and built by Michael Clark-Cuadrado, in the spring and summer of 2015 for use by
-                the QA department of the Rice Fruit company.</p>
-            <p>A thousand bugfixes and improvements, and integration into packapps in summer 2016.</p>
-        </article>
-
         <!-- Run info -->
         <article id="runQA" class="panel">
             <header>
@@ -300,8 +288,6 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
         </article>
 
     </div>
-    <div id="footer"><a style='font-size: x-small;text-decoration: none' href="#about">Quality.Lab</a></div>
-
     <script>
         $(document).ready(function () {
             //keep selected RT in focus

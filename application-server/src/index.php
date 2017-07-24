@@ -180,6 +180,7 @@ if (isset($_COOKIE['auth']) && isset($_COOKIE['username'])) { //do redirect
         } else {
             $("#errorBox").html("Packhouse Login");
         }
+        $('#username').focus();
     }
 </script>
 <div id="about" style="text-align: right; position: fixed; right: 4px; bottom:0;color: white; font-size: smaller;">PackApps is powered by the <a style="color:white" target="_blank" href="https://packercloud.com">PackerCloud</a> Platform<br>Copyright 2015-<?echo date('Y')?>, PackerCloud LLC.</div></body>

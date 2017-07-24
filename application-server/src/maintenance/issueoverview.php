@@ -62,6 +62,55 @@ $userInfo = packapps_authenticate_user('maintenance');
     </div>
     <main class="mdl-layout__content mdl-color--grey-400">
         <div id="insertIssuesHere" class="widthfixer mdl-grid demo-cards">
+            <!--            New Issue Card-->
+            <div id='createNewIssueCard' class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                <div style="" class="mdl-card__title mdl-color--yellow-400">
+                    <h2 class="mdl-card__title-text"><i class="material-icons">add</i>New Maintenance Issue</h2>
+                </div>
+                <div class="mdl-grid mdl-card__supporting-text">
+                    <div class="mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone" style="text-align: center">
+                        <table class="table-only-border">
+                            <form id='createissueform'>
+                                <tr>
+                                    <td class="td-only-border" style="text-align:center">
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            <input class="mdl-textfield__input" required type="text" id="newtitleinput">
+                                            <label class="mdl-textfield__label" for="sample3">Title</label>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td id="categoryradioshere" class="td-only-border" style="text-align:center">
+                                        <!--Insert category radios here-->
+
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="td-only-border" style="text-align:center">
+                                        <div class="mdl-textfield mdl-js-textfield">
+                                            <textarea class="mdl-textfield__input" maxlength="1023" required type="text" rows= "3" id="newdescriptioninput" ></textarea>
+                                            <label class="mdl-textfield__label" for="newdescriptioninput">Issue Description</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="td-only-border" style="text-align:center">
+                                        Parts needed selector
+                                    </td>
+                                </tr>
+                            </form>
+                        </table>
+                    </div>
+                </div>
+                <div class="mdl-card__menu">
+                    <button id="closeNewIssueCardButton" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                        <i class="material-icons">close</i>
+                    </button>
+                </div>
+            </div>
+            <!--            Filter Card-->
             <div style="display:none" id='issueFilterbox'
                  class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
                 <div style="" class="mdl-card__title mdl-color--yellow-400">
@@ -138,6 +187,10 @@ $userInfo = packapps_authenticate_user('maintenance');
             </div>
         </div>
     </main>
+    <button id="addButton" style="position: fixed; right: 24px; bottom: 24px; padding-top: 24px; margin-bottom: 0; z-index: 90;"
+            class="mdl-button mdl-shadow--8dp mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--yellow-400">
+        <i class="material-icons">add</i>
+    </button>
 </div>
 <div id='snackbar' style='z-index: 100' class="mdl-js-snackbar mdl-snackbar">
     <div class="mdl-snackbar__text"></div>
@@ -158,6 +211,7 @@ $userInfo = packapps_authenticate_user('maintenance');
     var issues = {};
     $(document).ready(function () {
         $('#issueFilterbox').hide();
+        $('#createNewIssueCard').hide();
         //init page with issues
         updateIssues(createJsonFromFilter());
 
@@ -173,7 +227,7 @@ $userInfo = packapps_authenticate_user('maintenance');
                 if(data.hasOwnProperty(index)){
                     htmlStringToInject += "<label class=\"mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect\" style=\"width: initial; margin-right: 15px\" for=\"checkbox-purpose-"
                         + data[index]
-                        + "\"><input type=\"checkbox\" value='"
+                        + "\"><input required type=\"checkbox\" value='"
                         + index
                         + "' name=\"purpose-checkbox\" id=\"checkbox-purpose-"
                         + data[index]
@@ -183,13 +237,30 @@ $userInfo = packapps_authenticate_user('maintenance');
                 }
             }
             $("#purposeCheckboxesInsertHere").html(htmlStringToInject);
-            componentHandler.upgradeDom();
             //automatically change issues displayed on any filter change
             $('.issue_filter_input').on('change', function(){
                 updateIssues(createJsonFromFilter());
             });
+            //add radios to new issue card
+            var htmlCategoryRadios = "";
+            for(var index in data){
+                if(data.hasOwnProperty(index)){
+                    htmlCategoryRadios += "<label style='margin-right: 10px' class=\"mdl-radio mdl-js-radio mdl-js-ripple-effect\" for=\""
+                        + data[index]
+                        + "_radio\"><input type=\"radio\" id=\""
+                        + data[index]
+                        + "_radio\" class=\"mdl-radio__button\" name=\"categories\" value=\""
+                        + index
+                        + "\"><span class=\"mdl-radio__label\">"
+                        + data[index]
+                        + "</span></label>";
+                }
+            }
+            $("#categoryradioshere").html(htmlCategoryRadios);
+            componentHandler.upgradeDom();
         }).fail(function() {
             $('#openFilterBoxButton').hide();
+            $('#addbutton').hide();
         });
 
         //Start Listeners
@@ -205,6 +276,19 @@ $userInfo = packapps_authenticate_user('maintenance');
         $('#closeFilterBoxButton').on("click", function() {
             $('#issueFilterbox').slideUp();
             $('#openFilterBoxButton').show();
+        });
+
+        //show creation card
+        $("#addButton").on("click", function() {
+            $('main').animate({scrollTop: 0}, 'fast', 'swing');
+            $("#createNewIssueCard").slideDown();
+            $(this).fadeOut();
+        });
+
+        //close creation card
+        $("#closeNewIssueCardButton").on("click", function() {
+            $("#createNewIssueCard").slideUp();
+            $('#addButton').fadeIn();
         });
 
         //automatically focus user box if hitting assigned to checkbox
@@ -274,7 +358,7 @@ $userInfo = packapps_authenticate_user('maintenance');
 //            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="partsneeded-button-ISSUEID">
 //            <li class="mdl-menu__item" disabled><u>Add To Cart</u></li>
 //        <li class="mdl-menu__item" onclick="addAllItemstoCart(ISSUEID)">Add All Items</li>
-//        <li class="mdl-menu__item" onclick="addItemToCart(ITEMID)">ITEM DESC</li>
+//        <li class="mdl-menu__item" onclick="addItemToCart(ITEMID)">ITEM DESC : NUM_NEEDED</li>
 //        </ul>
 //        </div>
 //        </div>
@@ -459,7 +543,7 @@ $userInfo = packapps_authenticate_user('maintenance');
         var indexes = Object.keys(parts);
         var partsString = "";
         for(var itemID in indexes){
-            partsString += "<li class=\"mdl-menu__item\" onclick=\"addItemToCart("+ itemID + ")\">" + parts[indexes[itemID]] + "</li>";
+            partsString += "<li class=\"mdl-menu__item\" onclick=\"addItemToCart("+ indexes[itemID] + ")\">" + parts[indexes[itemID]]['NeededItemDesc'] + ": "+ parts[indexes[itemID]]['NeededItemQty'] +"</li>";
         }
         return partsString;
     }
@@ -507,13 +591,35 @@ $userInfo = packapps_authenticate_user('maintenance');
 
     }
 
-    function addItemToCart(issueID){
-
+    function addItemToCart(itemID){
+        //get cheapest supplier for item, and itemName
+        var items = [];
+        items.push(itemID);
+        items = JSON.stringify(items);
+        $.get('API/getItemSupplierInfo.php', {itemID: items}, function(data) {
+            data = data[itemID];
+            if (sessionStorage.getItem(data.suppID) === null) {
+                var obj = {};
+                obj['suppName'] = data.suppName;
+                obj['items'] = {};
+                obj['items'][itemID] = data.itemName;
+                sessionStorage.setItem(data.suppID, JSON.stringify(obj));
+            } else {
+                var existingObj = JSON.parse(sessionStorage.getItem(data.suppID));
+                if (!existingObj['items'].hasOwnProperty(itemID)) {
+                    existingObj['items'][itemID] = data.itemName;
+                }
+                sessionStorage.setItem(data.suppID, JSON.stringify(existingObj));
+            }
+        })
     }
 
     function statusIncrease(issueID){
         if(getStatusDesc(issues[issueID]) == 'In Progress'){
-            var solDesc = prompt("Describe the solution applied:")
+            var solDesc = prompt("Describe the solution applied:");
+            if(solDesc === null){
+                return;
+            }
         }
         $.post('API/statusChange.php', {direction: 1, issue: issueID, solDesc: solDesc}, function(data){
             refreshIssueCard(issueID);

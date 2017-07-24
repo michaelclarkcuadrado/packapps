@@ -155,7 +155,7 @@ $pendingstarchdata=mysqli_query($mysqli2, "select Preharvest_Samples.Grower as G
         <article id="starch" class="panel">
             <header>
                 <h2>Starch Results Phase</h2>
-                <p>Rice Fruit Company Quality Assurance Lab</p>
+                <p><?echo $companyName?> Quality Assurance Lab</p>
             </header>
             <iframe style='border: solid black 1px' src="mobilestarch.php" height="570" width="500"></iframe>
         </article>

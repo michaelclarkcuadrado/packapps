@@ -107,6 +107,9 @@ RENAME TABLE InspectedRTs TO quality_InspectedRTs;
 RENAME TABLE run_inspections TO quality_run_inspections;
 ALTER TABLE `quality_run_inspections` ADD CONSTRAINT `run_inspections_2_runs` FOREIGN KEY (`RunID`) REFERENCES `production_runs`(`RunID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
+DELETE FROM quality_AggregateWeightSamples WHERE `RT#` NOT IN (SELECT RTNum FROM quality_InspectedRTs);
+ALTER TABLE `quality_AggregateWeightSamples` ADD CONSTRAINT `aggregateweight2inspectedrts` FOREIGN KEY (`RT#`) REFERENCES `quality_InspectedRTs`(`RTNum`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 /* Remove unused quality column */
 ALTER TABLE `quality_UserData` DROP `DateCreated`;
 

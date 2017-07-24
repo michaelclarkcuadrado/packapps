@@ -48,7 +48,7 @@ $detect=new Mobile_Detect();
         echo "<h1><mark>&#x2713; Data for RT#" . $_GET['ins'] . " received.</mark><br><a href='WeightSamples.php?autofill=". $_GET['ins'] ."'><button>Weigh this RT</button></a></h1>";
     } ?>
 
-    <h2>Rice Fruit Company Quality Assurance Lab</h2>
+    <h2><?echo $companyName?> Quality Assurance Lab</h2>
     <form action="Inspectorsubmit.php" method="post" enctype="multipart/form-data">
         <div class="col-2">
             <label>
