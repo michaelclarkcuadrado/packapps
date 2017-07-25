@@ -68,6 +68,7 @@ if ($RealName['Role'] != 'Production') {
                         <table class="mdl-data-table mdl-js-data-table mdl-shadow--4dp">
                             <thead>
                             <tr>
+                                <th class="mdl-data-table__cell--non-numeric"></th>
                                 <th class="mdl-data-table__cell--non-numeric">NOT</th>
                                 <th class="mdl-data-table__cell--non-numeric">Grower</th>
                                 <th class="mdl-data-table__cell--non-numeric">Variety</th>
@@ -80,6 +81,16 @@ if ($RealName['Role'] != 'Production') {
                             </thead>
                             <tbody id="dumpedTbody">
                             <tr id="dumpedRow1">
+                                <td id="tdreorder1">
+                                    <div>
+                                        <button onclick='moveDumpedUp(1)' type='button' class='mdl-button mdl-js-button mdl-button--icon'>
+                                            <i class="material-icons">keyboard_arrow_up</i>
+                                        </button><br>
+                                        <button onclick='moveDumpedDown(1)' type='button' class='mdl-button mdl-js-button mdl-button--icon'>
+                                            <i class='material-icons'>keyboard_arrow_down</i>
+                                        </button>
+                                    </div>
+                                </td>
                                 <td id="tdNot1">
                                     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="Not1">
                                         <input
@@ -180,6 +191,7 @@ if ($RealName['Role'] != 'Production') {
                         <table class="mdl-data-table mdl-js-data-table mdl-shadow--4dp">
                             <thead>
                             <tr>
+                                <th class="mdl-data-table__cell--non-numeric"></th>
                                 <th class="mdl-data-table__cell--non-numeric">Product</th>
                                 <th class="mdl-data-table__cell--non-numeric">Pack Size</th>
                                 <th class="mdl-data-table__cell--non-numeric">Amount</th>
@@ -188,6 +200,16 @@ if ($RealName['Role'] != 'Production') {
                             </thead>
                             <tbody id="madeTbody">
                             <tr id="madeRow1">
+                                <td id='tdmadereorder" + rowNum + "'>
+                                    <div>
+                                        <button onclick='moveMadeUp(1)' type='button' class='mdl-button mdl-js-button mdl-button--icon'>
+                                            <i class='material-icons'>keyboard_arrow_up</i>
+                                        </button><br>
+                                        <button onclick='moveMadeDown(1)' type='button' class='mdl-button mdl-js-button mdl-button--icon'>
+                                            <i class='material-icons'>keyboard_arrow_down</i>
+                                        </button>
+                                    </div>
+                                </td>
                                 <td class="mdl-data-table__cell--non-numeric">
                                     <div style='width:10em'
                                          class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -247,7 +269,7 @@ if ($RealName['Role'] != 'Production') {
             </tr>
         </table>
         <div class="mdl-dialog__actions">
-            <button class="mdl-button mdl-button--raised">Add To Schedule</button>
+            <button class="mdl-button mdl-button--raised">Apply To Schedule</button>
             <button type="button" class="mdl-button mdl-button--raised close" onclick="window.close()">Cancel</button>
         </div>
 </form>
@@ -281,7 +303,6 @@ if ($RealName['Role'] != 'Production') {
                     }
                     if (data[4][i - 1][7] == 1) {
                         $("#Not" + i).attr('checked', true).parent().addClass('is-checked').parent().css('background-color', 'rgb(255, 153, 144)');
-
                     }
                     $("#growerCode" + i).val(data[4][i - 1][0]).parent().addClass('is-dirty');
                     $("#Variety" + i).val(data[4][i - 1][1]).parent().addClass('is-dirty');
@@ -309,7 +330,7 @@ if ($RealName['Role'] != 'Production') {
 
     function addDumpedRow() {
         amountDumpedRows++;
-        $("<tr id=\"dumpedRow" + amountDumpedRows + "\"><td id=\"tdNot" + amountDumpedRows + "\"><label class=\"mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect\" for=\"Not" + amountDumpedRows + "\"><input onClick=\"(this.checked ? $('#tdNot" + amountDumpedRows + "').css('background-color', '#FF9990') : $('#tdNot" + amountDumpedRows + "').css('background-color', '#FFFFFF'))\" type=\"checkbox\" value=\"1\" name=\"Not" + amountDumpedRows + "\" id=\"Not" + amountDumpedRows + "\" class=\"mdl-checkbox__input\"></label></td><td class=\"mdl-data-table__cell--non-numeric\"><div style='width:7.5em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input size='2' maxlength=\"2\" class=\"mdl-textfield__input\" type=\"text\" name=\"growerCode" + amountDumpedRows + "\" id=\"growerCode" + amountDumpedRows + "\"><label class=\"mdl-textfield__label\" for=\"growerCode" + amountDumpedRows + "\">Grower</label></div></td><td class=\"mdl-data-table__cell--non-numeric\"><div style='width:6.5em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input size='10' maxlength=\"255\" class=\"mdl-textfield__input\" type=\"text\" name=\"Variety" + amountDumpedRows + "\" id=\"Variety" + amountDumpedRows + "\"><label class=\"mdl-textfield__label\" for=\"Variety" + amountDumpedRows + "\">Variety</label></div></td><td class=\"mdl-data-table__cell--non-numeric\"><div style='width:4.5em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input size='10' maxlength=\"255\" class=\"mdl-textfield__input\" type=\"text\" name=\"Quality" + amountDumpedRows + "\" id=\"Quality" + amountDumpedRows + "\"><label class=\"mdl-textfield__label\" for=\"Quality" + amountDumpedRows + "\">Grade</label></div></td><td class=\"mdl-data-table__cell--non-numeric\"><div style='width:4.5em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input size='10' maxlength=\"255\" class=\"mdl-textfield__input\" type=\"text\" name=\"Size" + amountDumpedRows + "\" id=\"Size" + amountDumpedRows + "\"><label class=\"mdl-textfield__label\" for=\"Size" + amountDumpedRows + "\">Size</label></div></td><td class=\"mdl-data-table__cell--non-numeric\"><div style='width:3.5em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input size='10' maxlength=\"255\" class=\"mdl-textfield__input\" type=\"text\" name=\"Lot" + amountDumpedRows + "\" id=\"Lot" + amountDumpedRows + "\"><label class=\"mdl-textfield__label\" for=\"Lot" + amountDumpedRows + "\">Lot</label></div></td><td class=\"mdl-data-table__cell--non-numeric\"><div style='width:7em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input size='10' maxlength=\"255\" class=\"mdl-textfield__input\" type=\"text\" name=\"Location" + amountDumpedRows + "\" id=\"Location" + amountDumpedRows + "\"><label class=\"mdl-textfield__label\" for=\"Location" + amountDumpedRows + "\">Location</label></div></td><td><div style='width :5em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input class=\"mdl-textfield__input\" type=\"text\" pattern=\"-?[0-9]*(\\.[0-9]+)?\" name=\"Amount" + amountDumpedRows + "\" id=\"Amount" + amountDumpedRows + "\"><label class=\"mdl-textfield__label\" for=\"Amount" + amountDumpedRows + "\">Amount</label><span class=\"mdl-textfield__error\">Numbers, please.</span></div></td></tr>").appendTo("#dumpedTbody");
+        $(getDumpedRowHTML(amountDumpedRows)).appendTo("#dumpedTbody");
         componentHandler.upgradeDom();
     }
 
@@ -322,7 +343,7 @@ if ($RealName['Role'] != 'Production') {
 
     function addMadeRow() {
         amountMadeRows++;
-        $("<tr id=\"madeRow" + amountMadeRows + "\"><td class=\"mdl-data-table__cell--non-numeric\"><div style='width:10em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input class=\"mdl-textfield__input\" type=\"text\" name=\"productMade" + amountMadeRows + "\" id=\"productMade" + amountMadeRows + "\"><label class=\"mdl-textfield__label\" for=\"productMade" + amountMadeRows + "\">Product</label></div></td>    <td class=\"mdl-data-table__cell\"> <div style='width:5em'class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"> <input autocomplete=\"off\" size='10' maxlength=\"255\"class=\"mdl-textfield__input\" type=\"text\" name=\"packSize" + amountMadeRows + "\"id=\"packSize" + amountMadeRows + "\"> <label class=\"mdl-textfield__label\" for=\"packSize" + amountMadeRows + "\">Pack Size</label> </div></td> <td class=\"mdl-data-table__cell\"><div style='width:5em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input size='10' maxlength=\"255\" class=\"mdl-textfield__input\" type=\"text\" pattern=\"-?[0-9]*(\\.[0-9]+)?\" name=\"madeAmount" + amountMadeRows + "\" id=\"madeAmount" + amountMadeRows + "\"><label class=\"mdl-textfield__label\" for=\"madeAmount" + amountMadeRows + "\">Amount</label><span class=\"mdl-textfield__error\">Numbers, please.</span></div></td><td><label class=\"mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect\" for=\"amountType" + amountMadeRows + "\"><input type=\"checkbox\" value='1' name=\"amountType" + amountMadeRows + "\" id=\"amountType" + amountMadeRows + "\" class=\"mdl-checkbox__input\"></label></td></tr>").appendTo("#madeTbody");
+        $(getMadeRowHTML(amountMadeRows)).appendTo("#madeTbody");
         componentHandler.upgradeDom();
     }
 
@@ -330,6 +351,108 @@ if ($RealName['Role'] != 'Production') {
         if (amountMadeRows > 1) {
             $("#madeRow" + amountMadeRows).remove();
             amountMadeRows--;
+        }
+    }
+
+    function getDumpedRowHTML(rowNum){
+        return "<tr id=\"dumpedRow" + rowNum + "\"><td id='tdreorder" + rowNum + "'><div><button onclick='moveDumpedUp(" + rowNum + ")' type='button' class='mdl-button mdl-js-button mdl-button--icon'><i class='material-icons'>keyboard_arrow_up</i></button><br><button onclick='moveDumpedDown(" + rowNum + ")' type='button' class='mdl-button mdl-js-button mdl-button--icon'><i class='material-icons'>keyboard_arrow_down</i></button></div></td><td id=\"tdNot" + rowNum + "\"><label class=\"mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect\" for=\"Not" + rowNum + "\"><input onClick=\"(this.checked ? $('#tdNot" + rowNum + "').css('background-color', '#FF9990') : $('#tdNot" + rowNum + "').css('background-color', '#FFFFFF'))\" type=\"checkbox\" value=\"1\" name=\"Not" + rowNum + "\" id=\"Not" + rowNum + "\" class=\"mdl-checkbox__input\"></label></td><td class=\"mdl-data-table__cell--non-numeric\"><div style='width:7.5em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input size='2' maxlength=\"2\" class=\"mdl-textfield__input\" type=\"text\" name=\"growerCode" + rowNum + "\" id=\"growerCode" + rowNum + "\"><label class=\"mdl-textfield__label\" for=\"growerCode" + rowNum + "\">Grower</label></div></td><td class=\"mdl-data-table__cell--non-numeric\"><div style='width:6.5em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input size='10' maxlength=\"255\" class=\"mdl-textfield__input\" type=\"text\" name=\"Variety" + rowNum + "\" id=\"Variety" + rowNum + "\"><label class=\"mdl-textfield__label\" for=\"Variety" + rowNum + "\">Variety</label></div></td><td class=\"mdl-data-table__cell--non-numeric\"><div style='width:4.5em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input size='10' maxlength=\"255\" class=\"mdl-textfield__input\" type=\"text\" name=\"Quality" + rowNum + "\" id=\"Quality" + rowNum + "\"><label class=\"mdl-textfield__label\" for=\"Quality" + rowNum + "\">Grade</label></div></td><td class=\"mdl-data-table__cell--non-numeric\"><div style='width:4.5em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input size='10' maxlength=\"255\" class=\"mdl-textfield__input\" type=\"text\" name=\"Size" + rowNum + "\" id=\"Size" + rowNum + "\"><label class=\"mdl-textfield__label\" for=\"Size" + rowNum + "\">Size</label></div></td><td class=\"mdl-data-table__cell--non-numeric\"><div style='width:3.5em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input size='10' maxlength=\"255\" class=\"mdl-textfield__input\" type=\"text\" name=\"Lot" + rowNum + "\" id=\"Lot" + rowNum + "\"><label class=\"mdl-textfield__label\" for=\"Lot" + rowNum + "\">Lot</label></div></td><td class=\"mdl-data-table__cell--non-numeric\"><div style='width:7em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input size='10' maxlength=\"255\" class=\"mdl-textfield__input\" type=\"text\" name=\"Location" + rowNum + "\" id=\"Location" + rowNum + "\"><label class=\"mdl-textfield__label\" for=\"Location" + rowNum + "\">Location</label></div></td><td><div style='width :5em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input class=\"mdl-textfield__input\" type=\"text\" pattern=\"-?[0-9]*(\\.[0-9]+)?\" name=\"Amount" + rowNum + "\" id=\"Amount" + rowNum + "\"><label class=\"mdl-textfield__label\" for=\"Amount" + rowNum + "\">Amount</label><span class=\"mdl-textfield__error\">Numbers, please.</span></div></td></tr>";
+    }
+
+    function getMadeRowHTML(rowNum){
+        return "<tr id=\"madeRow" + rowNum + "\"><td id='tdmadereorder" + rowNum + "'><div><button onclick='moveMadeUp(" + rowNum + ")' type='button' class='mdl-button mdl-js-button mdl-button--icon'><i class='material-icons'>keyboard_arrow_up</i></button><br><button onclick='moveMadeDown(" + rowNum + ")' type='button' class='mdl-button mdl-js-button mdl-button--icon'><i class='material-icons'>keyboard_arrow_down</i></button></div></td><td class=\"mdl-data-table__cell--non-numeric\"><div style='width:10em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input class=\"mdl-textfield__input\" type=\"text\" name=\"productMade" + rowNum + "\" id=\"productMade" + rowNum + "\"><label class=\"mdl-textfield__label\" for=\"productMade" + rowNum + "\">Product</label></div></td>    <td class=\"mdl-data-table__cell\"> <div style='width:5em'class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"> <input autocomplete=\"off\" size='10' maxlength=\"255\"class=\"mdl-textfield__input\" type=\"text\" name=\"packSize" + rowNum + "\"id=\"packSize" + rowNum + "\"> <label class=\"mdl-textfield__label\" for=\"packSize" + rowNum + "\">Pack Size</label> </div></td> <td class=\"mdl-data-table__cell\"><div style='width:5em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input size='10' maxlength=\"255\" class=\"mdl-textfield__input\" type=\"text\" pattern=\"-?[0-9]*(\\.[0-9]+)?\" name=\"madeAmount" + rowNum + "\" id=\"madeAmount" + rowNum + "\"><label class=\"mdl-textfield__label\" for=\"madeAmount" + rowNum + "\">Amount</label><span class=\"mdl-textfield__error\">Numbers, please.</span></div></td><td><label class=\"mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect\" for=\"amountType" + rowNum + "\"><input type=\"checkbox\" value='1' name=\"amountType" + rowNum + "\" id=\"amountType" + rowNum + "\" class=\"mdl-checkbox__input\"></label></td></tr>";
+    }
+
+    /* Moves a dumped row up on the form, decreasing its ID */
+    function moveDumpedUp(rowNum){
+        if(rowNum != 1){
+            //get vals
+            var rowOnTop = {};
+            rowOnTop.Not = $("#Not" + (rowNum -1)).is(':checked');
+            rowOnTop.growerCode = $("#growerCode" + (rowNum -1)).val();
+            rowOnTop.Variety = $("#Variety" + (rowNum -1)).val();
+            rowOnTop.Quality = $("#Quality" + (rowNum -1)).val();
+            rowOnTop.Size = $("#Size" + (rowNum -1)).val();
+            rowOnTop.Lot = $("#Lot" + (rowNum -1)).val();
+            rowOnTop.Location = $("#Location" + (rowNum -1)).val();
+            rowOnTop.Amount = $("#Amount" + (rowNum -1)).val();
+
+            var rowOnBottom ={};
+            rowOnBottom.Not = $("#Not" + rowNum).is(':checked');
+            rowOnBottom.growerCode = $("#growerCode" + rowNum).val();
+            rowOnBottom.Variety = $("#Variety" + rowNum).val();
+            rowOnBottom.Quality = $("#Quality" + rowNum).val();
+            rowOnBottom.Size = $("#Size" + rowNum).val();
+            rowOnBottom.Lot = $("#Lot" + rowNum).val();
+            rowOnBottom.Location = $("#Location" + rowNum).val();
+            rowOnBottom.Amount = $("#Amount" + rowNum).val();
+
+            //push vals into rows
+            var replacerObj = rowOnBottom;
+            var rowToReplace = rowNum - 1;
+            for(var i = 0; i < 2; i++){
+                if (replacerObj.Not) {
+                    $("#Not" + rowToReplace).attr('checked', true).parent().addClass('is-checked').parent().css('background-color', 'rgb(255, 153, 144)');
+                } else {
+                    $("#Not" + rowToReplace).attr('checked', false).parent().removeClass('is-checked').parent().css('background-color', 'initial');
+                }
+                $("#growerCode" + rowToReplace).val(replacerObj.growerCode).parent().addClass('is-dirty');
+                $("#Variety" + rowToReplace).val(replacerObj.Variety).parent().addClass('is-dirty');
+                $("#Quality" + rowToReplace).val(replacerObj.Quality).parent().addClass('is-dirty');
+                $("#Size" + rowToReplace).val(replacerObj.Size).parent().addClass('is-dirty');
+                $("#Lot" + rowToReplace).val(replacerObj.Lot).parent().addClass('is-dirty');
+                $("#Location" + rowToReplace).val(replacerObj.Location).parent().addClass('is-dirty');
+                $("#Amount" + rowToReplace).val(replacerObj.Amount).parent().addClass('is-dirty');
+                replacerObj = rowOnTop;
+                rowToReplace = rowNum;
+            }
+        }
+    }
+
+    function moveDumpedDown(rowNum){
+        if(rowNum != amountDumpedRows){
+            moveDumpedUp(rowNum + 1);
+        }
+    }
+
+    /* Moves a Made row up on the form, decreasing its ID */
+    function moveMadeUp(rowNum){
+        console.log('test');
+        if(rowNum != 1){
+            //get vals
+            var rowOnTop = {};
+            rowOnTop.productMade = $("#productMade" + (rowNum -1)).val();
+            rowOnTop.packSize = $("#packSize" + (rowNum -1)).val();
+            rowOnTop.madeAmount = $("#madeAmount" + (rowNum -1)).val();
+            rowOnTop.amountType = $("#amountType" + (rowNum -1)).is(':checked');
+
+            //get vals
+            var rowOnBottom = {};
+            rowOnBottom.productMade = $("#productMade" + rowNum).val();
+            rowOnBottom.packSize = $("#packSize" + rowNum).val();
+            rowOnBottom.madeAmount = $("#madeAmount" + rowNum).val();
+            rowOnBottom.amountType = $("#amountType" + rowNum).is(':checked');
+
+            //push vals into rows
+            var replacerObj = rowOnBottom;
+            var rowToReplace = rowNum - 1;
+            for(var i = 0; i < 2; i++){
+                if (replacerObj.amountType) {
+                   $("#amountType" + rowToReplace).attr('checked', true).parent().addClass('is-checked');
+                } else {
+                    $("#amountType" + rowToReplace).attr('checked', false).parent().removeClass('is-checked');
+                }
+                $("#productMade" + rowToReplace).val(replacerObj.productMade).parent().addClass('is-dirty');
+                $("#packSize" + rowToReplace).val(replacerObj.packSize).parent().addClass('is-dirty');
+                $("#madeAmount" + rowToReplace).val(replacerObj.madeAmount).parent().addClass('is-dirty');
+                replacerObj = rowOnTop;
+                rowToReplace = rowNum;
+            }
+        }
+    }
+
+    function moveMadeDown(rowNum){
+        if(rowNum != amountMadeRows){
+            moveMadeUp(rowNum + 1);
         }
     }
 
