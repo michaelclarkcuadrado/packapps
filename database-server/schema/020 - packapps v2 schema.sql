@@ -164,6 +164,14 @@ ALTER TABLE `quality_UserData` DROP `DateCreated`;
 
 /* END MIGRATE OLD QUALITY TABLES */
 
+/* REMOVE BOM TABLES*/
+
+DROP TABLE purchasing_EnvioAddon_EnvioAssets2purchasingItems;
+DROP TABLE purchasing_EnvioAddon_envioAssets;
+DROP TABLE purchasing_EnvioAddon_ItemInventoryFractions;
+
+/* END REMOVE BOM TABLES */
+
 /* MAINTENANCE PACKAPP TABLES */
 
 /* Add integration into purchasing */
