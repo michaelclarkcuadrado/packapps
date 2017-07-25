@@ -72,8 +72,9 @@ INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, 
 INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('maintenance', '2', 'Worker', 'Orange', '');
 INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('maintenance', '3', 'Full', 'Green', '');
 INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('storage', '1', 'Read-Only', 'Red', '');
-INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('storage', '2', 'Receiving', 'Orange', '');
-INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('storage', '3', 'Full', 'Green', '');
+INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('storage', '2', 'Forklift', 'Orange', '');
+INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('storage', '3', 'Receiving', 'Orange', '');
+INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('storage', '4', 'Full', 'Green', '');
 INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('grower', '1', 'Read-Only', 'Red', '');
 INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('grower', '2', 'Full', 'Green', '');
 
@@ -277,12 +278,6 @@ CREATE TABLE `maintenance_part_info` (
 
 /* END MAINTENANCE PACKAPP TABLES */
 
-/* STORAGE PACKAPP TABLES */
-
-
-
-/* END STORAGE PACKAPP TABLES */
-
 /* MOVE GROWER_PORTAL TABLES into operationsData, for packapp-erization of grower portal */
 
 ALTER TABLE growerReporting.BULKRTCSV RENAME operationsData.BULKRTCSV;
@@ -368,7 +363,6 @@ ALTER TABLE `grower_crop-estimates`
 # /*!50001 SET @saved_col_connection     = @@collation_connection */;
 # /*!50001 SET character_set_client      = latin1 */;
 # /*!50001 SET character_set_results     = latin1 */;
-# /*!50001 SET collation_connection      = latin1_swedish_ci */;
 # /*!50001 CREATE ALGORITHM=UNDEFINED */
 #   /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 #   /*!50001 VIEW `grower_ReceivedandEstimates` AS (select rtrim(`grower_crop-estimates`.`PK`) AS `BlockID`,rtrim(`grower_crop-estimates`.`Grower`) AS `Code`,rtrim(`grower_crop-estimates`.`Comm Desc`) AS `Commodity`,rtrim(`grower_crop-estimates`.`FarmDesc`) AS `Farm`,ifnull(rtrim(`grower_CurYearReceived`.`Farm`),'') AS `FarmCode`,rtrim(`grower_crop-estimates`.`BlockDesc`) AS `Block`,ifnull(rtrim(`grower_CurYearReceived`.`Block`),'') AS `BlockCode`,rtrim(`grower_crop-estimates`.`VarDesc`) AS `Variety`,rtrim(`grower_crop-estimates`.`Str Desc`) AS `Strain`,rtrim(`grower_crop-estimates`.`2014act`) AS `2014 Received`,rtrim(`grower_crop-estimates`.`2015act`) AS `2015 Received`,rtrim(`grower_crop-estimates`.`2016act`) AS `2016 Received`,rtrim(case when `grower_crop-estimates`.`isDeleted` = 0 then `grower_crop-estimates`.`2016est` else 0 end) AS `2016 Estimate`,ifnull(sum(`grower_CurYearReceived`.`Bu`),'0') AS `2017 Received`,case when `grower_crop-estimates`.`isDeleted` = 0 then 'false' else 'true' end AS `isDeletedBlock`,case when `grower_crop-estimates`.`isFinished` = 0 then 'false' else 'true' end AS `isDonePicking`,case when (`grower_crop-estimates`.`2017est` <> `grower_crop-estimates`.`2016act` or `grower_crop-estimates`.`isSameAsLastYear` = 1) then 'true' else 'false' end AS `isUserConfirmedEstimate` from (`grower_crop-estimates` left join `grower_CurYearReceived` on(rtrim(`grower_CurYearReceived`.`Comm Desc`) = rtrim(`grower_crop-estimates`.`Comm Desc`) and rtrim(`grower_CurYearReceived`.`VarDesc` = rtrim(`grower_crop-estimates`.`VarDesc`)) and rtrim(`grower_CurYearReceived`.`StrDesc` = rtrim(`grower_crop-estimates`.`Str Desc`)) and rtrim(`grower_CurYearReceived`.`BlockDesc` = rtrim(`grower_crop-estimates`.`BlockDesc`)) and rtrim(`grower_CurYearReceived`.`FarmDesc` = rtrim(`grower_crop-estimates`.`FarmDesc`)) and rtrim(`grower_CurYearReceived`.`Grower` = rtrim(`grower_crop-estimates`.`Grower`)))) group by `grower_crop-estimates`.`PK`) union (select 'Unmatched Block' AS `BlockID`,rtrim(`BULKRTCSV`.`Grower`) AS `Code`,rtrim(`BULKRTCSV`.`Comm Desc`) AS `Commodity`,rtrim(`BULKRTCSV`.`FarmDesc`) AS `Farm`,rtrim(`BULKRTCSV`.`Farm`) AS `FarmCode`,rtrim(`BULKRTCSV`.`BlockDesc`) AS `Block`,rtrim(`BULKRTCSV`.`Block`) AS `BlockCode`,rtrim(`BULKRTCSV`.`VarDesc`) AS `Variety`,rtrim(`BULKRTCSV`.`StrDesc`) AS `Strain`,'0' AS `2014 Received`,'0' AS `2015 Received`,'0' AS `2016 Received`,'0' AS `2017 Estimate`,sum(`BULKRTCSV`.`Bu`) AS `2017 Received`,'false' AS `isDeletedBlock`,'false' AS `isDonePicking`,'false' AS `isUserConfirmedEstimate` from (`BULKRTCSV` left join `grower_crop-estimates` on(rtrim(`BULKRTCSV`.`Comm Desc`) = rtrim(`grower_crop-estimates`.`Comm Desc`) and rtrim(`BULKRTCSV`.`VarDesc` = rtrim(`grower_crop-estimates`.`VarDesc`)) and rtrim(`BULKRTCSV`.`StrDesc` = rtrim(`grower_crop-estimates`.`Str Desc`)) and rtrim(`BULKRTCSV`.`BlockDesc` = rtrim(`grower_crop-estimates`.`BlockDesc`)) and rtrim(`BULKRTCSV`.`FarmDesc` = rtrim(`grower_crop-estimates`.`FarmDesc`)) and rtrim(`BULKRTCSV`.`Grower` = rtrim(`grower_crop-estimates`.`Grower`)))) where `grower_crop-estimates`.`PK` is null and `BULKRTCSV`.`Crop Year` = convert(substr(year(curdate()),4,1) using latin1) group by `BULKRTCSV`.`Grower`,`BULKRTCSV`.`Comm Desc`,`BULKRTCSV`.`FarmDesc`,`BULKRTCSV`.`BlockDesc`,`BULKRTCSV`.`VarDesc`,`BULKRTCSV`.`StrDesc`) */;
@@ -377,3 +371,34 @@ ALTER TABLE `grower_crop-estimates`
 # /*!50001 SET collation_connection      = @saved_col_connection */;
 
 /* END MOVE GROWER_PORTAL TABLES */
+
+/* STORAGE PACKAPP TABLES */
+
+CREATE TABLE `operationsData`.`storage_buildings` ( `id` INT NOT NULL AUTO_INCREMENT , `building_name` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE `operationsData`.`storage_rooms` ( `building` INT NOT NULL , `room_id` INT NOT NULL AUTO_INCREMENT , `isDisabled` TINYINT(1) NOT NULL , `room_name` VARCHAR(255) NOT NULL , PRIMARY KEY (`room_id`)) ENGINE = InnoDB;
+ALTER TABLE `storage_rooms` ADD FOREIGN KEY (`building`) REFERENCES `storage_buildings`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+CREATE TABLE `storage_grower_fruit_bins` (
+  `bin_id` smallint(6) NOT NULL,
+  `grower_receipt_id` int(11) NOT NULL,
+  `isFinished` tinyint(1) NOT NULL,
+  `curRoom` int(11) NOT NULL
+) ENGINE=InnoDB;
+ALTER TABLE `storage_grower_fruit_bins` ADD PRIMARY KEY( `bin_id`, `grower_receipt_id`);
+ALTER TABLE `storage_grower_fruit_bins` ADD FOREIGN KEY (`curRoom`) REFERENCES `storage_rooms`(`room_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `storage_grower_fruit_bins` ADD FOREIGN KEY (`grower_receipt_id`) REFERENCES `storage_grower_receipts`(id);
+CREATE TABLE `operationsData`.`storage_grower_receipts` ( `id` INT NOT NULL AUTO_INCREMENT , `grower_block` INT NOT NULL , `external_reference_num` INT NOT NULL , `bins_quantity` MEDIUMINT NOT NULL , `date` DATETIME NOT NULL , `receivedBy` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`), UNIQUE (`external_reference_num`)) ENGINE = InnoDB;
+ALTER TABLE `storage_grower_receipts` ADD FOREIGN KEY (`grower_block`) REFERENCES `grower_crop-estimates`(`PK`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `storage_grower_receipts` ADD FOREIGN KEY (`receivedBy`) REFERENCES `storage_UserData`(`UserName`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+CREATE TABLE `operationsData`.`storage_room_events` ( `event_id` INT NOT NULL AUTO_INCREMENT , `event_description` VARCHAR(255) NOT NULL , `room_id` INT NOT NULL , `date` DATETIME NOT NULL , PRIMARY KEY (`event_id`)) ENGINE = InnoDB;
+ALTER TABLE `storage_room_events` ADD FOREIGN KEY (`room_id`) REFERENCES `storage_rooms`(`room_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+CREATE TABLE `storage_grower_fruit_location_timeline` (
+  `grower_receipt_id` int(11) NOT NULL,
+  `bin_id` smallint(6) NOT NULL,
+  `date` datetime NOT NULL,
+  `new_assigned_location` int(11) NOT NULL
+) ENGINE=InnoDB;
+ALTER TABLE `storage_grower_fruit_location_timeline` ADD INDEX( `grower_receipt_id`, `bin_id`);
+ALTER TABLE storage_grower_fruit_location_timeline ADD FOREIGN KEY (`new_assigned_location`) REFERENCES storage_rooms (`room_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE storage_grower_fruit_location_timeline ADD FOREIGN KEY (`grower_receipt_id`, `bin_id`) REFERENCES storage_grower_fruit_bins (`grower_receipt_id`, `bin_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+/* END STORAGE PACKAPP TABLES */
