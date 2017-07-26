@@ -382,9 +382,9 @@ ALTER TABLE `grower_crop-estimates`
 
 /* STORAGE PACKAPP TABLES */
 
-CREATE TABLE `operationsData`.`storage_buildings` ( `id` INT NOT NULL AUTO_INCREMENT , `building_name` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE `operationsData`.`storage_buildings` ( `building_id` INT NOT NULL AUTO_INCREMENT , `building_name` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 CREATE TABLE `operationsData`.`storage_rooms` ( `building` INT NOT NULL , `room_id` INT NOT NULL AUTO_INCREMENT , `isDisabled` TINYINT(1) NOT NULL , `room_name` VARCHAR(255) NOT NULL , PRIMARY KEY (`room_id`)) ENGINE = InnoDB;
-ALTER TABLE `storage_rooms` ADD FOREIGN KEY (`building`) REFERENCES `storage_buildings`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `storage_rooms` ADD FOREIGN KEY (`building`) REFERENCES `storage_buildings`(`building_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 CREATE TABLE `storage_grower_fruit_bins` (
   `bin_id` smallint(6) NOT NULL,
   `grower_receipt_id` int(11) NOT NULL,
@@ -408,5 +408,6 @@ CREATE TABLE `storage_grower_fruit_location_timeline` (
 ALTER TABLE `storage_grower_fruit_location_timeline` ADD INDEX( `grower_receipt_id`, `bin_id`);
 ALTER TABLE storage_grower_fruit_location_timeline ADD FOREIGN KEY (`new_assigned_location`) REFERENCES storage_rooms (`room_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE storage_grower_fruit_location_timeline ADD FOREIGN KEY (`grower_receipt_id`, `bin_id`) REFERENCES storage_grower_fruit_bins (`grower_receipt_id`, `bin_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 
 /* END STORAGE PACKAPP TABLES */

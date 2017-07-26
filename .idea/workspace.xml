@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc9cf440-d41f-463b-aeba-7bb29d2a7f06" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata" afterPath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata.values.at" afterPath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata.values.at" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_src_/schema/operationsData.zip" afterPath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_src_/schema/operationsData.zip" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application-server/src/scripts-common/sunburst/d3.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application-server/src/scripts-common/sunburst/sequences.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application-server/src/storage/API/getRooms.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application-server/src/storage/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application-server/src/styles-common/sunburst/sunburst.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php" afterPath="$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/config/000-default.conf" afterPath="$PROJECT_DIR$/application-server/config/000-default.conf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/appMenu.php" afterPath="$PROJECT_DIR$/application-server/src/appMenu.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql" afterPath="$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,144 +47,65 @@
         <item name="operationsData" type="e3449647:DbNodeDescriptor" />
         <item name="" type="fce03ad6:DatabaseStructure$GroupNode" />
       </path>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="operationsData@localhost" type="e3449647:DbNodeDescriptor" />
+        <item name="operationsData" type="e3449647:DbNodeDescriptor" />
+        <item name="" type="fce03ad6:DatabaseStructure$GroupNode" />
+        <item name="storage_buildings" type="e3449647:DbNodeDescriptor" />
+      </path>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="operationsData@localhost" type="e3449647:DbNodeDescriptor" />
+        <item name="operationsData" type="e3449647:DbNodeDescriptor" />
+        <item name="" type="fce03ad6:DatabaseStructure$GroupNode" />
+        <item name="storage_rooms" type="e3449647:DbNodeDescriptor" />
+      </path>
     </expand>
     <select />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="packapps" />
   </component>
+  <component name="FileColors">
+    <fileColor scope="Non-Project Files (Material Default)" color="2E3C43" />
+    <fileColor scope="Non-Project Files (Material Darker)" color="323232" />
+    <fileColor scope="Non-Project Files (Material Lighter)" color="eae8e8" />
+    <fileColor scope="Non-Project Files (Material Palenight)" color="2f2e43" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="020 - packapps v2 schema.sql" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application-server/src/storage/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="390" column="37" lean-forward="true" selection-start-line="390" selection-start-column="37" selection-end-line="390" selection-end-column="37" />
+            <state relative-caret-position="244">
+              <caret line="50" column="90" lean-forward="false" selection-start-line="50" selection-start-column="90" selection-end-line="50" selection-end-column="90" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DATABASE/ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings" pinned="false" current-in-tab="false">
-        <entry file="uml://DATABASE/ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings">
-          <provider selected="true" editor-type-id="UmlEditorProvider">
-            <state>
-              <ID>DATABASE</ID>
-              <OriginalElement>ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings</OriginalElement>
-              <nodes>
-                <node x="285.0" y="136.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_GrowerLogins</node>
-                <node x="495.2805555555556" y="1804.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_location_timeline</node>
-                <node x="562.0" y="545.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains</node>
-                <node x="239.03055555555562" y="1376.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts</node>
-                <node x="664.7583333333333" y="1616.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_room_events</node>
-                <node x="557.0" y="201.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties</node>
-                <node x="682.5" y="1032.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings</node>
-                <node x="416.2805555555556" y="824.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates</node>
-                <node x="305.0" y="545.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms</node>
-                <node x="9.0" y="428.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users</node>
-                <node x="692.0" y="1402.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms</node>
-                <node x="317.2805555555556" y="1616.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins</node>
-                <node x="539.0" y="0.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities</node>
-                <node x="0.0" y="1032.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_UserData</node>
-              </nodes>
-              <notes />
-              <edges>
-                <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_UserData" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users">
-                  <point x="0.0" y="-43.0" />
-                  <point x="0.0" y="173.0" />
-                </edge>
-                <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_location_timeline" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms">
-                  <point x="72.24999999999999" y="-68.5" />
-                  <point x="712.0305555555556" y="1779.0" />
-                  <point x="943.2583333333333" y="1779.0" />
-                  <point x="943.2583333333333" y="1591.0" />
-                  <point x="877.8333333333333" y="1591.0" />
-                  <point x="74.33333333333326" y="69.0" />
-                </edge>
-                <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains">
-                  <point x="60.5" y="-251.0" />
-                  <point x="597.7805555555556" y="799.0" />
-                  <point x="672.0" y="799.0" />
-                  <point x="0.0" y="56.0" />
-                </edge>
-                <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_location_timeline" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins">
-                  <point x="-72.25" y="-68.5" />
-                  <point x="567.5305555555557" y="1779.0" />
-                  <point x="432.7805555555556" y="1779.0" />
-                  <point x="0.0" y="69.0" />
-                </edge>
-                <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings">
-                  <point x="0.0" y="-69.0" />
-                  <point x="0.0" y="43.0" />
-                </edge>
-                <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms">
-                  <point x="-60.5" y="-251.0" />
-                  <point x="476.7805555555556" y="799.0" />
-                  <point x="411.0" y="799.0" />
-                  <point x="0.0" y="56.0" />
-                </edge>
-                <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_UserData">
-                  <point x="-68.0" y="-95.0" />
-                  <point x="307.0305555555556" y="1351.0" />
-                  <point x="147.0" y="1351.0" />
-                  <point x="0.0" y="43.0" />
-                </edge>
-                <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties">
-                  <point x="0.0" y="-56.0" />
-                  <point x="0.0" y="56.0" />
-                </edge>
-                <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms">
-                  <point x="57.75" y="-69.0" />
-                  <point x="490.5305555555556" y="1591.0" />
-                  <point x="729.1666666666666" y="1591.0" />
-                  <point x="-74.33333333333337" y="69.0" />
-                </edge>
-                <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_GrowerLogins">
-                  <point x="0.0" y="-56.0" />
-                  <point x="0.0" y="121.0" />
-                </edge>
-                <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities">
-                  <point x="0.0" y="-56.0" />
-                  <point x="0.0" y="43.0" />
-                </edge>
-                <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates">
-                  <point x="68.0" y="-95.0" />
-                  <point x="443.0305555555556" y="1351.0" />
-                  <point x="537.2805555555556" y="1351.0" />
-                  <point x="0.0" y="251.0" />
-                </edge>
-                <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_room_events" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms">
-                  <point x="0.0" y="-69.0" />
-                  <point x="798.7583333333333" y="1591.0" />
-                  <point x="803.5" y="1591.0" />
-                  <point x="0.0" y="69.0" />
-                </edge>
-                <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts">
-                  <point x="-57.75" y="-69.0" />
-                  <point x="0.0" y="95.0" />
-                </edge>
-              </edges>
-              <settings layout="Hierarchic Group" zoom="0.8376338602753696" x="-158.47863143796417" y="1512.5213685620358" />
-              <SelectedNodes />
-              <Categories>
-                <Category>Key columns</Category>
-                <Category>Columns</Category>
-              </Categories>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="00 -configure.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database-server/schema/00 -configure.sql">
+      <file leaf-file-name="getRooms.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application-server/src/storage/API/getRooms.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="546">
+              <caret line="21" column="4" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+              <folding>
+                <marker date="1501100378951" expanded="true" signature="206:262" ph="SELECT id, b... storage_buildings" />
+                <marker date="1501100378951" expanded="true" signature="540:594" ph="SELECT build... storage_rooms" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -204,7 +127,6 @@
       <find>permission</find>
       <find>cann</find>
       <find>timeline</find>
-      <find>envio</find>
       <find>dumpedrows</find>
       <find>blue</find>
       <find>form</find>
@@ -216,6 +138,7 @@
       <find>convert</find>
       <find>as `color`</find>
       <find>swed</find>
+      <find>envio</find>
     </findStrings>
     <replaceStrings>
       <replace>$RealName['Role']</replace>
@@ -258,14 +181,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <push-targets>
+      <push-target-info target-remote="mainsite" target-branch="master" repo="$PROJECT_DIR$" source="master" />
+    </push-targets>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.html" />
-        <option value="$PROJECT_DIR$/base.yml" />
-        <option value="$PROJECT_DIR$/docker-compose.yml" />
-        <option value="$PROJECT_DIR$/application-server/src/purchasing/inventory.php" />
         <option value="$PROJECT_DIR$/application-server/src/purchasing/index.php" />
         <option value="$PROJECT_DIR$/application-server/src/maintenance/API/getNeededParts.php" />
         <option value="$PROJECT_DIR$/settings.yml" />
@@ -285,9 +207,7 @@
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/processEstimates.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/QAview.php" />
         <option value="$PROJECT_DIR$/application-server/src/config.php" />
-        <option value="$PROJECT_DIR$/application-server/config/000-default.conf" />
         <option value="$PROJECT_DIR$/application-server/src/installer.php" />
-        <option value="$PROJECT_DIR$/application-server/src/appMenu.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/manage/index.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/index.php" />
         <option value="$PROJECT_DIR$/application-server/src/maintenance/API/deleteIssue.php" />
@@ -310,9 +230,15 @@
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_2.html" />
         <option value="$PROJECT_DIR$/application-server/src/production/editRun.php" />
         <option value="$PROJECT_DIR$/database-server/schema/010 - packapps v1 schema.sql" />
-        <option value="$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql" />
         <option value="$PROJECT_DIR$/database-server/schema/00 -configure.sql" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql" />
+        <option value="$PROJECT_DIR$/application-server/src/appMenu.php" />
+        <option value="$PROJECT_DIR$/application-server/config/000-default.conf" />
+        <option value="$PROJECT_DIR$/application-server/src/scripts-common/sunburst/sequences.js" />
+        <option value="$PROJECT_DIR$/application-server/src/styles-common/sunburst/sunburst.css" />
+        <option value="$PROJECT_DIR$/application-server/src/storage/index.php" />
+        <option value="$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql" />
+        <option value="$PROJECT_DIR$/application-server/src/storage/API/getRooms.php" />
       </list>
     </option>
   </component>
@@ -330,10 +256,11 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP 7.1" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="x" value="2" />
     <option name="y" value="27" />
-    <option name="width" value="1920" />
-    <option name="height" value="1173" />
+    <option name="width" value="1910" />
+    <option name="height" value="879" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -405,7 +332,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -429,22 +356,15 @@
               <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="production" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="storage" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
               <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="quality" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
-              <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="quality" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="preharvest" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="storage" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="API" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
@@ -461,14 +381,14 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
-    <property name="settings.editor.selected.configurable" value="Docker" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/mike/.PhpStorm2017.1/config/scratches/buffer1" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="HTML&#10;MySQL" />
@@ -477,13 +397,13 @@
     <property name="two.files.diff.last.used.file" value="$USER_HOME$/editRun.php" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/application-server/src/maintenance" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/application-server/src/" />
       <recent name="$PROJECT_DIR$/application-server/src/packapps_api" />
       <recent name="$PROJECT_DIR$/application-server/src/quality/assets" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/application-server/src/maintenance" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -606,7 +526,7 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
-    <configuration />
+    <configuration>$USER_HOME$/.subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -711,7 +631,15 @@
       <workItem from="1500896338510" duration="1359000" />
       <workItem from="1500912988674" duration="8168000" />
       <workItem from="1500983012377" duration="19754000" />
-      <workItem from="1501012725586" duration="1907000" />
+      <workItem from="1501012725586" duration="3896000" />
+      <workItem from="1501067806994" duration="835000" />
+      <workItem from="1501071540810" duration="2740000" />
+      <workItem from="1501082436082" duration="3063000" />
+      <workItem from="1501090981315" duration="2586000" />
+      <workItem from="1501093603632" duration="770000" />
+      <workItem from="1501095612217" duration="908000" />
+      <workItem from="1501097155721" duration="1918000" />
+      <workItem from="1501099670329" duration="773000" />
     </task>
     <task id="LOCAL-00001" summary="Add clean db and phpmyadmin">
       <created>1496689406220</created>
@@ -818,11 +746,25 @@
       <option name="project" value="LOCAL" />
       <updated>1501001716225</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Add storage tables (minus non-grower fruit)">
+      <created>1501014820715</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1501014820715</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Remove unfinished BOM feature">
+      <created>1501015401214</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1501015401214</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="628483000" />
+    <option name="totallyTimeSpent" value="644065000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -834,14 +776,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1920" height="1173" extended-state="6" />
+    <frame x="0" y="-37" width="1920" height="1237" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24660194" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15224358" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10576923" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291262" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291262" sideWeight="0.491453" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22242315" sideWeight="0.491453" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291262" sideWeight="0.508547" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19284189" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13514957" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1330097" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -855,6 +797,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12311901" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976827" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40582526" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4714795" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35436893" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -873,12 +816,12 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976827" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34917557" sideWeight="0.49786323" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24660194" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15224358" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40582526" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16720085" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291262" sideWeight="0.491453" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4714795" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19284189" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19284189" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35436893" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -934,7 +877,9 @@
     <MESSAGE value="Status change cleanups and juice" />
     <MESSAGE value="unfinished Maintenance create issue card" />
     <MESSAGE value="Add production item reordering" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add production item reordering" />
+    <MESSAGE value="Add storage tables (minus non-grower fruit)" />
+    <MESSAGE value="Remove unfinished BOM feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove unfinished BOM feature" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -943,76 +888,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application-server/src/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="729">
-          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/packapps_api.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-260">
-          <caret line="95" column="9" lean-forward="false" selection-start-line="95" selection-start-column="9" selection-end-line="95" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/purchasing/API/addBOMitem.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/styles-common/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/quality/runPhoto.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="50" column="27" lean-forward="false" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/quality/Inspector.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/quality/QA.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="208" column="18" lean-forward="false" selection-start-line="208" selection-start-column="18" selection-end-line="208" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/quality/API/rtinfoins.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/deleteImage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="102" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/getMaintenanceUsers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/API/statusChange.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
@@ -1178,15 +1053,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3276">
           <caret line="182" column="31" lean-forward="false" selection-start-line="182" selection-start-column="31" selection-end-line="182" selection-end-column="31" />
-          <folding>
-            <marker date="1500660683692" expanded="true" signature="246:303" ph="..." />
-            <marker date="1500660683692" expanded="true" signature="317:357" ph="..." />
-            <marker date="1500660683692" expanded="true" signature="1000:1299" ph="..." />
-            <marker date="1500660683692" expanded="true" signature="1574:1873" ph="..." />
-            <marker date="1500660683692" expanded="true" signature="2204:2277" ph="SELECT `Pass... grower_GrowerLogins" />
-            <marker date="1500660683692" expanded="true" signature="2884:2977" ph="SELECT `Pass... packapps_master_users" />
-            <marker date="1500660683692" expanded="true" signature="3374:3453" ph="UPDATE packa... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1214,18 +1080,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="346">
           <caret line="213" column="282" lean-forward="false" selection-start-line="213" selection-start-column="278" selection-end-line="213" selection-end-column="282" />
-          <folding>
-            <marker date="1500642691070" expanded="true" signature="558:783" ph="SELECT `Real... packapps_master_users" />
-            <marker date="1500642691070" expanded="true" signature="1124:1377" ph="select Preha... Preharvest_Samples" />
-            <marker date="1500642691070" expanded="true" signature="33012:33030" ph="..." />
-            <marker date="1500642691070" expanded="true" signature="33746:33764" ph="..." />
-            <marker date="1500642691070" expanded="true" signature="36978:36996" ph="..." />
-            <marker date="1500642691070" expanded="true" signature="37712:37730" ph="..." />
-            <marker date="1500642691070" expanded="true" signature="41741:41759" ph="..." />
-            <marker date="1500642691070" expanded="true" signature="42476:42494" ph="..." />
-            <marker date="1500642691070" expanded="true" signature="45023:45041" ph="..." />
-            <marker date="1500642691070" expanded="true" signature="45569:45587" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1233,7 +1087,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1268,19 +1121,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="669">
           <caret line="230" column="58" lean-forward="true" selection-start-line="230" selection-start-column="58" selection-end-line="230" selection-end-column="58" />
-          <folding>
-            <marker date="1501001546203" expanded="true" signature="465:697" ph="SELECT `Real... packapps_master_users" />
-            <marker date="1501001546203" expanded="true" signature="20522:20533" ph="..." />
-            <marker date="1501001546203" expanded="true" signature="20905:20916" ph="..." />
-            <marker date="1501001546203" expanded="true" signature="21283:21294" ph="..." />
-            <marker date="1501001546203" expanded="true" signature="21659:21670" ph="..." />
-            <marker date="1501001546203" expanded="true" signature="22025:22036" ph="..." />
-            <marker date="1501001546203" expanded="true" signature="22387:22396" ph="..." />
-            <marker date="1501001546203" expanded="true" signature="22723:22733" ph="..." />
-            <marker date="1501001546203" expanded="true" signature="23653:23663" ph="..." />
-            <marker date="1501001546203" expanded="true" signature="24006:24015" ph="..." />
-            <marker date="1501001546203" expanded="true" signature="24396:24405" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1295,49 +1135,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="353">
           <caret line="1188" column="1627" lean-forward="false" selection-start-line="1188" selection-start-column="1627" selection-end-line="1188" selection-end-column="1627" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://DATABASE/ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>DATABASE</ID>
-          <OriginalElement>ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms</OriginalElement>
-          <nodes>
-            <node x="0.0" y="507.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_location_timeline</node>
-            <node x="138.75" y="136.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms</node>
-            <node x="251.0" y="324.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_room_events</node>
-            <node x="0.0" y="324.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins</node>
-            <node x="129.25" y="0.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings">
-              <point x="0.0" y="-69.0" />
-              <point x="0.0" y="43.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_room_events" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms">
-              <point x="0.0" y="-69.0" />
-              <point x="385.0" y="299.0" />
-              <point x="306.0" y="299.0" />
-              <point x="55.75" y="69.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms">
-              <point x="0.0" y="-69.0" />
-              <point x="115.5" y="299.0" />
-              <point x="194.5" y="299.0" />
-              <point x="-55.75" y="69.0" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="-113.0" y="30.0" />
-          <SelectedNodes>
-            <node>ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms</node>
-          </SelectedNodes>
-          <Categories>
-            <Category>Columns</Category>
-            <Category>Key columns</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
         </state>
       </provider>
     </entry>
@@ -1365,15 +1162,58 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="119.5" y="69.0" />
+          <settings layout="Hierarchic Group" zoom="1.0" x="120.0" y="69.0" />
           <SelectedNodes />
           <Categories>
-            <Category>Key columns</Category>
             <Category>Columns</Category>
+            <Category>Key columns</Category>
           </Categories>
+          <SCOPE>All</SCOPE>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/database-server/schema/00 -configure.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://DATABASE/ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings</OriginalElement>
+          <nodes>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_GrowerLogins</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_location_timeline</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_room_events</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_UserData</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.8376338602753696" x="-158.0" y="1513.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Columns</Category>
+            <Category>Key columns</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/purchasing/API/subtractBOMfromInventory.php" />
+    <entry file="file://$PROJECT_DIR$/application-server/src/purchasing/API/getBOMs.php" />
     <entry file="uml://DATABASE/ba9179e3-3f43-4bf4-a428-488684b68df1.SCHEMA:operationsData">
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
@@ -1424,7 +1264,6 @@
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.VIEW:operationsData.grower_CurYearReceived</node>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_part_info</node>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_AggregateWeightSamples</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_EnvioAddon_ItemInventoryFractions</node>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_Inventory_TimeSeries</node>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_purchase_history</node>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_app_permissions</node>
@@ -1438,51 +1277,56 @@
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_Items</node>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates</node>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_EnvioAddon_envioAssets</node>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins</node>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.BULKRTCSV</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_EnvioAddon_EnvioAssets2purchasingItems</node>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_lineNames</node>
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="0.2566534914361001" x="2547.6575975359347" y="1727.5000000000002" />
+          <settings layout="Hierarchic Group" zoom="0.30000000000000004" x="2347.0" y="1879.0" />
           <SelectedNodes />
           <Categories>
-            <Category>Key columns</Category>
             <Category>Columns</Category>
+            <Category>Key columns</Category>
           </Categories>
+          <SCOPE>All</SCOPE>
         </state>
       </provider>
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="36">
+          <caret line="2" column="56" lean-forward="false" selection-start-line="2" selection-start-column="56" selection-end-line="2" selection-end-column="56" />
         </state>
       </provider>
     </entry>
-    <entry file="uml://DATABASE/ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings">
+    <entry file="file://$PROJECT_DIR$/application-server/config/000-default.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://DATABASE/ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms">
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
           <ID>DATABASE</ID>
-          <OriginalElement>ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings</OriginalElement>
+          <OriginalElement>ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms</OriginalElement>
           <nodes>
-            <node x="285.0" y="136.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_GrowerLogins</node>
-            <node x="495.2805555555556" y="1804.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_location_timeline</node>
-            <node x="562.0" y="545.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains</node>
-            <node x="239.03055555555562" y="1376.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts</node>
-            <node x="664.7583333333333" y="1616.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_room_events</node>
-            <node x="557.0" y="201.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties</node>
-            <node x="682.5" y="1032.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings</node>
-            <node x="416.2805555555556" y="824.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates</node>
-            <node x="305.0" y="545.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms</node>
-            <node x="9.0" y="428.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users</node>
-            <node x="692.0" y="1402.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms</node>
-            <node x="317.2805555555556" y="1616.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins</node>
-            <node x="539.0" y="0.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities</node>
-            <node x="0.0" y="1032.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_UserData</node>
+            <node x="0.0" y="136.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_GrowerLogins</node>
+            <node x="541.0" y="1804.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_location_timeline</node>
+            <node x="277.0" y="545.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains</node>
+            <node x="284.6361111111112" y="1376.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts</node>
+            <node x="808.8861111111111" y="1616.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_room_events</node>
+            <node x="272.0" y="201.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties</node>
+            <node x="842.7083333333334" y="1032.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings</node>
+            <node x="135.38611111111118" y="824.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates</node>
+            <node x="20.0" y="545.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms</node>
+            <node x="517.0" y="428.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users</node>
+            <node x="852.2083333333333" y="1402.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms</node>
+            <node x="362.88611111111106" y="1616.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins</node>
+            <node x="254.0" y="0.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities</node>
+            <node x="508.00000000000006" y="1032.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_UserData</node>
           </nodes>
           <notes />
           <edges>
@@ -1491,39 +1335,39 @@
               <point x="0.0" y="173.0" />
             </edge>
             <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_location_timeline" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms">
-              <point x="72.24999999999999" y="-68.5" />
-              <point x="712.0305555555556" y="1779.0" />
-              <point x="943.2583333333333" y="1779.0" />
-              <point x="943.2583333333333" y="1591.0" />
-              <point x="877.8333333333333" y="1591.0" />
-              <point x="74.33333333333326" y="69.0" />
+              <point x="72.25000000000001" y="-68.5" />
+              <point x="757.75" y="1779.0" />
+              <point x="1087.386111111111" y="1779.0" />
+              <point x="1087.386111111111" y="1591.0" />
+              <point x="1038.0416666666665" y="1591.0" />
+              <point x="74.33333333333337" y="69.0" />
             </edge>
             <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains">
               <point x="60.5" y="-251.0" />
-              <point x="597.7805555555556" y="799.0" />
-              <point x="672.0" y="799.0" />
+              <point x="316.8861111111112" y="799.0" />
+              <point x="387.0" y="799.0" />
               <point x="0.0" y="56.0" />
             </edge>
             <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_location_timeline" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins">
               <point x="-72.25" y="-68.5" />
-              <point x="567.5305555555557" y="1779.0" />
-              <point x="432.7805555555556" y="1779.0" />
+              <point x="613.25" y="1779.0" />
+              <point x="478.38611111111106" y="1779.0" />
               <point x="0.0" y="69.0" />
             </edge>
             <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings">
-              <point x="0.0" y="-69.0" />
+              <point x="1.1368683772161603E-13" y="-69.0" />
               <point x="0.0" y="43.0" />
             </edge>
             <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms">
               <point x="-60.5" y="-251.0" />
-              <point x="476.7805555555556" y="799.0" />
-              <point x="411.0" y="799.0" />
+              <point x="195.88611111111118" y="799.0" />
+              <point x="126.0" y="799.0" />
               <point x="0.0" y="56.0" />
             </edge>
             <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_UserData">
-              <point x="-68.0" y="-95.0" />
-              <point x="307.0305555555556" y="1351.0" />
-              <point x="147.0" y="1351.0" />
+              <point x="68.0" y="-95.0" />
+              <point x="488.6361111111112" y="1351.0" />
+              <point x="655.0" y="1351.0" />
               <point x="0.0" y="43.0" />
             </edge>
             <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties">
@@ -1531,9 +1375,9 @@
               <point x="0.0" y="56.0" />
             </edge>
             <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms">
-              <point x="57.75" y="-69.0" />
-              <point x="490.5305555555556" y="1591.0" />
-              <point x="729.1666666666666" y="1591.0" />
+              <point x="57.75000000000006" y="-69.0" />
+              <point x="536.1361111111112" y="1591.0" />
+              <point x="889.3749999999999" y="1591.0" />
               <point x="-74.33333333333337" y="69.0" />
             </edge>
             <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_GrowerLogins">
@@ -1545,44 +1389,99 @@
               <point x="0.0" y="43.0" />
             </edge>
             <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates">
-              <point x="68.0" y="-95.0" />
-              <point x="443.0305555555556" y="1351.0" />
-              <point x="537.2805555555556" y="1351.0" />
+              <point x="-68.0" y="-95.0" />
+              <point x="352.6361111111112" y="1351.0" />
+              <point x="256.3861111111112" y="1351.0" />
               <point x="0.0" y="251.0" />
             </edge>
             <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_room_events" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms">
-              <point x="0.0" y="-69.0" />
-              <point x="798.7583333333333" y="1591.0" />
-              <point x="803.5" y="1591.0" />
+              <point x="-1.1368683772161603E-13" y="-69.0" />
+              <point x="942.886111111111" y="1591.0" />
+              <point x="963.7083333333333" y="1591.0" />
               <point x="0.0" y="69.0" />
             </edge>
             <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts">
-              <point x="-57.75" y="-69.0" />
+              <point x="-57.74999999999994" y="-69.0" />
               <point x="0.0" y="95.0" />
             </edge>
           </edges>
-          <settings layout="Hierarchic Group" zoom="0.8376338602753696" x="-158.47863143796417" y="1512.5213685620358" />
-          <SelectedNodes />
+          <settings layout="Hierarchic Group" zoom="0.9966853646098929" x="707.0" y="1704.0" />
+          <SelectedNodes>
+            <node>ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms</node>
+          </SelectedNodes>
           <Categories>
-            <Category>Key columns</Category>
             <Category>Columns</Category>
+            <Category>Key columns</Category>
           </Categories>
+          <SCOPE>All</SCOPE>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database-server/schema/00 -configure.sql">
+    <entry file="file://$PROJECT_DIR$/application-server/src/styles-common/sunburst/sunburst.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state relative-caret-position="702">
+          <caret line="27" column="1" lean-forward="false" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/styles-common/material.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="390" column="37" lean-forward="true" selection-start-line="390" selection-start-column="37" selection-end-line="390" selection-end-column="37" />
+        <state relative-caret-position="517">
+          <caret line="396" column="106" lean-forward="false" selection-start-line="396" selection-start-column="106" selection-end-line="396" selection-end-column="106" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/production/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="90" column="13" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="90" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/storage/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="50" column="90" lean-forward="false" selection-start-line="50" selection-start-column="90" selection-end-line="50" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/appMenu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="728">
+          <caret line="28" column="40" lean-forward="false" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
+          <folding>
+            <marker date="1501075653697" expanded="true" signature="276:371" ph="SELECT short... packapps_appProperties" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/scripts-common/sunburst/sequences.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="121" column="24" lean-forward="false" selection-start-line="121" selection-start-column="23" selection-end-line="121" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/storage/API/getRooms.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="21" column="4" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+          <folding>
+            <marker date="1501100378951" expanded="true" signature="206:262" ph="SELECT id, b... storage_buildings" />
+            <marker date="1501100378951" expanded="true" signature="540:594" ph="SELECT build... storage_rooms" />
+          </folding>
         </state>
       </provider>
     </entry>
