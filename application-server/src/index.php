@@ -114,25 +114,24 @@ if (isset($_COOKIE['auth']) && isset($_COOKIE['username'])) { //do redirect
 <body class='mdl-color--primary-contrast mdl-layout__container' style="padding: 0">
 <div class="mdl-layout mdl-js-layout" style="align-items: center;justify-content: center">
     <div class="mdl-layout__content" style="padding:24px;flex-grow:0">
-        <div
-                style=' display: none; width:initial; max-width: 1150px'
-                class="mdl-card mdl-color--primary mdl-shadow--8dp">
+        <div style=' display: none; width:initial; max-width: 1150px'
+                class="mdl-card appmenu-background-color mdl-shadow--8dp">
             <div class="mdl-card__title">
                 <h2 style="color: white" class="mdl-card__title-text"><i style='margin-right: 5px' class="material-icons">dashboard</i> <?echo $companyName?> PackApps</h2>
             </div>
-            <p id="errorBox" style="margin: 0; text-align: center; color: #e91e63; font-weight: 900; font-size larger"><? echo $errormsg ?></p>
+            <p id="errorBox" style="margin: 0; text-align: center; color: white; font-size: 16px; font-weight: 500"><? echo $errormsg ?></p>
             <div style="text-align: center" class="mdl-card__supporting-text">
                 <div id="loginTypeChooser">
                     <table style="width:100%;height:100%">
                         <tr>
                             <td>
-                                <button onclick="showLoginForm(false)" style="width:100%; min-height: 60px; margin: 3px" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+                                <button onclick="showLoginForm(false)" style="width:100%; min-height: 60px; margin: 3px" class="mdl-button mdl-js-button mdl-button--raised appmenu-foreground-color">
                                     Packhouse Login
                                 </button>
                             </td>
                         </tr><tr>
                             <td>
-                                <button onclick="showLoginForm(true)" style="width:100%; min-height: 60px; margin: 3px" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+                                <button onclick="showLoginForm(true)" style="width:100%; min-height: 60px; margin: 3px" class="mdl-button mdl-js-button mdl-button--raised appmenu-foreground-color">
                                     Grower Login
                                 </button>
                             </td>
@@ -156,7 +155,7 @@ if (isset($_COOKIE['auth']) && isset($_COOKIE['username'])) { //do redirect
                     </div>
                     <input id="growerInputSend" type="hidden" name="grower" value="true" disabled>
                     <button onClick="$('.mdl-card').fadeOut('fast');" style="color: white; margin-top: 15px; width: 100%"
-                            class="mdl-button mdl-color--pink-500 mdl-button--raised">
+                            class="mdl-button appmenu-foreground-color mdl-button--raised">
                         Log In to Packapps
                     </button>
                 </form>

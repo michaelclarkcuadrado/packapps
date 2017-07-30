@@ -80,11 +80,11 @@ if($companyShortName == "devenv"){
     <div class="mdl-layout__content" style="padding:24px;flex-grow:0">
         <div
                 style='display: none; width: initial; max-width: 1150px'
-                class="mdl-card mdl-color--primary mdl-shadow--8dp">
+                class="mdl-card appmenu-background-color mdl-shadow--8dp">
             <div class="mdl-card__title">
-                <h2 style="color: white" class="mdl-card__title-text"><i style='margin-right: 5px' class="material-icons">dashboard</i> <?echo $companyName?> PackApps</h2>
+                <h2 style="color: white; font-size: 30px" class="mdl-card__title-text"><i style='margin-right: 5px; font-size:30px' class="material-icons">dashboard</i> <?echo $companyName?> PackApps</h2>
             </div>
-            <p style="margin: 0; text-align: center; color: #e91e63; font-weight: 900; font-size larger"><? echo $errormsg ?></p>
+            <p style="margin: 0; text-align: center;color:white; font-size:16px"><? echo $errormsg ?></p>
             <div style="text-align: center" class="mdl-grid mdl-card__supporting-text">
                 <?php
                 foreach($installedPackapps as $row){
@@ -93,7 +93,7 @@ if($companyShortName == "devenv"){
                     if($allowedItems['allowed'.ucfirst($row['short_app_name'])] > 0 && $row['isEnabled'] > 0){
                         $allowed = true;
                     }
-                    echo "<button ".($allowed ? '' : 'disabled')." id='".$row['short_app_name']."button' onclick=\"location.href = '/".$row['short_app_name']."'\" class=\"mdl-button mdl-js-button mdl-color--pink-500 mdl-color-text--white mdl-js-ripple-effect mdl-shadow--6dp mdl-cell mdl-cell--4-col\" style=\"display: initial; height: 200px; float: left; border-radius: 12px; text-align: center; font-size: x-large; vertical-align: middle\"><i style=\"font-size:45px\" class=\"material-icons\">".$row['material_icon_name']."</i><br>".$row['long_app_name']."<p style='".($allowed ? 'display: none;' : '')." font-size: small;position: absolute; width: 100%; left: 0; color: white'>(This app is locked)</p></button>";
+                    echo "<button ".($allowed ? '' : 'disabled')." id='".$row['short_app_name']."button' onclick=\"location.href = '/".$row['short_app_name']."'\" class=\"mdl-button mdl-js-button appmenu-foreground-color mdl-color-text--white mdl-js-ripple-effect mdl-shadow--6dp mdl-cell mdl-cell--4-col\" style=\"display: initial; height: 200px; float: left; border-radius: 12px; text-align: center; font-size: x-large; vertical-align: middle\"><i style=\"font-size:45px\" class=\"material-icons\">".$row['material_icon_name']."</i><br>".$row['long_app_name']."<p style='".($allowed ? 'display: none;' : '')." font-size: small;position: absolute; width: 100%; left: 0; color: white'>(This app is locked)</p></button>";
                 }
                 ?>
             </div>
