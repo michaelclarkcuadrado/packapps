@@ -74,7 +74,7 @@ if(isset($_POST['username']) && isset($_POST['realname']) && isset($_POST['passw
 <div class="mdl-layout mdl-js-layout" style="align-items: center;justify-content: center">
     <div class="mdl-layout__content" style="padding:24px;flex-grow:0">
         <div style=' display: none;'
-             class="mdl-card mdl-color--primary mdl-shadow--8dp">
+             class="mdl-card appmenu-background-color mdl-shadow--8dp">
             <div class="mdl-card__title">
                 <h2 style="color: white" class="mdl-card__title-text"><i style='margin-right: 5px' class="material-icons">dashboard</i> <?echo $companyName?> PackApps</h2>
             </div>
@@ -111,7 +111,7 @@ if(isset($_POST['username']) && isset($_POST['realname']) && isset($_POST['passw
                         </div>
                     </div>
                     <button onClick="$('.mdl-card').fadeOut('fast');" style="color: white; margin-top: 15px; width: 100%"
-                            class="mdl-button mdl-color--pink-500 mdl-button--raised">
+                            class="mdl-button appmenu-background-color mdl-button--raised">
                         Create new user and finish setup
                     </button>
                 </form>
@@ -126,6 +126,6 @@ if(isset($_POST['username']) && isset($_POST['realname']) && isset($_POST['passw
         $('.mdl-card').fadeIn('slow');
     });
 </script>
-<i style='position: absolute;cursor: pointer; right: 0; bottom:0;color: white; font-size: larger' class="material-icons mdl-cell--hide-phone" onclick="$(this).hide();$('#about').slideDown()">info_outline</i>
-<div id="about" style="display: none;text-align: right;  position: fixed; right: 4px; bottom:0;color: white; font-size: smaller;">PackApps is powered by <a style="color:white" href="https://packercloud.com">PackerCloud</a> Platform<br>Copyright 2015-<?echo date('Y')?></div></body>
+<i style='position: absolute;cursor: pointer; right: 0; bottom:0; font-size: larger' class="material-icons mdl-cell--hide-phone" onclick="$(this).hide();$('#about').slideDown()">info_outline</i>
+<div id="about" style="display: none;text-align: right;  position: fixed; right: 4px; bottom:0; font-size: smaller;">PackApps is powered by <a href="https://packercloud.com">PackerCloud</a> Platform<br>Copyright 2015-<?echo date('Y')?></div></body>
 </html>

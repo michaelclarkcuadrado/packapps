@@ -17,7 +17,9 @@ while($building = mysqli_fetch_assoc($buildings)){
 $buildings = $tempBuildings;
 
 //get rooms
-$rooms = mysqli_query($mysqli, "SELECT building, room_id, room_name FROM storage_rooms");
+$rooms = mysqli_query($mysqli, "SELECT building, room_id, room_name, isAvailable, DATEDIFF(CURDATE(), lastAvailabilityChange) as lastAvailabilityChange FROM storage_rooms");
 while($room = mysqli_fetch_assoc($rooms)){
-
+    $buildings[$room['building']]['rooms'][$room['room_id']] = $room;
 }
+
+echo json_encode($buildings);

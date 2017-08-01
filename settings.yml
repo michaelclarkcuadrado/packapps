@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 services:
  base:
   environment:
@@ -13,6 +13,7 @@ services:
 
  hostname:
   extends:
+   file: settings.yml
    service: base
   environment:
    - "VIRTUAL_HOST=REPLACE.packercloud.com"

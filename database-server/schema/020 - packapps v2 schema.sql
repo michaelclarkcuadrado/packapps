@@ -383,13 +383,14 @@ ALTER TABLE `grower_crop-estimates`
 /* STORAGE PACKAPP TABLES */
 
 CREATE TABLE `operationsData`.`storage_buildings` ( `building_id` INT NOT NULL AUTO_INCREMENT , `building_name` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
-CREATE TABLE `operationsData`.`storage_rooms` ( `building` INT NOT NULL , `room_id` INT NOT NULL AUTO_INCREMENT , `isDisabled` TINYINT(1) NOT NULL , `room_name` VARCHAR(255) NOT NULL , PRIMARY KEY (`room_id`)) ENGINE = InnoDB;
+CREATE TABLE `operationsData`.`storage_rooms` ( `building` INT NOT NULL , `room_id` INT NOT NULL AUTO_INCREMENT , `isDisabled` TINYINT(1) NOT NULL , isAvailable TINYINT(1) NOT NULL DEFAULT '1', lastAvailabilityChange DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, `room_name` VARCHAR(255) NOT NULL , PRIMARY KEY (`room_id`)) ENGINE = InnoDB;
 ALTER TABLE `storage_rooms` ADD FOREIGN KEY (`building`) REFERENCES `storage_buildings`(`building_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 CREATE TABLE `storage_grower_fruit_bins` (
   `bin_id` smallint(6) NOT NULL,
   `grower_receipt_id` int(11) NOT NULL,
   `isFinished` tinyint(1) NOT NULL,
-  `curRoom` int(11) NOT NULL
+  `curRoom` int(11) NOT NULL,
+  `bushelsInBin` int(11) NOT NULL DEFAULT '23'
 ) ENGINE=InnoDB;
 ALTER TABLE `storage_grower_fruit_bins` ADD PRIMARY KEY( `bin_id`, `grower_receipt_id`);
 ALTER TABLE `storage_grower_fruit_bins` ADD FOREIGN KEY (`curRoom`) REFERENCES `storage_rooms`(`room_id`) ON DELETE CASCADE ON UPDATE CASCADE;

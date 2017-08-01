@@ -115,7 +115,7 @@ if (isset($_COOKIE['auth']) && isset($_COOKIE['username'])) { //do redirect
 <div class="mdl-layout mdl-js-layout" style="align-items: center;justify-content: center">
     <div class="mdl-layout__content" style="padding:24px;flex-grow:0">
         <div style=' display: none; width:initial; max-width: 1150px'
-                class="mdl-card appmenu-background-color mdl-shadow--8dp">
+                class="mdl-card appmenu-background-color mdl-shadow--16dp">
             <div class="mdl-card__title">
                 <h2 style="color: white" class="mdl-card__title-text"><i style='margin-right: 5px' class="material-icons">dashboard</i> <?echo $companyName?> PackApps</h2>
             </div>
@@ -182,5 +182,5 @@ if (isset($_COOKIE['auth']) && isset($_COOKIE['username'])) { //do redirect
         $('#username').focus();
     }
 </script>
-<div id="about" style="text-align: right; position: fixed; right: 4px; bottom:0;color: white; font-size: smaller;">PackApps is powered by the <a style="color:white" target="_blank" href="https://packercloud.com">PackerCloud</a> Platform<br>Copyright 2015-<?echo date('Y')?>, PackerCloud LLC.</div></body>
+<div id="about" style="text-align: right; position: fixed; right: 4px; bottom:0; font-size: smaller;">PackApps is powered by the <a target="_blank" href="https://packercloud.com">PackerCloud</a> Platform<br>Copyright 2015-<?echo date('Y')?>, PackerCloud LLC.</div></body>
 </html>

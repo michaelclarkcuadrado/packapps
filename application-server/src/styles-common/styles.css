@@ -30,6 +30,26 @@ html, body {
     border:1px solid rgba(0,0,0,.12);
 }
 
+.availabilityDotGreen{
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-left: .3em;
+    border-radius: 100%;
+    background: #282;
+    content: '';
+}
+
+.availabilityDotRed{
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-left: .3em;
+    border-radius: 100%;
+    background: #FF4136;
+    content: '';
+}
+
 .td-only-border{
     border-top: 1px solid rgba(0,0,0,.12);
     border-bottom: 1px solid rgba(0,0,0,.12);
