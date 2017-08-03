@@ -5,17 +5,7 @@ var radius = Math.min(width, height) / 2;
 
 // Breadcrumb dimensions: width, height, spacing, width of tip/tail.
 var b = {
-    w: 150, h: 30, s: 3, t: 10
-};
-
-// Mapping of step names to colors.
-var colors = {
-    "BB": "#5687d1",
-    "Red Del": "#7b615c",
-    "Home Farm" : "#de783b",
-    "Super Chief": "#6ab975",
-    "other": "#a173d1",
-    "end": "#bbbbbb"
+    w: 155, h: 30, s: 3, t: 10
 };
 
 // Total size of all segments; we set this later, after loading the data.
@@ -37,19 +27,11 @@ var arc = d3.arc()
     .innerRadius(function(d) { return Math.sqrt(d.y0); })
     .outerRadius(function(d) { return Math.sqrt(d.y1); });
 
-//Get data and graph
-$.getJSON('API/getRoomContents.php', function(json) {
-    console.log(json);
-    createVisualization(json)
-});
-
 // Main function to draw and set up the visualization, once we have the data.
 function createVisualization(json) {
 
     // Basic setup of page elements.
     initializeBreadcrumbTrail();
-    drawLegend();
-    d3.select("#togglelegend").on("click", toggleLegend);
 
     // Bounding circle underneath the sunburst, to make it easier to detect
     // when the mouse leaves the parent g.
@@ -74,7 +56,7 @@ function createVisualization(json) {
         .attr("display", function(d) { return d.depth ? null : "none"; })
         .attr("d", arc)
         .attr("fill-rule", "evenodd")
-        .style("fill", function(d) { return colors[d.data.name]; })
+        .style("fill", function(d) { return d.data.color; })
         .style("opacity", 1)
         .on("mouseover", mouseover);
 
@@ -87,12 +69,14 @@ function createVisualization(json) {
 
 // Fade all but the current sequence, and show it in the breadcrumb trail.
 function mouseover(d) {
-    console.log(d);
     var percentage = (100 * d.value / totalSize).toPrecision(3);
     var percentageString = percentage + "%";
     if (percentage < 0.1) {
         percentageString = "< 0.1%";
     }
+
+    d3.select("#bushel_total")
+        .text(d.value);
 
     d3.select("#percentage")
         .text(percentageString);
@@ -144,7 +128,10 @@ function initializeBreadcrumbTrail() {
     var trail = d3.select("#sequence").append("svg:svg")
         .attr("width", width)
         .attr("height", 50)
-        .attr("id", "trail");
+        .attr("id", "trail")
+        .on('load', function() {
+            trail.attr('width', this.width);
+        });
     // Add the label at the end, for the percentage.
     trail.append("svg:text")
         .attr("id", "endlabel")
@@ -181,7 +168,7 @@ function updateBreadcrumbs(nodeArray, percentageString) {
 
     entering.append("svg:polygon")
         .attr("points", breadcrumbPoints)
-        .style("fill", function(d) { return colors[d.data.name]; });
+        .style("fill", function(d) { return d.data.color; });
 
     entering.append("svg:text")
         .attr("x", (b.w + b.t) / 2)
@@ -207,46 +194,4 @@ function updateBreadcrumbs(nodeArray, percentageString) {
     d3.select("#trail")
         .style("visibility", "");
 
-}
-
-function drawLegend() {
-
-    // Dimensions of legend item: width, height, spacing, radius of rounded rect.
-    var li = {
-        w: 75, h: 30, s: 3, r: 3
-    };
-
-    var legend = d3.select("#legend").append("svg:svg")
-        .attr("width", li.w)
-        .attr("height", d3.keys(colors).length * (li.h + li.s));
-
-    var g = legend.selectAll("g")
-        .data(d3.entries(colors))
-        .enter().append("svg:g")
-        .attr("transform", function(d, i) {
-            return "translate(0," + i * (li.h + li.s) + ")";
-        });
-
-    g.append("svg:rect")
-        .attr("rx", li.r)
-        .attr("ry", li.r)
-        .attr("width", li.w)
-        .attr("height", li.h)
-        .style("fill", function(d) { return d.value; });
-
-    g.append("svg:text")
-        .attr("x", li.w / 2)
-        .attr("y", li.h / 2)
-        .attr("dy", "0.35em")
-        .attr("text-anchor", "middle")
-        .text(function(d) { return d.key; });
-}
-
-function toggleLegend() {
-    var legend = d3.select("#legend");
-    if (legend.style("visibility") == "hidden") {
-        legend.style("visibility", "");
-    } else {
-        legend.style("visibility", "hidden");
-    }
 }

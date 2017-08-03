@@ -15,15 +15,15 @@ if(isset($_GET['room_id'])){
 }
 $roomContentsQueryResult = mysqli_query($mysqli, "SELECT
 `grower_farms`.growerID,
-  growerName,
+  COALESCE(NULLIF(growerName, ''), '[No Grower]') AS growerName,
   grower_farms.farmID,
-  farmName,
+  COALESCE(NULLIF(farmName, ''), '[No Farm]') as farmName,
   PK as blockID,
-  BlockDesc,
+  COALESCE(NULLIF(BlockDesc, ''), '[No Block]') as BlockDesc,
   VarietyID,
-  VarietyName,
+  COALESCE(NULLIF(VarietyName, ''), '[No Variety]') AS VarietyName,
   strain_ID,
-  strainName,
+  COALESCE(NULLIF(strainName, ''), '[No Strain]') AS strainName,
   SUM(bushelsInBin) AS bushels
 FROM storage_grower_fruit_bins
   JOIN storage_grower_receipts
@@ -48,6 +48,7 @@ GROUP BY grower_farms.growerID, grower_farms.farmID, blockID, VarietyID, strain_
 
 //Ordering is determined by an array of the names of the id fields, which match up to human-readable names in these tuples.
 //These fields are then sorted into json to draw the sunburst graph.
+//any changes must be reflected in getPivotLists.php
 $fieldTuple = array(
     'growerID' => 'growerName',
     'farmID' => 'farmName',
@@ -58,8 +59,8 @@ $fieldTuple = array(
 
 //choose ordering to pivot on
 $defaultOrdering = array('VarietyID', 'strain_ID', 'growerID', 'farmID', 'blockID');
-if(isset($_GET['ordering'])){
-    $decodedOrdering = json_decode($_GET['ordering']);
+if(isset($_GET['ordering_Delivered'])){
+    $decodedOrdering = json_decode($_GET['ordering_Delivered']);
     //not so impressive input validation
     if(in_array('VarietyID', $decodedOrdering) &&
         in_array('strain_ID', $decodedOrdering) &&
@@ -81,8 +82,16 @@ while($fruitRow = mysqli_fetch_assoc($roomContentsQueryResult)) {
     foreach ($ordering as $fieldID) {
         $array = &$array['children'];
         $fieldName = $fieldTuple[$fieldID];
-        if (!isset($array[$fruitRow[$fieldID]])) {
-            $array[$fruitRow[$fieldID]] = array('name' => $fruitRow[$fieldName], 'fieldID' => $fieldID, 'IDvalue' => $fruitRow[$fieldID], 'children' => array());
+        if (!isset($array[$fruitRow[$fieldID]])){
+            $desc = $fruitRow[$fieldName];
+            if(substr($desc, 0, 1) == '[' && substr($desc, -1) == ']'){
+                $color = '#969e9b'; //Hardcoded gray for unknown values
+            } else {
+//                $color = dechex(crc32($fruitRow[$fieldName]));
+//                $color = '#'.substr($color, 0, 6);
+                $color = '#'.substr(md5($fruitRow[$fieldName]), 0, 6);
+            }
+            $array[$fruitRow[$fieldID]] = array('name' => $fruitRow[$fieldName], 'color' => $color, 'fieldID' => $fieldID, 'IDvalue' => $fruitRow[$fieldID], 'children' => array());
         }
         $array = &$array[$fruitRow[$fieldID]];
     }
