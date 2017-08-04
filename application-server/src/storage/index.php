@@ -38,11 +38,25 @@ packapps_authenticate_user('storage');
             </button>
         </div>
     </header>
+    <!-- Buildings Sidebar -->
     <div id="locationsBar" class="mdl-layout__drawer">
+        <span class="mdl-layout-title"></span>
+        <!-- Static All Rooms button -->
+        <nav class="mdl-navigation">
+            <div style="position:relative; overflow:hidden; text-overflow: ellipsis;" v-on:click="updateRoom(0,0,true)" class="mdl-js-ripple-effect mdl-navigation__link">
+                <span class="mdl-ripple"></span>
+                <div class="availabilityDotGreen"></div>
+                All Room View
+                <br>
+                <div style="font-size: x-small" class="dateSubtitle">
+                    Combined View
+                </div>
+            </div>
+        </nav>
         <template v-for="(building, building_index) in buildings">
             <span class="mdl-layout-title">{{ building.building_name }}</span>
             <nav class="mdl-navigation">
-                <div style="position:relative;overflow: hidden" v-for="(room, index) in building.rooms" v-on:click="updateRoom(index, building_index, false)" class="mdl-js-ripple-effect mdl-navigation__link">
+                <div style="position:relative;overflow: hidden; text-overflow:ellipsis;" v-for="(room, index) in building.rooms" v-on:click="updateRoom(building_index, index, false)" class="mdl-js-ripple-effect mdl-navigation__link">
                     <span class="mdl-ripple"></span>
                     <div v-bind:class="{ availabilityDotGreen: (room.isAvailable > 0), availabilityDotRed: (room.isAvailable == 0) }"></div>
                     {{ room.room_name }}
@@ -56,30 +70,37 @@ packapps_authenticate_user('storage');
             </nav>
         </template>
     </div>
+    <!-- Actual Data page -->
     <main class="mdl-layout__content">
-        <div class="page-content">
+        <div id="currentRoomStats" class="page-content">
             <!-- Pivot Box -->
-            <div id="pivotLists" style="position: absolute; right: 0; top: 0" class="mdl-shadow--6dp">
-                <b>Pivot Options </b><i style="vertical-align: middle" class="material-icons">keyboard_arrow_up</i>
+            <div id="pivotLists">
+                <div v-if="currentRoomHasInventory" style="position: absolute; right: 0; top: 0" class="mdl-shadow--6dp">
+                    <b>Pivot Options </b><i v-on:click="pivotOptionsIsOpen = !pivotOptionsIsOpen" v-bind:class="{ rotate: pivotOptionsIsOpen }" style="vertical-align: middle; cursor: pointer" class="material-icons">keyboard_arrow_down</i>
+                    <draggable>
+
+                    </draggable>
+                </div>
+                <div v-else class="mdl-color--red-100" style="font-size:large;text-align:center; padding:10px">
+                    <i style="vertical-align: middle;" class="material-icons">error_outline</i>
+                    <b> This view contains no inventory.</b>
+                </div>
             </div>
-            <!-- Your content goes here -->
             <div v-pre id="sequence"></div>
+            <h2 style="text-align: center; margin-top: 0">
+                <span v-if="isInAllRoomView">All Rooms</span>
+                <span v-else>{{ locations.buildings[currentBuildingID]['rooms'][currentRoomID]['room_name'] }}</span>
+            </h2>
             <div v-pre id="sunburst_wrapper" style="text-align: center;width: 100%">
-                <div id="sunburst" style="display:inline-block">
-                    <div id="chart">
-                        <div id="explanation" style="visibility: hidden;">
+                <div v-pre id="sunburst" style="display:inline-block">
+                    <div v-pre style="" id="chart">
+                        <div v-pre id="explanation" style="visibility: hidden;">
                             <span id="bushel_total"></span><br/>
                             Total Bushels<br />
-                            <span><b><span id="percentage"></span></b> of this room</span>
+                            <span><b><span id="percentage"></span></b> of this view</span>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="currentRoomStats">
-                <h2 style="text-align: center">
-                    <span v-if="isInAllRoomView">All Rooms</span>
-                    <span v-else>{{ locations.buildings[currentBuildingID]['rooms'][currentRoomID]['room_name'] }}</span>
-                </h2>
             </div>
         </div>
     </main>
@@ -104,7 +125,7 @@ packapps_authenticate_user('storage');
             buildings: []
         },
         methods: {
-            updateRoom: function(room_id, building_id, isAllRooms){
+            updateRoom: function(building_id, room_id, isAllRooms){
                 changeActiveRoom(building_id, room_id, isAllRooms);
             }
         },
@@ -118,14 +139,22 @@ packapps_authenticate_user('storage');
             componentHandler.upgradeDom();
         }
     });
-    var pivotOptions = new Vue({
-        el: "#pivotLists",
+
+    var currentRoomStats = new Vue({
+        el: "#currentRoomStats",
         data: {
             pivotLists: [],
-            pivotOptionsIsDirty: false
+            pivotOptionsIsOpen: false,
+            pivotOptionsIsDirty: false,
+            currentRoomHasInventory: false,
+            currentBuildingID: 0,
+            currentRoomID: 0,
+            isInAllRoomView: true,
+            locations: locations
         },
         mounted: function(){
             this.getPivotLists();
+            this.updateSunburst();
         },
         methods: {
             getPivotLists: function(){
@@ -133,49 +162,33 @@ packapps_authenticate_user('storage');
                     this.pivotLists = json;
                 });
             },
-            pivotUpdated: function(){
-                  updateSunburst();
+            updateSunburst: function(){
+                $('#chart').find('svg').remove();
+                $('#sequence').find('svg').remove();
+                //Get data and graph
+                var data = {};
+                if(!this.isInAllRoomView){
+                    data.room_id = this.currentRoomID;
+                }
+                if(this.pivotOptionsIsDirty){
+                    //TODO read pivot list data and attach
+                }
+                var self = this;
+                $.getJSON('API/getRoomContents.php', data, function(json) {
+                    if(Object.keys(json.children).length > 0){
+                        self.currentRoomHasInventory = true;
+                        createVisualization(json);
+                    } else {
+                        self.currentRoomHasInventory = false;
+                    }
+                }).error(function() {
+                    snack('Server Communication Error.', 4000);
+                });
             }
         }
     });
-    var currentRoomStats = new Vue({
-        el: "#currentRoomStats",
-        data: {
-            currentBuildingID: 0,
-            currentRoomID: 0,
-            isInAllRoomView: true,
-            currentRoomHasInventory: false,
-            locations: locations
-        },
-        mounted: function(){
-            updateSunburst();
-        }
-    });
 
-    //functions
-    function updateSunburst(){
-        //TODO destroy old sunburst and unset vars
-        //Get data and graph
-        var data = {};
-//        if(!currentRoomStats.isInAllRoomView){
-//            data.room_id = currentRoomStats.currentRoomID;
-//        }
-        if(pivotOptions.pivotOptionsIsDirty){
-
-        }
-        $.getJSON('API/getRoomContents.php', function(json) {
-            console.log("AJAX SUCCESS");
-            console.log(json);
-            if(Object.keys(json.children).length > 0){
-                currentRoomStats.currentRoomHasInventory = true;
-                createVisualization(json);
-            } else {
-                currentRoomStats.currentRoomHasInventory = false;
-            }
-        }).error(function() {
-            snack('Server Communication Error.', 4000);
-        });
-    }
+    //non-vue functions
 
     function changeActiveRoom(building_id, room_id, all_rooms){
         if(all_rooms == false){
@@ -185,7 +198,7 @@ packapps_authenticate_user('storage');
         } else {
             currentRoomStats.isInAllRoomView = true;
         }
-        updateSunburst();
+        currentRoomStats.updateSunburst();
     }
 
     function snack(message, length) {

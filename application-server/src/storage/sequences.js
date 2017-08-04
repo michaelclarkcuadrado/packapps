@@ -11,25 +11,30 @@ var b = {
 // Total size of all segments; we set this later, after loading the data.
 var totalSize = 0;
 
-var vis = d3.select("#chart").append("svg:svg")
-    .attr("width", width)
-    .attr("height", height)
-    .append("svg:g")
-    .attr("id", "container")
-    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+var vis = {};
+var partition = {};
+var arc = {};
 
-var partition = d3.partition()
-    .size([2 * Math.PI, radius * radius]);
 
-var arc = d3.arc()
-    .startAngle(function(d) { return d.x0; })
-    .endAngle(function(d) { return d.x1; })
-    .innerRadius(function(d) { return Math.sqrt(d.y0); })
-    .outerRadius(function(d) { return Math.sqrt(d.y1); });
 
 // Main function to draw and set up the visualization, once we have the data.
 function createVisualization(json) {
 
+    vis = d3.select("#chart").append("svg:svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("svg:g")
+        .attr("id", "container")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+    partition = d3.partition()
+        .size([2 * Math.PI, radius * radius]);
+
+    arc = d3.arc()
+        .startAngle(function(d) { return d.x0; })
+        .endAngle(function(d) { return d.x1; })
+        .innerRadius(function(d) { return Math.sqrt(d.y0); })
+        .outerRadius(function(d) { return Math.sqrt(d.y1); });
     // Basic setup of page elements.
     initializeBreadcrumbTrail();
 

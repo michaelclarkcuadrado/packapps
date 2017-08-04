@@ -24,7 +24,9 @@ $roomContentsQueryResult = mysqli_query($mysqli, "SELECT
   COALESCE(NULLIF(VarietyName, ''), '[No Variety]') AS VarietyName,
   strain_ID,
   COALESCE(NULLIF(strainName, ''), '[No Strain]') AS strainName,
-  SUM(bushelsInBin) AS bushels
+  SUM(bushelsInBin) AS bushels,
+  storage_rooms.room_id,
+  COALESCE(NULLIF(storage_rooms.room_name, ''), '[Unnamed Room]') AS room_name
 FROM storage_grower_fruit_bins
   JOIN storage_grower_receipts
     ON storage_grower_fruit_bins.grower_receipt_id = storage_grower_receipts.id
@@ -40,6 +42,8 @@ FROM storage_grower_fruit_bins
     ON grower_varieties.commodityID = grower_commodities.commodity_ID
   JOIN grower_GrowerLogins
     ON grower_farms.growerID = grower_GrowerLogins.GrowerID
+  JOIN storage_rooms
+    ON storage_grower_fruit_bins.curRoom = storage_rooms.room_id
 WHERE curRoom LIKE '$room_id'
 GROUP BY grower_farms.growerID, grower_farms.farmID, blockID, VarietyID, strain_ID
 ");
@@ -54,23 +58,21 @@ $fieldTuple = array(
     'farmID' => 'farmName',
     'blockID' => 'BlockDesc',
     'VarietyID' => 'VarietyName',
-    'strain_ID' => 'strainName'
+    'strain_ID' => 'strainName',
+    'room_id' => 'room_name'
 );
 
 //choose ordering to pivot on
+
+//default order, with room if in all room view
 $defaultOrdering = array('VarietyID', 'strain_ID', 'growerID', 'farmID', 'blockID');
+if($room_id == '%'){
+    array_unshift($defaultOrdering, 'room_id');
+}
+
 if(isset($_GET['ordering_Delivered'])){
     $decodedOrdering = json_decode($_GET['ordering_Delivered']);
-    //not so impressive input validation
-    if(in_array('VarietyID', $decodedOrdering) &&
-        in_array('strain_ID', $decodedOrdering) &&
-        in_array('growerID', $decodedOrdering) &&
-        in_array('farmID', $decodedOrdering) &&
-        in_array('blockID', $decodedOrdering)){
-        $ordering = $decodedOrdering;
-    } else {
-        $ordering = $defaultOrdering;
-    }
+    $ordering = $decodedOrdering;
 } else {
     $ordering = $defaultOrdering;
 }
