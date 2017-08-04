@@ -140,7 +140,7 @@ html, body {
 .mdl-demo #add {
   position: absolute;
   right: 40px;
-  top: 36px;
+  bottom: 36px;
   z-index: 999;
 }
 

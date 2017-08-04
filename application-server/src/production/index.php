@@ -80,13 +80,15 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
                 Production Dashboard
                 <small style='vertical-align:bottom; font-size: small'><? echo $companyName ?></small>
             </h3>
+            <div class="mdl-layout-spacer"></div>
+            <a href="/" style="text-decoration: none; color: white"><i class="material-icons" style="vertical-align: middle">close</i></a>
         </div>
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
             <a href="#curRunContent" class="mdl-layout__tab is-active ">Current runs</a>
             <a href="#Navigator" class="mdl-layout__tab">Inventory Explorer</a>
             <a href="#runHistory" class="mdl-layout__tab">Run history</a>
             <a href="#Settings" class="mdl-layout__tab">Settings</a>
-            <a href="/" class="mdl-layout__tab">Main Menu</a>
+            <a href="/" class="mdl-layout__tab mdl-cell--hide-desktop">Main Menu</a>
         </div>
     </header>
     <?

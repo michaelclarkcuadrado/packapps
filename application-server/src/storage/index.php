@@ -73,34 +73,48 @@ packapps_authenticate_user('storage');
     <!-- Actual Data page -->
     <main class="mdl-layout__content">
         <div id="currentRoomStats" class="page-content">
-            <!-- Pivot Box -->
-            <div id="pivotLists">
-                <div v-if="currentRoomHasInventory" style="position: absolute; right: 0; top: 0" class="mdl-shadow--6dp">
-                    <b>Pivot Options </b><i v-on:click="pivotOptionsIsOpen = !pivotOptionsIsOpen" v-bind:class="{ rotate: pivotOptionsIsOpen }" style="vertical-align: middle; cursor: pointer" class="material-icons">keyboard_arrow_down</i>
-                    <draggable>
-
-                    </draggable>
+            <div id="graphAndPivotWrapper">
+                <!-- Pivot Box -->
+                <div id="pivotLists">
+                    <div v-if="currentRoomHasInventory" style="position: absolute; right: 0; top: 0;" class="mdl-shadow--6dp">
+                        <span style="text-align: center; padding-top:15px" class="mdl-layout__title">Pivot Order
+                            <i v-on:click="pivotOptionsIsOpen = !pivotOptionsIsOpen" v-bind:class="{ rotate: pivotOptionsIsOpen }" style="vertical-align: middle; cursor: pointer" class="material-icons">keyboard_arrow_down</i>
+                        </span>
+                        <ul v-if="pivotOptionsIsOpen" style="margin-bottom:0px; padding-bottom: 0px; margin-top: 5px; padding-top: 5px" class="mdl-list">
+                            <draggable>
+                                <li v-model="currentRoomStats.Delivered" v-for="(itemName, itemID) in pivotLists.Delivered" class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">
+                                <i style="cursor:move" class="material-icons mdl-list__item-icon">drag_handle</i>
+                                {{ itemName }}
+                            </span>
+                                </li>
+                            </draggable>
+                        </ul>
+                    </div>
+                    <div v-else class="mdl-color--red-100" style="font-size:large;text-align:center; padding:10px">
+                        <i style="vertical-align: middle;" class="material-icons">error_outline</i>
+                        <b> This view contains no inventory.</b>
+                    </div>
                 </div>
-                <div v-else class="mdl-color--red-100" style="font-size:large;text-align:center; padding:10px">
-                    <i style="vertical-align: middle;" class="material-icons">error_outline</i>
-                    <b> This view contains no inventory.</b>
-                </div>
-            </div>
-            <div v-pre id="sequence"></div>
-            <h2 style="text-align: center; margin-top: 0">
-                <span v-if="isInAllRoomView">All Rooms</span>
-                <span v-else>{{ locations.buildings[currentBuildingID]['rooms'][currentRoomID]['room_name'] }}</span>
-            </h2>
-            <div v-pre id="sunburst_wrapper" style="text-align: center;width: 100%">
-                <div v-pre id="sunburst" style="display:inline-block">
-                    <div v-pre style="" id="chart">
-                        <div v-pre id="explanation" style="visibility: hidden;">
-                            <span id="bushel_total"></span><br/>
-                            Total Bushels<br />
-                            <span><b><span id="percentage"></span></b> of this view</span>
+                <div v-pre id="sequence"></div>
+                <h2 style="text-align: center; margin-top: 0">
+                    <span v-if="isInAllRoomView">All Rooms</span>
+                    <span v-else>{{ locations.buildings[currentBuildingID]['rooms'][currentRoomID]['room_name'] }}</span>
+                </h2>
+                <div v-pre id="sunburst_wrapper" style="text-align: center;width: 100%">
+                    <div v-pre id="sunburst" style="display:inline-block">
+                        <div v-pre style="" id="chart">
+                            <div v-pre id="explanation" style="visibility: hidden;">
+                                <span id="bushel_total"></span><br/>
+                                Total Bushels<br />
+                                <span><b><span id="percentage"></span></b> of this view</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div style=" border-top:3px solid #e0e0e0; margin-top:15px">
+                <h4>Selection Details</h4>
             </div>
         </div>
     </main>
@@ -153,16 +167,25 @@ packapps_authenticate_user('storage');
             locations: locations
         },
         mounted: function(){
-            this.getPivotLists();
             this.updateSunburst();
         },
         methods: {
             getPivotLists: function(){
-                $.getJSON('API/getPivotLists.php', function(json){
-                    this.pivotLists = json;
+                var self = this;
+                var data = {};
+                if(!this.isInAllRoomView){
+                    data.room_id = this.currentRoomID;
+                }
+                $.getJSON('API/getPivotLists.php', data, function(json){
+                    self.pivotLists = json;
                 });
             },
+            pivotUpdated: function() {
+                this.pivotOptionsIsDirty = true;
+                this.updateSunburst(true);
+            },
             updateSunburst: function(){
+                this.getPivotLists();
                 $('#chart').find('svg').remove();
                 $('#sequence').find('svg').remove();
                 //Get data and graph
