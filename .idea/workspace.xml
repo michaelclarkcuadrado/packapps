@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="fc9cf440-d41f-463b-aeba-7bb29d2a7f06" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/production/index.php" afterPath="$PROJECT_DIR$/application-server/src/production/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/production/styles/main.css" afterPath="$PROJECT_DIR$/application-server/src/production/styles/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/controlPanel.php" afterPath="$PROJECT_DIR$/application-server/src/controlPanel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/getUserAccountList.php" afterPath="$PROJECT_DIR$/application-server/src/getUserAccountList.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/storage/API/getPivotLists.php" afterPath="$PROJECT_DIR$/application-server/src/storage/API/getPivotLists.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/storage/index.php" afterPath="$PROJECT_DIR$/application-server/src/storage/index.php" />
     </list>
@@ -66,16 +66,9 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application-server/src/storage/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="109" column="94" lean-forward="true" selection-start-line="109" selection-start-column="94" selection-end-line="109" selection-end-column="94" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#span#0;n#li#0;n#draggable#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="2577">
+              <caret line="186" column="38" lean-forward="true" selection-start-line="186" selection-start-column="38" selection-end-line="186" selection-end-column="38" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -83,9 +76,41 @@
       <file leaf-file-name="getPivotLists.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application-server/src/storage/API/getPivotLists.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="754">
-              <caret line="29" column="1" lean-forward="false" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+            <state relative-caret-position="680">
+              <caret line="34" column="39" lean-forward="true" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="adjustUserPermissions.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application-server/src/adjustUserPermissions.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-8">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1498017504566" expanded="true" signature="621:747" ph="SELECT `Real... packapps_master_users" />
+                <marker date="1498017504566" expanded="true" signature="1197:1289" ph="SELECT isSys... packapps_master_users" />
+                <marker date="1498017504566" expanded="true" signature="1509:1598" ph="SELECT usern... packapps_master_users" />
+                <marker date="1498017504566" expanded="true" signature="1795:1877" ph="UPDATE packa... " />
+                <marker date="1498017504566" expanded="true" signature="2416:2590" ph="SELECT * FRO... packapps_master_users" />
+                <marker date="1498017504566" expanded="true" signature="3037:3132" ph="UPDATE packa... " />
+                <marker date="1498017504566" expanded="true" signature="3389:3457" ph="UPDATE ${$ta... " />
+                <marker date="1498017504566" expanded="true" signature="3733:3804" ph="UPDATE ${$ta... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="getUserAccountList.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application-server/src/getUserAccountList.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-8">
+              <caret line="39" column="9" lean-forward="false" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="9" />
+              <folding>
+                <marker date="1502193700828" expanded="true" signature="564:680" ph="SELECT `Real... packapps_master_users" />
+                <marker date="1502193700828" expanded="true" signature="966:1050" ph="SELECT short... packapps_appProperties" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -103,7 +128,7 @@
       <file leaf-file-name="sunburst.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application-server/src/styles-common/sunburst/sunburst.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="598">
+            <state relative-caret-position="0">
               <caret line="23" column="23" lean-forward="false" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
               <folding />
             </state>
@@ -113,7 +138,7 @@
       <file leaf-file-name="sequences.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application-server/src/storage/sequences.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3796">
+            <state relative-caret-position="0">
               <caret line="146" column="33" lean-forward="false" selection-start-line="146" selection-start-column="33" selection-end-line="146" selection-end-column="33" />
               <folding />
             </state>
@@ -123,7 +148,7 @@
       <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
         <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
+            <state relative-caret-position="0">
               <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
               <folding />
             </state>
@@ -141,11 +166,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>hierarc</find>
-      <find>drawlege</find>
-      <find>colors</find>
-      <find>console</find>
-      <find>0.1</find>
       <find>percentage</find>
       <find>breadcrumbs</find>
       <find>initial</find>
@@ -171,6 +191,11 @@
       <find>main menu</find>
       <find>pivotLists</find>
       <find>bottom:</find>
+      <find>Delivered</find>
+      <find>pivotOptionsIsOpen</find>
+      <find>getPivotLists</find>
+      <find>%</find>
+      <find>json)</find>
     </findStrings>
     <replaceStrings>
       <replace>userData</replace>
@@ -222,12 +247,11 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/application-server/src/storage/index.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.txt" root0="SKIP_INSPECTION" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/preharvest.php" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/preharvestcsv.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/processBlock.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/processEstimates.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/QAview.php" />
@@ -273,10 +297,12 @@
         <option value="$PROJECT_DIR$/application-server/src/storage/sequences.js" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql" />
         <option value="$PROJECT_DIR$/application-server/src/storage/API/getRoomContents.php" />
-        <option value="$PROJECT_DIR$/application-server/src/storage/API/getPivotLists.php" />
         <option value="$PROJECT_DIR$/application-server/src/production/styles/main.css" />
         <option value="$PROJECT_DIR$/application-server/src/production/index.php" />
         <option value="$PROJECT_DIR$/application-server/src/storage/index.php" />
+        <option value="$PROJECT_DIR$/application-server/src/getUserAccountList.php" />
+        <option value="$PROJECT_DIR$/application-server/src/controlPanel.php" />
+        <option value="$PROJECT_DIR$/application-server/src/storage/API/getPivotLists.php" />
       </list>
     </option>
   </component>
@@ -294,7 +320,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP 7.1" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="x" value="17" />
     <option name="y" value="30" />
     <option name="width" value="1890" />
@@ -370,8 +396,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -395,21 +419,6 @@
               <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="production" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
-              <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="production" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="styles" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
-              <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="storage" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -424,13 +433,15 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/mike/.PhpStorm2017.1/config/scratches/buffer1" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="HTML&#10;MySQL" />
@@ -719,7 +730,10 @@
       <workItem from="1501846264904" duration="2947000" />
       <workItem from="1501851654909" duration="14843000" />
       <workItem from="1501868052374" duration="4144000" />
-      <workItem from="1501872889269" duration="3914000" />
+      <workItem from="1501872889269" duration="5204000" />
+      <workItem from="1502122258549" duration="118000" />
+      <workItem from="1502122407235" duration="3156000" />
+      <workItem from="1502192855042" duration="5302000" />
     </task>
     <task id="LOCAL-00001" summary="Add clean db and phpmyadmin">
       <created>1496689406220</created>
@@ -879,7 +893,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="774027000" />
+    <option name="totallyTimeSpent" value="783893000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -891,18 +905,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="17" y="30" width="1920" height="1170" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="-34" width="1920" height="1234" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10309829" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11431624" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.4957265" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27799606" sideWeight="0.4861111" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2771836" sideWeight="0.4861111" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27822945" sideWeight="0.5138889" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.106303416" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.106303416" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32907662" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1330097" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44122967" sideWeight="0.50641024" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15508021" sideWeight="0.50641024" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47740668" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -987,47 +1001,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="uml://DATABASE/ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_room_events">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>DATABASE</ID>
-          <OriginalElement>ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_room_events</OriginalElement>
-          <nodes>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_room_events</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="134.0" y="69.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Columns</Category>
-            <Category>Key columns</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="24" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="352" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/production/editRun.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="669">
-          <caret line="230" column="58" lean-forward="true" selection-start-line="230" selection-start-column="58" selection-end-line="230" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database-server/schema/015 - v1 TESTING DATA.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database-server/schema/010 - packapps v1 schema.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="353">
@@ -1539,13 +1512,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/scripts-common/sunburst/d3.min.js" />
     <entry file="file://$USER_HOME$/Downloads/d3/d3.js" />
-    <entry file="file://$PROJECT_DIR$/application-server/src/appMenu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="788">
-          <caret line="120" column="65" lean-forward="true" selection-start-line="120" selection-start-column="65" selection-end-line="120" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/installer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-674">
@@ -1623,7 +1589,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/styles-common/sunburst/sunburst.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
+        <state relative-caret-position="0">
           <caret line="23" column="23" lean-forward="false" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
           <folding />
         </state>
@@ -1638,7 +1604,7 @@
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
+        <state relative-caret-position="0">
           <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
           <folding />
         </state>
@@ -1646,7 +1612,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/storage/sequences.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3796">
+        <state relative-caret-position="0">
           <caret line="146" column="33" lean-forward="false" selection-start-line="146" selection-start-column="33" selection-end-line="146" selection-end-column="33" />
           <folding />
         </state>
@@ -1663,49 +1629,92 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="410">
           <caret line="83" column="66" lean-forward="false" selection-start-line="83" selection-start-column="66" selection-end-line="83" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/purchasing/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/appMenu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2964">
+          <caret line="120" column="65" lean-forward="true" selection-start-line="120" selection-start-column="65" selection-end-line="120" selection-end-column="65" />
           <folding>
-            <marker date="1501868543515" expanded="true" signature="748:1003" ph="SELECT `Real... packapps_master_users" />
-            <marker date="1501868543515" expanded="true" signature="1276:1325" ph="SELECT lineI... production_lineNames" />
-            <marker date="1501868543515" expanded="true" signature="1599:1656" ph="..." />
-            <marker date="1501868543515" expanded="true" signature="1670:1710" ph="..." />
-            <marker date="1501868543515" expanded="true" signature="4651:4678" ph="..." />
-            <marker date="1501868543515" expanded="true" signature="5168:5254" ph="..." />
-            <marker date="1501868543515" expanded="true" signature="7713:7725" ph="..." />
-            <marker date="1501868543515" expanded="true" signature="18535:18804" ph="..." />
-            <marker date="1501868543515" expanded="true" signature="19228:19512" ph="..." />
-            <marker date="1501868543515" expanded="true" signature="19951:19965" ph="..." />
-            <marker date="1501868543515" expanded="true" signature="20109:20143" ph="..." />
-            <marker date="1501868543515" expanded="true" signature="20202:20251" ph="..." />
-            <marker date="1501868543515" expanded="true" signature="20286:20320" ph="..." />
-            <marker date="1501868543515" expanded="true" signature="22760:22876" ph="..." />
-            <marker date="1501868543515" expanded="true" signature="23808:23924" ph="..." />
-            <marker date="1501868543515" expanded="true" signature="25956:26074" ph="..." />
-            <marker date="1501868543515" expanded="true" signature="31800:31812" ph="..." />
-            <marker date="1501868543515" expanded="true" signature="32203:32215" ph="..." />
+            <marker date="1501598096874" expanded="true" signature="276:371" ph="SELECT short... packapps_appProperties" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/adjustUserPermissions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1498017504566" expanded="true" signature="621:747" ph="SELECT `Real... packapps_master_users" />
+            <marker date="1498017504566" expanded="true" signature="1197:1289" ph="SELECT isSys... packapps_master_users" />
+            <marker date="1498017504566" expanded="true" signature="1509:1598" ph="SELECT usern... packapps_master_users" />
+            <marker date="1498017504566" expanded="true" signature="1795:1877" ph="UPDATE packa... " />
+            <marker date="1498017504566" expanded="true" signature="2416:2590" ph="SELECT * FRO... packapps_master_users" />
+            <marker date="1498017504566" expanded="true" signature="3037:3132" ph="UPDATE packa... " />
+            <marker date="1498017504566" expanded="true" signature="3389:3457" ph="UPDATE ${$ta... " />
+            <marker date="1498017504566" expanded="true" signature="3733:3804" ph="UPDATE ${$ta... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/getUserAccountList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="39" column="9" lean-forward="false" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="9" />
+          <folding>
+            <marker date="1502193700828" expanded="true" signature="564:680" ph="SELECT `Real... packapps_master_users" />
+            <marker date="1502193700828" expanded="true" signature="966:1050" ph="SELECT short... packapps_appProperties" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/controlPanel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="111" column="59" lean-forward="false" selection-start-line="111" selection-start-column="59" selection-end-line="111" selection-end-column="59" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#header#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1502193878252" expanded="true" signature="491:575" ph="SELECT short... packapps_appProperties" />
+            <marker date="1502193878252" expanded="true" signature="1568:1645" ph="SELECT packa... packapps_app_permissions" />
+            <marker date="1502193878252" expanded="true" signature="12029:12059" ph="..." />
+            <marker date="1502193878252" expanded="true" signature="16345:16356" ph="..." />
+            <marker date="1502193878252" expanded="true" signature="16747:16765" ph="..." />
+            <marker date="1502193878252" expanded="true" signature="19992:20002" ph="..." />
+            <marker date="1502193878252" expanded="true" signature="20216:20226" ph="..." />
+            <marker date="1502193878252" expanded="true" signature="21199:21209" ph="..." />
+            <marker date="1502193878252" expanded="true" signature="23452:23484" ph="..." />
+            <marker date="1502193878252" expanded="true" signature="23496:23544" ph="..." />
+            <marker date="1502193878252" expanded="true" signature="24079:24097" ph="..." />
+            <marker date="1502193878252" expanded="true" signature="25231:25243" ph="..." />
+            <marker date="1502193878252" expanded="true" signature="25581:25591" ph="..." />
+            <marker date="1502193878252" expanded="true" signature="26156:26166" ph="..." />
+            <marker date="1502193878252" expanded="true" signature="26225:26232" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/storage/API/getPivotLists.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="754">
-          <caret line="29" column="1" lean-forward="false" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+        <state relative-caret-position="680">
+          <caret line="34" column="39" lean-forward="true" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/storage/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="109" column="94" lean-forward="true" selection-start-line="109" selection-start-column="94" selection-end-line="109" selection-end-column="94" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#span#0;n#li#0;n#draggable#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="2577">
+          <caret line="186" column="38" lean-forward="true" selection-start-line="186" selection-start-column="38" selection-end-line="186" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>

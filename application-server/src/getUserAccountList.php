@@ -38,6 +38,7 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
         foreach($installedPackapps as $packapp){
             $userListPrivileges .= " LEFT JOIN ".$packapp['short_app_name']."_UserData ON packapps_master_users.username=".$packapp['short_app_name']."_UserData.UserName";
         }
+        $userListPrivileges .= " ORDER BY isDisabled, `Real Name`";
         $userListPrivileges = mysqli_query($mysqli, $userListPrivileges);
         $arrayToReturn = array();
         while($user = mysqli_fetch_assoc($userListPrivileges)){

@@ -109,7 +109,7 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
         <header class="demo-drawer-header">
             <div class="demo-avatar-dropdown">
                 <i style="margin: 2px" class="material-icons">account_circle</i>
-                <span style='text-align: center;'> <? echo $checkAllowed['Real Name'] ?></span>
+                <span style='text-align: center;width: 100%'> <? echo $checkAllowed['Real Name'] ?></span>
             </div>
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
