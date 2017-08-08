@@ -35,5 +35,15 @@ if($room_id == '%'){
 //add lists under human-readable titles
 $pivotLists['Delivered'] = $growerFruitFieldNames;
 
+//Turn the objects into arrays of objects, for sortable.js to use
+//JS objects are not ordered, so they cannot be sorted
 
-echo json_encode($pivotLists);
+$outputArray = array();
+foreach($pivotLists as $listName => $list){
+    $outputArray[$listName] = array();
+    foreach($list as $id => $name){
+        array_push($outputArray[$listName], array('id' => $id, 'name' => $name));
+    }
+}
+
+echo json_encode($outputArray);

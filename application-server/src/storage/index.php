@@ -78,15 +78,15 @@ packapps_authenticate_user('storage');
                 <div id="pivotLists">
                     <div v-if="currentRoomHasInventory" style="position: absolute; right: 0; top: 0;" class="mdl-shadow--6dp">
                         <span style="text-align: center; padding-top:15px" class="mdl-layout__title">Pivot Order
-                            <i v-on:click="pivotOptionsIsOpen = !pivotOptionsIsOpen" v-bind:class="{ rotate: pivotOptionsIsOpen }" style="vertical-align: middle; cursor: pointer" class="material-icons">keyboard_arrow_down</i>
+                            <i v-on:click="togglePivotOptions" v-bind:class="{ rotate: !pivotOptionsIsOpen }" style="vertical-align: middle; cursor: pointer" class="material-icons">keyboard_arrow_down</i>
                         </span>
-                        <ul v-if="pivotOptionsIsOpen" style="margin-bottom:0px; padding-bottom: 0px; margin-top: 5px; padding-top: 5px" class="mdl-list">
-                            <draggable>
-                                <li v-model="currentRoomStats.Delivered" v-for="(itemName, itemID) in pivotLists.Delivered" class="mdl-list__item">
-                            <span class="mdl-list__item-primary-content">
-                                <i style="cursor:move" class="material-icons mdl-list__item-icon">drag_handle</i>
-                                {{ itemName }}
-                            </span>
+                        <ul id="pivotOptionsList" style="display: none;margin-bottom:0px; padding-bottom: 0px; margin-top: 5px; padding-top: 5px" class="mdl-list">
+                            <draggable @update="pivotUpdated" v-model="pivotLists.Delivered">
+                                <li v-for="pivotField in pivotLists.Delivered" class="mdl-list__item">
+                                    <span class="mdl-list__item-primary-content">
+                                        <i style="cursor:move" class="material-icons mdl-list__item-icon">drag_handle</i>
+                                        {{ pivotField.name }}
+                                    </span>
                                 </li>
                             </draggable>
                         </ul>
@@ -170,7 +170,7 @@ packapps_authenticate_user('storage');
             this.updateSunburst();
         },
         methods: {
-            getPivotLists: function(){
+            initPivotLists: function(){
                 var self = this;
                 var data = {};
                 if(!this.isInAllRoomView){
@@ -180,12 +180,18 @@ packapps_authenticate_user('storage');
                     self.pivotLists = json;
                 });
             },
+            togglePivotOptions: function() {
+                this.pivotOptionsIsOpen = ! this.pivotOptionsIsOpen;
+                $('#pivotOptionsList').slideToggle();
+            },
             pivotUpdated: function() {
                 this.pivotOptionsIsDirty = true;
                 this.updateSunburst(true);
             },
-            updateSunburst: function(){
-                this.getPivotLists();
+            updateSunburst: function(dontUpdatePivots){
+                if(!dontUpdatePivots){
+                    this.initPivotLists();
+                }
                 $('#chart').find('svg').remove();
                 $('#sequence').find('svg').remove();
                 //Get data and graph
@@ -194,7 +200,15 @@ packapps_authenticate_user('storage');
                     data.room_id = this.currentRoomID;
                 }
                 if(this.pivotOptionsIsDirty){
-                    //TODO read pivot list data and attach
+                    for(var list in this.pivotLists){
+                        if(this.pivotLists.hasOwnProperty(list)){
+                            data['ordering_' + list] = [];
+                            for(var pivotField in this.pivotLists[list]){
+                                data['ordering_'+list].push(this.pivotLists[list][pivotField]['id']);
+                            }
+                            data['ordering_'+list] = JSON.stringify(data['ordering_'+list]);
+                        }
+                    }
                 }
                 var self = this;
                 $.getJSON('API/getRoomContents.php', data, function(json) {
