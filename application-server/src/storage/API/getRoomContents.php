@@ -26,7 +26,9 @@ $roomContentsQueryResult = mysqli_query($mysqli, "SELECT
   COALESCE(NULLIF(strainName, ''), '[No Strain]') AS strainName,
   SUM(bushelsInBin) AS bushels,
   storage_rooms.room_id,
-  COALESCE(NULLIF(storage_rooms.room_name, ''), '[Unnamed Room]') AS room_name
+  COALESCE(NULLIF(storage_rooms.room_name, ''), '[Unnamed Room]') AS room_name,
+  isAvailable,
+  CASE WHEN isAvailable > 0 THEN 'Open' ELSE 'Closed' END AS availability
 FROM storage_grower_fruit_bins
   JOIN storage_grower_receipts
     ON storage_grower_fruit_bins.grower_receipt_id = storage_grower_receipts.id
@@ -44,7 +46,7 @@ FROM storage_grower_fruit_bins
     ON grower_farms.growerID = grower_GrowerLogins.GrowerID
   JOIN storage_rooms
     ON storage_grower_fruit_bins.curRoom = storage_rooms.room_id
-WHERE curRoom LIKE '$room_id'
+WHERE curRoom LIKE '$room_id' AND storage_grower_fruit_bins.isFinished = 0
 GROUP BY grower_farms.growerID, grower_farms.farmID, blockID, VarietyID, strain_ID
 ");
 
@@ -59,7 +61,8 @@ $fieldTuple = array(
     'blockID' => 'BlockDesc',
     'VarietyID' => 'VarietyName',
     'strain_ID' => 'strainName',
-    'room_id' => 'room_name'
+    'room_id' => 'room_name',
+    'isAvailable' => 'availability'
 );
 
 //choose ordering to pivot on
@@ -68,6 +71,7 @@ $fieldTuple = array(
 $defaultOrdering = array('VarietyID', 'strain_ID', 'growerID', 'farmID', 'blockID');
 if($room_id == '%'){
     array_unshift($defaultOrdering, 'room_id');
+    array_unshift($defaultOrdering, 'isAvailable');
 }
 
 if(isset($_GET['ordering_Delivered'])){
@@ -88,10 +92,14 @@ while($fruitRow = mysqli_fetch_assoc($roomContentsQueryResult)) {
             $desc = $fruitRow[$fieldName];
             if(substr($desc, 0, 1) == '[' && substr($desc, -1) == ']'){
                 $color = '#969e9b'; //Hardcoded gray for unknown values
+            } elseif($desc == 'Closed'){
+                $color = '#FF4136'; //room is closed and red
+            } elseif($desc == 'Open') {
+                $color = '#282'; // room is open and green
             } else {
 //                $color = dechex(crc32($fruitRow[$fieldName]));
 //                $color = '#'.substr($color, 0, 6);
-                $color = '#'.substr(md5($fruitRow[$fieldName]), 0, 6);
+                $color = '#'.substr(md5($desc), 0, 6);
             }
             $array[$fruitRow[$fieldID]] = array('name' => $fruitRow[$fieldName], 'color' => $color, 'fieldID' => $fieldID, 'IDvalue' => $fruitRow[$fieldID], 'children' => array());
         }

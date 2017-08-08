@@ -27,6 +27,7 @@ $growerFruitFieldNames = array(
 );
 if($room_id == '%'){
     $growerFruitFieldNames = array('room_id' => 'Room') + $growerFruitFieldNames;
+    $growerFruitFieldNames = array('isAvailable' => 'Status') + $growerFruitFieldNames;
 }
 
 

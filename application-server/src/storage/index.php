@@ -32,11 +32,16 @@ packapps_authenticate_user('storage');
         <div class="mdl-layout__header-row">
             <span style="color:white" class="mdl-layout-title"><i style="vertical-align: text-bottom;" class="material-icons">track_changes</i> Storage Insights</span>
             <div class="mdl-layout-spacer"></div>
-            <i style="color:white; margin-right:10px" class="material-icons">settings</i>
-            <button class="mdl-button mdl-js-button mdl-button--icon">
-                <a style="color: white; text-decoration: none" href="/" class="material-icons">close</a>
-            </button>
-        </div>
+                <button id="refreshButton" style="color:white" class="mdl-button mdl-js-button mdl-button--icon">
+                    <i class="material-icons">sync</i>
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--icon">
+                <i style="color:white; margin-right:10px" class="material-icons">settings</i>
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--icon">
+                    <a style="color: white; text-decoration: none" href="/" class="material-icons">close</a>
+                </button>
+            </div>
     </header>
     <!-- Buildings Sidebar -->
     <div id="locationsBar" class="mdl-layout__drawer">
@@ -73,49 +78,56 @@ packapps_authenticate_user('storage');
     <!-- Actual Data page -->
     <main class="mdl-layout__content">
         <div id="currentRoomStats" class="page-content">
-            <div id="graphAndPivotWrapper">
+            <div id="topInfoBar" style="text-align: center; border-bottom: 3px solid #e0e0e0;">
+                <!-- Room Title -->
+                <div style="display: inline-block">
+                    <h2>
+                        <span v-if="isInAllRoomView">All Rooms</span>
+                        <span v-else>{{ locations.buildings[currentBuildingID]['rooms'][currentRoomID]['room_name'] }}</span>
+                    </h2>
+                </div>
                 <!-- Pivot Box -->
-                <div id="pivotLists">
-                    <div v-if="currentRoomHasInventory" style="position: absolute; right: 0; top: 0;" class="mdl-shadow--6dp">
-                        <span style="text-align: center; padding-top:15px" class="mdl-layout__title">Pivot Order
-                            <i v-on:click="togglePivotOptions" v-bind:class="{ rotate: !pivotOptionsIsOpen }" style="vertical-align: middle; cursor: pointer" class="material-icons">keyboard_arrow_down</i>
-                        </span>
-                        <ul id="pivotOptionsList" style="display: none;margin-bottom:0px; padding-bottom: 0px; margin-top: 5px; padding-top: 5px" class="mdl-list">
-                            <draggable @update="pivotUpdated" v-model="pivotLists.Delivered">
-                                <li v-for="pivotField in pivotLists.Delivered" class="mdl-list__item">
+                <div v-if="currentRoomHasInventory" id="pivotLists" style="display:inline-block; vertical-align: super;">
+                    <div class="wrapper">
+                        <div style="position: absolute; right: 40px">
+
+                            <div class="mdl-layout__title">Pivot Order
+                                <i v-on:click="togglePivotOptions" v-bind:class="{ rotate: pivotOptionsIsOpen }" style="vertical-align: middle; cursor: pointer" class="material-icons">keyboard_arrow_down</i>
+                            </div>
+                            <ul id="pivotOptionsList" class="mdl-shadow--6dp mdl-list" style="display: none;margin-bottom:0px; padding-bottom: 0px; margin-top: 5px; padding-top: 5px;position:absolute; background-color: white; z-index: 99">
+                                <draggable @update="pivotUpdated" v-model="pivotLists.Delivered">
+                                    <li v-for="pivotField in pivotLists.Delivered" class="mdl-list__item">
                                     <span class="mdl-list__item-primary-content">
                                         <i style="cursor:move" class="material-icons mdl-list__item-icon">drag_handle</i>
                                         {{ pivotField.name }}
                                     </span>
-                                </li>
-                            </draggable>
-                        </ul>
-                    </div>
-                    <div v-else class="mdl-color--red-100" style="font-size:large;text-align:center; padding:10px">
-                        <i style="vertical-align: middle;" class="material-icons">error_outline</i>
-                        <b> This view contains no inventory.</b>
+                                    </li>
+                                </draggable>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+                <div v-else class="mdl-color--red-100" style="font-size:large;text-align:center; padding:10px">
+                    <i style="vertical-align: middle;" class="material-icons">error_outline</i>
+                    <b> This view contains no inventory.</b>
+                </div>
+            </div>
+            <div v-pre id="sunburst_wrapper" style="text-align: center;width: 100%">
                 <div v-pre id="sequence"></div>
-                <h2 style="text-align: center; margin-top: 0">
-                    <span v-if="isInAllRoomView">All Rooms</span>
-                    <span v-else>{{ locations.buildings[currentBuildingID]['rooms'][currentRoomID]['room_name'] }}</span>
-                </h2>
-                <div v-pre id="sunburst_wrapper" style="text-align: center;width: 100%">
-                    <div v-pre id="sunburst" style="display:inline-block">
-                        <div v-pre style="" id="chart">
-                            <div v-pre id="explanation" style="visibility: hidden;">
-                                <span id="bushel_total"></span><br/>
-                                Total Bushels<br />
-                                <span><b><span id="percentage"></span></b> of this view</span>
-                            </div>
+
+                <div v-pre id="sunburst" style="display:inline-block">
+                    <div v-pre style="" id="chart">
+                        <div v-pre id="explanation" style="visibility: hidden;">
+                            <span id="bushel_total"></span><br/>
+                            Total Bushels<br />
+                            <span><b><span id="percentage"></span></b> of this view</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div style=" border-top:3px solid #e0e0e0; margin-top:15px">
-                <h4>Selection Details</h4>
-            </div>
+            <!--                        <div style=" border-top:3px solid #e0e0e0; margin-top:15px">-->
+            <!--                            <h4>Selection Details</h4>-->
+            <!--                        </div>-->
         </div>
     </main>
 </div>
@@ -167,10 +179,10 @@ packapps_authenticate_user('storage');
             locations: locations
         },
         mounted: function(){
-            this.updateSunburst();
+            this.initPivotLists(this.updateSunburst);
         },
         methods: {
-            initPivotLists: function(){
+            initPivotLists: function(callback){
                 var self = this;
                 var data = {};
                 if(!this.isInAllRoomView){
@@ -178,6 +190,7 @@ packapps_authenticate_user('storage');
                 }
                 $.getJSON('API/getPivotLists.php', data, function(json){
                     self.pivotLists = json;
+                    callback();
                 });
             },
             togglePivotOptions: function() {
@@ -186,12 +199,13 @@ packapps_authenticate_user('storage');
             },
             pivotUpdated: function() {
                 this.pivotOptionsIsDirty = true;
-                this.updateSunburst(true);
+                this.updateSunburst();
             },
-            updateSunburst: function(dontUpdatePivots){
-                if(!dontUpdatePivots){
-                    this.initPivotLists();
-                }
+            removeFromPivotList: function(list, id){
+                for(pivotLists[list])
+                    //TODO choose the element and splice it
+            },
+            updateSunburst: function(){
                 $('#chart').find('svg').remove();
                 $('#sequence').find('svg').remove();
                 //Get data and graph
@@ -235,7 +249,7 @@ packapps_authenticate_user('storage');
         } else {
             currentRoomStats.isInAllRoomView = true;
         }
-        currentRoomStats.updateSunburst();
+        currentRoomStats.initPivotLists(currentRoomStats.updateSunburst);
     }
 
     function snack(message, length) {
@@ -245,5 +259,12 @@ packapps_authenticate_user('storage');
         };
         document.querySelector('#snackbar').MaterialSnackbar.showSnackbar(data);
     }
+
+    //refresh button
+    $('#refreshButton').on('click', function() {
+        currentRoomStats.initPivotLists(currentRoomStats.updateSunburst);
+
+    });
+
 </script>
 </html>

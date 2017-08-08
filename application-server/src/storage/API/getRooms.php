@@ -17,7 +17,7 @@ while($building = mysqli_fetch_assoc($buildings)){
 $buildings = $tempBuildings;
 
 //get rooms
-$rooms = mysqli_query($mysqli, "SELECT building, room_id, room_name, isAvailable, DATEDIFF(CURDATE(), lastAvailabilityChange) as lastAvailabilityChange FROM storage_rooms");
+$rooms = mysqli_query($mysqli, "SELECT building, room_id, room_name, isAvailable, DATEDIFF(CURDATE(), lastAvailabilityChange) as lastAvailabilityChange FROM storage_rooms ORDER BY room_name");
 while($room = mysqli_fetch_assoc($rooms)){
     $buildings[$room['building']]['rooms'][$room['room_id']] = $room;
 }

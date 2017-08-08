@@ -416,7 +416,6 @@ if ($RealName['Role'] != 'Production') {
 
     /* Moves a Made row up on the form, decreasing its ID */
     function moveMadeUp(rowNum){
-        console.log('test');
         if(rowNum != 1){
             //get vals
             var rowOnTop = {};
