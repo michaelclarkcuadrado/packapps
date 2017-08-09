@@ -89,18 +89,27 @@ packapps_authenticate_user('storage');
                 <!-- Pivot Box -->
                 <div v-if="currentRoomHasInventory" id="pivotLists" style="display:inline-block; vertical-align: super;">
                     <div class="wrapper">
-                        <div style="position: absolute; right: 40px">
-
-                            <div class="mdl-layout__title">Pivot Order
-                                <i v-on:click="togglePivotOptions" v-bind:class="{ rotate: pivotOptionsIsOpen }" style="vertical-align: middle; cursor: pointer" class="material-icons">keyboard_arrow_down</i>
+                        <div style="position: absolute; right: 40px;">
+                            <div v-on:click="togglePivotOptions" style="cursor: pointer; background-color:rgba(0,0,0,.12);padding: 4px; border-radius: 5px"  class="mdl-layout__title">
+                                <i style="vertical-align: sub" class="material-icons">filter_list</i>
+                                Pivot/Filter
+                                <i v-bind:class="{ rotate: pivotOptionsIsOpen }" style="vertical-align: middle;" class="material-icons">keyboard_arrow_down</i>
                             </div>
-                            <ul id="pivotOptionsList" class="mdl-shadow--6dp mdl-list" style="display: none;margin-bottom:0px; padding-bottom: 0px; margin-top: 5px; padding-top: 5px;position:absolute; background-color: white; z-index: 99">
+                            <ul id="pivotOptionsList" class="mdl-shadow--6dp mdl-list" style="border-radius: 5px; display: none;margin-bottom:0px; padding-bottom: 0px; margin-top: 5px; padding-top: 5px; background-color: white; z-index: 99">
+                                <!--Static item to reset-->
+                                <li v-if="pivotOptionsIsDirty" style="transition: visibility 0s, opacity 0.5s linear;" class="mdl-list__item">
+                                    <span style="white-space: nowrap" class="mdl-list__item-primary-content">
+                                        <i v-on:click="initPivotLists(currentRoomStats.updateSunburst)" style="cursor: pointer" class="material-icons mdl-list__item-icon">sync</i>
+                                        Reset Filter
+                                    </span>
+                                </li>
                                 <draggable @update="pivotUpdated" v-model="pivotLists.Delivered">
                                     <li v-for="pivotField in pivotLists.Delivered" class="mdl-list__item">
                                     <span class="mdl-list__item-primary-content">
                                         <i style="cursor:move" class="material-icons mdl-list__item-icon">drag_handle</i>
                                         {{ pivotField.name }}
                                     </span>
+                                        <a class="mdl-list__item-secondary-action" v-on:click="removeFromPivotList('Delivered', pivotField.id)"><i class="material-icons">close</i></a>
                                     </li>
                                 </draggable>
                             </ul>
@@ -190,6 +199,7 @@ packapps_authenticate_user('storage');
                 }
                 $.getJSON('API/getPivotLists.php', data, function(json){
                     self.pivotLists = json;
+                    self.pivotOptionsIsDirty = false;
                     callback();
                 });
             },
@@ -202,8 +212,16 @@ packapps_authenticate_user('storage');
                 this.updateSunburst();
             },
             removeFromPivotList: function(list, id){
-                for(pivotLists[list])
-                    //TODO choose the element and splice it
+                for(var listItemIndex in this.pivotLists[list]){
+                    if(this.pivotLists[list].hasOwnProperty(listItemIndex)){
+                        if(this.pivotLists[list][listItemIndex]['id'] === id){
+                            this.pivotOptionsIsDirty= true;
+                            this.pivotLists[list].splice(listItemIndex, 1);
+                            this.updateSunburst();
+                            return;
+                        }
+                    }
+                }
             },
             updateSunburst: function(){
                 $('#chart').find('svg').remove();
