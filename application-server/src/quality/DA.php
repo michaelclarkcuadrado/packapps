@@ -109,6 +109,7 @@ $rts = mysqli_query($mysqli, "SELECT quality_InspectedRTs.RTNum AS `RT#`, ifnull
             hopper = !hopper;
         }
         string = string + "</tr>";
+        $("#rowsGoHere").nextAll().remove();
         $("#rowsGoHere").replaceWith(string);
     }
 
