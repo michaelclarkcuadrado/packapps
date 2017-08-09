@@ -32,16 +32,16 @@ packapps_authenticate_user('storage');
         <div class="mdl-layout__header-row">
             <span style="color:white" class="mdl-layout-title"><i style="vertical-align: text-bottom;" class="material-icons">track_changes</i> Storage Insights</span>
             <div class="mdl-layout-spacer"></div>
-                <button id="refreshButton" style="color:white" class="mdl-button mdl-js-button mdl-button--icon">
-                    <i class="material-icons">sync</i>
-                </button>
-                <button class="mdl-button mdl-js-button mdl-button--icon">
+            <button id="refreshButton" style="color:white" class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="material-icons">sync</i>
+            </button>
+            <button class="mdl-button mdl-js-button mdl-button--icon">
                 <i style="color:white; margin-right:10px" class="material-icons">settings</i>
-                </button>
-                <button class="mdl-button mdl-js-button mdl-button--icon">
-                    <a style="color: white; text-decoration: none" href="/" class="material-icons">close</a>
-                </button>
-            </div>
+            </button>
+            <button class="mdl-button mdl-js-button mdl-button--icon">
+                <a style="color: white; text-decoration: none" href="/" class="material-icons">close</a>
+            </button>
+        </div>
     </header>
     <!-- Buildings Sidebar -->
     <div id="locationsBar" class="mdl-layout__drawer">
@@ -123,7 +123,6 @@ packapps_authenticate_user('storage');
             </div>
             <div v-pre id="sunburst_wrapper" style="text-align: center;width: 100%">
                 <div v-pre id="sequence"></div>
-
                 <div v-pre id="sunburst" style="display:inline-block">
                     <div v-pre style="" id="chart">
                         <div v-pre id="explanation" style="visibility: hidden;">
@@ -179,6 +178,7 @@ packapps_authenticate_user('storage');
         el: "#currentRoomStats",
         data: {
             pivotLists: [],
+            fieldID2fieldName: {},
             pivotOptionsIsOpen: false,
             pivotOptionsIsDirty: false,
             currentRoomHasInventory: false,
@@ -200,6 +200,15 @@ packapps_authenticate_user('storage');
                 $.getJSON('API/getPivotLists.php', data, function(json){
                     self.pivotLists = json;
                     self.pivotOptionsIsDirty = false;
+                    for(var list in json){
+                        if(json.hasOwnProperty(list)){
+                            for(var item in json[list]){
+                                if(json[list].hasOwnProperty(item)){
+                                    self.fieldID2fieldName[json[list][item]['id']] = json[list][item]['name'];
+                                }
+                            }
+                        }
+                    }
                     callback();
                 });
             },
