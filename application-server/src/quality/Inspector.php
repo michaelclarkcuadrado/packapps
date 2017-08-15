@@ -82,9 +82,9 @@ $detect=new Mobile_Detect();
         <!--Bitter Pit-->
         <div class="col-4">
                 <label>Bitter pit</label>
-            <label style="text-align: center">Not Present
+            <label style="text-align: center">None to Light
                     <input type="radio" onclick="$('#isBitterPit').slideUp();$('#bitterPitCloseUpPic').attr('disabled', true).attr('required', false);" name="isBitterPitPresent" value='0' id="bitterpit1" required /></label>
-            <label style="text-align: center">Present
+            <label style="text-align: center">Moderate to Heavy
                     <input type="radio" onclick="$('#isBitterPit').slideDown();$('#bitterPitCloseUpPic').attr('disabled', false).attr('required', true);" name="isBitterPitPresent" value="1" id="bitterpit2" /></label>
         </div>
         <div id="isBitterPit" style="display: none" class='col-4'>

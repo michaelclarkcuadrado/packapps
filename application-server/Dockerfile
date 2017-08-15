@@ -4,7 +4,7 @@ FROM php:apache
 #get around crazy php image bug
 WORKDIR /var/www  
 RUN docker-php-ext-install mysqli
-RUN apt-get update; apt-get install zbar-tools -y
+#RUN apt-get update; apt-get install zbar-tools -y
 # mod_pagespeed is not compatible with a reverse SSL proxy
 #RUN cd /tmp \
 #    && curl -o /tmp/mod-pagespeed.deb https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb \

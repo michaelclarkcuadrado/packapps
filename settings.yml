@@ -2,6 +2,7 @@ version: '2.1'
 services:
  base:
   environment:
+   - "TZ=America/New_York"
    - "COMPANY_SLUG_NAME=devenv"
    - "COMPANY_LONG_NAME=DEVELOPMENT ENV"
    - "PACKAPPS_SECURITY_KEY=lH2OzVPQ0K9/By66YygFosxxszSgET4p/L0l18bpZPXRGCt5U5VCybYaVk9vn15c"
@@ -10,7 +11,6 @@ services:
    - "AWS_SECRET_ACCESS_KEY=K/ZGPFjffHMDWzkXXNcEXELLH1cgNfIpqjXC7/Qw"
    - "LETSENCRYPT_HOST=REPLACE.packercloud.com"
    - "LETSENCRYPT_EMAIL=michael@packercloud.com"
-
  hostname:
   extends:
    file: settings.yml

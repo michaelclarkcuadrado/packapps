@@ -35,6 +35,11 @@ if ($_POST['Retain']) {
 }
 $NumSamples = $_POST['NumSamples'];
 
+//quick and dirty fix for a big bug -- fix me when you have proper keys for tests
+$checkIfDone = mysqli_query($mysqli2, "SELECT * FROM `Preharvest_Samples` WHERE PK = $PK AND DATE(`Date`) = DATE(CURDATE())");
+if(mysqli_num_rows($checkIfDone) > 0){
+    die("This Block has already been done today. It cannot be done again until tomorrow.");
+}
 
 //Prepare Statement
 if (!($stmt = mysqli_prepare($mysqli2, "Insert into `Preharvest_Samples` (Grower, PK, Retain, SampleNum, NumSamples, Pressure1, Pressure2, Brix, Weight, DA, DA2, Inspector, Notes) values  (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))) {
