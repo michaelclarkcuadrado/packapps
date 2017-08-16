@@ -13,7 +13,7 @@ $securityKey = getenv('PACKAPPS_SECURITY_KEY');
 $growerSecurityKey = getenv('PACKAPPS_GROWER_SECURITY_KEY');
 
 //MYSQL Server Details
-$dbhost = "p:database-server";
+$dbhost = "database-server";
 $dbusername = "packapps";
 $dbpassword = "packapps";
 $dbport = "3306";

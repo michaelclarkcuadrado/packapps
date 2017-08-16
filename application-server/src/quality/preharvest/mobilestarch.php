@@ -2,23 +2,19 @@
 include_once("../Classes/Mobile_Detect.php");
 $detect = new Mobile_Detect();
 include '../../config.php';
-$mysqli2 = mysqli_connect($dbhost, $dbusername, $dbpassword, $growerDB);
-//authentication
-if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
-    die("<script>window.location.replace('/')</script>");
-} else if (!hash_equals($_COOKIE['auth'], crypt($_COOKIE['username'], $securityKey))) {
-    die("<script>window.location.replace('/')</script>");
-} else {
-    $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Real Name`, Role, allowedQuality FROM packapps_master_users JOIN quality_UserData ON packapps_master_users.username=quality_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
-    if (!$checkAllowed['allowedQuality'] > 0) {
-        die ("<script>window.location.replace('/')</script>");
-    } else {
-        $RealName = $checkAllowed;
-    }
-}
-// end authentication
-$pendingstarchdata = mysqli_query($mysqli2, "SELECT Preharvest_Samples.Grower AS Grower, date(`Date`) AS Day, Preharvest_Samples.PK AS PK, BlockDesc, VarDesc FROM Preharvest_Samples LEFT JOIN `crop-estimates` ON Preharvest_Samples.PK=`crop-estimates`.PK WHERE isStarchInspected='0' AND `Date` >= NOW() - INTERVAL 5 DAY GROUP BY PK, Day");
+packapps_authenticate_user('quality');
+
+$pendingstarchdata = mysqli_query($mysqli, "
+SELECT
+  `grower_gfbvs-listing`.GrowerName AS Grower,
+  test_id                           AS testID,
+  grower_Preharvest_tests.block_PK  AS PK,
+  BlockDesc,
+  VarietyName                       AS VarDesc
+FROM grower_Preharvest_tests
+  JOIN `grower_gfbvs-listing` ON grower_Preharvest_tests.block_PK = `grower_gfbvs-listing`.PK
+WHERE isStarchInspected = '0' AND `Date` >= NOW() - INTERVAL 5 DAY
+GROUP BY test_id");
 ?>
 <html style="width: 100%" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -43,8 +39,6 @@ $pendingstarchdata = mysqli_query($mysqli2, "SELECT Preharvest_Samples.Grower AS
     }
 
     input.submitbtn {
-        background-image: -moz-linear-gradient(#97c16b, #8ab959);
-        background-image: -webkit-linear-gradient(#97c16b, #8ab959);
         background-image: linear-gradient(#97c16b, #8ab959);
         border-bottom: 1px solid #648c3a;
         cursor: pointer;
@@ -52,8 +46,6 @@ $pendingstarchdata = mysqli_query($mysqli2, "SELECT Preharvest_Samples.Grower AS
     }
 
     input.submitbtn:hover {
-        background-image: -moz-linear-gradient(#8ab959, #7eaf4a);
-        background-image: -webkit-linear-gradient(#8ab959, #7eaf4a);
         background-image: linear-gradient(#8ab959, #7eaf4a);
     }
 
@@ -61,8 +53,6 @@ $pendingstarchdata = mysqli_query($mysqli2, "SELECT Preharvest_Samples.Grower AS
         height: 34px;
         border-bottom: 0;
         margin: 1px 0 0 0;
-        background-image: -moz-linear-gradient(#7eaf4a, #8ab959);
-        background-image: -webkit-linear-gradient(#7eaf4a, #8ab959);
         background-image: linear-gradient(#7eaf4a, #8ab959);
         -moz-box-shadow: inset 0 1px 3px 1px rgba(0, 0, 0, 0.3);
         -webkit-box-shadow: inset 0 1px 3px 1px rgba(0, 0, 0, 0.3);
@@ -71,7 +61,7 @@ $pendingstarchdata = mysqli_query($mysqli2, "SELECT Preharvest_Samples.Grower AS
 </style>
 <title>Starch Pre-Harvest</title>
 <? if (isset($_GET['ph'])) {
-    echo "<b>Starch for Block# " . $_GET['ph'] . " received.</b>";
+    echo "<b>Starch information received.</b>";
 }
 if ($detect->isMobile()) {
     echo "<p style='top: 0px; width: 100%'><button onclick='location.replace(\"../mobileQA.php\")'><<< Go back</button></p>";
@@ -88,7 +78,7 @@ if ($detect->isMobile()) {
                 <select id='ID_sel' style='width: 100%' class='required' name="ID" autofocus required>
                     <option disabled selected>Select Sample</option>
                     <?php while ($pendingstarcharray = mysqli_fetch_assoc($pendingstarchdata)) {
-                        echo "<option value='" . $pendingstarcharray['PK'] . "*" . $pendingstarcharray['Day'] . "'>ID: " . $pendingstarcharray['PK'] . " --  Grower: " . $pendingstarcharray['Grower'] . " --  Variety: " . $pendingstarcharray['VarDesc'] . " --  Block: " . $pendingstarcharray['BlockDesc'] . "</ option>";
+                        echo "<option value='" . $pendingstarcharray['testID'] . "'>ID: " . $pendingstarcharray['PK'] . " --  Grower: " . $pendingstarcharray['Grower'] . " --  Variety: " . $pendingstarcharray['VarDesc'] . " --  Block: " . $pendingstarcharray['BlockDesc'] . "</ option>";
                     } ?>
                 </select></td>
         </tr>
@@ -147,7 +137,7 @@ if ($detect->isMobile()) {
             , form = self.parents('form:eq(0)')
             , focusable
             , next
-            ;
+        ;
         if (e.keyCode == 13) {
             focusable = form.find('input,a,select,textarea').filter(':enabled');
             next = focusable.eq(focusable.index(this) + 1);

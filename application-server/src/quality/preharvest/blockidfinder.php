@@ -4,6 +4,7 @@
     <thead>
     <tr>
         <th>Block ID</th>
+        <th>Commodity</th>
         <th>Grower</th>
         <th>Farm</th>
         <th>Block</th>
@@ -15,6 +16,7 @@
     <tfoot>
     <tr>
         <th>Block ID</th>
+        <th>Commodity</th>
         <th>Grower</th>
         <th>Farm</th>
         <th>Block</th>
@@ -27,12 +29,12 @@
 <script src="../assets/js/jquery.min.js"></script>
 <script src="../assets/js/jquery.dataTables.min.js"></script>
 <script>
-$(document).ready(function() {
-$('#IDFinder').dataTable( {
-"processing": true,
-"serverSide": true,
-"ajax": "../API/blockiddata.php"
-} );
-} );
+    $(document).ready(function() {
+        $('#IDFinder').dataTable( {
+            "processing": true,
+            "serverSide": true,
+            "ajax": "../API/blockiddata.php"
+        } );
+    } );
 </script>
 </html>

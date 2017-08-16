@@ -1,27 +1,7 @@
 <!DOCTYPE HTML>
 <?php
 include '../../config.php';
-$mysqli2 = mysqli_connect($dbhost,$dbusername,$dbpassword,$growerDB);
-
-//authentication
-if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
-    die("<script>window.location.replace('/')</script>");
-} else if (!hash_equals($_COOKIE['auth'], crypt($_COOKIE['username'], $securityKey))) {
-    die("<script>window.location.replace('/')</script>");
-} else {
-    $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Real Name` AS 'UserRealName', Role, allowedQuality FROM packapps_master_users JOIN quality_UserData ON packapps_master_users.username=quality_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
-    if (!$checkAllowed['allowedQuality'] > 0) {
-        die ("<script>window.location.replace('/')</script>");
-    } else {
-        $RealName = $checkAllowed;
-    }
-}
-//QA Lab only
-if($RealName['Role'] != "QA") {die("Unauthorized. This page is for the QA lab team.");};
-// end authentication
-
-$pendingstarchdata=mysqli_query($mysqli2, "select Preharvest_Samples.Grower as Grower, date(`Date`) as Day, Preharvest_Samples.PK as PK, BlockDesc, VarDesc from Preharvest_Samples left join `crop-estimates` on Preharvest_Samples.PK=`crop-estimates`.PK where isStarchInspected='0' group by PK, Day");
+$userData = packapps_authenticate_user('quality');
 
 ?>
 <html>
@@ -63,9 +43,9 @@ $pendingstarchdata=mysqli_query($mysqli2, "select Preharvest_Samples.Grower as G
 
         <!-- Welcome Screen -->
         <article id="welcome" class="panel" style="margin-bottom: 0">
-            <header>
+            <header style="margin-bottom: 0">
                 <h1><i class="fa fa-stethoscope"></i> Pre-harvest Check-ups</h1>
-	            <p>Logged in as <i class="icon fa-leaf"></i><?echo $RealName['UserRealName']?></p>
+	            <p>Logged in as <i class="icon fa-leaf"></i><?echo $userData['Real Name']?></p>
             </header>
             <a href="#preharvest" class="jumplink pic">
                 <span class="arrow icon fa-chevron-right"></span>
@@ -109,7 +89,7 @@ $pendingstarchdata=mysqli_query($mysqli2, "select Preharvest_Samples.Grower as G
                     <tr class="ph15"><td><b>Fruit 15</td><td><input value='' max='30' min='0.01' type='number' step='any' name='pressure15-1' placeholder='0' required></td><td><input value='' max='30' min='0.01' type='number' step='any' name='pressure15-2' placeholder='0' required></td><td><input value='' min='0.01' max='5' type='number' step='any' name='weight15' placeholder='0' required></td><td><input max='30' min='0' type='number' step='any' name='brix15' placeholder='0'></td><td><input type='number' max="5" step="any" name='DA15-1' placeholder='0' value='' required></td><td><input type='number' max="5" step="any" name='DA15-2' placeholder='0' value='' required></td></tr>
                     <tr><td colspan="7"><hr></td></tr>
                 </table>
-                <input id="phFormSubmit" type='submit' value='Send to Starch'><br><span style='text-align: justify' class="icon fa-check-circle"><strong> Inspected by <?echo $RealName['UserRealName']?></strong></span></form>
+                <input id="phFormSubmit" type='submit' value='Send to Starch'><br><span style='text-align: justify' class="icon fa-check-circle"><strong> Inspected by <?echo $userData['Real Name']?></strong></span></form>
         </article>
 
         <!-- FTA: Pre-Harvest Block Evaluation -->
@@ -148,7 +128,7 @@ $pendingstarchdata=mysqli_query($mysqli2, "select Preharvest_Samples.Grower as G
                     <tr class="fta15"><td><b>Fruit 15</td><td><input value='' max='30' min='0.01' type='number' step='any' name='pressure15-1' placeholder='0' required></td><td><input value='' max='30' min='0.01' type='number' step='any' name='pressure15-2' placeholder='0' required></td><td><input value='' min='0.01' max='5' type='number' step='any' name='weight15' placeholder='0' required></td><td><input tabindex="43" max='30' min='0' type='number' step='any' name='brix15' placeholder='0'></td><td><input tabindex="44" type='number' max="5" step="any" name='DA15-1' placeholder='0' value='' required></td><td><input tabindex="45" type='number' max="5" step="any" name='DA15-2' placeholder='0' value='' required></td></tr>
                     <tr><td colspan="7"><hr></td></tr>
                 </table>
-                <input id="ftaFormSubmit" type='submit' value='Send to Starch'><br><span style='text-align: justify' class="icon fa-check-circle"><strong> Inspected by <?echo $RealName['UserRealName']?></strong></span></form>
+                <input id="ftaFormSubmit" type='submit' value='Send to Starch'><br><span style='text-align: justify' class="icon fa-check-circle"><strong> Inspected by <?echo $userData['Real Name']?></strong></span></form>
         </article>
 
         <!-- Starch Testing Phase -->
