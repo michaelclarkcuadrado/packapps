@@ -44,8 +44,6 @@ if ($RealName['Role'] <> 'QA') {
     <button>Create a New RT Report</button>
 </a>
 <br>
-<button onclick="location.replace('mobileAlert.php')">Create a New Inventory Alert</button>
-<br>
 <hr>
 <h2 style="text-align: center">Available Tests</h2><br>
 <button onclick="location.replace('WeightSamples.php')">RT Report >> Weighing</button>

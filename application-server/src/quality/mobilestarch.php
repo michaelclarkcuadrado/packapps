@@ -67,7 +67,7 @@ if ($detect->isMobile()) {
     <h2>Starch for Received RT</h2>
 
     <div id="RTinfo"></div>
-    <table id="table">
+    <table id="table" style="width:100%">
         <tr>
             <td>RT Number</td>
             <td style="text-align: center"><select id='RT_sel' style='width: 100%' name="RT" autofocus required>

@@ -24,10 +24,10 @@ if ($Role !== "QA") {
     die("Unauthorized. This page is for the QA lab team.");
 }
 $rts = mysqli_query($mysqli, "SELECT quality_InspectedRTs.RTNum AS `RT#`, ifnull(BULKOHCSV.Grower,'?') AS Grower, ifnull(BULKOHCSV.VarDesc,'?') AS VarDesc, ifnull(BULKOHCSV.Date, date(quality_InspectedRTs.DateInspected)) AS Date FROM quality_InspectedRTs LEFT JOIN BULKOHCSV ON quality_InspectedRTs.RTNum=BULKOHCSV.`RT#` WHERE quality_InspectedRTs.isFinalInspected = '0' ORDER BY quality_InspectedRTs.DateInspected ASC ");
-$runs = mysqli_query($mysqli, "SELECT RunID, RunNumber, lineName AS Line FROM `production_runs` JOIN production_lineNames ON Line+0=lineID WHERE isQA != 1 and lastEdited >= NOW() - INTERVAL 7 DAY ORDER BY RunID DESC Limit 6;");
+$runs = mysqli_query($mysqli, "SELECT RunID, RunNumber, lineName AS Line FROM `production_runs` JOIN production_lineNames ON Line+0=lineID WHERE isQA != 1 AND lastEdited >= NOW() - INTERVAL 7 DAY ORDER BY RunID DESC LIMIT 6;");
 $count_total = mysqli_query($mysqli, "SELECT COUNT(*) AS countRT, (SELECT count(*) FROM quality_AppleSamples) AS countSamp, ifnull(round((SELECT sum(Weight) FROM quality_AppleSamples),2), 0) AS Weight FROM quality_InspectedRTs");
 $total_count = mysqli_fetch_assoc($count_total);
-$count_total_runs = mysqli_query($mysqli, "SELECT COUNT(DISTINCT RunID) AS countRuns, Count(*) as countSamp, ifnull(round(sum(Weight),2), 0) AS Weight FROM quality_run_inspections");
+$count_total_runs = mysqli_query($mysqli, "SELECT COUNT(DISTINCT RunID) AS countRuns, Count(*) AS countSamp, ifnull(round(sum(Weight),2), 0) AS Weight FROM quality_run_inspections");
 $total_count_runs = mysqli_fetch_assoc($count_total_runs);
 ?>
 <html>
@@ -78,8 +78,8 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
            class="icon">]</p>
         <a href="#RTHistory" target="_blank" class="icon
         fa-history"><span>History</span></a>
-<!--        <a href="#TODO" target="_blank" class="icon-->
-<!--        fa-camera"><span>Img Archive</span></a>-->
+        <!--        <a href="#TODO" target="_blank" class="icon-->
+        <!--        fa-camera"><span>Img Archive</span></a>-->
         <p style="font-size: 2em; text-align: center; display: inline-block; width: 5px; color: #ffffff; opacity: 0.75"
            class="icon">[</p>
         <a href="#runQA" class="icon fa-list"><span>Runs</span></a>
@@ -95,14 +95,15 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
         <article id="welcome" class="panel">
             <header>
                 <h1><i class="fa fa-leaf"></i> <? echo "Welcome back, " . strtok($RealName[0], " ") . "."; ?></h1>
-                <p><i class="icon fa-star"></i> <? echo $total_count['Weight']+$total_count_runs['Weight'] ?> pounds of fruit
-                    from <? echo $total_count['countSamp']+$total_count_runs['countSamp'] ?> samples (<? echo $total_count['countRT'] ?> RTs and <?echo $total_count_runs['countRuns']?> runs) analyzed
+                <p><i class="icon fa-star"></i> <? echo $total_count['Weight'] + $total_count_runs['Weight'] ?> pounds of fruit
+                    from <? echo $total_count['countSamp'] + $total_count_runs['countSamp'] ?> samples (<? echo $total_count['countRT'] ?> Receipts and <? echo $total_count_runs['countRuns'] ?> runs)
+                    analyzed
                     so far!<br>
                 </p>
             </header>
             <a href="#QA" class="jumplink pic">
                 <span class="arrow icon fa-chevron-right"></span>
-<!--                                <img src="images/Apple.png" width="75">-->
+                <!--                                <img src="images/Apple.png" width="75">-->
             </a>
         </article>
 
@@ -110,7 +111,7 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
         <article id="newRT" class="panel">
             <header>
                 <h2>New RT Report Creator</h2>
-                <p><?echo $companyName?> Quality Assurance Lab</p>
+                <p><? echo $companyName ?> Quality Assurance Lab</p>
             </header>
             <div id='DA'>
                 <? if (isset($_GET['error'])) {
@@ -129,7 +130,7 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
         <article id="DA" class="panel">
             <header>
                 <h2>Extended tests</h2>
-                <p><?echo $companyName?> Quality Assurance Lab</p>
+                <p><? echo $companyName ?> Quality Assurance Lab</p>
             </header>
             <div id='DA'>
                 <? if (isset($_GET['error'])) {
@@ -157,8 +158,8 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
         <!-- Final Inspection Screen -->
         <article id="QA" class="panel">
             <header>
-                <h2>RT Report Review and Final Inspection</h2>
-                <p><?echo $companyName?> Quality Assurance Lab</p>
+                <h2>Receipt Report Final Inspection</h2>
+                <p><? echo $companyName ?> Quality Assurance Lab</p>
             </header>
             <? if (isset($_GET['qa'])) {
                 echo "<h2><span class='fa fa-check-circle'></span><b> Data for RT# " . $_GET['qa'] . " received.</b></h2><br>";
@@ -167,9 +168,9 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
                 echo "<h2><span class='fa-stack fa-lg'><SampleNum class='fa fa-database fa-stack-1x'></SampleNum><SampleNum style='color: red' class='fa fa-ban fa-stack-2x'></SampleNum></span><b> There was a database error! Try again.</b></h2><br>";
             } ?>
             <div id="rts_selector">
-                Select an RT for lab testing: <select onchange="RTInsert();" class='selector'>
+                Select a Ticket for Testing: <select onchange="RTInsert();" class='selector'>
                     <option value="" disabled
-                            selected><? echo(mysqli_num_rows($rts) == 0 ? "No RTs left. &#9787;" : "Select RT"); ?></option>
+                            selected><? echo(mysqli_num_rows($rts) == 0 ? "No Receipts left. &#9787;" : "Select RT"); ?></option>
                     <?php while ($receivedtodo = mysqli_fetch_assoc($rts)) {
                         echo "<option value='" . $receivedtodo['RT#'] . "'>" . $receivedtodo['Date'] . " - RT#" . $receivedtodo['RT#'] . " - " . $receivedtodo['Grower'] . " - " . $receivedtodo['VarDesc'] . "</ option>";
                     } ?>
@@ -184,22 +185,22 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
         <article class='panel' id='RTHistory'>
             <header>
                 <h2>Testing History</h2>
-                <p><?echo $companyName?> Quality Assurance Lab</p>
+                <p><? echo $companyName ?> Quality Assurance Lab</p>
             </header>
             <div>
                 <span>Last 20 tests processed by packapps (updates every 5 minutes).</span>
                 <button onclick="updateHistory()" style='float:right'><span class="fa fa-refresh"> Refresh</span></button>
                 <table>
                     <thead>
-                        <th>Type</th>
-                        <th>ID</th>
-                        <th>Samples</th>
-                        <th>Last Change</th>
-                        <th>DA</th>
-                        <th>Starch</th>
-                        <th>Final</th>
-                        <th>Inspector</th>
-                        <th></th>
+                    <th>Type</th>
+                    <th>ID</th>
+                    <th>Samples</th>
+                    <th>Last Change</th>
+                    <th>DA</th>
+                    <th>Starch</th>
+                    <th>Final</th>
+                    <th>Inspector</th>
+                    <th></th>
                     </thead>
                     <tbody id="insertTestsHere">
 
@@ -212,15 +213,15 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
         <article id="runQA" class="panel">
             <header>
                 <h2>Run Quality Assessments</h2>
-                <p><?echo $companyName?> Quality Assurance Lab</p>
+                <p><? echo $companyName ?> Quality Assurance Lab</p>
             </header>
             <? if (isset($_GET['run'])) {
                 echo "<h2><span class='fa fa-check-circle'></span><b> Data for Run# " . $_GET['run'] . " received.</b></h2><br>";
             } ?>
             <div id="run_selector">
                 Select a run to assess: <select
-                    onchange="$('#hiddenRunID').val($(this).val()),$('#runsubmitbtn').prop('disabled', false)" required
-                    class='selectorRun'>
+                        onchange="$('#hiddenRunID').val($(this).val()),$('#runsubmitbtn').prop('disabled', false)" required
+                        class='selectorRun'>
                     <option value="" disabled
                             selected><? echo(mysqli_num_rows($runs) == 0 ? "No runs available." : 'Select a run:'); ?></option>
                     <?php while ($runsAvailableTodo = mysqli_fetch_assoc($runs)) {
@@ -284,7 +285,7 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
                     </tr>
                 </table>
                 <input disabled type="submit" id="runsubmitbtn" value="Send info to Production"><span
-                    class="icon fa-check-circle"><strong> Inspected by <? echo $RealName[0] ?></strong></span></form>
+                        class="icon fa-check-circle"><strong> Inspected by <? echo $RealName[0] ?></strong></span></form>
         </article>
 
     </div>
@@ -314,7 +315,7 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
                 , form = self.parents('form:eq(0)')
                 , focusable
                 , next
-                ;
+            ;
             if (e.keyCode == 13) {
                 focusable = form.find('input[type=\'number\'],a,select,textarea').filter(':enabled');
                 next = focusable.eq(focusable.index(this) + 1);
@@ -332,10 +333,10 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
             $("#rts_selector").load("API/RTlist.php");
         }
 
-        function updateHistory(){
-            $.getJSON('API/getTestingHistory.php', function(data) {
+        function updateHistory() {
+            $.getJSON('API/getTestingHistory.php', function (data) {
                 string = "";
-                for(var test in data) {
+                for (var test in data) {
                     string += "<tr style='text-align: center'><td>"
                         + data[test]['Type']
                         + "</td><td>"
@@ -376,8 +377,8 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
                     if (data.CommDesc.indexOf("So Hem") == -1) {
                         img = "<img src=images/" + data.CommDesc + ".png> "
                     }
-                    $("#RTdatainput").replaceWith("<div id=RTdatainput><hr><h3>Shipment Information</h3><table class='shipment'><tr><td><b>Grower:</b></td><td>" + data.GrowerName + "</td><td><b>Commodity:</b></td><td>" + img + data.CommDesc + "</td><td><b>Variety:</b></td><td><mark>" + data.VarDesc + "</mark></td><td><b>Strain:</b></td><td>" + data.StrDesc + "</td></tr><tr><td><b>Farm:</b></td><td>" + data.FarmDesc + "</td><td><b>Block:</b></td><td>" + data.BlockDesc + "</td><td><b>Date Received:</b></td><td>" + data.Date + "</td><td><b>Units on Hand:</b></td><td>" + data.Qty + "</td></tr><tr><td></td><td></td><td><b>Bushels on Hand:</b></td><td>" + data.Bu + "</td><td><b>Received as:</b></td><td>" + data.ReceiptType + "</td><td></td><td></td></tr></table><form action='QAsubmit.php' method='get'><input type='hidden' value='" + RT + "' name='del'><input type='submit' value='Void this RT' style='margin-left: auto; margin-right: auto; background-color: red; display: block'></form><a href='<?php echo "//".$availableBuckets['quality'].$amazonAWSURL.$companyShortName?>-quality-rtnum-" + RT + ".jpg'><img style='margin-left: auto; margin-right: auto; display: block' width='600px' src='<?php echo "//".$availableBuckets['quality'].$amazonAWSURL.$companyShortName?>-quality-rtnum-" + RT + ".jpg'></a><br> <a href='assets/?RT=" + RT + "' style='text-decoration: none'><button style='margin-left: auto; margin-right: auto; display: block'>More from this block</button></a><form enctype='multipart/form-data' action='QAsubmit.php' method='post'>" +
-                        "<div id='FTAmodal'></div><h3>Overall Quality Information</h3><table><tr><td style='text-align: center'>RT Number:</td><td><input name='RT' type='text' class='3u' value='" + RT + "' readonly> </td><td style='text-align: center'>Color Quality:</td><td><input type=text class='3u' name='Color' value='" + data.ColorQuality + (data.Blush != 0 ? ' (With Blush)' : '') + "' disabled></td><tr><td style='text-align: center'>Number of Samples:</td><td><input type='text' name='NumSamples' value='" + data.NumSamples + "' readonly></td><td colspan='2' style='text-align: center;'><SampleNum class='fa fa-check-circle'></SampleNum> Inspected by " + data.InspectedBy + " on " + data.DateInspected + "</td></tr><tr><td colspan='4'><input type='text' name='Notes' maxlength='255' placeholder='Notes' value='" + data.Note + "'></td></tr></table>" +
+                    $("#RTdatainput").replaceWith("<div id=RTdatainput><hr><h3>Shipment Information</h3><table class='shipment'><tr><td><b>Grower:</b></td><td>" + data.GrowerName + "</td><td><b>Commodity:</b></td><td>" + img + data.CommDesc + "</td><td><b>Variety:</b></td><td><mark>" + data.VarDesc + "</mark></td><td><b>Strain:</b></td><td>" + data.StrDesc + "</td></tr><tr><td><b>Farm:</b></td><td>" + data.FarmDesc + "</td><td><b>Block:</b></td><td>" + data.BlockDesc + "</td><td><b>Date Received:</b></td><td>" + data.Date + "</td><td><b>Units on Hand:</b></td><td>" + data.Qty + "</td></tr><tr><td></td><td></td><td><b>Bushels on Hand:</b></td><td>" + data.Bu + "</td><td><b>Received as:</b></td><td>" + data.ReceiptType + "</td><td></td><td></td></tr></table><form action='QAsubmit.php' method='get'><input type='hidden' value='" + RT + "' name='del'><input type='submit' value='Void this RT' style='margin-left: auto; margin-right: auto; background-color: red; display: block'></form><a href='<?php echo "//" . $availableBuckets['quality'] . $amazonAWSURL . $companyShortName?>-quality-rtnum-" + RT + ".jpg'><img style='margin-left: auto; margin-right: auto; display: block' width='600px' src='<?php echo "//" . $availableBuckets['quality'] . $amazonAWSURL . $companyShortName?>-quality-rtnum-" + RT + ".jpg'></a><br> <a href='assets/?RT=" + RT + "' style='text-decoration: none'><button style='margin-left: auto; margin-right: auto; display: block'>More from this block</button></a><form enctype='multipart/form-data' action='QAsubmit.php' method='post'>" +
+                        "<div id='FTAmodal'></div><h3>Overall Quality Information</h3><table><tr><td style='text-align: center'>Receipt Number:</td><td><input name='RT' type='text' class='3u' value='" + RT + "' readonly> </td><td style='text-align: center'>Color Quality:</td><td><input type=text class='3u' name='Color' value='" + data.ColorQuality + (data.Blush != 0 ? ' (With Blush)' : '') + "' disabled></td><tr><td style='text-align: center'>Number of Samples:</td><td><input type='text' name='NumSamples' value='" + data.NumSamples + "' readonly></td><td colspan='2' style='text-align: center;'><SampleNum class='fa fa-check-circle'></SampleNum> Inspected by " + data.InspectedBy + " on " + data.DateInspected + "</td></tr><tr><td colspan='4'><input type='text' name='Notes' maxlength='255' placeholder='Notes' value='" + data.Note + "'></td></tr></table>" +
                         "<table style='text-align: center'><tr><td colspan='7' style='text-align: center'><b><u>Defects</b></td></tr><tr><td><b>Bruising</td><td><b>Bitter Pit</td><td><b>Russeting</td><td><b>San Jose Scale</td><td><b>Sunburn</td><td><b>Scab</td><td><b>Stink Bug</td></tr><tr><td>" + data.Bruise + "</td><td>" + (data.BitterPit < 1 ? 'Not Present' : 'Present' ) + "</td><td>" + data.Russet + "</td><td>" + data.SanJoseScale + "</td><td>" + data.SunBurn + "</td><td>" + data.Scab + "</td><td>" + data.StinkBug + "</td></tr></table>" +
                         "<br><h3>Individual Fruit Samples</h3>" +
                         "<table><tr style='text-align: center'><td>Sample / Test</td><td><b>Pressure A</b></td><td><b>Pressure B</b></td><td><b>Weight</b></td>" + (data.NumSamples > 5 ? "<td><b>Brix</b></td>" : "") + "</tr>" +
@@ -392,7 +393,7 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
 
                 },
                 error: function () {
-                    alert("Error while pulling RT Data");
+                    alert("Error while pulling Receipt Data. Please reconnect to the network.");
                     return 1;
                 }
             });

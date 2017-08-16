@@ -1,6 +1,9 @@
 #sequence {
-    width: 600px;
-    height: 70px;
+    display: flex;
+    align-items: center;
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    min-height:82px
 }
 
 #legend {

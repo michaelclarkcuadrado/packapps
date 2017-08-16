@@ -1,5 +1,6 @@
 <?php
-
+include '../../config.php';
+packapps_authenticate_user('quality');
 /*
  * DataTables example server-side processing script.
  *
@@ -19,30 +20,29 @@
  */
 
 // DB table to use
-$table = 'crop-estimates';
+$table = 'grower_gfbvs-listing';
 
 // Table's primary key
 $primaryKey = 'PK';
 
 // Array of database columns which should be read and sent back to DataTables.
 // The `db` parameter represents the column name in the database, while the `dt`
-// parameter represents the DataTables column identifier. In this case simple
-// indexes
+// parameter represents the DataTables column identifier.
 $columns = array(
     array( 'db' => 'PK', 'dt' => 0 ),
-    array( 'db' => 'Grower',  'dt' => 1 ),
-    array( 'db' => 'FarmDesc',   'dt' => 2 ),
-    array( 'db' => 'BlockDesc',     'dt' => 3 ),
-    array( 'db' => 'VarDesc',     'dt' => 4 ),
-    array( 'db' => 'Str Desc',     'dt' => 5 ),
+    array( 'db' => 'commodity_name', 'dt' => 1 ),
+    array( 'db' => 'GrowerName',  'dt' => 2 ),
+    array( 'db' => 'farmName',   'dt' => 3 ),
+    array( 'db' => 'BlockDesc',     'dt' => 4 ),
+    array( 'db' => 'VarietyName',     'dt' => 5 ),
+    array( 'db' => 'strainName',     'dt' => 6 ),
 );
 
-include '../../config.php';
 // SQL server connection information
 $sql_details = array(
     'user' => $dbusername,
     'pass' => $dbpassword,
-    'db'   => $growerDB,
+    'db'   => $operationsDatabase,
     'host' => $dbhost
 );
 

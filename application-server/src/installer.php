@@ -111,7 +111,7 @@ if(isset($_POST['username']) && isset($_POST['realname']) && isset($_POST['passw
                         </div>
                     </div>
                     <button onClick="$('.mdl-card').fadeOut('fast');" style="color: white; margin-top: 15px; width: 100%"
-                            class="mdl-button appmenu-background-color mdl-button--raised">
+                            class="mdl-button appmenu-foreground-color mdl-button--raised">
                         Create new user and finish setup
                     </button>
                 </form>

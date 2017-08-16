@@ -6,7 +6,7 @@ $rts = mysqli_query($mysqli, "SELECT quality_InspectedRTs.RTNum AS `RT#`, ifnull
 ?>
     Select an RT for lab testing: <select onchange="RTInsert();" class='selector'>
         <option value="" disabled
-                selected><? echo(mysqli_num_rows($rts) == 0 ? "No RTs left. &#9787;" : "Select RT"); ?></option>
+                selected><? echo(mysqli_num_rows($rts) == 0 ? "No Receipts left. &#9787;" : "Select RT"); ?></option>
         <?php while ($receivedtodo = mysqli_fetch_assoc($rts)) {
             echo "<option value='" . $receivedtodo['RT#'] . "'>" . $receivedtodo['Date'] . " - RT#" . $receivedtodo['RT#'] . " - " . $receivedtodo['Grower'] . " - " . $receivedtodo['VarDesc'] . "</ option>";
         } ?>

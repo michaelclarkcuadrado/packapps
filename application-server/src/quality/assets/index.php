@@ -5,8 +5,30 @@ if (!$_GET['RT'])
 }
 else{
 include '../../config.php';
+packapps_authenticate_user();
+
 $_GET['RT'] = mysqli_real_escape_string($mysqli, $_GET['RT']);
-$blockphotos = mysqli_query($mysqli, "SELECT concat('//".$availableBuckets['quality'].$amazonAWSURL."quality-rtnum-',`RT#`,'.jpg') AS link, `RT#` AS RT, (CASE WHEN `Block Desc`='' THEN '[No Block]' ELSE `Block Desc` END) AS `Block Desc`, rtrim(`Grower Name`) AS `Grower Name`, (CASE WHEN `Farm Desc`='' THEN '[No Farm]' ELSE `Farm Desc` END) AS `Farm Desc`, `Var Desc`, (CASE WHEN `Str Desc`='' THEN 'No Strain' ELSE rtrim(`Str Desc`) END) AS `Str Desc` FROM (SELECT SortCode FROM BULKOHCSV WHERE `RT#`='" . $_GET['RT'] . "') AS t JOIN quality_RTsWQuality ON t.SortCode=`quality_RTsWQuality`.SortCode WHERE isQA='TRUE' ORDER BY `RT#` DESC LIMIT 20;") or die(mysqli_errno($mysqli));
+$blockphotos = mysqli_query($mysqli, "
+SELECT
+  concat('//" . $availableBuckets['quality'] . $amazonAWSURL . "quality-rtnum-', `id`, '.jpg') AS link,
+  `id`                         AS RT,
+  (CASE WHEN `BlockDesc` = ''
+    THEN '[No Block]'
+   ELSE `BlockDesc` END)      AS `Block Desc`,
+  GrowerName                   AS `Grower Name`,
+  (CASE WHEN `farmName` = ''
+    THEN '[No Farm]'
+   ELSE `farmName` END)       AS `Farm Desc`,
+  VarietyName AS `Var Desc`,
+  (CASE WHEN `strainName` = ''
+    THEN 'No Strain'
+   ELSE rtrim(`strainName`) END) AS `Str Desc`
+FROM storage_grower_receipts
+  JOIN `grower_gfbvs-listing` ON storage_grower_receipts.grower_block = `grower_gfbvs-listing`.PK
+ WHERE PK = (SELECT PK FROM storage_grower_receipts JOIN `grower_crop-estimates` ON storage_grower_receipts.grower_block = `grower_crop-estimates`.PK WHERE id = '1')
+ORDER BY `id` DESC
+LIMIT 20;
+") or die(mysqli_errno($mysqli));
 $blockphotoarray = mysqli_fetch_assoc($blockphotos);
 ?>
 
