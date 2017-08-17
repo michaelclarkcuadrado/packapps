@@ -1,15 +1,6 @@
 <?php
 require 'config.php';
-
-//authentication
-if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
-    die("<script>window.location.replace('/')</script>");
-} else if (!hash_equals($_COOKIE['auth'], crypt($_COOKIE['username'], $securityKey))) {
-    die("<script>window.location.replace('/')</script>");
-} else {
-    $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-}
-// end authentication
+$userData = packapps_authenticate_user();
 
 //enumerate packapps
 $packapps_query = mysqli_query($mysqli, "SELECT short_app_name, long_app_name FROM packapps_appProperties WHERE isEnabled = 1");
@@ -30,7 +21,7 @@ $checkAllowedQuery .= " FROM packapps_master_users";
 foreach($installedPackapps as $packapp){
     $checkAllowedQuery .= " LEFT JOIN ".$packapp['short_app_name']."_UserData ON packapps_master_users.username=".$packapp['short_app_name']."_UserData.UserName";
 }
-$checkAllowed = mysqli_fetch_assoc(mysqli_query($mysqli, $checkAllowedQuery." WHERE packapps_master_users.username = '".$SecuredUserName."'"));
+$checkAllowed = mysqli_fetch_assoc(mysqli_query($mysqli, $checkAllowedQuery." WHERE packapps_master_users.username = '".$userData['username']."'"));
 
 
 //get permissions table
@@ -55,7 +46,7 @@ if($checkAllowed['isSystemAdministrator'] > 0 && isset($_POST['newUserName']) &&
 
 //process password changes
 if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['password2'])) {
-    $passwdChangeMsg = changePassword($mysqli, $SecuredUserName, $_POST['password0'], $_POST['password1'], $_POST['password2']);
+    $passwdChangeMsg = changePassword($mysqli, $userData['username'], $_POST['password0'], $_POST['password1'], $_POST['password2']);
 } elseif (isset($_GET['passwordReset']) && $checkAllowed['isSystemAdministrator'] > 0) {
     $passwdChangeMsg = resetPassword($mysqli, $_GET['passwordReset']);
 }
@@ -117,15 +108,18 @@ if (isset($_POST['password0']) && isset($_POST['password1']) && isset($_POST['pa
                     class="mdl-color-text--teal-400 material-icons"
                     role="presentation">dashboard</i>Return to Menu</a>
             <a class="mdl-navigation__link" <?php echo($checkAllowed['isSystemAdministrator'] > 0 ? '' : "style='display: none !important'"); ?>
-               href="#"
-               onclick="$.get('/production/API/rebootDisplays.php'), $(this).children('i').addClass('spin').parent().children('span').text('Broadcasting reboot signal...')"><i
-                    class="mdl-color-text--pink-300 material-icons"
-                    role="presentation">cached</i><span>Reboot Displays</span></a>
-            <a class="mdl-navigation__link" <?php echo($checkAllowed['isSystemAdministrator'] > 0 ? '' : "style='display: none !important'"); ?>
                href="quality/emailmgmt.php"><i
                     class="mdl-color-text--cyan-300 material-icons"
-                    role="presentation">mail_outline</i>Email Alerts</a>
-
+                    role="presentation">mail_outline</i>Email Alert List</a>
+            <a class="mdl-navigation__link" <?php echo($checkAllowed['isSystemAdministrator'] > 0 ? '' : "style='display: none !important'"); ?>
+               href="#"
+               onclick="$.get('/production/API/rebootDisplays.php'), $(this).children('i').addClass('spin').parent().children('span').text('Broadcasting reboot signal...')"><i
+                        class="mdl-color-text--pink-300 material-icons"
+                        role="presentation">cached</i><span>Reboot Displays</span></a>
+            <a class="mdl-navigation__link" <?php echo($checkAllowed['isSystemAdministrator'] > 0 ? '' : "style='display: none !important'"); ?>
+               href="mailto:support@packercloud.com?subject=Packapps Support Request&body=Issue:%0D%0A%0D%0A%0D%0AUser: <?echo $userData['username']?>%0D%0ASite: <?echo $companyShortName?>"><i
+                        class="mdl-color-text--amber-300 material-icons"
+                        role="presentation">live_help</i>Contact Support</a>
         </nav>
     </div>
     <main class="mdl-layout__content mdl-color--grey-400">
