@@ -47,7 +47,7 @@ while($data = mysqli_fetch_assoc($query))
 
 //'backdoor' that causes all clients to refresh. Set to same version as index.php, then wait 10 seconds, and re-comment. All clients will re-fetch to match version.
 //
-//$allRunsArray['refreshpl0x'] = '30';
+//$allRunsArray['refreshpl0x'] = '1';
 //
 header('Content-type: application/json');
 echo json_encode($allRunsArray);

@@ -277,45 +277,6 @@ while($line = mysqli_fetch_assoc($lines)){
     var amountMadeRows = 1;
     var amountDumpedRows = 1;
 
-    <?
-    if (isset($_GET['autofill'])) {
-        echo "autofillRunInfo();";
-    }?>
-
-    function autofillRunInfo() {
-        $.ajax({
-            type: 'GET',
-            url: "API/autoFillRun.php?Run=<?echo $_GET['autofill']?>",
-            dataType: 'json',
-            cache: false,
-            success: function (data) {
-                for (var i = 1; i <= data.length; i++) {
-                    if (i > 1) {
-                        addDumpedRow();
-                    }
-                    if (typeof data[i-1][3] != 'undefined') {
-                        $("#growerCode" + i).val(data[i-1][3]).parent().addClass('is-dirty');
-                    }
-                    if (typeof data[i-1][0] != 'undefined') {
-                        $("#Variety" + i).val(data[i-1][0]).parent().addClass('is-dirty');
-                    }
-                    if (typeof data[i-1][1] != 'undefined') {
-                        $("#Quality" + i).val(data[i-1][1]).parent().addClass('is-dirty');
-                    }
-                    if (typeof data[i-1][2] != 'undefined') {
-                        $("#Size" + i).val(data[i-1][2]).parent().addClass('is-dirty');
-                    }
-                    if (typeof data[i-1][4] != 'undefined') {
-                        $("#Lot" + i).val(data[i-1][4]).parent().addClass('is-dirty');
-                    }
-                    if (typeof data[i-1][5] != 'undefined') {
-                        $("#Location" + i).val(data[i-1][5]).parent().addClass('is-dirty');
-                    }
-                }
-            }
-        })
-    }
-
     function addDumpedRow() {
         amountDumpedRows++;
         $("<tr id=\"dumpedRow" + amountDumpedRows + "\"><td id=\"tdNot" + amountDumpedRows + "\"><label class=\"mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect\" for=\"Not" + amountDumpedRows + "\"><input onClick=\"(this.checked ? $('#tdNot" + amountDumpedRows + "').css('background-color', '#FF9990') : $('#tdNot" + amountDumpedRows + "').css('background-color', '#FFFFFF'))\" type=\"checkbox\" value=\"1\" name=\"Not" + amountDumpedRows + "\" id=\"Not" + amountDumpedRows + "\" class=\"mdl-checkbox__input\"></label></td><td class=\"mdl-data-table__cell--non-numeric\"><div style='width:7.5em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input size='2' maxlength=\"2\" class=\"mdl-textfield__input\" type=\"text\" name=\"growerCode" + amountDumpedRows + "\" id=\"growerCode" + amountDumpedRows + "\"><label class=\"mdl-textfield__label\" for=\"growerCode" + amountDumpedRows + "\">Grower</label></div></td><td class=\"mdl-data-table__cell--non-numeric\"><div style='width:6.5em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input size='10' maxlength=\"255\" class=\"mdl-textfield__input\" type=\"text\" name=\"Variety" + amountDumpedRows + "\" id=\"Variety" + amountDumpedRows + "\"><label class=\"mdl-textfield__label\" for=\"Variety" + amountDumpedRows + "\">Variety</label></div></td><td class=\"mdl-data-table__cell--non-numeric\"><div style='width:4.5em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input size='10' maxlength=\"255\" class=\"mdl-textfield__input\" type=\"text\" name=\"Quality" + amountDumpedRows + "\" id=\"Quality" + amountDumpedRows + "\"><label class=\"mdl-textfield__label\" for=\"Quality" + amountDumpedRows + "\">Grade</label></div></td><td class=\"mdl-data-table__cell--non-numeric\"><div style='width:4.5em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input size='10' maxlength=\"255\" class=\"mdl-textfield__input\" type=\"text\" name=\"Size" + amountDumpedRows + "\" id=\"Size" + amountDumpedRows + "\"><label class=\"mdl-textfield__label\" for=\"Size" + amountDumpedRows + "\">Size</label></div></td><td class=\"mdl-data-table__cell--non-numeric\"><div style='width:3.5em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input size='10' maxlength=\"255\" class=\"mdl-textfield__input\" type=\"text\" name=\"Lot" + amountDumpedRows + "\" id=\"Lot" + amountDumpedRows + "\"><label class=\"mdl-textfield__label\" for=\"Lot" + amountDumpedRows + "\">Lot</label></div></td><td class=\"mdl-data-table__cell--non-numeric\"><div style='width:7em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input size='10' maxlength=\"255\" class=\"mdl-textfield__input\" type=\"text\" name=\"Location" + amountDumpedRows + "\" id=\"Location" + amountDumpedRows + "\"><label class=\"mdl-textfield__label\" for=\"Location" + amountDumpedRows + "\">Location</label></div></td><td><div style='width :5em' class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\"><input class=\"mdl-textfield__input\" type=\"text\" pattern=\"-?[0-9]*(\\.[0-9]+)?\" name=\"Amount" + amountDumpedRows + "\" id=\"Amount" + amountDumpedRows + "\"><label class=\"mdl-textfield__label\" for=\"Amount" + amountDumpedRows + "\">Amount</label><span class=\"mdl-textfield__error\">Numbers, please.</span></div></td></tr>").appendTo("#dumpedTbody");

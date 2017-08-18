@@ -85,7 +85,7 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
         </div>
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
             <a href="#curRunContent" class="mdl-layout__tab is-active ">Current runs</a>
-            <a href="#Navigator" class="mdl-layout__tab">Inventory Explorer</a>
+<!--            <a href="#Navigator" class="mdl-layout__tab">Inventory Explorer</a>-->
             <a href="#runHistory" class="mdl-layout__tab">Run history</a>
             <a href="#Settings" class="mdl-layout__tab">Settings</a>
             <a href="/" class="mdl-layout__tab mdl-cell--hide-desktop">Main Menu</a>
@@ -130,30 +130,6 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
         </div>
     </div>
     <br>
-</div>
-
-<!-- Inventory Navigator -->
-<div <? echo($RealName['Role'] == 'Restricted' ? "style='display: none'" : '') ?> class="mdl-layout__tab-panel"
-                                                                             id="Navigator">
-    <h1 style="text-align: center">Inventory Explorer</h1>
-    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--8dp">
-        <div class="mdl-card mdl-cell--8-col mdl-cell--4-col-phone mdl-cell">
-            <div class="mdl-card__supporting-text">
-                <h4>Presized Inventory</h4>
-                <div id="PStree"></div>
-            </div>
-            <? echo($RealName['Role'] == 'Production' ? "<div class=\"mdl-card__actions\"><a onclick=\"makeRun($('#PStree').jstree(true).get_selected(), 'PSOH');\" class=\"mdl-button\">Run selected items</a>|<a style='display:none' id='markAsBadButton' onclick=\"markBadRun($('#PStree').jstree(true).get_selected());\" class=\"mdl-button\">Toggle quality status</a></div>" : '') ?>
-        </div>
-    </section>
-    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--16dp">
-        <div class="mdl-card mdl-cell--8-col mdl-cell--4-col-phone mdl-cell">
-            <div class="mdl-card__supporting-text">
-                <h4>Bulk Inventory</h4>
-                <div id="Bulktree"></div>
-            </div>
-            <? echo($RealName['Role'] == 'Production' ? "<div class=\"mdl-card__actions\"><a onclick=\"makeRun($('#Bulktree').jstree(true).get_selected(), 'BULKOH');\" class=\"mdl-button\">Run selected items</a></div>" : '') ?>
-        </div>
-    </section>
 </div>
 
 <!-- SETTINGS-->
@@ -253,7 +229,7 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
     var blinkLineTitle = [false, false, false];
     var lastRunData = {};
     var updateFlasherTimeout = {};
-    var version = 30;
+    var version = 1;
     var scrollerInterval;
     var numMatchingRuns = 0;
     var curActiveCard = 1;
@@ -267,8 +243,6 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
 
         var debug = setInterval(loadRuns, 7000);
 
-        setInterval(createInventoryTrees, 45*60000);
-
         //request notify permissions
         if (Notification.permission !== 'denied') {
             Notification.requestPermission(function (permission) {
@@ -277,44 +251,6 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
         }
 
     });
-
-    function createInventoryTrees() {
-        $("#PStree").jstree('destroy').on("select_node.jstree", function (e, data) {
-            if (data.node.a_attr.href != '#') {
-                $('#markAsBadButton').show();
-            }
-            else {
-                $('#markAsBadButton').hide();
-            }
-        }).jstree({
-            'core': {
-                'data': {
-                    'url': 'API/PSOH.php',
-                    'type': 'GET',
-                    'dataType': 'JSON',
-                    'data': function (node) {
-                        return {'id': node.id};
-                    }
-                }
-            }
-        });
-        $("#Bulktree").jstree('destroy').on("select_node.jstree", function (e, data) {
-            if (data.node.a_attr.href != '#') {
-                window.open(data.node.a_attr.href);
-            }
-        }).jstree({
-            'core': {
-                'data': {
-                    'url': 'API/BULKOH.php',
-                    'type': 'GET',
-                    dataType: 'JSON',
-                    'data': function (node) {
-                        return {'id': node.id};
-                    }
-                }
-            }
-        });
-    }
 
     function readCookie(name) {
         var nameEQ = name + "=";
@@ -719,59 +655,6 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
         });
         return this;
     };
-
-    function makeRun(selected, type) {
-        $.ajax({
-            type: 'POST',
-            url: 'API/runFromJson' + type + '.php',
-            data: {array: JSON.stringify(selected)},
-            dataType: 'json',
-            cache: false,
-            success: function (data) {
-                var newwindow = window.open("newRun.php?autofill=" + data[0], 'New Run', 'scrollbars=1,height=700,width=900');
-                if (window.focus) {
-                    newwindow.focus()
-                }
-                return false;
-            },
-            error: function (a, b, c) {
-                snack("Could not send info. The error was: " + c, 3000);
-            }
-        });
-    }
-
-    function markBadRun(selected) {
-        //make sure they don't sneak in anything but runs
-        var isAllRuns = true;
-        for (var i = 0; i < selected.length; i++) {
-            var selectedArr = selected[i].split(':');
-            if (selectedArr[selectedArr.length - 2] != 'Run') {
-                isAllRuns = false;
-                break;
-            }
-        }
-
-        if (isAllRuns) {
-            for (var j = 0; j < selected.length; j++) {
-                selectedArr = selected[j].split(':');
-                $.ajax({
-                    type: 'POST',
-                    url: 'API/markRunAsBad.php?',
-                    data: {Run: selectedArr[(selectedArr.length) - 1]},
-                    cache: false,
-                    success: function (data) {
-
-                    },
-                    error: function (a, b, c) {
-                        snack("Could not mark. The error was: " + c, 3000);
-                    }
-                });
-            }
-            $("#PStree").jstree("refresh");
-        } else {
-            snack("Sorry, only runs can be marked as bad.", 4500);
-        }
-    }
 
 </script>
 

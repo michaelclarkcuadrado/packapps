@@ -168,6 +168,8 @@ INSERT INTO `production_lineNames` (lineID, lineName) VALUES (1, 'Blue Line');
 INSERT INTO `production_lineNames` (lineID, lineName) VALUES (2, 'Gray Line');
 INSERT INTO `production_lineNames` (lineID, lineName) VALUES (3, 'Presizer');
 
+DROP TABLE production_tempRunData;
+
 /* END MOVE CONFIG INFO TO DATABASE */
 
 /* MIGRATE OLD QUALITY TABLES */
