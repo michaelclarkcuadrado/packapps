@@ -3,7 +3,7 @@ To setup a new packapps server:
 > Copy private key to droplet
 > git pull ssh://orchestration.packercloud.com/var/git/packapps
 > TODO deployment helper that generates AWS IDs, keeps track of droplet IPs, slug names etc.
-> edit company name and slug in packapps/application-server/src/config.php
+> edit company name and slug in settings.yml
 > point subdomain to droplet
 
 To backup a db:

@@ -7,7 +7,11 @@
  */
 require '../config.php';
 packapps_authenticate_user('storage');
-i
+require_once('../scripts-common/Mobile_Detect.php');
+$detect = new Mobile_Detect();
+if ($detect->isMobile()){
+    die("<script>location.replace('mobile.php')</script>");
+}
 ?>
 <!doctype html>
 <html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
@@ -62,7 +66,8 @@ i
         <template v-for="(building, building_index) in buildings">
             <span class="mdl-layout-title">{{ building.building_name }}</span>
             <nav class="mdl-navigation">
-                <div style="position:relative;overflow: hidden; text-overflow:ellipsis;" v-for="(room, index) in building.rooms" v-on:click="updateRoom(building_index, index, false)" class="mdl-js-ripple-effect mdl-navigation__link">
+                <div style="position:relative;overflow: hidden; text-overflow:ellipsis;" v-for="(room, index) in building.rooms" v-on:click="updateRoom(building_index, index, false)"
+                     class="mdl-js-ripple-effect mdl-navigation__link">
                     <span class="mdl-ripple"></span>
                     <div v-bind:class="{ availabilityDotGreen: (room.isAvailable > 0), availabilityDotRed: (room.isAvailable == 0) }"></div>
                     {{ room.room_name }}
@@ -91,12 +96,13 @@ i
                 <div v-if="currentRoomHasInventory" id="pivotLists" style="display:inline-block; vertical-align: super;">
                     <div class="wrapper">
                         <div style="position: absolute; right: 40px;">
-                            <div v-on:click="togglePivotOptions" style="cursor: pointer; background-color:rgba(0,0,0,.12);padding: 4px; border-radius: 5px"  class="mdl-layout__title">
+                            <div v-on:click="togglePivotOptions" style="cursor: pointer; background-color:rgba(0,0,0,.12);padding: 4px; border-radius: 5px" class="mdl-layout__title">
                                 <i style="vertical-align: sub" class="material-icons">filter_list</i>
                                 Pivot/Filter
                                 <i v-bind:class="{ rotate: pivotOptionsIsOpen }" style="vertical-align: middle;" class="material-icons">keyboard_arrow_down</i>
                             </div>
-                            <ul id="pivotOptionsList" class="mdl-shadow--6dp mdl-list" style="border-radius: 5px; display: none;margin-bottom:0px; padding-bottom: 0px; margin-top: 5px; padding-top: 5px; background-color: white; z-index: 99">
+                            <ul id="pivotOptionsList" class="mdl-shadow--6dp mdl-list"
+                                style="border-radius: 5px; display: none;margin-bottom:0px; padding-bottom: 0px; margin-top: 5px; padding-top: 5px; background-color: white; z-index: 99">
                                 <!--Static item to reset-->
                                 <li v-if="pivotOptionsIsDirty" style="transition: visibility 0s, opacity 0.5s linear;" class="mdl-list__item">
                                     <span style="white-space: nowrap" class="mdl-list__item-primary-content">
@@ -128,7 +134,7 @@ i
                     <div v-pre style="" id="chart">
                         <div v-pre id="explanation" style="visibility: hidden;">
                             <span id="bushel_total"></span><br/>
-                            Total Bushels<br />
+                            Total Bushels<br/>
                             <span><b><span id="percentage"></span></b> of this view</span>
                         </div>
                     </div>
@@ -160,17 +166,17 @@ i
             buildings: []
         },
         methods: {
-            updateRoom: function(building_id, room_id, isAllRooms){
+            updateRoom: function (building_id, room_id, isAllRooms) {
                 changeActiveRoom(building_id, room_id, isAllRooms);
             }
         },
-        mounted: function(){
+        mounted: function () {
             var self = this;
-            $.getJSON('API/getRooms.php', function(data) {
+            $.getJSON('API/getRooms.php', function (data) {
                 self.buildings = data;
             });
         },
-        updated: function(){
+        updated: function () {
             componentHandler.upgradeDom();
         }
     });
@@ -188,23 +194,23 @@ i
             isInAllRoomView: true,
             locations: locations
         },
-        mounted: function(){
+        mounted: function () {
             this.initPivotLists(this.updateSunburst);
         },
         methods: {
-            initPivotLists: function(callback){
+            initPivotLists: function (callback) {
                 var self = this;
                 var data = {};
-                if(!this.isInAllRoomView){
+                if (!this.isInAllRoomView) {
                     data.room_id = this.currentRoomID;
                 }
-                $.getJSON('API/getPivotLists.php', data, function(json){
+                $.getJSON('API/getPivotLists.php', data, function (json) {
                     self.pivotLists = json;
                     self.pivotOptionsIsDirty = false;
-                    for(var list in json){
-                        if(json.hasOwnProperty(list)){
-                            for(var item in json[list]){
-                                if(json[list].hasOwnProperty(item)){
+                    for (var list in json) {
+                        if (json.hasOwnProperty(list)) {
+                            for (var item in json[list]) {
+                                if (json[list].hasOwnProperty(item)) {
                                     self.fieldID2fieldName[json[list][item]['id']] = json[list][item]['name'];
                                 }
                             }
@@ -213,19 +219,19 @@ i
                     callback();
                 });
             },
-            togglePivotOptions: function() {
-                this.pivotOptionsIsOpen = ! this.pivotOptionsIsOpen;
+            togglePivotOptions: function () {
+                this.pivotOptionsIsOpen = !this.pivotOptionsIsOpen;
                 $('#pivotOptionsList').slideToggle();
             },
-            pivotUpdated: function() {
+            pivotUpdated: function () {
                 this.pivotOptionsIsDirty = true;
                 this.updateSunburst();
             },
-            removeFromPivotList: function(list, id){
-                for(var listItemIndex in this.pivotLists[list]){
-                    if(this.pivotLists[list].hasOwnProperty(listItemIndex)){
-                        if(this.pivotLists[list][listItemIndex]['id'] === id){
-                            this.pivotOptionsIsDirty= true;
+            removeFromPivotList: function (list, id) {
+                for (var listItemIndex in this.pivotLists[list]) {
+                    if (this.pivotLists[list].hasOwnProperty(listItemIndex)) {
+                        if (this.pivotLists[list][listItemIndex]['id'] === id) {
+                            this.pivotOptionsIsDirty = true;
                             this.pivotLists[list].splice(listItemIndex, 1);
                             this.updateSunburst();
                             return;
@@ -233,34 +239,34 @@ i
                     }
                 }
             },
-            updateSunburst: function(){
+            updateSunburst: function () {
                 $('#chart').find('svg').remove();
                 $('#sequence').find('svg').remove();
                 //Get data and graph
                 var data = {};
-                if(!this.isInAllRoomView){
+                if (!this.isInAllRoomView) {
                     data.room_id = this.currentRoomID;
                 }
-                if(this.pivotOptionsIsDirty){
-                    for(var list in this.pivotLists){
-                        if(this.pivotLists.hasOwnProperty(list)){
+                if (this.pivotOptionsIsDirty) {
+                    for (var list in this.pivotLists) {
+                        if (this.pivotLists.hasOwnProperty(list)) {
                             data['ordering_' + list] = [];
-                            for(var pivotField in this.pivotLists[list]){
-                                data['ordering_'+list].push(this.pivotLists[list][pivotField]['id']);
+                            for (var pivotField in this.pivotLists[list]) {
+                                data['ordering_' + list].push(this.pivotLists[list][pivotField]['id']);
                             }
-                            data['ordering_'+list] = JSON.stringify(data['ordering_'+list]);
+                            data['ordering_' + list] = JSON.stringify(data['ordering_' + list]);
                         }
                     }
                 }
                 var self = this;
-                $.getJSON('API/getRoomContents.php', data, function(json) {
-                    if(Object.keys(json.children).length > 0){
+                $.getJSON('API/getRoomContents.php', data, function (json) {
+                    if (Object.keys(json.children).length > 0) {
                         self.currentRoomHasInventory = true;
                         createVisualization(json);
                     } else {
                         self.currentRoomHasInventory = false;
                     }
-                }).error(function() {
+                }).error(function () {
                     snack('Server Communication Error.', 4000);
                 });
             }
@@ -269,8 +275,8 @@ i
 
     //non-vue functions
 
-    function changeActiveRoom(building_id, room_id, all_rooms){
-        if(all_rooms == false){
+    function changeActiveRoom(building_id, room_id, all_rooms) {
+        if (all_rooms == false) {
             currentRoomStats.isInAllRoomView = false;
             currentRoomStats.currentBuildingID = building_id;
             currentRoomStats.currentRoomID = room_id;
@@ -289,7 +295,7 @@ i
     }
 
     //refresh button
-    $('#refreshButton').on('click', function() {
+    $('#refreshButton').on('click', function () {
         currentRoomStats.initPivotLists(currentRoomStats.updateSunburst);
 
     });
