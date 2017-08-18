@@ -1,21 +1,7 @@
 <?php
 require '../config.php';
+$userData = packapps_authenticate_user('quality');
 
-//authentication
-if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
-    die("<script>window.location.replace('/')</script>");
-} else if (!hash_equals($_COOKIE['auth'], crypt($_COOKIE['username'], $securityKey))) {
-    die("<script>window.location.replace('/')</script>");
-} else {
-    $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Real Name` AS 'UserRealName', Role, allowedQuality FROM packapps_master_users JOIN quality_UserData ON packapps_master_users.username=quality_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
-    if (!$checkAllowed['allowedQuality'] > 0) {
-        die ("<script>window.location.replace('/')</script>");
-    } else {
-        $RealName = $checkAllowed;
-    }
-}
-// end authentication
 include_once("Classes/Mobile_Detect.php");
 $detect=new Mobile_Detect();
 ?>
@@ -39,7 +25,7 @@ $detect=new Mobile_Detect();
 
 <body>
 <div id="wrapper">
-    <? if ($RealName['Role'] == 'QA' && $detect->isMobile()) {
+    <? if ($userData['Role'] == 'QA' && $detect->isMobile()) {
         echo "<p style='position: fixed; top: 0; width: 100%'><button onclick=\"location.replace('/quality')\"><<< Go back</button></p>";
     } ?>
     <h1>New RT Quality Report</h1>
@@ -49,7 +35,7 @@ $detect=new Mobile_Detect();
     } ?>
 
     <h2><?echo $companyName?> Quality Assurance Lab</h2>
-    <form action="Inspectorsubmit.php" method="post" enctype="multipart/form-data">
+    <form id="inspectorSubmissionForm" action="Inspectorsubmit.php" method="post" enctype="multipart/form-data">
         <div class="col-2">
             <label>
                 RT Number
@@ -185,7 +171,7 @@ $detect=new Mobile_Detect();
         <div class="col-submit">
             <button class="submitbtn">Submit RT to QA Lab</button><br>
             <label style="border: dashed black 1px; vertical-align: middle">Inspected
-                by <? echo $RealName['UserRealName'] . " on " . date('l, F jS Y') ?></label>
+                by <? echo $userData['Real Name'] . " on " . date('l, F jS Y') ?></label>
         </div>
     <input id="numSamples" type="hidden" name="NumSamples" value="10"/>
     </form>
@@ -193,6 +179,12 @@ $detect=new Mobile_Detect();
 <script>
     $("#RT2, #RT").on("change", function(){
         pullRTData();
+    });
+
+    $('#inspectorSubmissionForm').submit(function() {
+        $('.submitbtn').replaceWith(
+            "Submitting...."
+        );
     });
 
     function pullRTData() {
@@ -204,9 +196,9 @@ $detect=new Mobile_Detect();
                 tryCount: 0,
                 retryLimit: 3,
                 success: function (data) {
-                    $("#RTinfo").replaceWith("<div class='col-1' id='RTinfo'><label style='text-align: center'><img src=images/" + data.CommDesc + ".png> " + data.CommDesc + "<br>Grower: " + data.GrowerName + "<br>Farm: " + data.FarmDesc + "<br>Block: " + data.BlockDesc + "<br>Variety: " + data.VarDesc + "<br>Strain: " + data.StrDesc + "<br>Bins/Units: " + data.QtyOnHand + "<br>Headed to: " + data.Location + "<br><hr style='opacity: 0'><div style='font-size: larger'>This RT requires <mark>" + data.NumSamplesRequired + "</mark> samples.</div></label>" + (data.isDone > 0 ? "<label style='border: dashed red;text-align: center;vertical-align: middle;color: red'>Warning: This RT has already been completed!</label>" : "") + (data.Today == 0 ? "<label style='border: dashed red;text-align: center;vertical-align: middle;color: red'>Warning: This RT is <u>NOT</u> from today.</label>" : "") + "<hr style='width: 100%; color: grey'></div>");
+                    $("#RTinfo").replaceWith("<div class='col-1' id='RTinfo'><label style='text-align: center'><img src=images/" + data.CommDesc + ".png> " + data.CommDesc + "<br>Grower: " + data.GrowerName + "<br>Farm: " + data.FarmDesc + "<br>Block: " + data.BlockDesc + "<br>Variety: " + data.VarDesc + "<br>Strain: " + data.StrDesc + "<br>Bins/Units: " + data.QtyOnHand + "<br>Headed to: " + data.Location + "<br><hr style='opacity: 0'><div style='font-size: larger'>This delivery requires <mark>" + data.NumSamplesRequired + "</mark> samples.</div></label>" + (data.isDone > 0 ? "<label style='border: dashed red;text-align: center;vertical-align: middle;color: red'>Warning: This delivery has already been completed!</label>" : "") + (data.Today == 0 ? "<label style='border: dashed red;text-align: center;vertical-align: middle;color: red'>Warning: This RT is <u>NOT</u> from today.</label>" : "") + "<hr style='width: 100%; color: grey'></div>");
                     $("#numSamples").val(data.NumSamplesRequired);
-                    if(data.VarDesc == "Golden Delicious" || data.VarDesc == "Ginger Gold" || data.VarDesc == "Gold Supreme")
+                    if(data.isGoldApple > 0)
                     {
                         activateGolds()
                     }

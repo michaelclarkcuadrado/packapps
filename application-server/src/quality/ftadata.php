@@ -9,28 +9,9 @@
 include_once("Classes/excel_reader2.php");
 require '../config.php';
 
-//get real name for logging accountability
-//authentication
-if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
-    die("<script>window.location.replace('/')</script>");
-} else if (!hash_equals($_COOKIE['auth'], crypt($_COOKIE['username'], $securityKey))) {
-    die("<script>window.location.replace('/')</script>");
-} else {
-    $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Real Name` AS 'UserRealName', Role, allowedQuality FROM packapps_master_users JOIN quality_UserData ON packapps_master_users.username=quality_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
-    if (!$checkAllowed['allowedQuality'] > 0) {
-        die ("<script>window.location.replace('/')</script>");
-    } else {
-        $RealName = $checkAllowed;
-    }
-}
-// end authentication
-if ($RealName['Role'] !== "QA") {
-    die("UNAUTHORIZED");
-};
+$userData = packapps_authenticate_user('quality');
 
 $xlsdata = new Spreadsheet_Excel_Reader($_FILES['xlsupload']['tmp_name'], false);
-
 
 //13 + samples*2 = number of rows
 //samples*2 + 8 = post of RT#
@@ -43,8 +24,8 @@ if($xlsdata->val($NumSamples*2+8,'B') != $_POST['RT'])
 
 $rt= mysqli_real_escape_string($mysqli,$_POST['RT']);
 
-$updatestmt = mysqli_prepare($mysqli, "UPDATE quality_AppleSamples SET Weight=?, Pressure1=?, Pressure2=?, `FinalTestedBy`=? WHERE `RT#`= ? AND SampleNum= ?");
-mysqli_stmt_bind_param($updatestmt, "ssssii", $Weight, $Press1, $Press2, $RealName['UserRealName'], $rt, $SampleNum);
+$updatestmt = mysqli_prepare($mysqli, "UPDATE quality_AppleSamples SET Weight=?, Pressure1=?, Pressure2=?, `FinalTestedBy`=? WHERE `receiptNum`= ? AND SampleNum= ?");
+mysqli_stmt_bind_param($updatestmt, "ssssii", $Weight, $Press1, $Press2, $userData['username'], $rt, $SampleNum);
 //execute statements
 for($i = 1; $i <= $NumSamples; $i++)
 {
@@ -55,5 +36,5 @@ for($i = 1; $i <= $NumSamples; $i++)
     mysqli_stmt_execute($updatestmt);
 }
 
-mysqli_query($mysqli, "UPDATE quality_InspectedRTs SET FTAup ='1' WHERE RTNum='" . $rt . "'");
+mysqli_query($mysqli, "UPDATE quality_InspectedRTs SET FTAup ='1' WHERE receiptNum='" . $rt . "'");
 echo "<script>location.replace('QA.php?FTAsel=" . $rt . "#QA')</script>";

@@ -2,8 +2,21 @@
 include_once("Classes/Mobile_Detect.php");
 $detect = new Mobile_Detect();
 require '../config.php';
+$userdata = packapps_authenticate_user('quality');
 
-$rts = mysqli_query($mysqli, "SELECT quality_InspectedRTs.RTNum AS `RT#`, ifnull(BULKOHCSV.Grower,'?') AS Grower, ifnull(`CommDesc`, '?') AS CommDesc, ifnull(BULKOHCSV.VarDesc,'?') AS VarDesc, ifnull(BULKOHCSV.Date, date(quality_InspectedRTs.DateInspected)) AS Date FROM quality_InspectedRTs LEFT JOIN BULKOHCSV ON quality_InspectedRTs.RTNum=BULKOHCSV.`RT#` WHERE quality_InspectedRTs.`#Samples`=20 AND StarchFinished=0 AND CommDesc != 'Peach' AND CommDesc != 'Nectarine' ORDER BY quality_InspectedRTs.DateInspected ASC ");
+$rts = mysqli_query($mysqli, "
+SELECT
+  quality_InspectedRTs.receiptNum          AS `RT#`,
+  GrowerName                               AS Grower,
+  commodity_name                           AS CommDesc,
+  VarietyName                              AS VarDesc,
+  date(quality_InspectedRTs.DateInspected) AS Date
+FROM quality_InspectedRTs
+  JOIN storage_grower_receipts ON quality_InspectedRTs.receiptNum = storage_grower_receipts.id
+  JOIN `grower_gfbvs-listing` ON storage_grower_receipts.grower_block = `grower_gfbvs-listing`.PK
+WHERE quality_InspectedRTs.`#Samples` = 20 AND StarchFinished = 0 AND commodity_name != 'Peach' AND commodity_name != 'Nectarine'
+ORDER BY quality_InspectedRTs.DateInspected ASC
+");
 
 ?>
 <html xmlns="http://www.w3.org/1999/html">
@@ -51,7 +64,7 @@ $rts = mysqli_query($mysqli, "SELECT quality_InspectedRTs.RTNum AS `RT#`, ifnull
         box-shadow: inset 0 1px 3px 1px rgba(0, 0, 0, 0.3);
     }
 </style>
-<title>Starch on RT</title>
+<title>Delivery > Starch</title>
 <? if (isset($_GET['ph'])) {
     echo "<b>Starch for Block# " . $_GET['ph'] . " received.</b>";
 }
@@ -62,16 +75,16 @@ if ($detect->isMobile()) {
     <? if (mysqli_num_rows($rts) == '0') {
         echo("<script>setTimeout(function(){
    window.location.reload(1);
-}, 45000);</script><b><mark>There are no more RTs to test at the moment. &#9787</mark></b><br>");
+}, 45000);</script><b><mark>There are no more deliveries to test at the moment. &#9787</mark></b><br>");
     } ?>
-    <h2>Starch for Received RT</h2>
+    <h2>Starch for Delivered Fruit</h2>
 
     <div id="RTinfo"></div>
     <table id="table" style="width:100%">
         <tr>
             <td>RT Number</td>
             <td style="text-align: center"><select id='RT_sel' style='width: 100%' name="RT" autofocus required>
-                    <option disabled selected>Select RT</option>
+                    <option disabled selected>Select Report</option>
                     <?
                     while ($receivedtodo = mysqli_fetch_assoc($rts)) {
                         echo "<option value='" . $receivedtodo['RT#'] . "'>" . $receivedtodo['Date'] . " - RT#" . $receivedtodo['RT#'] . " - " . $receivedtodo['Grower'] . " - " . $receivedtodo['CommDesc'] . " - " . $receivedtodo['VarDesc'] . "</ option>";

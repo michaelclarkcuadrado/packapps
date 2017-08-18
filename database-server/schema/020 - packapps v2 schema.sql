@@ -74,7 +74,7 @@ ALTER TABLE master_users
 /* Create new UserData tables for new packapps and pre-populate with usernames */
 CREATE TABLE `operationsData`.`storage_UserData` (
   `UserName` VARCHAR(255)                           NOT NULL,
-  `Role`     ENUM ('readonly', 'receiving', 'full') NOT NULL
+  `Role`     ENUM ('readonly', 'forklift', 'receiving', 'full') NOT NULL
 )
   ENGINE = InnoDB;
 ALTER TABLE `operationsData`.`storage_UserData`
@@ -603,6 +603,7 @@ CREATE TABLE `operationsData`.`grower_varieties` (
   `commodityID` INT          NOT NULL,
   `VarietyID`   INT          NOT NULL AUTO_INCREMENT,
   `VarietyName` VARCHAR(255) NOT NULL,
+  `isGoldApple` TINYINT(1)   NOT NULL,
   PRIMARY KEY (`VarietyID`)
 )
   ENGINE = InnoDB;
@@ -645,6 +646,13 @@ INSERT INTO grower_varieties (commodityID, VarietyName) (SELECT DISTINCT
                                                            VarDesc
                                                          FROM `grower_crop-estimates`
                                                            JOIN `grower_commodities` ON `Comm Desc` = commodity_name);
+
+/* QA treats gold varieties differently */
+UPDATE grower_varieties
+SET isGoldApple = 1
+WHERE VarietyName = 'Golden Delicious'
+      OR VarietyName = 'Ginger Gold' OR VarietyName = 'Gold Supreme';
+
 /* create strains */
 INSERT INTO grower_strains (variety_ID, strainName) (SELECT DISTINCT
                                                        VarietyID,
@@ -875,7 +883,7 @@ CREATE TABLE `operationsData`.`grower_Preharvest_tests` (
   `grower`            INT          NOT NULL,
   `block_PK`          INT          NOT NULL,
   `NumSamples`        SMALLINT     NOT NULL,
-  `Notes`             VARCHAR(255) NoT NULL,
+  `Notes`             VARCHAR(255) NOT NULL,
   `Date`              DATETIME     NOT NULL DEFAULT CURDATE(),
   `Inspector`         VARCHAR(255) NOT NULL,
   `isStarchInspected` INT          NOT NULL,
@@ -896,7 +904,7 @@ INSERT INTO grower_Preharvest_tests (grower, block_PK, NumSamples, Notes, Date, 
    FROM grower_Preharvest_Samples
      JOIN grower_GrowerLogins ON Grower = GrowerCode
    GROUP BY `PK`, DATE(`Date`)
-  ORDER BY `Date` ASC);
+   ORDER BY `Date` ASC);
 
 UPDATE grower_Preharvest_tests
   JOIN packapps_master_users ON grower_Preharvest_tests.Inspector = packapps_master_users.`Real Name`
@@ -921,14 +929,29 @@ ALTER TABLE grower_Preharvest_tests
   ON DELETE RESTRICT
   ON UPDATE RESTRICT;
 
-ALTER TABLE `grower_Preharvest_Samples` ADD `test_id` INT NOT NULL FIRST;
-ALTER TABLE `grower_Preharvest_Samples` DROP PRIMARY KEY;
-ALTER TABLE `grower_Preharvest_Samples` DROP INDEX `Grower`;
+ALTER TABLE `grower_Preharvest_Samples`
+  ADD `test_id` INT NOT NULL
+  FIRST;
+ALTER TABLE `grower_Preharvest_Samples`
+  DROP PRIMARY KEY;
+ALTER TABLE `grower_Preharvest_Samples`
+  DROP INDEX `Grower`;
 
-UPDATE `grower_Preharvest_Samples` JOIN grower_Preharvest_tests ON (DATE(grower_Preharvest_Samples.`Date`) = DATE(grower_Preharvest_tests.`Date`) AND PK = block_PK) SET `grower_Preharvest_Samples`.test_id = `grower_Preharvest_tests`.test_id;
-ALTER TABLE `grower_Preharvest_Samples` ADD PRIMARY KEY( `test_id`, `SampleNum`);
-ALTER TABLE `grower_Preharvest_Samples` ADD FOREIGN KEY (`test_id`) REFERENCES grower_Preharvest_tests (`test_id`);
-ALTER TABLE grower_Preharvest_Samples DROP `PK`, DROP `Grower`, DROP `Date`, DROP Inspector, DROP Notes, DROP isStarchInspected, DROP NumSamples;
+UPDATE `grower_Preharvest_Samples`
+  JOIN grower_Preharvest_tests ON (DATE(grower_Preharvest_Samples.`Date`) = DATE(grower_Preharvest_tests.`Date`) AND PK = block_PK)
+SET `grower_Preharvest_Samples`.test_id = `grower_Preharvest_tests`.test_id;
+ALTER TABLE `grower_Preharvest_Samples`
+  ADD PRIMARY KEY (`test_id`, `SampleNum`);
+ALTER TABLE `grower_Preharvest_Samples`
+  ADD FOREIGN KEY (`test_id`) REFERENCES grower_Preharvest_tests (`test_id`);
+ALTER TABLE grower_Preharvest_Samples
+  DROP `PK`,
+  DROP `Grower`,
+  DROP `Date`,
+  DROP Inspector,
+  DROP Notes,
+  DROP isStarchInspected,
+  DROP NumSamples;
 
 CREATE VIEW `grower_gfbvs-listing`
   AS
@@ -947,4 +970,5 @@ CREATE VIEW `grower_gfbvs-listing`
       JOIN grower_varieties ON grower_strains.variety_ID = grower_varieties.VarietyID
       JOIN grower_commodities ON grower_varieties.commodityID = grower_commodities.commodity_ID
     WHERE `grower_crop-estimates`.isDeleted = 0;
+
 /* END Adjust quality for storage system */

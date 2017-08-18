@@ -15,6 +15,7 @@ SELECT
   farmName                                AS FarmDesc,
   BlockDesc,
   PK,
+  isGoldApple,
   IFNULL(room_name, 'Unassigned')           AS Location,
   COUNT(storage_grower_fruit_bins.bin_id) AS QtyOnHand
 FROM storage_grower_receipts
@@ -38,7 +39,7 @@ $alreadyDoneSamples = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `#Samples
 if ($alreadyDoneSamples == null) {
     //if this sample has been done today, request 5 samples. if not, request 10
     $query2 = mysqli_query($mysqli, "
-      SELECT (CASE WHEN (count(`receiptNum`)) >= 1
+      SELECT (CASE WHEN (count(`receiptNum`)) > 0
       THEN 5
           ELSE 10 END) AS NumSamplesRequired
       FROM quality_InspectedRTs
@@ -51,14 +52,14 @@ if ($alreadyDoneSamples == null) {
 //perform additional test to see if it is first in a year. If it is, request 20 apples
     if ($output2['NumSamplesRequired'] == 10 && ($output['CommDesc'] != 'Peach' && $output['CommDesc'] != 'Nectarine')) {
         $query2 = mysqli_query($mysqli, "
-          SELECT (CASE WHEN (count(`receiptNum`)) >= 1
-            THEN 5
-              ELSE 10 END) AS NumSamplesRequired,
+          SELECT (CASE WHEN (count(`receiptNum`)) > 0
+            THEN 10
+              ELSE 20 END) AS NumSamplesRequired,
             COUNT(*)
             FROM quality_InspectedRTs
             JOIN storage_grower_receipts ON receiptNum
             JOIN `grower_crop-estimates` ON storage_grower_receipts.grower_block = `grower_crop-estimates`.PK
-            WHERE PK = '".$output['PK']."' AND DATEDIFF(DATE(`date`), CURDATE()) < 365;
+            WHERE PK = '".$output['PK']."' AND YEAR(`date`) = YEAR(CURDATE());
         ");
         $output2 = mysqli_fetch_assoc($query2);
     }

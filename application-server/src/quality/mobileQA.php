@@ -1,32 +1,14 @@
 <?
 require '../config.php';
-$count_total = mysqli_query($mysqli, "SELECT COUNT(*) AS countRT, (SELECT count(*) FROM quality_AppleSamples) AS countSamp FROM quality_InspectedRTs");
+$userData = packapps_authenticate_user('quality');
+
+$count_total = mysqli_query($mysqli, "SELECT ROUND(IFNULL((SELECT SUM(Weight) FROM quality_AppleSamples), 0) + IFNULL((SELECT SUM(Weight) FROM grower_Preharvest_Samples), 0) + IFNULL((SELECT SUM(Weight) FROM quality_run_inspections), 0), 2) AS countWeight, IFNULL((SELECT count(*) FROM quality_AppleSamples), 0) + IFNULL((SELECT COUNT(*) FROM grower_Preharvest_Samples), 0) + IFNULL((SELECT COUNT(*) FROM quality_run_inspections), 0) AS countSamp");
 $total_count = mysqli_fetch_assoc($count_total);
-//authentication
-if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
-    die("<script>window.location.replace('/')</script>");
-} else if (!hash_equals($_COOKIE['auth'], crypt($_COOKIE['username'], $securityKey))) {
-    die("<script>window.location.replace('/')</script>");
-} else {
-    $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Real Name` AS 'UserRealName', Role, allowedQuality FROM packapps_master_users JOIN quality_UserData ON packapps_master_users.username=quality_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
-    if (!$checkAllowed['allowedQuality'] > 0) {
-        die ("<script>window.location.replace('/')</script>");
-    } else {
-        $RealName = $checkAllowed;
-    }
-}
-// end authentication
-if ($RealName['Role'] <> 'QA') {
+
+if ($userData['Role'] <> 'QA') {
     echo "<script>window.location.href='index.php'</script>";
 } ?>
 <!DOCTYPE html>
-<link rel="manifest" href="manifest.json">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="PackApps">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="icon" sizes="196x196" href="apple-touch-icon.png">
-<meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#e2eef4">
 <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
 <link rel="stylesheet" type="text/css" media="all" href="assets/css/inspector.css">
@@ -35,24 +17,23 @@ if ($RealName['Role'] <> 'QA') {
 <h1>Mobile QA Lab</h1>
 <h3 style="text-align: center"><?echo $companyName?> Quality Assurance Lab</h3>
 <br>
-<h2>Welcome back, <strong><? echo $RealName['UserRealName'] ?></strong></h2>
+<h2>Welcome back, <strong><? echo $userData['Real Name'] ?></strong></h2>
 <br>
-<h2>This Year: <? echo $total_count['countSamp'] ?> individual samples across <? echo $total_count['countRT'] ?>
-    RTs!</h2>
+<h2>This Year: <? echo $total_count['countSamp'] ?> individual samples weighing a total <? echo $total_count['countWeight'] ?> pounds!</h2>
 <br><br>
 <a href="Inspector.php">
-    <button>Create a New RT Report</button>
+    <button>Create a New Delivery Report</button>
 </a>
 <br>
 <hr>
 <h2 style="text-align: center">Available Tests</h2><br>
-<button onclick="location.replace('WeightSamples.php')">RT Report >> Weighing</button>
+<button onclick="location.replace('WeightSamples.php')">Delivery Report >> Weighing</button>
 <br>
 <button onclick="location.replace('runPhoto.php')">Run Report >> Take Photo</button>
 <br>
-<button onclick="location.replace('DA.php')">RT Report >> DA Test</button>
+<button onclick="location.replace('DA.php')">Delivery Report >> DA Test</button>
 <br>
-<button onclick="location.replace('mobilestarch.php')">RT Report >> Starch Test</button>
+<button onclick="location.replace('mobilestarch.php')">Delivery Report >> Starch Test</button>
 <br>
 <button onclick="location.replace('preharvest/mobilestarch.php')">Pre-Harvest Grower Report >> Starch Test</button>
 <br>
@@ -65,32 +46,5 @@ if ($RealName['Role'] <> 'QA') {
         onclick="location.replace('QA.php')">View Desktop Version
 </button>
 
-
-<script>
-    function logout() {
-        var xmlhttp;
-        if (window.XMLHttpRequest) {
-            xmlhttp = new XMLHttpRequest();
-        }
-        // code for IE
-        else if (window.ActiveXObject) {
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        if (window.ActiveXObject) {
-            // IE clear HTTP Authentication
-            document.execCommand("ClearAuthenticationCache", false);
-            window.location.href = 'logout/logoutheader.php';
-        } else {
-            xmlhttp.open("GET", 'logout/logoutheader.php', true, "User Name", "logout");
-            xmlhttp.send("");
-            xmlhttp.onreadystatechange = function () {
-                if (xmlhttp.readyState == 4) {
-                    window.location.href = 'logout/logoutheader.php';
-                }
-            }
-        }
-        return false;
-    }
-</script>
 </body>
 </html>

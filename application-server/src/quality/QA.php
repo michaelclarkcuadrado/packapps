@@ -1,34 +1,37 @@
 <!DOCTYPE HTML>
 <?php
 require '../config.php';
-
-//authentication
-if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
-    die("<script>window.location.replace('/')</script>");
-} else if (!hash_equals($_COOKIE['auth'], crypt($_COOKIE['username'], $securityKey))) {
-    die("<script>window.location.replace('/')</script>");
-} else {
-    $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Real Name`, Role, allowedQuality FROM packapps_master_users JOIN quality_UserData ON packapps_master_users.username=quality_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
-    if (!$checkAllowed['allowedQuality'] > 0) {
-        die ("<script>window.location.replace('/')</script>");
-    } else {
-        $RealName = $checkAllowed;
-        $Role = $checkAllowed['Role'];
-    }
-}
-// end authentication
+$userData = packapps_authenticate_user('quality');
 
 //QA Lab only
-if ($Role !== "QA") {
+if ($userData['Role'] !== "QA") {
     die("Unauthorized. This page is for the QA lab team.");
 }
-$rts = mysqli_query($mysqli, "SELECT quality_InspectedRTs.RTNum AS `RT#`, ifnull(BULKOHCSV.Grower,'?') AS Grower, ifnull(BULKOHCSV.VarDesc,'?') AS VarDesc, ifnull(BULKOHCSV.Date, date(quality_InspectedRTs.DateInspected)) AS Date FROM quality_InspectedRTs LEFT JOIN BULKOHCSV ON quality_InspectedRTs.RTNum=BULKOHCSV.`RT#` WHERE quality_InspectedRTs.isFinalInspected = '0' ORDER BY quality_InspectedRTs.DateInspected ASC ");
-$runs = mysqli_query($mysqli, "SELECT RunID, RunNumber, lineName AS Line FROM `production_runs` JOIN production_lineNames ON Line+0=lineID WHERE isQA != 1 AND lastEdited >= NOW() - INTERVAL 7 DAY ORDER BY RunID DESC LIMIT 6;");
-$count_total = mysqli_query($mysqli, "SELECT COUNT(*) AS countRT, (SELECT count(*) FROM quality_AppleSamples) AS countSamp, ifnull(round((SELECT sum(Weight) FROM quality_AppleSamples),2), 0) AS Weight FROM quality_InspectedRTs");
+$rts = mysqli_query($mysqli, "
+    SELECT
+      quality_InspectedRTs.receiptNum          AS `RT#`,
+      GrowerName                               AS Grower,
+      VarietyName                              AS VarDesc,
+      date(quality_InspectedRTs.DateInspected) AS Date
+    FROM quality_InspectedRTs
+      JOIN storage_grower_receipts ON quality_InspectedRTs.receiptNum = storage_grower_receipts.id
+      JOIN `grower_gfbvs-listing` ON storage_grower_receipts.grower_block = `grower_gfbvs-listing`.PK
+    WHERE quality_InspectedRTs.isFinalInspected = '0'
+    ORDER BY quality_InspectedRTs.DateInspected ASC
+");
+$runs = mysqli_query($mysqli, "
+    SELECT
+      RunID,
+      RunNumber,
+      lineName AS Line
+    FROM `production_runs`
+      JOIN production_lineNames ON Line + 0 = lineID
+    WHERE isQA != 1 AND lastEdited >= NOW() - INTERVAL 7 DAY
+    ORDER BY RunID DESC
+    LIMIT 6;
+");
+$count_total = mysqli_query($mysqli, "SELECT ROUND(IFNULL((SELECT SUM(Weight) FROM quality_AppleSamples), 0) + IFNULL((SELECT SUM(Weight) FROM grower_Preharvest_Samples), 0) + IFNULL((SELECT SUM(Weight) FROM quality_run_inspections), 0), 2) AS countWeight, IFNULL((SELECT count(*) FROM quality_AppleSamples), 0) + IFNULL((SELECT COUNT(*) FROM grower_Preharvest_Samples), 0) + IFNULL((SELECT COUNT(*) FROM quality_run_inspections), 0) AS countSamp");
 $total_count = mysqli_fetch_assoc($count_total);
-$count_total_runs = mysqli_query($mysqli, "SELECT COUNT(DISTINCT RunID) AS countRuns, Count(*) AS countSamp, ifnull(round(sum(Weight),2), 0) AS Weight FROM quality_run_inspections");
-$total_count_runs = mysqli_fetch_assoc($count_total_runs);
 ?>
 <html>
 <head>
@@ -65,7 +68,7 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
         <p style="font-size: 2em; text-align: center; display: inline-block; width: 5px; color: #ffffff; opacity: 0.75"
            class="icon">[</p>
         <a href='#newRT' onclick="$('#InspectorIframe').attr('src', 'Inspector.php'), $('#LoadInspectorIframe').hide()"
-           class='icon fa-truck'><span>New RT</span></a>
+           class='icon fa-truck'><span>New Delivery</span></a>
         <p style="font-size: 1em; text-align: center; display: inline-block; vertical-align: super; color: #ffffff; opacity: 0.75"
            class="icon fa-long-arrow-right"></p>
         <a href='#DA'
@@ -94,11 +97,9 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
         <!-- Welcome Screen -->
         <article id="welcome" class="panel">
             <header>
-                <h1><i class="fa fa-leaf"></i> <? echo "Welcome back, " . strtok($RealName[0], " ") . "."; ?></h1>
-                <p><i class="icon fa-star"></i> <? echo $total_count['Weight'] + $total_count_runs['Weight'] ?> pounds of fruit
-                    from <? echo $total_count['countSamp'] + $total_count_runs['countSamp'] ?> samples (<? echo $total_count['countRT'] ?> Receipts and <? echo $total_count_runs['countRuns'] ?> runs)
-                    analyzed
-                    so far!<br>
+                <h1><i class="fa fa-leaf"></i> <? echo "Welcome back, " . strtok($userData['Real Name'], " ") . "."; ?></h1>
+                <p><i class="icon fa-star"></i> <? echo $total_count['countWeight']?> pounds of fruit
+                    from <? echo $total_count['countSamp']?> samples analyzed so far!<br>
                 </p>
             </header>
             <a href="#QA" class="jumplink pic">
@@ -110,7 +111,7 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
         <!-- New RT screen -->
         <article id="newRT" class="panel">
             <header>
-                <h2>New RT Report Creator</h2>
+                <h2>New Delivery Report Creator</h2>
                 <p><? echo $companyName ?> Quality Assurance Lab</p>
             </header>
             <div id='DA'>
@@ -162,7 +163,7 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
                 <p><? echo $companyName ?> Quality Assurance Lab</p>
             </header>
             <? if (isset($_GET['qa'])) {
-                echo "<h2><span class='fa fa-check-circle'></span><b> Data for RT# " . $_GET['qa'] . " received.</b></h2><br>";
+                echo "<h2><span class='fa fa-check-circle'></span><b> Data for Receipt# " . $_GET['qa'] . " received.</b></h2><br>";
             } ?>
             <? if (isset($_GET['error'])) {
                 echo "<h2><span class='fa-stack fa-lg'><SampleNum class='fa fa-database fa-stack-1x'></SampleNum><SampleNum style='color: red' class='fa fa-ban fa-stack-2x'></SampleNum></span><b> There was a database error! Try again.</b></h2><br>";
@@ -172,7 +173,7 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
                     <option value="" disabled
                             selected><? echo(mysqli_num_rows($rts) == 0 ? "No Receipts left. &#9787;" : "Select RT"); ?></option>
                     <?php while ($receivedtodo = mysqli_fetch_assoc($rts)) {
-                        echo "<option value='" . $receivedtodo['RT#'] . "'>" . $receivedtodo['Date'] . " - RT#" . $receivedtodo['RT#'] . " - " . $receivedtodo['Grower'] . " - " . $receivedtodo['VarDesc'] . "</ option>";
+                        echo "<option value='" . $receivedtodo['RT#'] . "'>" . $receivedtodo['Date'] . " - Receipt#" . $receivedtodo['RT#'] . " - " . $receivedtodo['Grower'] . " - " . $receivedtodo['VarDesc'] . "</ option>";
                     } ?>
                 </select> <a style='font-size: small' href='#' onclick='RTlistreload();'> <i class='fa fa-refresh'></i></a>
             </div>
@@ -285,7 +286,7 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
                     </tr>
                 </table>
                 <input disabled type="submit" id="runsubmitbtn" value="Send info to Production"><span
-                        class="icon fa-check-circle"><strong> Inspected by <? echo $RealName[0] ?></strong></span></form>
+                        class="icon fa-check-circle"><strong> Inspected by <? echo $userData['Real Name'] ?></strong></span></form>
         </article>
 
     </div>
@@ -384,16 +385,16 @@ $total_count_runs = mysqli_fetch_assoc($count_total_runs);
                         "<table><tr style='text-align: center'><td>Sample / Test</td><td><b>Pressure A</b></td><td><b>Pressure B</b></td><td><b>Weight</b></td>" + (data.NumSamples > 5 ? "<td><b>Brix</b></td>" : "") + "</tr>" +
                         RTrows(data) +
                         "</table>" + (data.DAFinished != 1 && data.NumSamples > 5 ? "<h3><span class='icon fa-exclamation-circle'>These samples still need DA testing.</h3>" : "") + (data.StarchFinished != 1 && data.NumSamples == 20 && data.CommDesc != 'Peach' && data.CommDesc != 'Nectarine' ? "<h3><span class='icon fa-exclamation-circle'>These samples still need starch testing.</h3>" : "") +
-                        "<input type='submit' value='Submit Testing Result'><span class='icon fa-check-circle'><strong> Inspected by <?echo $RealName[0]?></strong></span></form></div>");
+                        "<input type='submit' value='Submit Testing Result'><span class='icon fa-check-circle'><strong> Inspected by <?echo $userData['Real Name']?></strong></span></form></div>");
                     if (data.FTAup == 0) {
-                        $("#FTAmodal").replaceWith("<h3>(Optional) Attach FTA file</h3><p>Autofill pressure and weight values from FTA</p><div style='width: 40%; text-align: center; margin-left: auto; margin-right: auto'><form enctype='multipart/form-data' method='post' action='ftadata.php'><input type='hidden' value='" + RT + "' name='RT'><label><span class='icon fa-paperclip'><b> Attach FTA data for RT#" + RT + "</b></span><input type='file' accept='application/vnd.ms-excel' name='xlsupload'></label><input type='submit' value='Upload FTA'></form></div>")
+                        $("#FTAmodal").replaceWith("<h3>(Optional) Attach FTA file</h3><p>Autofill pressure and weight values from FTA</p><div style='width: 40%; text-align: center; margin-left: auto; margin-right: auto'><form enctype='multipart/form-data' method='post' action='ftadata.php'><input type='hidden' value='" + RT + "' name='RT'><label><span class='icon fa-paperclip'><b> Attach FTA data for Receipt#" + RT + "</b></span><input type='file' accept='application/vnd.ms-excel' name='xlsupload'></label><input type='submit' value='Upload FTA'></form></div>")
                     }
                     $(window).resize();
                     return 0;
 
                 },
                 error: function () {
-                    alert("Error while pulling Receipt Data. Please reconnect to the network.");
+                    alert("Error while pulling receipt Data. Please reconnect to the network.");
                     return 1;
                 }
             });

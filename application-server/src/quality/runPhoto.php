@@ -3,21 +3,7 @@ include_once("Classes/Mobile_Detect.php");
 $detect = new Mobile_Detect();
 require '../config.php';
 
-//authentication
-if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
-    die("<script>window.location.replace('/')</script>");
-} else if (!hash_equals($_COOKIE['auth'], crypt($_COOKIE['username'], $securityKey))) {
-    die("<script>window.location.replace('/')</script>");
-} else {
-    $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Real Name` AS 'UserRealName', Role, allowedQuality FROM packapps_master_users JOIN quality_UserData ON packapps_master_users.username=quality_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
-    if (!$checkAllowed['allowedQuality'] > 0) {
-        die ("<script>window.location.replace('/')</script>");
-    } else {
-        $RealName = $checkAllowed;
-    }
-}
-// end authentication
+$userData = packapps_authenticate_user('quality');
 
 $runsAvailable = mysqli_query($mysqli, "SELECT Line, RunNumber, `production_runs`.RunID, Variety, Quality, Size FROM production_runs LEFT JOIN production_dumped_fruit ON `production_runs`.RunID=`production_dumped_fruit`.RunID LEFT JOIN quality_run_inspections ON `quality_run_inspections`.`RunID`=`production_runs`.RunID WHERE isQA > 0 AND isPhotoGraphed = 0 AND lastEdited >= NOW() - INTERVAL 5 DAY GROUP BY RunID ");
 
@@ -40,7 +26,7 @@ $runsAvailable = mysqli_query($mysqli, "SELECT Line, RunNumber, `production_runs
 
 <body>
 <div id="wrapper">
-    <? if ($RealName['Role'] == 'QA' && $detect->isMobile()) {
+    <? if ($UserData['Role'] == 'QA' && $detect->isMobile()) {
         echo "<p style='position: fixed; top: 0; width: 100%'><button onclick=\"location.replace('/quality')\"><<< Go back</button></p>";
     } ?>
     <h1>Run Sample Photos</h1>
@@ -71,7 +57,7 @@ $runsAvailable = mysqli_query($mysqli, "SELECT Line, RunNumber, `production_runs
             <button class="submitbtn" disabled>Submit photo to QA Lab</button>
             <br>
             <label style="border: dashed black 1px; vertical-align: middle">Inspected
-                by <? echo $RealName['UserRealName'] . " on " . date('l, F jS Y') ?></label>
+                by <? echo $userData['Real Name'] . " on " . date('l, F jS Y') ?></label>
         </div>
     </form>
 </div>

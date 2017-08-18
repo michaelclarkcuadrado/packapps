@@ -6,6 +6,7 @@
  * Time: 1:15 PM
  */
 require '../config.php';
+packapps_authenticate_user('quality');
 
 if(isset($_FILES['photo']))
 {

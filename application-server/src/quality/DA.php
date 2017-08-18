@@ -2,8 +2,21 @@
 include_once("Classes/Mobile_Detect.php");
 $detect = new Mobile_Detect();
 require '../config.php';
-
-$rts = mysqli_query($mysqli, "SELECT quality_InspectedRTs.RTNum AS `RT#`, ifnull(BULKOHCSV.Grower,'?') AS Grower, ifnull(`CommDesc`, '?') AS CommDesc, ifnull(BULKOHCSV.VarDesc,'?') AS VarDesc, ifnull(BULKOHCSV.Date, date(quality_InspectedRTs.DateInspected)) AS Date,`#Samples` as NumSamples FROM quality_InspectedRTs LEFT JOIN BULKOHCSV ON quality_InspectedRTs.RTNum=BULKOHCSV.`RT#` WHERE quality_InspectedRTs.DAFinished = '0' AND (`#Samples` = '20' OR `#Samples` = '10') ORDER BY quality_InspectedRTs.DateInspected ASC ");
+packapps_authenticate_user('quality');
+$rts = mysqli_query($mysqli, "
+SELECT
+  quality_InspectedRTs.receiptNum          AS `RT#`,
+  GrowerName                               AS Grower,
+  commodity_name                           AS CommDesc,
+  VarietyName                              AS VarDesc,
+  date(quality_InspectedRTs.DateInspected) AS Date,
+  `#Samples`                               AS NumSamples
+FROM quality_InspectedRTs
+  JOIN storage_grower_receipts ON quality_InspectedRTs.receiptNum = storage_grower_receipts.id
+  JOIN `grower_gfbvs-listing` ON grower_block = PK
+WHERE quality_InspectedRTs.DAFinished = '0' AND (`#Samples` = '20' OR `#Samples` = '10')
+ORDER BY quality_InspectedRTs.DateInspected ASC
+");
 ?>
 <html style="width: 100%">
 <head>

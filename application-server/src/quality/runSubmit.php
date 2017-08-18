@@ -7,11 +7,12 @@
  */
 require '../config.php';
 include_once("Classes/excel_reader2.php");
+packapps_authenticate_user('quality');
 $xlsdata = new Spreadsheet_Excel_Reader($_FILES['xlsupload']['tmp_name'],false);
 
 
     //init vars
-    $RunID = $_POST['RunID'];
+    $RunID = mysqli_real_escape_string($mysqli, $_POST['RunID']);
     $Weight = 0;
     $Pressure1 = 0;
     $Pressure2 = 0;

@@ -1,5 +1,9 @@
 <?php
 require '../config.php';
+$userData = packapps_authenticate_user();
+if($userData['isSystemAdministrator'] == 0){
+    die("<script>window.location.replace('/')</script>");
+}
 ?>
 <html>
 <title>User Management</title>
@@ -15,30 +19,7 @@ require '../config.php';
         text-align: center;
     }
 </style>
-<h1>Admin Panel</h1>
-<hr>
-<?
-
-//security check
-//authentication
-if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
-    die("<script>window.location.replace('/')</script>");
-} else if (!hash_equals($_COOKIE['auth'], crypt($_COOKIE['username'], $securityKey))) {
-    die("<script>window.location.replace('/')</script>");
-} else {
-    $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Real Name`, Role, isSystemAdministrator as isAdmin, allowedQuality FROM packapps_master_users JOIN quality_UserData ON packapps_master_users.username=quality_UserData.UserName WHERE packapps_master_users.username = '$SecuredUserName'"));
-    if (!$checkAllowed['allowedQuality'] > 0 || !$checkAllowed['isAdmin'] > 0) {
-        die ("<script>window.location.replace('/')</script>");
-    } else {
-        $RealName = $checkAllowed;
-        $Role = $checkAllowed['Role'];
-    }
-}
-// end authentication
-
-?>
-<?
+<?php
 //delete email from list
 if ($_GET['delemail'] <> '') {
     mysqli_query($mysqli, "DELETE FROM quality_AlertEmails WHERE ID='" . mysqli_real_escape_string($mysqli, $_GET['delemail']) . "'");
@@ -53,6 +34,10 @@ if ($_POST['newEmailAddress'] <> '') {
 
 $email_list = mysqli_query($mysqli, "SELECT ID, FullName, EmailAddress FROM quality_AlertEmails");
 ?>
+<a href='/controlPanel.php'>
+    <button>Go back</button>
+</a>
+<hr>
 <h2>Email Alert Subscription List</h2>
 <h3>Subscribe new email to alerts</h3>
 <table style="margin-left: auto; margin-right: auto; border: dotted black 1px">
@@ -82,6 +67,7 @@ $email_list = mysqli_query($mysqli, "SELECT ID, FullName, EmailAddress FROM qual
         echo "<tr><td><b>" . $emaildata['FullName'] . "</b></td><td><b>" . $emaildata['EmailAddress'] . "</b></td><td><a href='emailmgmt.php?delemail=" . $emaildata['ID'] . "'>Unsubscribe</a></td></tr>";
     } ?>
 </table>
+<hr>
 <a href='/controlPanel.php'>
     <button>Go back</button>
 </a>
