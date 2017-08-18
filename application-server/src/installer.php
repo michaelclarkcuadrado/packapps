@@ -6,7 +6,7 @@
  * Time: 1:22 PM
  */
 
-require_once('scripts/Mobile_Detect.php');
+require_once('scripts-common/Mobile_Detect.php');
 require 'config.php';
 
 $errormsg = "To finish setup, create the administrator account.";

@@ -4,24 +4,28 @@
     <bookmark url="file://$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php" line="118" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc9cf440-d41f-463b-aeba-7bb29d2a7f06" name="Default" comment="Quality: update preharvest to have some normalization, fix quality tables some more">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata" afterPath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata.keystream" afterPath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata.keystream" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata.keystream.len" afterPath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata.keystream.len" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata.len" afterPath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata.len" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata.values.at" afterPath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata.values.at" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata_i" afterPath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata_i" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_src_/schema/operationsData.zip" afterPath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_src_/schema/operationsData.zip" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1.xml" />
+    <list default="true" id="fc9cf440-d41f-463b-aeba-7bb29d2a7f06" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application-server/src/storage/mobile.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/application-server/src/grower/portal/Mobile_Detect.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/application-server/src/production/scripts/Mobile_Detect.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/application-server/src/quality/Classes/Mobile_Detect.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/application-server/src/scripts/Mobile_Detect.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/adjustUserPermissions.php" afterPath="$PROJECT_DIR$/application-server/src/adjustUserPermissions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/API/RTlist.php" afterPath="$PROJECT_DIR$/application-server/src/quality/API/RTlist.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/API/rtinfoqa.php" afterPath="$PROJECT_DIR$/application-server/src/quality/API/rtinfoqa.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/grower/portal/index.php" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/index.php" afterPath="$PROJECT_DIR$/application-server/src/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/installer.php" afterPath="$PROJECT_DIR$/application-server/src/installer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/production/index.php" afterPath="$PROJECT_DIR$/application-server/src/production/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/DA.php" afterPath="$PROJECT_DIR$/application-server/src/quality/DA.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/Inspector.php" afterPath="$PROJECT_DIR$/application-server/src/quality/Inspector.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/Inspectorsubmit.php" afterPath="$PROJECT_DIR$/application-server/src/quality/Inspectorsubmit.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/QAsubmit.php" afterPath="$PROJECT_DIR$/application-server/src/quality/QAsubmit.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/assets/index.php" afterPath="$PROJECT_DIR$/application-server/src/quality/assets/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/weightsubmit.php" afterPath="$PROJECT_DIR$/application-server/src/quality/weightsubmit.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/WeightSamples.php" afterPath="$PROJECT_DIR$/application-server/src/quality/WeightSamples.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/index.php" afterPath="$PROJECT_DIR$/application-server/src/quality/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/mobilestarch.php" afterPath="$PROJECT_DIR$/application-server/src/quality/mobilestarch.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/preharvest/mobilestarch.php" afterPath="$PROJECT_DIR$/application-server/src/quality/preharvest/mobilestarch.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/runPhoto.php" afterPath="$PROJECT_DIR$/application-server/src/quality/runPhoto.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/scripts-common/Mobile_Detect.php" afterPath="$PROJECT_DIR$/application-server/src/scripts-common/Mobile_Detect.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/storage/index.php" afterPath="$PROJECT_DIR$/application-server/src/storage/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql" afterPath="$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notes" afterPath="$PROJECT_DIR$/notes" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -68,128 +72,188 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql">
+      <file leaf-file-name="WeightSamples.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application-server/src/quality/WeightSamples.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="92" lean-forward="false" selection-start-line="0" selection-start-column="92" selection-end-line="0" selection-end-column="92" />
+            <state relative-caret-position="18">
+              <caret line="1" column="31" lean-forward="false" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
+              <folding>
+                <marker date="1503082565960" expanded="true" signature="1034:1070" ph="..." />
+                <marker date="1503082565960" expanded="true" signature="1252:1260" ph="..." />
+                <marker date="1503082565960" expanded="true" signature="2942:2960" ph="..." />
+                <marker date="1503082565960" expanded="true" signature="3279:3289" ph="..." />
+                <marker date="1503082565960" expanded="true" signature="3337:3408" ph="..." />
+                <marker date="1503082565960" expanded="true" signature="3488:3512" ph="..." />
+                <marker date="1503082565960" expanded="true" signature="3839:3869" ph="..." />
+                <marker date="1503082565960" expanded="true" signature="4215:4245" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mobilestarch.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application-server/src/quality/preharvest/mobilestarch.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="2" column="30" lean-forward="true" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+              <folding>
+                <marker date="1503082565986" expanded="true" signature="206:616" ph="SELECT `grow... grower_Preharvest_tests" />
+                <marker date="1503082565986" expanded="true" signature="1970:1991" ph="..." />
+                <marker date="1503082565986" expanded="true" signature="4917:4928" ph="..." />
+                <marker date="1503082565986" expanded="true" signature="5070:5081" ph="..." />
+                <marker date="1503082565986" expanded="true" signature="5223:5234" ph="..." />
+                <marker date="1503082565986" expanded="true" signature="5376:5387" ph="..." />
+                <marker date="1503082565986" expanded="true" signature="5530:5541" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="installer.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application-server/src/installer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+              <folding>
+                <marker date="1503082287951" expanded="true" signature="315:363" ph="SELECT syste... packapps_system_info" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="39" lean-forward="false" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
+              <folding>
+                <marker date="1503082361586" expanded="true" signature="2398:2584" ph="SELECT COUNT... PK" />
+                <marker date="1503082361586" expanded="true" signature="2429:2580" ph="SELECT PK FR... grower_Preharvest_Samples" />
+                <marker date="1503082361586" expanded="true" signature="2641:2900" ph="SELECT `RT##`... BULKRTCSV" />
+                <marker date="1503082361586" expanded="true" signature="7901:7930" ph="..." />
+                <marker date="1503082361586" expanded="true" signature="7931:8238" ph="..." />
+                <marker date="1503082361586" expanded="false" signature="8462:8506" ph="..." />
+                <marker date="1503082361586" expanded="true" signature="8507:8993" ph="..." />
+                <marker date="1503082361586" expanded="true" signature="12875:13282" ph="..." />
+                <marker date="1503082361586" expanded="true" signature="12912:13282" ph="..." />
+                <marker date="1503082361586" expanded="true" signature="15862:16553" ph="..." />
+                <marker date="1503082361586" expanded="true" signature="15899:16553" ph="..." />
+                <marker date="1503082361586" expanded="true" signature="19474:19512" ph="..." />
+                <marker date="1503082361586" expanded="true" signature="23945:24731" ph="..." />
+                <marker date="1503082361586" expanded="true" signature="23993:24683" ph="..." />
+                <marker date="1503082361586" expanded="true" signature="24038:24634" ph="..." />
+                <marker date="1503082361586" expanded="true" signature="24880:25882" ph="..." />
+                <marker date="1503082361586" expanded="false" signature="24936:24951" ph="..." />
+                <marker date="1503082361586" expanded="true" signature="24952:25834" ph="..." />
+                <marker date="1503082361586" expanded="true" signature="24997:25785" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application-server/src/production/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="349">
+              <caret line="39" column="45" lean-forward="true" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
+              <folding>
+                <marker date="1503082423993" expanded="true" signature="748:1003" ph="SELECT `Real... packapps_master_users" />
+                <marker date="1503082423993" expanded="true" signature="1276:1325" ph="SELECT lineI... production_lineNames" />
+                <marker date="1503082423993" expanded="true" signature="1609:1666" ph="..." />
+                <marker date="1503082423993" expanded="true" signature="1680:1720" ph="..." />
+                <marker date="1503082423993" expanded="true" signature="4661:4688" ph="..." />
+                <marker date="1503082423993" expanded="true" signature="5178:5264" ph="..." />
+                <marker date="1503082423993" expanded="true" signature="7723:7735" ph="..." />
+                <marker date="1503082423993" expanded="true" signature="18545:18814" ph="..." />
+                <marker date="1503082423993" expanded="true" signature="19238:19522" ph="..." />
+                <marker date="1503082423993" expanded="true" signature="19961:19975" ph="..." />
+                <marker date="1503082423993" expanded="true" signature="20119:20153" ph="..." />
+                <marker date="1503082423993" expanded="true" signature="20212:20261" ph="..." />
+                <marker date="1503082423993" expanded="true" signature="20296:20330" ph="..." />
+                <marker date="1503082423993" expanded="true" signature="22770:22886" ph="..." />
+                <marker date="1503082423993" expanded="true" signature="23818:23934" ph="..." />
+                <marker date="1503082423993" expanded="true" signature="25966:26084" ph="..." />
+                <marker date="1503082423993" expanded="true" signature="31810:31822" ph="..." />
+                <marker date="1503082423993" expanded="true" signature="32213:32225" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DA.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application-server/src/quality/DA.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="16" column="42" lean-forward="false" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
+              <folding>
+                <marker date="1503082470761" expanded="true" signature="185:827" ph="SELECT quali... quality_InspectedRTs" />
+                <marker date="1503082470761" expanded="true" signature="2741:2762" ph="..." />
+                <marker date="1503082470761" expanded="true" signature="3008:3080" ph="..." />
+                <marker date="1503082470761" expanded="true" signature="3030:3063" ph="{...}" />
+                <marker date="1503082470761" expanded="true" signature="4622:4633" ph="..." />
+                <marker date="1503082470761" expanded="true" signature="4883:4894" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application-server/src/quality/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="6" column="12" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QA.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application-server/src/quality/QA.php">
+      <file leaf-file-name="Inspector.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application-server/src/quality/Inspector.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="380" column="556" lean-forward="false" selection-start-line="380" selection-start-column="549" selection-end-line="380" selection-end-column="556" />
+            <state relative-caret-position="72">
+              <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
               <folding>
-                <marker date="1502996828727" expanded="true" signature="244:774" ph="SELECT quali... quality_InspectedRTs" />
-                <marker date="1502996828727" expanded="true" signature="244:816" ph="SELECT quali... quality_InspectedRTs" />
-                <marker date="1502996828727" expanded="true" signature="857:1093" ph="SELECT RunID... production_runs" />
-                <marker date="1502996828727" expanded="true" signature="1137:1545" ph="SELECT COUNT... quality_InspectedRTs" />
-                <marker date="1502996828727" expanded="true" signature="1158:1202" ph="SELECT SUM(W... quality_AppleSamples" />
-                <marker date="1502996828727" expanded="true" signature="1218:1267" ph="SELECT SUM(W... grower_Preharvest_Samples" />
-                <marker date="1502996828727" expanded="true" signature="1283:1330" ph="SELECT SUM(W... quality_run_inspections" />
-                <marker date="1502996828727" expanded="true" signature="1364:1405" ph="SELECT count... quality_AppleSamples" />
-                <marker date="1502996828727" expanded="true" signature="1421:1467" ph="SELECT COUNT... grower_Preharvest_Samples" />
-                <marker date="1502996828727" expanded="true" signature="1483:1527" ph="SELECT COUNT... quality_run_inspections" />
-                <marker date="1502996828727" expanded="true" signature="5742:5752" ph="..." />
-                <marker date="1502996828727" expanded="true" signature="6724:6734" ph="..." />
-                <marker date="1502996828727" expanded="true" signature="8316:8326" ph="..." />
-                <marker date="1502996828727" expanded="true" signature="16403:16421" ph="..." />
-                <marker date="1502996828727" expanded="true" signature="16831:16842" ph="..." />
-                <marker date="1502996828727" expanded="true" signature="16898:16907" ph="..." />
-                <marker date="1502996828727" expanded="true" signature="17055:17066" ph="..." />
-                <marker date="1502996828727" expanded="true" signature="17122:17131" ph="..." />
-                <marker date="1502996828727" expanded="true" signature="17278:17289" ph="..." />
-                <marker date="1502996828727" expanded="true" signature="17345:17354" ph="..." />
-                <marker date="1502996828727" expanded="true" signature="17817:17832" ph="..." />
-                <marker date="1502996828727" expanded="true" signature="22659:22728" ph="..." />
+                <marker date="1503082565983" expanded="true" signature="1033:1069" ph="..." />
+                <marker date="1503082565983" expanded="true" signature="1263:1271" ph="..." />
+                <marker date="1503082565983" expanded="true" signature="10135:10153" ph="..." />
+                <marker date="1503082565983" expanded="true" signature="10472:10482" ph="..." />
+                <marker date="1503082565983" expanded="true" signature="10496:10513" ph="..." />
+                <marker date="1503082565983" expanded="true" signature="10643:10714" ph="..." />
+                <marker date="1503082565983" expanded="true" signature="10818:10889" ph="..." />
+                <marker date="1503082565983" expanded="true" signature="10963:10987" ph="..." />
+                <marker date="1503082565983" expanded="true" signature="11554:11584" ph="..." />
+                <marker date="1503082565983" expanded="true" signature="11772:11791" ph="..." />
+                <marker date="1503082565983" expanded="true" signature="12268:12298" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Inspectorsubmit.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application-server/src/quality/Inspectorsubmit.php">
+      <file leaf-file-name="mobilestarch.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application-server/src/quality/mobilestarch.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="51" column="34" lean-forward="true" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+            <state relative-caret-position="18">
+              <caret line="1" column="32" lean-forward="false" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
               <folding>
-                <marker date="1503076205290" expanded="true" signature="203:221" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="630:687" ph="SELECT * FRO... quality_InspectedRTs" />
-                <marker date="1503076205290" expanded="true" signature="755:773" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="854:864" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="2039:2057" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="2138:2148" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="2666:3451" ph="SELECT Growe... storage_grower_receipts" />
-                <marker date="1503076205290" expanded="true" signature="3525:3831" ph="SELECT count... storage_grower_receipts" />
-                <marker date="1503076205290" expanded="true" signature="3910:4295" ph="SELECT (coun... quality_InspectedRTs" />
-                <marker date="1503076205290" expanded="true" signature="4129:4294" ph="SELECT growe... storage_grower_receipts" />
-                <marker date="1503076205290" expanded="true" signature="4346:5475" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="4456:5105" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="4472:4684" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="4697:5092" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="5122:5378" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="5950:5968" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="6049:6059" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="6580:7321" ph="SELECT Growe... storage_grower_receipts" />
-                <marker date="1503076205290" expanded="true" signature="7395:7701" ph="SELECT count... storage_grower_receipts" />
-                <marker date="1503076205290" expanded="true" signature="7784:8173" ph="SELECT (coun... quality_InspectedRTs" />
-                <marker date="1503076205290" expanded="true" signature="8007:8172" ph="SELECT growe... storage_grower_receipts" />
-                <marker date="1503076205290" expanded="true" signature="8222:9365" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="8336:8989" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="8352:8564" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="8577:8972" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="9014:9269" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="9878:10619" ph="SELECT Growe... storage_grower_receipts" />
-                <marker date="1503076205290" expanded="true" signature="10693:10999" ph="SELECT count... storage_grower_receipts" />
-                <marker date="1503076205290" expanded="true" signature="11078:11468" ph="SELECT (coun... quality_InspectedRTs" />
-                <marker date="1503076205290" expanded="true" signature="11302:11467" ph="SELECT growe... storage_grower_receipts" />
-                <marker date="1503076205290" expanded="true" signature="11516:12605" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="11636:12285" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="11652:11864" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="11877:12272" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="12302:12556" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="13013:13754" ph="SELECT Growe... storage_grower_receipts" />
-                <marker date="1503076205290" expanded="true" signature="13834:14140" ph="SELECT count... storage_grower_receipts" />
-                <marker date="1503076205290" expanded="true" signature="14227:14636" ph="SELECT (coun... quality_InspectedRTs" />
-                <marker date="1503076205290" expanded="true" signature="14470:14635" ph="SELECT growe... storage_grower_receipts" />
-                <marker date="1503076205290" expanded="true" signature="14687:15858" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="14808:15541" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="14828:15076" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="15093:15524" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="15558:15809" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="16056:16293" ph="INSERT INTO `quality_InspectedRTs`... " />
-                <marker date="1503076205290" expanded="true" signature="16602:16620" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="16701:16711" ph="..." />
-                <marker date="1503076205290" expanded="true" signature="17104:17180" ph="INSERT INTO `quality_AppleSamples`... " />
+                <marker date="1503082565973" expanded="true" signature="198:870" ph="SELECT quali... quality_InspectedRTs" />
+                <marker date="1503082565973" expanded="true" signature="2607:2614" ph="..." />
+                <marker date="1503082565973" expanded="true" signature="2842:2914" ph="..." />
+                <marker date="1503082565973" expanded="true" signature="2864:2897" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QAsubmit.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application-server/src/quality/QAsubmit.php">
+      <file leaf-file-name="runPhoto.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application-server/src/quality/runPhoto.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="26" column="52" lean-forward="true" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
+            <state relative-caret-position="18">
+              <caret line="1" column="31" lean-forward="false" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
               <folding>
-                <marker date="1503078822580" expanded="true" signature="397:469" ph="DELETE FROM " />
-                <marker date="1503078822580" expanded="true" signature="760:871" ph="UPDATE `qual... " />
-                <marker date="1503078822580" expanded="true" signature="937:1076" ph="UPDATE `qual... " />
+                <marker date="1503082565976" expanded="true" signature="208:582" ph="SELECT Line,... production_runs" />
+                <marker date="1503082565976" expanded="true" signature="1328:1364" ph="..." />
+                <marker date="1503082565976" expanded="true" signature="1553:1561" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="020 - packapps v2 schema.sql" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="957">
-              <caret line="878" column="0" lean-forward="true" selection-start-line="878" selection-start-column="0" selection-end-line="878" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -205,7 +269,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>BuOnHand</find>
       <find>_query</find>
       <find>mysqli2</find>
       <find>growerLogins</find>
@@ -235,6 +298,7 @@
       <find>Russet</find>
       <find>On hand</find>
       <find>AppleSamples</find>
+      <find>isenab</find>
     </findStrings>
     <replaceStrings>
       <replace>userData</replace>
@@ -290,16 +354,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application-server/src/getUserAccountList.php" />
-        <option value="$PROJECT_DIR$/application-server/src/production/editRun.php" />
-        <option value="$PROJECT_DIR$/application-server/src/storage/API/getRooms.php" />
-        <option value="$PROJECT_DIR$/application-server/src/storage/API/getPivotLists.php" />
-        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_4.html" />
         <option value="$PROJECT_DIR$/application-server/src/storage/sequences.js" />
         <option value="$PROJECT_DIR$/application-server/src/storage/API/getRoomContents.php" />
-        <option value="$PROJECT_DIR$/application-server/src/storage/index.php" />
         <option value="$PROJECT_DIR$/application-server/src/styles-common/sunburst/sunburst.css" />
-        <option value="$PROJECT_DIR$/application-server/src/installer.php" />
         <option value="$PROJECT_DIR$/settings.yml" />
         <option value="$PROJECT_DIR$/application-server/src/quality/emailAlerts/EmergencyAlert.php" />
         <option value="$PROJECT_DIR$/application-server/src/quality/preharvest/blockidfinder.php" />
@@ -310,29 +367,21 @@
         <option value="$PROJECT_DIR$/application-server/src/quality/API/deleteTest.php" />
         <option value="$PROJECT_DIR$/application-server/src/quality/preharvest/index.php" />
         <option value="$PROJECT_DIR$/application-server/src/quality/preharvest/Preharvestsubmit.php" />
-        <option value="$PROJECT_DIR$/application-server/src/quality/preharvest/mobilestarch.php" />
         <option value="$PROJECT_DIR$/application-server/src/quality/preharvest/starchsubmit.php" />
-        <option value="$PROJECT_DIR$/application-server/src/quality/DA.php" />
         <option value="$PROJECT_DIR$/application-server/src/quality/DAsubmit.php" />
-        <option value="$PROJECT_DIR$/application-server/src/quality/index.php" />
         <option value="$PROJECT_DIR$/application-server/src/adjustUserPermissions.php" />
-        <option value="$PROJECT_DIR$/database-server/schema/021 - v2 SEED DATA.sql" />
         <option value="$PROJECT_DIR$/application-server/src/quality/emailmgmt.php" />
         <option value="$PROJECT_DIR$/application-server/src/controlPanel.php" />
         <option value="$PROJECT_DIR$/application-server/Dockerfile" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_5.html" />
         <option value="$PROJECT_DIR$/application-server/src/quality/API/rtinfoins.php" />
-        <option value="$PROJECT_DIR$/application-server/src/quality/mobilestarch.php" />
         <option value="$PROJECT_DIR$/application-server/src/quality/mobileQA.php" />
-        <option value="$PROJECT_DIR$/application-server/src/quality/runPhoto.php" />
         <option value="$PROJECT_DIR$/application-server/src/quality/runPhotoSubmit.php" />
         <option value="$PROJECT_DIR$/application-server/src/quality/runSubmit.php" />
         <option value="$PROJECT_DIR$/application-server/src/quality/runftareturn.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql" />
         <option value="$PROJECT_DIR$/application-server/src/quality/starchsubmit.php" />
-        <option value="$PROJECT_DIR$/application-server/src/quality/WeightSamples.php" />
         <option value="$PROJECT_DIR$/application-server/src/quality/assets/index.php" />
-        <option value="$PROJECT_DIR$/application-server/src/quality/Inspector.php" />
         <option value="$PROJECT_DIR$/application-server/src/quality/Inspectorsubmit.php" />
         <option value="$PROJECT_DIR$/application-server/src/quality/weightsubmit.php" />
         <option value="$PROJECT_DIR$/application-server/src/quality/QA.php" />
@@ -340,7 +389,22 @@
         <option value="$PROJECT_DIR$/application-server/src/quality/API/rtinfoqa.php" />
         <option value="$PROJECT_DIR$/application-server/src/quality/ftadata.php" />
         <option value="$PROJECT_DIR$/application-server/src/quality/QAsubmit.php" />
+        <option value="$PROJECT_DIR$/database-server/schema/021 - v2 SEED DATA.sql" />
+        <option value="$PROJECT_DIR$/notes" />
         <option value="$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql" />
+        <option value="$PROJECT_DIR$/application-server/src/storage/mobile.php" />
+        <option value="$PROJECT_DIR$/application-server/src/storage/index.php" />
+        <option value="$PROJECT_DIR$/application-server/src/index.php" />
+        <option value="$PROJECT_DIR$/application-server/src/installer.php" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/index.php" />
+        <option value="$PROJECT_DIR$/application-server/src/production/index.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/DA.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/index.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/Inspector.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/mobilestarch.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/runPhoto.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/WeightSamples.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/preharvest/mobilestarch.php" />
       </list>
     </option>
   </component>
@@ -457,6 +521,13 @@
               <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="grower" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="quality" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -465,15 +536,14 @@
               <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="quality" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="API" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Classes" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
               <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="quality" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="scripts" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
@@ -830,7 +900,7 @@
       <workItem from="1503001139381" duration="655000" />
       <workItem from="1503056938769" duration="5226000" />
       <workItem from="1503063801637" duration="152000" />
-      <workItem from="1503064405218" duration="11823000" />
+      <workItem from="1503064405218" duration="14919000" />
     </task>
     <task id="LOCAL-00001" summary="Add clean db and phpmyadmin">
       <created>1496689406220</created>
@@ -1042,11 +1112,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503068866970</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Tested and bugfixed: Quality V2!">
+      <created>1503079010321</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1503079010321</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="954394000" />
+    <option name="totallyTimeSpent" value="957490000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1059,7 +1136,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="10" y="41" width="1920" height="1170" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.4957265" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2144956" sideWeight="0.5144231" order="11" side_tool="true" content_ui="tabs" />
@@ -1067,10 +1143,10 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13261297" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2858546" sideWeight="0.50641024" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2151277" sideWeight="0.48557693" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14102565" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14102565" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27603143" sideWeight="0.4818376" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15598291" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35265225" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35265225" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47740668" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -1100,8 +1176,8 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13261297" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2858546" sideWeight="0.50641024" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2151277" sideWeight="0.48557693" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14102565" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2151277" sideWeight="0.48557693" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14102565" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27603143" sideWeight="0.4818376" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47106692" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
@@ -1146,7 +1222,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Revert removing file extensions, they don't work" />
     <MESSAGE value="Fix menu formatting" />
     <MESSAGE value="Complete Grower-Portal login mechanism" />
     <MESSAGE value="small cleanup" />
@@ -1171,7 +1246,8 @@
     <MESSAGE value="Small quality Fixes" />
     <MESSAGE value="Quality: update preharvest to have some normalization, fix quality tables some more" />
     <MESSAGE value="Untested: Quality rewritten to self-contained backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="Untested: Quality rewritten to self-contained backend" />
+    <MESSAGE value="Tested and bugfixed: Quality V2!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tested and bugfixed: Quality V2!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1184,174 +1260,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="uml://DATABASE/ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>DATABASE</ID>
-          <OriginalElement>ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities</OriginalElement>
-          <nodes>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_GrowerLogins</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_growerCalendar</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop_estimates_changes_timeseries</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_UserData</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_Samples</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="0.7269938650306749" x="652.0" y="542.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Columns</Category>
-            <Category>Key columns</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://DATABASE/ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_Samples">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>DATABASE</ID>
-          <OriginalElement>ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_Samples</OriginalElement>
-          <nodes>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_GrowerLogins</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_UserData</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_Samples</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="0.7740331491712706" x="561.0" y="1298.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Columns</Category>
-            <Category>Key columns</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/quality/preharvest/ftadata.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://DATABASE/ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_tests">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>DATABASE</ID>
-          <OriginalElement>ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_tests</OriginalElement>
-          <nodes>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_GrowerLogins</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_tests</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="0.3865168539325843" x="370.0" y="898.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Columns</Category>
-            <Category>Key columns</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/quality/preharvest/blockidfinder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="18" column="21" lean-forward="false" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/quality/preharvest/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="266" column="182" lean-forward="false" selection-start-line="266" selection-start-column="176" selection-end-line="266" selection-end-column="182" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/quality/preharvest/Preharvestsubmit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="16" lean-forward="true" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/quality/preharvest/mobilestarch.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="63" column="31" lean-forward="false" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/quality/preharvest/starchsubmit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="31" column="32" lean-forward="false" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/quality/DAsubmit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="66" lean-forward="true" selection-start-line="14" selection-start-column="66" selection-end-line="14" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/quality/DA.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="38" lean-forward="true" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/packapps_api.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="3" lean-forward="true" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
-          <folding>
-            <element signature="e#6#84#0#PHP" expanded="false" />
-            <marker date="1499774854013" expanded="true" signature="1013:1138" ph="SELECT usern... packapps_master_users" />
-            <marker date="1499774854013" expanded="true" signature="1611:1757" ph="SELECT * FRO... ${$packapp}" />
-            <marker date="1499774854013" expanded="true" signature="2375:2475" ph="SELECT Growe... grower_GrowerLogins" />
-            <marker date="1499774854013" expanded="true" signature="5512:5630" ph="UPDATE packa... " />
-            <marker date="1499774854013" expanded="true" signature="6271:6439" ph="INSERT INTO packapps_master_users... " />
-            <marker date="1499774854013" expanded="true" signature="6521:6605" ph="SELECT short... packapps_appProperties" />
-            <marker date="1499774854013" expanded="true" signature="6707:6790" ph="INSERT INTO ${$packapp['short_app_name']}_UserData... " />
-            <marker date="1499774854013" expanded="true" signature="7528:7616" ph="SELECT `Pass... packapps_master_users" />
-            <marker date="1499774854013" expanded="true" signature="7800:7890" ph="UPDATE packa... " />
-            <marker date="1499774854013" expanded="true" signature="8633:8712" ph="UPDATE packa... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/quality/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="5" lean-forward="true" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://table:/405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/operationsData.storage_UserData">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -1366,25 +1274,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notes">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/quality/manifest.json" />
     <entry file="file://$PROJECT_DIR$/application-server/src/scripts/aws/Aws/functions.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1015">
           <caret line="325" column="56" lean-forward="false" selection-start-line="325" selection-start-column="56" selection-end-line="325" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database-server/schema/021 - v2 SEED DATA.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="39" lean-forward="true" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -1444,13 +1338,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/quality/mobilestarch.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1981">
-          <caret line="20" column="2" lean-forward="true" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/quality/mobileQA.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -1463,18 +1350,6 @@
             <marker date="1502989584130" expanded="true" signature="345:386" ph="SELECT count... quality_AppleSamples" />
             <marker date="1502989584130" expanded="true" signature="402:448" ph="SELECT COUNT... grower_Preharvest_Samples" />
             <marker date="1502989584130" expanded="true" signature="464:508" ph="SELECT COUNT... quality_run_inspections" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/quality/runPhoto.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="2" lean-forward="true" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
-          <folding>
-            <marker date="1502997222280" expanded="true" signature="198:572" ph="SELECT Line,... production_runs" />
-            <marker date="1502997222280" expanded="true" signature="1318:1354" ph="..." />
-            <marker date="1502997222280" expanded="true" signature="1543:1551" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1537,23 +1412,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
           <caret line="28" column="34" lean-forward="true" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/quality/WeightSamples.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="43" column="27" lean-forward="true" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
-          <folding>
-            <marker date="1503063953080" expanded="true" signature="1024:1060" ph="..." />
-            <marker date="1503063953080" expanded="true" signature="1242:1250" ph="..." />
-            <marker date="1503063953080" expanded="true" signature="2932:2950" ph="..." />
-            <marker date="1503063953080" expanded="true" signature="3269:3279" ph="..." />
-            <marker date="1503063953080" expanded="true" signature="3327:3398" ph="..." />
-            <marker date="1503063953080" expanded="true" signature="3478:3502" ph="..." />
-            <marker date="1503063953080" expanded="true" signature="3829:3859" ph="..." />
-            <marker date="1503063953080" expanded="true" signature="4205:4235" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1973,26 +1831,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/quality/Inspector.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="171" column="46" lean-forward="false" selection-start-line="171" selection-start-column="46" selection-end-line="171" selection-end-column="46" />
-          <folding>
-            <marker date="1503076128309" expanded="true" signature="1023:1059" ph="..." />
-            <marker date="1503076128309" expanded="true" signature="1253:1261" ph="..." />
-            <marker date="1503076128309" expanded="true" signature="10125:10143" ph="..." />
-            <marker date="1503076128309" expanded="true" signature="10462:10472" ph="..." />
-            <marker date="1503076128309" expanded="true" signature="10486:10503" ph="..." />
-            <marker date="1503076128309" expanded="true" signature="10633:10704" ph="..." />
-            <marker date="1503076128309" expanded="true" signature="10808:10879" ph="..." />
-            <marker date="1503076128309" expanded="true" signature="10953:10977" ph="..." />
-            <marker date="1503076128309" expanded="true" signature="11544:11574" ph="..." />
-            <marker date="1503076128309" expanded="true" signature="11762:11781" ph="..." />
-            <marker date="1503076128309" expanded="true" signature="12258:12288" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/quality/API/RTlist.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -2028,49 +1866,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="92" lean-forward="false" selection-start-line="0" selection-start-column="92" selection-end-line="0" selection-end-column="92" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/quality/QA.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="380" column="556" lean-forward="false" selection-start-line="380" selection-start-column="549" selection-end-line="380" selection-end-column="556" />
-          <folding>
-            <marker date="1502996828727" expanded="true" signature="244:774" ph="SELECT quali... quality_InspectedRTs" />
-            <marker date="1502996828727" expanded="true" signature="244:816" ph="SELECT quali... quality_InspectedRTs" />
-            <marker date="1502996828727" expanded="true" signature="857:1093" ph="SELECT RunID... production_runs" />
-            <marker date="1502996828727" expanded="true" signature="1137:1545" ph="SELECT COUNT... quality_InspectedRTs" />
-            <marker date="1502996828727" expanded="true" signature="1158:1202" ph="SELECT SUM(W... quality_AppleSamples" />
-            <marker date="1502996828727" expanded="true" signature="1218:1267" ph="SELECT SUM(W... grower_Preharvest_Samples" />
-            <marker date="1502996828727" expanded="true" signature="1283:1330" ph="SELECT SUM(W... quality_run_inspections" />
-            <marker date="1502996828727" expanded="true" signature="1364:1405" ph="SELECT count... quality_AppleSamples" />
-            <marker date="1502996828727" expanded="true" signature="1421:1467" ph="SELECT COUNT... grower_Preharvest_Samples" />
-            <marker date="1502996828727" expanded="true" signature="1483:1527" ph="SELECT COUNT... quality_run_inspections" />
-            <marker date="1502996828727" expanded="true" signature="5742:5752" ph="..." />
-            <marker date="1502996828727" expanded="true" signature="6724:6734" ph="..." />
-            <marker date="1502996828727" expanded="true" signature="8316:8326" ph="..." />
-            <marker date="1502996828727" expanded="true" signature="16403:16421" ph="..." />
-            <marker date="1502996828727" expanded="true" signature="16831:16842" ph="..." />
-            <marker date="1502996828727" expanded="true" signature="16898:16907" ph="..." />
-            <marker date="1502996828727" expanded="true" signature="17055:17066" ph="..." />
-            <marker date="1502996828727" expanded="true" signature="17122:17131" ph="..." />
-            <marker date="1502996828727" expanded="true" signature="17278:17289" ph="..." />
-            <marker date="1502996828727" expanded="true" signature="17345:17354" ph="..." />
-            <marker date="1502996828727" expanded="true" signature="17817:17832" ph="..." />
-            <marker date="1502996828727" expanded="true" signature="22659:22728" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/quality/Inspectorsubmit.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="385">
-          <caret line="51" column="34" lean-forward="true" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+          <caret line="51" column="34" lean-forward="false" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
           <folding>
             <marker date="1503076205290" expanded="true" signature="203:221" ph="..." />
             <marker date="1503076205290" expanded="true" signature="630:687" ph="SELECT * FRO... quality_InspectedRTs" />
@@ -2138,7 +1937,7 @@
     <entry file="file://$PROJECT_DIR$/application-server/src/quality/QAsubmit.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
-          <caret line="26" column="52" lean-forward="true" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
+          <caret line="26" column="52" lean-forward="false" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
           <folding>
             <marker date="1503078822580" expanded="true" signature="397:469" ph="DELETE FROM " />
             <marker date="1503078822580" expanded="true" signature="760:871" ph="UPDATE `qual... " />
@@ -2147,11 +1946,303 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/notes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-server/schema/021 - v2 SEED DATA.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/storage/API/getRoomContents.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1502304383174" expanded="true" signature="334:1904" ph="SELECT `grow... storage_grower_fruit_bins" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/storage/API/getPivotLists.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/QA.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="380" column="556" lean-forward="false" selection-start-line="380" selection-start-column="549" selection-end-line="380" selection-end-column="556" />
+          <folding>
+            <marker date="1502996828727" expanded="true" signature="244:774" ph="SELECT quali... quality_InspectedRTs" />
+            <marker date="1502996828727" expanded="true" signature="244:816" ph="SELECT quali... quality_InspectedRTs" />
+            <marker date="1502996828727" expanded="true" signature="857:1093" ph="SELECT RunID... production_runs" />
+            <marker date="1502996828727" expanded="true" signature="1137:1545" ph="SELECT COUNT... quality_InspectedRTs" />
+            <marker date="1502996828727" expanded="true" signature="1158:1202" ph="SELECT SUM(W... quality_AppleSamples" />
+            <marker date="1502996828727" expanded="true" signature="1218:1267" ph="SELECT SUM(W... grower_Preharvest_Samples" />
+            <marker date="1502996828727" expanded="true" signature="1283:1330" ph="SELECT SUM(W... quality_run_inspections" />
+            <marker date="1502996828727" expanded="true" signature="1364:1405" ph="SELECT count... quality_AppleSamples" />
+            <marker date="1502996828727" expanded="true" signature="1421:1467" ph="SELECT COUNT... grower_Preharvest_Samples" />
+            <marker date="1502996828727" expanded="true" signature="1483:1527" ph="SELECT COUNT... quality_run_inspections" />
+            <marker date="1502996828727" expanded="true" signature="5742:5752" ph="..." />
+            <marker date="1502996828727" expanded="true" signature="6724:6734" ph="..." />
+            <marker date="1502996828727" expanded="true" signature="8316:8326" ph="..." />
+            <marker date="1502996828727" expanded="true" signature="16403:16421" ph="..." />
+            <marker date="1502996828727" expanded="true" signature="16831:16842" ph="..." />
+            <marker date="1502996828727" expanded="true" signature="16898:16907" ph="..." />
+            <marker date="1502996828727" expanded="true" signature="17055:17066" ph="..." />
+            <marker date="1502996828727" expanded="true" signature="17122:17131" ph="..." />
+            <marker date="1502996828727" expanded="true" signature="17278:17289" ph="..." />
+            <marker date="1502996828727" expanded="true" signature="17345:17354" ph="..." />
+            <marker date="1502996828727" expanded="true" signature="17817:17832" ph="..." />
+            <marker date="1502996828727" expanded="true" signature="22659:22728" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="92" lean-forward="false" selection-start-line="0" selection-start-column="92" selection-end-line="0" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="957">
-          <caret line="878" column="0" lean-forward="true" selection-start-line="878" selection-start-column="0" selection-end-line="878" selection-end-column="0" />
+        <state relative-caret-position="561">
+          <caret line="37" column="30" lean-forward="false" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/storage/mobile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/storage/API/getRooms.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1502215779067" expanded="true" signature="206:262" ph="SELECT build... storage_buildings" />
+            <marker date="1502215779067" expanded="true" signature="540:697" ph="SELECT build... storage_rooms" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/storage/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="27" lean-forward="false" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="28" lean-forward="false" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+          <folding>
+            <marker date="1503082287944" expanded="true" signature="253:310" ph="..." />
+            <marker date="1503082287944" expanded="true" signature="324:364" ph="..." />
+            <marker date="1503082287944" expanded="true" signature="1007:1306" ph="..." />
+            <marker date="1503082287944" expanded="true" signature="1581:1880" ph="..." />
+            <marker date="1503082287944" expanded="true" signature="2211:2284" ph="SELECT `Pass... grower_GrowerLogins" />
+            <marker date="1503082287944" expanded="true" signature="2891:2984" ph="SELECT `Pass... packapps_master_users" />
+            <marker date="1503082287944" expanded="true" signature="3381:3460" ph="UPDATE packa... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/installer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding>
+            <marker date="1503082287951" expanded="true" signature="315:363" ph="SELECT syste... packapps_system_info" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/preharvest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1499580009397" expanded="true" signature="165:1201" ph="SELECT growe... grower_Preharvest_Samples" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="39" lean-forward="false" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
+          <folding>
+            <marker date="1503082361586" expanded="true" signature="2398:2584" ph="SELECT COUNT... PK" />
+            <marker date="1503082361586" expanded="true" signature="2429:2580" ph="SELECT PK FR... grower_Preharvest_Samples" />
+            <marker date="1503082361586" expanded="true" signature="2641:2900" ph="SELECT `RT##`... BULKRTCSV" />
+            <marker date="1503082361586" expanded="true" signature="7901:7930" ph="..." />
+            <marker date="1503082361586" expanded="true" signature="7931:8238" ph="..." />
+            <marker date="1503082361586" expanded="false" signature="8462:8506" ph="..." />
+            <marker date="1503082361586" expanded="true" signature="8507:8993" ph="..." />
+            <marker date="1503082361586" expanded="true" signature="12875:13282" ph="..." />
+            <marker date="1503082361586" expanded="true" signature="12912:13282" ph="..." />
+            <marker date="1503082361586" expanded="true" signature="15862:16553" ph="..." />
+            <marker date="1503082361586" expanded="true" signature="15899:16553" ph="..." />
+            <marker date="1503082361586" expanded="true" signature="19474:19512" ph="..." />
+            <marker date="1503082361586" expanded="true" signature="23945:24731" ph="..." />
+            <marker date="1503082361586" expanded="true" signature="23993:24683" ph="..." />
+            <marker date="1503082361586" expanded="true" signature="24038:24634" ph="..." />
+            <marker date="1503082361586" expanded="true" signature="24880:25882" ph="..." />
+            <marker date="1503082361586" expanded="false" signature="24936:24951" ph="..." />
+            <marker date="1503082361586" expanded="true" signature="24952:25834" ph="..." />
+            <marker date="1503082361586" expanded="true" signature="24997:25785" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/production/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="39" column="45" lean-forward="true" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
+          <folding>
+            <marker date="1503082423993" expanded="true" signature="748:1003" ph="SELECT `Real... packapps_master_users" />
+            <marker date="1503082423993" expanded="true" signature="1276:1325" ph="SELECT lineI... production_lineNames" />
+            <marker date="1503082423993" expanded="true" signature="1609:1666" ph="..." />
+            <marker date="1503082423993" expanded="true" signature="1680:1720" ph="..." />
+            <marker date="1503082423993" expanded="true" signature="4661:4688" ph="..." />
+            <marker date="1503082423993" expanded="true" signature="5178:5264" ph="..." />
+            <marker date="1503082423993" expanded="true" signature="7723:7735" ph="..." />
+            <marker date="1503082423993" expanded="true" signature="18545:18814" ph="..." />
+            <marker date="1503082423993" expanded="true" signature="19238:19522" ph="..." />
+            <marker date="1503082423993" expanded="true" signature="19961:19975" ph="..." />
+            <marker date="1503082423993" expanded="true" signature="20119:20153" ph="..." />
+            <marker date="1503082423993" expanded="true" signature="20212:20261" ph="..." />
+            <marker date="1503082423993" expanded="true" signature="20296:20330" ph="..." />
+            <marker date="1503082423993" expanded="true" signature="22770:22886" ph="..." />
+            <marker date="1503082423993" expanded="true" signature="23818:23934" ph="..." />
+            <marker date="1503082423993" expanded="true" signature="25966:26084" ph="..." />
+            <marker date="1503082423993" expanded="true" signature="31810:31822" ph="..." />
+            <marker date="1503082423993" expanded="true" signature="32213:32225" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/DA.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="42" lean-forward="false" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
+          <folding>
+            <marker date="1503082470761" expanded="true" signature="185:827" ph="SELECT quali... quality_InspectedRTs" />
+            <marker date="1503082470761" expanded="true" signature="2741:2762" ph="..." />
+            <marker date="1503082470761" expanded="true" signature="3008:3080" ph="..." />
+            <marker date="1503082470761" expanded="true" signature="3030:3063" ph="{...}" />
+            <marker date="1503082470761" expanded="true" signature="4622:4633" ph="..." />
+            <marker date="1503082470761" expanded="true" signature="4883:4894" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="12" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/Inspector.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+          <folding>
+            <marker date="1503082565983" expanded="true" signature="1033:1069" ph="..." />
+            <marker date="1503082565983" expanded="true" signature="1263:1271" ph="..." />
+            <marker date="1503082565983" expanded="true" signature="10135:10153" ph="..." />
+            <marker date="1503082565983" expanded="true" signature="10472:10482" ph="..." />
+            <marker date="1503082565983" expanded="true" signature="10496:10513" ph="..." />
+            <marker date="1503082565983" expanded="true" signature="10643:10714" ph="..." />
+            <marker date="1503082565983" expanded="true" signature="10818:10889" ph="..." />
+            <marker date="1503082565983" expanded="true" signature="10963:10987" ph="..." />
+            <marker date="1503082565983" expanded="true" signature="11554:11584" ph="..." />
+            <marker date="1503082565983" expanded="true" signature="11772:11791" ph="..." />
+            <marker date="1503082565983" expanded="true" signature="12268:12298" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/mobilestarch.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="32" lean-forward="false" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
+          <folding>
+            <marker date="1503082565973" expanded="true" signature="198:870" ph="SELECT quali... quality_InspectedRTs" />
+            <marker date="1503082565973" expanded="true" signature="2607:2614" ph="..." />
+            <marker date="1503082565973" expanded="true" signature="2842:2914" ph="..." />
+            <marker date="1503082565973" expanded="true" signature="2864:2897" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/runPhoto.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="31" lean-forward="false" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
+          <folding>
+            <marker date="1503082565976" expanded="true" signature="208:582" ph="SELECT Line,... production_runs" />
+            <marker date="1503082565976" expanded="true" signature="1328:1364" ph="..." />
+            <marker date="1503082565976" expanded="true" signature="1553:1561" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/WeightSamples.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="31" lean-forward="false" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
+          <folding>
+            <marker date="1503082565960" expanded="true" signature="1034:1070" ph="..." />
+            <marker date="1503082565960" expanded="true" signature="1252:1260" ph="..." />
+            <marker date="1503082565960" expanded="true" signature="2942:2960" ph="..." />
+            <marker date="1503082565960" expanded="true" signature="3279:3289" ph="..." />
+            <marker date="1503082565960" expanded="true" signature="3337:3408" ph="..." />
+            <marker date="1503082565960" expanded="true" signature="3488:3512" ph="..." />
+            <marker date="1503082565960" expanded="true" signature="3839:3869" ph="..." />
+            <marker date="1503082565960" expanded="true" signature="4215:4245" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/preharvest/mobilestarch.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="30" lean-forward="true" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+          <folding>
+            <marker date="1503082565986" expanded="true" signature="206:616" ph="SELECT `grow... grower_Preharvest_tests" />
+            <marker date="1503082565986" expanded="true" signature="1970:1991" ph="..." />
+            <marker date="1503082565986" expanded="true" signature="4917:4928" ph="..." />
+            <marker date="1503082565986" expanded="true" signature="5070:5081" ph="..." />
+            <marker date="1503082565986" expanded="true" signature="5223:5234" ph="..." />
+            <marker date="1503082565986" expanded="true" signature="5376:5387" ph="..." />
+            <marker date="1503082565986" expanded="true" signature="5530:5541" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

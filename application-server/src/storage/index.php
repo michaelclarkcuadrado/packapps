@@ -7,6 +7,7 @@
  */
 require '../config.php';
 packapps_authenticate_user('storage');
+i
 ?>
 <!doctype html>
 <html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">

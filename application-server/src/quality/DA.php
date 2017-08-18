@@ -1,5 +1,5 @@
 <?php
-include_once("Classes/Mobile_Detect.php");
+include_once("../scripts-common/Mobile_Detect.php");
 $detect = new Mobile_Detect();
 require '../config.php';
 packapps_authenticate_user('quality');

@@ -29,7 +29,7 @@ while($line = mysqli_fetch_assoc($lines)){
     $$varName = $line['lineName'];
 }
 
-require_once('scripts/Mobile_Detect.php');
+require_once('../scripts-common/Mobile_Detect.php');
 $detect = new Mobile_Detect();
 //stop IE from loading
 if ($detect->is('IE')) {

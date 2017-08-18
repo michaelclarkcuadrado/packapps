@@ -4,7 +4,7 @@ require '../config.php';
 $userData = packapps_authenticate_user('quality');
 $Role = $userData['Role'];
 
-include_once("Classes/Mobile_Detect.php");
+require_once("../scripts-common/Mobile_Detect.php");
 $detect = new Mobile_Detect;
 
 if ($Role == "QA") {
