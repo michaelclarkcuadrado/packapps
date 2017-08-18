@@ -4,12 +4,24 @@
     <bookmark url="file://$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php" line="118" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc9cf440-d41f-463b-aeba-7bb29d2a7f06" name="Default" comment="">
+    <list default="true" id="fc9cf440-d41f-463b-aeba-7bb29d2a7f06" name="Default" comment="Quality: update preharvest to have some normalization, fix quality tables some more">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata" afterPath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata.keystream" afterPath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata.keystream" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata.keystream.len" afterPath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata.keystream.len" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata.len" afterPath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata.len" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata.values.at" afterPath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata.values.at" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata_i" afterPath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_metadata_/metadata_i" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_src_/schema/operationsData.zip" afterPath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/_src_/schema/operationsData.zip" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/storage/API/getPivotLists.php" afterPath="$PROJECT_DIR$/application-server/src/storage/API/getPivotLists.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/storage/index.php" afterPath="$PROJECT_DIR$/application-server/src/storage/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/storage/sequences.js" afterPath="$PROJECT_DIR$/application-server/src/storage/sequences.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/styles-common/sunburst/sunburst.css" afterPath="$PROJECT_DIR$/application-server/src/styles-common/sunburst/sunburst.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/adjustUserPermissions.php" afterPath="$PROJECT_DIR$/application-server/src/adjustUserPermissions.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/API/RTlist.php" afterPath="$PROJECT_DIR$/application-server/src/quality/API/RTlist.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/API/rtinfoqa.php" afterPath="$PROJECT_DIR$/application-server/src/quality/API/rtinfoqa.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/Inspector.php" afterPath="$PROJECT_DIR$/application-server/src/quality/Inspector.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/Inspectorsubmit.php" afterPath="$PROJECT_DIR$/application-server/src/quality/Inspectorsubmit.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/QAsubmit.php" afterPath="$PROJECT_DIR$/application-server/src/quality/QAsubmit.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/assets/index.php" afterPath="$PROJECT_DIR$/application-server/src/quality/assets/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application-server/src/quality/weightsubmit.php" afterPath="$PROJECT_DIR$/application-server/src/quality/weightsubmit.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,6 +43,17 @@
         <item name="" type="eadb38e5:DatabaseStructure$Root" />
         <item name="operationsData@localhost" type="e3449647:DbNodeDescriptor" />
       </path>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="operationsData@localhost" type="e3449647:DbNodeDescriptor" />
+        <item name="operationsData" type="e3449647:DbNodeDescriptor" />
+      </path>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="operationsData@localhost" type="e3449647:DbNodeDescriptor" />
+        <item name="operationsData" type="e3449647:DbNodeDescriptor" />
+        <item name="" type="fce03ad6:DatabaseStructure$GroupNode" />
+      </path>
     </expand>
     <select />
   </component>
@@ -45,52 +68,128 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application-server/src/storage/index.php">
+      <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="147" column="6" lean-forward="true" selection-start-line="147" selection-start-column="6" selection-end-line="147" selection-end-column="6" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="getRoomContents.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application-server/src/storage/API/getRoomContents.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-              <folding>
-                <marker date="1502304383174" expanded="true" signature="334:1904" ph="SELECT `grow... storage_grower_fruit_bins" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sunburst.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application-server/src/styles-common/sunburst/sunburst.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="5" column="8" lean-forward="false" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+            <state relative-caret-position="0">
+              <caret line="0" column="92" lean-forward="false" selection-start-line="0" selection-start-column="92" selection-end-line="0" selection-end-column="92" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sequences.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application-server/src/storage/sequences.js">
+      <file leaf-file-name="QA.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application-server/src/quality/QA.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="177" column="82" lean-forward="false" selection-start-line="177" selection-start-column="82" selection-end-line="177" selection-end-column="82" />
+            <state relative-caret-position="337">
+              <caret line="380" column="556" lean-forward="false" selection-start-line="380" selection-start-column="549" selection-end-line="380" selection-end-column="556" />
               <folding>
-                <marker date="1502303881632" expanded="true" signature="5395:5466" ph="..." />
-                <marker date="1502303881632" expanded="true" signature="5619:5684" ph="..." />
-                <marker date="1502303881632" expanded="true" signature="5885:5904" ph="..." />
-                <marker date="1502303881632" expanded="true" signature="5885:5919" ph="..." />
-                <marker date="1502303881632" expanded="true" signature="6028:6044" ph="..." />
+                <marker date="1502996828727" expanded="true" signature="244:774" ph="SELECT quali... quality_InspectedRTs" />
+                <marker date="1502996828727" expanded="true" signature="244:816" ph="SELECT quali... quality_InspectedRTs" />
+                <marker date="1502996828727" expanded="true" signature="857:1093" ph="SELECT RunID... production_runs" />
+                <marker date="1502996828727" expanded="true" signature="1137:1545" ph="SELECT COUNT... quality_InspectedRTs" />
+                <marker date="1502996828727" expanded="true" signature="1158:1202" ph="SELECT SUM(W... quality_AppleSamples" />
+                <marker date="1502996828727" expanded="true" signature="1218:1267" ph="SELECT SUM(W... grower_Preharvest_Samples" />
+                <marker date="1502996828727" expanded="true" signature="1283:1330" ph="SELECT SUM(W... quality_run_inspections" />
+                <marker date="1502996828727" expanded="true" signature="1364:1405" ph="SELECT count... quality_AppleSamples" />
+                <marker date="1502996828727" expanded="true" signature="1421:1467" ph="SELECT COUNT... grower_Preharvest_Samples" />
+                <marker date="1502996828727" expanded="true" signature="1483:1527" ph="SELECT COUNT... quality_run_inspections" />
+                <marker date="1502996828727" expanded="true" signature="5742:5752" ph="..." />
+                <marker date="1502996828727" expanded="true" signature="6724:6734" ph="..." />
+                <marker date="1502996828727" expanded="true" signature="8316:8326" ph="..." />
+                <marker date="1502996828727" expanded="true" signature="16403:16421" ph="..." />
+                <marker date="1502996828727" expanded="true" signature="16831:16842" ph="..." />
+                <marker date="1502996828727" expanded="true" signature="16898:16907" ph="..." />
+                <marker date="1502996828727" expanded="true" signature="17055:17066" ph="..." />
+                <marker date="1502996828727" expanded="true" signature="17122:17131" ph="..." />
+                <marker date="1502996828727" expanded="true" signature="17278:17289" ph="..." />
+                <marker date="1502996828727" expanded="true" signature="17345:17354" ph="..." />
+                <marker date="1502996828727" expanded="true" signature="17817:17832" ph="..." />
+                <marker date="1502996828727" expanded="true" signature="22659:22728" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Inspectorsubmit.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application-server/src/quality/Inspectorsubmit.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="385">
+              <caret line="51" column="34" lean-forward="true" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+              <folding>
+                <marker date="1503076205290" expanded="true" signature="203:221" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="630:687" ph="SELECT * FRO... quality_InspectedRTs" />
+                <marker date="1503076205290" expanded="true" signature="755:773" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="854:864" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="2039:2057" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="2138:2148" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="2666:3451" ph="SELECT Growe... storage_grower_receipts" />
+                <marker date="1503076205290" expanded="true" signature="3525:3831" ph="SELECT count... storage_grower_receipts" />
+                <marker date="1503076205290" expanded="true" signature="3910:4295" ph="SELECT (coun... quality_InspectedRTs" />
+                <marker date="1503076205290" expanded="true" signature="4129:4294" ph="SELECT growe... storage_grower_receipts" />
+                <marker date="1503076205290" expanded="true" signature="4346:5475" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="4456:5105" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="4472:4684" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="4697:5092" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="5122:5378" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="5950:5968" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="6049:6059" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="6580:7321" ph="SELECT Growe... storage_grower_receipts" />
+                <marker date="1503076205290" expanded="true" signature="7395:7701" ph="SELECT count... storage_grower_receipts" />
+                <marker date="1503076205290" expanded="true" signature="7784:8173" ph="SELECT (coun... quality_InspectedRTs" />
+                <marker date="1503076205290" expanded="true" signature="8007:8172" ph="SELECT growe... storage_grower_receipts" />
+                <marker date="1503076205290" expanded="true" signature="8222:9365" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="8336:8989" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="8352:8564" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="8577:8972" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="9014:9269" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="9878:10619" ph="SELECT Growe... storage_grower_receipts" />
+                <marker date="1503076205290" expanded="true" signature="10693:10999" ph="SELECT count... storage_grower_receipts" />
+                <marker date="1503076205290" expanded="true" signature="11078:11468" ph="SELECT (coun... quality_InspectedRTs" />
+                <marker date="1503076205290" expanded="true" signature="11302:11467" ph="SELECT growe... storage_grower_receipts" />
+                <marker date="1503076205290" expanded="true" signature="11516:12605" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="11636:12285" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="11652:11864" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="11877:12272" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="12302:12556" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="13013:13754" ph="SELECT Growe... storage_grower_receipts" />
+                <marker date="1503076205290" expanded="true" signature="13834:14140" ph="SELECT count... storage_grower_receipts" />
+                <marker date="1503076205290" expanded="true" signature="14227:14636" ph="SELECT (coun... quality_InspectedRTs" />
+                <marker date="1503076205290" expanded="true" signature="14470:14635" ph="SELECT growe... storage_grower_receipts" />
+                <marker date="1503076205290" expanded="true" signature="14687:15858" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="14808:15541" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="14828:15076" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="15093:15524" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="15558:15809" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="16056:16293" ph="INSERT INTO `quality_InspectedRTs`... " />
+                <marker date="1503076205290" expanded="true" signature="16602:16620" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="16701:16711" ph="..." />
+                <marker date="1503076205290" expanded="true" signature="17104:17180" ph="INSERT INTO `quality_AppleSamples`... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QAsubmit.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application-server/src/quality/QAsubmit.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="468">
+              <caret line="26" column="52" lean-forward="true" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
+              <folding>
+                <marker date="1503078822580" expanded="true" signature="397:469" ph="DELETE FROM " />
+                <marker date="1503078822580" expanded="true" signature="760:871" ph="UPDATE `qual... " />
+                <marker date="1503078822580" expanded="true" signature="937:1076" ph="UPDATE `qual... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="020 - packapps v2 schema.sql" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="957">
+              <caret line="878" column="0" lean-forward="true" selection-start-line="878" selection-start-column="0" selection-end-line="878" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -106,36 +205,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>updateRoom</find>
-      <find>getpivot</find>
-      <find>#add</find>
-      <find>main menu</find>
-      <find>pivotLists</find>
-      <find>bottom:</find>
-      <find>Delivered</find>
-      <find>pivotOptionsIsOpen</find>
-      <find>getPivotLists</find>
-      <find>%</find>
-      <find>json)</find>
-      <find>togglePivotOptions</find>
-      <find>console.log</find>
-      <find>absolute</find>
-      <find>width</find>
-      <find>z</find>
-      <find>updateSunburst</find>
-      <find>initPivotLists</find>
-      <find>pivot orrd</find>
-      <find>refreshButt</find>
-      <find>sync</find>
-      <find>v-show</find>
-      <find>pivotOptionsIsDirsty</find>
-      <find>pivot</find>
-      <find>pivot optio</find>
-      <find>trail</find>
-      <find>&quot;id&quot;, &quot;trail&quot;</find>
-      <find>console</find>
-      <find>breadc</find>
-      <find>init</find>
+      <find>BuOnHand</find>
+      <find>_query</find>
+      <find>mysqli2</find>
+      <find>growerLogins</find>
+      <find>preharvest</find>
+      <find>preharvest`</find>
+      <find>grower</find>
+      <find>prepare failed</find>
+      <find>ID</find>
+      <find>sqli2</find>
+      <find>ph</find>
+      <find>PK</find>
+      <find>$Role</find>
+      <find>$Real</find>
+      <find>Varieties</find>
+      <find>receiving'</find>
+      <find>mailto</find>
+      <find>reboot</find>
+      <find>reboo</find>
+      <find>crop</find>
+      <find>20</find>
+      <find>Blue line</find>
+      <find>count</find>
+      <find>$total_co</find>
+      <find>RT</find>
+      <find>RT req</find>
+      <find>query</find>
+      <find>Russet</find>
+      <find>On hand</find>
+      <find>AppleSamples</find>
     </findStrings>
     <replaceStrings>
       <replace>userData</replace>
@@ -191,57 +290,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/QAview.php" />
-        <option value="$PROJECT_DIR$/application-server/src/config.php" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/manage/index.php" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/index.php" />
-        <option value="$PROJECT_DIR$/application-server/src/maintenance/API/deleteIssue.php" />
-        <option value="$PROJECT_DIR$/application-server/src/maintenance/API/getMaintenanceUsers.php" />
-        <option value="$PROJECT_DIR$/application-server/src/maintenance/API/setAssignee.php" />
-        <option value="$PROJECT_DIR$/application-server/src/packapps_api.php" />
-        <option value="$PROJECT_DIR$/application-server/src/maintenance/API/deleteImage.php" />
-        <option value="$PROJECT_DIR$/application-server/src/maintenance/API/uploadImage.php" />
-        <option value="$PROJECT_DIR$/application-server/src/maintenance/API/statusChange.php" />
-        <option value="$PROJECT_DIR$/application-server/src/quality/runPhoto.php" />
-        <option value="$PROJECT_DIR$/application-server/src/quality/QA.php" />
-        <option value="$PROJECT_DIR$/application-server/src/quality/Inspector.php" />
-        <option value="$PROJECT_DIR$/application-server/src/maintenance/API/getIssues.php" />
-        <option value="$PROJECT_DIR$/application-server/src/maintenance/API/getImage.php" />
-        <option value="$PROJECT_DIR$/application-server/src/maintenance/API/getItemSupplierInfo.php" />
-        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.html" />
-        <option value="$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php" />
-        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_2.html" />
-        <option value="$PROJECT_DIR$/database-server/schema/010 - packapps v1 schema.sql" />
-        <option value="$PROJECT_DIR$/database-server/schema/00 -configure.sql" />
-        <option value="$PROJECT_DIR$/notes" />
-        <option value="$PROJECT_DIR$/application-server/src/styles-common/styles.css" />
-        <option value="$PROJECT_DIR$/application-server/config/000-default.conf" />
-        <option value="$PROJECT_DIR$/application-server/src/storage/visit-sequences.csv" />
-        <option value="$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql" />
-        <option value="$PROJECT_DIR$/application-server/src/scripts-common/sunburst/sequences.js" />
-        <option value="$PROJECT_DIR$/application-server/src/styles/styles.css" />
-        <option value="$PROJECT_DIR$/application-server/src/styles/material.min.css" />
-        <option value="$PROJECT_DIR$/settings.yml" />
-        <option value="$PROJECT_DIR$/application-server/src/installer.php" />
-        <option value="$PROJECT_DIR$/application-server/src/appMenu.php" />
-        <option value="$PROJECT_DIR$/application-server/src/index.php" />
-        <option value="$PROJECT_DIR$/application-server/src/scripts-common/sunburst/d3.js" />
-        <option value="$PROJECT_DIR$/application-server/src/quality/mobilestarch.php" />
-        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_3.html" />
-        <option value="$PROJECT_DIR$/application-server/src/production/styles/main.css" />
-        <option value="$PROJECT_DIR$/application-server/src/production/index.php" />
         <option value="$PROJECT_DIR$/application-server/src/getUserAccountList.php" />
-        <option value="$PROJECT_DIR$/application-server/src/controlPanel.php" />
         <option value="$PROJECT_DIR$/application-server/src/production/editRun.php" />
         <option value="$PROJECT_DIR$/application-server/src/storage/API/getRooms.php" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql" />
         <option value="$PROJECT_DIR$/application-server/src/storage/API/getPivotLists.php" />
-        <option value="$PROJECT_DIR$/application-server/src/quality/DA.php" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_4.html" />
         <option value="$PROJECT_DIR$/application-server/src/storage/sequences.js" />
         <option value="$PROJECT_DIR$/application-server/src/storage/API/getRoomContents.php" />
         <option value="$PROJECT_DIR$/application-server/src/storage/index.php" />
         <option value="$PROJECT_DIR$/application-server/src/styles-common/sunburst/sunburst.css" />
+        <option value="$PROJECT_DIR$/application-server/src/installer.php" />
+        <option value="$PROJECT_DIR$/settings.yml" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/emailAlerts/EmergencyAlert.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/preharvest/blockidfinder.php" />
+        <option value="$PROJECT_DIR$/application-server/src/config.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/API/getTestingHistory.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/API/blockiddata.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/API/blockinfoqa.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/API/deleteTest.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/preharvest/index.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/preharvest/Preharvestsubmit.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/preharvest/mobilestarch.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/preharvest/starchsubmit.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/DA.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/DAsubmit.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/index.php" />
+        <option value="$PROJECT_DIR$/application-server/src/adjustUserPermissions.php" />
+        <option value="$PROJECT_DIR$/database-server/schema/021 - v2 SEED DATA.sql" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/emailmgmt.php" />
+        <option value="$PROJECT_DIR$/application-server/src/controlPanel.php" />
+        <option value="$PROJECT_DIR$/application-server/Dockerfile" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_5.html" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/API/rtinfoins.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/mobilestarch.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/mobileQA.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/runPhoto.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/runPhotoSubmit.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/runSubmit.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/runftareturn.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/starchsubmit.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/WeightSamples.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/assets/index.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/Inspector.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/Inspectorsubmit.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/weightsubmit.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/QA.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/API/RTlist.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/API/rtinfoqa.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/ftadata.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/QAsubmit.php" />
+        <option value="$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql" />
       </list>
     </option>
   </component>
@@ -335,7 +434,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -366,14 +464,7 @@
               <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="storage" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
-              <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="storage" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="quality" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="API" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -381,21 +472,26 @@
               <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="styles-common" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="quality" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
               <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="styles-common" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="sunburst" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="database-server" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="database-server" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="schema" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -704,7 +800,37 @@
       <workItem from="1502283245372" duration="10076000" />
       <workItem from="1502295170089" duration="1883000" />
       <workItem from="1502297179459" duration="1807000" />
-      <workItem from="1502299843141" duration="5077000" />
+      <workItem from="1502299843141" duration="9137000" />
+      <workItem from="1502311949751" duration="213000" />
+      <workItem from="1502365349110" duration="11020000" />
+      <workItem from="1502388203484" duration="1039000" />
+      <workItem from="1502391621231" duration="797000" />
+      <workItem from="1502399533174" duration="13000" />
+      <workItem from="1502451409156" duration="598000" />
+      <workItem from="1502458146840" duration="7273000" />
+      <workItem from="1502471464270" duration="1060000" />
+      <workItem from="1502478837585" duration="1244000" />
+      <workItem from="1502482145542" duration="1275000" />
+      <workItem from="1502735514432" duration="28000" />
+      <workItem from="1502735592178" duration="42000" />
+      <workItem from="1502759868508" duration="977000" />
+      <workItem from="1502798371324" duration="220000" />
+      <workItem from="1502800440621" duration="3903000" />
+      <workItem from="1502804812032" duration="5882000" />
+      <workItem from="1502811872932" duration="13454000" />
+      <workItem from="1502826762935" duration="7236000" />
+      <workItem from="1502857342189" duration="11263000" />
+      <workItem from="1502899855353" duration="3033000" />
+      <workItem from="1502905653966" duration="2977000" />
+      <workItem from="1502912762284" duration="1386000" />
+      <workItem from="1502970449385" duration="6944000" />
+      <workItem from="1502978377322" duration="11535000" />
+      <workItem from="1502990631508" duration="937000" />
+      <workItem from="1502992468549" duration="6914000" />
+      <workItem from="1503001139381" duration="655000" />
+      <workItem from="1503056938769" duration="5226000" />
+      <workItem from="1503063801637" duration="152000" />
+      <workItem from="1503064405218" duration="11823000" />
     </task>
     <task id="LOCAL-00001" summary="Add clean db and phpmyadmin">
       <created>1496689406220</created>
@@ -888,11 +1014,39 @@
       <option name="project" value="LOCAL" />
       <updated>1502297783266</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Working but ugly breadcrumb trail">
+      <created>1502305021607</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1502305021607</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Small quality Fixes">
+      <created>1502801412303</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1502801412303</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Quality: update preharvest to have some normalization, fix quality tables some more">
+      <created>1502869283219</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1502869283219</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Untested: Quality rewritten to self-contained backend">
+      <created>1503068866970</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1503068866970</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="831215000" />
+    <option name="totallyTimeSpent" value="954394000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -907,17 +1061,19 @@
     <frame x="10" y="41" width="1920" height="1170" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12339743" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.4957265" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27686352" sideWeight="0.4818376" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2773261" sideWeight="0.51816237" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.106303416" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1330097" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2144956" sideWeight="0.5144231" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13261297" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2858546" sideWeight="0.50641024" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2151277" sideWeight="0.48557693" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14102565" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27603143" sideWeight="0.4818376" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15598291" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35265225" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47740668" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280943" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -926,12 +1082,36 @@
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.3281704" sideWeight="0.4957265" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12311901" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26620826" sideWeight="0.49358973" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47106692" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35352623" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.4957265" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280943" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2144956" sideWeight="0.5144231" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.3281704" sideWeight="0.4957265" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12311901" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13261297" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2858546" sideWeight="0.50641024" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2151277" sideWeight="0.48557693" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14102565" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27603143" sideWeight="0.4818376" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47106692" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15598291" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35265225" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47740668" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -966,10 +1146,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Move secrets to settings.yml, fix small purchasing bug" />
-    <MESSAGE value="Maintenance issues populate and are deletable" />
-    <MESSAGE value="Allow URLs to skip the .php extension" />
-    <MESSAGE value="Change grower portal to packapps auth, remove piwik" />
     <MESSAGE value="Revert removing file extensions, they don't work" />
     <MESSAGE value="Fix menu formatting" />
     <MESSAGE value="Complete Grower-Portal login mechanism" />
@@ -991,11 +1167,15 @@
     <MESSAGE value="Working pivot on sunburst" />
     <MESSAGE value="Totes working pivot, brah" />
     <MESSAGE value="Fix 3 year old page-breaking bug in DA, that somehow nobody ever hit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix 3 year old page-breaking bug in DA, that somehow nobody ever hit" />
+    <MESSAGE value="Working but ugly breadcrumb trail" />
+    <MESSAGE value="Small quality Fixes" />
+    <MESSAGE value="Quality: update preharvest to have some normalization, fix quality tables some more" />
+    <MESSAGE value="Untested: Quality rewritten to self-contained backend" />
+    <option name="LAST_COMMIT_MESSAGE" value="Untested: Quality rewritten to self-contained backend" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="6" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="ChromiumRemoteDebugType">
@@ -1004,78 +1184,27 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application-server/src/purchasing/API/subtractBOMfromInventory.php" />
-    <entry file="file://$PROJECT_DIR$/application-server/src/purchasing/API/getBOMs.php" />
-    <entry file="uml://DATABASE/ba9179e3-3f43-4bf4-a428-488684b68df1.SCHEMA:operationsData">
+    <entry file="uml://DATABASE/ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities">
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
           <ID>DATABASE</ID>
-          <OriginalElement>ba9179e3-3f43-4bf4-a428-488684b68df1.SCHEMA:operationsData</OriginalElement>
+          <OriginalElement>ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities</OriginalElement>
           <nodes>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_run_inspections</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_ConnectedDisplays</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_chat</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_appProperties</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_product_needed</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_UserData</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_UserData</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop_estimates_changes_timeseries</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_UserData</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_Suppliers</node>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_growerCalendar</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_systems</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_issues2purchasing_items</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_system_info</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_UserData</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_InspectedRTs</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_location_timeline</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.BULKOHCSV</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_UserData</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_subsystems</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_issues</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_ItemTypes</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.VIEW:operationsData.quality_Block_Receiving</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.PSOHCSV_flagged_bad_runs</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_purposes</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_tempRunData</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_AppleSamples</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.BULKTKCSV</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.VIEW:operationsData.quality_RTsWQuality</node>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_GrowerLogins</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_purchases2items</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_AlertEmails</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_items2suppliers</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_dumped_fruit</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.PSOHCSV</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_room_events</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.VIEW:operationsData.grower_CurYearReceived</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_part_info</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_AggregateWeightSamples</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_Inventory_TimeSeries</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_purchase_history</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_app_permissions</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_growerCalendar</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop_estimates_changes_timeseries</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_UserData</node>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities</node>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_Samples</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_UserData</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.VIEW:operationsData.quality_AvgWeightByRT</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_subsystemComponents</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_runs</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_Items</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties</node>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.BULKRTCSV</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_lineNames</node>
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="0.30000000000000004" x="2347.0" y="1879.0" />
+          <settings layout="Hierarchic Group" zoom="0.7269938650306749" x="652.0" y="542.0" />
           <SelectedNodes />
           <Categories>
             <Category>Columns</Category>
@@ -1085,33 +1214,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notes">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://DATABASE/ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms">
+    <entry file="uml://DATABASE/ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_Samples">
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
           <ID>DATABASE</ID>
-          <OriginalElement>ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms</OriginalElement>
+          <OriginalElement>ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_Samples</OriginalElement>
           <nodes>
-            <node x="9.5" y="136.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms</node>
-            <node x="0.0" y="0.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_GrowerLogins</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_UserData</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_Samples</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates</node>
           </nodes>
           <notes />
-          <edges>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings">
-              <point x="0.0" y="-69.0" />
-              <point x="0.0" y="43.0" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="-357.0" y="-141.0" />
-          <SelectedNodes>
-            <node>ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms</node>
-          </SelectedNodes>
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.7740331491712706" x="561.0" y="1298.0" />
+          <SelectedNodes />
           <Categories>
             <Category>Columns</Category>
             <Category>Key columns</Category>
@@ -1120,17 +1242,254 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/styles-common/styles.css">
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/preharvest/ftadata.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1196">
-          <caret line="46" column="22" lean-forward="false" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
+        <state relative-caret-position="80">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/operationsData.storage_rooms">
+    <entry file="uml://DATABASE/ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_tests">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_tests</OriginalElement>
+          <nodes>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_GrowerLogins</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_tests</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.3865168539325843" x="370.0" y="898.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Columns</Category>
+            <Category>Key columns</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/preharvest/blockidfinder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="18" column="21" lean-forward="false" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/preharvest/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="266" column="182" lean-forward="false" selection-start-line="266" selection-start-column="176" selection-end-line="266" selection-end-column="182" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/preharvest/Preharvestsubmit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="16" lean-forward="true" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/preharvest/mobilestarch.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1260">
+          <caret line="63" column="31" lean-forward="false" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/preharvest/starchsubmit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="31" column="32" lean-forward="false" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/DAsubmit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="66" lean-forward="true" selection-start-line="14" selection-start-column="66" selection-end-line="14" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/DA.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="38" lean-forward="true" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/packapps_api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="3" lean-forward="true" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
+          <folding>
+            <element signature="e#6#84#0#PHP" expanded="false" />
+            <marker date="1499774854013" expanded="true" signature="1013:1138" ph="SELECT usern... packapps_master_users" />
+            <marker date="1499774854013" expanded="true" signature="1611:1757" ph="SELECT * FRO... ${$packapp}" />
+            <marker date="1499774854013" expanded="true" signature="2375:2475" ph="SELECT Growe... grower_GrowerLogins" />
+            <marker date="1499774854013" expanded="true" signature="5512:5630" ph="UPDATE packa... " />
+            <marker date="1499774854013" expanded="true" signature="6271:6439" ph="INSERT INTO packapps_master_users... " />
+            <marker date="1499774854013" expanded="true" signature="6521:6605" ph="SELECT short... packapps_appProperties" />
+            <marker date="1499774854013" expanded="true" signature="6707:6790" ph="INSERT INTO ${$packapp['short_app_name']}_UserData... " />
+            <marker date="1499774854013" expanded="true" signature="7528:7616" ph="SELECT `Pass... packapps_master_users" />
+            <marker date="1499774854013" expanded="true" signature="7800:7890" ph="UPDATE packa... " />
+            <marker date="1499774854013" expanded="true" signature="8633:8712" ph="UPDATE packa... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="5" lean-forward="true" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/operationsData.storage_UserData">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cleanstart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/manifest.json" />
+    <entry file="file://$PROJECT_DIR$/application-server/src/scripts/aws/Aws/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1015">
+          <caret line="325" column="56" lean-forward="false" selection-start-line="325" selection-start-column="56" selection-end-line="325" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-server/schema/021 - v2 SEED DATA.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="39" lean-forward="true" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/production/API/rebootDisplays.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="19" lean-forward="false" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/controlPanel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="121" column="76" lean-forward="true" selection-start-line="121" selection-start-column="76" selection-end-line="121" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/production/API/markRunAsBad.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/production/API/runFromJsonBULKOH.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="738">
+          <caret line="41" column="33" lean-forward="true" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="11" lean-forward="false" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_5.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/API/rtinfoins.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="48" column="7" lean-forward="true" selection-start-line="48" selection-start-column="7" selection-end-line="48" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/mobilestarch.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1981">
+          <caret line="20" column="2" lean-forward="true" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/mobileQA.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="446" lean-forward="false" selection-start-line="4" selection-start-column="446" selection-end-line="4" selection-end-column="446" />
+          <folding>
+            <marker date="1502989584130" expanded="true" signature="118:526" ph="SELECT ROUND... " />
+            <marker date="1502989584130" expanded="true" signature="139:183" ph="SELECT SUM(W... quality_AppleSamples" />
+            <marker date="1502989584130" expanded="true" signature="199:248" ph="SELECT SUM(W... grower_Preharvest_Samples" />
+            <marker date="1502989584130" expanded="true" signature="264:311" ph="SELECT SUM(W... quality_run_inspections" />
+            <marker date="1502989584130" expanded="true" signature="345:386" ph="SELECT count... quality_AppleSamples" />
+            <marker date="1502989584130" expanded="true" signature="402:448" ph="SELECT COUNT... grower_Preharvest_Samples" />
+            <marker date="1502989584130" expanded="true" signature="464:508" ph="SELECT COUNT... quality_run_inspections" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/runPhoto.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="2" lean-forward="true" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+          <folding>
+            <marker date="1502997222280" expanded="true" signature="198:572" ph="SELECT Line,... production_runs" />
+            <marker date="1502997222280" expanded="true" signature="1318:1354" ph="..." />
+            <marker date="1502997222280" expanded="true" signature="1543:1551" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/runPhotoSubmit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/runSubmit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="14" column="64" lean-forward="false" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
         </state>
       </provider>
     </entry>
@@ -1140,242 +1499,14 @@
           <ID>DATABASE</ID>
           <OriginalElement>ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings</OriginalElement>
           <nodes>
-            <node x="268.0" y="136.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_GrowerLogins</node>
-            <node x="545.9999999999999" y="1804.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_location_timeline</node>
-            <node x="23.0" y="545.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains</node>
-            <node x="810.8638888888889" y="1616.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_room_events</node>
-            <node x="288.6138888888888" y="1376.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts</node>
-            <node x="18.0" y="201.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties</node>
-            <node x="141.36388888888882" y="824.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates</node>
-            <node x="838.0416666666665" y="1032.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings</node>
-            <node x="288.0" y="545.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms</node>
-            <node x="520.0" y="428.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users</node>
-            <node x="824.5416666666666" y="1376.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms</node>
-            <node x="366.8638888888887" y="1616.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins</node>
-            <node x="0.0" y="0.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities</node>
-            <node x="511.0" y="1032.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_UserData</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_UserData" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users">
-              <point x="0.0" y="-43.0" />
-              <point x="0.0" y="173.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_location_timeline" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms">
-              <point x="72.25" y="-68.5" />
-              <point x="762.7499999999999" y="1779.0" />
-              <point x="1089.363888888889" y="1779.0" />
-              <point x="1089.363888888889" y="1591.0" />
-              <point x="1048.7083333333333" y="1591.0" />
-              <point x="89.66666666666663" y="95.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_location_timeline" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins">
-              <point x="-72.25" y="-68.5" />
-              <point x="618.2499999999999" y="1779.0" />
-              <point x="482.3638888888887" y="1779.0" />
-              <point x="0.0" y="69.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains">
-              <point x="-60.5" y="-251.0" />
-              <point x="201.86388888888882" y="799.0" />
-              <point x="133.0" y="799.0" />
-              <point x="0.0" y="56.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings">
-              <point x="-1.1368683772161603E-13" y="-95.0" />
-              <point x="0.0" y="43.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms">
-              <point x="60.5" y="-251.0" />
-              <point x="322.8638888888888" y="799.0" />
-              <point x="394.0" y="799.0" />
-              <point x="0.0" y="56.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_UserData">
-              <point x="68.00000000000006" y="-95.0" />
-              <point x="492.6138888888889" y="1351.0" />
-              <point x="658.0" y="1351.0" />
-              <point x="0.0" y="43.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties">
-              <point x="0.0" y="-56.0" />
-              <point x="0.0" y="56.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms">
-              <point x="57.75000000000006" y="-69.0" />
-              <point x="540.1138888888888" y="1591.0" />
-              <point x="869.375" y="1591.0" />
-              <point x="-89.66666666666663" y="95.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_GrowerLogins">
-              <point x="0.0" y="-56.0" />
-              <point x="0.0" y="121.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates">
-              <point x="-67.99999999999994" y="-95.0" />
-              <point x="356.6138888888889" y="1351.0" />
-              <point x="262.3638888888888" y="1351.0" />
-              <point x="0.0" y="251.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities">
-              <point x="0.0" y="-56.0" />
-              <point x="0.0" y="43.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_room_events" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms">
-              <point x="0.0" y="-69.0" />
-              <point x="944.8638888888889" y="1591.0" />
-              <point x="959.0416666666666" y="1591.0" />
-              <point x="0.0" y="95.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts">
-              <point x="-57.74999999999994" y="-69.0" />
-              <point x="0.0" y="95.0" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="1.028301886792453" x="207.0" y="1250.0" />
-          <SelectedNodes>
-            <node>ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings</node>
-          </SelectedNodes>
-          <Categories>
-            <Category>Columns</Category>
-            <Category>Key columns</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/config/000-default.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/storage/visit-sequences.csv" />
-    <entry file="das://table:/405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/operationsData.storage_UserData">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/operationsData.storage_grower_fruit_location_timeline">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/operationsData.storage_room_events">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://DATABASE/ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>DATABASE</ID>
-          <OriginalElement>ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins</OriginalElement>
-          <nodes>
-            <node x="401.0" y="136.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_GrowerLogins</node>
-            <node x="421.0" y="545.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms</node>
-            <node x="653.0" y="428.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users</node>
-            <node x="156.0" y="545.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains</node>
-            <node x="0.0" y="1376.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms</node>
-            <node x="422.75" y="1376.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts</node>
-            <node x="278.25" y="1616.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins</node>
-            <node x="151.0" y="201.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties</node>
-            <node x="133.0" y="0.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities</node>
-            <node x="13.5" y="1032.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings</node>
-            <node x="275.5" y="824.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates</node>
-            <node x="644.0" y="1032.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_UserData</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_UserData" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users">
-              <point x="0.0" y="-43.0" />
-              <point x="0.0" y="173.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_GrowerLogins">
-              <point x="0.0" y="-56.0" />
-              <point x="0.0" y="121.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains">
-              <point x="-60.5" y="-251.0" />
-              <point x="336.0" y="799.0" />
-              <point x="266.0" y="799.0" />
-              <point x="0.0" y="56.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities">
-              <point x="0.0" y="-56.0" />
-              <point x="0.0" y="43.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates">
-              <point x="-68.0" y="-95.0" />
-              <point x="490.75" y="1351.0" />
-              <point x="396.5" y="1351.0" />
-              <point x="0.0" y="251.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings">
-              <point x="0.0" y="-95.0" />
-              <point x="0.0" y="43.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms">
-              <point x="60.5" y="-251.0" />
-              <point x="457.0" y="799.0" />
-              <point x="527.0" y="799.0" />
-              <point x="0.0" y="56.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_UserData">
-              <point x="68.0" y="-95.0" />
-              <point x="626.75" y="1351.0" />
-              <point x="791.0" y="1351.0" />
-              <point x="0.0" y="43.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties">
-              <point x="0.0" y="-56.0" />
-              <point x="0.0" y="56.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts">
-              <point x="57.75" y="-69.0" />
-              <point x="451.5" y="1591.0" />
-              <point x="558.75" y="1591.0" />
-              <point x="0.0" y="95.0" />
-            </edge>
-            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms">
-              <point x="-57.75" y="-69.0" />
-              <point x="336.0" y="1591.0" />
-              <point x="134.5" y="1591.0" />
-              <point x="0.0" y="95.0" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="1.1852311161217588" x="18.0" y="1562.0" />
-          <SelectedNodes>
-            <node>ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins</node>
-          </SelectedNodes>
-          <Categories>
-            <Category>Columns</Category>
-            <Category>Key columns</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://DATABASE/ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_location_timeline">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>DATABASE</ID>
-          <OriginalElement>ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_location_timeline</OriginalElement>
-          <nodes>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_GrowerLogins</node>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_location_timeline</node>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains</node>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_room_events</node>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings</node>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates</node>
+            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings</node>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms</node>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users</node>
             <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms</node>
@@ -1385,7 +1516,7 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="0.9580316165221822" x="692.0" y="1757.0" />
+          <settings layout="Hierarchic Group" zoom="0.6787012987012987" x="593.0" y="1419.0" />
           <SelectedNodes />
           <Categories>
             <Category>Columns</Category>
@@ -1395,300 +1526,632 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/operationsData.storage_grower_fruit_bins">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://DATABASE/ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>DATABASE</ID>
-          <OriginalElement>ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities</OriginalElement>
-          <nodes>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_GrowerLogins</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_growerCalendar</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop_estimates_changes_timeseries</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_Samples</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="0.67592867756315" x="521.0" y="302.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Columns</Category>
-            <Category>Key columns</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql">
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/HTML5.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="392" column="45" lean-forward="false" selection-start-line="392" selection-start-column="45" selection-end-line="392" selection-end-column="45" />
+        <state relative-caret-position="325">
+          <caret line="1343" column="0" lean-forward="false" selection-start-line="1343" selection-start-column="0" selection-end-line="1343" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/browserconfig.xml">
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/starchsubmit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="504">
+          <caret line="28" column="34" lean-forward="true" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/styles/material.min.css">
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/WeightSamples.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14476">
-          <caret line="7" column="92157" lean-forward="false" selection-start-line="7" selection-start-column="92157" selection-end-line="7" selection-end-column="92157" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/styles/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="26" column="1" lean-forward="false" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/scripts-common/sunburst/d3.min.js" />
-    <entry file="file://$USER_HOME$/Downloads/d3/d3.js" />
-    <entry file="file://$PROJECT_DIR$/application-server/src/installer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-674">
-          <caret line="72" column="40" lean-forward="false" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="112" column="7" lean-forward="true" selection-start-line="112" selection-start-column="7" selection-end-line="112" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JavaScript-modules-diagram//home/mike/build/packapps/application-server/src/scripts-common/sunburst/d3.js">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JavaScript-modules-diagram</ID>
-          <OriginalElement>$PROJECT_DIR$/application-server/src/scripts-common/sunburst/d3.js</OriginalElement>
-          <nodes />
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="816.0" y="518.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>All</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>Details</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/scripts-common/sunburst/d3.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1125">
-          <caret line="16460" column="38" lean-forward="false" selection-start-line="16460" selection-start-column="38" selection-end-line="16460" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="534" column="0" lean-forward="false" selection-start-line="534" selection-start-column="0" selection-end-line="540" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/quality/mobilestarch.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="7" column="2" lean-forward="true" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="9" column="27" lean-forward="false" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/styles-common/material.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/production/styles/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="141" column="14" lean-forward="true" selection-start-line="141" selection-start-column="14" selection-end-line="141" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/production/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="83" column="66" lean-forward="false" selection-start-line="83" selection-start-column="66" selection-end-line="83" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/purchasing/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/appMenu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2964">
-          <caret line="120" column="65" lean-forward="true" selection-start-line="120" selection-start-column="65" selection-end-line="120" selection-end-column="65" />
+        <state relative-caret-position="396">
+          <caret line="43" column="27" lean-forward="true" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
+          <folding>
+            <marker date="1503063953080" expanded="true" signature="1024:1060" ph="..." />
+            <marker date="1503063953080" expanded="true" signature="1242:1250" ph="..." />
+            <marker date="1503063953080" expanded="true" signature="2932:2950" ph="..." />
+            <marker date="1503063953080" expanded="true" signature="3269:3279" ph="..." />
+            <marker date="1503063953080" expanded="true" signature="3327:3398" ph="..." />
+            <marker date="1503063953080" expanded="true" signature="3478:3502" ph="..." />
+            <marker date="1503063953080" expanded="true" signature="3829:3859" ph="..." />
+            <marker date="1503063953080" expanded="true" signature="4205:4235" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/adjustUserPermissions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="305">
+          <caret line="18" column="14" lean-forward="true" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+          <folding>
+            <marker date="1502913294776" expanded="true" signature="648:740" ph="SELECT isSys... packapps_master_users" />
+            <marker date="1502913294776" expanded="true" signature="962:1051" ph="SELECT usern... packapps_master_users" />
+            <marker date="1502913294776" expanded="true" signature="1253:1335" ph="UPDATE packa... " />
+            <marker date="1502913294776" expanded="true" signature="1874:2048" ph="SELECT * FRO... packapps_master_users" />
+            <marker date="1502913294776" expanded="true" signature="2495:2590" ph="UPDATE packa... " />
+            <marker date="1502913294776" expanded="true" signature="2847:2915" ph="UPDATE ${$ta... " />
+            <marker date="1502913294776" expanded="true" signature="3191:3262" ph="UPDATE ${$ta... " />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/getUserAccountList.php">
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/assets/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="39" column="9" lean-forward="false" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="9" />
+        <state relative-caret-position="216">
+          <caret line="12" column="85" lean-forward="false" selection-start-line="12" selection-start-column="85" selection-end-line="12" selection-end-column="85" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/controlPanel.php">
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/runftareturn.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="111" column="59" lean-forward="false" selection-start-line="111" selection-start-column="59" selection-end-line="111" selection-end-column="59" />
+        <state relative-caret-position="90">
+          <caret line="10" column="38" lean-forward="false" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/production/editRun.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="418" column="0" lean-forward="false" selection-start-line="418" selection-start-column="0" selection-end-line="418" selection-end-column="0" />
+    <entry file="uml://DATABASE/ba9179e3-3f43-4bf4-a428-488684b68df1.SCHEMA:operationsData">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>ba9179e3-3f43-4bf4-a428-488684b68df1.SCHEMA:operationsData</OriginalElement>
+          <nodes>
+            <node x="222.0" y="2944.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_run_inspections</node>
+            <node x="2779.0" y="2661.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_ConnectedDisplays</node>
+            <node x="457.0" y="2994.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_product_needed</node>
+            <node x="778.0" y="2661.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_appProperties</node>
+            <node x="2478.0" y="2661.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_chat</node>
+            <node x="973.9463435374149" y="1014.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_UserData</node>
+            <node x="509.94634353741503" y="1064.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_UserData</node>
+            <node x="1854.0" y="2661.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop_estimates_changes_timeseries</node>
+            <node x="1210.2142857142858" y="1467.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts</node>
+            <node x="735.946343537415" y="1064.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_UserData</node>
+            <node x="3403.25" y="1064.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings</node>
+            <node x="2317.25" y="453.5">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_Suppliers</node>
+            <node x="120.65467687074829" y="528.5">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms</node>
+            <node x="172.6546768707483" y="1442.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_tests</node>
+            <node x="1625.0" y="2661.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_growerCalendar</node>
+            <node x="1090.0" y="2661.0">ba9179e3-3f43-4bf4-a428-488684b68df1.VIEW:operationsData.grower_gfbvs-listing</node>
+            <node x="3773.3125" y="195.5">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_systems</node>
+            <node x="3391.25" y="1467.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms</node>
+            <node x="2012.946343537415" y="1505.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_issues2purchasing_items</node>
+            <node x="1260.946343537415" y="1064.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_UserData</node>
+            <node x="2204.0" y="2661.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_system_info</node>
+            <node x="703.3333333333335" y="1725.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_InspectedRTs</node>
+            <node x="3241.4463435374146" y="2371.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_location_timeline</node>
+            <node x="3612.776785714286" y="528.5">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_subsystems</node>
+            <node x="820.9642857142858" y="1517.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_UserData</node>
+            <node x="1943.946343537415" y="839.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_issues</node>
+            <node x="2915.971343537415" y="516.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_ItemTypes</node>
+            <node x="342.1546768707483" y="183.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties</node>
+            <node x="973.0" y="3246.0">ba9179e3-3f43-4bf4-a428-488684b68df1.VIEW:operationsData.quality_Block_Receiving</node>
+            <node x="2106.25" y="528.5">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_purposes</node>
+            <node x="1386.0" y="2661.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_tempRunData</node>
+            <node x="989.9583333333335" y="2258.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_AppleSamples</node>
+            <node x="1197.0" y="3246.0">ba9179e3-3f43-4bf4-a428-488684b68df1.VIEW:operationsData.quality_RTsWQuality</node>
+            <node x="0.0" y="133.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_GrowerLogins</node>
+            <node x="2378.0" y="1480.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_purchases2items</node>
+            <node x="0.0" y="3246.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_AlertEmails</node>
+            <node x="2644.25" y="1505.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_items2suppliers</node>
+            <node x="0.0" y="2944.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_dumped_fruit</node>
+            <node x="3504.166666666667" y="1900.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_room_events</node>
+            <node x="516.0" y="3246.0">ba9179e3-3f43-4bf4-a428-488684b68df1.VIEW:operationsData.grower_CurYearReceived</node>
+            <node x="3702.0625" y="1467.5">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_part_info</node>
+            <node x="630.5833333333335" y="2383.5">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_AggregateWeightSamples</node>
+            <node x="2875.25" y="1492.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_Inventory_TimeSeries</node>
+            <node x="2320.25" y="989.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_purchase_history</node>
+            <node x="809.5" y="2894.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_app_permissions</node>
+            <node x="175.1546768707483" y="1812.5">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_Samples</node>
+            <node x="327.6546768707483" y="0.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities</node>
+            <node x="1613.946343537415" y="1064.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_UserData</node>
+            <node x="748.0" y="3246.0">ba9179e3-3f43-4bf4-a428-488684b68df1.VIEW:operationsData.quality_AvgWeightByRT</node>
+            <node x="346.6546768707483" y="528.5">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains</node>
+            <node x="3675.776785714286" y="1051.5">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_subsystemComponents</node>
+            <node x="196.5" y="2661.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_runs</node>
+            <node x="2937.471343537415" y="1014.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_Items</node>
+            <node x="231.75" y="864.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates</node>
+            <node x="1549.8015306122447" y="416.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users</node>
+            <node x="1351.5" y="1887.5">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins</node>
+            <node x="271.0" y="3246.0">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_lineNames</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_subsystemComponents" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_subsystems">
+              <point x="0.0" y="-54.0" />
+              <point x="3809.276785714286" y="819.0" />
+              <point x="3799.526785714286" y="819.0" />
+              <point x="62.25" y="54.0" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_location_timeline" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins">
+              <point x="-68.0" y="-66.0" />
+              <point x="3309.4463435374146" y="2233.0" />
+              <point x="1457.0" y="2233.0" />
+              <point x="0.0" y="79.0" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings">
+              <point x="0.0" y="-91.5" />
+              <point x="0.0" y="41.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_part_info" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_systems">
+              <point x="84.375" y="-91.0" />
+              <point x="3898.9375" y="1422.0" />
+              <point x="3953.276785714286" y="1422.0" />
+              <point x="3953.276785714286" y="391.0" />
+              <point x="3942.8125" y="391.0" />
+              <point x="56.5" y="54.0" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_tests" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_GrowerLogins">
+              <point x="-71.33333333333326" y="-116.5" />
+              <point x="208.32134353741503" y="1422.0" />
+              <point x="65.0" y="1422.0" />
+              <point x="65.0" y="391.0" />
+              <point x="59.5" y="391.0" />
+              <point x="-59.5" y="116.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_issues" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_purposes">
+              <point x="115.0" y="-266.5" />
+              <point x="2196.946343537415" y="819.0" />
+              <point x="2201.75" y="819.0" />
+              <point x="0.0" y="54.0" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_InspectedRTs" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts">
+              <point x="108.0" y="-241.5" />
+              <point x="1027.3333333333335" y="1705.0" />
+              <point x="1273.4642857142858" y="1705.0" />
+              <point x="-63.25" y="91.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_run_inspections" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_runs">
+              <point x="0.0" y="-128.5" />
+              <point x="0.0" y="116.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_items2suppliers" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_Suppliers">
+              <point x="-52.75" y="-53.5" />
+              <point x="2697.0" y="1392.0" />
+              <point x="2649.8213435374146" y="1392.0" />
+              <point x="2649.8213435374146" y="819.0" />
+              <point x="2627.75" y="819.0" />
+              <point x="103.5" y="129.0" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_UserData" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users">
+              <point x="0.0" y="-91.5" />
+              <point x="1107.446343537415" y="809.0" />
+              <point x="1647.3015306122447" y="809.0" />
+              <point x="-32.5" y="166.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_Items" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_ItemTypes">
+              <point x="0.0" y="-91.5" />
+              <point x="0.0" y="66.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms">
+              <point x="-58.75" y="-241.5" />
+              <point x="290.5" y="819.0" />
+              <point x="223.6546768707483" y="819.0" />
+              <point x="0.0" y="54.0" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_issues2purchasing_items" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_issues">
+              <point x="-69.0" y="-53.5" />
+              <point x="0.0" y="266.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_part_info" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_subsystems">
+              <point x="-28.125" y="-91.0" />
+              <point x="3786.4375" y="1402.0" />
+              <point x="3665.276785714286" y="1402.0" />
+              <point x="3665.276785714286" y="819.0" />
+              <point x="3675.026785714286" y="819.0" />
+              <point x="-62.25" y="54.0" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_AggregateWeightSamples" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_UserData">
+              <point x="-60.25" y="-53.5" />
+              <point x="690.8333333333335" y="2233.0" />
+              <point x="692.8333333333335" y="2233.0" />
+              <point x="692.8333333333335" y="1695.0" />
+              <point x="859.2976190476193" y="1695.0" />
+              <point x="-76.66666666666652" y="41.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties">
+              <point x="0.0" y="-54.0" />
+              <point x="0.0" y="66.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms">
+              <point x="52.75" y="-79.0" />
+              <point x="1509.75" y="1705.0" />
+              <point x="3433.9166666666665" y="1705.0" />
+              <point x="-85.33333333333348" y="91.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_Samples" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_tests">
+              <point x="0.0" y="-154.0" />
+              <point x="0.0" y="116.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities">
+              <point x="0.0" y="-66.5" />
+              <point x="0.0" y="41.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_AggregateWeightSamples" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_InspectedRTs">
+              <point x="60.25" y="-53.5" />
+              <point x="-108.0" y="241.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_issues2purchasing_items" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_Items">
+              <point x="69.0" y="-53.5" />
+              <point x="2219.946343537415" y="1402.0" />
+              <point x="2957.2713435374153" y="1402.0" />
+              <point x="-79.19999999999982" y="91.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_issues" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users">
+              <point x="-115.0" y="-266.5" />
+              <point x="1966.946343537415" y="809.0" />
+              <point x="1712.3015306122447" y="809.0" />
+              <point x="32.5" y="166.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains">
+              <point x="58.75" y="-241.5" />
+              <point x="408.0" y="819.0" />
+              <point x="453.1546768707483" y="819.0" />
+              <point x="0.0" y="54.0" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_purchases2items" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_Items">
+              <point x="59.75" y="-78.5" />
+              <point x="2557.25" y="1412.0" />
+              <point x="2996.8713435374148" y="1412.0" />
+              <point x="-39.59999999999991" y="91.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_UserData">
+              <point x="63.25" y="-91.5" />
+              <point x="1399.9642857142858" y="1422.0" />
+              <point x="1427.446343537415" y="1422.0" />
+              <point x="0.0" y="41.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_tests" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users">
+              <point x="71.33333333333326" y="-116.5" />
+              <point x="350.98801020408155" y="1422.0" />
+              <point x="725.446343537415" y="1422.0" />
+              <point x="725.446343537415" y="779.0" />
+              <point x="1582.3015306122447" y="779.0" />
+              <point x="-97.5" y="166.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates">
+              <point x="-63.25" y="-91.5" />
+              <point x="1273.4642857142858" y="1412.0" />
+              <point x="408.0" y="1412.0" />
+              <point x="58.75" y="241.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_AppleSamples" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_UserData">
+              <point x="63.0" y="-179.0" />
+              <point x="1178.9583333333335" y="1695.0" />
+              <point x="1012.6309523809525" y="1695.0" />
+              <point x="76.66666666666674" y="41.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_UserData" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users">
+              <point x="0.0" y="-41.5" />
+              <point x="1768.946343537415" y="819.0" />
+              <point x="1690.6348639455782" y="819.0" />
+              <point x="10.833333333333485" y="166.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_items2suppliers" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_Items">
+              <point x="52.75" y="-53.5" />
+              <point x="2802.5" y="1422.0" />
+              <point x="3036.471343537415" y="1422.0" />
+              <point x="0.0" y="91.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_product_needed" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_runs">
+              <point x="0.0" y="-78.5" />
+              <point x="595.0" y="2919.0" />
+              <point x="418.1666666666667" y="2919.0" />
+              <point x="88.66666666666669" y="116.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_UserData" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users">
+              <point x="0.0" y="-41.5" />
+              <point x="1427.446343537415" y="819.0" />
+              <point x="1668.9681972789117" y="819.0" />
+              <point x="-10.833333333333258" y="166.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_location_timeline" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms">
+              <point x="68.0" y="-66.0" />
+              <point x="3445.4463435374146" y="2233.0" />
+              <point x="3493.666666666667" y="2233.0" />
+              <point x="3493.666666666667" y="1705.0" />
+              <point x="3519.25" y="1705.0" />
+              <point x="0.0" y="91.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_UserData" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users">
+              <point x="0.0" y="-41.5" />
+              <point x="935.9642857142858" y="1422.0" />
+              <point x="963.4463435374149" y="1422.0" />
+              <point x="963.4463435374149" y="799.0" />
+              <point x="1625.6348639455782" y="799.0" />
+              <point x="-54.16666666666674" y="166.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_tests" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates">
+              <point x="0.0" y="-116.5" />
+              <point x="279.6546768707483" y="1422.0" />
+              <point x="290.5" y="1422.0" />
+              <point x="-58.75" y="241.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_subsystems" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_systems">
+              <point x="0.0" y="-54.0" />
+              <point x="3737.276785714286" y="391.0" />
+              <point x="3829.8125" y="391.0" />
+              <point x="-56.5" y="54.0" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_purchases2items" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_purchase_history">
+              <point x="-59.75" y="-78.5" />
+              <point x="0.0" y="116.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_purchase_history" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_Suppliers">
+              <point x="0.0" y="-116.5" />
+              <point x="2437.75" y="819.0" />
+              <point x="2420.75" y="819.0" />
+              <point x="-103.5" y="129.0" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_app_permissions" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_appProperties">
+              <point x="0.0" y="-79.0" />
+              <point x="0.0" y="91.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_AppleSamples" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_InspectedRTs">
+              <point x="-63.0" y="-179.0" />
+              <point x="1052.9583333333335" y="2233.0" />
+              <point x="1027.3333333333335" y="2233.0" />
+              <point x="108.0" y="241.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_GrowerLogins">
+              <point x="0.0" y="-54.0" />
+              <point x="223.6546768707483" y="391.0" />
+              <point x="178.5" y="391.0" />
+              <point x="59.5" y="116.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_room_events" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms">
+              <point x="0.0" y="-66.5" />
+              <point x="3630.166666666667" y="1705.0" />
+              <point x="3604.5833333333335" y="1705.0" />
+              <point x="85.33333333333348" y="91.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_Inventory_TimeSeries" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_Items">
+              <point x="0.0" y="-66.5" />
+              <point x="3123.25" y="1422.0" />
+              <point x="3076.0713435374146" y="1422.0" />
+              <point x="39.59999999999991" y="91.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_UserData" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users">
+              <point x="0.0" y="-41.5" />
+              <point x="844.446343537415" y="789.0" />
+              <point x="1603.9681972789117" y="789.0" />
+              <point x="-75.83333333333326" y="166.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_UserData" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users">
+              <point x="0.0" y="-41.5" />
+              <point x="612.446343537415" y="769.0" />
+              <point x="1560.6348639455782" y="769.0" />
+              <point x="-119.16666666666674" y="166.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_dumped_fruit" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_runs">
+              <point x="0.0" y="-128.5" />
+              <point x="101.0" y="2919.0" />
+              <point x="240.83333333333331" y="2919.0" />
+              <point x="-88.66666666666669" y="116.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts">
+              <point x="-52.75" y="-79.0" />
+              <point x="1404.25" y="1705.0" />
+              <point x="1399.9642857142858" y="1705.0" />
+              <point x="63.25" y="91.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_part_info" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_Items">
+              <point x="-84.375" y="-91.0" />
+              <point x="3730.1875" y="1412.0" />
+              <point x="3115.671343537415" y="1412.0" />
+              <point x="79.19999999999982" y="91.5" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_part_info" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_subsystemComponents">
+              <point x="28.125" y="-91.0" />
+              <point x="3842.6875" y="1422.0" />
+              <point x="3809.276785714286" y="1422.0" />
+              <point x="0.0" y="54.0" />
+            </edge>
+            <edge source="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_InspectedRTs" target="ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_UserData">
+              <point x="-108.0" y="-241.5" />
+              <point x="811.3333333333335" y="1705.0" />
+              <point x="935.9642857142858" y="1705.0" />
+              <point x="0.0" y="41.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.2809721398933017" x="522.1772151898734" y="1164.1772151898736" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/storage/API/getRooms.php">
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/emailmgmt.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="24" column="29" lean-forward="true" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+        <state relative-caret-position="413">
+          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding>
+            <marker date="1502975671623" expanded="true" signature="586:690" ph="DELETE FROM " />
+            <marker date="1502975671623" expanded="true" signature="825:1030" ph="INSERT INTO quality_AlertEmails... " />
+            <marker date="1502975671623" expanded="true" signature="1159:1217" ph="SELECT ID, F... quality_AlertEmails" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/Inspector.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="171" column="46" lean-forward="false" selection-start-line="171" selection-start-column="46" selection-end-line="171" selection-end-column="46" />
+          <folding>
+            <marker date="1503076128309" expanded="true" signature="1023:1059" ph="..." />
+            <marker date="1503076128309" expanded="true" signature="1253:1261" ph="..." />
+            <marker date="1503076128309" expanded="true" signature="10125:10143" ph="..." />
+            <marker date="1503076128309" expanded="true" signature="10462:10472" ph="..." />
+            <marker date="1503076128309" expanded="true" signature="10486:10503" ph="..." />
+            <marker date="1503076128309" expanded="true" signature="10633:10704" ph="..." />
+            <marker date="1503076128309" expanded="true" signature="10808:10879" ph="..." />
+            <marker date="1503076128309" expanded="true" signature="10953:10977" ph="..." />
+            <marker date="1503076128309" expanded="true" signature="11544:11574" ph="..." />
+            <marker date="1503076128309" expanded="true" signature="11762:11781" ph="..." />
+            <marker date="1503076128309" expanded="true" signature="12258:12288" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/API/RTlist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="102" lean-forward="false" selection-start-line="20" selection-start-column="102" selection-end-line="20" selection-end-column="102" />
+          <folding>
+            <marker date="1503076652925" expanded="true" signature="200:772" ph="SELECT quali... quality_InspectedRTs" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/weightsubmit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="83" lean-forward="false" selection-start-line="10" selection-start-column="83" selection-end-line="10" selection-end-column="83" />
+          <folding>
+            <marker date="1503076457503" expanded="true" signature="136:154" ph="..." />
+            <marker date="1503076457503" expanded="true" signature="235:245" ph="..." />
+            <marker date="1503076457503" expanded="true" signature="583:682" ph="INSERT INTO quality_AggregateWeightSamples... " />
+            <marker date="1503076457503" expanded="true" signature="997:1015" ph="..." />
+            <marker date="1503076457503" expanded="true" signature="1096:1106" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/API/rtinfoqa.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="51" column="0" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding>
+            <marker date="1503077007398" expanded="true" signature="198:1641" ph="SELECT Growe... quality_InspectedRTs" />
+            <marker date="1503077007398" expanded="true" signature="1820:2004" ph="SELECT Sampl... quality_AppleSamples" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="15" column="63" lean-forward="false" selection-start-line="15" selection-start-column="63" selection-end-line="15" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/quality/mobileQA.php">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="92" lean-forward="false" selection-start-line="0" selection-start-column="92" selection-end-line="0" selection-end-column="92" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/quality/DA.php">
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/QA.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="832">
-          <caret line="111" column="44" lean-forward="true" selection-start-line="111" selection-start-column="44" selection-end-line="111" selection-end-column="44" />
+        <state relative-caret-position="337">
+          <caret line="380" column="556" lean-forward="false" selection-start-line="380" selection-start-column="549" selection-end-line="380" selection-end-column="556" />
           <folding>
-            <marker date="1502297599692" expanded="true" signature="136:625" ph="SELECT quali... quality_InspectedRTs" />
-            <marker date="1502297599692" expanded="true" signature="2539:2560" ph="..." />
-            <marker date="1502297599692" expanded="true" signature="2806:2878" ph="..." />
-            <marker date="1502297599692" expanded="true" signature="2828:2861" ph="{...}" />
-            <marker date="1502297599692" expanded="true" signature="4420:4431" ph="..." />
-            <marker date="1502297599692" expanded="true" signature="4681:4692" ph="..." />
+            <marker date="1502996828727" expanded="true" signature="244:774" ph="SELECT quali... quality_InspectedRTs" />
+            <marker date="1502996828727" expanded="true" signature="244:816" ph="SELECT quali... quality_InspectedRTs" />
+            <marker date="1502996828727" expanded="true" signature="857:1093" ph="SELECT RunID... production_runs" />
+            <marker date="1502996828727" expanded="true" signature="1137:1545" ph="SELECT COUNT... quality_InspectedRTs" />
+            <marker date="1502996828727" expanded="true" signature="1158:1202" ph="SELECT SUM(W... quality_AppleSamples" />
+            <marker date="1502996828727" expanded="true" signature="1218:1267" ph="SELECT SUM(W... grower_Preharvest_Samples" />
+            <marker date="1502996828727" expanded="true" signature="1283:1330" ph="SELECT SUM(W... quality_run_inspections" />
+            <marker date="1502996828727" expanded="true" signature="1364:1405" ph="SELECT count... quality_AppleSamples" />
+            <marker date="1502996828727" expanded="true" signature="1421:1467" ph="SELECT COUNT... grower_Preharvest_Samples" />
+            <marker date="1502996828727" expanded="true" signature="1483:1527" ph="SELECT COUNT... quality_run_inspections" />
+            <marker date="1502996828727" expanded="true" signature="5742:5752" ph="..." />
+            <marker date="1502996828727" expanded="true" signature="6724:6734" ph="..." />
+            <marker date="1502996828727" expanded="true" signature="8316:8326" ph="..." />
+            <marker date="1502996828727" expanded="true" signature="16403:16421" ph="..." />
+            <marker date="1502996828727" expanded="true" signature="16831:16842" ph="..." />
+            <marker date="1502996828727" expanded="true" signature="16898:16907" ph="..." />
+            <marker date="1502996828727" expanded="true" signature="17055:17066" ph="..." />
+            <marker date="1502996828727" expanded="true" signature="17122:17131" ph="..." />
+            <marker date="1502996828727" expanded="true" signature="17278:17289" ph="..." />
+            <marker date="1502996828727" expanded="true" signature="17345:17354" ph="..." />
+            <marker date="1502996828727" expanded="true" signature="17817:17832" ph="..." />
+            <marker date="1502996828727" expanded="true" signature="22659:22728" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/storage/sequences.js">
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/Inspectorsubmit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="177" column="82" lean-forward="false" selection-start-line="177" selection-start-column="82" selection-end-line="177" selection-end-column="82" />
+        <state relative-caret-position="385">
+          <caret line="51" column="34" lean-forward="true" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
           <folding>
-            <marker date="1502303881632" expanded="true" signature="5395:5466" ph="..." />
-            <marker date="1502303881632" expanded="true" signature="5619:5684" ph="..." />
-            <marker date="1502303881632" expanded="true" signature="5885:5904" ph="..." />
-            <marker date="1502303881632" expanded="true" signature="5885:5919" ph="..." />
-            <marker date="1502303881632" expanded="true" signature="6028:6044" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="203:221" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="630:687" ph="SELECT * FRO... quality_InspectedRTs" />
+            <marker date="1503076205290" expanded="true" signature="755:773" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="854:864" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="2039:2057" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="2138:2148" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="2666:3451" ph="SELECT Growe... storage_grower_receipts" />
+            <marker date="1503076205290" expanded="true" signature="3525:3831" ph="SELECT count... storage_grower_receipts" />
+            <marker date="1503076205290" expanded="true" signature="3910:4295" ph="SELECT (coun... quality_InspectedRTs" />
+            <marker date="1503076205290" expanded="true" signature="4129:4294" ph="SELECT growe... storage_grower_receipts" />
+            <marker date="1503076205290" expanded="true" signature="4346:5475" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="4456:5105" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="4472:4684" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="4697:5092" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="5122:5378" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="5950:5968" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="6049:6059" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="6580:7321" ph="SELECT Growe... storage_grower_receipts" />
+            <marker date="1503076205290" expanded="true" signature="7395:7701" ph="SELECT count... storage_grower_receipts" />
+            <marker date="1503076205290" expanded="true" signature="7784:8173" ph="SELECT (coun... quality_InspectedRTs" />
+            <marker date="1503076205290" expanded="true" signature="8007:8172" ph="SELECT growe... storage_grower_receipts" />
+            <marker date="1503076205290" expanded="true" signature="8222:9365" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="8336:8989" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="8352:8564" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="8577:8972" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="9014:9269" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="9878:10619" ph="SELECT Growe... storage_grower_receipts" />
+            <marker date="1503076205290" expanded="true" signature="10693:10999" ph="SELECT count... storage_grower_receipts" />
+            <marker date="1503076205290" expanded="true" signature="11078:11468" ph="SELECT (coun... quality_InspectedRTs" />
+            <marker date="1503076205290" expanded="true" signature="11302:11467" ph="SELECT growe... storage_grower_receipts" />
+            <marker date="1503076205290" expanded="true" signature="11516:12605" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="11636:12285" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="11652:11864" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="11877:12272" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="12302:12556" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="13013:13754" ph="SELECT Growe... storage_grower_receipts" />
+            <marker date="1503076205290" expanded="true" signature="13834:14140" ph="SELECT count... storage_grower_receipts" />
+            <marker date="1503076205290" expanded="true" signature="14227:14636" ph="SELECT (coun... quality_InspectedRTs" />
+            <marker date="1503076205290" expanded="true" signature="14470:14635" ph="SELECT growe... storage_grower_receipts" />
+            <marker date="1503076205290" expanded="true" signature="14687:15858" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="14808:15541" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="14828:15076" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="15093:15524" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="15558:15809" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="16056:16293" ph="INSERT INTO `quality_InspectedRTs`... " />
+            <marker date="1503076205290" expanded="true" signature="16602:16620" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="16701:16711" ph="..." />
+            <marker date="1503076205290" expanded="true" signature="17104:17180" ph="INSERT INTO `quality_AppleSamples`... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/storage/API/getPivotLists.php">
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/ftadata.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="28" column="58" lean-forward="false" selection-start-line="28" selection-start-column="58" selection-end-line="28" selection-end-column="58" />
+        <state relative-caret-position="630">
+          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding>
+            <marker date="1503077438987" expanded="true" signature="873:997" ph="UPDATE quali... " />
+            <marker date="1503077438987" expanded="true" signature="1382:1455" ph="UPDATE quali... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/QAsubmit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="26" column="52" lean-forward="true" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
+          <folding>
+            <marker date="1503078822580" expanded="true" signature="397:469" ph="DELETE FROM " />
+            <marker date="1503078822580" expanded="true" signature="760:871" ph="UPDATE `qual... " />
+            <marker date="1503078822580" expanded="true" signature="937:1076" ph="UPDATE `qual... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="957">
+          <caret line="878" column="0" lean-forward="true" selection-start-line="878" selection-start-column="0" selection-end-line="878" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/storage/API/getRoomContents.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-          <folding>
-            <marker date="1502304383174" expanded="true" signature="334:1904" ph="SELECT `grow... storage_grower_fruit_bins" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/styles-common/sunburst/sunburst.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="8" lean-forward="false" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_4.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/storage/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="147" column="6" lean-forward="true" selection-start-line="147" selection-start-column="6" selection-end-line="147" selection-end-column="6" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

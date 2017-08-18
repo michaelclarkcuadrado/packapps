@@ -1,6 +1,5 @@
 <?php
 require '../config.php';
-require_once('emailAlerts/EmergencyAlert.php');
 
 $userData = packapps_authenticate_user('quality');
 
@@ -22,7 +21,7 @@ if (isset($_GET['del'])) {
 
     //Prepare Statement
     $stmt = mysqli_prepare($mysqli, "UPDATE `quality_AppleSamples` SET `Pressure1`=?, `Pressure2`=?, `Brix`=?, `Weight`=?,`FinalTestedBy`=? WHERE `receiptNum`=? AND SampleNum=?");
-    mysqli_stmt_bind_param($stmt, 'ddddsii', $Pressure1, $Pressure2, $Brix, $Weight, $userData['Real Name'], $RT, $Num);
+    mysqli_stmt_bind_param($stmt, 'ddddsii', $Pressure1, $Pressure2, $Brix, $Weight, $userData['username'], $RT, $Num);
     for ($i = 1; $i < $_POST['NumSamples'] + 1; $i++) {
         $Num = $i;
         $Pressure1 = $_POST['pressure' . $i . '-1'];

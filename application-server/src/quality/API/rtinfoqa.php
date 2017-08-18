@@ -11,9 +11,9 @@ $query = mysqli_query($mysqli, "
   strainName                                             AS StrDesc,
   farmName                                               AS FarmDesc,
   BlockDesc,
-  Date,
-  COUNT(bin_id)                                          AS QtyOnHand,
-  COUNT(bin_id) * storage_grower_fruit_bins.bushelsInBin AS BuOnHand,
+  DATE(Date)                                             AS Date,
+  COUNT(bin_id)                                          AS Qty,
+  COUNT(bin_id) * storage_grower_fruit_bins.bushelsInBin AS Bu,
   'Bulk Fruit'                                           AS ReceiptType,
   `Color Quality`                                        AS `ColorQuality`,
   Blush,
@@ -27,7 +27,7 @@ $query = mysqli_query($mysqli, "
   `StinkBug`,
   `Note`,
   date(`DateInspected`)                                  AS DateInspected,
-  `InspectedBy`,
+  `Real Name`                                            AS `InspectedBy`,
   `FTAup`,
   `DAFinished`,
   `StarchFinished`
@@ -35,6 +35,7 @@ FROM quality_InspectedRTs
   JOIN storage_grower_receipts ON quality_InspectedRTs.receiptNum = storage_grower_receipts.id
   JOIN storage_grower_fruit_bins ON storage_grower_receipts.id = storage_grower_fruit_bins.grower_receipt_id
   JOIN `grower_gfbvs-listing` ON `grower_gfbvs-listing`.PK = `storage_grower_receipts`.grower_block
+  JOIN packapps_master_users ON InspectedBy = username
 WHERE `receiptNum` = $ReceiptNum
 ");
 if (mysqli_num_rows($query) == '0') {

@@ -10,7 +10,7 @@ packapps_authenticate_user();
 $_GET['RT'] = mysqli_real_escape_string($mysqli, $_GET['RT']);
 $blockphotos = mysqli_query($mysqli, "
 SELECT
-  concat('//" . $availableBuckets['quality'] . $amazonAWSURL . "quality-rtnum-', `id`, '.jpg') AS link,
+  concat('//" . $availableBuckets['quality'] . $amazonAWSURL . $companyShortName . "-quality-rtnum-', `id`, '.jpg') AS link,
   `id`                         AS RT,
   (CASE WHEN `BlockDesc` = ''
     THEN '[No Block]'

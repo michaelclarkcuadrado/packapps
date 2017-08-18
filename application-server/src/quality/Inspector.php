@@ -28,24 +28,24 @@ $detect=new Mobile_Detect();
     <? if ($userData['Role'] == 'QA' && $detect->isMobile()) {
         echo "<p style='position: fixed; top: 0; width: 100%'><button onclick=\"location.replace('/quality')\"><<< Go back</button></p>";
     } ?>
-    <h1>New RT Quality Report</h1>
+    <h1>New Receipt Quality Report</h1>
     <br>
     <? if (isset($_GET['ins'])) {
-        echo "<h1><mark>&#x2713; Data for RT#" . $_GET['ins'] . " received.</mark><br><a href='WeightSamples.php?autofill=". $_GET['ins'] ."'><button>Weigh this RT</button></a></h1>";
+        echo "<h1><mark>&#x2713; Data for #" . $_GET['ins'] . " received.</mark><br><a href='WeightSamples.php?autofill=". $_GET['ins'] ."'><button>Weigh this Ticket</button></a></h1>";
     } ?>
 
     <h2><?echo $companyName?> Quality Assurance Lab</h2>
     <form id="inspectorSubmissionForm" action="Inspectorsubmit.php" method="post" enctype="multipart/form-data">
         <div class="col-2">
             <label>
-                RT Number
-                <input id="RT" type=number placeholder="RT" name="RT" required>
+                Receipt Number
+                <input id="RT" type=number placeholder="#" name="RT" required>
             </label>
         </div>
         <div class="col-2">
             <label>
-                Confirm RT Number
-                <input id='RT2' type=number placeholder="Confirm RT" name="RT2" required>
+                Confirm Receipt Number
+                <input id='RT2' type=number placeholder="Confirm #" name="RT2" required>
             </label>
         </div>
         <div class="col-2" id="RTinfo">
@@ -169,7 +169,7 @@ $detect=new Mobile_Detect();
                 <input type="text" maxlength="255" name="notes" placeholder="Anything else?" autocomplete="off"></label>
         </div>
         <div class="col-submit">
-            <button class="submitbtn">Submit RT to QA Lab</button><br>
+            <button class="submitbtn">Submit Report to QA Lab</button><br>
             <label style="border: dashed black 1px; vertical-align: middle">Inspected
                 by <? echo $userData['Real Name'] . " on " . date('l, F jS Y') ?></label>
         </div>

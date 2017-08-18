@@ -8,7 +8,7 @@ if($_POST['weight']*1 == 0) {
 }
 $weightinlb = ($_POST['weight']*2.2);
 $stmt = mysqli_prepare($mysqli, "INSERT INTO quality_AggregateWeightSamples (`receiptNum`, `Weight`, InspectorName) VALUES (?, ?, ?)") or error_log(mysqli_error($mysqli));
-mysqli_stmt_bind_param($stmt, "ids", $_POST['RT'], $weightinlb, $userData['Real Name']);
+mysqli_stmt_bind_param($stmt, "ids", $_POST['RT'], $weightinlb, $userData['username']);
 if ($_POST['RT'] == $_POST['RT2'] && mysqli_stmt_execute($stmt)) {
     echo "<script>location.replace('WeightSamples.php?ins=".$_POST['RT']."')</script>";
 } else {

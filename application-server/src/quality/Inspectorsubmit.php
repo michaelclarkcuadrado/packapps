@@ -88,7 +88,7 @@ WHERE grower_block = '" . $RTinfo['grower_block'] . "' AND YEAR(`date`) = YEAR(C
     <table border='1' cellpadding='3' cellspacing='0'>
         <thead>
         <th>Time</th>
-        <th>RT #</th>
+        <th>Delivery #</th>
         <th>Grower</th>
         <th>Farm</th>
         <th>Block</th>
@@ -161,7 +161,7 @@ WHERE grower_block = '" . $RTinfo['grower_block'] . "' AND YEAR(`date`) = YEAR(C
         <table border='1' cellpadding='3' cellspacing='0'>
         <thead>
         <th>Time</th>
-        <th>RT #</th>
+        <th>Delivery #</th>
         <th>Grower</th>
         <th>Farm</th>
         <th>Block</th>
@@ -230,7 +230,7 @@ WHERE grower_block = '" . $RTinfo['grower_block'] . "' AND YEAR(`date`) = YEAR(C
     <table border='1' cellpadding='3' cellspacing='0'>
         <thead>
         <th>Time</th>
-        <th>RT #</th>
+        <th>Delivery #</th>
         <th>Grower</th>
         <th>Farm</th>
         <th>Block</th>
@@ -298,7 +298,7 @@ WHERE grower_block = '" . $RTinfo['grower_block'] . "' AND YEAR(`date`) = YEAR(C
         <table border='1' cellpadding='3' cellspacing='0'>
             <thead>
             <th>Time</th>
-            <th>RT #</th>
+            <th>Delivery #</th>
             <th>Grower</th>
             <th>Farm</th>
             <th>Block</th>

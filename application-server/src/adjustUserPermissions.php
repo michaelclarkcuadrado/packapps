@@ -9,18 +9,10 @@ include 'config.php';
 //this file responds to requests from controlPanel.php
 
 //authentication
-if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
-    die("<script>window.location.replace('/')</script>");
-} else if (!hash_equals($_COOKIE['auth'], crypt($_COOKIE['username'], $securityKey))) {
-    die("<script>window.location.replace('/')</script>");
-} else {
-    $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
-    $checkAllowed = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Real Name`, isSystemAdministrator FROM packapps_master_users WHERE packapps_master_users.username = '$SecuredUserName'"));
-    //Only admins can edit
-    if ($checkAllowed['isSystemAdministrator'] == 0) {
-        header($_SERVER['SERVER_PROTOCOL'] . '500 Internal Server Error', true, 500);
-        die();
-    }
+$checkAllowed = packapps_authenticate_user();
+if ($checkAllowed['isSystemAdministrator'] == 0) {
+    header($_SERVER['SERVER_PROTOCOL'] . '500 Internal Server Error', true, 500);
+    die();
 }
 // end authentication
 
@@ -29,16 +21,16 @@ if (isset($_GET['disableToggle'])) {
     $user = mysqli_real_escape_string($mysqli, $_GET['disableToggle']);
 
     //check if you are disabling the last admin account
-    $checkIfDeletingAdmin = mysqli_query($mysqli,"SELECT isSystemAdministrator, isDisabled FROM packapps_master_users WHERE username = '$user'");
+    $checkIfDeletingAdmin = mysqli_query($mysqli, "SELECT isSystemAdministrator, isDisabled FROM packapps_master_users WHERE username = '$user'");
     $checkIfDeletingAdmin = mysqli_fetch_assoc($checkIfDeletingAdmin);
-    if($checkIfDeletingAdmin['isSystemAdministrator'] > 0 && $checkIfDeletingAdmin['isDisabled'] == 0){
+    if ($checkIfDeletingAdmin['isSystemAdministrator'] > 0 && $checkIfDeletingAdmin['isDisabled'] == 0) {
         $result = mysqli_query($mysqli, "SELECT username FROM packapps_master_users WHERE isDisabled=0 AND isSystemAdministrator=1");
-        if (mysqli_num_rows($result) == 1){
+        if (mysqli_num_rows($result) == 1) {
             header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
             die();
         }
     }
-mysqli_query($mysqli, "UPDATE packapps_master_users SET isDisabled = !isDisabled WHERE username = '$user'") or die(header($_SERVER['SERVER_PROTOCOL'] . '500 Internal Server Error', true, 500));
+    mysqli_query($mysqli, "UPDATE packapps_master_users SET isDisabled = !isDisabled WHERE username = '$user'") or die(header($_SERVER['SERVER_PROTOCOL'] . '500 Internal Server Error', true, 500));
 } else {
 
 //change packapps permissions per user
