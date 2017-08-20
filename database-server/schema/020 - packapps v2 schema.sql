@@ -73,7 +73,7 @@ ALTER TABLE master_users
 
 /* Create new UserData tables for new packapps and pre-populate with usernames */
 CREATE TABLE `operationsData`.`storage_UserData` (
-  `UserName` VARCHAR(255)                           NOT NULL,
+  `UserName` VARCHAR(255)                                       NOT NULL,
   `Role`     ENUM ('readonly', 'forklift', 'receiving', 'full') NOT NULL
 )
   ENGINE = InnoDB;
@@ -567,9 +567,9 @@ ALTER TABLE `grower_GrowerLogins`
   FIRST,
   ADD PRIMARY KEY (`GrowerID`);
 ALTER TABLE `grower_GrowerLogins`
-  ADD `login_email` VARCHAR(255) NOT NULL
+  ADD `login_email` VARCHAR(255) NULL
   AFTER `GrowerName`,
-  ADD INDEX (`login_email`);
+  ADD UNIQUE (`login_email`);
 ALTER TABLE `grower_GrowerLogins`
   ADD `lastLogin` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
   AFTER `isMultiAccountUser`;
@@ -691,6 +691,19 @@ ALTER TABLE `grower_crop-estimates`
   DROP `FarmDesc`,
   DROP `Str Desc`,
   DROP `2016hail`;
+
+/* Add columns for grower portal email collection */
+ALTER TABLE `grower_GrowerLogins`
+  DROP isMultiAccountUser,
+  ADD `confirm_email_sent` TINYINT(1) NOT NULL
+  AFTER `lastLogin`,
+  ADD `email_confirmed` TINYINT(1) NOT NULL
+  AFTER `confirm_email_sent`,
+  ADD `email_confirm_key` INT NULL
+  AFTER `email_confirmed`,
+  ADD `password_change_required` TINYINT(1) NOT NULL;
+
+ALTER TABLE `grower_GrowerLogins` ADD CONSTRAINT UNIQUE (email_confirm_key);
 
 /* Rename Views */
 /*!50001 DROP TABLE IF EXISTS `CurYearReceived`*/;

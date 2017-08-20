@@ -210,7 +210,7 @@ $detect=new Mobile_Detect();
                 error: function () {
                     this.tryCount++;
                     if (this.tryCount <= this.retryLimit) {
-                        $("#RTinfo").replaceWith("<div class='col-1' id='RTinfo'><label style='text-align: center; color: red'>That's not in the system! (Yet).<br> It might still be filtering in. Wait or try again.<br><br><button type='button' onclick='pullRTData()'>Check Again</button><br></label><label style='text-align: center;'>Are these fruit Golds or Gingergold apples?<input onchange='if (this.checked){activateGolds()} else {deactivateGolds()}' type='checkbox' name='goldsManualOverride' value='1' ></label></div>");
+                        $("#RTinfo").replaceWith("<div class='col-1' id='RTinfo'><label style='text-align: center; color: red'>That's not in the system. Please re-check.<br><br><button type='button' onclick='pullRTData()'>Check Again</button><br></label><label style='text-align: center;'>Are these fruit Golds or Gingergold apples?<input onchange='if (this.checked){activateGolds()} else {deactivateGolds()}' type='checkbox' name='goldsManualOverride' value='1' ></label></div>");
                         deactivateGolds();
                         $.ajax(this);
                     }

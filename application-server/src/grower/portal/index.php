@@ -2,10 +2,10 @@
 <html>
 <head>
     <?php
-    require_once '../../scripts-common/Mobile_Detect.php';
-    require_once 'incrementYearInDB.php';
     include '../../config.php';
     $userinfo = packapps_authenticate_grower();
+    require_once '../../scripts-common/Mobile_Detect.php';
+    require_once 'incrementYearInDB.php';
     $detect = new Mobile_Detect;
     $year = new Year();
     if (!$year->isCurrent($mysqli)) {
