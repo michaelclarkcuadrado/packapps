@@ -19,7 +19,7 @@ if ($userData['Role'] <> 'QA') {
 <br>
 <h2>Welcome back, <strong><? echo $userData['Real Name'] ?></strong></h2>
 <br>
-<h2>This Year: <? echo $total_count['countSamp'] ?> individual samples weighing a total <? echo $total_count['countWeight'] ?> pounds!</h2>
+<h2>Year to Date: <? echo $total_count['countSamp'] ?> individual samples weighing a total <? echo $total_count['countWeight'] ?> pounds!</h2>
 <br><br>
 <a href="Inspector.php">
     <button>Create a New Delivery Report</button>

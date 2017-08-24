@@ -10,11 +10,6 @@ $detect=new Mobile_Detect();
 <html lang="en-US">
 <head>
     <meta charset="utf-8">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="PackApps">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="icon" sizes="196x196" href="apple-touch-icon.png">
-    <meta name="mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
     <meta http-equiv="Content-Type" content="text/html">
     <meta name="theme-color" content="#e2eef4">

@@ -25,8 +25,8 @@ $roomContentsQueryResult = mysqli_query($mysqli, "SELECT
   strain_ID,
   COALESCE(NULLIF(strainName, ''), '[No Strain]') AS strainName,
   SUM(bushelsInBin) AS bushels,
-  storage_rooms.room_id,
-  COALESCE(NULLIF(storage_rooms.room_name, ''), '[Unnamed Room]') AS room_name,
+  IFNULL(storage_rooms.room_id, -1) AS room_id,
+  COALESCE(NULLIF(IFNULL(storage_rooms.room_name, 'Unassigned'), ''), '[Unnamed Room]') AS room_name,
   isAvailable,
   CASE WHEN isAvailable > 0 THEN 'Open' ELSE 'Closed' END AS availability
 FROM storage_grower_fruit_bins
@@ -44,9 +44,9 @@ FROM storage_grower_fruit_bins
     ON grower_varieties.commodityID = grower_commodities.commodity_ID
   JOIN grower_GrowerLogins
     ON grower_farms.growerID = grower_GrowerLogins.GrowerID
-  JOIN storage_rooms
+  LEFT JOIN storage_rooms
     ON storage_grower_fruit_bins.curRoom = storage_rooms.room_id
-WHERE curRoom LIKE '$room_id' AND storage_grower_fruit_bins.isFinished = 0
+WHERE IFNULL(curRoom, '') LIKE '$room_id' AND storage_grower_fruit_bins.isFinished = 0
 GROUP BY grower_farms.growerID, grower_farms.farmID, blockID, VarietyID, strain_ID
 ");
 

@@ -8,6 +8,13 @@
 require '../config.php';
 $userData = packapps_authenticate_user('storage');
 
+$binsReceived = mysqli_fetch_assoc(mysqli_query($mysqli, "
+SELECT COUNT(*) AS bins
+FROM storage_grower_fruit_bins
+  JOIN storage_grower_receipts ON storage_grower_fruit_bins.grower_receipt_id = storage_grower_receipts.id
+WHERE YEAR(date) = YEAR(CURDATE())"));
+$binsReceived = $binsReceived['bins'];
+
 include_once("../scripts-common/Mobile_Detect.php");
 $detect=new Mobile_Detect();
 if(!$detect->isMobile()){
@@ -15,43 +22,37 @@ if(!$detect->isMobile()){
 }
 ?>
 
-<!DOCTYPE html>
+<html>
 <meta name="theme-color" content="#e2eef4">
 <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
-<link rel="stylesheet" type="text/css" media="all" href="assets/css/inspector.css">
-<title>Mobile QA</title>
+<link rel="stylesheet" type="text/css" media="all" href="../styles-common/inspector.css">
+<title>Mobile Inventory</title>
 <body style="padding-top: 15px">
-<h1>Mobile QA Lab</h1>
-<h3 style="text-align: center"><?echo $companyName?> Quality Assurance Lab</h3>
+<h1>Mobile Inventory</h1>
+<h3 style="text-align: center"><?echo $companyName?> Storage Insights</h3>
 <br>
-<h2>Welcome back, <strong><? echo $userData['Real Name'] ?></strong></h2>
+<h2>Welcome back, <? echo $userData['Real Name'] ?>.</h2>
 <br>
-<h2>This Year: <? echo $total_count['countSamp'] ?> individual samples weighing a total <? echo $total_count['countWeight'] ?> pounds!</h2>
+<h2>Year to Date: <? echo $binsReceived ?> Bins Received!</h2>
 <br><br>
-<a href="Inspector.php">
-    <button>Create a New Delivery Report</button>
+<a href="newReceipt.php">
+    <button>Create New Receipt</button>
 </a>
 <br>
 <hr>
-<h2 style="text-align: center">Available Tests</h2><br>
-<button onclick="location.replace('WeightSamples.php')">Delivery Report >> Weighing</button>
+<h2 style="text-align: center">Inventory Actions</h2><br>
+<button onclick="location.replace('WeightSamples.php')">Assign Bins to Room</button>
 <br>
-<button onclick="location.replace('runPhoto.php')">Run Report >> Take Photo</button>
+<button onclick="location.replace('runPhoto.php')">Finish Bins</button>
 <br>
-<button onclick="location.replace('DA.php')">Delivery Report >> DA Test</button>
+<button onclick="location.replace('DA.php')">Move Bins</button>
 <br>
-<button onclick="location.replace('mobilestarch.php')">Delivery Report >> Starch Test</button>
+<button onclick="location.replace('mobilestarch.php')">Log Room Event</button>
 <br>
-<button onclick="location.replace('preharvest/mobilestarch.php')">Pre-Harvest Grower Report >> Starch Test</button>
+<button onclick="location.replace('preharvest/mobilestarch.php')">Open/Close Room</button>
 <br>
 <hr>
-<h2 style="text-align: center">Options</h2>
 <br>
-<button value="Logout" onclick="location.href = '/'">Main Menu</button>
-<br>
-<button style='height: 25px; width: 48%; margin-left: auto; display: block; margin-right: auto'
-        onclick="location.replace('QA.php')">View Desktop Version
-</button>
-
+<button value="Logout" onclick="location.href = '/'"><< Main Menu</button>
 </body>
 </html>

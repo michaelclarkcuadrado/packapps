@@ -46,18 +46,22 @@ if (isset($_COOKIE['auth']) && isset($_COOKIE['username'])) { //do redirect
         //do grower account login
         //inputted username may be username or email, so check
         $username = mysqli_real_escape_string($mysqli, $_POST['username']);
-        $growercodeAndHash = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT GrowerCode, `Password` FROM grower_GrowerLogins WHERE GrowerCode = '$username' OR login_email = '$username'"));
+        $growercodeAndHash = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT GrowerCode, `Password`, `isLoginDisabled` FROM grower_GrowerLogins WHERE GrowerCode = '$username' OR login_email = '$username'"));
         $hash = $growercodeAndHash['Password'];
         $username = $growercodeAndHash['GrowerCode'];
         if (APR1_MD5::check($_POST['password'], $hash)) {
-            setcookie('username', $username);
-            setcookie('auth', crypt($username, $growerSecurityKey));
-            setcookie('grower', 'true');
-            $check_grower_onramped = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT email_confirmed FROM grower_GrowerLogins"));
-            if ($check_grower_onramped['email_confirmed'] > 1) {
-                die(header('Location: grower/portal'));
+            if ($growercodeAndHash['isLoginDisabled'] > 0) {
+                $errormsg = "Your account is currently pending. Please contact the administrator for more information.";
             } else {
-                die(header('Location: grower/portal/onramp'));
+                setcookie('username', $username);
+                setcookie('auth', crypt($username, $growerSecurityKey));
+                setcookie('grower', 'true');
+                $check_grower_onramped = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT email_confirmed FROM grower_GrowerLogins"));
+                if ($check_grower_onramped['email_confirmed'] > 1) {
+                    die(header('Location: grower/portal'));
+                } else {
+                    die(header('Location: grower/portal/onramp'));
+                }
             }
         } else {
             $errormsg = "Sorry, We Couldn't Confirm Those Credentials. Try Again.";

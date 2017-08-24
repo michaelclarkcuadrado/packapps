@@ -573,6 +573,9 @@ ALTER TABLE `grower_GrowerLogins`
 ALTER TABLE `grower_GrowerLogins`
   ADD `lastLogin` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
   AFTER `isMultiAccountUser`;
+ALTER TABLE `grower_GrowerLogins`
+  ADD `isLoginDisabled` TINYINT(1) NOT NULL
+  AFTER `isMultiAccountUser`;
 UPDATE `grower_GrowerLogins`
 SET `lastLogin` = '0000-00-00';
 INSERT INTO grower_GrowerLogins (GrowerCode, GrowerName, login_email, Password, isAdmin, isMultiAccountUser) (SELECT DISTINCT
@@ -809,6 +812,8 @@ ALTER TABLE `storage_grower_receipts`
   ADD FOREIGN KEY (`grower_block`) REFERENCES `grower_crop-estimates` (`PK`)
   ON DELETE RESTRICT
   ON UPDATE RESTRICT;
+ALTER TABLE quality_InspectedRTs
+  AUTO_INCREMENT = 1000000;
 ALTER TABLE `storage_grower_receipts`
   ADD FOREIGN KEY (`receivedBy`) REFERENCES `storage_UserData` (`UserName`)
   ON DELETE RESTRICT
