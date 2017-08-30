@@ -32,13 +32,16 @@ $userData = packapps_authenticate_user('storage')
     <h1>New Receipt</h1>
     <br>
     <h2><? echo $companyName ?> Inventory Manager</h2>
-    <form id="inspectorSubmissionForm" action="" method="post" enctype="multipart/form-data">
+    <br>
+    <form style="max-width:750px;" id="ReceiptSubmissionForm" action="API/receiveNewReceipt.php" method="post" enctype="multipart/form-data">
         <div id="selectionViewer" style="display:none" class="col-2">
             <label>
-                Selection:
-                <div style="display:flex">
-                    <input type="text" style="overflow-x: scroll" id="selectionTitle" readonly placeholder="">
-                    <i id="blockChooserUndo" style="cursor: pointer;" class="material-icons">undo</i>
+                Details:
+                <div style="display:table">
+                    <input type="text" style="overflow-x: scroll" id="selectionGrower" readonly placeholder="">
+                    <input type="text" style="overflow-x: scroll; display: none" id="selectionVariety" readonly placeholder="">
+                    <input type="text" style="overflow-x: scroll; display: none" id="selectionBlock" readonly placeholder="">
+                    <i id="blockChooserUndo" style="cursor: pointer; float: right" class="material-icons">backspace</i>
                 </div>
             </label>
         </div>
@@ -49,109 +52,95 @@ $userData = packapps_authenticate_user('storage')
                 </select>
             </label>
         </div>
-        <div class="col-3">
-            <label>Color Quality</label>
-            <label class="ColorNonGoldsSelector" style="text-align: center">GOOD<input class="ColorNonGoldsSelector" type="radio" name="color" value="Good" required></label>
-            <label class="ColorNonGoldsSelector" style="text-align: center">FAIR<input class="ColorNonGoldsSelector" type="radio" name="color" value="Fair"></label>
-            <label class="ColorNonGoldsSelector" style="text-align: center">POOR<input class="ColorNonGoldsSelector" type="radio" name="color" value="Poor"></label>
-            <label class="ColorGoldsSelector" style="text-align: center; display: none">Green<input class="ColorGoldsSelector" type="radio" name="color" value="Green" disabled></label>
-            <label class="ColorGoldsSelector" style="text-align: center; display: none">Yellow<input class="ColorGoldsSelector" type="radio" name="color" value="Yellow" disabled></label>
-            <label class="ColorGoldsSelector" style="text-align: center; display: none">Blush<input class="ColorGoldsSelector" type="checkbox" name="blushcolor" value="1" disabled></label>
+        <div id="binRow1" class="col-3" style="display: flex">
+            <div style="width:100%">
+                <label>Number of Bins
+                    <input type="number" inputmode="numeric" pattern="[0-9]*" min="1" name="numbins1" max="100000" placeholder="0" required></label>
+            </div>
+            <div style="border-left: 1px solid #e4e4e4;">
+                <label>Bushels Per Bin
+                <input type="number" inputmode="numeric" pattern="[0-9]*" min="1" name="numbushels1" placeholder="23" max="50"></label>
+            </div>
         </div>
-        <!--Bitter Pit-->
-        <div class="col-4">
-            <label>Bitter pit</label>
-            <label style="text-align: center">None to Light
-                <input type="radio" onclick="$('#isBitterPit').slideUp();$('#bitterPitCloseUpPic').attr('disabled', true).attr('required', false);" name="isBitterPitPresent" value='0' id="bitterpit1"
-                       required/></label>
-            <label style="text-align: center">Moderate to Heavy
-                <input type="radio" onclick="$('#isBitterPit').slideDown();$('#bitterPitCloseUpPic').attr('disabled', false).attr('required', true);" name="isBitterPitPresent" value="1"
-                       id="bitterpit2"/></label>
-        </div>
-        <div id="isBitterPit" style="display: none" class='col-4'>
-            <label>
-                Take a photo of the bitter pit damage.
-                <input type="file" id="bitterPitCloseUpPic" name='bitterPitDamageCloseUp' accept="image/jpeg" disabled>
+        <div class="col-2">
+            <label style="margin:auto; width:125">
+                <i id="removeButton" class="material-icons">remove_circle</i>
+                <i id="addButton" class="material-icons">add_circle</i>
             </label>
         </div>
-        <!--Bruising-->
-        <div class="col-4">
-            <label>Bruising</label>
-            <label style="text-align: center">None
-                <input type="radio"
-                       onclick="$('.isBruisingHeavy').slideUp().attr('disabled', true).attr('required', false).attr('checked', false);$('.isBruisingSevere').slideUp().attr('disabled', true).attr('required', false);"
-                       name="isBruised" value='None' id="isBruised0" required/></label>
-            <label style="text-align: center">Lighter
-                <input type="radio"
-                       onclick="$('.isBruisingHeavy').slideUp().attr('disabled', true).attr('required', false).attr('checked', false);$('.isBruisingSevere').slideUp().attr('disabled', true).attr('required', false);"
-                       name="isBruised" value='Light' id="isBruised1"/></label>
-            <label style="text-align: center">Heavier
-                <input type="radio" onclick="$('.isBruisingHeavy').slideDown().attr('disabled', false).attr('required', true);" name="isBruised" value="Heavy" id="isBruised2"/></label>
-        </div>
-        <div style="display: none" class='col-4 isBruisingHeavy'>
-            <label>Is the bruising severe?</label>
-            <label style="text-align: center">No
-                <input class="isBruisingHeavy" type="radio" onclick="$('.isBruisingSevere').slideUp().attr('disabled', true).attr('required', false);" name="isBruisedSevere" value='No'
-                       id="isBruisedSevere1" required disabled/></label>
-            <label style="text-align: center">Yes
-                <input class="isBruisingHeavy" type="radio" onclick="$('.isBruisingSevere').slideDown().attr('disabled', false).attr('required', true);" name="isBruisedSevere" value='Yes'
-                       id="isBruisedSevere1" disabled/></label>
-        </div>
-        <div style="display: none" class='col-4 isBruisingSevere'>
-            <label>
-                Take a photo of the bruising damage.
-                <input type="file" class="isBruisingSevere" name='bruisingDamageCloseUp' accept="image/jpeg" disabled>
-            </label>
-        </div>
-
-        <!--Color-->
-        <div style="display: none" class="col-4 ColorGoldsSelector">
-            <label>
-                Russet
-                <select class="ColorGoldsSelector" name="russetpercent" disabled>
-                    <option value="None">None</option>
-                    <option value="Light">Light</option>
-                    <option value="Moderate">Moderate</option>
-                    <option value="Heavy">Heavy</option>
-                    <option value="Severe">Severe</option>
-                </select>
-            </label>
-        </div>
-        <div class="col-4">
-            <label>Additional Notes
-                <input type="text" maxlength="255" name="notes" placeholder="Anything else?" autocomplete="off"></label>
+        <div class="col-2">
+            <label>External Reference Number
+            <input type="number" inputmode="numeric" pattern="[0-9]*" name="externrefnum" min="0"></label>
         </div>
         <div class="col-submit">
             <button class="submitbtn">Receive Inventory</button>
             <br>
-            <label style="border: dashed black 1px; vertical-align: middle">Inspected
+            <label style="border: dashed black 1px; vertical-align: middle">Received
                 by <? echo $userData['Real Name'] . " on " . date('l, F jS Y') ?></label>
         </div>
     </form>
 </div>
 </body>
 <script>
+    var curNumRows = 1;
+
     var curgrowerID = null;
     var curvarID = null;
     var curblockID = null;
     var curGrowerName = null;
     var curVarName = null
     var curBlockDesc = null;
+    var notready = true;
 
     var currSelect2 = null;
-    $(document).ready(function () {
-        setupChooseGrower();
-        $('#blockChooserUndo').on('click', function() {
-            //find current stage and undo
 
+    $(document).ready(function (event) {
+        setupChooseGrower();
+
+        //attach listeners
+
+        $('#addButton').on('click', addRow);
+        $('#removeButton').on('click', removeRow);
+        $('#ReceiptSubmissionForm').submit(function(){
+            if(notready){
+                return;
+            }
+            event.preventDefault();
+        });
+
+        $('#blockChooserUndo').on('click', function () {
+            notready = true;
+            //find current stage and undo
+            if (curblockID === null) {
+                if (curvarID === null) {
+                    setupChooseGrower();
+                } else {
+                    setupChooseVar(curgrowerID, curGrowerName);
+                }
+            } else {
+                setupChooseBlock(curgrowerID, curvarID, curGrowerName, curVarName);
+            }
         });
     });
+
+    function addRow(){
+        var rowNum = curNumRows + 1;
+        var htmlString = "<div id=\"binRow" + rowNum + "\" class=\"col-3\" style=\"display: flex\"><div style=\"width:100%\"><label>Number of Bins<input type=\"number\" inputmode=\"numeric\" pattern=\"[0-9]*\" min=\"1\" name=\"numbins" + rowNum + "\" max=\"100000\" inputmode=\"numeric\" pattern=\"[0-9]*\" placeholder=\"0\" required></label></div><div style=\"border-left: 1px solid #e4e4e4;\"><label>Bushels Per Bin<input type=\"number\" min=\"1\" name=\"numbushels" + rowNum + "\" placeholder=\"23\" max=\"50\"></label></div></div>";
+        $(htmlString).insertAfter('#binRow' + curNumRows++);
+    }
+
+    function removeRow(){
+        if(curNumRows > 1){
+            $('#binRow' + curNumRows--).remove();
+        }
+    }
 
     function setupChooseGrower() {
         curgrowerID = null;
         curGrowerName = null;
         $('#BlockSel').show();
         $('#selectionViewer').hide();
+        $('#selectionGrower').val('');
         var blockChooserSelect = $('#blockChooserSelect');
         blockChooserSelect.off('select2:select');
         $('#blockChooserTitle').text("Grower");
@@ -173,7 +162,9 @@ $userData = packapps_authenticate_user('storage')
     function setupChooseVar(growerID, growerName) {
         //change titles
         $('#blockChooserTitle').text("Variety");
-        $('#selectionTitle').val(growerName);
+        $('#selectionGrower').val(growerName);
+        $('#selectionVariety').hide();
+        $('#selectionBlock').hide();
         $('#selectionViewer').show();
         //destroy old values
         $('#BlockSel').show();
@@ -201,27 +192,28 @@ $userData = packapps_authenticate_user('storage')
         curBlockDesc = null;
         //change titles
         $('#blockChooserTitle').text('Block');
-        $('#selectionTitle').val(growerName + ' - ' + VarName);
-        $('selectionViewer').show();
+        $('#selectionVariety').val(VarName).show();
+        $('#selectionBlock').hide();
         //destroy old values
         $('#BlockSel').show();
         blockID = null;
         var blockChooserSelect = $('#blockChooserSelect');
         blockChooserSelect.off('select2:select');
         blockChooserSelect.html('<option></option>');
-        $.getJSON('API/getBlockIDHelper.php', {growerID: growerID, VarietyID: varID}, function(data){
+        $.getJSON('API/getBlockIDHelper.php', {growerID: growerID, VarietyID: varID}, function (data) {
             currSelect2 = blockChooserSelect.select2({
                 placeholder: "Select a block:",
                 data: data,
                 width: '100%',
             });
-            blockChooserSelect.on('select2:select', function(e){
+            blockChooserSelect.on('select2:select', function (e) {
                 curblockID = e.params.data.id;
                 curBlockDesc = e.params.data.text;
                 //update selection title
-                $('#selectionTitle').val(growerName + ' - ' + VarName + ' - ' + e.params.data.text);
+                $('#selectionBlock').val(e.params.data.text).show();
                 //close out chooser and hide
                 $('#BlockSel').hide();
+                notready = false;
             });
         });
     }

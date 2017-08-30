@@ -31,7 +31,7 @@ if (isset($_GET['growerID'])) {
         ");
         $output = array();
         while($row = mysqli_fetch_assoc($blocks)){
-            $text = ($row['isDeleted'] > 0 ? '[Retired] ' : '') . ($row['isFinished'] > 0 ? '[Finished] ' : '') . " Block:  " . $row['BlockDesc'] . " - Farm: " . $row['farmName'] . " - Strain: " . $row['strainName'] ;
+            $text = ($row['isDeleted'] > 0 ? '[Retired] ' : '') . ($row['isFinished'] > 0 ? '[Finished] ' : '') . "Block:  " . $row['BlockDesc'] . " - Farm: " . $row['farmName'] . " - Strain: " . $row['strainName'] ;
             array_push($output, array('id' => $row['PK'], 'text' => $text));
         }
         echo json_encode($output);
