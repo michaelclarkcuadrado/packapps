@@ -21,7 +21,7 @@ if ($userData['login_email'] == null && $userData['confirm_email_sent'] == 0) {
     mysqli_query($mysqli, "UPDATE grower_GrowerLogins SET email_confirmed = 1 WHERE GrowerCode = '" . $userData['GrowerCode'] . "'");
     $statusMessage = "Email Confirmed. <br><br> Your account is now activated. Enjoy!";
 } else {
-    die ("<script>window.location.replace('/')</script>");
+    die ("<script>window.location.replace('/grower')</script>");
 }
 
 ?>

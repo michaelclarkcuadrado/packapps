@@ -5,9 +5,19 @@
     include '../../config.php';
     $userinfo = packapps_authenticate_grower();
     echo "<title>Change Password for " . $userinfo['GrowerName'] . "</title>";
+
+    $passwordChangeMessage = "";
+    if (isset($_POST['NewPassword']) && isset($_POST['NewPassword2'])) {
+        $passwordChangeMessage = "Passwords did not match!";
+        if ($_POST['NewPassword'] == $_POST['NewPassword2']) {
+            $passHash = \WhiteHat101\Crypt\APR1_MD5::hash($_POST['NewPassword']);
+            mysqli_query($mysqli, "UPDATE grower_growerLogins SET `Password`='$passHash' WHERE GrowerCode='" . $userinfo['GrowerCode'] . "'");
+            $passwordChangeMessage = "Password Change Successful!";
+        }
+    }
     ?>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <meta name="description" content="<?echo $companyName?> Grower Control Panel"/>
+    <meta name="description" content="<? echo $companyName ?> Grower Control Panel"/>
     <meta name="keywords" content=""/>
     <!--[if lte IE 8]>
     <script src="css/ie/html5shiv.js"></script><![endif]-->
@@ -37,7 +47,7 @@
         <div id="logo">
             <span class="image"><img src="images/avatar.png" alt=""/></span>
             <h1 id="title"><? echo $userinfo['GrowerName'] ?></h1>
-            <p><?echo $companyName?> Grower</p>
+            <p><? echo $companyName ?> Grower</p>
         </div>
 
         <!-- Nav -->
@@ -63,8 +73,9 @@
             <header>
                 <h2 class="alt">Password change for account <strong><? echo $userinfo['GrowerName'] ?></strong><br/></h2>
             </header>
-            <form class='12u' action="changepw2.php" method="POST"><input name="NewPassword" placeholder="New Password"
-                                                                          type="password" size="15" required autofocus>
+            <?echo "<mark>".$passwordChangeMessage."</mark>"?>
+            <form class='12u' action="changepw.php" method="POST"><input name="NewPassword" placeholder="New Password"
+                                                                         type="password" size="15" required autofocus>
                 <br>
                 <input class='6u' name="NewPassword2" placeholder="Confirm New Password" type="password" size="15"
                        required>

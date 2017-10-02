@@ -12,8 +12,6 @@
     <meta name="keywords" content=""/>
     <!--[if lte IE 8]>
     <script src="css/ie/html5shiv.js"></script><![endif]-->
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="icon" sizes="196x196" href="apple-touch-icon.png">
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.scrolly.min.js"></script>
     <script src="js/jquery.scrollzer.min.js"></script>

@@ -695,6 +695,42 @@ ALTER TABLE `grower_crop-estimates`
   DROP `Str Desc`,
   DROP `2016hail`;
 
+/* Branch off year columns from grower_crop-estimates */
+CREATE TABLE `operationsData`.`grower_block_bushel_history` (
+  `block_PK`     INT                 NOT NULL,
+  `year`         YEAR                NOT NULL,
+  `value_type`   ENUM ('act', 'est') NOT NULL,
+  `bushel_value` MEDIUMINT           NOT NULL
+) ENGINE = InnoDB;
+ALTER TABLE `grower_block_bushel_history` ADD PRIMARY KEY( `block_PK`, `year`, `value_type`);
+ALTER TABLE `grower_block_bushel_history` ADD FOREIGN KEY (`block_PK`) REFERENCES `grower_crop-estimates`(`PK`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+/* Do a big insert, up until 2017 estimates, and drop old vals */
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT PK, 2010act, '2010', 'act' FROM `grower_crop-estimates`);
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT PK, 2011act, '2011', 'act' FROM `grower_crop-estimates`);
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT PK, 2012act, '2012', 'act' FROM `grower_crop-estimates`);
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT PK, 2013act, '2013', 'act' FROM `grower_crop-estimates`);
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT PK, 2014act, '2014', 'act' FROM `grower_crop-estimates`);
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT PK, 2014est, '2014', 'est' FROM `grower_crop-estimates`);
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT PK, 2015act, '2015', 'act' FROM `grower_crop-estimates`);
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT PK, 2015est, '2015', 'est' FROM `grower_crop-estimates`);
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT PK, 2016act, '2016', 'act' FROM `grower_crop-estimates`);
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT PK, 2016est, '2016', 'est' FROM `grower_crop-estimates`);
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT PK, 2017est, '2017', 'est' FROM `grower_crop-estimates`);
+
+ALTER TABLE `grower_crop-estimates`
+  DROP `2010act`,
+  DROP `2011act`,
+  DROP `2012act`,
+  DROP `2013act`,
+  DROP `2014est`,
+  DROP `2014act`,
+  DROP `2015est`,
+  DROP `2015act`,
+  DROP `2016est`,
+  DROP `2016act`,
+  DROP `2017est`;
+
 /* Add columns for grower portal email collection */
 ALTER TABLE `grower_GrowerLogins`
   DROP isMultiAccountUser,
@@ -706,7 +742,8 @@ ALTER TABLE `grower_GrowerLogins`
   AFTER `email_confirmed`,
   ADD `password_change_required` TINYINT(1) NOT NULL;
 
-ALTER TABLE `grower_GrowerLogins` ADD CONSTRAINT UNIQUE (email_confirm_key);
+ALTER TABLE `grower_GrowerLogins`
+  ADD CONSTRAINT UNIQUE (email_confirm_key);
 
 /* Rename Views */
 /*!50001 DROP TABLE IF EXISTS `CurYearReceived`*/;

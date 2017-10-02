@@ -12,7 +12,7 @@ if($_POST['operation'] == 'add'){
     $Variety = mysqli_real_escape_string($mysqli, $_POST['variety']);
     $Strain = mysqli_real_escape_string($mysqli, $_POST['strain']);
     $start = date('Y-m-d');
-    mysqli_query($mysqli, "INSERT INTO grower_GrowerCalendar (Grower, Variety, Strain, Start, EndDate) VALUES ('$Grower', '$Variety', '$Strain', '$start', '$start' + INTERVAL 1 DAY)") or die(header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500));
+    mysqli_query($mysqli, "INSERT INTO grower_growerCalendar (Grower, Variety, Strain, Start, EndDate) VALUES ('$Grower', '$Variety', '$Strain', '$start', '$start' + INTERVAL 1 DAY)") or die(header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500));
 } else if ($_POST['operation'] == 'move') {
     $eventID = mysqli_real_escape_string($mysqli, $_POST['eventID']);
     $deltaDays = mysqli_real_escape_string($mysqli, $_POST['deltaDays']);

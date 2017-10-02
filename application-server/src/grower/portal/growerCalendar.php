@@ -12,8 +12,6 @@
     <meta name="keywords" content=""/>
     <!--[if lte IE 8]>
     <script src="css/ie/html5shiv.js"></script><![endif]-->
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="icon" sizes="196x196" href="apple-touch-icon.png">
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.scrolly.min.js"></script>
     <script src="js/jquery.scrollzer.min.js"></script>
@@ -68,7 +66,7 @@
         <section id="estimates" class="one dark cover">
             <div>
                 <h2>Your picking calendar</h2>
-                <p style='width: 80%; margin: auto'>You can use this tool to share your picking plans with us and to organize them. This helps us plan for when deliveries will arrive and helps us sell your fruit.</p>
+                <p style='width: 80%; margin: auto'>You can use this tool to share your picking plans with us and to organize them. This helps us plan for when deliveries times and helps us sell your fruit.</p>
             </div>
 </section>
     <section>

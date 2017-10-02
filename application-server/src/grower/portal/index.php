@@ -10,54 +10,19 @@
     $year = new Year();
     if (!$year->isCurrent($mysqli)) {
         error_log("First access since new year, incrementing year.");
-	$year->increment($mysqli);
+        $year->increment($mysqli);
     }
 
-    $blockCompletionData = mysqli_query($mysqli, "select `grower_crop-estimates`.`PK` AS `PK`,
-    `grower_crop-estimates`.`Comm Desc` AS `Comm Desc`,
-    `grower_crop-estimates`.`VarDesc` AS `VarDesc`,
-    `grower_crop-estimates`.`Str Desc` AS `Str Desc`,
-    `grower_crop-estimates`.`FarmDesc` AS `FarmDesc`,
-    `grower_crop-estimates`.`BlockDesc` AS `BlockDesc`,
-    ifnull(sum(`BULKRTCSV`.`Bu`), 0) AS `Total`,
-    `" . date('Y') . "est` AS Est,
-    ifnull(round(((sum(`BULKRTCSV`.`Bu`) / `grower_crop-estimates`.`" . date('Y') . "est`) * 100), 2), 0) AS `Percent`,
-    `grower_crop-estimates`.`isFinished` AS `isFinished` 
-  from (`grower_crop-estimates` 
-    join `BULKRTCSV` 
-      on(((trim(`BULKRTCSV`.`Comm Desc`) = trim(`grower_crop-estimates`.`Comm Desc`)) 
-          and (trim(`BULKRTCSV`.`VarDesc`) = trim(`grower_crop-estimates`.`VarDesc`)) 
-          and (trim(`BULKRTCSV`.`StrDesc`) = trim(`grower_crop-estimates`.`Str Desc`)) 
-          and (trim(`BULKRTCSV`.`BlockDesc`) = trim(`grower_crop-estimates`.`BlockDesc`)) 
-          and (trim(`BULKRTCSV`.`FarmDesc`) = trim(`grower_crop-estimates`.`FarmDesc`)) 
-          and (trim(`BULKRTCSV`.`Grower`) = trim(`grower_crop-estimates`.`Grower`))))) 
-  where ((`crop-estimates`.`isDeleted` = '0') 
-         and `crop-estimates`.Grower = '" . $userinfo['GrowerCode'] . "'
-         and `Crop Year`= substr(YEAR(CURDATE()), 4,1))
-  group by `crop-estimates`.`PK`
-        ORDER BY isFinished, Percent ASC") or error_log(mysqli_error($mysqli));
-
     $estimates = mysqli_query($mysqli, "SELECT PK,`Comm Desc`,VarDesc,FarmDesc,BlockDesc,`Str Desc`,isDeleted,isSameAsLastYear," . (date('Y') - 3) . "act," . (date('Y') - 2) . "act," . (date('Y') - 1) . "est," . (date('Y') - 1) . "act," . (date('Y')) . "est from `crop-estimates` where Grower='" . $userinfo['GrowerCode'] . "' Order by isDeleted, `Comm Desc`, VarDesc, FarmDesc, BlockDesc, `Str Desc` ASC;");
-
-    $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) as count FROM (SELECT PK FROM `grower_Preharvest_Samples` WHERE Grower= '" . $userinfo['GrowerCode'] . "' AND `Date` >= (NOW() - INTERVAL 7 DAY) GROUP BY `Date`, `PK`) t1"))['count'];
-
-    $receiptdata = mysqli_query($mysqli, "SELECT `RT#` AS RTNum, `Comm Desc`,`VarDesc`,`StrDesc`,`FarmDesc`,`BlockDesc`,`Date`,`Qty`,`Bu` FROM `BULKRTCSV` WHERE Grower='" . $userinfo['GrowerCode'] . "' AND Class='1' AND Bu <> 0 AND `Crop Year` = '".substr(date('y'), -1)."' ORDER BY DATE DESC LIMIT 75");
+    $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS count FROM (SELECT PK FROM `grower_Preharvest_Samples` WHERE Grower= '" . $userinfo['GrowerCode'] . "' AND `Date` >= (NOW() - INTERVAL 7 DAY) GROUP BY `Date`, `PK`) t1"))['count'];
 
     echo "<title>" . $companyName . " Portal: " . $userinfo['GrowerName'] . "</title>";
     ?>
 
     <link rel="stylesheet" href="css/select2.min.css">
     <!--[if lte IE 8]>
-    <script src="css/ie/html5shiv.js"></script><![endif]-->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/notify.min.js"></script>
-    <script src="js/jquery.scrolly.min.js"></script>
-    <script src="js/jquery.scrollzer.min.js"></script>
-    <script src="js/skel.min.js"></script>
-    <script src="js/skel-layers.min.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/select2.min.js"></script>
-    <script src="js/jquery.tablesorter.min.js"></script>
+    <script src="css/ie/html5shiv.js"></script>
+    <![endif]-->
     <noscript>
         <link rel="stylesheet" href="css/skel.css"/>
         <link rel="stylesheet" href="css/style.css"/>
@@ -68,64 +33,6 @@
     <!--[if lte IE 8]>
     <link rel="stylesheet" href="css/ie/v8.css"/><![endif]-->
 </head>
-<script>
-    $(document).ready(function () {
-        $("#hider").click(function () {
-            $("#longtab").slideToggle();
-        });
-        $("#hider2").click(function () {
-            $("#longtab2").slideToggle();
-        });
-        $("#hider3").click(function () {
-            $("#addblockpanel").slideToggle();
-        });
-        $("#optiontoggle").click(function () {
-            $("#options").slideToggle();
-            $("#optionstab").toggleClass("fa-chevron-down fa-minus");
-            _paq.push(['trackEvent', 'Options', 'MenuExpanded']);
-
-        });
-        $("#autovar").select2({
-            placeholder: "Variety",
-            data: varieties
-
-        });
-        $("#autostr").select2({
-            placeholder: "Strain",
-            data: strains
-        });
-
-        $('#tableEstimatesSubmitter').tablesorter({
-            textExtraction: {
-                3: function (node, table, cellIndex) {
-                    return $(node).find("input").val();
-                }
-            },
-            headers: {
-                0: {sorter: false},
-                9: {sorter: false}
-            }
-        });
-    });
-    //attach event listeners to estimates table
-    $(document).on("change", ".estimatesubmitter, .blocknamer", function () {
-        $.post("processEstimates.php<?if (isset($_GET['alt_acc'])) {
-            echo '?alt_acc=' . $_GET['alt_acc'];
-        }
-            ?>", $(this).serialize(), function () {
-            $.notify("Information Received", "success");
-            _paq.push(['trackEvent', 'EstimatesandBlockName', 'Submitted']);
-        });
-        return false;
-    });
-
-    function logout() {
-        document.cookie = "auth=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-        document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-        document.cookie = "grower=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-        window.location.replace('/');
-    }
-</script>
 <body>
 
 <!-- Header -->
@@ -144,21 +51,26 @@
         <nav id="nav">
             <ul>
                 <li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span
-                            class="icon fa-home">Home</span></a></li>
+                                class="icon fa-home">Home</span></a></li>
                 <li><a href="#receiving" id="receiving-link" class="skel-layers-ignoreHref"><span class="icon fa-truck">Received Shipments</span></a>
                 </li>
                 <li><a href="#blockdata" id="blockdata-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Picking Status</span></a>
                 </li>
                 <li><a href="#estimates" id="estimates-link" class="skel-layers-ignoreHref"><span
-                            class="icon fa-sliders">Blocks & Estimates</span></a></li>
-                <li><hr style='width: 75%; margin-top: 0; margin-bottom:0; border-top: solid 1px rgba(255,255,255,0.5)'></li>
-                <li <?php echo ( $detect->isMobile() ? "style='display: none'" : '')?>><a href="growerCalendar.php" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-calendar">Picking Calendar</span></a></li>
+                                class="icon fa-sliders">Blocks & Estimates</span></a></li>
+                <li>
+                    <hr style='width: 75%; margin-top: 0; margin-bottom:0; border-top: solid 1px rgba(255,255,255,0.5)'>
+                </li>
+                <li <?php echo($detect->isMobile() ? "style='display: none'" : '') ?>><a href="growerCalendar.php" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-calendar">Picking Calendar</span></a>
+                </li>
                 <li><a href="QAview.php"><span class="icon fa-area-chart">Block-by-Block QA</span></a>
                 </li>
                 <li><a href="preharvest.php"><span
-                            class="icon fa-stethoscope <?if($numPreHarvest > 0){echo 'phbadge';}?>" data-badge="<?echo $numPreHarvest?>">Pre-Harvest Checkup</span></a></li>
+                                class="icon fa-stethoscope <? if ($numPreHarvest > 0) {
+                                    echo 'phbadge';
+                                } ?>" data-badge="<? echo $numPreHarvest ?>">Pre-Harvest Checkup</span></a></li>
                 <li><a href="growerfileshare/"><span
-                            class="icon fa-cloud-download">Shared Files</span></a></li>
+                                class="icon fa-cloud-download">Shared Files</span></a></li>
                 <? if ($detect->isMobile()) {
                     echo " <div id='options' style='background: rgba(0,0,0,0.15);'>
                                 <li><a href='changepw.php'><span  class=\"icon fa-key\">Change Password</span></a></li>
@@ -184,7 +96,6 @@
     <!-- Intro -->
     <section id="top" class="one dark cover">
         <div class="container">
-
             <header>
                 <h2 class="alt"><strong><?php echo $userinfo['GrowerName'] ?></strong> Grower Control Panel<br/>
                     at <strong><? echo $companyName ?></strong></h2>
@@ -192,14 +103,14 @@
             </header>
             <footer>
                 <a href="#estimates" class="button scrolly"><span
-                        class="icon fa-pencil"> Let's do my Estimates</a>
+                            class="icon fa-pencil"> Let's do my Estimates</a>
             </footer>
 
         </div>
     </section>
     <!--Received Shipments -->
     <section id="receiving" class="receiving three">
-        <div class="container">
+        <div id="deliveriesvue" class="container">
             <header>
                 <h2 class="alt">Your Shipments to <? echo $companyName ?></h2>
                 <h2><span class="icon fa-truck"></span></h2>
@@ -208,14 +119,14 @@
             <p>
                 <button id="hider"
                         class="button"><span
-                        class="icon fa-eye-slash"> View/Hide Receiving Data <? echo "(" . mysqli_num_rows($receiptdata) . " receipts)" ?></span>
+                            class="icon fa-eye-slash"> View/Hide Receiving Data ({{deliveries.length}} receipts)</span>
                 </button>
             </p>
-            <div id="longtab" style="display: none;">
-                <table id="receivedTrucksTable" border='1px'>
+            <div id="longtab" style="display:none">
+                <table id="truckDeliveries" border='1px'>
                     <thead>
                     <tr>
-                        <th></th>
+                        <th>QA</th>
                         <th><b>Date Received</th>
                         <th><b>Farm</th>
                         <th><b>Block</th>
@@ -226,9 +137,49 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <?php while ($ReceivingArray = mysqli_fetch_array($receiptdata)) {
-                        echo "<tr><td><abbr title='View Delivery #" . $ReceivingArray['RTNum'] . "'><a href='img.php?q=../" . $ReceivingArray['RTNum'] . ".jpg' class='icon fa-camera'></a></td></abbr></td><td>" . date('D, jS M Y', strtotime($ReceivingArray['Date'])) . "</td><td>" . $ReceivingArray['FarmDesc'] . "</td><td>" . $ReceivingArray['BlockDesc'] . "</td><td><abbr title=" . rtrim($ReceivingArray['Comm Desc']) . "><img src='images/" . rtrim($ReceivingArray['Comm Desc']) . ".png' height='25px' width='25px'/></abbr>" . $ReceivingArray['VarDesc'] . "</td><td>" . $ReceivingArray['StrDesc'] . "</td><td>" . $ReceivingArray['Qty'] . "</td><td>" . $ReceivingArray['Bu'] . "</td><tr>";
-                    } ?></tbody>
+                    <tr v-for="(delivery, index) in deliveries">
+                        <td>
+                            <abbr v-if="delivery.isQATested > 0" v-bind:title="getMouseOverQAPhotoString(delivery.delivery_ID)">
+                                <a :href="'<?php echo "//" . $availableBuckets['quality'] . $amazonAWSURL . $companyShortName . "-quality-rtnum-" ?>' + delivery.delivery_ID + '.jpg'"
+                                   class="icon fa-camera">
+                                </a>
+                            </abbr>
+                            <abbr v-else title="This one hasn't been tested yet.">
+                                <span class="fa-stack">
+                                        <i class="fa fa-camera fa-stack-1x"></i>
+                                        <i class="fa fa-ban fa-stack-2x" style="color: #d9534f"></i>
+                                </span>
+                            </abbr>
+                        </td>
+                        <td>
+                            {{delivery.date}}
+                        </td>
+                        <td>
+                            {{delivery.farmName}}
+                        </td>
+                        <td>
+                            <abbr v-if="delivery.BlockIsDeleted > 0" title="This block has been marked as deleted.">
+                                <i class="fa fa-exclamation-triangle"></i>
+                            </abbr>
+                            {{delivery.BlockDesc}}
+                        </td>
+                        <td>
+                            <abbr :title="delivery.commodity_name">
+                                <img :src="'images/' + delivery.commodity_name + '.png'" height="25px" width="25px"/>
+                            </abbr>
+                            {{delivery.VarietyName}}
+                        </td>
+                        <td>
+                            {{delivery.strainName}}
+                        </td>
+                        <td>
+                            {{delivery.bins_quantity}}
+                        </td>
+                        <td>
+                            {{delivery.bushelsTotal}}
+                        </td>
+                    </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -245,9 +196,46 @@
                 during picking.</p>
             <p>
                 <button id="hider2" class="button" style="text-align: left"><span
-                        class="icon fa-eye-slash"> View/Hide Picking Stats</span></button>
+                            class="icon fa-eye-slash"> View/Hide Picking Stats</span></button>
             </p>
             <div id="longtab2" style="display: none">
+                <div id="pickingStatusvue">
+                    <table border='1 px'>
+                        <tr>
+                            <td><b>Farm</td>
+                            <td><b>Block</td>
+                            <td><b>Variety</td>
+                            <td><b>Strain</td>
+                            <td><b>Received Bushels</td>
+                            <td><b>Estimated</td>
+                            <td><b><abbr title='(of the estimate for this block)'>% Done</abbr></td>
+                            <td><b>Mark as <br>Done Picking</b></td></tr>
+                        <tr v-if="percentages.length == 0">
+                            <td colspan="8">Sorry, You don't seem to have any blocks yet.</td>
+                        </tr>
+                        <tr v-for="(percentage, index) in percentages" :style="{ color : (percentage.isFinished > 0 ? '#5897fb' : '')}">
+                            <td>{{ percentage.farmName }}</td>
+                            <td>{{ percentage.BlockDesc }}</td>
+                            <td>
+                                <abbr :title="percentage.commodity_name">
+                                    <img :src="'images/' + percentage.commodity_name + '.png'" height='25px' width='25px'/>
+                                </abbr>
+                                {{ percentage.VarietyName }}
+                            </td>
+                            <td>{{ percentage.strainName }}</td>
+                            <td>{{ percentage.totalReceivedBushels }}</td>
+                            <td>{{ percentage.bushelEstimate }}</td>
+                            <td>
+                                {{ percentage.percentDelivered }}%
+                                <Br>
+                                <div class="noload">
+                                    <div class="load" :style="{ width: (percentage.percentDelivered > 100 ? 100 : percentage.percentDelivered) + '%' }"></div>
+                                </div>
+                            </td>
+                            <td><a :class="[percentage.isFinished > 0 ? 'fa-unlock-alt' : 'fa-lock', 'icon']" href="javascript:void(0)" v-on:click="toggleFinished(percentage.PK, percentage.isFinished)"></a></td>
+                        </tr>
+                    </table>
+                </div>
                 <?
                 if (mysqli_num_rows($blockCompletionData) > 0) {
                     if ($detect->isMobile()) {
@@ -262,7 +250,7 @@
                                     <td><b>Mark as Done Picking</b></td></tr>";
                         while ($blockCompletionTempArray = mysqli_fetch_assoc($blockCompletionData)) {
                             if ($blockCompletionTempArray['isFinished'] == 0) {
-                                echo "<tr id='" . $blockCompletionTempArray['PK'] . "'><td>" . $blockCompletionTempArray['FarmDesc'] . "</td><td>" . $blockCompletionTempArray['BlockDesc'] . "</td><td><abbr title='" . rtrim($blockCompletionTempArray['Comm Desc']) . "'><img src='images'" . rtrim($blockCompletionTempArray['Comm Desc']) . ".png' height='25px' width='25px'/></abbr> " . $blockCompletionTempArray['VarDesc'] . "</td><td>" . $blockCompletionTempArray['Total'] . "</td><td><div class='noload'><div class='load' style='width: " . ($blockCompletionTempArray['Percent'] > 100 ? 100 : $blockCompletionTempArray['Percent']) . "%'></div></div></td><td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : $userinfo['GrowerCode']) . "', { Done: " . $blockCompletionTempArray['PK'] . "});_paq.push(['trackEvent', 'Blocks', 'Marked Done']);$('#" . $blockCompletionTempArray['PK'] . "').slideUp();$.notify('Thanks! We won\'t expect any more from that block.', 'success');\"  class='icon fa-unlock-alt' ></a></td><tr>";
+                                echo "<tr id='" . $blockCompletionTempArray['PK'] . "'><td>" . $blockCompletionTempArray['VarDesc'] . "</td><td>" . $blockCompletionTempArray['Total'] . "</td><td><div class='noload'><div class='load' style='width: " . ($blockCompletionTempArray['Percent'] > 100 ? 100 : $blockCompletionTempArray['Percent']) . "%'></div></div></td><td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : $userinfo['GrowerCode']) . "', { Done: " . $blockCompletionTempArray['PK'] . "});_paq.push(['trackEvent', 'Blocks', 'Marked Done']);$('#" . $blockCompletionTempArray['PK'] . "').slideUp();$.notify('Thanks! We won\'t expect any more from that block.', 'success');\"  class='icon fa-unlock-alt' ></a></td><tr>";
                             } else {
                                 echo "<tr id='" . $blockCompletionTempArray['PK'] . "' style='color: #5897fb'><td>" . $blockCompletionTempArray['FarmDesc'] . "</td><td>" . $blockCompletionTempArray['BlockDesc'] . "</td><td><abbr title='" . rtrim($blockCompletionTempArray['Comm Desc']) . "'><img src='images/" . rtrim($blockCompletionTempArray['Comm Desc']) . ".png' height='25px' width='25px'/></abbr> " . $blockCompletionTempArray['VarDesc'] . "</td><td>" . $blockCompletionTempArray['Total'] . "</td><td><div class='noload'><div class='load' style='width: " . ($blockCompletionTempArray['Percent'] > 100 ? 100 : $blockCompletionTempArray['Percent']) . "%'></div></div></td><td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : $userinfo['GrowerCode']) . "', { Done: " . $blockCompletionTempArray['PK'] . "});_paq.push(['trackEvent', 'Blocks', 'Marked unDone']);$('#" . $blockCompletionTempArray['PK'] . "').slideUp();$.notify('Thanks! We\'ll open that one again...', 'success');\"  class='icon fa-lock' ></a></td><tr>";
                             }
@@ -283,7 +271,7 @@
                                     <td><b>Mark as <br>Done Picking</b></td></tr>";
                         while ($blockCompletionTempArray = mysqli_fetch_array($blockCompletionData)) {
                             if ($blockCompletionTempArray['isFinished'] == 0) {
-                                echo "<tr id='" . $blockCompletionTempArray['PK'] . "'><td>" . $blockCompletionTempArray['PK'] . "</td><td>" . $blockCompletionTempArray['FarmDesc'] . "</td><td>" . $blockCompletionTempArray['BlockDesc'] . "</td><td><abbr title='" . rtrim($blockCompletionTempArray['Comm Desc']) . "'><img src='images/" . rtrim($blockCompletionTempArray['Comm Desc']) . ".png' height='25px' width='25px'/></abbr> " . $blockCompletionTempArray['VarDesc'] . "</td><td>" . $blockCompletionTempArray['Str Desc'] . "</td><td>" . $blockCompletionTempArray['Total'] . "</td><td>" . $blockCompletionTempArray['Est'] . "</td><td>" . $blockCompletionTempArray['Percent'] . "%</td><td><div class='noload'><div class='load' style='width: " . ($blockCompletionTempArray['Percent'] > 100 ? 100 : $blockCompletionTempArray['Percent']) . "%'></div></div></td><td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', {Done: " . $blockCompletionTempArray['PK'] . "});_paq.push(['trackEvent', 'Blocks', 'Marked Done']);$('#" . $blockCompletionTempArray['PK'] . "').slideUp();$.notify('Thanks! We won\'t expect any more from that block.', 'success');\"  class='icon fa-unlock-alt' ></a></td><tr>";
+                                echo "<td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', {Done: " . $blockCompletionTempArray['PK'] . "});_paq.push(['trackEvent', 'Blocks', 'Marked Done']);$('#" . $blockCompletionTempArray['PK'] . "').slideUp();$.notify('Thanks! We won\'t expect any more from that block.', 'success');\"  class='icon fa-unlock-alt' ></a></td><tr>";
                             } else {
                                 echo "<tr id='" . $blockCompletionTempArray['PK'] . "' style='color: #5897fb'><td>" . $blockCompletionTempArray['PK'] . "</td><td>" . $blockCompletionTempArray['FarmDesc'] . "</td><td>" . $blockCompletionTempArray['BlockDesc'] . "</td><td><abbr title='" . rtrim($blockCompletionTempArray['Comm Desc']) . "'><img src='images/" . rtrim($blockCompletionTempArray['Comm Desc']) . ".png' height='25px' width='25px'/></abbr> " . $blockCompletionTempArray['VarDesc'] . "</td><td>" . $blockCompletionTempArray['Str Desc'] . "</td><td>" . $blockCompletionTempArray['Total'] . "</td><td>" . $blockCompletionTempArray['Est'] . "</td><td>" . $blockCompletionTempArray['Percent'] . "%</td><td><div class='noload'><div class='load' style='width: " . ($blockCompletionTempArray['Percent'] > 100 ? 100 : $blockCompletionTempArray['Percent']) . "%'></div></div></td><td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', {Done:" . $blockCompletionTempArray['PK'] . "});_paq.push(['trackEvent', 'Blocks', 'Marked unDone']);$('#" . $blockCompletionTempArray['PK'] . "').slideUp();$.notify('Thanks! We\'ll open that one again...', 'success');\"  class='icon fa-lock' ></a></td><tr>";
                             }
@@ -312,7 +300,7 @@
             <div id="estimatestable">
 
                 <button id="hider3" class="button" style="text-align: left"><span
-                        class="icon fa-plus"> New Block</span></button>
+                            class="icon fa-plus"> New Block</span></button>
                 <div id="addblockpanel" style="display: none">
                     <form name="newBlock" action="addBlock.php" method="post">
                         <table border='1px'>
@@ -485,4 +473,116 @@
 </div>
 
 </body>
+<script src="js/jquery.min.js"></script>
+<script src="js/notify.min.js"></script>
+<script src="js/jquery.scrolly.min.js"></script>
+<script src="js/jquery.scrollzer.min.js"></script>
+<script src="js/skel.min.js"></script>
+<script src="js/skel-layers.min.js"></script>
+<script src="js/init.js"></script>
+<script src="js/select2.min.js"></script>
+<script src="../../scripts-common/vue.min.js"></script>
+<script src="js/jquery.tablesorter.min.js"></script>
+<script>
+    //vues
+    var deliveriesTableVue = new Vue({
+        el: "#deliveriesvue",
+        data: {
+            deliveries: []
+        },
+        methods: {
+            getMouseOverQAPhotoString: function (number) {
+                return "View Photo for delivery #" + number;
+            }
+        },
+        mounted: function () {
+            var self = this;
+            $.getJSON('API/getShipments.php', function (data) {
+                self.deliveries = data;
+            });
+        }
+    });
+
+    var blockPercentageVue = new Vue({
+        el: "#pickingStatusvue",
+        data: {
+            percentages: []
+        },
+        methods: {
+            toggleFinished: function(PK, finishedStatus){
+                var self = this;
+                $.get('processBlock.php', {Done : PK}, function(data){
+                   if(finishedStatus > 0){
+                       console.log(self.percentages[PK]['isFinished']);
+                       self.percentages[PK]['isFinished'] = 0;
+                       console.log(self.percentages[PK]['isFinished']);
+                       $.notify('Thanks! We\'ll open that back up.', 'success');
+                   } else {
+                       console.log(self.percentages[PK]['isFinished']);
+                       self.percentages[PK]['isFinished'] = 1;
+                       console.log(self.percentages[PK]['isFinished']);
+                       $.notify('Thanks! We won\'t expect any more from that block.', 'success');
+                   }
+                });
+            }
+        },
+        mounted: function () {
+            var self = this;
+            $.getJSON('API/getBlockCompletion.php', function (data) {
+                self.percentages = data;
+            });
+        }
+    });
+
+    $(document).ready(function () {
+        $("#hider").click(function () {
+            $("#longtab").slideToggle();
+        });
+        $("#hider2").click(function () {
+            $("#longtab2").slideToggle();
+        });
+        $("#hider3").click(function () {
+            $("#addblockpanel").slideToggle();
+        });
+        $("#optiontoggle").click(function () {
+            $("#options").slideToggle();
+            $("#optionstab").toggleClass("fa-chevron-down fa-minus");
+        });
+        $("#autovar").select2({
+            placeholder: "Variety",
+            data: varieties
+
+        });
+        $("#autostr").select2({
+            placeholder: "Strain",
+            data: strains
+        });
+
+        $('#tableEstimatesSubmitter').tablesorter({
+            textExtraction: {
+                3: function (node, table, cellIndex) {
+                    return $(node).find("input").val();
+                }
+            },
+            headers: {
+                0: {sorter: false},
+                9: {sorter: false}
+            }
+        });
+    });
+    //attach event listeners to estimates table
+    $(document).on("change", ".estimatesubmitter, .blocknamer", function () {
+        $.post("processEstimates.php", $(this).serialize(), function () {
+            $.notify("Information Received", "success");
+        });
+        return false;
+    });
+
+    function logout() {
+        document.cookie = "auth=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+        document.cookie = "username=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+        document.cookie = "grower=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+        window.location.replace('/');
+    }
+</script>
 </html>
