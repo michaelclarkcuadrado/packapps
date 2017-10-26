@@ -46,10 +46,10 @@ if (mysqli_connect_errno()) {
 //check if packapps has been set up
 $systemRow = mysqli_query($mysqli, "SELECT packapps_version, systemInstalled FROM packapps_system_info");
 $systemRow = mysqli_fetch_array($systemRow);
-if($systemRow['packapps_version'] != $packapps_version){
-    die("The Packapps server has experienced an internal issue.<br> If it keeps happening, contact the administrator. the error was: <br><br><b>Database schema does not match code schema. Broken Upgrade.");
-}
 if($_SERVER['SCRIPT_NAME'] != '/installer.php' && $systemRow['systemInstalled'] == 0){
     die("<script>window.location.replace('/installer.php')</script>");
+}
+if($systemRow['packapps_version'] != $packapps_version){
+    die("The Packapps server has experienced an internal issue.<br> If it keeps happening, contact the administrator. the error was: <br><br><b>Database schema does not match code schema. Broken Upgrade.");
 }
 require_once 'packapps_api.php';

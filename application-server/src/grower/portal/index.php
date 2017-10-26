@@ -209,7 +209,8 @@
                             <td><b>Received Bushels</td>
                             <td><b>Estimated</td>
                             <td><b><abbr title='(of the estimate for this block)'>% Done</abbr></td>
-                            <td><b>Mark as <br>Done Picking</b></td></tr>
+                            <td><b>Mark as <br>Done Picking</b></td>
+                        </tr>
                         <tr v-if="percentages.length == 0">
                             <td colspan="8">Sorry, You don't seem to have any blocks yet.</td>
                         </tr>
@@ -232,7 +233,8 @@
                                     <div class="load" :style="{ width: (percentage.percentDelivered > 100 ? 100 : percentage.percentDelivered) + '%' }"></div>
                                 </div>
                             </td>
-                            <td><a :class="[percentage.isFinished > 0 ? 'fa-unlock-alt' : 'fa-lock', 'icon']" href="javascript:void(0)" v-on:click="toggleFinished(percentage.PK, percentage.isFinished)"></a></td>
+                            <td><a :class="[percentage.isFinished > 0 ? 'fa-unlock-alt' : 'fa-lock', 'icon']" href="javascript:void(0)"
+                                   v-on:click="toggleFinished(percentage.PK, percentage.isFinished)"></a></td>
                         </tr>
                     </table>
                 </div>
@@ -303,28 +305,29 @@
                             class="icon fa-plus"> New Block</span></button>
                 <div id="addblockpanel" style="display: none">
                     <form name="newBlock" action="addBlock.php" method="post">
-                        <table border='1px'>
+                        <table style="margin:5px; width: calc(100% - 15px);" border='1px'>
                             <thead>
                             <tr>
                                 <th><b>Fruit Type</th>
                                 <th><b>Variety</th>
-                                <th><b>Farm</th>
-                                <th><b>Block</th>
                                 <th><b>Strain</th>
-                                <th><b>'<? echo date('y') ?> Estimate</th>
                             </tr>
                             </thead>
                             <tr>
-                                <td><input type="radio" name='CommDesc' value="Apple" required> Apple
-                                    <input type="radio" name="CommDesc" value="Peach">Peach<br>
-                                    <input type="radio" name="CommDesc" value="Nectarine">Nectarine
-                                    <input type="radio" name="CommDesc" value="Pear">Pear
-                                    <input type="radio" name="CommDesc" value="Pluot">Pluot
+                                <td style="white-space: nowrap" id="commoditiesRadios">
+                                    <!--Radios go here-->
                                 </td>
                                 <td><select style="width: 100%" name="VarDesc" id="autovar" required></select></td>
+                                <td><select style="width: 100%" name="Strain" id="autostr" required></select></td>
+                            </tr>
+                            <tr>
+                                <th><b>Farm</th>
+                                <th><b>Block</th>
+                                <th><b>'<? echo date('y') ?> Estimate</th>
+                            </tr>
+                            <tr>
                                 <td><input type="text" name="Farm" style='width:150px;'></td>
                                 <td><input type="text" name="Block" style='width:150px;'></td>
-                                <td><select style="width: 100%" name="Strain" id="autostr" required></select></td>
                                 <td><input type="number" name="newEst" style='width:110px;' placeholder="Bushels"
                                            required
                                 </td>
@@ -339,14 +342,15 @@
                 <form id="PK" name="Estimates" action="processEstimates.php" method="post">
                     <span class="icon fa-th"></span> Your Current Blocks
                     <br><br>
-                    <div style="display: inline-block; border:gray solid 1px">
-                        <span class="icon fa-info-circle"></span> Color key<br>
-                        <p style="background-color:#9ef939; padding:6px; border-top:gray solid 1px; border-right:gray solid 1px; float:left; margin: auto">
-                            We've got your numbers</p>
-                        <p style="padding:6px; border-top:gray solid 1px; float:left; margin: auto">We still need an
-                            estimate</p>
-                        <p style="background-color:#FF9990; padding:6px; border-left:gray solid 1px; border-top:gray solid 1px; float:left; margin: auto">
-                            Block Deleted</p>
+                    <div id="estimatesTable">
+                        <div style="display: inline-block; border:gray solid 1px">
+                            <span class="icon fa-info-circle"></span> Color key<br>
+                            <p style="width: 100%;background-color:#9ef939; padding:6px; border-top:gray solid 1px; border-right:gray solid 1px; float:left; margin: auto">
+                                We've got your numbers</p>
+                            <p style="width: 100%;padding:6px; border-top:gray solid 1px; float:left; margin: auto">We still need an
+                                estimate</p>
+                            <p style="width: 100%;background-color:#FF9990; padding:6px; border-left:gray solid 1px; border-top:gray solid 1px; float:left; margin: auto">
+                                Block Deleted</p></div>
                     </div>
                     <br><br>
 
@@ -484,6 +488,8 @@
 <script src="../../scripts-common/vue.min.js"></script>
 <script src="js/jquery.tablesorter.min.js"></script>
 <script>
+    var CommoditiesTree = {};
+
     //vues
     var deliveriesTableVue = new Vue({
         el: "#deliveriesvue",
@@ -509,20 +515,20 @@
             percentages: []
         },
         methods: {
-            toggleFinished: function(PK, finishedStatus){
+            toggleFinished: function (PK, finishedStatus) {
                 var self = this;
-                $.get('processBlock.php', {Done : PK}, function(data){
-                   if(finishedStatus > 0){
-                       console.log(self.percentages[PK]['isFinished']);
-                       self.percentages[PK]['isFinished'] = 0;
-                       console.log(self.percentages[PK]['isFinished']);
-                       $.notify('Thanks! We\'ll open that back up.', 'success');
-                   } else {
-                       console.log(self.percentages[PK]['isFinished']);
-                       self.percentages[PK]['isFinished'] = 1;
-                       console.log(self.percentages[PK]['isFinished']);
-                       $.notify('Thanks! We won\'t expect any more from that block.', 'success');
-                   }
+                $.get('processBlock.php', {Done: PK}, function (data) {
+                    if (finishedStatus > 0) {
+                        console.log(self.percentages[PK]['isFinished']);
+                        self.percentages[PK]['isFinished'] = 0;
+                        console.log(self.percentages[PK]['isFinished']);
+                        $.notify('Thanks! We\'ll open that back up.', 'success');
+                    } else {
+                        console.log(self.percentages[PK]['isFinished']);
+                        self.percentages[PK]['isFinished'] = 1;
+                        console.log(self.percentages[PK]['isFinished']);
+                        $.notify('Thanks! We won\'t expect any more from that block.', 'success');
+                    }
                 });
             }
         },
@@ -534,7 +540,19 @@
         }
     });
 
+    var estimatesTableVue = new Vue({
+        el: "#estimatesTable",
+        data: {
+            farmsListing: {},
+            curFarmID: -1,
+            curDisplayingBlocks: {}
+        },
+        methods: {}
+    });
+
     $(document).ready(function () {
+        getCommoditiesTree();
+        //attach listeners
         $("#hider").click(function () {
             $("#longtab").slideToggle();
         });
@@ -547,15 +565,6 @@
         $("#optiontoggle").click(function () {
             $("#options").slideToggle();
             $("#optionstab").toggleClass("fa-chevron-down fa-minus");
-        });
-        $("#autovar").select2({
-            placeholder: "Variety",
-            data: varieties
-
-        });
-        $("#autostr").select2({
-            placeholder: "Strain",
-            data: strains
         });
 
         $('#tableEstimatesSubmitter').tablesorter({
@@ -577,6 +586,74 @@
         });
         return false;
     });
+
+    function getCommoditiesTree() {
+        $.getJSON('API/getGlobalCommoditySubTypes.php', function (data) {
+            CommoditiesTree = data;
+            $("#commoditiesRadios").empty();
+            $.each(CommoditiesTree, function (key, commodity) {
+                $("#commoditiesRadios").append(
+                    "<span><input type='radio' class='commodityRadio' name='CommDesc' value='" + commodity['commodity_ID'] + "' required>" + commodity['commodity_name'] + "</span>"
+                );
+            });
+            varSelector = $('#autovar');
+            strSelector = $('#autostr');
+            varSelector.select2({
+                placeholder: 'Varieties',
+                disabled: true
+            });
+            strSelector.select2({
+                placeholder: 'Strains',
+                disabled: true
+            });
+            $(".commodityRadio").on('click', function (event) {
+                //reset and load varieties and strains for commodity
+                if (varSelector.hasClass("select2-hidden-accessible")) {
+                    varSelector.select2('destroy');
+                    varSelector.empty().append("<option></option>");
+                }
+                if (strSelector.hasClass("select2-hidden-accessible")) {
+                    strSelector.select2('destroy');
+                    strSelector.empty().append("<option></option>");
+                    strSelector.select2({
+                        placeholder: 'Strains',
+                        disabled: true
+                    });
+                }
+                var curCommodity = event.target.defaultValue;
+                varSelector.off();
+                strSelector.off();
+                var curVariety = null;
+                varSelector.select2({
+                    placeholder: "Select Variety",
+                    disabled: false,
+                    //select2 only takes arrays, no objects allowed
+                    data: Object.keys(CommoditiesTree[curCommodity]['Varieties']).map(function (key) {
+                        return CommoditiesTree[curCommodity]['Varieties'][key]
+                    })
+                }).on('select2:select', function (event) {
+                    console.log(curCommodity);
+                    //reset and load Strains for chosen variety
+                    curVariety = event.params.data.id;
+                    if (strSelector.hasClass("select2-hidden-accessible")) {
+                        strSelector.select2('destroy');
+                        strSelector.off();
+                        strSelector.empty().append("<option></option>");
+                    }
+//                    console.log(CommoditiesTree[curCommodity]['Varieties']);
+//                    console.log(CommoditiesTree[curCommodity]['Varieties'][curVariety]);
+//                    console.log(curVariety);
+                    strSelector.select2({
+                        placeholder: 'Select Strain',
+                        disabled: false,
+                        data: Object.keys(CommoditiesTree[curCommodity]['Varieties'][curVariety]['Strains']).map(function (key) {
+                            return CommoditiesTree[curCommodity]['Varieties'][curVariety]['Strains'][key]
+                        })
+                    });
+                });
+            });
+        });
+    }
 
     function logout() {
         document.cookie = "auth=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;";

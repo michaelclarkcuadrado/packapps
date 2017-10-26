@@ -56,6 +56,7 @@ if (isset($_COOKIE['auth']) && isset($_COOKIE['username'])) { //do redirect
                 setcookie('username', $username);
                 setcookie('auth', crypt($username, $growerSecurityKey));
                 setcookie('grower', 'true');
+                mysqli_query($mysqli, "UPDATE grower_GrowerLogins SET `lastLogin`=NOW() WHERE GrowerCode = '$username'");
                 $check_grower_onramped = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT email_confirmed FROM grower_GrowerLogins"));
                 if ($check_grower_onramped['email_confirmed'] > 1) {
                     die(header('Location: grower/portal'));
