@@ -589,6 +589,8 @@ INSERT INTO grower_GrowerLogins (GrowerCode, GrowerName, login_email, Password, 
                                                                                                                 LEFT JOIN grower_GrowerLogins
                                                                                                                   ON `grower_crop-estimates`.Grower = `grower_GrowerLogins`.GrowerCode
                                                                                                               WHERE GrowerCode IS NULL);
+
+ALTER TABLE grower_GrowerLogins DROP isAdmin;
 CREATE TABLE `grower_farms` (
   `growerID` INT(11)      NOT NULL,
   `farmID`   INT(11)      NOT NULL AUTO_INCREMENT,
