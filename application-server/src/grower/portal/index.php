@@ -299,8 +299,7 @@
             <p><strong>Every block needs an estimate</strong>, and you may change your estimates as many times as you
                 like.<br>If you are retiring a block, or if the block is there in error, hit the trash bin to delete its
                 records.<br> Deleted blocks may be restored if needed.</p>
-            <div id="estimatestable">
-
+            <div>
                 <button id="hider3" class="button" style="text-align: left"><span
                             class="icon fa-plus"> New Block</span></button>
                 <div id="addblockpanel" style="display: none">
@@ -350,52 +349,32 @@
                             <p style="width: 100%;padding:6px; border-top:gray solid 1px; float:left; margin: auto">We still need an
                                 estimate</p>
                             <p style="width: 100%;background-color:#FF9990; padding:6px; border-left:gray solid 1px; border-top:gray solid 1px; float:left; margin: auto">
-                                Block Deleted</p></div>
-                    </div>
-                    <br><br>
-
-                    <?php
-                    //prepare the estimates table - mobile has a different view, and rows that are deleted get different styling
-                    //show table headers
-                    if ($detect->isMobile()) {
-                        echo "
-                                    <table id='tableEstimatesSubmitter'  border='1px'>
-                                        <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th><b>Variety</th>
-                                            <th><b>Farm</th>
-                                            <th><b>Block</th>
-                                            <th><b>Strain</th>
-                                            <th><b>'" . (date('y') - 2) . "</th>
-                                            <th><b>'" . (date('y') - 1) . "</th>
-                                            <th><b>'" . date('y') . " Estimate</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>";
-                    } else {
-                        echo "
-                                    <table id='tableEstimatesSubmitter'  border='1px'>
-                                        <thead style='cursor: pointer'>
-                                        <tr>
-                                            <th></th>
-                                            <th><b>Variety</th>
-                                            <th><b>Farm</th>
-                                            <th><b>Block</th>
-                                            <th><b>Strain</th>
-                                            <th><b>'" . (date('y') - 3) . " Actual</th>
-                                            <th><b>'" . (date('y') - 2) . " Actual</th>
-                                            <th><b>'" . (date('y') - 1) . " Estimate</th>
-                                            <th><b>'" . (date('y') - 1) . " Actual</th>
-                                            <th><b>'" . date('y') . " Estimate</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>";
-                    }
-                    while ($growerdata = mysqli_fetch_assoc($estimates)) {
-                        if ($detect->isMobile()) {
-                            if ($growerdata['isDeleted'] == "0") {
-                                echo "<tr id=\"est" . $growerdata['PK'] . "\" " . (($growerdata[date('Y') . 'est'] <> $growerdata[(date('Y') - 1) . 'act'] || $growerdata['isSameAsLastYear']) ? "bgcolor='#9ef939'" : "") . ">
+                                Block Deleted</p>
+                        </div>
+                        <br><br>
+                        <table id='tableEstimatesSubmitter' border='1px'>
+                            <thead style='cursor: pointer'>
+                            <tr>
+                                <th></th>
+                                <th><b>Variety</th>
+                                <th><b>Block</th>
+                                <th><b>Strain</th>
+                                <th v-if="!isMobile"><b>{{serverYear -3}} Actual</th>
+                                <th v-if="!isMobile"><b>{{serverYear -2}} Actual</th>
+                                <th v-if="!isMobile"><b>{{serverYear -1}} Estimate</th>
+                                <th><b>{{serverYear -1}} Actual</th>
+                                <th><b>{{serverYear}} Estimate</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            //prepare the estimates table - mobile has a different view, and rows that are deleted get different styling
+                            //show table headers
+                            //headers ending with <tbody>
+                            while ($growerdata = mysqli_fetch_assoc($estimates)) {
+                                if ($detect->isMobile()) {
+                                    if ($growerdata['isDeleted'] == "0") {
+                                        echo "<tr id=\"est" . $growerdata['PK'] . "\" " . (($growerdata[date('Y') . 'est'] <> $growerdata[(date('Y') - 1) . 'act'] || $growerdata['isSameAsLastYear']) ? "bgcolor='#9ef939'" : "") . ">
                                 <td><a href='javascript:void(0)'  onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { PK: " . $growerdata['PK'] . "}, function() {_paq.push(['trackEvent', 'Estimates', 'DeleteBlock']);$.notify('Block Deleted. Refresh to see changes.', 'error');$('#est" . $growerdata['PK'] . "').slideUp();});\"  class=\"icon fa-trash-o\"></a></td>
                                 <td>" . (($growerdata['Comm Desc'] != "Apple") ? "<abbr title=" . rtrim($growerdata['Comm Desc']) . "><img src='images/" . rtrim($growerdata['Comm Desc']) . ".png' width='25px' height'25px'/></abbr>" : "") . " " . $growerdata['VarDesc'] . "</td>
                                 <td>" . $growerdata['FarmDesc'] . "</td>
@@ -410,8 +389,8 @@
                                 <div style='font-size: medium; " . (($growerdata[date('Y') . 'est'] <> $growerdata[(date('Y') - 1) . 'act']) ? 'display: none' : '') . "' id='" . $growerdata['PK'] . "sameCheckbox'>
                                 <input onChange=\"(this.checked) ? ($.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { sameEst: " . $growerdata['PK'] . "}), $('#est" . $growerdata['PK'] . "').attr('bgcolor', '#9ef939'), $('#" . $growerdata['PK'] . "estbox').attr('readonly', true)) : ($.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { sameEst: " . $growerdata['PK'] . "}), $('#est" . $growerdata['PK'] . "').removeAttr('bgcolor'), $('#" . $growerdata['PK'] . "estbox').attr('readonly', false))\" type='checkbox' " . (($growerdata['isSameAsLastYear']) ? 'checked' : '') . ">Keep last year's deliveries as your estimate?</input></div></td>
                                 </tr>";
-                            } else {
-                                echo "<tr id=\"est" . $growerdata['PK'] . "\" bgcolor='#FF999'><td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { PK: " . $growerdata['PK'] . "}, function() {_paq.push(['trackEvent', 'Estimates', 'RestoreBlock']);$.notify('Block Restored. Refresh to see changes.', 'success');$('#est" . $growerdata['PK'] . "').slideUp();});\"  class='icon fa-undo' ></a></td
+                                    } else {
+                                        echo "<tr id=\"est" . $growerdata['PK'] . "\" bgcolor='#FF999'><td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { PK: " . $growerdata['PK'] . "}, function() {_paq.push(['trackEvent', 'Estimates', 'RestoreBlock']);$.notify('Block Restored. Refresh to see changes.', 'success');$('#est" . $growerdata['PK'] . "').slideUp();});\"  class='icon fa-undo' ></a></td
                                 ><td>ID-" . $growerdata['PK'] . ":<br>" . (($growerdata['Comm Desc'] != "Apple") ? "<abbr title=" . rtrim($growerdata['Comm Desc']) . "><img src='images/" . rtrim($growerdata['Comm Desc']) . ".png' width='25px' height'25px'/></abbr>" : "") . " " . $growerdata['VarDesc'] . "</td>
                                 <td>" . $growerdata['FarmDesc'] . "</td>
                                 <td>" . $growerdata['BlockDesc'] . "</td>
@@ -420,11 +399,11 @@
                                 <td>" . number_format($growerdata[(date('Y') - 1) . 'act']) . "</td>
                                 <td><input type='search' style='width:110px;' name='" . $growerdata['PK'] . "' value='0' disabled readonly</input></td>
                                 </tr>";
-                            }
-                        } else //not mobile
-                        {
-                            if ($growerdata['isDeleted'] == "0") {
-                                echo "<tr id=\"est" . $growerdata['PK'] . "\" " . (($growerdata[date('Y') . 'est'] <> $growerdata[(date('Y') - 1) . 'act'] || $growerdata['isSameAsLastYear']) ? "bgcolor='#9ef939'" : "") . ">
+                                    }
+                                } else //not mobile
+                                {
+                                    if ($growerdata['isDeleted'] == "0") {
+                                        echo "<tr id=\"est" . $growerdata['PK'] . "\" " . (($growerdata[date('Y') . 'est'] <> $growerdata[(date('Y') - 1) . 'act'] || $growerdata['isSameAsLastYear']) ? "bgcolor='#9ef939'" : "") . ">
                                 <td><a href='javascript:void(0)'  onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { PK: " . $growerdata['PK'] . "}, function(){_paq.push(['trackEvent', 'Estimates', 'DeleteBlock']);$.notify('Block Deleted. Refresh to see changes.', 'error');$('#est" . $growerdata['PK'] . "').slideUp()});\"  class=\"icon fa-trash-o\"></a></td>
                                 <td>" . (($growerdata['Comm Desc'] != "Apple") ? "<abbr title=" . rtrim($growerdata['Comm Desc']) . "><img src='images/" . rtrim($growerdata['Comm Desc']) . ".png' width='25px' height='25px'/></abbr>" : "") . " " . $growerdata['VarDesc'] . "</td>
                                 <td>" . $growerdata['FarmDesc'] . "</td>
@@ -441,8 +420,8 @@
                                 <div style='font-size: medium; " . (($growerdata[date('Y') . 'est'] <> $growerdata[(date('Y') - 1) . 'act']) ? 'display: none' : '') . "' id='" . $growerdata['PK'] . "sameCheckbox'>
                                 <input onChange=\"(this.checked) ? ($.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { sameEst: " . $growerdata['PK'] . "}), $('#est" . $growerdata['PK'] . "').attr('bgcolor', '#9ef939'), $('#" . $growerdata['PK'] . "estbox').attr('readonly', true),$.notify('Information Received', 'success')) : ($.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { sameEst: " . $growerdata['PK'] . "}), $('#est" . $growerdata['PK'] . "').removeAttr('bgcolor'), $('#" . $growerdata['PK'] . "estbox').attr('readonly', false), $.notify('Information Received', 'success'))\" type='checkbox' " . (($growerdata['isSameAsLastYear']) ? 'checked' : '') . ">Keep last year's deliveries as your estimate?</input></div></td>
                                 </tr>";
-                            } else {
-                                echo "<tr id=\"est" . $growerdata['PK'] . "\" bgcolor='#FF999'>
+                                    } else {
+                                        echo "<tr id=\"est" . $growerdata['PK'] . "\" bgcolor='#FF999'>
                                 <td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { PK: " . $growerdata['PK'] . "}, function(){_paq.push(['trackEvent', 'Estimates', 'RestoreBlock']);$.notify('Block Restored. Refresh to see changes.', 'success');$('#est" . $growerdata['PK'] . "').slideUp();})\"  class='icon fa-undo' ></a></td>
                                 <td>ID-" . $growerdata['PK'] . ":<br>" . (($growerdata['Comm Desc'] != "Apple") ? "<abbr title=" . rtrim($growerdata['Comm Desc']) . "><img src='images/" . rtrim($growerdata['Comm Desc']) . ".png' width='25px' height'25px'/></abbr>" : "") . " " . $growerdata['VarDesc'] . "</td>
                                 <td>" . $growerdata['FarmDesc'] . "</td>
@@ -453,12 +432,14 @@
                                 <td>" . number_format($growerdata[(date('Y') - 1) . 'est']) . "</td>
                                 <td>" . number_format($growerdata[(date('Y') - 1) . 'act']) . "</td>
                                 <td><input type='search' style='width:110px;' name='" . $growerdata['PK'] . "' value='0' disabled readonly</input></td></tr>";
+                                    }
+                                }
                             }
-                        }
-                    }
-                    ?>
-                    </tbody>
-                    </table></form>
+                            ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
@@ -519,14 +500,14 @@
                 var self = this;
                 $.get('processBlock.php', {Done: PK}, function (data) {
                     if (finishedStatus > 0) {
-                        console.log(self.percentages[PK]['isFinished']);
+//                        console.log(self.percentages[PK]['isFinished']);
                         self.percentages[PK]['isFinished'] = 0;
-                        console.log(self.percentages[PK]['isFinished']);
+//                        console.log(self.percentages[PK]['isFinished']);
                         $.notify('Thanks! We\'ll open that back up.', 'success');
                     } else {
-                        console.log(self.percentages[PK]['isFinished']);
+//                        console.log(self.percentages[PK]['isFinished']);
                         self.percentages[PK]['isFinished'] = 1;
-                        console.log(self.percentages[PK]['isFinished']);
+//                        console.log(self.percentages[PK]['isFinished']);
                         $.notify('Thanks! We won\'t expect any more from that block.', 'success');
                     }
                 });
@@ -545,9 +526,14 @@
         data: {
             farmsListing: {},
             curFarmID: -1,
-            curDisplayingBlocks: {}
+            curDisplayingBlocks: {},
+            isMobile: <?= json_encode($detect->isMobile())?>,
+            serverYear: <?=date('Y')?>
         },
-        methods: {}
+        methods: {},
+        mounted: function () {
+
+        }
     });
 
     $(document).ready(function () {
@@ -580,6 +566,7 @@
         });
     });
     //attach event listeners to estimates table
+    //TODO remove and vue-ify
     $(document).on("change", ".estimatesubmitter, .blocknamer", function () {
         $.post("processEstimates.php", $(this).serialize(), function () {
             $.notify("Information Received", "success");
@@ -632,7 +619,6 @@
                         return CommoditiesTree[curCommodity]['Varieties'][key]
                     })
                 }).on('select2:select', function (event) {
-                    console.log(curCommodity);
                     //reset and load Strains for chosen variety
                     curVariety = event.params.data.id;
                     if (strSelector.hasClass("select2-hidden-accessible")) {
@@ -640,9 +626,6 @@
                         strSelector.off();
                         strSelector.empty().append("<option></option>");
                     }
-//                    console.log(CommoditiesTree[curCommodity]['Varieties']);
-//                    console.log(CommoditiesTree[curCommodity]['Varieties'][curVariety]);
-//                    console.log(curVariety);
                     strSelector.select2({
                         placeholder: 'Select Strain',
                         disabled: false,
