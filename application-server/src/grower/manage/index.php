@@ -68,7 +68,7 @@ $userinfo = packapps_authenticate_user();
                         </div>
                         <div style="padding:8px; width: fit-content; display: inline-block" class="mdl-shadow--6dp">
                             <div class="mdl-typography--font-bold">Percent of this year's deliveries</div>
-                            <div class="mdl-textfield--align-right">12%</div>
+                            <div class="mdl-textfield--align-right">{{grower.percentOfThisYear}}%</div>
                         </div>
                         <div style="padding:8px; width: fit-content; display: inline-block" class="mdl-shadow--6dp">
                             <div class="mdl-typography--font-bold">Web Portal Username</div>
@@ -81,25 +81,30 @@ $userinfo = packapps_authenticate_user();
                     </div>
                     <Br>
                     <div class="mdl-grid">
-                        <div class="mdl-cell mdl-cell--4-col mdl-color-text--white mdl-color--blue">
-                            Year-On-Year Chart
+                        <div class="mdl-cell mdl-cell--4-col">
+                            <canvas v-bind:id="grower.GrowerCode + 'growthChart'"></canvas>
                         </div>
-                        <div class="mdl-cell mdl-cell--4-col mdl-color-text--white">
+                        <div class="mdl-cell mdl-cell--4-col">
                             <canvas v-bind:id="grower.GrowerCode + 'pieChart'"></canvas>
                             {{initChart(grower.GrowerCode)}}
                         </div>
                     </div>
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
-                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    <a v-on:click="snack('The user has been emailed a new password.', 2000)" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                         Reset Password
                     </a>
-                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    <a v-on:click="snack('Logins for this account are now blocked.', 2000)" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                         Suspend Client Login
                     </a>
-                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    <a v-on:click="snack('The user will change their password on next log in.', 2000)" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                         Require Password Change
                     </a>
+                </div>
+                <div class="mdl-card__menu">
+                    <button class="mdl-button mdl-button--icon mdl-color-text--white mdl-js-button mdl-js-ripple-effect">
+                        <a v-bind:href="'growerDrill.php?growerID=' + grower.GrowerCode"><i class="material-icons">open_in_new</i></a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -157,7 +162,55 @@ $userinfo = packapps_authenticate_user();
             initChart: function (growerCode) {
                 var self = this;
                 this.$nextTick(function () {
-                    var elemContext = document.getElementById(growerCode + 'pieChart').getContext("2d");
+                    var growthElemContext = document.getElementById(growerCode + 'growthChart').getContext("2d");
+                    var pieElemContext = document.getElementById(growerCode + 'pieChart').getContext("2d");
+                    var growthChartConfig = {
+                        type: 'bar',
+                        data: {
+                            datasets: [{
+                                data: function () {
+                                    var array = [];
+                                    for (var listing in self.growerListing[growerCode]['growthHistory']) {
+                                        array.push(self.growerListing[growerCode]['growthHistory'][listing]);
+                                    }
+                                    return array;
+                                }(),
+                                backgroundColor: function(){
+                                    var array = [];
+                                    for(var i = 0; i < Object.keys(self.growerListing[growerCode]['growthHistory']).length; i++){
+                                        //        red: 'rgb(255, 99, 132)'
+                                        //        orange: 'rgb(255, 159, 64)',
+                                        //        yellow: 'rgb(255, 205, 86)',
+                                        //        green: 'rgb(75, 192, 192)',
+                                        //        blue: 'rgb(54, 162, 235)',
+                                        //        purple: 'rgb(153, 102, 255)',
+                                        //        grey: 'rgb(201, 203, 207)'
+                                        array.push('rgb(255, 205, 86)');
+                                    }
+                                    return array;
+                                }(),
+                                label: 'Deliveries'
+                            }],
+                            labels: function () {
+                                var array = [];
+                                for (var listing in self.growerListing[growerCode]['growthHistory']) {
+                                    array.push(listing);
+                                }
+                                return array;
+                            }()
+                        },
+                        options: {
+                            legend: {
+                                display: false
+                            },
+                            responsive: true,
+                            title: {
+                                display: true,
+                                text: self.growerListing[growerCode]['growerName'] + ' YoY Deliveries'
+                            },
+                            animation: false
+                        }
+                    };
                     var pieChartConfig = {
                         type: 'doughnut',
                         data: {
@@ -165,17 +218,17 @@ $userinfo = packapps_authenticate_user();
                                 data: function () {
                                     var array = [];
                                     for (var listing in self.growerListing[growerCode]['bushelEstimates']) {
-                                        array.push(self.growerListing[growerCode]['bushelEstimates'][listing]);
+                                        array.push(self.growerListing[growerCode]['bushelEstimates'][listing]['value']);
                                     }
                                     return array;
                                 }(),
-                                backgroundColor: [
-                                    window.chartColors.red,
-                                    window.chartColors.orange,
-                                    window.chartColors.yellow,
-                                    window.chartColors.green,
-                                    window.chartColors.blue,
-                                ],
+                                backgroundColor: function () {
+                                    var array = [];
+                                    for (var listing in self.growerListing[growerCode]['bushelEstimates']) {
+                                        array.push(self.growerListing[growerCode]['bushelEstimates'][listing]['color']);
+                                    }
+                                    return array;
+                                }(),
                                 label: 'Varieties'
                             }],
                             labels: function () {
@@ -198,7 +251,8 @@ $userinfo = packapps_authenticate_user();
                             animation: false
                         }
                     };
-                    var chart = new Chart(elemContext, pieChartConfig);
+                    var pieChart = new Chart(pieElemContext, pieChartConfig);
+                    var growthChart = new Chart(growthElemContext, growthChartConfig);
                 })
             }
         },
@@ -217,15 +271,5 @@ $userinfo = packapps_authenticate_user();
         };
         document.querySelector('#snackbar').MaterialSnackbar.showSnackbar(data);
     }
-
-    window.chartColors = {
-        red: 'rgb(255, 99, 132)',
-        orange: 'rgb(255, 159, 64)',
-        yellow: 'rgb(255, 205, 86)',
-        green: 'rgb(75, 192, 192)',
-        blue: 'rgb(54, 162, 235)',
-        purple: 'rgb(153, 102, 255)',
-        grey: 'rgb(201, 203, 207)'
-    };
 </script>
 </html>
