@@ -12,14 +12,13 @@
         error_log("First access since new year, incrementing year.");
         $year->increment($mysqli);
     }
-
-    $estimates = mysqli_query($mysqli, "SELECT PK,`Comm Desc`,VarDesc,FarmDesc,BlockDesc,`Str Desc`,isDeleted,isSameAsLastYear," . (date('Y') - 3) . "act," . (date('Y') - 2) . "act," . (date('Y') - 1) . "est," . (date('Y') - 1) . "act," . (date('Y')) . "est from `crop-estimates` where Grower='" . $userinfo['GrowerCode'] . "' Order by isDeleted, `Comm Desc`, VarDesc, FarmDesc, BlockDesc, `Str Desc` ASC;");
     $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS count FROM (SELECT PK FROM `grower_Preharvest_Samples` WHERE Grower= '" . $userinfo['GrowerCode'] . "' AND `Date` >= (NOW() - INTERVAL 7 DAY) GROUP BY `Date`, `PK`) t1"))['count'];
 
     echo "<title>" . $companyName . " Portal: " . $userinfo['GrowerName'] . "</title>";
     ?>
 
     <link rel="stylesheet" href="css/select2.min.css">
+    <link rel="stylesheet" href="css/grid.css">
     <!--[if lte IE 8]>
     <script src="css/ie/html5shiv.js"></script>
     <![endif]-->
@@ -37,16 +36,13 @@
 
 <!-- Header -->
 <div id="header" class="skel-layers-fixed">
-
     <div class="top">
-
         <!-- Logo -->
         <div id="logo">
             <span class="image"><img src="images/avatar.png" alt=""/></span>
             <h1 id="title"><? echo $userinfo['GrowerName'] ?></h1>
             <p><? echo $companyName ?><br></p>
         </div>
-
         <!-- Nav -->
         <nav id="nav">
             <ul>
@@ -54,9 +50,7 @@
                                 class="icon fa-home">Home</span></a></li>
                 <li><a href="#receiving" id="receiving-link" class="skel-layers-ignoreHref"><span class="icon fa-truck">Received Shipments</span></a>
                 </li>
-                <li><a href="#blockdata" id="blockdata-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Picking Status</span></a>
-                </li>
-                <li><a href="#estimates" id="estimates-link" class="skel-layers-ignoreHref"><span
+                <li><a href="#blockManagement" id="blockManagement-link" class="skel-layers-ignoreHref"><span
                                 class="icon fa-sliders">Blocks & Estimates</span></a></li>
                 <li>
                     <hr style='width: 75%; margin-top: 0; margin-bottom:0; border-top: solid 1px rgba(255,255,255,0.5)'>
@@ -71,7 +65,7 @@
                                 } ?>" data-badge="<? echo $numPreHarvest ?>">Pre-Harvest Checkup</span></a></li>
                 <li><a href="growerfileshare/"><span
                                 class="icon fa-cloud-download">Shared Files</span></a></li>
-                <? if ($detect->isMobile()) {
+                <? if ($detect->isMobile()) { //Hide Downloads and toggle bar on mobile
                     echo " <div id='options' style='background: rgba(0,0,0,0.15);'>
                                 <li><a href='changepw.php'><span  class=\"icon fa-key\">Change Password</span></a></li>
                                 <li><a href=\"#\" onclick=\"logout();\" id=\"logout-link\"><span class=\"icon fa-sign-out\">Log Out</span></a></li>
@@ -87,7 +81,6 @@
                 ?>
             </ul>
         </nav>
-
     </div>
 </div>
 
@@ -102,7 +95,7 @@
                 <p>Access grower tools and information, review your shipments, and track your estimates.</p>
             </header>
             <footer>
-                <a href="#estimates" class="button scrolly"><span
+                <a href="#blockManagement" class="button scrolly"><span
                             class="icon fa-pencil"> Let's do my Estimates</a>
             </footer>
 
@@ -115,7 +108,8 @@
                 <h2 class="alt">Your Shipments to <? echo $companyName ?></h2>
                 <h2><span class="icon fa-truck"></span></h2>
             </header>
-            <p>The last 75 trucks you sent to us.</p>
+            <p v-if="deliveries.length >= 75">The last 75 trucks you sent to us.</p>
+            <p v-else>All {{deliveries.length}} deliveries you sent to us this year.</p>
             <p>
                 <button id="hider"
                         class="button"><span
@@ -184,122 +178,22 @@
             </div>
         </div>
     </section>
-    <!--Blockdata -->
-    <section id="blockdata" class="blockdata two">
-        <div class="container">
-            <header>
-                <h2 class="alt">Picking Status</h2>
-                <h2><span class="icon fa-th"></span></h2>
-            </header>
-            <p>As you pick and deliver a block's fruit, the block progress will fill up until it reads 100%. Use this
-                tool to see how much of a block you've picked according to your estimate, and to refine your estimate
-                during picking.</p>
-            <p>
-                <button id="hider2" class="button" style="text-align: left"><span
-                            class="icon fa-eye-slash"> View/Hide Picking Stats</span></button>
-            </p>
-            <div id="longtab2" style="display: none">
-                <div id="pickingStatusvue">
-                    <table border='1 px'>
-                        <tr>
-                            <td><b>Farm</td>
-                            <td><b>Block</td>
-                            <td><b>Variety</td>
-                            <td><b>Strain</td>
-                            <td><b>Received Bushels</td>
-                            <td><b>Estimated</td>
-                            <td><b><abbr title='(of the estimate for this block)'>% Done</abbr></td>
-                            <td><b>Mark as <br>Done Picking</b></td>
-                        </tr>
-                        <tr v-if="percentages.length == 0">
-                            <td colspan="8">Sorry, You don't seem to have any blocks yet.</td>
-                        </tr>
-                        <tr v-for="(percentage, index) in percentages" :style="{ color : (percentage.isFinished > 0 ? '#5897fb' : '')}">
-                            <td>{{ percentage.farmName }}</td>
-                            <td>{{ percentage.BlockDesc }}</td>
-                            <td>
-                                <abbr :title="percentage.commodity_name">
-                                    <img :src="'images/' + percentage.commodity_name + '.png'" height='25px' width='25px'/>
-                                </abbr>
-                                {{ percentage.VarietyName }}
-                            </td>
-                            <td>{{ percentage.strainName }}</td>
-                            <td>{{ percentage.totalReceivedBushels }}</td>
-                            <td>{{ percentage.bushelEstimate }}</td>
-                            <td>
-                                {{ percentage.percentDelivered }}%
-                                <Br>
-                                <div class="noload">
-                                    <div class="load" :style="{ width: (percentage.percentDelivered > 100 ? 100 : percentage.percentDelivered) + '%' }"></div>
-                                </div>
-                            </td>
-                            <td><a :class="[percentage.isFinished > 0 ? 'fa-unlock-alt' : 'fa-lock', 'icon']" href="javascript:void(0)"
-                                   v-on:click="toggleFinished(percentage.PK, percentage.isFinished)"></a></td>
-                        </tr>
-                    </table>
-                </div>
-                <?
-                if (mysqli_num_rows($blockCompletionData) > 0) {
-                    if ($detect->isMobile()) {
-                        echo "
-                            <table border='1 px'>
-                                <tr>
-                                    <td><b>Farm</td>
-                                    <td><b>Block</td>
-                                    <td><b>Variety</td>
-                                    <td><b>Total Bushels</td>
-                                    <td><b>Block Progress</b></td>
-                                    <td><b>Mark as Done Picking</b></td></tr>";
-                        while ($blockCompletionTempArray = mysqli_fetch_assoc($blockCompletionData)) {
-                            if ($blockCompletionTempArray['isFinished'] == 0) {
-                                echo "<tr id='" . $blockCompletionTempArray['PK'] . "'><td>" . $blockCompletionTempArray['VarDesc'] . "</td><td>" . $blockCompletionTempArray['Total'] . "</td><td><div class='noload'><div class='load' style='width: " . ($blockCompletionTempArray['Percent'] > 100 ? 100 : $blockCompletionTempArray['Percent']) . "%'></div></div></td><td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : $userinfo['GrowerCode']) . "', { Done: " . $blockCompletionTempArray['PK'] . "});_paq.push(['trackEvent', 'Blocks', 'Marked Done']);$('#" . $blockCompletionTempArray['PK'] . "').slideUp();$.notify('Thanks! We won\'t expect any more from that block.', 'success');\"  class='icon fa-unlock-alt' ></a></td><tr>";
-                            } else {
-                                echo "<tr id='" . $blockCompletionTempArray['PK'] . "' style='color: #5897fb'><td>" . $blockCompletionTempArray['FarmDesc'] . "</td><td>" . $blockCompletionTempArray['BlockDesc'] . "</td><td><abbr title='" . rtrim($blockCompletionTempArray['Comm Desc']) . "'><img src='images/" . rtrim($blockCompletionTempArray['Comm Desc']) . ".png' height='25px' width='25px'/></abbr> " . $blockCompletionTempArray['VarDesc'] . "</td><td>" . $blockCompletionTempArray['Total'] . "</td><td><div class='noload'><div class='load' style='width: " . ($blockCompletionTempArray['Percent'] > 100 ? 100 : $blockCompletionTempArray['Percent']) . "%'></div></div></td><td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : $userinfo['GrowerCode']) . "', { Done: " . $blockCompletionTempArray['PK'] . "});_paq.push(['trackEvent', 'Blocks', 'Marked unDone']);$('#" . $blockCompletionTempArray['PK'] . "').slideUp();$.notify('Thanks! We\'ll open that one again...', 'success');\"  class='icon fa-lock' ></a></td><tr>";
-                            }
-                        }
-                    } else {
-                        echo "
-                            <table border='1 px'>
-                                <tr>
-                                <td><b>ID</td>
-                                    <td><b>Farm</td>
-                                    <td><b>Block</td>
-                                    <td><b>Variety</td>
-                                    <td><b>Strain</td>
-                                    <td><b>Received Bushels</td>
-                                    <td><b>Estimated Bushels</td>
-                                    <td><b><abbr title='(of the estimate for this block)'>% Done</abbr></td>
-                                    <td><b>Block Progress</b></td>
-                                    <td><b>Mark as <br>Done Picking</b></td></tr>";
-                        while ($blockCompletionTempArray = mysqli_fetch_array($blockCompletionData)) {
-                            if ($blockCompletionTempArray['isFinished'] == 0) {
-                                echo "<td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', {Done: " . $blockCompletionTempArray['PK'] . "});_paq.push(['trackEvent', 'Blocks', 'Marked Done']);$('#" . $blockCompletionTempArray['PK'] . "').slideUp();$.notify('Thanks! We won\'t expect any more from that block.', 'success');\"  class='icon fa-unlock-alt' ></a></td><tr>";
-                            } else {
-                                echo "<tr id='" . $blockCompletionTempArray['PK'] . "' style='color: #5897fb'><td>" . $blockCompletionTempArray['PK'] . "</td><td>" . $blockCompletionTempArray['FarmDesc'] . "</td><td>" . $blockCompletionTempArray['BlockDesc'] . "</td><td><abbr title='" . rtrim($blockCompletionTempArray['Comm Desc']) . "'><img src='images/" . rtrim($blockCompletionTempArray['Comm Desc']) . ".png' height='25px' width='25px'/></abbr> " . $blockCompletionTempArray['VarDesc'] . "</td><td>" . $blockCompletionTempArray['Str Desc'] . "</td><td>" . $blockCompletionTempArray['Total'] . "</td><td>" . $blockCompletionTempArray['Est'] . "</td><td>" . $blockCompletionTempArray['Percent'] . "%</td><td><div class='noload'><div class='load' style='width: " . ($blockCompletionTempArray['Percent'] > 100 ? 100 : $blockCompletionTempArray['Percent']) . "%'></div></div></td><td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', {Done:" . $blockCompletionTempArray['PK'] . "});_paq.push(['trackEvent', 'Blocks', 'Marked unDone']);$('#" . $blockCompletionTempArray['PK'] . "').slideUp();$.notify('Thanks! We\'ll open that one again...', 'success');\"  class='icon fa-lock' ></a></td><tr>";
-                            }
-                        }
-
-                    }
-                } else {
-                    echo "<p style='padding: 10px; border: gray 1px solid '>Blocks will begin to appear here once you start delivering fruit for them.</p>";
-                }
-                ?>
-                </table>
-            </div>
-        </div>
-    </section>
     <!-- Crop Estimates -->
-    <section id="estimates" class="two">
+    <section id="blockManagement" class="two">
         <div style="vertical-align: middle;">
-
             <header>
-                <h2>Blocks and Estimates: Season <? echo date('Y') ?></h2>
-                <h2><span class="icon fa-sliders"></span></h2>
+                <h2>Deliveries and Estimates: Season <? echo date('Y') ?></h2>
             </header>
-            <p><strong>Every block needs an estimate</strong>, and you may change your estimates as many times as you
-                like.<br>If you are retiring a block, or if the block is there in error, hit the trash bin to delete its
-                records.<br> Deleted blocks may be restored if needed.</p>
-            <div>
+            <span class="icon fa-th"></span> Your Farms
+            <hr width="85%">
+            <div id="farm_comm_var_block_management_panel">
+                <div v-if="curSelectionMode == 0" class="mdl-grid mdl-grid--no-spacing" id="farmSelectionView">
+                    <div v-for="(farm, farm_id) in blockManagementTree['farms']" class="mdl-cell mdl-cell--4-col">
+                        {{ farm.name }}
+                    </div>
+                </div>
+            </div>
+            <div id="add_new_item_boxes">
                 <button id="hider3" class="button" style="text-align: left"><span
                             class="icon fa-plus"> New Block</span></button>
                 <div id="addblockpanel" style="display: none">
@@ -328,133 +222,23 @@
                                 <td><input type="text" name="Farm" style='width:150px;'></td>
                                 <td><input type="text" name="Block" style='width:150px;'></td>
                                 <td><input type="number" name="newEst" style='width:110px;' placeholder="Bushels"
-                                           required
-                                </td>
+                                           required></td>
                             </tr>
                         </table>
                         <input type=submit value="Submit New Block">
                     </form>
                 </div>
-                <br>
-                <hr width="85%">
-                <br>
-                <form id="PK" name="Estimates" action="processEstimates.php" method="post">
-                    <span class="icon fa-th"></span> Your Current Blocks
-                    <br><br>
-                    <div id="estimatesTable">
-                        <div style="display: inline-block; border:gray solid 1px">
-                            <span class="icon fa-info-circle"></span> Color key<br>
-                            <p style="width: 100%;background-color:#9ef939; padding:6px; border-top:gray solid 1px; border-right:gray solid 1px; float:left; margin: auto">
-                                We've got your numbers</p>
-                            <p style="width: 100%;padding:6px; border-top:gray solid 1px; float:left; margin: auto">We still need an
-                                estimate</p>
-                            <p style="width: 100%;background-color:#FF9990; padding:6px; border-left:gray solid 1px; border-top:gray solid 1px; float:left; margin: auto">
-                                Block Deleted</p>
-                        </div>
-                        <br><br>
-                        <table id='tableEstimatesSubmitter' border='1px'>
-                            <thead style='cursor: pointer'>
-                            <tr>
-                                <th></th>
-                                <th><b>Variety</th>
-                                <th><b>Block</th>
-                                <th><b>Strain</th>
-                                <th v-if="!isMobile"><b>{{serverYear -3}} Actual</th>
-                                <th v-if="!isMobile"><b>{{serverYear -2}} Actual</th>
-                                <th v-if="!isMobile"><b>{{serverYear -1}} Estimate</th>
-                                <th><b>{{serverYear -1}} Actual</th>
-                                <th><b>{{serverYear}} Estimate</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                            //prepare the estimates table - mobile has a different view, and rows that are deleted get different styling
-                            //show table headers
-                            //headers ending with <tbody>
-                            while ($growerdata = mysqli_fetch_assoc($estimates)) {
-                                if ($detect->isMobile()) {
-                                    if ($growerdata['isDeleted'] == "0") {
-                                        echo "<tr id=\"est" . $growerdata['PK'] . "\" " . (($growerdata[date('Y') . 'est'] <> $growerdata[(date('Y') - 1) . 'act'] || $growerdata['isSameAsLastYear']) ? "bgcolor='#9ef939'" : "") . ">
-                                <td><a href='javascript:void(0)'  onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { PK: " . $growerdata['PK'] . "}, function() {_paq.push(['trackEvent', 'Estimates', 'DeleteBlock']);$.notify('Block Deleted. Refresh to see changes.', 'error');$('#est" . $growerdata['PK'] . "').slideUp();});\"  class=\"icon fa-trash-o\"></a></td>
-                                <td>" . (($growerdata['Comm Desc'] != "Apple") ? "<abbr title=" . rtrim($growerdata['Comm Desc']) . "><img src='images/" . rtrim($growerdata['Comm Desc']) . ".png' width='25px' height'25px'/></abbr>" : "") . " " . $growerdata['VarDesc'] . "</td>
-                                <td>" . $growerdata['FarmDesc'] . "</td>
-                                <td><input class='blocknamer' placeholder='Name this block...' type=text name='" . $growerdata['PK'] . "bn' value='" . rtrim($growerdata['BlockDesc']) . "'></td>
-                                <td>" . $growerdata['Str Desc'] . "</td>
-                                <td>" . number_format($growerdata[(date('Y') - 2) . 'act']) . "</td>
-                                <td>" . number_format($growerdata[(date('Y') - 1) . 'act']) . "</td>
-                                <td><input 
-                                onchange=\"((this.value != " . $growerdata[(date('Y') - 1) . 'act'] . ") ? ($('#" . $growerdata['PK'] . "sameCheckbox').slideUp(), $('#est" . $growerdata['PK'] . "').attr('bgcolor', '#9ef939')) : (($('#est" . $growerdata['PK'] . "').removeAttr('bgcolor')), $('#" . $growerdata['PK'] . "sameCheckbox').slideDown()))\"
-                                style='width:110px;' type='number' class='estimatesubmitter' id='" . $growerdata['PK'] . "estbox' name='" . $growerdata['PK'] . "' value='" . $growerdata[date('Y') . 'est'] . "' placeholder='Bushels' " . (($growerdata['isSameAsLastYear']) ? 'readonly' : '') . ">
-                                </input><br>
-                                <div style='font-size: medium; " . (($growerdata[date('Y') . 'est'] <> $growerdata[(date('Y') - 1) . 'act']) ? 'display: none' : '') . "' id='" . $growerdata['PK'] . "sameCheckbox'>
-                                <input onChange=\"(this.checked) ? ($.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { sameEst: " . $growerdata['PK'] . "}), $('#est" . $growerdata['PK'] . "').attr('bgcolor', '#9ef939'), $('#" . $growerdata['PK'] . "estbox').attr('readonly', true)) : ($.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { sameEst: " . $growerdata['PK'] . "}), $('#est" . $growerdata['PK'] . "').removeAttr('bgcolor'), $('#" . $growerdata['PK'] . "estbox').attr('readonly', false))\" type='checkbox' " . (($growerdata['isSameAsLastYear']) ? 'checked' : '') . ">Keep last year's deliveries as your estimate?</input></div></td>
-                                </tr>";
-                                    } else {
-                                        echo "<tr id=\"est" . $growerdata['PK'] . "\" bgcolor='#FF999'><td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { PK: " . $growerdata['PK'] . "}, function() {_paq.push(['trackEvent', 'Estimates', 'RestoreBlock']);$.notify('Block Restored. Refresh to see changes.', 'success');$('#est" . $growerdata['PK'] . "').slideUp();});\"  class='icon fa-undo' ></a></td
-                                ><td>ID-" . $growerdata['PK'] . ":<br>" . (($growerdata['Comm Desc'] != "Apple") ? "<abbr title=" . rtrim($growerdata['Comm Desc']) . "><img src='images/" . rtrim($growerdata['Comm Desc']) . ".png' width='25px' height'25px'/></abbr>" : "") . " " . $growerdata['VarDesc'] . "</td>
-                                <td>" . $growerdata['FarmDesc'] . "</td>
-                                <td>" . $growerdata['BlockDesc'] . "</td>
-                                <td>" . $growerdata['Str Desc'] . "</td>
-                                <td>" . number_format($growerdata[(date('Y') - 2) . 'act']) . "</td>
-                                <td>" . number_format($growerdata[(date('Y') - 1) . 'act']) . "</td>
-                                <td><input type='search' style='width:110px;' name='" . $growerdata['PK'] . "' value='0' disabled readonly</input></td>
-                                </tr>";
-                                    }
-                                } else //not mobile
-                                {
-                                    if ($growerdata['isDeleted'] == "0") {
-                                        echo "<tr id=\"est" . $growerdata['PK'] . "\" " . (($growerdata[date('Y') . 'est'] <> $growerdata[(date('Y') - 1) . 'act'] || $growerdata['isSameAsLastYear']) ? "bgcolor='#9ef939'" : "") . ">
-                                <td><a href='javascript:void(0)'  onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { PK: " . $growerdata['PK'] . "}, function(){_paq.push(['trackEvent', 'Estimates', 'DeleteBlock']);$.notify('Block Deleted. Refresh to see changes.', 'error');$('#est" . $growerdata['PK'] . "').slideUp()});\"  class=\"icon fa-trash-o\"></a></td>
-                                <td>" . (($growerdata['Comm Desc'] != "Apple") ? "<abbr title=" . rtrim($growerdata['Comm Desc']) . "><img src='images/" . rtrim($growerdata['Comm Desc']) . ".png' width='25px' height='25px'/></abbr>" : "") . " " . $growerdata['VarDesc'] . "</td>
-                                <td>" . $growerdata['FarmDesc'] . "</td>
-                                <td><input class='blocknamer' placeholder='Name this block...' type=text name='" . $growerdata['PK'] . "bn' value='" . rtrim($growerdata['BlockDesc']) . "'></td>
-                                <td>" . $growerdata['Str Desc'] . "</td>
-                                <td>" . number_format($growerdata[(date('Y') - 3) . 'act']) . "</td>
-                                <td>" . number_format($growerdata[(date('Y') - 2) . 'act']) . "</td>
-                                <td>" . number_format($growerdata[(date('Y') - 1) . 'est']) . "</td>
-                                <td>" . number_format($growerdata[(date('Y') - 1) . 'act']) . "</td>
-                                <td><input 
-                                onchange=\"((this.value != " . $growerdata[(date('Y') - 1) . 'act'] . ") ? ($('#" . $growerdata['PK'] . "sameCheckbox').slideUp(), $('#est" . $growerdata['PK'] . "').attr('bgcolor', '#9ef939')) : (($('#est" . $growerdata['PK'] . "').removeAttr('bgcolor')), $('#" . $growerdata['PK'] . "sameCheckbox').slideDown()))\" 
-                                style='width:110px;' type='number' class='estimatesubmitter' id='" . $growerdata['PK'] . "estbox' name='" . $growerdata['PK'] . "' value='" . $growerdata[date('Y') . 'est'] . "' placeholder='Bushels' " . (($growerdata['isSameAsLastYear']) ? 'readonly' : '') . ">
-                                </input><br>
-                                <div style='font-size: medium; " . (($growerdata[date('Y') . 'est'] <> $growerdata[(date('Y') - 1) . 'act']) ? 'display: none' : '') . "' id='" . $growerdata['PK'] . "sameCheckbox'>
-                                <input onChange=\"(this.checked) ? ($.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { sameEst: " . $growerdata['PK'] . "}), $('#est" . $growerdata['PK'] . "').attr('bgcolor', '#9ef939'), $('#" . $growerdata['PK'] . "estbox').attr('readonly', true),$.notify('Information Received', 'success')) : ($.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { sameEst: " . $growerdata['PK'] . "}), $('#est" . $growerdata['PK'] . "').removeAttr('bgcolor'), $('#" . $growerdata['PK'] . "estbox').attr('readonly', false), $.notify('Information Received', 'success'))\" type='checkbox' " . (($growerdata['isSameAsLastYear']) ? 'checked' : '') . ">Keep last year's deliveries as your estimate?</input></div></td>
-                                </tr>";
-                                    } else {
-                                        echo "<tr id=\"est" . $growerdata['PK'] . "\" bgcolor='#FF999'>
-                                <td><a href='javascript:void(0)' onclick=\"$.get('processBlock.php" . (isset($_GET['alt_acc']) ? "?alt_acc=" . $_GET['alt_acc'] : '') . "', { PK: " . $growerdata['PK'] . "}, function(){_paq.push(['trackEvent', 'Estimates', 'RestoreBlock']);$.notify('Block Restored. Refresh to see changes.', 'success');$('#est" . $growerdata['PK'] . "').slideUp();})\"  class='icon fa-undo' ></a></td>
-                                <td>ID-" . $growerdata['PK'] . ":<br>" . (($growerdata['Comm Desc'] != "Apple") ? "<abbr title=" . rtrim($growerdata['Comm Desc']) . "><img src='images/" . rtrim($growerdata['Comm Desc']) . ".png' width='25px' height'25px'/></abbr>" : "") . " " . $growerdata['VarDesc'] . "</td>
-                                <td>" . $growerdata['FarmDesc'] . "</td>
-                                <td>" . $growerdata['BlockDesc'] . "</td>
-                                <td>" . $growerdata['Str Desc'] . "</td>
-                                <td>" . number_format($growerdata[(date('Y') - 3) . 'act']) . "</td>
-                                <td>" . number_format($growerdata[(date('Y') - 2) . 'act']) . "</td>
-                                <td>" . number_format($growerdata[(date('Y') - 1) . 'est']) . "</td>
-                                <td>" . number_format($growerdata[(date('Y') - 1) . 'act']) . "</td>
-                                <td><input type='search' style='width:110px;' name='" . $growerdata['PK'] . "' value='0' disabled readonly</input></td></tr>";
-                                    }
-                                }
-                            }
-                            ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </form>
             </div>
         </div>
     </section>
-
-
 </div>
 
 <!-- Footer -->
 <div id="footer">
-
     <!-- Copyright -->
     <ul class="copyright">
-        <li>&copy;</li>
+        <li>&copy; PackerCloud 2015 - <?= date('Y') ?></li>
     </ul>
-
 </div>
 
 </body>
@@ -467,7 +251,6 @@
 <script src="js/init.js"></script>
 <script src="js/select2.min.js"></script>
 <script src="../../scripts-common/vue.min.js"></script>
-<script src="js/jquery.tablesorter.min.js"></script>
 <script>
     var CommoditiesTree = {};
 
@@ -490,16 +273,21 @@
         }
     });
 
-    var blockPercentageVue = new Vue({
-        el: "#pickingStatusvue",
+    var blockManagementVue = new Vue({
+        el: "#blockManagement",
         data: {
-            percentages: []
+            blockManagementTree: {},
+            curSelectionMode: 0, //0 for farm select, 1 for commodity, 2 for variety, 3 for blocks
+            //indexes are from the returned JSON, not their unique IDs
+            curFarmIndex: -1,
+            curCommodityIndex: -1,
+            curVarietyIndex: -1
         },
         methods: {
-            toggleFinished: function (PK, finishedStatus) {
+            toggleFinished: function (PK, isFinished) { //TODO REWRITE
                 var self = this;
                 $.get('processBlock.php', {Done: PK}, function (data) {
-                    if (finishedStatus > 0) {
+                    if (isFinished > 0) {
 //                        console.log(self.percentages[PK]['isFinished']);
                         self.percentages[PK]['isFinished'] = 0;
 //                        console.log(self.percentages[PK]['isFinished']);
@@ -515,24 +303,9 @@
         },
         mounted: function () {
             var self = this;
-            $.getJSON('API/getBlockCompletion.php', function (data) {
-                self.percentages = data;
+            $.getJSON('API/getBlocksAndMetadata.php', function (data) {
+                self.blockManagementTree = data;
             });
-        }
-    });
-
-    var estimatesTableVue = new Vue({
-        el: "#estimatesTable",
-        data: {
-            farmsListing: {},
-            curFarmID: -1,
-            curDisplayingBlocks: {},
-            isMobile: <?= json_encode($detect->isMobile())?>,
-            serverYear: <?=date('Y')?>
-        },
-        methods: {},
-        mounted: function () {
-
         }
     });
 
@@ -542,27 +315,17 @@
         $("#hider").click(function () {
             $("#longtab").slideToggle();
         });
+        //todo remove
         $("#hider2").click(function () {
             $("#longtab2").slideToggle();
         });
+        //todo remove
         $("#hider3").click(function () {
             $("#addblockpanel").slideToggle();
         });
         $("#optiontoggle").click(function () {
             $("#options").slideToggle();
             $("#optionstab").toggleClass("fa-chevron-down fa-minus");
-        });
-
-        $('#tableEstimatesSubmitter').tablesorter({
-            textExtraction: {
-                3: function (node, table, cellIndex) {
-                    return $(node).find("input").val();
-                }
-            },
-            headers: {
-                0: {sorter: false},
-                9: {sorter: false}
-            }
         });
     });
     //attach event listeners to estimates table
@@ -574,7 +337,7 @@
         return false;
     });
 
-    function getCommoditiesTree() {
+    function getCommoditiesTree() { // for populating/controlling the add block dialog
         $.getJSON('API/getGlobalCommoditySubTypes.php', function (data) {
             CommoditiesTree = data;
             $("#commoditiesRadios").empty();

@@ -26,7 +26,6 @@ while($varietyRow = mysqli_fetch_assoc($varietyQuery)){
 }
 
 //get Strains
-
 $strainQuery = mysqli_query($mysqli, "SELECT strain_ID as id, variety_ID, commodityID, strainName as text FROM grower_strains JOIN grower_varieties ON grower_strains.variety_ID = grower_varieties.VarietyID");
 while($strainRow = mysqli_fetch_assoc($strainQuery)){
     $commodities[$strainRow['commodityID']]['Varieties'][$strainRow['variety_ID']]['Strains'][$strainRow['id']] = $strainRow;
