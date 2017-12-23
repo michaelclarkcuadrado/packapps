@@ -237,3 +237,14 @@ function resetPassword($mysqli, $userName) {
     mysqli_query($mysqli, "UPDATE packapps_master_users SET Password='$newPassword' WHERE username='$user'") or die(header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500));
     return "Password reset.";
 }
+
+/**
+ * Kills a connection and gives an error message
+ * @param $errorMsg - string, failure reason given
+ */
+function APIFail($errorMsg = 'Internal Server Error'){
+    header($_SERVER['SERVER_PROTOCOL'] . '500 ' . $errorMsg, true, 500);
+    error_log($errorMsg);
+    echo $errorMsg;
+    die();
+}

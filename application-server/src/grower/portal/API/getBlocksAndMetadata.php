@@ -72,10 +72,13 @@ while ($row = mysqli_fetch_assoc($query)) {
     $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['varieties'][$row['variety_ID']]['blocks'][$row['PK']]['bushelHistory'] = $bushelHistory;
     $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['varieties'][$row['variety_ID']]['blocks'][$row['PK']]['bushelHistory'][$year][$value_type] = $bushel_value;
 
-    //set branch names
+    //set branch names and IDs
     $blockOrganizationTree['farms'][$row['farmID']]['name'] = $row['farmName'];
+    $blockOrganizationTree['farms'][$row['farmID']]['ID'] = intval($row['farmID']);
     $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['name'] = $row['commodity_name'];
+    $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['ID'] = intval($row['commodity_ID']);
     $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['varieties'][$row['variety_ID']]['name'] = $row['VarietyName'];
+    $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['varieties'][$row['variety_ID']]['ID'] = intval($row['variety_ID']);
 
     if (!array_key_exists($row['PK'], $blocksBushelsDeliveredSummed)) {
         $blockOrganizationTree['farms'][$row['farmID']]['bushelsReceived'] += $row['bushelsReceived'];

@@ -6,7 +6,8 @@ foreach ($_POST as $pk => $posteddata) {
     $pk = mysqli_real_escape_string($mysqli, $pk);
     $posteddata = mysqli_real_escape_string($mysqli, $posteddata);
     //bn == blockname
-
+    //TODO FIXME: get rid of all this rename and estimate in the same API call nonsense
+    //TODO deprecate: renaming taken over by API/renameLand.php call
     if (strpos($pk, 'bn') !== false) {
         mysqli_query($mysqli, "UPDATE `grower_crop-estimates` SET `BlockDesc` ='" . $posteddata . "' WHERE PK='" . str_replace("bn", "", $pk) . "' AND Grower='" . $userinfo['GrowerCode'] . "'");
 

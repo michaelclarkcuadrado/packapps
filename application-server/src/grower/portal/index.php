@@ -33,7 +33,6 @@
     <link rel="stylesheet" href="css/ie/v8.css"/><![endif]-->
 </head>
 <body>
-
 <!-- Header -->
 <div id="header" class="skel-layers-fixed">
     <div class="top">
@@ -83,7 +82,6 @@
         </nav>
     </div>
 </div>
-
 <!-- Main -->
 <div id="main">
     <!-- Intro -->
@@ -184,14 +182,84 @@
             <header>
                 <h2>Deliveries and Estimates: Season <? echo date('Y') ?></h2>
             </header>
-            <span class="icon fa-th"></span> Your Farms
+            <h3>
+                <span v-if="curSelectionMode > 0" title="Back" class="icon fa-level-up" style="cursor: pointer;" v-on:click="goBackSelectionView()"></span>
+                <span v-else class="icon fa-th"></span>
+                {{selectionPanelTitle}}
+            </h3>
             <hr width="85%">
             <div id="farm_comm_var_block_management_panel">
-                <div v-if="curSelectionMode == 0" class="mdl-grid mdl-grid--no-spacing" id="farmSelectionView">
-                    <div v-for="(farm, farm_id) in blockManagementTree['farms']" class="mdl-cell mdl-cell--4-col">
-                        {{ farm.name }}
+                <!--Farms-->
+                <div v-if="curSelectionMode === 0" class="mdl-grid" id="farmSelectionView">
+                    <div v-for="(farm, farm_id) in blockManagementTree['farms']" v-on:click="selectFarm(farm_id)" class="farm_comm_var_selector mdl-cell mdl-cell--4-col mdl-shadow--4dp">
+                        <div style="display: inline-block">
+                            <h3 style="display: inline-block">{{ farm.name }} </h3>
+                            <i class="fa fa-edit" v-on:click="renameFarm(farm.ID, farm.name)"></i>
+                        </div>
+                        <hr style="width: 85%">
+                        <div class="fcv_selector_info_wrapper">
+                            <div class="delivery_progress">
+                                {{Number(farm.bushelsReceived).toLocaleString()}} bushels delivered
+                                <div class="noload">
+                                    <div :style="{width: getDeliveryCompletionPercentage(farm.bushelsReceived, farm.bushelsAnticipated) + '%'}" class="load"></div>
+                                </div>
+                            </div>
+                            <div v-if="farm.estimatesNeeded > 0" class="alert_estimates_pending mdl-shadow--2dp">
+                                <i class="fa fa-lg fa-exclamation-circle"></i>
+                                {{farm.estimatesNeeded}} estimates pending.
+                            </div>
+                            <div>{{Number(farm.bushelsAnticipated).toLocaleString()}} bushels expected yield
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <!--Commodities-->
+                <div v-if="curSelectionMode === 1" class="mdl-grid" id="commSelectionView">
+                    <div v-for="(comm, comm_id) in blockManagementTree['farms'][curFarmIndex]['commodities']" v-on:click="selectCommodity(comm_id)" class="farm_comm_var_selector mdl-cell mdl-cell--4-col mdl-shadow--4dp">
+                        <div style="display: inline-block">
+                            <h3 style="display: inline-block">{{ comm.name }} </h3>
+                        </div>
+                        <hr style="width: 85%">
+                        <div class="fcv_selector_info_wrapper">
+                            <div class="delivery_progress">
+                                {{Number(comm.bushelsReceived).toLocaleString()}} bushels delivered
+                                <div class="noload">
+                                    <div :style="{width: getDeliveryCompletionPercentage(comm.bushelsReceived, comm.bushelsAnticipated) + '%'}" class="load"></div>
+                                </div>
+                            </div>
+                            <div v-if="comm.estimatesNeeded > 0" class="alert_estimates_pending mdl-shadow--2dp">
+                                <i class="fa fa-lg fa-exclamation-circle"></i>
+                                {{comm.estimatesNeeded}} estimates pending.
+                            </div>
+                            <div>{{Number(comm.bushelsAnticipated).toLocaleString()}} bushels expected yield
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Varieties-->
+                <div v-if="curSelectionMode === 2" class="mdl-grid" id="varietySelectionView">
+                    <div v-for="(variety, variety_id) in blockManagementTree['farms'][curFarmIndex]['commodities'][curCommodityIndex]['varieties']" class="farm_comm_var_selector mdl-cell mdl-cell--4-col mdl-shadow--4dp">
+                        <div style="display: inline-block">
+                            <h3 style="display: inline-block">{{ variety.name }} </h3>
+                        </div>
+                        <hr style="width: 85%">
+                        <div class="fcv_selector_info_wrapper">
+                            <div class="delivery_progress">
+                                {{Number(variety.bushelsReceived).toLocaleString()}} bushels delivered
+                                <div class="noload">
+                                    <div :style="{width: getDeliveryCompletionPercentage(variety.bushelsReceived, variety.bushelsAnticipated) + '%'}" class="load"></div>
+                                </div>
+                            </div>
+                            <div v-if="variety.estimatesNeeded > 0" class="alert_estimates_pending mdl-shadow--2dp">
+                                <i class="fa fa-lg fa-exclamation-circle"></i>
+                                {{variety.estimatesNeeded}} estimates pending.
+                            </div>
+                            <div>{{Number(variety.bushelsAnticipated).toLocaleString()}} bushels expected yield
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Blocks-->
             </div>
             <div id="add_new_item_boxes">
                 <button id="hider3" class="button" style="text-align: left"><span
@@ -252,8 +320,6 @@
 <script src="js/select2.min.js"></script>
 <script src="../../scripts-common/vue.min.js"></script>
 <script>
-    var CommoditiesTree = {};
-
     //vues
     var deliveriesTableVue = new Vue({
         el: "#deliveriesvue",
@@ -281,9 +347,100 @@
             //indexes are from the returned JSON, not their unique IDs
             curFarmIndex: -1,
             curCommodityIndex: -1,
-            curVarietyIndex: -1
+            curVarietyIndex: -1,
+            selectionPanelTitle: " Your Farms"
         },
         methods: {
+            goBackSelectionView: function(){
+                switch (this.curSelectionMode){
+                    case 0:
+                        break;
+                    case 1:
+                        this.restoreCleanState();
+                        break;
+                    case 2:
+                        this.selectFarm(this.curFarmIndex);
+                        break;
+                    case 3:
+                        this.selectCommodity(this.curCommodityIndex);
+                        break;
+                }
+            },
+            restoreCleanState: function(){
+              this.selectionPanelTitle = " Your Farms";
+              this.curSelectionMode = 0;
+              this.curFarmIndex = -1;
+              this.curCommodityIndex = -1;
+              this.curVarietyIndex = -1;
+            },
+            selectFarm: function(farmIndex){ // go to commodity view
+                this.selectionPanelTitle = this.blockManagementTree['farms'][farmIndex]['name'] + " Farm's Commodities";
+                this.curFarmIndex = farmIndex;
+                this.curSelectionMode = 1;
+                this.curCommodityIndex = -1;
+                this.curVarietyIndex = -1;
+            },
+            selectCommodity: function(commID){ // go to variety view
+                this.selectionPanelTitle = this.blockManagementTree['farms'][this.curFarmIndex]['name'] + " Farm's " + this.blockManagementTree['farms'][this.curFarmIndex]['commodities'][commID]['name'] + " Varieties";
+                this.curCommodityIndex = commID;
+                this.curVarietyIndex = -1;
+                this.curSelectionMode = 2;
+            },
+            selectVariety: function(varietyID){
+                //TODO
+            },
+            getDeliveryCompletionPercentage: function (delivered, anticipated) {
+                if (delivered === 0 || anticipated === 0) {
+                    return 0;
+                } //Avoid NaNs
+                var percentage = (delivered / anticipated) * 100;
+                if (percentage > 100) {
+                    return 100;
+                }
+                return percentage;
+            },
+            renameFarm: function(farmID, curName){
+                var newName = prompt("Rename this farm to: ", curName);
+                this.renameLand('farm', farmID, newName);
+                event.stopPropagation();
+            },
+            renameBlock: function(blockPK, curName){
+                var newName = prompt("Rename this block to: ", curName);
+                this.renameLand('block', blockPK, newName);
+            },
+            renameLand: function (landType, landID, newName) {
+                if (landType === 'farm' || landType === 'block') {
+                    var self = this;
+                    var argsObj = {
+                        landType: landType,
+                        landID: landID,
+                        newName: newName
+                    };
+                    $.getJSON('API/renameLand.php', argsObj, function (data) {
+                        if (landType === 'farm') {
+                            $.each(self.blockManagementTree['farms'], function(farmindex, farm){
+                                if(farm.ID === landID){
+                                    farm.name = newName;
+                                    return false; //break loop
+                                }
+                                return true;
+                            });
+                        } else if (landType === 'block') {
+                            $.each(self.blockManagementTree['farms'][data['farmID']]['commodities'][data['commodityID']]['varieties'][data['variety_ID']]['blocks'], function(block){
+                                if(block.ID === data['PK']){
+                                    block.BlockDesc = newName;
+                                    return false; //break loop
+                                }
+                                return true;
+                            });
+                        }
+                    }).fail(function () {
+                        $.notify("Couldn't rename that " + landType + ".")
+                    });
+                } else {
+                    console.log("Invalid landType")
+                }
+            },
             toggleFinished: function (PK, isFinished) { //TODO REWRITE
                 var self = this;
                 $.get('processBlock.php', {Done: PK}, function (data) {
@@ -309,6 +466,7 @@
         }
     });
 
+    var CommoditiesTree = {};
     $(document).ready(function () {
         getCommoditiesTree();
         //attach listeners

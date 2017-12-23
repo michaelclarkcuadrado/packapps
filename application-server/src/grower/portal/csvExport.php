@@ -63,6 +63,7 @@ $headers = array('PackApps_ID', 'Commodity', 'Farm', 'Block', 'Variety', 'Strain
 for($i = $earliestYear; $i <= date('Y'); $i++){
     array_push($headers, $i . " Output");
 };
+// TODO - If blocks have different history lengths, the order is incorrect. FIXME
 fputcsv($output, $headers);
 foreach($blockdata_years_pivoted as $row){
     fputcsv($output, $row);

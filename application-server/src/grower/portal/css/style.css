@@ -729,3 +729,24 @@ input[type="reset"]:active,
     border-radius: 50%;
     box-shadow: 0 0 1px #333;
 }
+
+.farm_comm_var_selector {
+    border-radius: 8px;
+    background-color: lightblue;
+    cursor: pointer;
+}
+
+.farm_comm_var_selector > .fcv_selector_info_wrapper {
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 100%;
+    display: inline-block
+}
+
+.alert_estimates_pending {
+    margin: 8px;
+    background-color: pink;
+    border-radius: 120px;
+    overflow: hidden;
+    display: inline-block;
+}
