@@ -188,80 +188,9 @@
                 {{selectionPanelTitle}}
             </h3>
             <hr width="85%">
-            <div id="farm_comm_var_block_management_panel">
-                <!--Farms-->
-                <div v-if="curSelectionMode === 0" class="mdl-grid" id="farmSelectionView">
-                    <div v-for="(farm, farm_id) in blockManagementTree['farms']" v-on:click="selectFarm(farm_id)" class="farm_comm_var_selector mdl-cell mdl-cell--4-col mdl-shadow--4dp">
-                        <div style="display: inline-block">
-                            <h3 style="display: inline-block">{{ farm.name }} </h3>
-                            <i class="fa fa-edit" v-on:click="renameFarm(farm.ID, farm.name)"></i>
-                        </div>
-                        <hr style="width: 85%">
-                        <div class="fcv_selector_info_wrapper">
-                            <div class="delivery_progress">
-                                {{Number(farm.bushelsReceived).toLocaleString()}} bushels delivered
-                                <div class="noload">
-                                    <div :style="{width: getDeliveryCompletionPercentage(farm.bushelsReceived, farm.bushelsAnticipated) + '%'}" class="load"></div>
-                                </div>
-                            </div>
-                            <div v-if="farm.estimatesNeeded > 0" class="alert_estimates_pending mdl-shadow--2dp">
-                                <i class="fa fa-lg fa-exclamation-circle"></i>
-                                {{farm.estimatesNeeded}} estimates pending.
-                            </div>
-                            <div>{{Number(farm.bushelsAnticipated).toLocaleString()}} bushels expected yield
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Commodities-->
-                <div v-if="curSelectionMode === 1" class="mdl-grid" id="commSelectionView">
-                    <div v-for="(comm, comm_id) in blockManagementTree['farms'][curFarmIndex]['commodities']" v-on:click="selectCommodity(comm_id)" class="farm_comm_var_selector mdl-cell mdl-cell--4-col mdl-shadow--4dp">
-                        <div style="display: inline-block">
-                            <h3 style="display: inline-block">{{ comm.name }} </h3>
-                        </div>
-                        <hr style="width: 85%">
-                        <div class="fcv_selector_info_wrapper">
-                            <div class="delivery_progress">
-                                {{Number(comm.bushelsReceived).toLocaleString()}} bushels delivered
-                                <div class="noload">
-                                    <div :style="{width: getDeliveryCompletionPercentage(comm.bushelsReceived, comm.bushelsAnticipated) + '%'}" class="load"></div>
-                                </div>
-                            </div>
-                            <div v-if="comm.estimatesNeeded > 0" class="alert_estimates_pending mdl-shadow--2dp">
-                                <i class="fa fa-lg fa-exclamation-circle"></i>
-                                {{comm.estimatesNeeded}} estimates pending.
-                            </div>
-                            <div>{{Number(comm.bushelsAnticipated).toLocaleString()}} bushels expected yield
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Varieties-->
-                <div v-if="curSelectionMode === 2" class="mdl-grid" id="varietySelectionView">
-                    <div v-for="(variety, variety_id) in blockManagementTree['farms'][curFarmIndex]['commodities'][curCommodityIndex]['varieties']" class="farm_comm_var_selector mdl-cell mdl-cell--4-col mdl-shadow--4dp">
-                        <div style="display: inline-block">
-                            <h3 style="display: inline-block">{{ variety.name }} </h3>
-                        </div>
-                        <hr style="width: 85%">
-                        <div class="fcv_selector_info_wrapper">
-                            <div class="delivery_progress">
-                                {{Number(variety.bushelsReceived).toLocaleString()}} bushels delivered
-                                <div class="noload">
-                                    <div :style="{width: getDeliveryCompletionPercentage(variety.bushelsReceived, variety.bushelsAnticipated) + '%'}" class="load"></div>
-                                </div>
-                            </div>
-                            <div v-if="variety.estimatesNeeded > 0" class="alert_estimates_pending mdl-shadow--2dp">
-                                <i class="fa fa-lg fa-exclamation-circle"></i>
-                                {{variety.estimatesNeeded}} estimates pending.
-                            </div>
-                            <div>{{Number(variety.bushelsAnticipated).toLocaleString()}} bushels expected yield
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Blocks-->
-            </div>
-            <div id="add_new_item_boxes">
+            <!-- Add new Block -->
+            <div v-show="curSelectionMode === 0" id="add_new_farm_box"></div>
+            <div v-show="curSelectionMode > 0" id="add_new_item_boxes">
                 <button id="hider3" class="button" style="text-align: left"><span
                             class="icon fa-plus"> New Block</span></button>
                 <div id="addblockpanel" style="display: none">
@@ -295,6 +224,88 @@
                         </table>
                         <input type=submit value="Submit New Block">
                     </form>
+                </div>
+            </div>
+            <div id="farm_comm_var_block_management_panel">
+                <!--Farms-->
+                <div v-if="curSelectionMode === 0" class="mdl-grid" id="farmSelectionView">
+                    <div v-for="(farm, farm_id) in blockManagementTree['farms']" v-on:click="selectFarm(farm_id)" class="farm_comm_var_selector mdl-cell mdl-cell--4-col mdl-shadow--4dp">
+                        <div style="display: inline-block">
+                            <h3 style="display: inline-block">{{ farm.name }} </h3>
+                            <i class="fa fa-edit" v-on:click="renameFarm(farm.ID, farm.name)"></i>
+                        </div>
+                        <hr style="width: 85%">
+                        <div class="fcv_selector_info_wrapper">
+                            <div class="delivery_progress">
+                                {{Number(farm.bushelsReceived).toLocaleString()}} bushels delivered
+                                <div class="noload">
+                                    <div :style="{width: getDeliveryCompletionPercentage(farm.bushelsReceived, farm.bushelsAnticipated) + '%'}" class="load"></div>
+                                </div>
+                            </div>
+                            <div v-if="farm.estimatesNeeded > 0" class="alert_estimates_pending mdl-shadow--2dp">
+                                <i class="fa fa-lg fa-exclamation-circle"></i>
+                                {{farm.estimatesNeeded}} estimates pending.
+                            </div>
+                            <div>{{Number(farm.bushelsAnticipated).toLocaleString()}} bushels expected yield
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Commodities-->
+                <div v-if="curSelectionMode === 1" class="mdl-grid" id="commSelectionView">
+                    <div v-for="(comm, comm_id) in blockManagementTree['farms'][curFarmIndex]['commodities']" v-on:click="selectCommodity(comm_id)" class="farm_comm_var_selector mdl-cell mdl-cell--4-col mdl-shadow--4dp">
+                        <div style="display: inline-block">
+                            <h3 style="display: inline-block"><img :src="'images/'+comm.name+'.png'"> {{ comm.name }} </h3>
+                        </div>
+                        <hr style="width: 85%">
+                        <div class="fcv_selector_info_wrapper">
+                            <div class="delivery_progress">
+                                {{Number(comm.bushelsReceived).toLocaleString()}} bushels delivered
+                                <div class="noload">
+                                    <div :style="{width: getDeliveryCompletionPercentage(comm.bushelsReceived, comm.bushelsAnticipated) + '%'}" class="load"></div>
+                                </div>
+                            </div>
+                            <div v-if="comm.estimatesNeeded > 0" class="alert_estimates_pending mdl-shadow--2dp">
+                                <i class="fa fa-lg fa-exclamation-circle"></i>
+                                {{comm.estimatesNeeded}} estimates pending.
+                            </div>
+                            <div>{{Number(comm.bushelsAnticipated).toLocaleString()}} bushels expected yield
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Varieties-->
+                <div v-if="curSelectionMode === 2" class="mdl-grid" id="varietySelectionView">
+                    <div v-for="(variety, variety_id) in blockManagementTree['farms'][curFarmIndex]['commodities'][curCommodityIndex]['varieties']" v-on:click="selectVariety(variety_id)" class="farm_comm_var_selector mdl-cell mdl-cell--4-col mdl-shadow--4dp">
+                        <div style="display: inline-block">
+                            <h3 style="display: inline-block">{{ variety.name }} </h3>
+                        </div>
+                        <hr style="width: 85%">
+                        <div class="fcv_selector_info_wrapper">
+                            <div class="delivery_progress">
+                                {{Number(variety.bushelsReceived).toLocaleString()}} bushels delivered
+                                <div class="noload">
+                                    <div :style="{width: getDeliveryCompletionPercentage(variety.bushelsReceived, variety.bushelsAnticipated) + '%'}" class="load"></div>
+                                </div>
+                            </div>
+                            <div v-if="variety.estimatesNeeded > 0" class="alert_estimates_pending mdl-shadow--2dp">
+                                <i class="fa fa-lg fa-exclamation-circle"></i>
+                                {{Number(variety.estimatesNeeded).toLocaleString()}} estimates pending.
+                            </div>
+                            <div>{{Number(variety.bushelsAnticipated).toLocaleString()}} bushels expected yield</div>
+                            <div style="font-size: smaller"><span class="fa fa-th"></span> {{Number(variety.blocks.length).toLocaleString() + (variety.blocks.length == 1 ? " Block" : " Blocks")}} </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Blocks-->
+                <div v-if="curSelectionMode === 3" class="mdl-grid" id="blockDetailView">
+                    <div v-for="(block, block_id) in blockManagementTree['farms'][curFarmIndex]['commodities'][curCommodityIndex]['varieties'][curVarietyIndex]['blocks']" class="block-detail-bar mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                        <h3>{{block.BlockDesc}}</h3>
+                        <div v-if="(block['isDeleted'] > 0 ? false : (block['isSameAsLastYear'] > 0 ? false : (block['bushelHistory'][curYear]['est'] === block['bushelHistory'][curYear - 1]['act'] ? true : false)))" class="alert_estimates_pending mdl-shadow--2dp">
+                            <i class="fa fa-lg fa-exclamation-circle"></i>
+                            Needs Estimate
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -348,7 +359,8 @@
             curFarmIndex: -1,
             curCommodityIndex: -1,
             curVarietyIndex: -1,
-            selectionPanelTitle: " Your Farms"
+            selectionPanelTitle: " Your Farms",
+            curYear: new Date().getFullYear()
         },
         methods: {
             goBackSelectionView: function(){
@@ -387,7 +399,11 @@
                 this.curSelectionMode = 2;
             },
             selectVariety: function(varietyID){
-                //TODO
+                this.curSelectionMode = 3;
+                this.curVarietyIndex = varietyID;
+                var farm_name = this.blockManagementTree['farms'][this.curFarmIndex]['name'];
+                var variety_name = this.blockManagementTree['farms'][this.curFarmIndex]['commodities'][this.curCommodityIndex]['varieties'][varietyID]['name'];
+                this.selectionPanelTitle = farm_name + " Farm's " + variety_name + " Blocks";
             },
             getDeliveryCompletionPercentage: function (delivered, anticipated) {
                 if (delivered === 0 || anticipated === 0) {
@@ -468,20 +484,12 @@
 
     var CommoditiesTree = {};
     $(document).ready(function () {
-        getCommoditiesTree();
         //attach listeners
+        getCommoditiesTree();
         $("#hider").click(function () {
             $("#longtab").slideToggle();
         });
-        //todo remove
-        $("#hider2").click(function () {
-            $("#longtab2").slideToggle();
-        });
-        //todo remove
-        $("#hider3").click(function () {
-            $("#addblockpanel").slideToggle();
-        });
-        $("#optiontoggle").click(function () {
+        $("#optiontoggle").click(function () { //for desktop-view sidebar
             $("#options").slideToggle();
             $("#optionstab").toggleClass("fa-chevron-down fa-minus");
         });

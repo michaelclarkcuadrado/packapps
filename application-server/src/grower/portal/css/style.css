@@ -743,6 +743,10 @@ input[type="reset"]:active,
     display: inline-block
 }
 
+.block-detail-bar{
+    border: 1px solid black;
+}
+
 .alert_estimates_pending {
     margin: 8px;
     background-color: pink;
