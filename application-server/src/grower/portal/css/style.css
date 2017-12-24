@@ -394,6 +394,7 @@ input[type="reset"],
     background-color: #8ebebc;
     border: 0;
     cursor: pointer;
+    margin: 5px;
     background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15)), url('images/overlay.png');
     background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15)), url('images/overlay.png');
     background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15)), url('images/overlay.png');
@@ -753,4 +754,13 @@ input[type="reset"]:active,
     border-radius: 120px;
     overflow: hidden;
     display: inline-block;
+}
+
+.selectors-slide-enter-active, .selectors-slide-leave-active{
+    transition: all .5s;
+}
+
+.selectors-slide-enter, .selectors-slide-leave-to{
+    opacity: 0;
+    /*transform: translateY(30px);*/
 }

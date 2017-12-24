@@ -24,10 +24,10 @@ require_once '../../../config.php';
 $userinfo = packapps_authenticate_grower();
 $query = mysqli_query($mysqli, "
 SELECT
-  `gc-e`.farmID,
-  IFNULL(NULLIF(farmName, ''), 'UNNAMED FARM') AS farmName,
+  grower_farms.farmID,
+  IFNULL(NULLIF(farmName, ''), '[UNNAMED FARM]') AS farmName,
   PK,
-  IFNULL(NULLIF(BlockDesc, ''), 'UNNAMED BLOCK') AS BlockDesc,
+  IFNULL(NULLIF(BlockDesc, ''), '[UNNAMED BLOCK]') AS BlockDesc,
   variety_ID,
   VarietyName,
   commodity_ID,
@@ -52,7 +52,7 @@ LEFT JOIN grower_varieties v ON strain.variety_ID = v.VarietyID
 LEFT JOIN grower_commodities gc ON v.commodityID = gc.commodity_ID
 LEFT JOIN storage_grower_receipts receipt ON `gc-e`.PK = receipt.grower_block
 LEFT JOIN storage_grower_fruit_bins sgfb ON receipt.id = sgfb.grower_receipt_id
-  WHERE (year >= YEAR(NOW()) - 3) AND grower_GrowerLogins.GrowerID = " . $userinfo['GrowerID'] . "
+  WHERE ((year >= YEAR(NOW()) - 3) OR year IS NULL) AND grower_GrowerLogins.GrowerID = " . $userinfo['GrowerID'] . "
 GROUP BY PK, year, value_type
 ORDER BY isDeleted
 ");
@@ -61,44 +61,53 @@ $blockOrganizationTree = array();
 $blocksBushelsExpectedSummed = array();
 $blocksBushelsDeliveredSummed = array(); //or bushelsReceived
 while ($row = mysqli_fetch_assoc($query)) {
-    //prevent bushelhistory getting overwritten
-    $bushelHistory = $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['varieties'][$row['variety_ID']]['blocks'][$row['PK']]['bushelHistory'] ?: array();
-    //Create tree's branch, set bushel history
-    $year = $row['year'];
-    $value_type = $row['value_type'];
-    $bushel_value = $row['bushel_value'];
-    unset($row['year'], $row['value_type'], $row['bushel_value']);
-    $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['varieties'][$row['variety_ID']]['blocks'][$row['PK']] = $row;
-    $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['varieties'][$row['variety_ID']]['blocks'][$row['PK']]['bushelHistory'] = $bushelHistory;
-    $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['varieties'][$row['variety_ID']]['blocks'][$row['PK']]['bushelHistory'][$year][$value_type] = $bushel_value;
+    if ($row['PK'] == null) {    //handle farm with no blocks
+        $blockOrganizationTree['farms'][$row['farmID']] = array(
+            'ID' => $row['farmID'],
+            'name' => $row['farmName'],
+            'commodities' => array(),
+            'bushelsReceived' => 0
+        );
+    } else {
+        //prevent bushelhistory getting overwritten
+        $bushelHistory = $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['varieties'][$row['variety_ID']]['blocks'][$row['PK']]['bushelHistory'] ?: array();
+        //Create tree's branch, set bushel history
+        $year = $row['year'];
+        $value_type = $row['value_type'];
+        $bushel_value = $row['bushel_value'];
+        unset($row['year'], $row['value_type'], $row['bushel_value']);
+        $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['varieties'][$row['variety_ID']]['blocks'][$row['PK']] = $row;
+        $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['varieties'][$row['variety_ID']]['blocks'][$row['PK']]['bushelHistory'] = $bushelHistory;
+        $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['varieties'][$row['variety_ID']]['blocks'][$row['PK']]['bushelHistory'][$year][$value_type] = $bushel_value;
 
-    //set branch names and IDs
-    $blockOrganizationTree['farms'][$row['farmID']]['name'] = $row['farmName'];
-    $blockOrganizationTree['farms'][$row['farmID']]['ID'] = intval($row['farmID']);
-    $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['name'] = $row['commodity_name'];
-    $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['ID'] = intval($row['commodity_ID']);
-    $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['varieties'][$row['variety_ID']]['name'] = $row['VarietyName'];
-    $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['varieties'][$row['variety_ID']]['ID'] = intval($row['variety_ID']);
+        //set branch names and IDs
+        $blockOrganizationTree['farms'][$row['farmID']]['name'] = $row['farmName'];
+        $blockOrganizationTree['farms'][$row['farmID']]['ID'] = intval($row['farmID']);
+        $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['name'] = $row['commodity_name'];
+        $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['ID'] = intval($row['commodity_ID']);
+        $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['varieties'][$row['variety_ID']]['name'] = $row['VarietyName'];
+        $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['varieties'][$row['variety_ID']]['ID'] = intval($row['variety_ID']);
 
-    if (!array_key_exists($row['PK'], $blocksBushelsDeliveredSummed)) {
-        $blockOrganizationTree['farms'][$row['farmID']]['bushelsReceived'] += $row['bushelsReceived'];
-        $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['bushelsReceived'] += $row['bushelsReceived'];
-        $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['varieties'][$row['variety_ID']]['bushelsReceived'] += $row['bushelsReceived'];
-        $blocksBushelsDeliveredSummed[$row['PK']] = true;
+        if (!array_key_exists($row['PK'], $blocksBushelsDeliveredSummed)) {
+            $blockOrganizationTree['farms'][$row['farmID']]['bushelsReceived'] += $row['bushelsReceived'];
+            $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['bushelsReceived'] += $row['bushelsReceived'];
+            $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['varieties'][$row['variety_ID']]['bushelsReceived'] += $row['bushelsReceived'];
+            $blocksBushelsDeliveredSummed[$row['PK']] = true;
+        }
     }
 }
 $curYear = date('Y');
-foreach($blockOrganizationTree['farms'] as $farmID => &$farmObj){
+foreach ($blockOrganizationTree['farms'] as $farmID => &$farmObj) {
     $farmEstimatesNeeded = 0;
     $farmBushelsAnticipated = 0;
-    foreach($farmObj['commodities'] as $commodityID => &$commodityObj){
+    foreach ($farmObj['commodities'] as $commodityID => &$commodityObj) {
         $commEstimatesNeeded = 0;
         $commBushelsAnticipated = 0;
-        foreach($commodityObj['varieties'] as $varietyID => &$varietyObj){
+        foreach ($commodityObj['varieties'] as $varietyID => &$varietyObj) {
             $varEstimatesNeeded = 0;
             $varBushelsAnticipated = 0;
-            foreach($varietyObj['blocks'] as $PK => &$blockObj){
-                if($blockObj['isDeleted'] == 0) {
+            foreach ($varietyObj['blocks'] as $PK => &$blockObj) {
+                if ($blockObj['isDeleted'] == 0) {
                     //add estimates needed
                     $isConfirmedEstimate = ($blockObj['bushelHistory'][$curYear]['est'] !== $blockObj['bushelHistory'][$curYear - 1]['act']) || ($blockObj['isSameAsLastYear'] > 0);
                     if (!$isConfirmedEstimate) {
@@ -128,28 +137,28 @@ foreach($blockOrganizationTree['farms'] as $farmID => &$farmObj){
                 }
             }
             $varietyObj['blocks'] = array_values($varietyObj['blocks']);
-            usort($varietyObj['blocks'], function($obj1, $obj2){
+            usort($varietyObj['blocks'], function ($obj1, $obj2) {
                 return $obj2['bushelsAnticipated'] - $obj1['bushelsAnticipated'];
             });
             $varietyObj['estimatesNeeded'] = $varEstimatesNeeded;
             $varietyObj['bushelsAnticipated'] = $varBushelsAnticipated;
         }
         $commodityObj['varieties'] = array_values($commodityObj['varieties']);
-        usort($commodityObj['varieties'], function($obj1, $obj2){
+        usort($commodityObj['varieties'], function ($obj1, $obj2) {
             return $obj2['bushelsAnticipated'] - $obj1['bushelsAnticipated'];
         });
         $commodityObj['estimatesNeeded'] = $commEstimatesNeeded;
         $commodityObj['bushelsAnticipated'] = $commBushelsAnticipated;
     }
     $farmObj['commodities'] = array_values($farmObj['commodities']);
-    usort($farmObj['commodities'], function($obj1, $obj2){
+    usort($farmObj['commodities'], function ($obj1, $obj2) {
         return $obj2['bushelsAnticipated'] - $obj1['bushelsAnticipated'];
     });
     $farmObj['estimatesNeeded'] = $farmEstimatesNeeded;
     $farmObj['bushelsAnticipated'] = $farmBushelsAnticipated;
 }
 $blockOrganizationTree['farms'] = array_values($blockOrganizationTree['farms']);
-usort($blockOrganizationTree['farms'], function($obj1, $obj2){
+usort($blockOrganizationTree['farms'], function ($obj1, $obj2) {
     return $obj2['bushelsAnticipated'] - $obj1['bushelsAnticipated'];
 });
 
