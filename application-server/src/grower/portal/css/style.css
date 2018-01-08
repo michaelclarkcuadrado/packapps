@@ -746,6 +746,13 @@ input[type="reset"]:active,
 
 .block-detail-bar{
     border: 1px solid black;
+    border-collapse: collapse;
+    background-color: #C3E2EC;
+}
+
+.block-deleted-bar{
+    border: 1px solid black;
+    background-color: pink;
 }
 
 .alert_estimates_pending {

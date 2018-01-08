@@ -26,7 +26,7 @@ SELECT
   IFNULL(NULLIF(farmName, ''), '[Unnamed]') AS farmName
 FROM storage_grower_receipts
 LEFT JOIN quality_InspectedRTs ON storage_grower_receipts.id = quality_InspectedRTs.receiptNum
-JOIN storage_grower_fruit_bins ON storage_grower_receipts.id = storage_grower_fruit_bins.grower_receipt_id
+LEFT JOIN storage_grower_fruit_bins ON storage_grower_receipts.id = storage_grower_fruit_bins.grower_receipt_id
 JOIN `grower_crop-estimates` ON storage_grower_receipts.grower_block = `grower_crop-estimates`.PK
 JOIN grower_strains ON `grower_crop-estimates`.strainID = grower_strains.strain_ID
 JOIN grower_varieties ON grower_strains.variety_ID = grower_varieties.VarietyID

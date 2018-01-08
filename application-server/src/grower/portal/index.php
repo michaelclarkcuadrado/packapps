@@ -5,13 +5,7 @@
     include '../../config.php';
     $userinfo = packapps_authenticate_grower();
     require_once '../../scripts-common/Mobile_Detect.php';
-    require_once 'incrementYearInDB.php';
     $detect = new Mobile_Detect;
-    $year = new Year();
-    if (!$year->isCurrent($mysqli)) {
-        error_log("First access since new year, incrementing year.");
-        $year->increment($mysqli);
-    }
     $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS count FROM (SELECT PK FROM `grower_Preharvest_Samples` WHERE Grower= '" . $userinfo['GrowerCode'] . "' AND `Date` >= (NOW() - INTERVAL 7 DAY) GROUP BY `Date`, `PK`) t1"))['count'];
 
     echo "<title>" . $companyName . " Portal: " . $userinfo['GrowerName'] . "</title>";
@@ -277,12 +271,41 @@
                     <!--Blocks-->
                     <div v-if="curSelectionMode === 3" class="mdl-grid" key="blockDetailView">
                         <div v-for="(block, block_id) in blockManagementTree['farms'][curFarmIndex]['commodities'][curCommodityIndex]['varieties'][curVarietyIndex]['blocks']"
-                             class="block-detail-bar mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-                            <h3>{{block.BlockDesc}}</h3>
-                            <div v-if="(block['isDeleted'] > 0 ? false : (block['isSameAsLastYear'] > 0 ? false : (block['bushelHistory'][curYear]['est'] === block['bushelHistory'][curYear - 1]['act'] ? true : false)))"
-                                 class="alert_estimates_pending mdl-shadow--2dp">
-                                <i class="fa fa-lg fa-exclamation-circle"></i>
-                                Needs Estimate
+                             :class="[block.isDeleted > 0  ? 'block-deleted-bar' : 'block-detail-bar', 'mdl-shadow--2dp', 'mdl-cell', 'mdl-cell--12-col-desktop', 'mdl-cell--8-col-tablet', 'mdl-cell--4-col-phone']">
+                            <h3>{{(block.isDeleted > 0 ? '[DELETED] ' : '') + block.BlockDesc}} <span class="fa fa-edit" v-on:click="renameBlock(block.PK, block.BlockDesc)"></span></h3>
+                            <div class="deleted-block-blur-wrapper">
+                                <div v-if="(block['isDeleted'] > 0 ? false : (block['isSameAsLastYear'] > 0 ? false : (block['bushelHistory'][curYear]['est'] === block['bushelHistory'][curYear - 1]['act'] ? true : false)))"
+                                     class="alert_estimates_pending mdl-shadow--2dp">
+                                    <i class="fa fa-lg fa-exclamation-circle"></i>
+                                    Needs Estimate
+                                </div>
+                                <div style="display:flex; justify-content: space-evenly;">
+                                    <span>Variety: {{block.VarietyName}}</span>
+                                    <span>Strain: {{block.strainName}}</span>
+                                </div>
+                                <div style="border-top: 1px solid black">
+                                    <h5>This Year</h5>
+                                    <div style="display:flex; margin-left: 5px; margin-right: 5px; flex-wrap: wrap; justify-content: space-evenly">
+                                        <div style="flex-basis: 100%; align-self: center">
+                                            {{Number(block.bushelsReceived).toLocaleString() + " Out Of " + Number(block.bushelsAnticipated).toLocaleString()}} Bushels
+                                        </div>
+                                        <div style="flex-basis: 100%">
+                                            <span class="icon fa-truck"></span>
+                                            {{block.deliveriesReceived + (block.deliveriesReceived == 1 ? ' Delivery' : ' Deliveries')}}
+                                        </div>
+                                        <div style="height: fit-content; align-self: center; min-width: 150px" class="noload">
+                                            <div class="load" v-bind:style="{width: getDeliveryCompletionPercentage(block.bushelsReceived, block.bushelsAnticipated) + '%'}"></div>
+                                        </div>
+                                        <div style="flex-shrink: 2; align-self: center; display: grid; margin: 5px">
+                                            <span v-on:click="toggleFinished(block)" style="cursor: pointer;" v-bind:class="['fa', block.isFinished > 0 ? 'fa-lock' : 'fa-unlock']"
+                                                  :title="block.isFinished > 0? 'Open this block' : 'Finish this block'"></span>
+                                            <mark v-if="block.isFinished > 0" style="font-size: small; width: fit-content; line-height:initial; justify-self: center">Done For the Season</mark>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="border-top: 1px solid black;">
+                                    <h5>Estimates</h5>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -395,10 +418,10 @@
                 }
                 return percentage;
             },
-            newFarm: function(){
+            newFarm: function () {
                 var self = this;
                 var newFarmName = prompt("New Farm Name:");
-                $.getJSON('API/addFarm.php', {newFarmName: newFarmName}, function(data){
+                $.getJSON('API/addFarm.php', {newFarmName: newFarmName}, function (data) {
                     self.blockManagementTree['farms'].push({
                         name: newFarmName,
                         id: data.ID,
@@ -407,7 +430,7 @@
                         bushelsAnticipated: 0,
                         estimatesNeeded: 0
                     })
-                }).fail(function() {
+                }).fail(function () {
                     $.notify("Couldn't create that farm.");
                 });
             },
@@ -437,11 +460,33 @@
                                 }
                                 return true;
                             });
-                        } else if (landType === 'block') {
-                            $.each(self.blockManagementTree['farms'][data['farmID']]['commodities'][data['commodityID']]['varieties'][data['variety_ID']]['blocks'], function (block) {
-                                if (block.ID === data['PK']) {
-                                    block.BlockDesc = newName;
-                                    return false; //break loop
+                        } else if (landType === 'block') { //have to find the block in the tree, search by returned IDs
+                            $.each(self.blockManagementTree['farms'], function (farmIndex, farm) {
+                                if (farm.ID == data['farmID']) {
+                                    // console.log('farm match');
+                                    $.each(farm.commodities, function (commodityIndex, commodity) {
+                                        if (commodity.ID == data['commodityID']) {
+                                            // console.log('commodity match');
+                                            $.each(commodity['varieties'], function (varietyIndex, variety) {
+                                                if (variety.ID == data['variety_ID']) {
+                                                    // console.log('variety match');
+                                                    $.each(variety['blocks'], function (blockIndex, block) {
+                                                        if (block['PK'] == data.PK) {
+                                                            // console.log('block match');
+                                                            block.BlockDesc = argsObj.newName;
+                                                            return false;
+                                                        }
+                                                        return true;
+                                                    });
+                                                    return false;
+                                                }
+                                                return true;
+                                            });
+                                            return false;
+                                        }
+                                        return true;
+                                    });
+                                    return false;
                                 }
                                 return true;
                             });
@@ -453,20 +498,9 @@
                     console.log("Invalid landType")
                 }
             },
-            toggleFinished: function (PK, isFinished) { //TODO REWRITE
-                var self = this;
-                $.get('processBlock.php', {Done: PK}, function (data) {
-                    if (isFinished > 0) {
-//                        console.log(self.percentages[PK]['isFinished']);
-                        self.percentages[PK]['isFinished'] = 0;
-//                        console.log(self.percentages[PK]['isFinished']);
-                        $.notify('Thanks! We\'ll open that back up.', 'success');
-                    } else {
-//                        console.log(self.percentages[PK]['isFinished']);
-                        self.percentages[PK]['isFinished'] = 1;
-//                        console.log(self.percentages[PK]['isFinished']);
-                        $.notify('Thanks! We won\'t expect any more from that block.', 'success');
-                    }
+            toggleFinished: function (block) {
+                $.get('API/processBlock.php', {finish: block['PK']}, function (data) {
+                    block.isFinished -= 1;
                 });
             }
         },

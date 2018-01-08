@@ -22,6 +22,8 @@
  */
 require_once '../../../config.php';
 $userinfo = packapps_authenticate_grower();
+//disable reporting of NOTICE errors, this script generates thousands of them per second
+error_reporting(E_ALL & ~E_NOTICE);
 $query = mysqli_query($mysqli, "
 SELECT
   grower_farms.farmID,
@@ -117,10 +119,10 @@ foreach ($blockOrganizationTree['farms'] as $farmID => &$farmObj) {
                     }
                     //add bushels anticipated number -
                     if ($blockObj['isFinished'] > 0) {
-                        $farmBushelsAnticipated += $blockObj['deliveriesReceived'];
-                        $commBushelsAnticipated += $blockObj['deliveriesReceived'];
-                        $varBushelsAnticipated += $blockObj['deliveriesReceived'];
-                        $blockObj['bushelsAnticipated'] = $blockObj['deliveriesReceived'];
+                        $farmBushelsAnticipated += $blockObj['bushelsReceived'];
+                        $commBushelsAnticipated += $blockObj['bushelsReceived'];
+                        $varBushelsAnticipated += $blockObj['bushelsReceived'];
+                        $blockObj['bushelsAnticipated'] = $blockObj['bushelsReceived'];
                     } elseif ($isConfirmedEstimate) {
                         $farmBushelsAnticipated += $blockObj['bushelHistory'][$curYear]['est'] ?: 0;
                         $commBushelsAnticipated += $blockObj['bushelHistory'][$curYear]['est'] ?: 0;
@@ -138,7 +140,12 @@ foreach ($blockOrganizationTree['farms'] as $farmID => &$farmObj) {
             }
             $varietyObj['blocks'] = array_values($varietyObj['blocks']);
             usort($varietyObj['blocks'], function ($obj1, $obj2) {
-                return $obj2['bushelsAnticipated'] - $obj1['bushelsAnticipated'];
+                if($obj2['isDeleted'] == $obj1['isDeleted']){
+                    return $obj2['bushelsAnticipated'] - $obj1['bushelsAnticipated'];
+                } else {
+                    //push deleted objects to end of list
+                    return $obj1['isDeleted'] - $obj2['isDeleted'];
+                }
             });
             $varietyObj['estimatesNeeded'] = $varEstimatesNeeded;
             $varietyObj['bushelsAnticipated'] = $varBushelsAnticipated;

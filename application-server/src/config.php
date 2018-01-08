@@ -43,8 +43,8 @@ if (mysqli_connect_errno()) {
     die("The Packapps server has experienced an internal issue.<br> Wait a few minutes and try again. If it keeps happening, contact the administrator. the error was: <br><br><b>Failed to connect to MySQL: " . mysqli_connect_error());
 }
 
-//check if packapps has been set up
-$systemRow = mysqli_query($mysqli, "SELECT packapps_version, systemInstalled FROM packapps_system_info");
+//check if packapps has been set up and database is current
+$systemRow = mysqli_query($mysqli, "SELECT packapps_version, systemInstalled, growerPortalLastInitializedYear FROM packapps_system_info");
 $systemRow = mysqli_fetch_array($systemRow);
 if($_SERVER['SCRIPT_NAME'] != '/installer.php' && $systemRow['systemInstalled'] == 0){
     die("<script>window.location.replace('/installer.php')</script>");
@@ -52,4 +52,10 @@ if($_SERVER['SCRIPT_NAME'] != '/installer.php' && $systemRow['systemInstalled'] 
 if($systemRow['packapps_version'] != $packapps_version){
     die("The Packapps server has experienced an internal issue.<br> If it keeps happening, contact the administrator. the error was: <br><br><b>Database schema does not match code schema. Broken Upgrade.");
 }
+if($systemRow['growerPortalLastInitializedYear'] !== date('Y')){
+    require_once 'packapps_api.php';
+    error_log('INCREMENTING YEAR!');
+    incrementGrowerPortalEstimatesYear($mysqli);
+}
+
 require_once 'packapps_api.php';

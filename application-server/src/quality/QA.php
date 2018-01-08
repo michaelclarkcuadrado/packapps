@@ -98,8 +98,8 @@ $total_count = mysqli_fetch_assoc($count_total);
         <article id="welcome" class="panel">
             <header>
                 <h1><i class="fa fa-leaf"></i> <? echo "Welcome back, " . strtok($userData['Real Name'], " ") . "."; ?></h1>
-                <p><i class="icon fa-star"></i> <? echo $total_count['countWeight']?> pounds of fruit
-                    from <? echo $total_count['countSamp']?> samples analyzed so far!<br>
+                <p><i class="icon fa-star"></i> <? echo number_format($total_count['countWeight'])?> pounds of fruit
+                    from <? echo number_format($total_count['countSamp'])?> samples analyzed so far!<br>
                 </p>
             </header>
             <a href="#QA" class="jumplink pic">

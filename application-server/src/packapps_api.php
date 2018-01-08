@@ -248,3 +248,40 @@ function APIFail($errorMsg = 'Internal Server Error'){
     echo $errorMsg;
     die();
 }
+
+/*
+ * Grower Portal has an entry for each block each year in the database.
+ * On a new year, rollover the data and insert new data for the new year.
+ * Inserts a recommended estimate, and pads older entries with every year until current year.
+ * */
+function incrementGrowerPortalEstimatesYear(MYSQLI $mysqli){
+    $blocksAndYears = mysqli_query($mysqli,"SELECT
+  PK,
+  IFNULL(SUM(bushelsInBin), 0) AS bushels
+FROM `grower_crop-estimates`
+  LEFT JOIN storage_grower_receipts ON `grower_crop-estimates`.PK = storage_grower_receipts.grower_block
+  LEFT JOIN storage_grower_fruit_bins sgfb ON storage_grower_receipts.id = sgfb.grower_receipt_id
+WHERE YEAR(storage_grower_receipts.date) = (YEAR(CURDATE()) - 1) OR id IS NULL
+GROUP BY PK;");
+    $act = 'act';
+    $est = 'est';
+    $curYear = date('Y');
+    $curYearMinusOne = $curYear - 1;
+    $insert_stmt = mysqli_prepare($mysqli, "
+        INSERT INTO grower_block_bushel_history (block_PK, year, value_type, bushel_value)
+        VALUES (?, ?, ?, ?);
+    ");
+    mysqli_stmt_bind_param($insert_stmt, 'iisi', $PK, $year, $type, $bushels);
+    while($block = mysqli_fetch_assoc($blocksAndYears)){
+        $PK = $block['PK'];
+        $bushels = $block['bushels'];
+        $year = $curYearMinusOne;
+        $type = $act;
+        mysqli_stmt_execute($insert_stmt);
+        $year = $curYear;
+        $type = $est;
+        mysqli_stmt_execute($insert_stmt);
+    }
+    mysqli_stmt_close($insert_stmt);
+    mysqli_query($mysqli, "UPDATE packapps_system_info SET growerPortalLastInitializedYear = $curYear");
+}

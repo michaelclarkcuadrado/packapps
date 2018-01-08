@@ -8,11 +8,12 @@ USE operationsData;
 
 /* Create systeminfo table for versioning */
 CREATE TABLE `operationsData`.`packapps_system_info` (
-  `packapps_version` INT           NOT NULL,
-  `systemInstalled`  TINYINT(1)    NOT NULL,
-  `dateInstalled`    DATETIME      NOT NULL,
-  `company_slug`     VARCHAR(255),
-  `Notes`            VARCHAR(1023) NULL
+  `packapps_version`                INT           NOT NULL,
+  `systemInstalled`                 TINYINT(1)    NOT NULL,
+  `dateInstalled`                   DATETIME      NOT NULL,
+  `company_slug`                    VARCHAR(255),
+  `Notes`                           VARCHAR(1023) NULL,
+  `growerPortalLastInitializedYear` YEAR(4)       NOT NULL
 )
   ENGINE = InnoDB;
 INSERT INTO `operationsData`.`packapps_system_info` (packapps_version, systemInstalled, dateInstalled) VALUES (2, 0, '0000-00-00 00:00:00');
@@ -185,6 +186,9 @@ RENAME TABLE
     InspectedRTs TO quality_InspectedRTs;
 RENAME TABLE
     run_inspections TO quality_run_inspections;
+/*BUG in v1: no normalization*/
+DELETE i FROM quality_run_inspections i LEFT JOIN production_runs ON i.RunID = production_runs.RunID
+  WHERE production_runs.RunID IS NULL;
 ALTER TABLE `quality_run_inspections`
   ADD CONSTRAINT `run_inspections_2_runs` FOREIGN KEY (`RunID`) REFERENCES `production_runs` (`RunID`)
   ON DELETE CASCADE
@@ -538,21 +542,21 @@ CREATE TABLE `maintenance_part_info` (
 /* MOVE GROWER_PORTAL TABLES into operationsData, for packapp-erization of grower portal */
 
 ALTER TABLE growerReporting.BULKRTCSV
-  RENAME operationsData.BULKRTCSV;
+RENAME operationsData.BULKRTCSV;
 ALTER TABLE growerReporting.`crop-estimates`
-  RENAME operationsData.`grower_crop-estimates`;
+RENAME operationsData.`grower_crop-estimates`;
 ALTER TABLE growerReporting.crop_estimates_changes_timeseries
-  RENAME operationsData.grower_crop_estimates_changes_timeseries;
+RENAME operationsData.grower_crop_estimates_changes_timeseries;
 ALTER TABLE growerReporting.growerCalendar
-  RENAME operationsData.grower_growerCalendar;
+RENAME operationsData.grower_growerCalendar;
 ALTER TABLE growerReporting.GrowerData
-  RENAME operationsData.grower_GrowerLogins;
+RENAME operationsData.grower_GrowerLogins;
 ALTER TABLE `grower_GrowerLogins`
   ADD INDEX (`GrowerCode`);
 /* "delete" growergroups table by not copying it*/
 /*ALTER TABLE growerReporting.GrowerGroups RENAME operationsData.grower_GrowerGroups;*/
 ALTER TABLE growerReporting.Preharvest_Samples
-  RENAME operationsData.grower_Preharvest_Samples;
+RENAME operationsData.grower_Preharvest_Samples;
 
 DROP DATABASE growerReporting;
 
@@ -590,7 +594,8 @@ INSERT INTO grower_GrowerLogins (GrowerCode, GrowerName, login_email, Password, 
                                                                                                                   ON `grower_crop-estimates`.Grower = `grower_GrowerLogins`.GrowerCode
                                                                                                               WHERE GrowerCode IS NULL);
 
-ALTER TABLE grower_GrowerLogins DROP isAdmin;
+ALTER TABLE grower_GrowerLogins
+  DROP isAdmin;
 CREATE TABLE `grower_farms` (
   `growerID` INT(11)      NOT NULL,
   `farmID`   INT(11)      NOT NULL AUTO_INCREMENT,
@@ -703,22 +708,82 @@ CREATE TABLE `operationsData`.`grower_block_bushel_history` (
   `year`         YEAR                NOT NULL,
   `value_type`   ENUM ('act', 'est') NOT NULL,
   `bushel_value` MEDIUMINT           NOT NULL
-) ENGINE = InnoDB;
-ALTER TABLE `grower_block_bushel_history` ADD PRIMARY KEY( `block_PK`, `year`, `value_type`);
-ALTER TABLE `grower_block_bushel_history` ADD FOREIGN KEY (`block_PK`) REFERENCES `grower_crop-estimates`(`PK`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+)
+  ENGINE = InnoDB;
+ALTER TABLE `grower_block_bushel_history`
+  ADD PRIMARY KEY (`block_PK`, `year`, `value_type`);
+ALTER TABLE `grower_block_bushel_history`
+  ADD FOREIGN KEY (`block_PK`) REFERENCES `grower_crop-estimates` (`PK`)
+  ON DELETE RESTRICT
+  ON UPDATE RESTRICT;
 
 /* Do a big insert, up until 2017 estimates, and drop old vals */
-INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT PK, 2010act, '2010', 'act' FROM `grower_crop-estimates`);
-INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT PK, 2011act, '2011', 'act' FROM `grower_crop-estimates`);
-INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT PK, 2012act, '2012', 'act' FROM `grower_crop-estimates`);
-INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT PK, 2013act, '2013', 'act' FROM `grower_crop-estimates`);
-INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT PK, 2014act, '2014', 'act' FROM `grower_crop-estimates`);
-INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT PK, 2014est, '2014', 'est' FROM `grower_crop-estimates`);
-INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT PK, 2015act, '2015', 'act' FROM `grower_crop-estimates`);
-INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT PK, 2015est, '2015', 'est' FROM `grower_crop-estimates`);
-INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT PK, 2016act, '2016', 'act' FROM `grower_crop-estimates`);
-INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT PK, 2016est, '2016', 'est' FROM `grower_crop-estimates`);
-INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT PK, 2017est, '2017', 'est' FROM `grower_crop-estimates`);
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT
+                                                                                        PK,
+                                                                                        2010act,
+                                                                                        '2010',
+                                                                                        'act'
+                                                                                      FROM `grower_crop-estimates`);
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT
+                                                                                        PK,
+                                                                                        2011act,
+                                                                                        '2011',
+                                                                                        'act'
+                                                                                      FROM `grower_crop-estimates`);
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT
+                                                                                        PK,
+                                                                                        2012act,
+                                                                                        '2012',
+                                                                                        'act'
+                                                                                      FROM `grower_crop-estimates`);
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT
+                                                                                        PK,
+                                                                                        2013act,
+                                                                                        '2013',
+                                                                                        'act'
+                                                                                      FROM `grower_crop-estimates`);
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT
+                                                                                        PK,
+                                                                                        2014act,
+                                                                                        '2014',
+                                                                                        'act'
+                                                                                      FROM `grower_crop-estimates`);
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT
+                                                                                        PK,
+                                                                                        2014est,
+                                                                                        '2014',
+                                                                                        'est'
+                                                                                      FROM `grower_crop-estimates`);
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT
+                                                                                        PK,
+                                                                                        2015act,
+                                                                                        '2015',
+                                                                                        'act'
+                                                                                      FROM `grower_crop-estimates`);
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT
+                                                                                        PK,
+                                                                                        2015est,
+                                                                                        '2015',
+                                                                                        'est'
+                                                                                      FROM `grower_crop-estimates`);
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT
+                                                                                        PK,
+                                                                                        2016act,
+                                                                                        '2016',
+                                                                                        'act'
+                                                                                      FROM `grower_crop-estimates`);
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT
+                                                                                        PK,
+                                                                                        2016est,
+                                                                                        '2016',
+                                                                                        'est'
+                                                                                      FROM `grower_crop-estimates`);
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT
+                                                                                        PK,
+                                                                                        2017est,
+                                                                                        '2017',
+                                                                                        'est'
+                                                                                      FROM `grower_crop-estimates`);
 
 ALTER TABLE `grower_crop-estimates`
   DROP `2010act`,
