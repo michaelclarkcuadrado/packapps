@@ -1,30 +1,24 @@
+<?php
+include '../../config.php';
+$userinfo = packapps_authenticate_grower();
+require_once '../../scripts-common/Mobile_Detect.php';
+$detect = new Mobile_Detect;
+$numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS count FROM (SELECT PK FROM `grower_Preharvest_Samples` WHERE Grower= '" . $userinfo['GrowerCode'] . "' AND `Date` >= (NOW() - INTERVAL 7 DAY) GROUP BY `Date`, `PK`) t1"))['count'];
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
-    <?php
-    include '../../config.php';
-    $userinfo = packapps_authenticate_grower();
-    require_once '../../scripts-common/Mobile_Detect.php';
-    $detect = new Mobile_Detect;
-    $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS count FROM (SELECT PK FROM `grower_Preharvest_Samples` WHERE Grower= '" . $userinfo['GrowerCode'] . "' AND `Date` >= (NOW() - INTERVAL 7 DAY) GROUP BY `Date`, `PK`) t1"))['count'];
-
-    echo "<title>" . $companyName . " Portal: " . $userinfo['GrowerName'] . "</title>";
-    ?>
-
-    <link rel="stylesheet" href="css/select2.min.css">
+    <?= "<title>" . $companyName . " Portal: " . $userinfo['GrowerName'] . "</title>" ?>
     <link rel="stylesheet" href="css/grid.css">
-    <!--[if lte IE 8]>
-    <script src="css/ie/html5shiv.js"></script>
-    <![endif]-->
-    <noscript>
-        <link rel="stylesheet" href="css/skel.css"/>
-        <link rel="stylesheet" href="css/style.css"/>
-        <link rel="stylesheet" href="css/style-wide.css"/>
-    </noscript>
-    <!--[if lte IE 9]>
-    <link rel="stylesheet" href="css/ie/v9.css"/><![endif]-->
-    <!--[if lte IE 8]>
-    <link rel="stylesheet" href="css/ie/v8.css"/><![endif]-->
+    <link rel="stylesheet" href="css/select2.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/jquery.min.js"></script>
+    <script src="../../scripts-common/vue.min.js"></script>
+    <script src="js/jquery.scrolly.min.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/notify.min.js"></script>
+    <script src="js/select2.min.js"></script>
 </head>
 <body>
 <!-- Header -->
@@ -130,7 +124,7 @@
                                    class="icon fa-camera">
                                 </a>
                             </abbr>
-                            <abbr v-else title="This one hasn't been tested yet.">
+                            <abbr v-else title="No QA data available yet.">
                                 <span class="fa-stack">
                                         <i class="fa fa-camera fa-stack-1x"></i>
                                         <i class="fa fa-ban fa-stack-2x" style="color: #d9534f"></i>
@@ -283,7 +277,7 @@
                                     <span>Variety: {{block.VarietyName}}</span>
                                     <span>Strain: {{block.strainName}}</span>
                                 </div>
-                                <div style="border-top: 1px solid black">
+                                <div v-if="block.isDeleted == 0" style="border-top: 1px solid black">
                                     <h5>This Year</h5>
                                     <div style="display:flex; margin-left: 5px; margin-right: 5px; flex-wrap: wrap; justify-content: space-evenly">
                                         <div style="flex-basis: 100%; align-self: center">
@@ -298,7 +292,7 @@
                                         </div>
                                         <div style="flex-shrink: 2; align-self: center; display: grid; margin: 5px">
                                             <span v-on:click="toggleFinished(block)" style="cursor: pointer;" v-bind:class="['fa', block.isFinished > 0 ? 'fa-lock' : 'fa-unlock']"
-                                                  :title="block.isFinished > 0? 'Open this block' : 'Finish this block'"></span>
+                                                  :title="block.isFinished > 0 ? 'Open this block' : 'Finish this block'"></span>
                                             <mark v-if="block.isFinished > 0" style="font-size: small; width: fit-content; line-height:initial; justify-self: center">Done For the Season</mark>
                                         </div>
                                     </div>
@@ -324,15 +318,6 @@
 </div>
 
 </body>
-<script src="js/jquery.min.js"></script>
-<script src="js/notify.min.js"></script>
-<script src="js/jquery.scrolly.min.js"></script>
-<script src="js/jquery.scrollzer.min.js"></script>
-<script src="js/skel.min.js"></script>
-<script src="js/skel-layers.min.js"></script>
-<script src="js/init.js"></script>
-<script src="js/select2.min.js"></script>
-<script src="../../scripts-common/vue.min.js"></script>
 <script>
     //vues
     var deliveriesTableVue = new Vue({
@@ -500,7 +485,14 @@
             },
             toggleFinished: function (block) {
                 $.get('API/processBlock.php', {finish: block['PK']}, function (data) {
-                    block.isFinished -= 1;
+                    if (block.isFinished) {
+                        //flip to not finished, replace expected Deliveries with last estimate
+
+                    } else {
+                        //flip to finished, replace expected Deliveries with delivered.
+
+                    }
+                    block.isFinished ^= 1;
                 });
             }
         },

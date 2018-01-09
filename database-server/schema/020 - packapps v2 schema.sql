@@ -188,7 +188,7 @@ RENAME TABLE
     run_inspections TO quality_run_inspections;
 /*BUG in v1: no normalization*/
 DELETE i FROM quality_run_inspections i LEFT JOIN production_runs ON i.RunID = production_runs.RunID
-  WHERE production_runs.RunID IS NULL;
+WHERE production_runs.RunID IS NULL;
 ALTER TABLE `quality_run_inspections`
   ADD CONSTRAINT `run_inspections_2_runs` FOREIGN KEY (`RunID`) REFERENCES `production_runs` (`RunID`)
   ON DELETE CASCADE
@@ -717,7 +717,7 @@ ALTER TABLE `grower_block_bushel_history`
   ON DELETE RESTRICT
   ON UPDATE RESTRICT;
 
-/* Do a big insert, up until 2017 estimates, and drop old vals */
+/* Do a big insert, up until 2018 estimates, and drop old vals */
 INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT
                                                                                         PK,
                                                                                         2010act,
@@ -782,6 +782,18 @@ INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_t
                                                                                         PK,
                                                                                         2017est,
                                                                                         '2017',
+                                                                                        'est'
+                                                                                      FROM `grower_crop-estimates`);
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT
+                                                                                        PK,
+                                                                                        2017act,
+                                                                                        '2017',
+                                                                                        'act'
+                                                                                      FROM `grower_crop-estimates`);
+INSERT INTO grower_block_bushel_history (`block_PK`, bushel_value, year, value_type) (SELECT
+                                                                                        PK,
+                                                                                        2018est,
+                                                                                        '2018',
                                                                                         'est'
                                                                                       FROM `grower_crop-estimates`);
 

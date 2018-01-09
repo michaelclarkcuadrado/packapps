@@ -12,6 +12,7 @@ USE `operationsData`;
 TRUNCATE quality_AlertEmails;
 INSERT INTO quality_AlertEmails(FullName, EmailAddress) VALUES ('Michael Clark', 'michael@packercloud.com');
 
+# Skip grower onboarding for RL
 UPDATE grower_GrowerLogins SET email_confirmed = 1, confirm_email_sent = 1 WHERE GrowerCode = 'RL';
 
 UPDATE packapps_master_users SET allowedStorage = 1 WHERE username = 'mike';

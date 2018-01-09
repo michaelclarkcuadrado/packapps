@@ -2,22 +2,43 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php" line="118" />
-    <bookmark url="file://$PROJECT_DIR$/application-server/src/grower/portal/index.php" line="332" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc9cf440-d41f-463b-aeba-7bb29d2a7f06" name="Default" comment="Grower portal: API Fixes, pull old code">
-      <change beforePath="" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/css/grid.css" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Chromium.xml" afterPath="" />
+    <list default="true" id="fc9cf440-d41f-463b-aeba-7bb29d2a7f06" name="Default" comment="Year rollover, grower portal front-end progress, new test data">
+      <change beforePath="" afterPath="$PROJECT_DIR$/database-server/schema/015 - v1 ricefruit 2018.sql" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/storage_v2/_src_/schema/operationsData.tmWaqw.zip" afterPath="$PROJECT_DIR$/.idea/dataSources/ba9179e3-3f43-4bf4-a428-488684b68df1/storage_v2/_src_/schema/operationsData.tmWaqw.zip" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/API/getBlockCompletion.php" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/API/getBlocksAndMetadata.php" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/API/getBlocksAndMetadata.php" />
-      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/API/getFarmsAndBlocks.php" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/API/getGlobalCommoditySubTypes.php" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/API/getGlobalCommoditySubTypes.php" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/browserconfig.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/QAview.php" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/QAview.php" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/changepw.php" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/changepw.php" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/css/ie/PIE.htc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/css/ie/backgroundsize.min.htc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/css/ie/html5shiv.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/css/ie/images/grad0-15.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/css/ie/v8.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/css/ie/v9.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/css/skel.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/css/style-mobile.css" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/css/style-mobile.css" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/css/style-narrow.css" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/css/style-narrow.css" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/css/style-narrower.css" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/css/style-narrower.css" />
       <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/css/style-normal.css" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/css/style-normal.css" />
       <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/css/style-wide.css" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/css/style-wide.css" />
       <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/css/style.css" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/css/style.css" />
-      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/images/banner.jpg" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/images/banner.jpg" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/growerCalendar.php" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/growerCalendar.php" />
       <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/index.php" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/index.php" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/js/init.js" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/js/init.js" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/js/jquery.min.js" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/js/jquery.min.js" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/js/jquery.scrolly.min.js" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/js/jquery.scrolly.min.js" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/js/jquery.scrollzer.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/js/skel-layers.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/js/skel.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/preharvest.php" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/preharvest.php" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/manifest.json" afterPath="$PROJECT_DIR$/application-server/src/manifest.json" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/packapps_api.php" afterPath="$PROJECT_DIR$/application-server/src/packapps_api.php" />
+      <change beforePath="$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql" afterPath="$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql" />
+      <change beforePath="$PROJECT_DIR$/database-server/schema/021 - v2 SEED DATA.sql" afterPath="$PROJECT_DIR$/database-server/schema/021 - v2 SEED DATA.sql" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,20 +64,27 @@
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="operationsData@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="operationsData@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="operationsData: schema" type="c314c289:MysqlImplModel$Schema" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="operationsData@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="operationsData: schema" type="c314c289:MysqlImplModel$Schema" />
         <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="operationsData@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="operationsData: schema" type="c314c289:MysqlImplModel$Schema" />
-        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="grower_GrowerLogins: table" type="98d5ac3d:MysqlImplModel$Table" />
+        <item name="views" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
     </expand>
     <select />
@@ -72,35 +100,19 @@
     <fileColor scope="Non-Project Files (Material Oceanic)" color="2E3C43" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="135" column="65" lean-forward="false" selection-start-line="135" selection-start-column="65" selection-end-line="135" selection-end-column="65" />
+            <state relative-caret-position="219">
+              <caret line="493" column="21" lean-forward="true" selection-start-line="493" selection-start-column="21" selection-end-line="493" selection-end-column="21" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#section#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#0;n#div#1;n#div#0;n#section#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <marker date="1513886992354" expanded="true" signature="490:676" ph="SELECT COUNT... PK" />
-                <marker date="1513886992354" expanded="true" signature="521:672" ph="SELECT PK FR... grower_Preharvest_Samples" />
-                <marker date="1513886992354" expanded="false" signature="3408:3437" ph="..." />
-                <marker date="1513886992354" expanded="true" signature="3438:3745" ph="..." />
-                <marker date="1513886992354" expanded="false" signature="3969:4013" ph="..." />
-                <marker date="1513886992354" expanded="true" signature="4014:4500" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="getBlocksAndMetadata.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/API/getBlocksAndMetadata.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="151" column="0" lean-forward="true" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
-              <folding>
-                <element signature="e#4369#6341#0#PHP" expanded="false" />
-                <element signature="e#6260#6341#0#PHP" expanded="false" />
-                <marker date="1513888537519" expanded="true" signature="538:1734" ph="SELECT `gc-e... grower_farms" />
+                <marker date="1515529123395" expanded="true" signature="221:407" ph="SELECT COUNT... PK" />
+                <marker date="1515529123395" expanded="true" signature="252:403" ph="SELECT PK FR... grower_Preharvest_Samples" />
+                <marker date="1515529123395" expanded="true" signature="3046:3075" ph="..." />
+                <marker date="1515529123395" expanded="true" signature="3076:3383" ph="..." />
+                <marker date="1515529123395" expanded="false" signature="3607:3651" ph="..." />
+                <marker date="1515529123395" expanded="true" signature="3652:4138" ph="..." />
               </folding>
             </state>
           </provider>
@@ -117,36 +129,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>notify</find>
-      <find>blockPercentageVue</find>
-      <find>estimates</find>
-      <find>id=&quot;estimates</find>
-      <find>longtab2</find>
-      <find>blocks and estimates</find>
-      <find>blockManagement</find>
-      <find>deliveriesReceived</find>
-      <find>= $row</find>
-      <find>= $row;</find>
-      <find>bushelHistory</find>
-      <find>getBlockCom</find>
-      <find>tablesorter</find>
-      <find>isMobile</find>
-      <find>server</find>
-      <find>es</find>
-      <find>estimatestable</find>
-      <find>truckDeliveries</find>
-      <find>vue</find>
-      <find>deliveriesvue</find>
-      <find>PK</find>
-      <find>&lt;?p</find>
-      <find>submit</find>
-      <find>script</find>
-      <find>scrolly</find>
-      <find>scrollzer</find>
+      <find>so far</find>
+      <find>fa-unli</find>
+      <find>hasn</find>
+      <find>isFinished</find>
+      <find>blur</find>
+      <find>wrapper</find>
+      <find>2017</find>
+      <find>isfinished</find>
+      <find>skel</find>
+      <find>css</find>
+      <find>skel.</find>
+      <find>font-awe</find>
+      <find>&gt;s</find>
+      <find>noscr</find>
+      <find>init</find>
+      <find>&lt;script</find>
       <find>style</find>
-      <find>style.css</find>
-      <find>v-for</find>
-      <find>usort</find>
+      <find>vue</find>
+      <find>vue.m</find>
+      <find>link&gt;</find>
+      <find>scrollzer</find>
+      <find>scroll</find>
+      <find>on</find>
+      <find>google</find>
+      <find>//</find>
+      <find>@media</find>
+      <find>overlay.</find>
+      <find>overlay.png</find>
+      <find>`</find>
+      <find>RL</find>
     </findStrings>
     <replaceStrings>
       <replace>$thisYear</replace>
@@ -182,18 +194,18 @@
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/application-server/src/quality</dir>
-      <dir>$PROJECT_DIR$</dir>
       <dir>$PROJECT_DIR$/application-server/src/grower/grower</dir>
       <dir>$PROJECT_DIR$/application-server/src/grower</dir>
       <dir>$PROJECT_DIR$/application-server/src/purchasing</dir>
       <dir>$PROJECT_DIR$/application-server</dir>
       <dir>$PROJECT_DIR$/application-server/src</dir>
+      <dir>$PROJECT_DIR$</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <push-targets>
-      <push-target-info target-remote="origin" target-branch="master" repo="$PROJECT_DIR$" source="master" />
+      <push-target-info target-remote="keybase" target-branch="master" repo="$PROJECT_DIR$" source="master" />
     </push-targets>
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -202,57 +214,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application-server/src/production/API/curRuns.php" />
-        <option value="$PROJECT_DIR$/application-server/src/production/index.php" />
-        <option value="$PROJECT_DIR$/application-server/src/production/newRun.php" />
-        <option value="$PROJECT_DIR$/database-server/schema/021 - v2 SEED DATA.sql" />
-        <option value="$PROJECT_DIR$/cleanstart" />
-        <option value="$PROJECT_DIR$/application-server/src/quality/mobileQA.php" />
-        <option value="$PROJECT_DIR$/application-server/src/quality/Inspector.php" />
-        <option value="$PROJECT_DIR$/application-server/src/storage/mobile.php" />
-        <option value="$PROJECT_DIR$/application-server/src/storage/API/getRoomContents.php" />
-        <option value="$PROJECT_DIR$/application-server/src/storage/API/getBlockID.php" />
-        <option value="$PROJECT_DIR$/application-server/src/styles-common/select2.min.css" />
-        <option value="$PROJECT_DIR$/application-server/src/storage/API/getBlockIDHelper.php" />
-        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_6.html" />
-        <option value="$PROJECT_DIR$/application-server/src/storage/API/receiveNewReceipt.php" />
-        <option value="$PROJECT_DIR$/application-server/src/styles-common/inspector.css" />
-        <option value="$PROJECT_DIR$/application-server/src/storage/newReceipt.php" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/QAview.php" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/changepw2.php" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/changepw.php" />
-        <option value="$PROJECT_DIR$/application-server/src/appMenu.php" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/addBlock.php" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/editCalendarEvent.php" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/growerCalendar.php" />
-        <option value="$PROJECT_DIR$/application-server/src/purchasing/API/receive_confirmations.php" />
         <option value="src:table:/405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/operationsData.grower_strains" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/preharvest.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/onramp/index.php" />
-        <option value="$PROJECT_DIR$/application-server/src/packapps_api.php" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/csvExport.php" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/API/getShipments.php" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/processBlock.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/API/getBlockCompletion.php" />
         <option value="$PROJECT_DIR$/settings.yml" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/js/select2.min.js" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/API/getFarmsandBlocks.php" />
         <option value="$PROJECT_DIR$/application-server/src/index.php" />
-        <option value="$PROJECT_DIR$/application-server/src/config.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/API/getFarmsAndBlocks.php" />
-        <option value="$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql" />
         <option value="$PROJECT_DIR$/application-server/src/grower/manage/API/getGrowerListing.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/manage/index.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/manage/growerDrill.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/API/getGlobalCommoditySubTypes.php" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql" />
-        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.php" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/table_estimates_submitter_old.php" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/css/style-normal.css" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/csvExport.php" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/processEstimates.php" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/API/renameLand.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.php" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/API/addFarm.php" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/processBlock.php" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/API/processBlock.php" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/API/getBlocksAndMetadata.php" />
+        <option value="$PROJECT_DIR$/application-server/src/installer.php" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/incrementYearInDB.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/QA.php" />
+        <option value="$PROJECT_DIR$/application-server/src/scripts/APR1_MD5.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console_1.sql" />
+        <option value="$PROJECT_DIR$/application-server/src/config.php" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/API/getShipments.php" />
+        <option value="$PROJECT_DIR$/application-server/src/packapps_api.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql" />
+        <option value="$PROJECT_DIR$/application-server/src/manifest.json" />
+        <option value="$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/css/skel.css" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/js/skel.min.js" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/js/skel-layers.min.js" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/js/init.js" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/js/jquery.scrollzer.min.js" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/js/jquery.scrolly.min.js" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/js/jquery.min.js" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/css/style-wide.css" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/css/style-normal.css" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/css/style-narrow.css" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/css/style-narrower.css" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/css/style-mobile.css" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/changepw.php" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/growerCalendar.php" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/preharvest.php" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/QAview.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/css/style.css" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/index.php" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/API/getBlocksAndMetadata.php" />
+        <option value="$PROJECT_DIR$/database-server/schema/021 - v2 SEED DATA.sql" />
       </list>
     </option>
   </component>
@@ -274,7 +286,7 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP 7.1" />
   <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="y" value="-34" />
+    <option name="y" value="405" />
     <option name="width" value="1366" />
     <option name="height" value="802" />
   </component>
@@ -327,26 +339,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-              <item name="Database Consoles" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
-            </path>
-            <path>
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-              <item name="Database Consoles" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
-              <item name="ba9179e3-3f43-4bf4-a428-488684b68df1" type="61db50fb:ScratchProjectViewPane$MyPsiNode" />
-            </path>
-            <path>
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-              <item name="Scratches" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -387,16 +379,23 @@
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="grower" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="portal" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="API" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
               <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="grower" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="portal" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="database-server" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scratches">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+              <item name="Scratches" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
             </path>
           </expand>
           <select />
@@ -420,6 +419,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/application-server/src/grower/portal/API/" />
       <recent name="$PROJECT_DIR$/application-server/src/storage" />
       <recent name="$PROJECT_DIR$/application-server/src/" />
       <recent name="$PROJECT_DIR$/application-server/src/packapps_api" />
@@ -789,7 +789,15 @@
       <workItem from="1513789290936" duration="14501000" />
       <workItem from="1513807018032" duration="5581000" />
       <workItem from="1513877517887" duration="37000" />
-      <workItem from="1513878436307" duration="10019000" />
+      <workItem from="1513878436307" duration="11638000" />
+      <workItem from="1514042135814" duration="21207000" />
+      <workItem from="1514066432223" duration="7670000" />
+      <workItem from="1514146125630" duration="607000" />
+      <workItem from="1514383354147" duration="22728000" />
+      <workItem from="1515422738638" duration="4385000" />
+      <workItem from="1515427234074" duration="17391000" />
+      <workItem from="1515448103229" duration="146000" />
+      <workItem from="1515504417954" duration="19662000" />
     </task>
     <task id="LOCAL-00001" summary="Add clean db and phpmyadmin">
       <created>1496689406220</created>
@@ -1057,11 +1065,46 @@
       <option name="project" value="LOCAL" />
       <updated>1513873525211</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Grower portal: API Fixes, pull old code">
+      <created>1513889101023</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1513889101023</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Grower Portal: Farm navigator's nav done">
+      <created>1514058169680</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1514058169680</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Add block detail view (partial), bug fix">
+      <created>1514063334147</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1514063334147</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Animations, creating new farms, support for empty farms">
+      <created>1514074066188</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1514074066188</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Year rollover, grower portal front-end progress, new test data">
+      <created>1515447902979</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1515447902979</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1176044000" />
+    <option name="totallyTimeSpent" value="1271459000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1073,31 +1116,32 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-34" width="1366" height="802" extended-state="6" />
+    <frame x="0" y="341" width="1366" height="802" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20485584" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.4957265" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32740742" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27419356" sideWeight="0.4818376" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32743362" sideWeight="0.4957265" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21409214" sideWeight="0.5144231" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13125949" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32949308" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13185185" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2858546" sideWeight="0.50641024" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47740668" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32949308" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3105802" sideWeight="0.4939302" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38666666" sideWeight="0.5030349" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47851852" sideWeight="0.48557693" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2185129" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16592592" sideWeight="0.4817906" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17754173" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38666666" sideWeight="0.4969651" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962063" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47740668" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32740742" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.3281704" sideWeight="0.4957265" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12311901" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29185185" sideWeight="0.48557693" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47106692" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2108295" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1160,10 +1204,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add production item reordering" />
-    <MESSAGE value="Add storage tables (minus non-grower fruit)" />
-    <MESSAGE value="Remove unfinished BOM feature" />
-    <MESSAGE value="Begin work on storage portal UI, pull dependencies" />
     <MESSAGE value="Change color Scheme" />
     <MESSAGE value="Working-ish sunburst, color scheme changes, cleanup" />
     <MESSAGE value="Insights progress: Colors, pivots half-done" />
@@ -1185,7 +1225,11 @@
     <MESSAGE value="Progress check-in: Grower management" />
     <MESSAGE value="Add grower portal blocks to API" />
     <MESSAGE value="Grower portal: API Fixes, pull old code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Grower portal: API Fixes, pull old code" />
+    <MESSAGE value="Grower Portal: Farm navigator's nav done" />
+    <MESSAGE value="Add block detail view (partial), bug fix" />
+    <MESSAGE value="Animations, creating new farms, support for empty farms" />
+    <MESSAGE value="Year rollover, grower portal front-end progress, new test data" />
+    <option name="LAST_COMMIT_MESSAGE" value="Year rollover, grower portal front-end progress, new test data" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1198,198 +1242,131 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application-server/src/quality/preharvest/starchsubmit.php">
+    <entry file="file://$PROJECT_DIR$/application-server/src/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="64" lean-forward="false" selection-start-line="14" selection-start-column="53" selection-end-line="14" selection-end-column="64" />
+        <state relative-caret-position="390">
+          <caret line="63" column="22" lean-forward="false" selection-start-line="63" selection-start-column="22" selection-end-line="63" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="das://src:table:/405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/operationsData.grower_strains">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console_1.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/operationsData.grower_strains">
+    <entry file="das://table:/405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/operationsData.storage_grower_fruit_bins">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/preharvest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="24" column="48" lean-forward="false" selection-start-line="24" selection-start-column="48" selection-end-line="24" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/img.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/production/runQADrillDown.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/onramp/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="23" column="50" lean-forward="false" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database-server/schema/021 - v2 SEED DATA.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="819">
-          <caret line="47" column="15" lean-forward="false" selection-start-line="47" selection-start-column="15" selection-end-line="47" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/csvExport.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="706">
-          <caret line="68" column="1" lean-forward="true" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/js/init.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1290">
-          <caret line="32" column="36" lean-forward="false" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/quality/QA.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="380" column="1114" lean-forward="true" selection-start-line="380" selection-start-column="1085" selection-end-line="380" selection-end-column="1114" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://DATABASE/ba9179e3-3f43-4bf4-a428-488684b68df1.SCHEMA:operationsData">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
+    <entry file="das://view:/405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/operationsData.grower_CurYearReceived">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
-          <ID>DATABASE</ID>
-          <OriginalElement>ba9179e3-3f43-4bf4-a428-488684b68df1.SCHEMA:operationsData</OriginalElement>
-          <nodes>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_run_inspections</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_ConnectedDisplays</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_chat</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_appProperties</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_product_needed</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_UserData</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_UserData</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop_estimates_changes_timeseries</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_receipts</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_UserData</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_buildings</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_Suppliers</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_farms</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_tests</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_growerCalendar</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.VIEW:operationsData.grower_gfbvs-listing</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_systems</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_rooms</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_issues2purchasing_items</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_UserData</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_system_info</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_InspectedRTs</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_location_timeline</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_subsystems</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_UserData</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_issues</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_ItemTypes</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_varieties</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.VIEW:operationsData.quality_Block_Receiving</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_purposes</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_AppleSamples</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.VIEW:operationsData.quality_RTsWQuality</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_GrowerLogins</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_purchases2items</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_AlertEmails</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_items2suppliers</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_dumped_fruit</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_room_events</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_block_bushel_history</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.VIEW:operationsData.grower_CurYearReceived</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_part_info</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.quality_AggregateWeightSamples</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_Inventory_TimeSeries</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_purchase_history</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_app_permissions</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_Preharvest_Samples</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_commodities</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_UserData</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.VIEW:operationsData.quality_AvgWeightByRT</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_strains</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.maintenance_subsystemComponents</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_runs</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.purchasing_Items</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.grower_crop-estimates</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.packapps_master_users</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.storage_grower_fruit_bins</node>
-            <node x="" y="">ba9179e3-3f43-4bf4-a428-488684b68df1.TABLE:operationsData.production_lineNames</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="3711.0" y="2439.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Columns</Category>
-            <Category>Key columns</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/production/API/curRuns.php">
+    <entry file="dbSrc:///405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/schema/operationsData/view/grower_CurYearReceived.sql" />
+    <entry file="das://view:/405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/operationsData.grower_gfbvs-listing">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://view:/405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/operationsData.quality_AvgWeightByRT">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://view:/405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/operationsData.quality_Block_Receiving">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://view:/405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/operationsData.quality_RTsWQuality">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://view:/405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/operationsData.AppleSamples_with_WeightSize">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="51" column="32" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+        <state relative-caret-position="372">
+          <caret line="57" column="48" lean-forward="true" selection-start-line="57" selection-start-column="48" selection-end-line="57" selection-end-column="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/processBlock.php">
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/incrementYearInDB.php" />
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/API/getShipments.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+        <state relative-caret-position="268">
+          <caret line="30" column="41" lean-forward="true" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/preharvestcsv.php">
+    <entry file="file://$PROJECT_DIR$/database-server/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="7" column="1" lean-forward="false" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/config/000-default.conf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/storage/API/receiveNewReceipt.php">
+    <entry file="file://$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state relative-caret-position="416">
+          <caret line="100" column="44" lean-forward="false" selection-start-line="100" selection-start-column="44" selection-end-line="100" selection-end-column="44" />
+          <folding>
+            <marker date="1500901436458" expanded="true" signature="15401:15435" ph="..." />
+            <marker date="1500901436458" expanded="true" signature="16474:16492" ph="..." />
+            <marker date="1500901436458" expanded="true" signature="27630:27662" ph="..." />
+            <marker date="1500901436458" expanded="true" signature="28995:29006" ph="..." />
+            <marker date="1500901436458" expanded="true" signature="30850:30882" ph="..." />
+            <marker date="1500901436458" expanded="true" signature="31134:31166" ph="..." />
+            <marker date="1500901436458" expanded="true" signature="31422:31454" ph="..." />
+            <marker date="1500901436458" expanded="true" signature="37557:37571" ph="..." />
+            <marker date="1500901436458" expanded="true" signature="40581:40638" ph="..." />
+            <marker date="1500901436458" expanded="true" signature="41046:41057" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/settings.yml">
+    <entry file="file://$PROJECT_DIR$/application-server/src/styles/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="35" lean-forward="false" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+        <state relative-caret-position="26">
+          <caret line="159" column="3" lean-forward="false" selection-start-line="159" selection-start-column="3" selection-end-line="159" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/js/select2.min.js">
+    <entry file="file://$PROJECT_DIR$/application-server/src/storage/API/getPivotLists.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10602">
-          <caret line="1" column="29424" lean-forward="false" selection-start-line="1" selection-start-column="29424" selection-end-line="1" selection-end-column="29424" />
+        <state relative-caret-position="34">
+          <caret line="33" column="2" lean-forward="false" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1400,197 +1377,182 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/packapps_api.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="28" column="96" lean-forward="false" selection-start-line="28" selection-start-column="92" selection-end-line="28" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="56" column="68" lean-forward="true" selection-start-line="56" selection-start-column="68" selection-end-line="56" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/incrementYearInDB.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/adjustUserPermissions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="54" column="32" lean-forward="true" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="592" column="45" lean-forward="false" selection-start-line="592" selection-start-column="45" selection-end-line="592" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/purchasing/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="33" column="25" lean-forward="false" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/purchasing/inventory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="550" column="68" lean-forward="false" selection-start-line="550" selection-start-column="63" selection-end-line="550" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/appMenu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="114" column="33" lean-forward="true" selection-start-line="114" selection-start-column="33" selection-end-line="114" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/controlPanel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="412" column="0" lean-forward="false" selection-start-line="412" selection-start-column="0" selection-end-line="418" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/storage/API/getRoomContents.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="101" column="15" lean-forward="true" selection-start-line="101" selection-start-column="15" selection-end-line="101" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/manage/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="99" column="92" lean-forward="false" selection-start-line="99" selection-start-column="92" selection-end-line="99" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/manage/growerDrill.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="28" column="2" lean-forward="true" selection-start-line="28" selection-start-column="2" selection-end-line="28" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/storage/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="14" lean-forward="false" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/manage/API/getGrowerListing.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="51" column="43" lean-forward="false" selection-start-line="51" selection-start-column="43" selection-end-line="51" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/block_completion_snippet.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="8" column="53" lean-forward="false" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_7.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/operationsData.storage_grower_receipts">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/operationsData.grower_block_bushel_history">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/operationsData.grower_GrowerLogins">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="29" column="69" lean-forward="false" selection-start-line="29" selection-start-column="69" selection-end-line="29" selection-end-column="69" />
+        <state relative-caret-position="0">
+          <caret line="0" column="65" lean-forward="false" selection-start-line="0" selection-start-column="65" selection-end-line="0" selection-end-column="65" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/API/getBlockCompletion.php">
+    <entry file="file://$PROJECT_DIR$/application-server/src/browserconfig.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/API/getShipments.php">
+    <entry file="file://$PROJECT_DIR$/application-server/src/manifest.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="36" column="26" lean-forward="false" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+        <state relative-caret-position="26">
+          <caret line="1" column="22" lean-forward="false" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-server/schema/015 - v1 ricefruit 2018.sql">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/ie/html5shiv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/js/skel-layers.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/js/skel.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/js/moment.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1505989219611" expanded="true" signature="206:1541" ph="SELECT id AS... storage_grower_receipts" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/table_estimates_submitter_old.php">
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/js/init.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2236">
-          <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+        <state relative-caret-position="338">
+          <caret line="13" column="15" lean-forward="true" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#136#195#0" expanded="false" />
+            <element signature="e#23826#23892#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/js/jquery.scrollzer.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/js/jquery.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="1" column="46" lean-forward="true" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/fonts/fontawesome-webfont.svg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/font-awesome.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="3" column="110" lean-forward="false" selection-start-line="3" selection-start-column="110" selection-end-line="3" selection-end-column="110" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/packapps_api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="287" column="1" lean-forward="false" selection-start-line="287" selection-start-column="1" selection-end-line="287" selection-end-column="1" />
+          <folding>
+            <marker date="1515506089208" expanded="true" signature="1020:1145" ph="SELECT usern... packapps_master_users" />
+            <marker date="1515506089208" expanded="true" signature="1624:1774" ph="SELECT * FRO... ${$packapp}" />
+            <marker date="1515506089208" expanded="true" signature="2424:2493" ph="SELECT * FRO... grower_GrowerLogins" />
+            <marker date="1515506089208" expanded="true" signature="5777:5829" ph="SELECT growe... grower_GrowerLogins" />
+            <marker date="1515506089208" expanded="true" signature="6034:6137" ph="UPDATE grower_GrowerLogins... " />
+            <marker date="1515506089208" expanded="true" signature="6185:6303" ph="UPDATE packapps_system_info... " />
+            <marker date="1515506089208" expanded="true" signature="6930:7098" ph="INSERT INTO packapps_master_users... " />
+            <marker date="1515506089208" expanded="true" signature="7172:7256" ph="SELECT short... packapps_appProperties" />
+            <marker date="1515506089208" expanded="true" signature="7352:7439" ph="INSERT INTO ${$packapp['short_app_name']}_UserData... " />
+            <marker date="1515506089208" expanded="true" signature="8164:8252" ph="SELECT `Pass... packapps_master_users" />
+            <marker date="1515506089208" expanded="true" signature="8436:8526" ph="UPDATE packapps_master_users... " />
+            <marker date="1515506089208" expanded="true" signature="9270:9349" ph="UPDATE packapps_master_users... " />
+            <marker date="1515506089208" expanded="true" signature="10122:10499" ph="SELECT growe... storage_grower_receipts" />
+            <marker date="1515506089208" expanded="true" signature="10656:10773" ph="INSERT INTO grower_block_bushel_history... " />
+            <marker date="1515506089208" expanded="true" signature="11245:11280" ph="UPDATE `grower_crop-estimates`... " />
+            <marker date="1515506089208" expanded="true" signature="11245:11316" ph="UPDATE `grower_crop-estimates`... " />
+            <marker date="1515506089208" expanded="true" signature="11347:11412" ph="UPDATE packapps_system_info... " />
+            <marker date="1515506089208" expanded="true" signature="11347:11413" ph="UPDATE packapps_system_info... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/js/jquery.scrolly.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="27" column="173" lean-forward="false" selection-start-line="27" selection-start-column="171" selection-end-line="27" selection-end-column="173" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/skel.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="26" column="28" lean-forward="true" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/images/overlay.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/fullcalendar.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-884">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-wide.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="15" column="23" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="36" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="182" column="17" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="730" selection-end-column="1" />
+        <state relative-caret-position="728">
+          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1598,56 +1560,110 @@
     <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-normal.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
-          <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/grid.css">
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-narrow.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="8" column="12" lean-forward="false" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+        <state relative-caret-position="30">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/API/getGlobalCommoditySubTypes.php">
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-narrower.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+        <state relative-caret-position="98">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-mobile.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/changepw.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="21" column="48" lean-forward="false" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
           <folding>
-            <marker date="1513792257795" expanded="true" signature="280:339" ph="SELECT commo... grower_commodities" />
-            <marker date="1513792257795" expanded="true" signature="593:671" ph="SELECT Varie... grower_varieties" />
-            <marker date="1513792257795" expanded="true" signature="916:1083" ph="SELECT strai... grower_strains" />
+            <marker date="1515528213057" expanded="true" signature="547:651" ph="UPDATE grower_growerLogins... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/API/getBlocksAndMetadata.php">
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/growerCalendar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="151" column="0" lean-forward="true" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
+        <state relative-caret-position="156">
+          <caret line="12" column="48" lean-forward="false" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="1081" column="14" lean-forward="true" selection-start-line="1081" selection-start-column="14" selection-end-line="1081" selection-end-column="14" />
           <folding>
-            <element signature="e#4369#6341#0#PHP" expanded="false" />
-            <element signature="e#6260#6341#0#PHP" expanded="false" />
-            <marker date="1513888537519" expanded="true" signature="538:1734" ph="SELECT `gc-e... grower_farms" />
+            <element signature="e#19065#19151#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/QAview.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="12" column="48" lean-forward="false" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
+          <folding>
+            <marker date="1515528213061" expanded="true" signature="158:610" ph="SELECT CommD... quality_Block_Receiving" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/preharvest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="45" column="48" lean-forward="false" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
+          <folding>
+            <marker date="1515528213051" expanded="true" signature="170:2010" ph="SELECT PK, D... grower_crop-estimates" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-server/schema/021 - v2 SEED DATA.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="14" column="31" lean-forward="false" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7662">
+          <caret line="796" column="93" lean-forward="true" selection-start-line="796" selection-start-column="93" selection-end-line="796" selection-end-column="93" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="135" column="65" lean-forward="false" selection-start-line="135" selection-start-column="65" selection-end-line="135" selection-end-column="65" />
+        <state relative-caret-position="219">
+          <caret line="493" column="21" lean-forward="true" selection-start-line="493" selection-start-column="21" selection-end-line="493" selection-end-column="21" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#section#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#div#1;n#div#0;n#section#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <marker date="1513886992354" expanded="true" signature="490:676" ph="SELECT COUNT... PK" />
-            <marker date="1513886992354" expanded="true" signature="521:672" ph="SELECT PK FR... grower_Preharvest_Samples" />
-            <marker date="1513886992354" expanded="false" signature="3408:3437" ph="..." />
-            <marker date="1513886992354" expanded="true" signature="3438:3745" ph="..." />
-            <marker date="1513886992354" expanded="false" signature="3969:4013" ph="..." />
-            <marker date="1513886992354" expanded="true" signature="4014:4500" ph="..." />
+            <marker date="1515529123395" expanded="true" signature="221:407" ph="SELECT COUNT... PK" />
+            <marker date="1515529123395" expanded="true" signature="252:403" ph="SELECT PK FR... grower_Preharvest_Samples" />
+            <marker date="1515529123395" expanded="true" signature="3046:3075" ph="..." />
+            <marker date="1515529123395" expanded="true" signature="3076:3383" ph="..." />
+            <marker date="1515529123395" expanded="false" signature="3607:3651" ph="..." />
+            <marker date="1515529123395" expanded="true" signature="3652:4138" ph="..." />
           </folding>
         </state>
       </provider>

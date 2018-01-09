@@ -36,13 +36,6 @@ body, input, textarea, select {
     color: #888;
 }
 
-@media screen and (max-width: 640px) {
-    table {
-        overflow-x: auto;
-        display: block;
-    }
-}
-
 h1, h2, h3, h4, h5, h6 {
     font-weight: 300;
     color: #666;
@@ -744,13 +737,13 @@ input[type="reset"]:active,
     display: inline-block
 }
 
-.block-detail-bar{
+.block-detail-bar {
     border: 1px solid black;
     border-collapse: collapse;
     background-color: #C3E2EC;
 }
 
-.block-deleted-bar{
+.block-deleted-bar {
     border: 1px solid black;
     background-color: pink;
 }
@@ -763,11 +756,327 @@ input[type="reset"]:active,
     display: inline-block;
 }
 
-.selectors-slide-enter-active, .selectors-slide-leave-active{
+.selectors-slide-enter-active, .selectors-slide-leave-active {
     transition: all .5s;
 }
 
-.selectors-slide-enter, .selectors-slide-leave-to{
+.selectors-slide-enter, .selectors-slide-leave-to {
     opacity: 0;
     /*transform: translateY(30px);*/
 }
+
+@media screen and (max-width: 640px) {
+    /* Allow large tables to scroll horizontally on mobile */
+    table {
+        overflow-x: auto;
+        display: block;
+    }
+}
+
+/*Inline CSS from every size in one file, to save multiple request overhead*/
+
+/*START WIDE*/
+@media screen and (min-width: 961px) and (max-width: 1990px) {
+    body, input, textarea, select {
+        font-size: 17pt;
+    }
+
+    #header {
+        width: 300px;
+    }
+
+    #footer {
+        margin-left: 300px;
+    }
+
+    #main {
+        margin-left: 300px;
+    }
+}
+
+/*END WIDE*/
+
+/*START NORMAL*/
+@media screen and (min-width: 961px) and (max-width: 1620px) {
+    #main {
+    }
+
+    #main > section {
+        padding: 3em 0;
+    }
+
+    #main section.cover {
+        padding: 5em 0;
+    }
+}
+/*END NORMAL*/
+
+/*START NARROW*/
+@media screen and (min-width: 961px) and (max-width: 1320px) {
+
+    body, input, textarea, select {
+        font-size: 16pt;
+    }
+
+    .container {
+        padding: 0 2em 0 2em;
+    }
+
+    ul {
+    }
+
+    ul.icons {
+    }
+
+    ul.icons li {
+    }
+
+    ul.icons li a {
+        width: 1.75em;
+    }
+
+    .item {
+        margin-bottom: 20px;
+    }
+
+    #header {
+        width: 20%;
+    }
+
+    #logo {
+    }
+
+    #logo .image {
+        position: relative;
+        margin: 0 0 0.5em 0;
+    }
+
+    #nav {
+    }
+
+    #nav ul {
+    }
+
+    #nav ul li {
+    }
+
+    #nav ul li a {
+        font-size: 0.8em;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+
+    #nav ul li a span {
+        padding-right: 2.25em;
+    }
+
+    #nav ul li a span:before {
+        left: 100%;
+        margin-left: -1.25em;
+    }
+
+    #footer {
+        margin-left: 20%;
+    }
+
+    #main {
+        margin-left: 20%;
+    }
+}
+/*END NARROW*/
+
+/*START NARROWER*/
+@media screen and (max-width: 960px) {
+    body, input, textarea, select {
+        font-size: 16pt;
+    }
+
+    header {
+    }
+
+    header br {
+        display: none;
+    }
+
+    .container {
+        padding: 0 2em 0 2em;
+    }
+
+    .item {
+        margin-bottom: 15px;
+    }
+
+    ul {
+    }
+
+    ul.icons {
+    }
+
+    ul.icons li {
+    }
+
+    ul.icons a {
+        width: 1.75em;
+        font-size: 1.25em;
+    }
+
+    #header {
+        position: relative;
+        width: 100%;
+        background: none !important;
+        box-shadow: none !important;
+    }
+
+    #header .top {
+        position: relative;
+    }
+
+    #header .bottom {
+        border-top: solid 1px rgba(255, 255, 255, 0.05);
+        box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.15);
+        padding-top: 2em;
+        margin-top: 1em;
+        position: relative;
+    }
+
+    #logo {
+        margin: 1.5em 1.25em 1.25em 1.25em;
+    }
+
+    #nav {
+    }
+
+    #nav ul {
+    }
+
+    #nav ul li {
+    }
+
+    #nav ul li a {
+        padding: 0.5em 1.25em 0.5em 1.25em;
+    }
+
+    #footer {
+        margin-left: 0;
+    }
+
+    #main {
+        margin-left: 0;
+    }
+
+    #main > section {
+        padding: 3em 0;
+    }
+
+    #main section.cover {
+        padding: 4em 0;
+    }
+
+    #sidePanel {
+        background: #222729 url('images/overlay.png');
+        box-shadow: inset -0.25em 0 0.25em 0 rgba(0, 0, 0, 0.125);
+    }
+
+    #sidePanelToggle {
+    }
+
+    #sidePanelToggle .toggle {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    #sidePanelToggle .toggle:before {
+        font-family: FontAwesome;
+        text-decoration: none;
+        font-style: normal;
+        font-weight: normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+
+        content: '\f0c9';
+        color: #fff;
+        font-size: 18px;
+        line-height: 2.25em;
+        background: rgba(128, 136, 144, 0.5);
+        border-radius: 0.35em;
+        text-align: center;
+        position: absolute;
+        left: 0.5em;
+        top: 0.5em;
+        display: block;
+        width: 3.25em;
+        height: 2.25em;
+        line-height: 2.25em;
+    }
+}
+/*END NARROWER*/
+
+/*START MOBILE*/
+@media screen and (max-width: 736px) {
+
+    body, input, textarea, select {
+        font-size: 14pt;
+        overflow-x: hidden;
+    }
+
+    h2 {
+        font-size: 1.5em;
+        letter-spacing: 0;
+        font-weight: 300;
+    }
+
+    .container {
+        padding: 0 15px 0 15px;
+    }
+
+    ul {
+    }
+
+    ul.icons {
+    }
+
+    ul.icons li {
+    }
+
+    ul.icons a {
+        width: 1.75em;
+        font-size: 1.5em;
+    }
+
+    #main {
+    }
+
+    #main > section {
+        padding: 2em 0;
+    }
+
+    #main section.cover {
+        padding: 4em 0;
+    }
+
+    #main section.cover header {
+        padding: 0 1em;
+    }
+
+    #footer {
+    }
+
+    #footer .copyright {
+    }
+
+    #footer .copyright li {
+        display: block;
+        line-height: 1.25em;
+        border: 0;
+        padding: 0;
+        margin: 1em 0 0 0;
+    }
+
+    #footer .copyright li:first-child {
+        margin-top: 0;
+    }
+}
+/*END MOBILE*/
