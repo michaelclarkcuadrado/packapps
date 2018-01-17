@@ -14,7 +14,7 @@ SELECT
   growerName,
   GrowerCode,
   IFNULL(UNIX_TIMESTAMP(lastLogin), 0) AS lastLogin,
-  IFNULL(login_email, 'Not Yet Set') as login_email
+  IFNULL(NULLIF(login_email, ''), 'Not Yet Set') as login_email
 FROM grower_GrowerLogins
 ");
 

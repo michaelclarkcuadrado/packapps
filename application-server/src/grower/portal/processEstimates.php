@@ -1,4 +1,5 @@
 <?php
+//TODO DEPRECATE
 include '../../config.php';
 $userinfo = packapps_authenticate_grower();
 $cropyear = date('Y');

@@ -24,6 +24,7 @@ require_once '../../../config.php';
 $userinfo = packapps_authenticate_grower();
 //disable reporting of NOTICE errors, this script generates thousands of them per second
 error_reporting(E_ALL & ~E_NOTICE);
+
 $query = mysqli_query($mysqli, "
 SELECT
   grower_farms.farmID,
@@ -140,7 +141,7 @@ foreach ($blockOrganizationTree['farms'] as $farmID => &$farmObj) {
             }
             $varietyObj['blocks'] = array_values($varietyObj['blocks']);
             usort($varietyObj['blocks'], function ($obj1, $obj2) {
-                if($obj2['isDeleted'] == $obj1['isDeleted']){
+                if ($obj2['isDeleted'] == $obj1['isDeleted']) {
                     return $obj2['bushelsAnticipated'] - $obj1['bushelsAnticipated'];
                 } else {
                     //push deleted objects to end of list

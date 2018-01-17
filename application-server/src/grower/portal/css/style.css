@@ -741,14 +741,17 @@ input[type="reset"]:active,
     border: 1px solid black;
     border-collapse: collapse;
     background-color: #C3E2EC;
+    max-height: fit-content;
 }
 
 .block-deleted-bar {
     border: 1px solid black;
     background-color: pink;
+    max-height: fit-content;
 }
 
 .alert_estimates_pending {
+    padding: 3px;
     margin: 8px;
     background-color: pink;
     border-radius: 120px;
@@ -763,6 +766,20 @@ input[type="reset"]:active,
 .selectors-slide-enter, .selectors-slide-leave-to {
     opacity: 0;
     /*transform: translateY(30px);*/
+}
+
+.smallEstimatedTag{
+    display: block;
+    font-size: small;
+}
+
+.needsEstimateEase-enter-active, .needsEstimateEase-leave-active{
+    transition: all .5s ease-in-out;
+}
+
+.needsEstimateEase-enter, .needsEstimateEase-leave-to {
+    transform: translateY(10px);
+    opacity: 0
 }
 
 @media screen and (max-width: 640px) {

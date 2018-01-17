@@ -26,15 +26,15 @@ $userinfo = packapps_authenticate_user();
 <body>
 <div class="mdl-layout mdl-js-layout
             mdl-layout--fixed-header">
-    <header class="mdl-layout__header mdl-color--blue">
+    <header class="mdl-layout__header mdl-color--amber-200">
         <div class="mdl-layout__header-row">
-            <span style="color:white" class="mdl-layout-title"><i style="vertical-align: text-bottom;" class="material-icons">public</i> Grower Management</span>
+            <span class="mdl-layout-title"><i style="vertical-align: text-bottom;" class="material-icons">public</i> Grower Management</span>
             <div class="mdl-layout-spacer"></div>
-            <button id="refreshButton" style="color:white" class="mdl-button mdl-js-button mdl-button--icon">
+            <button id="refreshButton" class="mdl-button mdl-js-button mdl-button--icon">
                 <i class="material-icons">sync</i>
             </button>
             <button class="mdl-button mdl-js-button mdl-button--icon">
-                <a style="color: white; text-decoration: none" href="/" class="material-icons">close</a>
+                <a href="/" style="color:black; text-decoration: none" class="material-icons">close</a>
             </button>
         </div>
     </header>
@@ -52,35 +52,36 @@ $userinfo = packapps_authenticate_user();
 
     <main class="mdl-layout__content mdl-color--grey-200">
         <div id="growersListing" class="mdl-grid">
-            <div v-for="grower in growerListing" class="mdl-cell mdl-cell--12-col-desktop mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
-                <div class="mdl-card__title mdl-color--blue">
-                    <h2 class="mdl-card__title-text mdl-color-text--white">
+            <div v-for="grower in growerListing" class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col mdl-card mdl-shadow--4dp">
+                <div class="mdl-card__title mdl-color--amber-200">
+                    <h2 class="mdl-card__title-text">
                         {{grower.growerName}}
                     </h2>
                 </div>
                 <div class="mdl-card__supporting-text">
                     <div style="padding:8px; width: fit-content; display: block; margin: auto; text-align: center" class="mdl-shadow--4dp">
-                        <b>At a Glance</b>
-                        <br><br>
-                        <div style="padding:8px; width: fit-content; display: inline-block" class="mdl-shadow--6dp">
+<!--                        <b>At a Glance</b>-->
+<!--                        <br><br>-->
+                        <div style="padding:8px; width: fit-content; display: inline-block" class="mdl-shadow--6dp-">
                             <div class="mdl-typography--font-bold">Last Login</div>
                             <div class="">{{secondsToStr(grower.lastLogin)}}</div>
                         </div>
-                        <div style="padding:8px; width: fit-content; display: inline-block" class="mdl-shadow--6dp">
+                        <div style="padding:8px; width: fit-content; display: inline-block" class="mdl-shadow--6dp-">
                             <div class="mdl-typography--font-bold">Percent of this year's deliveries</div>
                             <div class="mdl-textfield--align-right">{{grower.percentOfThisYear}}%</div>
                         </div>
-                        <div style="padding:8px; width: fit-content; display: inline-block" class="mdl-shadow--6dp">
+                        <div style="padding:8px; width: fit-content; display: inline-block" class="mdl-shadow--6dp-">
                             <div class="mdl-typography--font-bold">Web Portal Username</div>
-                            <div class="mdl-textfield--align-right">{{grower.GrowerCode}}</div>
+                            <div class="">{{grower.GrowerCode}}</div>
                         </div>
-                        <div style="padding:8px; width: fit-content; display: inline-block" class="mdl-shadow--6dp">
+                        <div style="padding:8px; width: fit-content; display: inline-block" class="mdl-shadow--6dp-">
                             <div class="mdl-typography--font-bold">Contact Email</div>
-                            <div class="mdl-textfield--align-right">{{grower.login_email}}</div>
+                            <div class="">{{grower.login_email}}</div>
                         </div>
                     </div>
                     <Br>
                     <div class="mdl-grid">
+                        <div class="mdl-layout-spacer"></div>
                         <div class="mdl-cell mdl-cell--4-col">
                             <canvas v-bind:id="grower.GrowerCode + 'growthChart'"></canvas>
                         </div>
@@ -88,6 +89,7 @@ $userinfo = packapps_authenticate_user();
                             <canvas v-bind:id="grower.GrowerCode + 'pieChart'"></canvas>
                             {{initChart(grower.GrowerCode)}}
                         </div>
+                        <div class="mdl-layout-spacer"></div>
                     </div>
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
@@ -103,7 +105,7 @@ $userinfo = packapps_authenticate_user();
                 </div>
                 <div class="mdl-card__menu">
                     <button class="mdl-button mdl-button--icon mdl-color-text--white mdl-js-button mdl-js-ripple-effect">
-                        <a v-bind:href="'growerDrill.php?growerID=' + grower.GrowerCode"><i class="material-icons">open_in_new</i></a>
+                        <a v-bind:href="'growerDrill.php?growerID=' + grower.GrowerCode"><i style="color:black" class="material-icons">open_in_new</i></a>
                     </button>
                 </div>
             </div>
@@ -118,7 +120,6 @@ $userinfo = packapps_authenticate_user();
 <script src="../../scripts-common/material.min.js"></script>
 <script src="../../scripts-common/vue.min.js"></script>
 <script src="../../scripts-common/jquery.min.js"></script>
-<script src="../../scripts-common/vue.min.js"></script>
 <script src="../../scripts-common/Chart.min.js"></script>
 <script>
     var growerListingVue = new Vue({
@@ -130,6 +131,10 @@ $userinfo = packapps_authenticate_user();
             secondsToStr: function (inSeconds) {
                 function numberEnding(number) {
                     return (number > 1) ? 's' : '';
+                }
+
+                if (inSeconds == 0) {
+                    return 'Never Logged In';
                 }
 
                 var curTimestamp = Math.round((new Date()).getTime() / 1000);
@@ -175,9 +180,9 @@ $userinfo = packapps_authenticate_user();
                                     }
                                     return array;
                                 }(),
-                                backgroundColor: function(){
+                                backgroundColor: function () {
                                     var array = [];
-                                    for(var i = 0; i < Object.keys(self.growerListing[growerCode]['growthHistory']).length; i++){
+                                    for (var i = 0; i < Object.keys(self.growerListing[growerCode]['growthHistory']).length; i++) {
                                         //        red: 'rgb(255, 99, 132)'
                                         //        orange: 'rgb(255, 159, 64)',
                                         //        yellow: 'rgb(255, 205, 86)',
@@ -206,7 +211,7 @@ $userinfo = packapps_authenticate_user();
                             responsive: true,
                             title: {
                                 display: true,
-                                text: self.growerListing[growerCode]['growerName'] + ' YoY Deliveries'
+                                text: 'YoY Deliveries'
                             },
                             animation: false
                         }
@@ -246,13 +251,13 @@ $userinfo = packapps_authenticate_user();
                             responsive: true,
                             title: {
                                 display: true,
-                                text: self.growerListing[growerCode]['growerName'] + ' Varieties'
+                                text: 'Expected Varieties ' + new Date().getFullYear()
                             },
                             animation: false
                         }
                     };
-                    var pieChart = new Chart(pieElemContext, pieChartConfig);
                     var growthChart = new Chart(growthElemContext, growthChartConfig);
+                    var pieChart = new Chart(pieElemContext, pieChartConfig);
                 })
             }
         },

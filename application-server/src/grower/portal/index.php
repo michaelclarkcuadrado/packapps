@@ -6,19 +6,16 @@ $detect = new Mobile_Detect;
 $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS count FROM (SELECT PK FROM `grower_Preharvest_Samples` WHERE Grower= '" . $userinfo['GrowerCode'] . "' AND `Date` >= (NOW() - INTERVAL 7 DAY) GROUP BY `Date`, `PK`) t1"))['count'];
 ?>
 <!DOCTYPE HTML>
-<html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
-    <?= "<title>" . $companyName . " Portal: " . $userinfo['GrowerName'] . "</title>" ?>
+    <title>Grower Portal</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/select2.min.css">
-    <link rel="stylesheet" href="css/style.css">
-
     <script src="js/jquery.min.js"></script>
-    <script src="../../scripts-common/vue.min.js"></script>
     <script src="js/jquery.scrolly.min.js"></script>
     <script src="js/init.js"></script>
-    <script src="js/notify.min.js"></script>
-    <script src="js/select2.min.js"></script>
+    <script src="../../scripts-common/vue.min.js"></script>
 </head>
 <body>
 <!-- Header -->
@@ -28,7 +25,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
         <div id="logo">
             <span class="image"><img src="images/avatar.png" alt=""/></span>
             <h1 id="title"><? echo $userinfo['GrowerName'] ?></h1>
-            <p><? echo $companyName ?><br></p>
+            <p>@<? echo $companyName ?><br></p>
         </div>
         <!-- Nav -->
         <nav id="nav">
@@ -42,7 +39,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                 <li>
                     <hr style='width: 75%; margin-top: 0; margin-bottom:0; border-top: solid 1px rgba(255,255,255,0.5)'>
                 </li>
-                <li <?php echo($detect->isMobile() ? "style='display: none'" : '') ?>><a href="growerCalendar.php" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-calendar">Picking Calendar</span></a>
+                <li <?php echo($detect->isMobile() ? "style='display: none'" : '') ?>><a href="growerCalendar.php" class="skel-layers-ignoreHref"><span class="icon fa-calendar">Picking Calendar</span></a>
                 </li>
                 <li><a href="QAview.php"><span class="icon fa-area-chart">Block-by-Block QA</span></a>
                 </li>
@@ -73,7 +70,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
 <!-- Main -->
 <div id="main">
     <!-- Intro -->
-    <section id="top" class="one dark cover">
+    <section id="top" class="one dark cover" style="background-image: url('images/banner.jpg')">
         <div class="container">
             <header>
                 <h2 class="alt"><strong><?php echo $userinfo['GrowerName'] ?></strong> Grower Control Panel<br/>
@@ -265,14 +262,20 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                     <!--Blocks-->
                     <div v-if="curSelectionMode === 3" class="mdl-grid" key="blockDetailView">
                         <div v-for="(block, block_id) in blockManagementTree['farms'][curFarmIndex]['commodities'][curCommodityIndex]['varieties'][curVarietyIndex]['blocks']"
-                             :class="[block.isDeleted > 0  ? 'block-deleted-bar' : 'block-detail-bar', 'mdl-shadow--2dp', 'mdl-cell', 'mdl-cell--12-col-desktop', 'mdl-cell--8-col-tablet', 'mdl-cell--4-col-phone']">
-                            <h3>{{(block.isDeleted > 0 ? '[DELETED] ' : '') + block.BlockDesc}} <span class="fa fa-edit" v-on:click="renameBlock(block.PK, block.BlockDesc)"></span></h3>
+                             :class="[block.isDeleted > 0  ? 'block-deleted-bar' : 'block-detail-bar', 'mdl-shadow--2dp', 'mdl-cell', 'mdl-cell--6-col-desktop', 'mdl-cell--4-col-tablet', 'mdl-cell--4-col-phone']">
+                            <h3>
+                                <span v-if="blockTrend(block.bushelHistory) > 0" class="fa fa-sort-up" title="Trends Up" style="color: green; vertical-align: sub"></span>
+                                <span v-else-if="blockTrend(block.bushelHistory) == 0 || isNaN(blockTrend(block.bushelHistory))" title="No Trend" style="vertical-align: text-bottom; font-size: 60px">-</span>
+                                <span v-else class="fa fa-sort-down" title="Trends Down" style="color: red; vertical-align: top"></span>
+                                {{(block.isDeleted > 0 ? '[DELETED] ' : '') + block.BlockDesc}} <span class="fa fa-edit" v-on:click="renameBlock(block.PK, block.BlockDesc)"></span></h3>
                             <div class="deleted-block-blur-wrapper">
-                                <div v-if="(block['isDeleted'] > 0 ? false : (block['isSameAsLastYear'] > 0 ? false : (block['bushelHistory'][curYear]['est'] === block['bushelHistory'][curYear - 1]['act'] ? true : false)))"
-                                     class="alert_estimates_pending mdl-shadow--2dp">
-                                    <i class="fa fa-lg fa-exclamation-circle"></i>
-                                    Needs Estimate
-                                </div>
+                                <transition name="needsEstimateEase">
+                                    <div v-if="(block['isDeleted'] > 0 ? false : (block['isSameAsLastYear'] > 0 ? false : (block['bushelHistory'][curYear]['est'] == block['bushelHistory'][curYear - 1]['act'] ? true : false)))"
+                                         class="alert_estimates_pending mdl-shadow--2dp">
+                                        <i class="fa fa-lg fa-exclamation-circle"></i>
+                                        Needs Estimate
+                                    </div>
+                                </transition>
                                 <div style="display:flex; justify-content: space-evenly;">
                                     <span>Variety: {{block.VarietyName}}</span>
                                     <span>Strain: {{block.strainName}}</span>
@@ -281,7 +284,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                                     <h5>This Year</h5>
                                     <div style="display:flex; margin-left: 5px; margin-right: 5px; flex-wrap: wrap; justify-content: space-evenly">
                                         <div style="flex-basis: 100%; align-self: center">
-                                            {{Number(block.bushelsReceived).toLocaleString() + " Out Of " + Number(block.bushelsAnticipated).toLocaleString()}} Bushels
+                                            {{Number(block.bushelsReceived).toLocaleString() + " Out Of " + Number(block.bushelHistory[curYear]['est']).toLocaleString()}} Bushels
                                         </div>
                                         <div style="flex-basis: 100%">
                                             <span class="icon fa-truck"></span>
@@ -298,7 +301,33 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                                     </div>
                                 </div>
                                 <div style="border-top: 1px solid black;">
-                                    <h5>Estimates</h5>
+                                    <h5>Estimates in Bushels</h5>
+                                    <div style="display: flex; justify-content: space-evenly;" class="estimatesHeaderWrapper">
+                                        <div v-for="(valueObj, year) in block.bushelHistory" v-if="year != curYear" style="flex-grow: 1">
+                                            <div>
+                                                {{year}} Delivered
+                                            </div>
+                                            <div style="border-top: 1px solid gray">
+                                                {{Number(valueObj.act).toLocaleString()}}
+                                                <span class="smallEstimatedTag">
+                                                    Your Estimate: {{Number(valueObj.est).toLocaleString()}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div v-else>
+                                            <div>
+                                                {{year}} Estimated
+                                            </div>
+                                            <div style="border-top: 1px solid gray">
+                                                <input type="number" v-model.number="valueObj.est" v-on:change="updateEstimate(block)" min="0" style="width: 110px">
+                                                <span class="smallEstimatedTag">
+                                                    <div>
+                                                        <input type="checkbox"> Keep estimate?
+                                                    </div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -318,9 +347,11 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
 </div>
 
 </body>
+<script src="js/notify.min.js"></script>
+<script src="js/select2.min.js"></script>
 <script>
     //vues
-    var deliveriesTableVue = new Vue({
+    const deliveriesTableVue = new Vue({
         el: "#deliveriesvue",
         data: {
             deliveries: []
@@ -331,14 +362,14 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
             }
         },
         mounted: function () {
-            var self = this;
+            const self = this;
             $.getJSON('API/getShipments.php', function (data) {
                 self.deliveries = data;
             });
         }
     });
 
-    var blockManagementVue = new Vue({
+    const blockManagementVue = new Vue({
         el: "#blockManagement",
         data: {
             blockManagementTree: {},
@@ -389,23 +420,23 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
             selectVariety: function (varietyID) {
                 this.curSelectionMode = 3;
                 this.curVarietyIndex = varietyID;
-                var farm_name = this.blockManagementTree['farms'][this.curFarmIndex]['name'];
-                var variety_name = this.blockManagementTree['farms'][this.curFarmIndex]['commodities'][this.curCommodityIndex]['varieties'][varietyID]['name'];
+                const farm_name = this.blockManagementTree['farms'][this.curFarmIndex]['name'];
+                const variety_name = this.blockManagementTree['farms'][this.curFarmIndex]['commodities'][this.curCommodityIndex]['varieties'][varietyID]['name'];
                 this.selectionPanelTitle = farm_name + " Farm's " + variety_name + " Blocks";
             },
             getDeliveryCompletionPercentage: function (delivered, anticipated) {
                 if (delivered === 0 || anticipated === 0) {
                     return 0;
                 } //Avoid NaNs
-                var percentage = (delivered / anticipated) * 100;
+                const percentage = (delivered / anticipated) * 100;
                 if (percentage > 100) {
                     return 100;
                 }
                 return percentage;
             },
             newFarm: function () {
-                var self = this;
-                var newFarmName = prompt("New Farm Name:");
+                const self = this;
+                const newFarmName = prompt("New Farm Name:");
                 $.getJSON('API/addFarm.php', {newFarmName: newFarmName}, function (data) {
                     self.blockManagementTree['farms'].push({
                         name: newFarmName,
@@ -420,18 +451,18 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                 });
             },
             renameFarm: function (farmID, curName) {
-                var newName = prompt("Rename this farm to: ", curName);
+                const newName = prompt("Rename this farm to: ", curName);
                 this.renameLand('farm', farmID, newName);
                 event.stopPropagation();
             },
             renameBlock: function (blockPK, curName) {
-                var newName = prompt("Rename this block to: ", curName);
+                const newName = prompt("Rename this block to: ", curName);
                 this.renameLand('block', blockPK, newName);
             },
             renameLand: function (landType, landID, newName) {
                 if (landType === 'farm' || landType === 'block') {
-                    var self = this;
-                    var argsObj = {
+                    const self = this;
+                    const argsObj = {
                         landType: landType,
                         landID: landID,
                         newName: newName
@@ -479,9 +510,44 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                     }).fail(function () {
                         $.notify("Couldn't rename that " + landType + ".")
                     });
-                } else {
-                    console.log("Invalid landType")
                 }
+            },
+            blockTrend: function (bushelHistoryObj) {
+                const years = [];
+                const bushelVals = [];
+                for (let year in bushelHistoryObj) {
+                    if (bushelHistoryObj.hasOwnProperty(year)) {
+                        years.push(year);
+                        if (year == this.curYear) {
+                            bushelVals.push(bushelHistoryObj[year]['est']);
+                        } else {
+                            bushelVals.push(bushelHistoryObj[year]['act']);
+                        }
+                    }
+                }
+                return this.linearRegressionSlope(bushelVals, years);
+
+            },
+            linearRegressionSlope: function (y, x) {
+                y = y.map(num => parseInt(num));
+                x = x.map(num => parseInt(num));
+                const n = y.length;
+                let sum_x = 0;
+                let sum_y = 0;
+                let sum_xy = 0;
+                let sum_xx = 0;
+                let sum_yy = 0;
+
+                for (let i = 0; i < y.length; i++) {
+                    sum_x += x[i];
+                    sum_y += y[i];
+                    sum_xy += (x[i] * y[i]);
+                    sum_xx += (x[i] * x[i]);
+                    sum_yy += (y[i] * y[i]);
+                }
+
+                const m = (n * sum_xy - sum_x * sum_y) / (n * sum_xx - sum_x * sum_x);
+                return m;
             },
             toggleFinished: function (block) {
                 $.get('API/processBlock.php', {finish: block['PK']}, function (data) {
@@ -497,14 +563,14 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
             }
         },
         mounted: function () {
-            var self = this;
+            const self = this;
             $.getJSON('API/getBlocksAndMetadata.php', function (data) {
                 self.blockManagementTree = data;
             });
         }
     });
 
-    var CommoditiesTree = {};
+    let CommoditiesTree = {};
     $(document).ready(function () {
         //attach listeners
         getCommoditiesTree();
@@ -558,10 +624,10 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                         disabled: true
                     });
                 }
-                var curCommodity = event.target.defaultValue;
+                const curCommodity = event.target.defaultValue;
                 varSelector.off();
                 strSelector.off();
-                var curVariety = null;
+                let curVariety = null;
                 varSelector.select2({
                     placeholder: "Select Variety",
                     disabled: false,
