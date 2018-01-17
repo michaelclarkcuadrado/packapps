@@ -17,7 +17,7 @@ use WhiteHat101\Crypt\APR1_MD5;
  */
 function packapps_authenticate_user($packapp = null) {
     if (isset($_COOKIE['grower'])) {
-        die(header('Location: grower/portal/'));
+        die(header('Location: /grower/portal/'));
     }
     require 'config.php';
     if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
@@ -268,7 +268,7 @@ GROUP BY PK;");
     $curYear = date('Y');
     $curYearMinusOne = $curYear - 1;
     $insert_stmt = mysqli_prepare($mysqli, "
-        INSERT INTO grower_block_bushel_history (block_PK, year, value_type, bushel_value)
+        INSERT IGNORE INTO grower_block_bushel_history (block_PK, year, value_type, bushel_value)
         VALUES (?, ?, ?, ?);
     ");
     mysqli_stmt_bind_param($insert_stmt, 'iisi', $PK, $year, $type, $bushels);
@@ -283,5 +283,6 @@ GROUP BY PK;");
         mysqli_stmt_execute($insert_stmt);
     }
     mysqli_stmt_close($insert_stmt);
+    mysqli_query($mysqli, "UPDATE `grower_crop-estimates` SET isSameAsLastYear = 0, isFinished = 0");
     mysqli_query($mysqli, "UPDATE packapps_system_info SET growerPortalLastInitializedYear = $curYear");
 }

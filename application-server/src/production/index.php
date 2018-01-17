@@ -244,11 +244,11 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
         var debug = setInterval(loadRuns, 7000);
 
         //request notify permissions
-        if (Notification.permission !== 'denied') {
-            Notification.requestPermission(function (permission) {
-                sendNotification("You are now signed in to chat.", "Production Chat");
-            })
-        }
+        // if (Notification.permission !== 'denied') {
+        //     Notification.requestPermission(function (permission) {
+        //         sendNotification("You are now signed in to chat.", "Production Chat");
+        //     })
+        // }
 
     });
 
@@ -514,6 +514,7 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
     }
 
     function sendNotification(title, text) {
+        return;
         if ("Notification" in window) {
             if (Notification.permission === "granted") {
                 var notification = new Notification(title, {
