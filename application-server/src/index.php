@@ -65,7 +65,7 @@ if (isset($_COOKIE['auth']) && isset($_COOKIE['username'])) { //do redirect
                 }
             }
         } else {
-            $errormsg = "Sorry, We Couldn't Confirm Those Credentials. Try Again.";
+            $errormsg = "Those don't match our records. Please try again.";
         }
     } else {
         //Do packhouse account login    window.location = "portal/"
@@ -99,27 +99,7 @@ if (isset($_COOKIE['auth']) && isset($_COOKIE['username'])) { //do redirect
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="PackApps">
-    <link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="favicons/apple-touch-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="favicons/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="favicons/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="favicons/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="favicons/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="favicons/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="favicons/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon-180x180.png">
-    <link rel="icon" type="image/png" href="favicons/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="favicons/android-chrome-192x192.png" sizes="192x192">
-    <link rel="icon" type="image/png" href="favicons/favicon-96x96.png" sizes="96x96">
-    <link rel="icon" type="image/png" href="favicons/favicon-16x16.png" sizes="16x16">
-    <link rel="manifest" href="manifest.json">
-    <link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
 
-    <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-    <meta name="msapplication-TileColor" content="#3372DF">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="styles/materialIcons/material-icons.css">
@@ -134,7 +114,7 @@ if (isset($_COOKIE['auth']) && isset($_COOKIE['username'])) { //do redirect
             <div class="mdl-card__title">
                 <h2 style="color: white" class="mdl-card__title-text"><i style='margin-right: 5px' class="material-icons">dashboard</i> <? echo $companyName ?> PackApps</h2>
             </div>
-            <p id="errorBox" style="margin: 0; text-align: center; color: white; font-size: 16px; font-weight: 500"><? echo $errormsg ?></p>
+            <p id="errorBox" style="margin: 0 15px 0 15px; text-align: center; color: white; font-size: 16px; font-weight: 500"><? echo $errormsg ?></p>
             <div style="text-align: center" class="mdl-card__supporting-text">
                 <div id="loginTypeChooser">
                     <table style="width:100%;height:100%">
