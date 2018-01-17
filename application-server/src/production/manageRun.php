@@ -34,7 +34,7 @@ if($_GET['delete']) {
     packapps_deleteFromS3($availableBuckets['quality'], 'runPhoto-runid-'.$_GET['delete'].'.jpg');
 }
 else if($_GET['finish']) {
-    mysqli_query($mysqli, "UPDATE `production_runs` SET `isCompleted` = NOT isCompleted WHERE RunID='".$_GET['finish']."'") or die(mysqli_error($mysqli));
+    mysqli_query($mysqli, "UPDATE `production_runs` SET `isCompleted` = NOT isCompleted WHERE RunID='".$_GET['finish']."'") or APIFail("Could not complete run");
     $line = mysqli_fetch_array(mysqli_query($mysqli, "SELECT `Line` from `production_runs` where RunID='".$_GET['finish']."'"));
     mysqli_query($mysqli, "INSERT INTO production_chat VALUES ('', '".$line[0]."', '".mysqli_real_escape_string($mysqli, $SecuredUserName)."', 'Run change @ ".date('g:ia').".')");
 }

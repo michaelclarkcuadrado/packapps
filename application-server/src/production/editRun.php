@@ -286,7 +286,7 @@ if ($RealName['Role'] != 'Production') {
     function loadRunInfo() {
         $.ajax({
             type: 'GET',
-            url: "API/singleRun.php?Run=<?echo $_GET['run'] . (isset($_GET['duplicate']) ? '&duplicate=1' : '')?>",
+            url: "API/singleRun.php?Run=<?echo intval($_GET['run']) . (isset($_GET['duplicate']) ? '&duplicate=1' : '')?>",
             dataType: 'json',
             cache: false,
             success: function (data) {

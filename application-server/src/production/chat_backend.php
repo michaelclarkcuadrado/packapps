@@ -9,6 +9,7 @@ if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     $SecuredUserName = mysqli_real_escape_string($mysqli, $_COOKIE['username']);
 }
 // end authentication
+header("Content-Type: text/plain");
 if(isset($_POST['message']))
 {
     mysqli_query($mysqli, "INSERT INTO production_chat (`Line`, `User`, `Message`) VALUES ('".mysqli_real_escape_string($mysqli, $_POST['line'])."', '".mysqli_real_escape_string($mysqli, $SecuredUserName)."', '".mysqli_real_escape_string($mysqli, $_POST['message'])."')") or error_log(mysqli_error($mysqli));
