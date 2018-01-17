@@ -11,6 +11,8 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql
 #    && dpkg -i /tmp/mod-pagespeed.deb \
 #    && apt-get -f install
 RUN a2enmod rewrite
+RUN a2enmod headers
+
 EXPOSE 80
 
 COPY src /var/www/

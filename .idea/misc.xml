@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
+  </component>
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-mobile.css" />
+    <file url="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-narrow.css" />
+    <file url="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-narrower.css" />
+    <file url="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-normal.css" />
+    <file url="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-wide.css" />
+  </component>
+</project>
