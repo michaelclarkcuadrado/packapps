@@ -615,19 +615,47 @@ input[type="reset"]:active,
 /*********************************************************************************/
 /* Main                                                                          */
 /*********************************************************************************/
-.load {
+.noload {
     height: 12px;
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAALCAYAAAC+jufvAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwAAADsABataJCQAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAAAPklEQVQYV2M48Gvvf4ZDv/b9Z9j7Fcha827Df4alr1b9Z1j4YsV/BuML3v8ZTC/7/GcwuwokrG4DCceH/v8Bs2Ef1StO/o0AAAAASUVORK5CYII=);
-    border-radius: 4px;
-    transition: width .75s ease-in-out
+    position: relative;
+    background: #4D575F;
+    border-radius: 8px;
 }
 
-.noload {
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAALCAYAAAC+jufvAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwAAADsABataJCQAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAAANUlEQVQYVy3EIQ4AQQgEwfn/zwghCMwGh8Tj+8yVKN0d2l00M6i70XsPmdmfu6OIQJmJqooPOu8mqi//WKcAAAAASUVORK5CYII=);
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    border: 1px solid #999999;
+.load {
+    display: block;
+    height: 100%;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    background-color: #6BB438;
     position: relative;
+    overflow: hidden;
+    transition: width .75s ease-in-out;
+}
+
+.load:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: linear-gradient(-45deg, #56aa1c 25%, transparent 25%, transparent 50%, #56aa1c 50%, #56aa1c 75%, transparent 75%, transparent);
+    z-index: 1;
+    background-size: 20px 20px;
+    animation: slideProgressBar 2s linear infinite;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    overflow: hidden;
+}
+
+@keyframes slideProgressBar {
+    0% {background-position: 0 0;}
+    100% {background-position: 30px 30px;}
 }
 
 #main {
@@ -754,14 +782,14 @@ input[type="reset"]:active,
     /*transform: translateY(30px);*/
 }
 
-.smallEstimatedTag{
+.smallEstimatedTag {
     display: block;
     font-size: small;
     line-height: 1.5em;
     margin: 0 5px 1px 1px;
 }
 
-.needsEstimateEase-enter-active, .needsEstimateEase-leave-active{
+.needsEstimateEase-enter-active, .needsEstimateEase-leave-active {
     transition: all .5s ease-in-out;
 }
 
@@ -814,6 +842,7 @@ input[type="reset"]:active,
         padding: 5em 0;
     }
 }
+
 /*END NORMAL*/
 
 /*START NARROW*/
@@ -884,6 +913,7 @@ input[type="reset"]:active,
         margin-left: 20%;
     }
 }
+
 /*END NARROW*/
 
 /*START NARROWER*/
@@ -1008,6 +1038,7 @@ input[type="reset"]:active,
         line-height: 2.25em;
     }
 }
+
 /*END NARROWER*/
 
 /*START MOBILE*/
@@ -1070,4 +1101,5 @@ input[type="reset"]:active,
         margin-top: 0;
     }
 }
+
 /*END MOBILE*/

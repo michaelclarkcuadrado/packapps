@@ -8,9 +8,10 @@
     <bookmark url="file://$PROJECT_DIR$/application-server/src/maintenance/issueoverview.php" line="118" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc9cf440-d41f-463b-aeba-7bb29d2a7f06" name="Default" comment="Year rollover, grower portal front-end progress, new test data">
+    <list default="true" id="fc9cf440-d41f-463b-aeba-7bb29d2a7f06" name="Default" comment="oops">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/application-server/Dockerfile" afterPath="$PROJECT_DIR$/application-server/Dockerfile" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/css/style.css" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/css/style.css" />
+      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/index.php" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/index.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -66,133 +67,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="processEstimates.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/processEstimates.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-              <folding>
-                <marker date="1516109263090" expanded="true" signature="526:686" ph="UPDATE `grower_crop-estimates`... " />
-                <marker date="1516109263090" expanded="true" signature="735:883" ph="UPDATE `grower_crop-estimates`... " />
-                <marker date="1516109263090" expanded="true" signature="918:1189" ph="INSERT INTO grower_crop_estimates_changes_timeseries... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4394">
-              <caret line="169" column="16" lean-forward="false" selection-start-line="169" selection-start-column="16" selection-end-line="169" selection-end-column="16" />
+            <state relative-caret-position="327">
+              <caret line="602" column="51" lean-forward="false" selection-start-line="602" selection-start-column="51" selection-end-line="602" selection-end-column="51" />
               <folding>
-                <marker date="1516133037908" expanded="true" signature="221:407" ph="SELECT COUNT... PK" />
-                <marker date="1516133037908" expanded="true" signature="252:403" ph="SELECT PK FR... grower_Preharvest_Samples" />
-                <marker date="1516133037908" expanded="true" signature="2927:2956" ph="..." />
-                <marker date="1516133037908" expanded="true" signature="2957:3264" ph="..." />
-                <marker date="1516133037908" expanded="false" signature="3488:3532" ph="..." />
-                <marker date="1516133037908" expanded="true" signature="3533:4019" ph="..." />
+                <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#transition#0;n#div#1;n#div#0;n#section#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#1;n#div#1;n#div#0;n#div#2;n#div#0;n#div#0;n#div#3;n#transition#0;n#div#1;n#div#0;n#section#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1516310252585" expanded="true" signature="221:407" ph="SELECT COUNT... PK" />
+                <marker date="1516310252585" expanded="true" signature="252:403" ph="SELECT PK FR... grower_Preharvest_Samples" />
+                <marker date="1516310252585" expanded="false" signature="2946:2975" ph="..." />
+                <marker date="1516310252585" expanded="true" signature="2976:3283" ph="..." />
+                <marker date="1516310252585" expanded="false" signature="3507:3551" ph="..." />
+                <marker date="1516310252585" expanded="true" signature="3552:4038" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="editCalendarEvent.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/editCalendarEvent.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-              <folding>
-                <marker date="1504539534626" expanded="true" signature="426:580" ph="INSERT INTO grower_growerCalendar... " />
-                <marker date="1504539534626" expanded="true" signature="885:1022" ph="UPDATE grower_growerCalendar... " />
-                <marker date="1504539534626" expanded="true" signature="1337:1429" ph="UPDATE grower_growerCalendar... " />
-                <marker date="1504539534626" expanded="true" signature="1670:1717" ph="DELETE FROM `grower_growerCalendar`... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="appMenu.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application-server/src/appMenu.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1794">
-              <caret line="69" column="52" lean-forward="false" selection-start-line="69" selection-start-column="52" selection-end-line="69" selection-end-column="52" />
-              <folding>
-                <marker date="1516118228797" expanded="true" signature="276:371" ph="SELECT short... packapps_appProperties" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application-server/src/production/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1205">
-              <caret line="654" column="13" lean-forward="true" selection-start-line="654" selection-start-column="13" selection-end-line="654" selection-end-column="13" />
-              <folding>
-                <marker date="1516199219539" expanded="true" signature="748:1003" ph="SELECT `Real... packapps_master_users" />
-                <marker date="1516199219539" expanded="true" signature="1276:1325" ph="SELECT lineI... production_lineNames" />
-                <marker date="1516199219539" expanded="true" signature="1609:1666" ph="..." />
-                <marker date="1516199219539" expanded="true" signature="1680:1720" ph="..." />
-                <marker date="1516199219539" expanded="true" signature="4668:4695" ph="..." />
-                <marker date="1516199219539" expanded="true" signature="5185:5271" ph="..." />
-                <marker date="1516199219539" expanded="true" signature="15698:15967" ph="..." />
-                <marker date="1516199219539" expanded="true" signature="16391:16675" ph="..." />
-                <marker date="1516199219539" expanded="true" signature="17114:17128" ph="..." />
-                <marker date="1516199219539" expanded="true" signature="17272:17306" ph="..." />
-                <marker date="1516199219539" expanded="true" signature="17365:17414" ph="..." />
-                <marker date="1516199219539" expanded="true" signature="17449:17483" ph="..." />
-                <marker date="1516199219539" expanded="true" signature="19923:20039" ph="..." />
-                <marker date="1516199219539" expanded="true" signature="20971:21087" ph="..." />
-                <marker date="1516199219539" expanded="true" signature="23119:23237" ph="..." />
-                <marker date="1516199219539" expanded="true" signature="28963:28975" ph="..." />
-                <marker date="1516199219539" expanded="true" signature="29366:29378" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="000-default.conf" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application-server/config/000-default.conf">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Dockerfile" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application-server/Dockerfile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="updateEstimate.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/API/updateEstimate.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="16" column="58" lean-forward="false" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
-              <folding>
-                <marker date="1515705935265" expanded="true" signature="495:745" ph="UPDATE `grower_crop-estimates`... " />
-                <marker date="1515705935265" expanded="true" signature="501:745" ph="UPDATE grower_block_bushel_history... " />
-                <marker date="1515705935265" expanded="true" signature="1048:1398" ph="UPDATE grower_block_bushel_history... " />
-                <marker date="1515705935265" expanded="true" signature="1435:1704" ph="INSERT INTO grower_crop_estimates_changes_timeseries... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20280">
-              <caret line="780" column="25" lean-forward="false" selection-start-line="780" selection-start-column="25" selection-end-line="780" selection-end-column="25" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -208,36 +97,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>linearregre</find>
-      <find>deleted-</find>
-      <find>No trend</find>
-      <find>console</find>
-      <find>est</find>
-      <find>blockten</find>
-      <find>vue</find>
-      <find>100</find>
-      <find>out of</find>
-      <find>transition</find>
-      <find>block-=d</find>
-      <find>needs estimate</find>
-      <find>checkb</find>
-      <find>updateEstiamte</find>
-      <find>TODO</find>
-      <find>v-model</find>
-      <find>xmlns</find>
-      <find>trend</find>
-      <find>blockTrend</find>
-      <find>console.log</find>
-      <find>companyName</find>
-      <find>shortname</find>
-      <find>manifest</find>
-      <find>portal</find>
-      <find>document.cookie</find>
-      <find>You are now</find>
-      <find>notification.permission</find>
-      <find>sendNotification</find>
-      <find>notification.permis</find>
-      <find>Notification.permis</find>
+      <find>hr</find>
+      <find>recalc</find>
+      <find>selector</find>
+      <find>estimatesNeeded</find>
+      <find>estimates</find>
+      <find>}}</find>
+      <find>detail</find>
+      <find>block-det</find>
+      <find>90</find>
+      <find>percent</find>
+      <find>getDeliverycom</find>
+      <find>getDeliveryCom</find>
+      <find>getDelivery</find>
+      <find>block.bushelsAnticipated</find>
+      <find>bushelsAnticipated</find>
+      <find>blockObj['bushelsAnticipated']</find>
+      <find>percentage</find>
+      <find>small</find>
+      <find>input</find>
+      <find>those</find>
+      <find>===</find>
+      <find>load</find>
+      <find>l</find>
+      <find>barEase</find>
+      <find>height: fit</find>
+      <find>height: fit-conte</find>
+      <find>noload</find>
+      <find>estimates Pending</find>
+      <find>todo</find>
+      <find>checkbo</find>
     </findStrings>
     <replaceStrings>
       <replace>$thisYear</replace>
@@ -275,11 +164,11 @@
       <dir>$PROJECT_DIR$/application-server/src/quality</dir>
       <dir>$PROJECT_DIR$/application-server/src/grower/grower</dir>
       <dir>$PROJECT_DIR$/application-server/src/purchasing</dir>
-      <dir>$PROJECT_DIR$/application-server</dir>
       <dir>$PROJECT_DIR$</dir>
       <dir>$PROJECT_DIR$/application-server/src/grower/portal</dir>
       <dir>$PROJECT_DIR$/application-server/src/grower</dir>
       <dir>$PROJECT_DIR$/application-server/src</dir>
+      <dir>$PROJECT_DIR$/application-server</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -294,12 +183,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application-server/src/grower/manage/growerDrill.php" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/API/getGlobalCommoditySubTypes.php" />
-        <option value="$APPLICATION_CONFIG_DIR$/scratches/table_estimates_submitter_old.php" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/csvExport.php" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/API/renameLand.php" />
-        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/API/addFarm.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/processBlock.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/API/processBlock.php" />
@@ -311,7 +194,6 @@
         <option value="$PROJECT_DIR$/application-server/src/config.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/API/getShipments.php" />
         <option value="$PROJECT_DIR$/application-server/src/manifest.json" />
-        <option value="$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/css/skel.css" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/js/skel.min.js" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/js/skel-layers.min.js" />
@@ -332,19 +214,26 @@
         <option value="$PROJECT_DIR$/application-server/src/scripts-common/Chart.min.js" />
         <option value="$PROJECT_DIR$/application-server/src/grower/manage/API/getGrowerListing.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/manage/index.php" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/API/getBlocksAndMetadata.php" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/css/style.css" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/API/updateEstimate.php" />
-        <option value="$PROJECT_DIR$/application-server/src/packapps_api.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/processEstimates.php" />
         <option value="$PROJECT_DIR$/application-server/src/appMenu.php" />
         <option value="$PROJECT_DIR$/application-server/src/controlPanel.php" />
-        <option value="$PROJECT_DIR$/application-server/src/index.php" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/index.php" />
         <option value="$PROJECT_DIR$/application-server/src/production/index.php" />
-        <option value="$PROJECT_DIR$/application-server/config/000-default.conf" />
         <option value="$PROJECT_DIR$/application-server/Dockerfile" />
+        <option value="$PROJECT_DIR$/application-server/src/production/manageRun.php" />
+        <option value="$PROJECT_DIR$/application-server/src/production/editedRunSubmit.php" />
+        <option value="$PROJECT_DIR$/application-server/src/production/chat_backend.php" />
+        <option value="$PROJECT_DIR$/application-server/src/production/editRun.php" />
+        <option value="$PROJECT_DIR$/application-server/config/000-default.conf" />
+        <option value="$PROJECT_DIR$/application-server/src/purchasing/API/getPurchaseHistory.php" />
+        <option value="$PROJECT_DIR$/application-server/src/quality/Classes/ssp.php" />
+        <option value="$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql" />
+        <option value="$PROJECT_DIR$/application-server/src/packapps_api.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/API/updateEstimate.php" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/API/getBlocksAndMetadata.php" />
+        <option value="$PROJECT_DIR$/application-server/src/index.php" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/css/style.css" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/index.php" />
       </list>
     </option>
   </component>
@@ -364,7 +253,7 @@
     <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP 7.1" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="y" value="30" />
     <option name="width" value="1910" />
     <option name="height" value="787" />
@@ -421,6 +310,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches">
         <subPane>
           <expand>
@@ -447,13 +337,63 @@
             <path>
               <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
               <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="grower" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="grower" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="portal" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="grower" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="portal" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="API" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="application-server" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="grower" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="portal" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="database-server" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="packapps" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="database-server" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="schema" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -471,17 +411,17 @@
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/application-server/src/grower/portal" />
+      <recent name="$PROJECT_DIR$/application-server/src/styles-common" />
+      <recent name="$PROJECT_DIR$/application-server/src/maintenance" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/application-server/src/grower/portal/API/" />
       <recent name="$PROJECT_DIR$/application-server/src/storage" />
       <recent name="$PROJECT_DIR$/application-server/src/" />
       <recent name="$PROJECT_DIR$/application-server/src/packapps_api" />
       <recent name="$PROJECT_DIR$/application-server/src/quality/assets" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/application-server/src/grower/portal" />
-      <recent name="$PROJECT_DIR$/application-server/src/styles-common" />
-      <recent name="$PROJECT_DIR$/application-server/src/maintenance" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -859,28 +799,10 @@
       <workItem from="1516107738856" duration="996000" />
       <workItem from="1516109849201" duration="13252000" />
       <workItem from="1516193113414" duration="5600000" />
-      <workItem from="1516199578082" duration="3767000" />
-    </task>
-    <task id="LOCAL-00001" summary="Add clean db and phpmyadmin">
-      <created>1496689406220</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1496689406220</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Move secrets to settings.yml, fix small purchasing bug">
-      <created>1499445071817</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1499445071817</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Maintenance issues populate and are deletable">
-      <created>1499447826959</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1499447826959</updated>
+      <workItem from="1516199578082" duration="18289000" />
+      <workItem from="1516226123246" duration="1035000" />
+      <workItem from="1516282269477" duration="13107000" />
+      <workItem from="1516299629427" duration="10794000" />
     </task>
     <task id="LOCAL-00004" summary="Allow URLs to skip the .php extension">
       <created>1499479691781</created>
@@ -1197,11 +1119,39 @@
       <option name="project" value="LOCAL" />
       <updated>1516204925831</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Sync all changes">
+      <created>1516205018903</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1516205018903</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Security Scan Remediations">
+      <created>1516209604833</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1516209604834</updated>
+    </task>
+    <task id="LOCAL-00051" summary="oops">
+      <created>1516209720868</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1516209720869</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Security remediations, Grower Portal progress, etc.">
+      <created>1516306472701</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1516306472702</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1339562000" />
+    <option name="totallyTimeSpent" value="1379020000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1213,19 +1163,21 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="30" width="1920" height="1050" extended-state="6" />
+    <frame x="0" y="-34" width="1920" height="1114" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12660256" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47703704" sideWeight="0.48130342" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23717949" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32743362" sideWeight="0.4957265" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.74832964" sideWeight="0.47863248" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39198217" sideWeight="0.4764957" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5033408" sideWeight="0.52136755" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10042735" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47772828" sideWeight="0.5186966" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.070512824" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32949308" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47772828" sideWeight="0.5186966" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962063" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2806236" sideWeight="0.5176282" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39198217" sideWeight="0.52350426" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47740668" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32740742" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1234,7 +1186,6 @@
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.3281704" sideWeight="0.4957265" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12311901" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47772828" sideWeight="0.48130342" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47104678" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38641426" sideWeight="0.4969651" order="9" side_tool="false" content_ui="tabs" />
@@ -1300,10 +1251,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Working pivot on sunburst" />
-    <MESSAGE value="Totes working pivot, brah" />
-    <MESSAGE value="Fix 3 year old page-breaking bug in DA, that somehow nobody ever hit" />
-    <MESSAGE value="Working but ugly breadcrumb trail" />
     <MESSAGE value="Small quality Fixes" />
     <MESSAGE value="Quality: update preharvest to have some normalization, fix quality tables some more" />
     <MESSAGE value="Untested: Quality rewritten to self-contained backend" />
@@ -1325,11 +1272,15 @@
     <MESSAGE value="Bug fixes, security, cleanup" />
     <MESSAGE value="Grower Portal Progress: Estimates, trends, and optimizations" />
     <MESSAGE value="Fix Security Headers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix Security Headers" />
+    <MESSAGE value="Sync all changes" />
+    <MESSAGE value="Security Scan Remediations" />
+    <MESSAGE value="oops" />
+    <MESSAGE value="Security remediations, Grower Portal progress, etc." />
+    <option name="LAST_COMMIT_MESSAGE" value="Security remediations, Grower Portal progress, etc." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="15" />
+      <option name="time" value="16" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="ChromiumRemoteDebugType">
@@ -1338,50 +1289,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database-server/schema/015 - v1 ricefruit 2018.sql">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/ie/html5shiv.js" />
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/js/skel-layers.min.js" />
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/js/skel.min.js" />
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/js/moment.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/js/init.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="13" column="15" lean-forward="true" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/js/jquery.scrollzer.min.js" />
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/js/jquery.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="1" column="46" lean-forward="true" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/fonts/fontawesome-webfont.svg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/font-awesome.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="3" column="110" lean-forward="false" selection-start-line="3" selection-start-column="110" selection-end-line="3" selection-end-column="110" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/js/jquery.scrolly.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="223">
@@ -1406,48 +1313,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-884">
           <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-wide.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="728">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-normal.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-narrow.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-narrower.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-mobile.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/changepw.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="21" column="48" lean-forward="false" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -1476,13 +1341,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
           <caret line="14" column="31" lean-forward="false" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7662">
-          <caret line="796" column="93" lean-forward="true" selection-start-line="796" selection-start-column="93" selection-end-line="796" selection-end-column="93" />
         </state>
       </provider>
     </entry>
@@ -1634,28 +1492,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/API/getBlocksAndMetadata.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="57" column="33" lean-forward="false" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="4" column="64" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="108" column="83" lean-forward="false" selection-start-line="108" selection-start-column="83" selection-end-line="108" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/controlPanel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
@@ -1663,51 +1499,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/packapps_api.php">
+    <entry file="file://$PROJECT_DIR$/application-server/config/php.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="633">
-          <caret line="283" column="0" lean-forward="false" selection-start-line="283" selection-start-column="0" selection-end-line="283" selection-end-column="0" />
-          <folding>
-            <marker date="1515620879747" expanded="true" signature="1021:1146" ph="SELECT usern... packapps_master_users" />
-            <marker date="1515620879747" expanded="true" signature="1625:1775" ph="SELECT * FRO... ${$packapp}" />
-            <marker date="1515620879747" expanded="true" signature="2425:2494" ph="SELECT * FRO... grower_GrowerLogins" />
-            <marker date="1515620879747" expanded="true" signature="5778:5830" ph="SELECT growe... grower_GrowerLogins" />
-            <marker date="1515620879747" expanded="true" signature="6035:6138" ph="UPDATE grower_GrowerLogins... " />
-            <marker date="1515620879747" expanded="true" signature="6186:6304" ph="UPDATE packapps_system_info... " />
-            <marker date="1515620879747" expanded="true" signature="6931:7099" ph="INSERT INTO packapps_master_users... " />
-            <marker date="1515620879747" expanded="true" signature="7173:7257" ph="SELECT short... packapps_appProperties" />
-            <marker date="1515620879747" expanded="true" signature="7353:7440" ph="INSERT INTO ${$packapp['short_app_name']}_UserData... " />
-            <marker date="1515620879747" expanded="true" signature="8165:8253" ph="SELECT `Pass... packapps_master_users" />
-            <marker date="1515620879747" expanded="true" signature="8437:8527" ph="UPDATE packapps_master_users... " />
-            <marker date="1515620879747" expanded="true" signature="9271:9350" ph="UPDATE packapps_master_users... " />
-            <marker date="1515620879747" expanded="true" signature="10123:10500" ph="SELECT growe... storage_grower_receipts" />
-            <marker date="1515620879747" expanded="true" signature="10657:10774" ph="INSERT INTO grower_block_bushel_history... " />
-            <marker date="1515620879747" expanded="true" signature="11246:11281" ph="UPDATE `grower_crop-estimates`... " />
-            <marker date="1515620879747" expanded="true" signature="11246:11317" ph="UPDATE `grower_crop-estimates`... " />
-            <marker date="1515620879747" expanded="true" signature="11348:11413" ph="UPDATE packapps_system_info... " />
-            <marker date="1515620879747" expanded="true" signature="11348:11414" ph="UPDATE packapps_system_info... " />
-          </folding>
+        <state relative-caret-position="-1092">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style.css">
+    <entry file="file://$PROJECT_DIR$/application-server/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20280">
-          <caret line="780" column="25" lean-forward="false" selection-start-line="780" selection-start-column="25" selection-end-line="780" selection-end-column="25" />
-          <folding />
+        <state relative-caret-position="364">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/API/updateEstimate.php">
+    <entry file="file://$PROJECT_DIR$/application-server/src/production/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="16" column="58" lean-forward="false" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
-          <folding>
-            <marker date="1515705935265" expanded="true" signature="495:745" ph="UPDATE `grower_crop-estimates`... " />
-            <marker date="1515705935265" expanded="true" signature="501:745" ph="UPDATE grower_block_bushel_history... " />
-            <marker date="1515705935265" expanded="true" signature="1048:1398" ph="UPDATE grower_block_bushel_history... " />
-            <marker date="1515705935265" expanded="true" signature="1435:1704" ph="INSERT INTO grower_crop_estimates_changes_timeseries... " />
-          </folding>
+        <state relative-caret-position="1205">
+          <caret line="654" column="13" lean-forward="true" selection-start-line="654" selection-start-column="13" selection-end-line="654" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/appMenu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="69" column="52" lean-forward="false" selection-start-line="69" selection-start-column="52" selection-end-line="69" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/editCalendarEvent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -1723,90 +1546,203 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/index.php">
+    <entry file="file://$PROJECT_DIR$/application-server/src/production/API/renameLines.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4394">
-          <caret line="169" column="16" lean-forward="false" selection-start-line="169" selection-start-column="16" selection-end-line="169" selection-end-column="16" />
-          <folding>
-            <marker date="1516133037908" expanded="true" signature="221:407" ph="SELECT COUNT... PK" />
-            <marker date="1516133037908" expanded="true" signature="252:403" ph="SELECT PK FR... grower_Preharvest_Samples" />
-            <marker date="1516133037908" expanded="true" signature="2927:2956" ph="..." />
-            <marker date="1516133037908" expanded="true" signature="2957:3264" ph="..." />
-            <marker date="1516133037908" expanded="false" signature="3488:3532" ph="..." />
-            <marker date="1516133037908" expanded="true" signature="3533:4019" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/config/php.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1092">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/editCalendarEvent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-          <folding>
-            <marker date="1504539534626" expanded="true" signature="426:580" ph="INSERT INTO grower_growerCalendar... " />
-            <marker date="1504539534626" expanded="true" signature="885:1022" ph="UPDATE grower_growerCalendar... " />
-            <marker date="1504539534626" expanded="true" signature="1337:1429" ph="UPDATE grower_growerCalendar... " />
-            <marker date="1504539534626" expanded="true" signature="1670:1717" ph="DELETE FROM `grower_growerCalendar`... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/appMenu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1794">
-          <caret line="69" column="52" lean-forward="false" selection-start-line="69" selection-start-column="52" selection-end-line="69" selection-end-column="52" />
-          <folding>
-            <marker date="1516118228797" expanded="true" signature="276:371" ph="SELECT short... packapps_appProperties" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/production/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1205">
-          <caret line="654" column="13" lean-forward="true" selection-start-line="654" selection-start-column="13" selection-end-line="654" selection-end-column="13" />
-          <folding>
-            <marker date="1516199219539" expanded="true" signature="748:1003" ph="SELECT `Real... packapps_master_users" />
-            <marker date="1516199219539" expanded="true" signature="1276:1325" ph="SELECT lineI... production_lineNames" />
-            <marker date="1516199219539" expanded="true" signature="1609:1666" ph="..." />
-            <marker date="1516199219539" expanded="true" signature="1680:1720" ph="..." />
-            <marker date="1516199219539" expanded="true" signature="4668:4695" ph="..." />
-            <marker date="1516199219539" expanded="true" signature="5185:5271" ph="..." />
-            <marker date="1516199219539" expanded="true" signature="15698:15967" ph="..." />
-            <marker date="1516199219539" expanded="true" signature="16391:16675" ph="..." />
-            <marker date="1516199219539" expanded="true" signature="17114:17128" ph="..." />
-            <marker date="1516199219539" expanded="true" signature="17272:17306" ph="..." />
-            <marker date="1516199219539" expanded="true" signature="17365:17414" ph="..." />
-            <marker date="1516199219539" expanded="true" signature="17449:17483" ph="..." />
-            <marker date="1516199219539" expanded="true" signature="19923:20039" ph="..." />
-            <marker date="1516199219539" expanded="true" signature="20971:21087" ph="..." />
-            <marker date="1516199219539" expanded="true" signature="23119:23237" ph="..." />
-            <marker date="1516199219539" expanded="true" signature="28963:28975" ph="..." />
-            <marker date="1516199219539" expanded="true" signature="29366:29378" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application-server/config/000-default.conf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <caret line="10" column="59" lean-forward="true" selection-start-line="10" selection-start-column="59" selection-end-line="10" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/production/editedRunSubmit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="23" column="61" lean-forward="false" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/production/manageRun.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="13" column="8" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/production/chat_backend.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/production/editRun.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="288" column="67" lean-forward="false" selection-start-line="288" selection-start-column="67" selection-end-line="288" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-mobile.css" />
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-narrow.css" />
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-narrower.css" />
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-normal.css" />
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-wide.css" />
+    <entry file="file://$PROJECT_DIR$/application-server/src/purchasing/API/getPurchaseHistory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="35" column="40" lean-forward="false" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/Classes/ssp.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="425" column="5" lean-forward="true" selection-start-line="425" selection-start-column="5" selection-end-line="425" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/quality/API/blockiddata.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-809">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/purchasing/purchasehistory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="676">
+          <caret line="116" column="28" lean-forward="true" selection-start-line="116" selection-start-column="28" selection-end-line="116" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/changepw.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-962">
+          <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-server/schema/020 - packapps v2 schema.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="810" column="17" lean-forward="true" selection-start-line="810" selection-start-column="17" selection-end-line="810" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://src:table:/405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/operationsData.grower_block_bushel_history">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/packapps_api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="242" column="29" lean-forward="false" selection-start-line="242" selection-start-column="29" selection-end-line="242" selection-end-column="29" />
+          <folding>
+            <marker date="1516287336687" expanded="true" signature="1021:1146" ph="SELECT usern... packapps_master_users" />
+            <marker date="1516287336687" expanded="true" signature="1625:1775" ph="SELECT * FRO... ${$packapp}" />
+            <marker date="1516287336687" expanded="true" signature="2425:2494" ph="SELECT * FRO... grower_GrowerLogins" />
+            <marker date="1516287336687" expanded="true" signature="5778:5830" ph="SELECT growe... grower_GrowerLogins" />
+            <marker date="1516287336687" expanded="true" signature="6035:6138" ph="UPDATE grower_GrowerLogins... " />
+            <marker date="1516287336687" expanded="true" signature="6186:6304" ph="UPDATE packapps_system_info... " />
+            <marker date="1516287336687" expanded="true" signature="6935:7103" ph="INSERT INTO packapps_master_users... " />
+            <marker date="1516287336687" expanded="true" signature="7177:7261" ph="SELECT short... packapps_appProperties" />
+            <marker date="1516287336687" expanded="true" signature="7357:7444" ph="INSERT INTO ${$packapp['short_app_name']}_UserData... " />
+            <marker date="1516287336687" expanded="true" signature="8169:8257" ph="SELECT `Pass... packapps_master_users" />
+            <marker date="1516287336687" expanded="true" signature="8441:8531" ph="UPDATE packapps_master_users... " />
+            <marker date="1516287336687" expanded="true" signature="9275:9354" ph="UPDATE packapps_master_users... " />
+            <marker date="1516287336687" expanded="true" signature="10127:10504" ph="SELECT PK, I... grower_crop-estimates" />
+            <marker date="1516287336687" expanded="true" signature="10661:10778" ph="INSERT IGNOR... grower_block_bushel_history" />
+            <marker date="1516287336687" expanded="true" signature="11250:11321" ph="UPDATE `grower_crop-estimates`... " />
+            <marker date="1516287336687" expanded="true" signature="11352:11418" ph="UPDATE packapps_system_info... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/API/updateEstimate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="39" column="146" lean-forward="false" selection-start-line="39" selection-start-column="146" selection-end-line="39" selection-end-column="146" />
+          <folding>
+            <marker date="1516300813517" expanded="true" signature="574:1148" ph="UPDATE `grower_crop-estimates`... " />
+            <marker date="1516300813517" expanded="true" signature="580:1148" ph="UPDATE grower_block_bushel_history... " />
+            <marker date="1516300813517" expanded="true" signature="824:831" ph="SELECT * FRO... grower_block_bushel_history" />
+            <marker date="1516300813517" expanded="true" signature="824:958" ph="SELECT block... grower_block_bushel_history" />
+            <marker date="1516300813517" expanded="true" signature="1492:1904" ph="UPDATE grower_block_bushel_history... " />
+            <marker date="1516300813517" expanded="true" signature="1493:1904" ph="UPDATE grower_block_bushel_history... " />
+            <marker date="1516300813517" expanded="true" signature="1941:2210" ph="INSERT INTO grower_crop_estimates_changes_timeseries... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="83" column="29" lean-forward="false" selection-start-line="83" selection-start-column="29" selection-end-line="83" selection-end-column="29" />
+          <folding>
+            <marker date="1516304236732" expanded="true" signature="255:312" ph="..." />
+            <marker date="1516304236732" expanded="true" signature="326:366" ph="..." />
+            <marker date="1516304236732" expanded="true" signature="935:982" ph="SELECT email... grower_GrowerLogins" />
+            <marker date="1516304236732" expanded="true" signature="1151:1450" ph="..." />
+            <marker date="1516304236732" expanded="true" signature="1727:2026" ph="..." />
+            <marker date="1516304236732" expanded="true" signature="2435:2568" ph="SELECT Growe... grower_GrowerLogins" />
+            <marker date="1516304236732" expanded="true" signature="3140:3219" ph="UPDATE grower_GrowerLogins... " />
+            <marker date="1516304236732" expanded="true" signature="3306:3353" ph="SELECT email... grower_GrowerLogins" />
+            <marker date="1516304236732" expanded="true" signature="3933:4026" ph="SELECT `Pass... packapps_master_users" />
+            <marker date="1516304236732" expanded="true" signature="4418:4497" ph="UPDATE packapps_master_users... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/API/getBlocksAndMetadata.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="134" column="17" lean-forward="false" selection-start-line="134" selection-start-column="17" selection-end-line="134" selection-end-column="17" />
+          <folding>
+            <marker date="1516302742038" expanded="true" signature="664:1888" ph="SELECT growe... grower_farms" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="647" column="33" lean-forward="false" selection-start-line="647" selection-start-column="33" selection-end-line="647" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="602" column="51" lean-forward="false" selection-start-line="602" selection-start-column="51" selection-end-line="602" selection-end-column="51" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#transition#0;n#div#1;n#div#0;n#section#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#1;n#div#0;n#div#2;n#div#0;n#div#0;n#div#3;n#transition#0;n#div#1;n#div#0;n#section#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1516310252585" expanded="true" signature="221:407" ph="SELECT COUNT... PK" />
+            <marker date="1516310252585" expanded="true" signature="252:403" ph="SELECT PK FR... grower_Preharvest_Samples" />
+            <marker date="1516310252585" expanded="false" signature="2946:2975" ph="..." />
+            <marker date="1516310252585" expanded="true" signature="2976:3283" ph="..." />
+            <marker date="1516310252585" expanded="false" signature="3507:3551" ph="..." />
+            <marker date="1516310252585" expanded="true" signature="3552:4038" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
