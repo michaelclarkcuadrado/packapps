@@ -7,7 +7,7 @@
  */
 include '../../config.php';
 if (isset($_GET['offset'])) {
-    $offset = mysqli_real_escape_string($mysqli, $_GET['offset']);
+    $offset = intval(mysqli_real_escape_string($mysqli, $_GET['offset']));
 } else {
     $offset = 0;
 }
@@ -24,7 +24,6 @@ if(isset($_GET['item_ID']))
 }
 
 $orders = mysqli_fetch_all(mysqli_query($mysqli, "SELECT `histTable`.`Purchase_ID`, DATE_FORMAT(`histTable`.DateOrdered, '%b %d %Y %h:%i %p') as DateOrdered, purchasing_Suppliers.Name, DATE_FORMAT(histTable.DateReceived, '%b %d %Y %h:%i %p') as DateReceived, histTable.invoice_attached, histTable.pack_slip_attached, `histTable`.InitiatedBy, `histTable`.isReceived, `histTable`.SupplierID, purchasing_purchases2items.Item_ID, purchasing_purchases2items.QuantityOrdered, purchasing_purchases2items.PricePerUnit, ItemDesc FROM (SELECT * FROM operationsData.purchasing_purchase_history ".(isset($suppID) ? "WHERE SupplierID=".$suppID : '')."  LIMIT 20 OFFSET $offset ) histTable JOIN `operationsData`.purchasing_purchases2items ON histTable.Purchase_ID=`operationsData`.`purchasing_purchases2items`.Purchase_ID LEFT JOIN `operationsData`.purchasing_Items ON purchasing_purchases2items.Item_ID = purchasing_Items.Item_ID LEFT JOIN operationsData.purchasing_Suppliers ON histTable.SupplierID = purchasing_Suppliers.SupplierID"), MYSQLI_ASSOC);
-echo mysqli_error($mysqli);
 $finalArray = array();
 
 foreach ($orders as $data) {

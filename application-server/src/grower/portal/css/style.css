@@ -33,7 +33,7 @@ body, input, textarea, select {
     font-size: 19pt;
     font-weight: 300;
     line-height: 1.75em;
-    color: #888;
+    color: #707070;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -120,7 +120,7 @@ sup {
 
 hr {
     border: 0;
-    border-top: solid 1px #ddd;
+    border-top: solid 1px #707070;
 }
 
 blockquote {
@@ -234,7 +234,6 @@ ul.icons li {
 
 ul.icons a {
     display: inline-block;
-    width: 2em;
     height: 2em;
     line-height: 2em;
     text-align: center;
@@ -493,12 +492,8 @@ input[type="reset"]:active,
 }
 
 #header .icons a {
-    color: #41484c;
-    -moz-transition: color 0.35s ease-in-out;
-    -webkit-transition: color 0.35s ease-in-out;
-    -o-transition: color 0.35s ease-in-out;
-    -ms-transition: color 0.35s ease-in-out;
-    transition: color 0.35s ease-in-out;
+    /*color: #41484c;*/
+    /*transition: color 0.35s ease-in-out;*/
 }
 
 #header .icons a:hover {
@@ -622,26 +617,17 @@ input[type="reset"]:active,
 /*********************************************************************************/
 .load {
     height: 12px;
-    background: url(data:image/Fpng;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAALCAYAAAC+jufvAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwAAADsABataJCQAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAAAPklEQVQYV2M48Gvvf4ZDv/b9Z9j7Fcha827Df4alr1b9Z1j4YsV/BuML3v8ZTC/7/GcwuwokrG4DCceH/v8Bs2Ef1StO/o0AAAAASUVORK5CYII=);
-    -moz-border-radius: 4px;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAALCAYAAAC+jufvAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwAAADsABataJCQAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAAAPklEQVQYV2M48Gvvf4ZDv/b9Z9j7Fcha827Df4alr1b9Z1j4YsV/BuML3v8ZTC/7/GcwuwokrG4DCceH/v8Bs2Ef1StO/o0AAAAASUVORK5CYII=);
     border-radius: 4px;
+    transition: width .75s ease-in-out
 }
 
 .noload {
-
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAALCAYAAAC+jufvAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwAAADsABataJCQAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAAANUlEQVQYVy3EIQ4AQQgEwfn/zwghCMwGh8Tj+8yVKN0d2l00M6i70XsPmdmfu6OIQJmJqooPOu8mqi//WKcAAAAASUVORK5CYII=);
-
     -moz-border-radius: 4px;
     border-radius: 4px;
     border: 1px solid #999999;
     position: relative;
-}
-
-.loadtext {
-    font-family: Consolas;
-    font-size: 11px;
-    color: #000000;
-
 }
 
 #main {
@@ -652,7 +638,7 @@ input[type="reset"]:active,
 #main > section {
     margin: 0;
     overflow: hidden;
-    padding: 4em 0;
+    padding: 3em 0;
     box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.05), inset 0 0.1em 0.1em 0 rgba(0, 0, 0, 0.025);
     text-align: center;
     background-image: url('images/overlay.png');
@@ -726,8 +712,9 @@ input[type="reset"]:active,
 
 .farm_comm_var_selector {
     border-radius: 8px;
-    background-color: lightblue;
+    background-color: #D5DFE5;
     cursor: pointer;
+    max-height: fit-content;
 }
 
 .farm_comm_var_selector > .fcv_selector_info_wrapper {
@@ -738,9 +725,8 @@ input[type="reset"]:active,
 }
 
 .block-detail-bar {
-    border: 1px solid black;
-    border-collapse: collapse;
-    background-color: #C3E2EC;
+    border-radius: 5px;
+    background-color: #D5DFE5;
     max-height: fit-content;
 }
 
@@ -771,6 +757,8 @@ input[type="reset"]:active,
 .smallEstimatedTag{
     display: block;
     font-size: small;
+    line-height: 1.5em;
+    margin: 0 5px 1px 1px;
 }
 
 .needsEstimateEase-enter-active, .needsEstimateEase-leave-active{
@@ -778,7 +766,7 @@ input[type="reset"]:active,
 }
 
 .needsEstimateEase-enter, .needsEstimateEase-leave-to {
-    transform: translateY(10px);
+    transform: scaleY(0);
     opacity: 0
 }
 
@@ -846,10 +834,6 @@ input[type="reset"]:active,
     }
 
     ul.icons li {
-    }
-
-    ul.icons li a {
-        width: 1.75em;
     }
 
     .item {
@@ -930,11 +914,6 @@ input[type="reset"]:active,
     }
 
     ul.icons li {
-    }
-
-    ul.icons a {
-        width: 1.75em;
-        font-size: 1.25em;
     }
 
     #header {
@@ -1056,11 +1035,6 @@ input[type="reset"]:active,
     }
 
     ul.icons li {
-    }
-
-    ul.icons a {
-        width: 1.75em;
-        font-size: 1.5em;
     }
 
     #main {

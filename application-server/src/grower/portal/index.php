@@ -23,7 +23,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
     <div class="top">
         <!-- Logo -->
         <div id="logo">
-            <span class="image"><img src="images/avatar.png" alt=""/></span>
+            <!--            <span class="image"><img src="images/avatar.png" alt=""/></span>-->
             <h1 id="title"><? echo $userinfo['GrowerName'] ?></h1>
             <p>@<? echo $companyName ?><br></p>
         </div>
@@ -65,6 +65,11 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                 ?>
             </ul>
         </nav>
+    </div>
+    <div class="bottom">
+        <ul class="icons">
+            <!--            <li style="color: rgba(255, 255, 255, 0.5);font-size: small;">Powered By <a href="//packercloud.com">PackerCloud</a></li>-->
+        </ul>
     </div>
 </div>
 <!-- Main -->
@@ -167,7 +172,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
             <header>
                 <h2>Deliveries and Estimates: Season <? echo date('Y') ?></h2>
             </header>
-            <h3>
+            <h3 id="scrollToOnUpdateTarget">
                 <span class="icon fa-th"></span>
                 {{selectionPanelTitle}}
             </h3>
@@ -254,7 +259,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                                     {{Number(variety.estimatesNeeded).toLocaleString()}} estimates pending.
                                 </div>
                                 <div>{{Number(variety.bushelsAnticipated).toLocaleString()}} bushels expected yield</div>
-                                <div style="font-size: smaller"><span class="fa fa-th"></span> {{Number(variety.blocks.length).toLocaleString() + (variety.blocks.length == 1 ? " Block" : " Blocks")}}
+                                <div style="font-size: smaller"><span class="fa fa-th"></span> {{Number(variety.blocks.filter(block => block.isDeleted == 0).length).toLocaleString() + (variety.blocks.filter(block => block.isDeleted == 0).length == 1 ? " Block" : " Blocks")}}
                                 </div>
                             </div>
                         </div>
@@ -262,10 +267,11 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                     <!--Blocks-->
                     <div v-if="curSelectionMode === 3" class="mdl-grid" key="blockDetailView">
                         <div v-for="(block, block_id) in blockManagementTree['farms'][curFarmIndex]['commodities'][curCommodityIndex]['varieties'][curVarietyIndex]['blocks']"
-                             :class="[block.isDeleted > 0  ? 'block-deleted-bar' : 'block-detail-bar', 'mdl-shadow--2dp', 'mdl-cell', 'mdl-cell--6-col-desktop', 'mdl-cell--4-col-tablet', 'mdl-cell--4-col-phone']">
+                             :class="[block.isDeleted > 0  ? 'block-deleted-bar' : 'block-detail-bar', 'mdl-shadow--4dp', 'mdl-cell', 'mdl-cell--6-col-desktop', 'mdl-cell--4-col-tablet', 'mdl-cell--4-col-phone']">
                             <h3>
                                 <span v-if="blockTrend(block.bushelHistory) > 0" class="fa fa-sort-up" title="Trends Up" style="color: green; vertical-align: sub"></span>
-                                <span v-else-if="blockTrend(block.bushelHistory) == 0 || isNaN(blockTrend(block.bushelHistory))" title="No Trend" style="vertical-align: text-bottom; font-size: 60px">-</span>
+                                <span v-else-if="blockTrend(block.bushelHistory) == 0 || isNaN(blockTrend(block.bushelHistory))" title="No Trend"
+                                      style="vertical-align: text-bottom; font-size: 60px">-</span>
                                 <span v-else class="fa fa-sort-down" title="Trends Down" style="color: red; vertical-align: top"></span>
                                 {{(block.isDeleted > 0 ? '[DELETED] ' : '') + block.BlockDesc}} <span class="fa fa-edit" v-on:click="renameBlock(block.PK, block.BlockDesc)"></span></h3>
                             <div class="deleted-block-blur-wrapper">
@@ -291,7 +297,9 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                                             {{block.deliveriesReceived + (block.deliveriesReceived == 1 ? ' Delivery' : ' Deliveries')}}
                                         </div>
                                         <div style="height: fit-content; align-self: center; min-width: 150px" class="noload">
-                                            <div class="load" v-bind:style="{width: getDeliveryCompletionPercentage(block.bushelsReceived, block.bushelsAnticipated) + '%'}"></div>
+                                            <transition name="loadBarEase">
+                                                <div class="load" v-bind:style="{width: getDeliveryCompletionPercentage(block.bushelsReceived, (block.isSameAsLastYear > 0 ? block.bushelsReceived : block['bushelHistory'][curYear]['est'])) + '%'}"></div>
+                                            </transition>
                                         </div>
                                         <div style="flex-shrink: 2; align-self: center; display: grid; margin: 5px">
                                             <span v-on:click="toggleFinished(block)" style="cursor: pointer;" v-bind:class="['fa', block.isFinished > 0 ? 'fa-lock' : 'fa-unlock']"
@@ -319,11 +327,15 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                                                 {{year}} Estimated
                                             </div>
                                             <div style="border-top: 1px solid gray">
-                                                <input type="number" v-model.number="valueObj.est" v-on:change="updateEstimate(block)" min="0" style="width: 110px">
-                                                <span class="smallEstimatedTag">
+                                                <input step="1" type="number" v-model.number="valueObj.est" v-on:change="updateEstimate(block, curFarmIndex, curCommodityIndex, curVarietyIndex)"
+                                                       :disabled="block['isSameAsLastYear'] > 0" min="0" style="width: 90px; margin: 5px 0;">
+                                                <span v-if="(block['bushelHistory'][curYear]['est'] == block['bushelHistory'][curYear - 1]['act'])" class="smallEstimatedTag">
                                                     <div>
                                                         <input type="checkbox"> Keep estimate?
                                                     </div>
+                                                </span>
+                                                <span v-else class="smallEstimatedTag">
+                                                        <button v-on:click="resetBlockEstimate(block, curFarmIndex, curCommodityIndex, curVarietyIndex)">Reset</button>
                                                 </span>
                                             </div>
                                         </div>
@@ -337,15 +349,13 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
         </div>
     </section>
 </div>
-
-<!-- Footer -->
 <div id="footer">
-    <!-- Copyright -->
     <ul class="copyright">
-        <li>&copy; PackerCloud 2015 - <?= date('Y') ?></li>
+        <li>&copy; <a href="//packercloud.com">PackerCloud</a> 2015 - <?= date('Y') ?></li>
+        <li>Licensed to <?= $companyName ?></li>
+        <li>All Rights Reserved.</li>
     </ul>
 </div>
-
 </body>
 <script src="js/notify.min.js"></script>
 <script src="js/select2.min.js"></script>
@@ -370,205 +380,250 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
     });
 
     const blockManagementVue = new Vue({
-        el: "#blockManagement",
-        data: {
-            blockManagementTree: {},
-            curSelectionMode: 0, //0 for farm select, 1 for commodity, 2 for variety, 3 for blocks
-            //indexes are from the returned JSON, not their unique IDs
-            curFarmIndex: -1,
-            curCommodityIndex: -1,
-            curVarietyIndex: -1,
-            selectionPanelTitle: " Your Farms",
-            curYear: new Date().getFullYear()
-        },
-        methods: {
-            goBackSelectionView: function () {
-                switch (this.curSelectionMode) {
-                    case 0:
-                        break;
-                    case 1:
-                        this.restoreCleanState();
-                        break;
-                    case 2:
-                        this.selectFarm(this.curFarmIndex);
-                        break;
-                    case 3:
-                        this.selectCommodity(this.curCommodityIndex);
-                        break;
-                }
+            el: "#blockManagement",
+            data: {
+                blockManagementTree: {},
+                curSelectionMode: 0, //0 for farm select, 1 for commodity, 2 for variety, 3 for blocks
+                //indexes are from the returned JSON, not their unique IDs
+                curFarmIndex: -1,
+                curCommodityIndex: -1,
+                curVarietyIndex: -1,
+                selectionPanelTitle: " Your Farms",
+                curYear: new Date().getFullYear()
             },
-            restoreCleanState: function () {
-                this.selectionPanelTitle = " Your Farms";
-                this.curSelectionMode = 0;
-                this.curFarmIndex = -1;
-                this.curCommodityIndex = -1;
-                this.curVarietyIndex = -1;
-            },
-            selectFarm: function (farmIndex) { // go to commodity view
-                this.selectionPanelTitle = this.blockManagementTree['farms'][farmIndex]['name'] + " Farm's Commodities";
-                this.curFarmIndex = farmIndex;
-                this.curSelectionMode = 1;
-                this.curCommodityIndex = -1;
-                this.curVarietyIndex = -1;
-            },
-            selectCommodity: function (commID) { // go to variety view
-                this.selectionPanelTitle = this.blockManagementTree['farms'][this.curFarmIndex]['name'] + " Farm's " + this.blockManagementTree['farms'][this.curFarmIndex]['commodities'][commID]['name'] + " Varieties";
-                this.curCommodityIndex = commID;
-                this.curVarietyIndex = -1;
-                this.curSelectionMode = 2;
-            },
-            selectVariety: function (varietyID) {
-                this.curSelectionMode = 3;
-                this.curVarietyIndex = varietyID;
-                const farm_name = this.blockManagementTree['farms'][this.curFarmIndex]['name'];
-                const variety_name = this.blockManagementTree['farms'][this.curFarmIndex]['commodities'][this.curCommodityIndex]['varieties'][varietyID]['name'];
-                this.selectionPanelTitle = farm_name + " Farm's " + variety_name + " Blocks";
-            },
-            getDeliveryCompletionPercentage: function (delivered, anticipated) {
-                if (delivered === 0 || anticipated === 0) {
-                    return 0;
-                } //Avoid NaNs
-                const percentage = (delivered / anticipated) * 100;
-                if (percentage > 100) {
-                    return 100;
-                }
-                return percentage;
-            },
-            newFarm: function () {
-                const self = this;
-                const newFarmName = prompt("New Farm Name:");
-                $.getJSON('API/addFarm.php', {newFarmName: newFarmName}, function (data) {
-                    self.blockManagementTree['farms'].push({
-                        name: newFarmName,
-                        id: data.ID,
-                        commodities: [],
-                        bushelsReceived: 0,
-                        bushelsAnticipated: 0,
-                        estimatesNeeded: 0
-                    })
-                }).fail(function () {
-                    $.notify("Couldn't create that farm.");
-                });
-            },
-            renameFarm: function (farmID, curName) {
-                const newName = prompt("Rename this farm to: ", curName);
-                this.renameLand('farm', farmID, newName);
-                event.stopPropagation();
-            },
-            renameBlock: function (blockPK, curName) {
-                const newName = prompt("Rename this block to: ", curName);
-                this.renameLand('block', blockPK, newName);
-            },
-            renameLand: function (landType, landID, newName) {
-                if (landType === 'farm' || landType === 'block') {
-                    const self = this;
-                    const argsObj = {
-                        landType: landType,
-                        landID: landID,
-                        newName: newName
-                    };
-                    $.getJSON('API/renameLand.php', argsObj, function (data) {
-                        if (landType === 'farm') {
-                            $.each(self.blockManagementTree['farms'], function (farmindex, farm) {
-                                if (farm.ID === landID) {
-                                    farm.name = newName;
-                                    return false; //break loop
-                                }
-                                return true;
-                            });
-                        } else if (landType === 'block') { //have to find the block in the tree, search by returned IDs
-                            $.each(self.blockManagementTree['farms'], function (farmIndex, farm) {
-                                if (farm.ID == data['farmID']) {
-                                    // console.log('farm match');
-                                    $.each(farm.commodities, function (commodityIndex, commodity) {
-                                        if (commodity.ID == data['commodityID']) {
-                                            // console.log('commodity match');
-                                            $.each(commodity['varieties'], function (varietyIndex, variety) {
-                                                if (variety.ID == data['variety_ID']) {
-                                                    // console.log('variety match');
-                                                    $.each(variety['blocks'], function (blockIndex, block) {
-                                                        if (block['PK'] == data.PK) {
-                                                            // console.log('block match');
-                                                            block.BlockDesc = argsObj.newName;
-                                                            return false;
-                                                        }
-                                                        return true;
-                                                    });
-                                                    return false;
-                                                }
-                                                return true;
-                                            });
-                                            return false;
-                                        }
-                                        return true;
-                                    });
-                                    return false;
-                                }
-                                return true;
-                            });
+            methods: {
+                goBackSelectionView: function () {
+                    switch (this.curSelectionMode) {
+                        case 0:
+                            break;
+                        case 1:
+                            this.restoreCleanState();
+                            break;
+                        case 2:
+                            this.selectFarm(this.curFarmIndex);
+                            break;
+                        case 3:
+                            this.selectCommodity(this.curCommodityIndex);
+                            break;
+                    }
+                },
+                scrollReset: function () {
+                    let $scrollTarget = $('#scrollToOnUpdateTarget');
+                    $("html, body").animate({
+                            scrollTop: $scrollTarget.offset().top
                         }
+                    )
+                },
+                restoreCleanState: function () {
+                    this.selectionPanelTitle = " Your Farms";
+                    this.curSelectionMode = 0;
+                    this.curFarmIndex = -1;
+                    this.curCommodityIndex = -1;
+                    this.curVarietyIndex = -1;
+                    this.scrollReset();
+                },
+                selectFarm: function (farmIndex) { // go to commodity view
+                    this.selectionPanelTitle = this.blockManagementTree['farms'][farmIndex]['name'] + " Farm's Commodities";
+                    this.curFarmIndex = farmIndex;
+                    this.curSelectionMode = 1;
+                    this.curCommodityIndex = -1;
+                    this.curVarietyIndex = -1;
+                    this.scrollReset();
+                },
+                selectCommodity: function (commID) { // go to variety view
+                    this.selectionPanelTitle = this.blockManagementTree['farms'][this.curFarmIndex]['name'] + " Farm's " + this.blockManagementTree['farms'][this.curFarmIndex]['commodities'][commID]['name'] + " Varieties";
+                    this.curCommodityIndex = commID;
+                    this.curVarietyIndex = -1;
+                    this.curSelectionMode = 2;
+                    this.scrollReset();
+                },
+                selectVariety: function (varietyID) {
+                    this.curSelectionMode = 3;
+                    this.curVarietyIndex = varietyID;
+                    const farm_name = this.blockManagementTree['farms'][this.curFarmIndex]['name'];
+                    const variety_name = this.blockManagementTree['farms'][this.curFarmIndex]['commodities'][this.curCommodityIndex]['varieties'][varietyID]['name'];
+                    this.selectionPanelTitle = farm_name + " Farm's " + variety_name + " Blocks";
+                    this.scrollReset();
+                },
+                getDeliveryCompletionPercentage: function (delivered, anticipated) {
+                    if (anticipated == 0){
+                        return 100;
+                    }
+                    if (delivered == 0) {
+                        return 0;
+                    }
+                    const percentage = (delivered / anticipated) * 100;
+                    if (percentage > 100) {
+                        return 100;
+                    }
+                    return percentage;
+                },
+                newFarm: function () {
+                    const self = this;
+                    const newFarmName = prompt("New Farm Name:");
+                    $.getJSON('API/addFarm.php', {newFarmName: newFarmName}, function (data) {
+                        self.blockManagementTree['farms'].push({
+                            name: newFarmName,
+                            id: data.ID,
+                            commodities: [],
+                            bushelsReceived: 0,
+                            bushelsAnticipated: 0,
+                            estimatesNeeded: 0
+                        })
                     }).fail(function () {
-                        $.notify("Couldn't rename that " + landType + ".")
+                        $.notify("Couldn't create that farm.");
+                    });
+                },
+                renameFarm: function (farmID, curName) {
+                    const newName = prompt("Rename this farm to: ", curName);
+                    this.renameLand('farm', farmID, newName);
+                    event.stopPropagation();
+                },
+                renameBlock: function (blockPK, curName) {
+                    const newName = prompt("Rename this block to: ", curName);
+                    this.renameLand('block', blockPK, newName);
+                },
+                renameLand: function (landType, landID, newName) {
+                    if (landType === 'farm' || landType === 'block') {
+                        const self = this;
+                        const argsObj = {
+                            landType: landType,
+                            landID: landID,
+                            newName: newName
+                        };
+                        $.getJSON('API/renameLand.php', argsObj, function (data) {
+                            if (landType === 'farm') {
+                                $.each(self.blockManagementTree['farms'], function (farmindex, farm) {
+                                    if (farm.ID === landID) {
+                                        farm.name = newName;
+                                        return false; //break loop
+                                    }
+                                    return true;
+                                });
+                            } else if (landType === 'block') { //have to find the block in the tree, search by returned IDs
+                                $.each(self.blockManagementTree['farms'], function (farmIndex, farm) {
+                                    if (farm.ID == data['farmID']) {
+                                        // console.log('farm match');
+                                        $.each(farm.commodities, function (commodityIndex, commodity) {
+                                            if (commodity.ID == data['commodityID']) {
+                                                // console.log('commodity match');
+                                                $.each(commodity['varieties'], function (varietyIndex, variety) {
+                                                    if (variety.ID == data['variety_ID']) {
+                                                        // console.log('variety match');
+                                                        $.each(variety['blocks'], function (blockIndex, block) {
+                                                            if (block['PK'] == data.PK) {
+                                                                // console.log('block match');
+                                                                block.BlockDesc = argsObj.newName;
+                                                                return false;
+                                                            }
+                                                            return true;
+                                                        });
+                                                        return false;
+                                                    }
+                                                    return true;
+                                                });
+                                                return false;
+                                            }
+                                            return true;
+                                        });
+                                        return false;
+                                    }
+                                    return true;
+                                });
+                            }
+                        }).fail(function () {
+                            $.notify("Couldn't rename that " + landType + ".")
+                        });
+                    }
+                },
+                blockTrend: function (bushelHistoryObj) {
+                    const years = [];
+                    const bushelVals = [];
+                    for (let year in bushelHistoryObj) {
+                        if (bushelHistoryObj.hasOwnProperty(year)) {
+                            years.push(year);
+                            if (year == this.curYear) {
+                                bushelVals.push(bushelHistoryObj[year]['est']);
+                            } else {
+                                bushelVals.push(bushelHistoryObj[year]['act']);
+                            }
+                        }
+                    }
+                    return this.linearRegressionSlope(bushelVals, years);
+
+                },
+                linearRegressionSlope: function (y, x) {
+                    y = y.map(num => parseInt(num));
+                    x = x.map(num => parseInt(num));
+                    const n = y.length;
+                    let sum_x = 0;
+                    let sum_y = 0;
+                    let sum_xy = 0;
+                    let sum_xx = 0;
+                    let sum_yy = 0;
+
+                    for (let i = 0; i < y.length; i++) {
+                        sum_x += x[i];
+                        sum_y += y[i];
+                        sum_xy += (x[i] * y[i]);
+                        sum_xx += (x[i] * x[i]);
+                        sum_yy += (y[i] * y[i]);
+                    }
+                    const m = (n * sum_xy - sum_x * sum_y) / (n * sum_xx - sum_x * sum_x);
+                    return m;
+                },
+                updateEstimate: function (block, farmIndex, commIndex, varIndex) { //pushes block's client-side status to server
+                    const self = this;
+                    if (block['isSameAsLastYear'] > 0) { //set keep estimate flag
+                        let argsObj = {
+                            sameAsLastYear: 1,
+                            PK: block.PK
+                        };
+                        $.get('API/updateEstimate.php', argsObj, function (data) {
+                            self.recalcParentsExpectedBushels(farmIndex, commIndex, varIndex);
+                        }).fail(function () {
+                            $.notify("Couldn't contact server.");
+                        });
+                    } else { //send estimate
+                        let argsObj = {
+                            bushelVal: block['bushelHistory'][self.curYear]['est'],
+                            PK: block.PK
+                        };
+                        $.get('API/updateEstimate.php', argsObj, function(data){
+                            self.recalcParentsExpectedBushels(farmIndex, commIndex, varIndex);
+                        });
+                    }
+                },
+                resetBlockEstimate: function (block, farmIndex, commIndex, varIndex) {
+                    const self = this;
+                    block['bushelHistory'][self.curYear]['est'] = block['bushelHistory'][self.curYear - 1]['act'];
+                    block['isSameAsLastYear'] = 0;
+                    self.updateEstimate(block, farmIndex, commIndex, varIndex);
+                },
+                recalcParentsExpectedBushels: function(farmIndex, commIndex, varIndex) {
+                    //TODO recalc bushels, and set estimate needed numbers
+                },
+                toggleFinished: function (block, farmIndex, CommIndex, varIndex) {
+                    $.get('API/processBlock.php', {finish: block['PK']}, function (data) {
+                        if (block.isFinished) { //TODO
+                            //flip to not finished, replace expected Deliveries with last estimates
+
+                        } else {
+                            //flip to finished, replace expected Deliveries with delivered.
+
+                        }
+                        block.isFinished ^= 1;
                     });
                 }
             },
-            blockTrend: function (bushelHistoryObj) {
-                const years = [];
-                const bushelVals = [];
-                for (let year in bushelHistoryObj) {
-                    if (bushelHistoryObj.hasOwnProperty(year)) {
-                        years.push(year);
-                        if (year == this.curYear) {
-                            bushelVals.push(bushelHistoryObj[year]['est']);
-                        } else {
-                            bushelVals.push(bushelHistoryObj[year]['act']);
-                        }
-                    }
-                }
-                return this.linearRegressionSlope(bushelVals, years);
-
-            },
-            linearRegressionSlope: function (y, x) {
-                y = y.map(num => parseInt(num));
-                x = x.map(num => parseInt(num));
-                const n = y.length;
-                let sum_x = 0;
-                let sum_y = 0;
-                let sum_xy = 0;
-                let sum_xx = 0;
-                let sum_yy = 0;
-
-                for (let i = 0; i < y.length; i++) {
-                    sum_x += x[i];
-                    sum_y += y[i];
-                    sum_xy += (x[i] * y[i]);
-                    sum_xx += (x[i] * x[i]);
-                    sum_yy += (y[i] * y[i]);
-                }
-
-                const m = (n * sum_xy - sum_x * sum_y) / (n * sum_xx - sum_x * sum_x);
-                return m;
-            },
-            toggleFinished: function (block) {
-                $.get('API/processBlock.php', {finish: block['PK']}, function (data) {
-                    if (block.isFinished) {
-                        //flip to not finished, replace expected Deliveries with last estimate
-
-                    } else {
-                        //flip to finished, replace expected Deliveries with delivered.
-
-                    }
-                    block.isFinished ^= 1;
+            mounted: function () {
+                const self = this;
+                $.getJSON('API/getBlocksAndMetadata.php', function (data) {
+                    self.blockManagementTree = data;
                 });
             }
-        },
-        mounted: function () {
-            const self = this;
-            $.getJSON('API/getBlocksAndMetadata.php', function (data) {
-                self.blockManagementTree = data;
-            });
-        }
-    });
+        })
+    ;
 
     let CommoditiesTree = {};
     $(document).ready(function () {
@@ -581,14 +636,6 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
             $("#options").slideToggle();
             $("#optionstab").toggleClass("fa-chevron-down fa-minus");
         });
-    });
-    //attach event listeners to estimates table
-    //TODO remove and vue-ify
-    $(document).on("change", ".estimatesubmitter, .blocknamer", function () {
-        $.post("processEstimates.php", $(this).serialize(), function () {
-            $.notify("Information Received", "success");
-        });
-        return false;
     });
 
     function getCommoditiesTree() { // for populating/controlling the add block dialog

@@ -51,7 +51,7 @@ if (isset($_COOKIE['auth']) && isset($_COOKIE['username'])) { //do redirect
         $username = $growercodeAndHash['GrowerCode'];
         if (APR1_MD5::check($_POST['password'], $hash)) {
             if ($growercodeAndHash['isLoginDisabled'] > 0) {
-                $errormsg = "Your account is currently pending. Please contact the administrator for more information.";
+                $errormsg = "Your account is currently pending. Please contact your packhouse for more information.";
             } else {
                 setcookie('username', $username);
                 setcookie('auth', crypt($username, $growerSecurityKey));
@@ -65,7 +65,7 @@ if (isset($_COOKIE['auth']) && isset($_COOKIE['username'])) { //do redirect
                 }
             }
         } else {
-            $errormsg = "Those don't match our records. Please try again.";
+            $errormsg = "That don't seem match our records. Please try again.";
         }
     } else {
         //Do packhouse account login    window.location = "portal/"
@@ -73,7 +73,7 @@ if (isset($_COOKIE['auth']) && isset($_COOKIE['username'])) { //do redirect
         $hash = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT `Password`, isDisabled FROM packapps_master_users WHERE username = '" . $username . "'"));
         if (APR1_MD5::check($_POST['password'], $hash['Password'])) {
             if ($hash['isDisabled'] > 0) {
-                $errormsg = "Your account has been disabled. Please contact a system administrator.";
+                $errormsg = "Your account is currently pending. Please contact your packhouse.";
             } else {
                 setcookie('username', $username);
                 setcookie('auth', crypt($username, $securityKey));
@@ -81,7 +81,7 @@ if (isset($_COOKIE['auth']) && isset($_COOKIE['username'])) { //do redirect
                 die(header('Location: appMenu.php'));
             }
         } else {
-            $errormsg = "Sorry, We Couldn't Confirm Those Credentials. Try Again.";
+            $errormsg = "That don't seem to match our records. Please try again.";
         }
     }
 }

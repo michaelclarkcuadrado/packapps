@@ -112,7 +112,7 @@ foreach ($blockOrganizationTree['farms'] as $farmID => &$farmObj) {
             foreach ($varietyObj['blocks'] as $PK => &$blockObj) {
                 if ($blockObj['isDeleted'] == 0) {
                     //add estimates needed
-                    $isConfirmedEstimate = ($blockObj['bushelHistory'][$curYear]['est'] !== $blockObj['bushelHistory'][$curYear - 1]['act']) || ($blockObj['isSameAsLastYear'] > 0);
+                    $isConfirmedEstimate = (($blockObj['bushelHistory'][$curYear]['est'] !== $blockObj['bushelHistory'][$curYear - 1]['act']) || ($blockObj['isSameAsLastYear'] > 0));
                     if (!$isConfirmedEstimate) {
                         $farmEstimatesNeeded += 1;
                         $commEstimatesNeeded += 1;
@@ -123,20 +123,15 @@ foreach ($blockOrganizationTree['farms'] as $farmID => &$farmObj) {
                         $farmBushelsAnticipated += $blockObj['bushelsReceived'];
                         $commBushelsAnticipated += $blockObj['bushelsReceived'];
                         $varBushelsAnticipated += $blockObj['bushelsReceived'];
-                        $blockObj['bushelsAnticipated'] = $blockObj['bushelsReceived'];
                     } elseif ($isConfirmedEstimate) {
                         $farmBushelsAnticipated += $blockObj['bushelHistory'][$curYear]['est'] ?: 0;
                         $commBushelsAnticipated += $blockObj['bushelHistory'][$curYear]['est'] ?: 0;
                         $varBushelsAnticipated += $blockObj['bushelHistory'][$curYear]['est'] ?: 0;
-                        $blockObj['bushelsAnticipated'] = $blockObj['bushelHistory'][$curYear]['est'] ?: 0;
                     } else {
                         $farmBushelsAnticipated += $blockObj['bushelHistory'][$curYear - 1]['act'] ?: 0;
                         $commBushelsAnticipated += $blockObj['bushelHistory'][$curYear - 1]['act'] ?: 0;
                         $varBushelsAnticipated += $blockObj['bushelHistory'][$curYear - 1]['act'] ?: 0;
-                        $blockObj['bushelsAnticipated'] = $blockObj['bushelHistory'][$curYear - 1]['act'] ?: 0;
                     }
-                } else {
-                    $blockObj['bushelsAnticipated'] = 0;
                 }
             }
             $varietyObj['blocks'] = array_values($varietyObj['blocks']);

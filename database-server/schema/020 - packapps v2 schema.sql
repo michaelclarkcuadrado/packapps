@@ -808,7 +808,9 @@ ALTER TABLE `grower_crop-estimates`
   DROP `2015act`,
   DROP `2016est`,
   DROP `2016act`,
-  DROP `2017est`;
+  DROP `2017est`,
+  DROP `2017act`,
+  DROP `2018est`;
 
 /* Add columns for grower portal email collection */
 ALTER TABLE `grower_GrowerLogins`

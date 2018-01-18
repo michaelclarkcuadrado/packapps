@@ -172,7 +172,7 @@ function initialize_packapps($mysqli, $companyShortName) {
 
     mysqli_query($mysqli, "UPDATE packapps_system_info SET systemInstalled=1, dateInstalled=CURRENT_TIMESTAMP(), company_slug='$companyShortName'");
     if (mysqli_errno($mysqli)) {
-        die(mysqli_error($mysqli));
+        APIFail(mysqli_error($mysqli));
     }
 }
 
