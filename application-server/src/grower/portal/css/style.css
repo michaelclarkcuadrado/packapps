@@ -789,6 +789,48 @@ input[type="reset"]:active,
     margin: 0 5px 1px 1px;
 }
 
+.smallFont {
+    font-size: medium;
+}
+
+.actionButtons {
+    font-size: x-large;
+    cursor: pointer;
+    margin:6px;
+}
+
+.modalWrapper:before {
+    content: "";
+    display: none;
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+}
+.modalOpen:before {
+    display: block;
+}
+.modalOpen .modal-dialog {
+    top: 20%;
+}
+.modal-dialog {
+    background: #ecf1f1;
+    padding: 5px;
+    border: #333333 solid 0px;
+    border-radius: 5px;
+    margin-left: -200px;
+    text-align:center;
+    position: fixed;
+    left: 50%;
+    top: -100%;
+    z-index: 11;
+    box-shadow:0 5px 10px rgba(0,0,0,0.3);
+    transition: opacity .5s ease;
+}
+
 .needsEstimateEase-enter-active, .needsEstimateEase-leave-active {
     transition: all .5s ease-in-out;
 }

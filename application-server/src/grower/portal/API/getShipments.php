@@ -14,8 +14,8 @@ $querydata = mysqli_query($mysqli, "
 SELECT
   id AS delivery_ID,
   external_reference_num,
-  bins_quantity,
   date,
+  count(bin_id) AS bins_quantity,
   CASE WHEN receiptNum IS NULL THEN FALSE ELSE TRUE END AS isQATested,
   SUM(bushelsInBin) AS bushelsTotal,
   IFNULL(NULLIF(BlockDesc, ''), '[Unnamed]') AS BlockDesc,

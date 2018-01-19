@@ -11,7 +11,7 @@ include '../../config.php';
 $userinfo = packapps_authenticate_grower();
 $blockdata = mysqli_query($mysqli, "
 SELECT
-  `grower_gfbvs-listing`.PK AS PackApps_ID,
+  CONCAT('$companyShortName', '-', `grower_gfbvs-listing`.PK) AS PackApps_ID,
   commodity_name AS `Commodity`,
   `grower_gfbvs-listing`.farmName AS `Farm`,
   `grower_gfbvs-listing`.BlockDesc AS `Block`,

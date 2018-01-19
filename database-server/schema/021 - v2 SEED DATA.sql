@@ -59,12 +59,12 @@ INSERT INTO `storage_rooms` (`building`, `room_id`, `isDisabled`, `isAvailable`,
 -- Dumping data for table `storage_grower_receipts`
 --
 
-INSERT INTO `storage_grower_receipts` (`id`, `grower_block`, `external_reference_num`, `bins_quantity`, `date`, `receivedBy`) VALUES
-  (1, 1001, 1234, 10, '2017-07-27 00:00:00', 'mike'),
-  (2, 1893, 5678, 2, '2017-07-27 00:00:00', 'mike'),
-  (7, 2255, 12341, 1, '2017-08-18 00:00:00', 'JMH'),
-  (8, 3591, 5, 1, '2017-08-18 00:00:00', 'barb'),
-  (10, 1057, 12341234, 1, '2017-08-04 00:00:00', 'alejandro');
+INSERT INTO `storage_grower_receipts` (`id`, `grower_block`, `external_reference_num`, `date`, `receivedBy`) VALUES
+  (1, 1001, 1234, '2017-07-27 00:00:00', 'mike'),
+  (2, 1893, 5678, '2017-07-27 00:00:00', 'mike'),
+  (7, 2255, 12341, '2017-08-18 00:00:00', 'JMH'),
+  (8, 3591, 5, '2017-08-18 00:00:00', 'barb'),
+  (10, 1057, 12341234, '2017-08-04 00:00:00', 'alejandro');
 
 
 
@@ -72,14 +72,14 @@ INSERT INTO `storage_grower_receipts` (`id`, `grower_block`, `external_reference
 -- Dumping data for table `storage_grower_fruit_bins`
 --
 
-INSERT INTO `storage_grower_fruit_bins` (`bin_id`, `grower_receipt_id`, `isFinished`, `curRoom`, `bushelsInBin`) VALUES
-(1, 1, 0, 1, 23),
-(1, 2, 0, 1, 23),
-(1, 7, 0, 8, 23),
-(1, 8, 0, 8, 23),
-(1, 10, 0, 1, 23),
-(2, 1, 0, 1, 23),
-(2, 2, 0, 1, 23);
+INSERT INTO `storage_grower_fruit_bins` (`grower_receipt_id`, `isFinished`, `curRoom`, `bushelsInBin`) VALUES
+(1, 0, 1, 23),
+(2, 0, 1, 23),
+(7, 0, 8, 23),
+(8, 0, 8, 23),
+(10, 0, 1, 23),
+(1, 0, 1, 23),
+(2, 0, 1, 23);
 
 COMMIT;
 

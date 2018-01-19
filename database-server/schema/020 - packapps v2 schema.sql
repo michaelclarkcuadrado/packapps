@@ -908,18 +908,18 @@ ALTER TABLE `storage_rooms`
   ON DELETE CASCADE
   ON UPDATE CASCADE;
 CREATE TABLE `storage_grower_fruit_bins` (
-  `bin_id`            SMALLINT(6) NOT NULL,
-  `grower_receipt_id` INT(11)     NOT NULL,
-  `isFinished`        TINYINT(1)  NOT NULL,
-  `curRoom`           INT(11)     NULL,
-  `bushelsInBin`      INT(11)     NOT NULL DEFAULT '23'
+  `bin_id`            BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `grower_receipt_id` INT(11)             NOT NULL,
+  `isFinished`        TINYINT(1)          NOT NULL,
+  `curRoom`           INT(11)             NULL,
+  `bushelsInBin`      INT(11)             NOT NULL DEFAULT '23',
+  PRIMARY KEY (`bin_id`)
 )
   ENGINE = InnoDB;
 CREATE TABLE `operationsData`.`storage_grower_receipts` (
   `id`                     INT          NOT NULL AUTO_INCREMENT,
   `grower_block`           INT          NOT NULL,
   `external_reference_num` INT          NOT NULL,
-  `bins_quantity`          MEDIUMINT    NOT NULL,
   `date`                   DATETIME     NOT NULL,
   `receivedBy`             VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`),
@@ -936,8 +936,6 @@ ALTER TABLE `storage_grower_receipts`
   ADD FOREIGN KEY (`receivedBy`) REFERENCES `storage_UserData` (`UserName`)
   ON DELETE RESTRICT
   ON UPDATE RESTRICT;
-ALTER TABLE `storage_grower_fruit_bins`
-  ADD PRIMARY KEY (`bin_id`, `grower_receipt_id`);
 ALTER TABLE `storage_grower_fruit_bins`
   ADD INDEX (`isFinished`);
 ALTER TABLE `storage_grower_fruit_bins`
@@ -959,14 +957,15 @@ ALTER TABLE `storage_room_events`
   ON DELETE RESTRICT
   ON UPDATE RESTRICT;
 CREATE TABLE `storage_grower_fruit_location_timeline` (
-  `grower_receipt_id`     INT(11)     NOT NULL,
-  `bin_id`                SMALLINT(6) NOT NULL,
-  `date`                  DATETIME    NOT NULL,
-  `new_assigned_location` INT(11)     NOT NULL
+  `grower_receipt_id`     INT(11)             NOT NULL,
+  `bin_id`                BIGINT(20) UNSIGNED NOT NULL,
+  `date`                  DATETIME            NOT NULL,
+  `new_assigned_location` INT(11)             NOT NULL,
+  PRIMARY KEY (`bin_id`)
 )
   ENGINE = InnoDB;
 ALTER TABLE `storage_grower_fruit_location_timeline`
-  ADD INDEX (`grower_receipt_id`, `bin_id`);
+  ADD INDEX (`bin_id`, `grower_receipt_id`);
 ALTER TABLE storage_grower_fruit_location_timeline
   ADD FOREIGN KEY (`new_assigned_location`) REFERENCES storage_rooms (`room_id`)
   ON DELETE CASCADE

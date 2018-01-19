@@ -98,14 +98,13 @@ $userData = packapps_authenticate_user('storage')
         setupChooseGrower();
 
         //attach listeners
-
         $('#addButton').on('click', addRow);
         $('#removeButton').on('click', removeRow);
-        $('#ReceiptSubmissionForm').submit(function(){
+        $('#ReceiptSubmissionForm').submit(function(event){
             if(notready){
                 return;
             }
-            event.preventDefault();
+            // event.preventDefault();
         });
 
         $('#blockChooserUndo').on('click', function () {

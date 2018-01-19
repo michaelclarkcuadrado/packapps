@@ -140,7 +140,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                             {{delivery.farmName}}
                         </td>
                         <td>
-                            <abbr v-if="delivery.BlockIsDeleted > 0" title="This block has been marked as deleted.">
+                            <abbr v-if="delivery.BlockIsDeleted > 0" title="This block has been marked as retired.">
                                 <i class="fa fa-exclamation-triangle"></i>
                             </abbr>
                             {{delivery.BlockDesc}}
@@ -182,7 +182,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                 <button v-if="curSelectionMode === 0" class="button" v-on:click="newFarm()" id="add_new_farm">
                     <span class="icon fa-plus"> New Farm</span>
                 </button>
-                <button v-else class="button">
+                <button v-else class="button" onclick="$('#modalWrapper').addClass('modalOpen');">
                     <span class="icon fa-plus"> New Block</span>
                 </button>
                 <button v-if="curSelectionMode > 0" class="button" v-on:click="goBackSelectionView()">
@@ -194,10 +194,8 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                     <!--Farms-->
                     <div v-if="curSelectionMode === 0" class="mdl-grid" key="farmSelectionView">
                         <div v-for="(farm, farm_id) in blockManagementTree['farms']" v-on:click="selectFarm(farm_id)" class="farm_comm_var_selector mdl-cell mdl-cell--4-col mdl-shadow--4dp">
-                            <div style="display: inline-block">
-                                <h3 style="display: inline-block">{{ farm.name }} </h3>
-                                <i class="fa fa-edit" v-on:click="renameFarm(farm.ID, farm.name)"></i>
-                            </div>
+                            <h3 style="display: inline-block">{{ farm.name }} </h3>
+                            <span class="fa fa-edit" title="Rename Farm" v-on:click="renameFarm(farm.ID, farm.name)"></span>
                             <hr style="width: 85%">
                             <div class="fcv_selector_info_wrapper">
                                 <div v-if="farm.estimatesNeeded > 0" class="alert_estimates_pending mdl-shadow--2dp">
@@ -205,7 +203,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                                     {{farm.estimatesNeeded}} estimates pending.
                                 </div>
                                 <div class="delivery_progress">
-                                    {{Number(farm.bushelsReceived).toLocaleString()}} bushels delivered
+                                    {{Number(farm.bushelsReceived).toLocaleString()}} bushels delivered <span class="smallFont">({{getDeliveryCompletionPercentage(farm.bushelsReceived, farm.bushelsAnticipated).toFixed(2) + '%'}})</span>
                                     <div class="noload">
                                         <span :style="{width: getDeliveryCompletionPercentage(farm.bushelsReceived, farm.bushelsAnticipated) + '%'}" class="load"></span>
                                     </div>
@@ -229,7 +227,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                                     {{comm.estimatesNeeded}} estimates pending.
                                 </div>
                                 <div class="delivery_progress">
-                                    {{Number(comm.bushelsReceived).toLocaleString()}} bushels delivered
+                                    {{Number(comm.bushelsReceived).toLocaleString()}} bushels delivered <span class="smallFont">({{getDeliveryCompletionPercentage(comm.bushelsReceived, comm.bushelsAnticipated).toFixed(2) + '%'}})</span>
                                     <div class="noload">
                                         <span :style="{width: getDeliveryCompletionPercentage(comm.bushelsReceived, comm.bushelsAnticipated) + '%'}" class="load"></span>
                                     </div>
@@ -253,7 +251,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                                     {{Number(variety.estimatesNeeded).toLocaleString()}} estimates pending.
                                 </div>
                                 <div class="delivery_progress">
-                                    {{Number(variety.bushelsReceived).toLocaleString()}} bushels delivered
+                                    {{Number(variety.bushelsReceived).toLocaleString()}} bushels delivered <span class="smallFont">({{getDeliveryCompletionPercentage(variety.bushelsReceived, variety.bushelsAnticipated).toFixed(2) + '%'}})</span>
                                     <div class="noload">
                                         <span :style="{width: getDeliveryCompletionPercentage(variety.bushelsReceived, variety.bushelsAnticipated) + '%'}" class="load"></span>
                                     </div>
@@ -270,19 +268,26 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                         <div v-for="(block, block_id) in blockManagementTree['farms'][curFarmIndex]['commodities'][curCommodityIndex]['varieties'][curVarietyIndex]['blocks']"
                              :class="[block.isDeleted > 0  ? 'block-deleted-bar' : 'block-detail-bar', 'mdl-shadow--4dp', 'mdl-cell', 'mdl-cell--6-col-desktop', 'mdl-cell--4-col-tablet', 'mdl-cell--4-col-phone']">
                             <h3>
+                                {{(block.isDeleted > 0 ? '[RETIRED] ' : '') + block.BlockDesc}}
                                 <span v-if="blockTrend(block.bushelHistory) > 0" class="fa fa-sort-up" title="Trends Up" style="color: green; vertical-align: sub"></span>
                                 <span v-else-if="blockTrend(block.bushelHistory) == 0 || isNaN(blockTrend(block.bushelHistory))" title="No Trend"
                                       style="vertical-align: text-bottom; font-size: 60px">-</span>
                                 <span v-else class="fa fa-sort-down" title="Trends Down" style="color: red; vertical-align: top"></span>
-                                {{(block.isDeleted > 0 ? '[DELETED] ' : '') + block.BlockDesc}} <span class="fa fa-edit" v-on:click="renameBlock(block.PK, block.BlockDesc)"></span></h3>
+                            </h3>
+                            <div>
+                                <span class="fa fa-edit actionButtons" title="Rename Block" v-on:click="renameBlock(block.PK, block.BlockDesc)"></span>
+                                <span v-if="block.isDeleted == 0" class="fa fa-trash actionButtons" title="Retire Block"
+                                      v-on:click="retireBlock(block, curFarmIndex, curCommodityIndex, curVarietyIndex)"></span>
+                                <span v-else class="fa fa-repeat actionButtons" title="Open Block" v-on:click="retireBlock(block, curFarmIndex, curCommodityIndex, curVarietyIndex)"></span>
+                            </div>
+                            <transition name="needsEstimateEase">
+                                <div v-if="(block['isDeleted'] > 0 ? false : (block['isSameAsLastYear'] > 0 ? false : (block['bushelHistory'][curYear]['est'] == block['bushelHistory'][curYear - 1]['act'] ? true : false)))"
+                                     class="alert_estimates_pending mdl-shadow--2dp">
+                                    <i class="fa fa-lg fa-exclamation-circle"></i>
+                                    Needs Estimate
+                                </div>
+                            </transition>
                             <div class="deleted-block-blur-wrapper">
-                                <transition name="needsEstimateEase">
-                                    <div v-if="(block['isDeleted'] > 0 ? false : (block['isSameAsLastYear'] > 0 ? false : (block['bushelHistory'][curYear]['est'] == block['bushelHistory'][curYear - 1]['act'] ? true : false)))"
-                                         class="alert_estimates_pending mdl-shadow--2dp">
-                                        <i class="fa fa-lg fa-exclamation-circle"></i>
-                                        Needs Estimate
-                                    </div>
-                                </transition>
                                 <div style="display:flex; justify-content: space-evenly;">
                                     <span>Variety: {{block.VarietyName}}</span>
                                     <span>Strain: {{block.strainName}}</span>
@@ -291,17 +296,20 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                                     <h5>This Year</h5>
                                     <div style="display:flex; margin-left: 5px; margin-right: 5px; flex-wrap: wrap; justify-content: space-evenly">
                                         <div style="flex-basis: 100%; align-self: center">
-                                            {{Number(block.bushelsReceived).toLocaleString() + " Out Of " + Number(block.bushelHistory[curYear]['est']).toLocaleString()}} Bushels
+                                            {{Number(block.bushelsReceived).toLocaleString() + " Out Of " + Number( (block.isFinished > 0 ? block.bushelsReceived : block.bushelHistory[curYear]['est'])
+                                            ).toLocaleString()}} Bushels <span class="smallFont">({{getDeliveryCompletionPercentage(block.bushelsReceived, (block.isFinished > 0 ? block.bushelsReceived : block.bushelHistory[curYear]['est']) ).toFixed(2) + '%'}})</span>
                                         </div>
                                         <div style="flex-basis: 100%">
                                             <span class="icon fa-truck"></span>
                                             {{block.deliveriesReceived + (block.deliveriesReceived == 1 ? ' Delivery' : ' Deliveries')}}
                                         </div>
                                         <div style="align-self: center; min-width: 150px" class="noload">
-                                            <span class="load" v-bind:style="{width: getDeliveryCompletionPercentage(block.bushelsReceived, (block.isSameAsLastYear > 0 ? block.bushelsReceived : block['bushelHistory'][curYear]['est'])) + '%'}"></span>
+                                            <span class="load"
+                                                  v-bind:style="{width: getDeliveryCompletionPercentage(block.bushelsReceived, (block.isFinished > 0 ? block.bushelsReceived : block['bushelHistory'][curYear]['est'])) + '%'}"></span>
                                         </div>
                                         <div style="flex-shrink: 2; align-self: center; display: grid; margin: 5px">
-                                            <span v-on:click="toggleFinished(block)" style="cursor: pointer;" v-bind:class="['fa', block.isFinished > 0 ? 'fa-lock' : 'fa-unlock']"
+                                            <span v-on:click="toggleFinished(block, curFarmIndex, curCommodityIndex, curVarietyIndex)" style="cursor: pointer;"
+                                                  v-bind:class="['fa', block.isFinished > 0 ? 'fa-lock' : 'fa-unlock']"
                                                   :title="block.isFinished > 0 ? 'Open this block' : 'Finish this block'"></span>
                                             <mark v-if="block.isFinished > 0" style="font-size: small; width: fit-content; line-height:initial; justify-self: center">Done For the Season</mark>
                                         </div>
@@ -310,12 +318,12 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                                 <div style="border-top: 1px solid black;">
                                     <h5>Estimates in Bushels</h5>
                                     <div style="display: flex; justify-content: space-evenly;" class="estimatesHeaderWrapper">
-                                        <div v-for="(valueObj, year) in block.bushelHistory" v-if="year != curYear" style="flex-grow: 1">
+                                        <div v-for="(valueObj, year) in block.bushelHistory" v-if="year != curYear || block.isDeleted > 0" style="flex-grow: 1">
                                             <div>
                                                 {{year}} Delivered
                                             </div>
                                             <div style="border-top: 1px solid gray">
-                                                {{Number(valueObj.act).toLocaleString()}}
+                                                {{ (year == curYear ? Number(block.bushelsReceived).toLocaleString() : Number(valueObj.act).toLocaleString()) }}
                                                 <span class="smallEstimatedTag">
                                                     Your Estimate: {{Number(valueObj.est).toLocaleString()}}
                                                 </span>
@@ -330,7 +338,8 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                                                        :disabled="block['isSameAsLastYear'] > 0" min="0" style="width: 90px; margin: 5px 0;">
                                                 <span v-if="(block['bushelHistory'][curYear]['est'] == block['bushelHistory'][curYear - 1]['act'])" class="smallEstimatedTag">
                                                     <div>
-                                                        <input v-model="block.isSameAsLastYear" true-value="1" false-value="0" v-on:change="updateEstimate(block, curFarmIndex, curCommodityIndex, curVarietyIndex)" type="checkbox"> Keep estimate?
+                                                        <input v-model="block.isSameAsLastYear" true-value="1" false-value="0"
+                                                               v-on:change="updateEstimate(block, curFarmIndex, curCommodityIndex, curVarietyIndex)" type="checkbox"> Keep this number?
                                                     </div>
                                                 </span>
                                                 <span v-else class="smallEstimatedTag">
@@ -354,6 +363,41 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
         <li>Licensed to <?= $companyName ?></li>
         <li>All Rights Reserved.</li>
     </ul>
+</div>
+<div class="modalWrapper" id="modalWrapper" aria-hidden="true">
+    <div class="modal-dialog" id="addblockpanel">
+        <form name="newBlock" action="addBlock.php" method="post">
+            <h2>Create New Block</h2>
+            <table style="margin:5px; width: calc(100% - 15px);" border='1px'>
+                <thead>
+                <tr>
+                    <th><b>Fruit Type</th>
+                    <th><b>Variety</th>
+                    <th><b>Strain</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td style="display:flex" id="commoditiesRadios">
+                        <!--Radios go here-->
+                    </td>
+                    <td><select style="width: 100%" name="VarDesc" id="autovar" required></select></td>
+                    <td><select style="width: 100%" name="Strain" id="autostr" required></select></td>
+                </tr>
+                <tr>
+                    <th><b>Farm</th>
+                    <th><b>Block</th>
+                    <th><b>'<? echo date('y') ?> Estimate</th>
+                </tr>
+                <tr>
+                    <td><input type="text" name="Farm" style='width:150px;'></td>
+                    <td><input type="text" name="Block" style='width:150px;'></td>
+                    <td><input type="number" name="newEst" style='width:110px;' placeholder="Bushels"
+                               required></td>
+                </tr>
+            </table>
+            <input type=submit value="Submit New Block">
+        </form>
+    </div>
 </div>
 </body>
 <script src="js/notify.min.js"></script>
@@ -445,11 +489,11 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                     this.scrollReset();
                 },
                 getDeliveryCompletionPercentage: function (delivered, anticipated) {
-                    if (anticipated == 0) {
-                        return 100;
-                    }
                     if (delivered == 0) {
                         return 0;
+                    }
+                    if (delivered != 0 && anticipated == 0) {
+                        return 100;
                     }
                     const percentage = (delivered / anticipated) * 100;
                     if (percentage > 100) {
@@ -579,6 +623,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                         };
                         $.get('API/updateEstimate.php', argsObj, function (data) {
                             self.recalcParentsExpectedBushels(farmIndex, commIndex, varIndex);
+                            $.notify("Info Updated.", "success");
                         }).fail(function () {
                             $.notify("Couldn't contact server.");
                         });
@@ -589,6 +634,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                         };
                         $.get('API/updateEstimate.php', argsObj, function (data) {
                             self.recalcParentsExpectedBushels(farmIndex, commIndex, varIndex);
+                            $.notify("Info Updated.", "success");
                         });
                     }
                 },
@@ -600,18 +646,61 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                 },
                 recalcParentsExpectedBushels: function (farmIndex, commIndex, varIndex) {
                     //TODO recalc bushels, and set estimate needed numbers
-                    this.blockManagementTree.farms;
-                },
-                toggleFinished: function (block, farmIndex, CommIndex, varIndex) {
-                    $.get('API/processBlock.php', {finish: block['PK']}, function (data) {
-                        if (block.isFinished) { //TODO
-                            //flip to not finished, replace expected Deliveries with last estimates
-
-                        } else {
-                            //flip to finished, replace expected Deliveries with delivered.
-
+                    //varieties
+                    let blocks = this.blockManagementTree.farms[farmIndex]['commodities'][commIndex]['varieties'][varIndex]['blocks'];
+                    let newVarietyAnticipatedTotal = 0;
+                    let newVarietyEstimateNeededTotal = 0;
+                    for (let blockID in blocks) {
+                        if (blocks.hasOwnProperty(blockID)) {
+                            newVarietyAnticipatedTotal += (blocks[blockID].isDeleted > 0 ? 0 : (blocks[blockID].isFinished > 0 ? parseInt(blocks[blockID].bushelsReceived) : parseInt(blocks[blockID].bushelHistory[this.curYear].est)));
+                            newVarietyEstimateNeededTotal += (blocks[blockID].isDeleted > 0 ? 0 : (blocks[blockID].isSameAsLastYear > 0 ? 0 : (blocks[blockID]['bushelHistory'][this.curYear]['est'] != blocks[blockID]['bushelHistory'][this.curYear - 1]['act'] ? 0 : 1)));
                         }
+                    }
+                    this.blockManagementTree.farms[farmIndex]['commodities'][commIndex]['varieties'][varIndex]['bushelsAnticipated'] = newVarietyAnticipatedTotal;
+                    this.blockManagementTree.farms[farmIndex]['commodities'][commIndex]['varieties'][varIndex]['estimatesNeeded'] = newVarietyEstimateNeededTotal;
+                    //commodities
+                    let newCommAnticipatedTotal = 0;
+                    let newCommEstimateNeededTotal = 0;
+                    let varieties = this.blockManagementTree.farms[farmIndex]['commodities'][commIndex]['varieties'];
+                    for (let varID in varieties) {
+                        if (varieties.hasOwnProperty(varID)) {
+                            newCommAnticipatedTotal += parseInt(varieties[varID]['bushelsAnticipated']);
+                            newCommEstimateNeededTotal += parseInt(varieties[varID]['estimatesNeeded']);
+                        }
+                    }
+                    this.blockManagementTree.farms[farmIndex]['commodities'][commIndex]['bushelsAnticipated'] = newCommAnticipatedTotal;
+                    this.blockManagementTree.farms[farmIndex]['commodities'][commIndex]['estimatesNeeded'] = newCommEstimateNeededTotal;
+                    //farms
+                    let comms = this.blockManagementTree.farms[farmIndex]['commodities'];
+                    let newFarmAnticipatedtotal = 0;
+                    let newFarmEsimateNeededTotal = 0;
+                    for (let commID in comms) {
+                        if (comms.hasOwnProperty(commID)) {
+                            newFarmAnticipatedtotal += comms[commID]['bushelsAnticipated'];
+                            newFarmEsimateNeededTotal += comms[commID]['estimatesNeeded'];
+                        }
+                    }
+                    this.blockManagementTree.farms[farmIndex]['bushelsAnticipated'] = newFarmAnticipatedtotal;
+                    this.blockManagementTree.farms[farmIndex]['estimatesNeeded'] = newFarmEsimateNeededTotal;
+                },
+                toggleFinished: function (block, farmIndex, commIndex, varIndex) {
+                    const self = this;
+                    $.get('API/processBlock.php', {finish: block['PK']}, function (data) {
                         block.isFinished ^= 1;
+                        self.recalcParentsExpectedBushels(farmIndex, commIndex, varIndex);
+                    });
+                },
+                retireBlock: function (block, farmIndex, commIndex, varIndex) {
+                    const self = this;
+                    let argsObj = {
+                        deletedFlag: block.isDeleted ^ 1,
+                        PK: block.PK
+                    };
+                    $.get('API/toggleBlockRetirement.php', argsObj, function () {
+                        block.isDeleted ^= 1;
+                        self.recalcParentsExpectedBushels(farmIndex, commIndex, varIndex);
+                    }).fail(function (data) {
+                        $.notify("Could not contact server.");
                     });
                 }
             },
