@@ -237,9 +237,8 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
     $(document).ready(function () {
         setBlueLineDefault();
         loadRuns();
-        createInventoryTrees();
 
-    <?echo($RealName['Role'] != 'Restricted' ? "setInterval(refreshChat, 2000);" : '')?>
+        <?echo($RealName['Role'] != 'Restricted' ? "setInterval(refreshChat, 2000);" : '')?>
 
         var debug = setInterval(loadRuns, 7000);
 
