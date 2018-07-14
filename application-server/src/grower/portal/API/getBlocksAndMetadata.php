@@ -61,12 +61,11 @@ ORDER BY isDeleted
 ");
 
 $blockOrganizationTree = array();
-$blocksBushelsExpectedSummed = array();
 $blocksBushelsDeliveredSummed = array(); //or bushelsReceived
 while ($row = mysqli_fetch_assoc($query)) {
     if ($row['PK'] == null) {    //handle farm with no blocks
         $blockOrganizationTree['farms'][$row['farmID']] = array(
-            'ID' => $row['farmID'],
+            'ID' => intval($row['farmID']),
             'name' => $row['farmName'],
             'commodities' => array(),
             'bushelsReceived' => 0
@@ -91,6 +90,9 @@ while ($row = mysqli_fetch_assoc($query)) {
         $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['varieties'][$row['variety_ID']]['name'] = $row['VarietyName'];
         $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['varieties'][$row['variety_ID']]['ID'] = intval($row['variety_ID']);
 
+        //sum bushels received for farms, commodities, and varieties.
+        //Because multiple rows (that share a PK) have the same bushel delivery number repeated, only sum the
+        // first encounter of a PK. Use $blocksBushelsDeliveredSummed map to keep track of which they are
         if (!array_key_exists($row['PK'], $blocksBushelsDeliveredSummed)) {
             $blockOrganizationTree['farms'][$row['farmID']]['bushelsReceived'] += $row['bushelsReceived'];
             $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['bushelsReceived'] += $row['bushelsReceived'];
@@ -99,6 +101,9 @@ while ($row = mysqli_fetch_assoc($query)) {
         }
     }
 }
+
+//sum anticipated bushels and number of pending estimates
+// an estimate is pending if the estimate is equal to last year's delivered (system default) and the 'sameAsLastYear' flag is not up
 $curYear = date('Y');
 foreach ($blockOrganizationTree['farms'] as $farmID => &$farmObj) {
     $farmEstimatesNeeded = 0;

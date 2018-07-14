@@ -45,7 +45,7 @@ if (mysqli_connect_errno()) {
 
 //check if packapps has been set up and database is current
 $systemRow = mysqli_query($mysqli, "SELECT packapps_version, systemInstalled, growerPortalLastInitializedYear FROM packapps_system_info");
-$systemRow = mysqli_fetch_array($systemRow);
+$systemRow = mysqli_fetch_assoc($systemRow);
 if($_SERVER['SCRIPT_NAME'] != '/installer.php' && $systemRow['systemInstalled'] == 0){
     die("<script>window.location.replace('/installer.php')</script>");
 }

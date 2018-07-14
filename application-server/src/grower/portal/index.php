@@ -10,7 +10,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
 <head>
     <title>Grower Portal</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/gridAndShadow.css">
     <link rel="stylesheet" href="css/select2.min.css">
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.scrolly.min.js"></script>
@@ -282,21 +282,21 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                             </div>
                             <transition name="needsEstimateEase">
                                 <div v-if="(block['isDeleted'] > 0 ? false : (block['isSameAsLastYear'] > 0 ? false : (block['bushelHistory'][curYear]['est'] == block['bushelHistory'][curYear - 1]['act'] ? true : false)))"
-                                     class="alert_estimates_pending mdl-shadow--2dp">
+                                     class="alert_estimates_pending mdl-shadow--2dp" style="padding-right:10px">
                                     <i class="fa fa-lg fa-exclamation-circle"></i>
                                     Needs Estimate
                                 </div>
                             </transition>
                             <div class="deleted-block-blur-wrapper">
                                 <div style="display:flex; justify-content: space-evenly;">
-                                    <span>Variety: {{block.VarietyName}}</span>
-                                    <span>Strain: {{block.strainName}}</span>
+                                    <span><b>Variety:</b> {{block.VarietyName}}</span>
+                                    <span><b>Strain:</b> {{block.strainName}}</span>
                                 </div>
                                 <div v-if="block.isDeleted == 0" style="border-top: 1px solid black">
                                     <h5>This Year</h5>
                                     <div style="display:flex; margin-left: 5px; margin-right: 5px; flex-wrap: wrap; justify-content: space-evenly">
                                         <div style="flex-basis: 100%; align-self: center">
-                                            {{Number(block.bushelsReceived).toLocaleString() + " Out Of " + Number( (block.isFinished > 0 ? block.bushelsReceived : block.bushelHistory[curYear]['est'])
+                                            {{Number(block.bushelsReceived).toLocaleString() + " out of " + Number( (block.isFinished > 0 ? block.bushelsReceived : block.bushelHistory[curYear]['est'])
                                             ).toLocaleString()}} Bushels <span class="smallFont">({{getDeliveryCompletionPercentage(block.bushelsReceived, (block.isFinished > 0 ? block.bushelsReceived : block.bushelHistory[curYear]['est']) ).toFixed(2) + '%'}})</span>
                                         </div>
                                         <div style="flex-basis: 100%">
@@ -366,6 +366,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
 </div>
 <div class="modalWrapper" id="modalWrapper" aria-hidden="true">
     <div class="modal-dialog" id="addblockpanel">
+        <span class="fa fa-close" style="float:right; margin: 10px; margin-right:15px; position: absolute; right: 0; cursor:pointer" onclick="$('#modalWrapper').removeClass('modalOpen');"></span>
         <form name="newBlock" action="addBlock.php" method="post">
             <h2>Create New Block</h2>
             <table style="margin:5px; width: calc(100% - 15px);" border='1px'>
@@ -389,7 +390,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                     <th><b>'<? echo date('y') ?> Estimate</th>
                 </tr>
                 <tr>
-                    <td><input type="text" name="Farm" style='width:150px;'></td>
+                    <td><select style="width: 100%" name="Farm" id="autofarm" required></select></td>
                     <td><input type="text" name="Block" style='width:150px;'></td>
                     <td><input type="number" name="newEst" style='width:110px;' placeholder="Bushels"
                                required></td>
@@ -513,6 +514,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                             bushelsAnticipated: 0,
                             estimatesNeeded: 0
                         })
+                        rebuildModalFarmSelector();
                     }).fail(function () {
                         $.notify("Couldn't create that farm.");
                     });
@@ -543,6 +545,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                                     }
                                     return true;
                                 });
+                                rebuildModalFarmSelector();
                             } else if (landType === 'block') { //have to find the block in the tree, search by returned IDs
                                 $.each(self.blockManagementTree['farms'], function (farmIndex, farm) {
                                     if (farm.ID == data['farmID']) {
@@ -708,8 +711,9 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                 const self = this;
                 $.getJSON('API/getBlocksAndMetadata.php', function (data) {
                     self.blockManagementTree = data;
+                    rebuildModalFarmSelector();
                 });
-            }
+            },
         })
     ;
 
@@ -727,6 +731,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
     });
 
     function getCommoditiesTree() { // for populating/controlling the add block dialog
+        //this builds the commodity/variety/strain trees for the modal. The farm list is handled seperately, since farm lists are generated in the vue instance.
         $.getJSON('API/getGlobalCommoditySubTypes.php', function (data) {
             CommoditiesTree = data;
             $("#commoditiesRadios").empty();
@@ -735,8 +740,8 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                     "<span><input type='radio' class='commodityRadio' name='CommDesc' value='" + commodity['commodity_ID'] + "' required>" + commodity['commodity_name'] + "</span>"
                 );
             });
-            varSelector = $('#autovar');
-            strSelector = $('#autostr');
+            let varSelector = $('#autovar');
+            let strSelector = $('#autostr');
             varSelector.select2({
                 placeholder: 'Varieties',
                 disabled: true
@@ -747,7 +752,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
             });
             $(".commodityRadio").on('click', function (event) {
                 //reset and load varieties and strains for commodity
-                if (varSelector.hasClass("select2-hidden-accessible")) {
+                if (varSelector.hasClass("select2-hidden-accessible")) { //if select2 is initialized, destroy it
                     varSelector.select2('destroy');
                     varSelector.empty().append("<option></option>");
                 }
@@ -789,6 +794,20 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
             });
         });
     }
+
+    function rebuildModalFarmSelector() {
+        let farmNames = blockManagementVue.blockManagementTree.farms.map(function (x) {
+            return {id: x.ID, text: x.name}
+        });
+        console.log(farmNames);
+    }
+
+    //hide modal on escape key
+    $(document).keydown(function (event) {
+        if (event.keyCode == 27) {
+            $('#modalWrapper').removeClass('modalOpen');
+        }
+    });
 
     function logout() {
         document.cookie = "auth=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;";

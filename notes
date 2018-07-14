@@ -2,12 +2,12 @@ To setup a new packapps server:
 > Create a new Docker droplet on DO.
 > Copy private key to droplet
 > git pull ssh://orchestration.packercloud.com/var/git/packapps
-> TODO deployment helper that generates AWS IDs, keeps track of droplet IPs, slug names etc.
 > edit company name and slug in settings.yml
+> create new aws s3 buckets for slugs
 > point subdomain to droplet
 
 To backup a db:
-docker exec packapps_database-server_1 sh -c 'exec mysqldump --databases operationsData growerReporting --routines --triggers --no-data -uroot -ppackapps' > output.sql
+docker exec packapps_database-server_1 sh -c 'exec mysqldump --databases operationsData --routines --triggers  -uroot -ppackapps' > output.sql
 
 To add a packapp:
 -Add an entry to packapps_appProperties
@@ -17,16 +17,3 @@ To add a packapp:
 -Add permissions entries to packapps_app_permissions
 -Create folder in root of src/ with application code, include config.php and check user authorization on every view and controller
 
-Farms --> Growers
-^
-|
-Blocks w/ Crop esimates and history
-|
-v
-Strains
-|
-v
-Varieties
-|
-v
-Commodities
