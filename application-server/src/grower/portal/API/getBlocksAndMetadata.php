@@ -56,7 +56,7 @@ LEFT JOIN grower_commodities gc ON v.commodityID = gc.commodity_ID
 LEFT JOIN storage_grower_receipts receipt ON `gc-e`.PK = receipt.grower_block
 LEFT JOIN storage_grower_fruit_bins sgfb ON receipt.id = sgfb.grower_receipt_id
   WHERE ((year >= YEAR(NOW()) - 3) OR year IS NULL) AND grower_GrowerLogins.GrowerID = " . $userinfo['GrowerID'] . "
-GROUP BY PK, year, value_type
+GROUP BY farmID, PK, year, value_type
 ORDER BY isDeleted
 ");
 
@@ -108,14 +108,22 @@ $curYear = date('Y');
 foreach ($blockOrganizationTree['farms'] as $farmID => &$farmObj) {
     $farmEstimatesNeeded = 0;
     $farmBushelsAnticipated = 0;
+    $numBlocksFarm = 0;
     foreach ($farmObj['commodities'] as $commodityID => &$commodityObj) {
         $commEstimatesNeeded = 0;
         $commBushelsAnticipated = 0;
+        $numBlocksComm = 0;
         foreach ($commodityObj['varieties'] as $varietyID => &$varietyObj) {
             $varEstimatesNeeded = 0;
             $varBushelsAnticipated = 0;
+            $numBlocksVar = 0;
             foreach ($varietyObj['blocks'] as $PK => &$blockObj) {
                 if ($blockObj['isDeleted'] == 0) {
+                    //count block quantities
+                    $numBlocksFarm += 1;
+                    $numBlocksComm += 1;
+                    $numBlocksVar += 1;
+
                     //add estimates needed
                     $isConfirmedEstimate = (($blockObj['bushelHistory'][$curYear]['est'] !== $blockObj['bushelHistory'][$curYear - 1]['act']) || ($blockObj['isSameAsLastYear'] > 0));
                     if (!$isConfirmedEstimate) {
@@ -150,6 +158,7 @@ foreach ($blockOrganizationTree['farms'] as $farmID => &$farmObj) {
             });
             $varietyObj['estimatesNeeded'] = $varEstimatesNeeded;
             $varietyObj['bushelsAnticipated'] = $varBushelsAnticipated;
+            $varietyObj['blockQuantity'] = $numBlocksVar;
         }
         $commodityObj['varieties'] = array_values($commodityObj['varieties']);
         usort($commodityObj['varieties'], function ($obj1, $obj2) {
@@ -157,6 +166,7 @@ foreach ($blockOrganizationTree['farms'] as $farmID => &$farmObj) {
         });
         $commodityObj['estimatesNeeded'] = $commEstimatesNeeded;
         $commodityObj['bushelsAnticipated'] = $commBushelsAnticipated;
+        $commodityObj['blockQuantity'] = $numBlocksComm;
     }
     $farmObj['commodities'] = array_values($farmObj['commodities']);
     usort($farmObj['commodities'], function ($obj1, $obj2) {
@@ -164,6 +174,7 @@ foreach ($blockOrganizationTree['farms'] as $farmID => &$farmObj) {
     });
     $farmObj['estimatesNeeded'] = $farmEstimatesNeeded;
     $farmObj['bushelsAnticipated'] = $farmBushelsAnticipated;
+    $farmObj['blockQuantity'] = $numBlocksFarm;
 }
 $blockOrganizationTree['farms'] = array_values($blockOrganizationTree['farms']);
 usort($blockOrganizationTree['farms'], function ($obj1, $obj2) {
