@@ -31,7 +31,7 @@
 
         <!-- Logo -->
         <div id="logo">
-            <span class="image"><img src="images/avatar.png" alt=""/></span>
+<!--            <span class="image"><img src="images/avatar.png" alt=""/></span>-->
             <h1 id="title"><? echo $userinfo['GrowerName'] ?></h1>
             <p><?echo $companyName?> Grower</p>
         </div>
