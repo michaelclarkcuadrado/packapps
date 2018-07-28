@@ -1,5 +1,5 @@
 <?php
-include '../../config.php';
+include '../../../config.php';
 $userinfo = packapps_authenticate_grower();
 
 //sanitize inputs
