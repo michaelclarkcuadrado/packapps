@@ -9,12 +9,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc9cf440-d41f-463b-aeba-7bb29d2a7f06" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/3a4f9c70-982d-41e8-890e-d8b33b004fcd.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/3a4f9c70-982d-41e8-890e-d8b33b004fcd/storage_v2/_src_/schema/growerReporting.DgbBow.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/3a4f9c70-982d-41e8-890e-d8b33b004fcd/storage_v2/_src_/schema/growerReporting.DgbBow.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/API/getBlocksAndMetadata.php" beforeDir="false" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/API/getBlocksAndMetadata.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application-server/src/grower/portal/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/application-server/src/grower/portal/index.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,13 +36,30 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="operationsData@localhost" type="feb32156:DbDataSourceImpl" />
-      </path>
-    </expand>
+    <expand />
     <select />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1850161827">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.17" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="txt" value="79" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="79" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="packapps" />
@@ -54,36 +73,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="getBlocksAndMetadata.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/API/getBlocksAndMetadata.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="59" column="18" lean-forward="true" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="526" column="41" selection-start-line="526" selection-start-column="41" selection-end-line="526" selection-end-column="41" />
-              <folding>
-                <element signature="n#style#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#transition#0;n#div#1;n#div#0;n#section#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#transition#0;n#div#1;n#div#0;n#section#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#0;n#td#1;n#tr#2;n#table#0;n#form#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="console_1.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console_1.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+            <state relative-caret-position="510">
+              <caret line="262" column="73" selection-start-line="262" selection-start-column="73" selection-end-line="262" selection-end-column="73" />
             </state>
           </provider>
         </entry>
@@ -99,36 +93,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>length</find>
-      <find>updateEstimate</find>
-      <find>auto</find>
-      <find>add block</find>
-      <find>new blick</find>
-      <find>white</find>
-      <find>needsEstimateEase</find>
-      <find>modalOpen</find>
-      <find>modalwrapper</find>
-      <find>&lt;div&gt;&lt;</find>
-      <find>modalwrapp</find>
-      <find>fa-close</find>
-      <find>var</find>
-      <find>let</find>
-      <find>reb</find>
-      <find>' &gt;&gt; /usr/local/etc/php/php.ini</find>
-      <find>zend_extension</find>
-      <find>read</find>
-      <find>estimates</find>
-      <find>addfarm</find>
-      <find>addblock</find>
-      <find>rebuild</find>
-      <find>new block</find>
-      <find>modalWrapper</find>
-      <find>powered by</find>
-      <find>modalWrapp</find>
       <find>open</find>
-      <find>newFarm</find>
-      <find>modal</find>
-      <find>selectFarm</find>
+      <find>form</find>
+      <find>block name</find>
+      <find>validate</find>
+      <find>succ</find>
+      <find>blockDesc</find>
+      <find>blockdesc</find>
+      <find>blockest</find>
+      <find>estimate</find>
+      <find>curYear</find>
+      <find>submit</find>
+      <find>autoest</find>
+      <find>addbloc</find>
+      <find>&lt;?</find>
+      <find>onsub</find>
+      <find>retr</find>
+      <find>openm</find>
+      <find>addb</find>
+      <find>autofarm</find>
+      <find>strau</find>
+      <find>addblock(</find>
+      <find>addBlock</find>
+      <find>onsubm</find>
+      <find>added</find>
+      <find>$.eac</find>
+      <find>'act'</find>
+      <find>title</find>
+      <find>selectionPanelTitle</find>
+      <find>getDelivery</find>
+      <find>TODO</find>
     </findStrings>
     <replaceStrings>
       <replace>$thisYear</replace>
@@ -182,8 +176,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application-server/src/manifest.json" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/css/skel.css" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/js/skel.min.js" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/js/skel-layers.min.js" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/js/init.js" />
@@ -195,10 +187,6 @@
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/css/style-narrow.css" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/css/style-narrower.css" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/css/style-mobile.css" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/changepw.php" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/growerCalendar.php" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/preharvest.php" />
-        <option value="$PROJECT_DIR$/application-server/src/grower/portal/QAview.php" />
         <option value="$PROJECT_DIR$/application-server/src/scripts-common/Chart.min.js" />
         <option value="$PROJECT_DIR$/application-server/src/grower/manage/API/getGrowerListing.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/manage/index.php" />
@@ -231,8 +219,14 @@
         <option value="$PROJECT_DIR$/application-server/src/config.php" />
         <option value="$PROJECT_DIR$/docker-compose.yml" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console_1.sql" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/growerCalendar.php" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/preharvest.php" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/changepw.php" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/QAview.php" />
+        <option value="$PROJECT_DIR$/application-server/src/grower/portal/API/addBlock.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/API/getBlocksAndMetadata.php" />
         <option value="$PROJECT_DIR$/application-server/src/grower/portal/index.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/3a4f9c70-982d-41e8-890e-d8b33b004fcd/console.sql" />
       </list>
     </option>
   </component>
@@ -247,9 +241,6 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="NodePackageJsonFileManager">
-    <packageJsonPaths />
   </component>
   <component name="PhpDebugGeneral" break_at_first_line="true" />
   <component name="PhpServers">
@@ -269,7 +260,7 @@
   <component name="PhpWebServerValidation" path_to_validation_script="$PROJECT_DIR$/application-server/src" selected_validation_type="LOCAL" web_path_to_validation_script="http://localhost:80" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.1" />
   <component name="PhpXdebugProxy" ide_key="IDEA_DEBUG" host="localhost" port="9000" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="y" value="91" />
     <option name="width" value="624" />
     <option name="height" value="351" />
@@ -283,58 +274,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
-              <item name="packapps" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
-              <item name="packapps" type="462c0819:PsiDirectoryNode" />
-              <item name="application-server" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
-              <item name="packapps" type="462c0819:PsiDirectoryNode" />
-              <item name="application-server" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
-              <item name="packapps" type="462c0819:PsiDirectoryNode" />
-              <item name="application-server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
-              <item name="packapps" type="462c0819:PsiDirectoryNode" />
-              <item name="application-server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="grower" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
-              <item name="packapps" type="462c0819:PsiDirectoryNode" />
-              <item name="application-server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="grower" type="462c0819:PsiDirectoryNode" />
-              <item name="portal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="packapps" type="b2602c69:ProjectViewProjectNode" />
-              <item name="packapps" type="462c0819:PsiDirectoryNode" />
-              <item name="application-server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="grower" type="462c0819:PsiDirectoryNode" />
-              <item name="portal" type="462c0819:PsiDirectoryNode" />
-              <item name="API" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -350,21 +290,21 @@
     <property name="nodejs.protractor.protractor_package" value="" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
     <property name="two.files.diff.last.used.file" value="$USER_HOME$/editRun.php" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/application-server/src/grower/portal" />
-      <recent name="$PROJECT_DIR$/application-server/src/styles-common" />
-      <recent name="$PROJECT_DIR$/application-server/src/maintenance" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/application-server/src/grower/portal/API/" />
       <recent name="$PROJECT_DIR$/application-server/src/storage" />
       <recent name="$PROJECT_DIR$/application-server/src/" />
       <recent name="$PROJECT_DIR$/application-server/src/packapps_api" />
       <recent name="$PROJECT_DIR$/application-server/src/quality/assets" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/application-server/src/grower/portal" />
+      <recent name="$PROJECT_DIR$/application-server/src/styles-common" />
+      <recent name="$PROJECT_DIR$/application-server/src/maintenance" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -380,8 +320,12 @@
     </option>
   </component>
   <component name="RunManager" selected="PHP Remote Debug.Packapps Debugging">
-    <configuration name="getBlocksAndMetadata.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/application-server/src/grower/portal/API/getBlocksAndMetadata.php" />
-    <configuration name="Packapps Debugging" type="PhpRemoteDebugRunConfigurationType" factoryName="PHP Remote Debug" filter_connections="FILTER" server_name="docker" session_id="IDEA_DEBUG" />
+    <configuration name="getBlocksAndMetadata.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/application-server/src/grower/portal/API/getBlocksAndMetadata.php">
+      <method v="2" />
+    </configuration>
+    <configuration name="Packapps Debugging" type="PhpRemoteDebugRunConfigurationType" factoryName="PHP Remote Debug" filter_connections="FILTER" server_name="docker" session_id="IDEA_DEBUG">
+      <method v="2" />
+    </configuration>
     <configuration name="Packapps on Docker" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
@@ -394,6 +338,7 @@
           </option>
         </settings>
       </deployment>
+      <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
       <deployment type="docker-compose.yml">
@@ -407,6 +352,7 @@
           </option>
         </settings>
       </deployment>
+      <method v="2" />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-interpreter>project</node-interpreter>
@@ -415,6 +361,7 @@
       <tasks />
       <arguments />
       <envs />
+      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Docker.Packapps on Docker" />
@@ -719,27 +666,17 @@
       <workItem from="1531235271192" duration="4810000" />
       <workItem from="1531579145735" duration="5934000" />
       <workItem from="1531586858438" duration="3078000" />
-    </task>
-    <task id="LOCAL-00008" summary="Complete Grower-Portal login mechanism">
-      <created>1499681496526</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1499681496526</updated>
-    </task>
-    <task id="LOCAL-00009" summary="small cleanup">
-      <created>1499687272241</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1499687272241</updated>
-    </task>
-    <task id="LOCAL-00010" summary="maintenance app: Enable assigning issues to users">
-      <created>1499717779886</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1499717779887</updated>
+      <workItem from="1531856554595" duration="324000" />
+      <workItem from="1531857772058" duration="1432000" />
+      <workItem from="1531860823718" duration="9426000" />
+      <workItem from="1531876256106" duration="3622000" />
+      <workItem from="1531881721687" duration="80000" />
+      <workItem from="1532044288674" duration="3374000" />
+      <workItem from="1532147688156" duration="1427000" />
+      <workItem from="1532795415236" duration="254000" />
+      <workItem from="1532819559573" duration="443000" />
+      <workItem from="1532820104171" duration="52000" />
+      <workItem from="1532820349874" duration="1060000" />
     </task>
     <task id="LOCAL-00011" summary="Maintenance: enable photos added to issues">
       <created>1500558761262</created>
@@ -1063,11 +1000,32 @@
       <option name="project" value="LOCAL" />
       <updated>1531583007802</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Populate empty farms... and include block counts on BlocksAndMetadata">
+      <created>1531856732585</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1531856732587</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Adding blocks from grower portal now supported">
+      <created>1532820591396</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1532820591404</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Branding / favicons">
+      <created>1532820647153</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1532820647154</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1436227000" />
+    <option name="totallyTimeSpent" value="1457721000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1079,60 +1037,60 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="30" width="1366" height="738" extended-state="6" />
+    <frame x="0" y="-34" width="1366" height="802" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="bottom" id="TODO" order="14" sideWeight="0.4957265" weight="0.3268945" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.51365703" side_tool="true" weight="0.4754829" />
-      <window_info anchor="bottom" id="Database Changes" order="17" sideWeight="0.49848256" weight="0.32888147" />
+      <window_info id="Favorites" order="0" side_tool="true" weight="0.32959402" />
+      <window_info content_ui="combo" id="Project" order="1" weight="0.25227964" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.24946581" />
+      <window_info anchor="bottom" id="Thumbnails" order="0" weight="0.32911393" />
+      <window_info anchor="bottom" id="Messages" order="1" weight="0.32740742" />
+      <window_info anchor="bottom" id="File Transfer" order="2" weight="0.12311901" />
+      <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Run" order="4" weight="0.32838038" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Database Console" order="7" sideWeight="0.48130342" visible="true" weight="0.5479452" />
+      <window_info anchor="bottom" id="Find" order="8" sideWeight="0.4969651" weight="0.38527396" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.51365703" side_tool="true" weight="0.54530203" />
       <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.5186966" side_tool="true" weight="0.47772828" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.5128983" side_tool="true" weight="0.4760274" />
-      <window_info active="true" anchor="bottom" id="Database Console" order="7" sideWeight="0.48130342" visible="true" weight="0.5479452" />
-      <window_info content_ui="combo" id="Project" order="1" weight="0.16995448" />
-      <window_info anchor="bottom" id="Docker" order="16" sideWeight="0.4757208" weight="0.39041096" />
-      <window_info anchor="right" id="Database" order="3" weight="0.26176023" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.24946581" />
+      <window_info anchor="bottom" id="Inspection Results" order="12" weight="0.47104678" />
       <window_info anchor="bottom" id="Debug" order="13" sideWeight="0.48634294" weight="0.3640416" />
-      <window_info id="Favorites" order="0" side_tool="true" weight="0.32959402" />
-      <window_info anchor="bottom" id="Thumbnails" order="0" weight="0.32911393" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="14" sideWeight="0.4957265" weight="0.3268945" />
+      <window_info anchor="bottom" id="Command Line Tools Console" order="15" sideWeight="0.49468893" weight="0.3270548" />
+      <window_info anchor="bottom" id="Docker" order="16" sideWeight="0.4757208" weight="0.39041096" />
+      <window_info anchor="bottom" id="Database Changes" order="17" sideWeight="0.49848256" weight="0.32888147" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection Results" order="12" weight="0.47104678" />
-      <window_info anchor="bottom" id="Command Line Tools Console" order="15" sideWeight="0.49468893" weight="0.3270548" />
-      <window_info anchor="bottom" id="Messages" order="1" weight="0.32740742" />
-      <window_info anchor="bottom" id="Message" order="3" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info anchor="bottom" id="File Transfer" order="2" weight="0.12311901" />
-      <window_info anchor="bottom" id="Find" order="8" sideWeight="0.4969651" weight="0.38641426" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" weight="0.26176023" />
     </layout>
     <layout-to-restore>
-      <window_info anchor="bottom" id="Database Console" order="9" sideWeight="0.48557693" weight="0.29185185" />
-      <window_info anchor="bottom" id="Docker" order="16" sideWeight="0.4818376" weight="0.27419356" />
-      <window_info anchor="bottom" id="Run" order="5" weight="0.32949308" />
       <window_info id="Favorites" order="0" side_tool="true" weight="0.32959402" />
-      <window_info anchor="bottom" id="Thumbnails" order="0" weight="0.32911393" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.20485584" />
       <window_info id="Structure" order="2" weight="0.25" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="14" sideWeight="0.4957265" weight="0.32911393" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.13261297" />
-      <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.47106692" />
-      <window_info anchor="bottom" id="Message" order="3" />
-      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
-      <window_info anchor="bottom" id="Command Line Tools Console" order="15" show_stripe_button="false" sideWeight="0.4957265" weight="0.3281704" />
-      <window_info anchor="right" id="Database" order="3" weight="0.13125949" />
+      <window_info anchor="bottom" id="Thumbnails" order="0" weight="0.32911393" />
       <window_info anchor="bottom" id="Messages" order="1" weight="0.3280943" />
-      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.50641024" side_tool="true" weight="0.2858546" />
+      <window_info anchor="bottom" id="File Transfer" order="2" weight="0.12311901" />
+      <window_info anchor="bottom" id="Message" order="3" />
+      <window_info anchor="bottom" id="Find" order="4" weight="0.2108295" />
+      <window_info anchor="bottom" id="Run" order="5" weight="0.32949308" />
       <window_info anchor="bottom" id="Debug" order="6" weight="0.47740668" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="File Transfer" order="2" weight="0.12311901" />
-      <window_info anchor="bottom" id="Find" order="4" weight="0.2108295" />
+      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Database Console" order="9" sideWeight="0.48557693" weight="0.29185185" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.13261297" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5144231" side_tool="true" weight="0.21409214" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.20485584" />
+      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.50641024" side_tool="true" weight="0.2858546" />
+      <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.47106692" />
+      <window_info anchor="bottom" id="TODO" order="14" sideWeight="0.4957265" weight="0.32911393" />
+      <window_info anchor="bottom" id="Command Line Tools Console" order="15" show_stripe_button="false" sideWeight="0.4957265" weight="0.3281704" />
+      <window_info anchor="bottom" id="Docker" order="16" sideWeight="0.4818376" weight="0.27419356" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" weight="0.13125949" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1168,10 +1126,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Remove duplicate copies of Mobile_Detect.php, disable maintenance" />
-    <MESSAGE value="Small changes" />
-    <MESSAGE value="Unfinished: New receipt dialog" />
-    <MESSAGE value="Big checkin: unfinished grower portal progress" />
     <MESSAGE value="management demo" />
     <MESSAGE value="Progress check-in: Grower management" />
     <MESSAGE value="Add grower portal blocks to API" />
@@ -1192,23 +1146,14 @@
     <MESSAGE value="Make the progress bars look dope af" />
     <MESSAGE value="Grower Portal: Add block modal, finish consistency-keeping JS" />
     <MESSAGE value="Fix breaking bug" />
+    <MESSAGE value="Populate empty farms... and include block counts on BlocksAndMetadata" />
+    <MESSAGE value="Clean up icons" />
     <MESSAGE value="Grower Portal: enable xdebug, better document API" />
-    <option name="LAST_COMMIT_MESSAGE" value="Grower Portal: enable xdebug, better document API" />
+    <MESSAGE value="Adding blocks from grower portal now supported" />
+    <MESSAGE value="Branding / favicons" />
+    <option name="LAST_COMMIT_MESSAGE" value="Branding / favicons" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/application-server/src/grower/portal/API/getBlocksAndMetadata.php</url>
-          <line>64</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-      </breakpoints>
-      <breakpoints-dialog>
-        <breakpoints-dialog />
-      </breakpoints-dialog>
-      <option name="time" value="27" />
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="getBlocksAndMetadata.php">
         <watch expression="$blockOrganizationTree" language="PHP" />
@@ -1228,55 +1173,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/processEstimates.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/production/API/renameLines.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/config/000-default.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="10" column="59" lean-forward="true" selection-start-line="10" selection-start-column="59" selection-end-line="10" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/production/editedRunSubmit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="23" column="61" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/production/manageRun.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="13" column="8" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/production/chat_backend.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/production/editRun.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="288" column="67" selection-start-line="288" selection-start-column="67" selection-end-line="288" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-mobile.css" />
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-narrow.css" />
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-narrower.css" />
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-normal.css" />
     <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/css/style-wide.css" />
     <entry file="file://$PROJECT_DIR$/application-server/src/purchasing/API/getPurchaseHistory.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -1304,20 +1200,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/changepw.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-962">
-          <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://src:table:/405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/operationsData.grower_block_bushel_history">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://src:table:/405aefc4/ba9179e3-3f43-4bf4-a428-488684b68df1/operationsData.grower_block_bushel_history" />
     <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/API/updateEstimate.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
@@ -1396,9 +1279,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/addBlock.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="phar://$PROJECT_DIR$/composer.phar/src/bootstrap.php" />
     <entry file="phar://$PROJECT_DIR$/composer.phar/LICENSE" />
     <entry file="file://$PROJECT_DIR$/application-server/src/production/index.php">
@@ -1439,13 +1319,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application-server/src/manifest.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/manifest.json" />
     <entry file="file://$PROJECT_DIR$/settings.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
@@ -1502,31 +1376,93 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console_1.sql">
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/images/avatar.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/images/banner.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/growerCalendar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="34" column="46" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/changepw.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="35" column="53" selection-start-line="35" selection-start-column="53" selection-end-line="35" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/QAview.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="28" column="47" lean-forward="true" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/preharvest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="583">
+          <caret line="78" column="8" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/API/addBlock.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
+          <caret line="6" column="65" selection-start-line="6" selection-start-column="65" selection-end-line="6" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/manage/growerDrill.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/manage/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="2" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application-server/src/grower/manage/API/getGrowerListing.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ba9179e3-3f43-4bf4-a428-488684b68df1/console_1.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
           <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/API/getBlocksAndMetadata.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="59" column="18" lean-forward="true" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
+        <state relative-caret-position="3657">
+          <caret line="159" column="71" selection-start-line="159" selection-start-column="71" selection-end-line="159" selection-end-column="71" />
         </state>
       </provider>
     </entry>
+    <entry file="das://ba9179e3-3f43-4bf4-a428-488684b68df1/schema/operationsData/view/grower_gfbvs-listing">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://3a4f9c70-982d-41e8-890e-d8b33b004fcd/schema/growerReporting/view/ReceivedandEstimates">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/3a4f9c70-982d-41e8-890e-d8b33b004fcd/console.sql" />
     <entry file="file://$PROJECT_DIR$/application-server/src/grower/portal/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="526" column="41" selection-start-line="526" selection-start-column="41" selection-end-line="526" selection-end-column="41" />
-          <folding>
-            <element signature="n#style#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#transition#0;n#div#1;n#div#0;n#section#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#transition#0;n#div#1;n#div#0;n#section#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#select#0;n#td#1;n#tr#2;n#table#0;n#form#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="510">
+          <caret line="262" column="73" selection-start-line="262" selection-start-column="73" selection-end-line="262" selection-end-column="73" />
         </state>
       </provider>
     </entry>
