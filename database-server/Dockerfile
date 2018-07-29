@@ -1,6 +1,6 @@
 # packapps-db dockerization
 
-FROM mariadb:10.2
+FROM mariadb:10.3
 
 COPY config/my.cnf /etc/mysql/my.cnf
 ENV MYSQL_ROOT_PASSWORD="packapps"
