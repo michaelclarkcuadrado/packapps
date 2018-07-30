@@ -1,4 +1,4 @@
--- This is the schema of Packapps v2.0, which features containerization and the maintenance and storage apps.
+-- This is the schema of Packapps v2.0
 -- As the v1.0 database was not designed through migrations, this is the first migration and must maintain compatability with all data in 1.0.
 -- Any change from 1.0 must migrate the existing data first. v3.0 will do the same from 2.0's schema as well, and so on.
 
@@ -35,10 +35,9 @@ ALTER TABLE `operationsData`.`packapps_appProperties`
 /* Add existing packapps to above table */
 INSERT INTO packapps_appProperties (short_app_name, long_app_name, material_icon_name, isEnabled, Notes) VALUES ('production', 'Production Coordinator', 'list', 1, '');
 INSERT INTO packapps_appProperties (short_app_name, long_app_name, material_icon_name, isEnabled, Notes) VALUES ('storage', 'Storage Insights', 'track_changes', 1, '');
-INSERT INTO packapps_appProperties (short_app_name, long_app_name, material_icon_name, isEnabled, Notes) VALUES ('grower', 'Grower Portal', 'public', 1, '');
+INSERT INTO packapps_appProperties (short_app_name, long_app_name, material_icon_name, isEnabled, Notes) VALUES ('grower', 'Grower Management', 'public', 1, '');
 INSERT INTO packapps_appProperties (short_app_name, long_app_name, material_icon_name, isEnabled, Notes) VALUES ('quality', 'Quality Assurance Panel', 'check_circle', 1, '');
 INSERT INTO packapps_appProperties (short_app_name, long_app_name, material_icon_name, isEnabled, Notes) VALUES ('purchasing', 'Purchasing Dashboard', 'dashboard', 1, '');
-INSERT INTO packapps_appProperties (short_app_name, long_app_name, material_icon_name, isEnabled, Notes) VALUES ('maintenance', 'Maintenance Dashboard', 'build', 0, '');
 
 /* END SYSTEM RECORD KEEPING */
 
@@ -61,16 +60,13 @@ SET Role = isAuthorizedForPurchases + 1;
 ALTER TABLE `purchasing_UserData`
   DROP `isAuthorizedForPurchases`;
 
-/* Add maintenance, storage columns to master_users */
+/* Add storage, grower portal columns to master_users */
 ALTER TABLE master_users
   ADD COLUMN allowedStorage TINYINT(1) DEFAULT 0 NOT NULL
   AFTER allowedProduction;
 ALTER TABLE master_users
-  ADD COLUMN allowedMaintenance TINYINT(1) DEFAULT 0 NOT NULL
-  AFTER allowedStorage;
-ALTER TABLE master_users
   ADD COLUMN allowedGrower TINYINT(1) DEFAULT 0 NOT NULL
-  AFTER allowedMaintenance;
+  AFTER allowedProduction;
 
 /* Create new UserData tables for new packapps and pre-populate with usernames */
 CREATE TABLE `operationsData`.`storage_UserData` (
@@ -86,20 +82,6 @@ ALTER TABLE `storage_UserData`
   ON UPDATE CASCADE;
 INSERT INTO storage_UserData (UserName) SELECT username
                                         FROM master_users;
-
-CREATE TABLE `operationsData`.`maintenance_UserData` (
-  `UserName` VARCHAR(255)                             NOT NULL,
-  `Role`     ENUM ('readonly', 'worker', 'readwrite') NOT NULL
-)
-  ENGINE = InnoDB;
-ALTER TABLE `operationsData`.`maintenance_UserData`
-  ADD PRIMARY KEY (`UserName`);
-ALTER TABLE `maintenance_UserData`
-  ADD CONSTRAINT `maintenanceuserdata2masterusers` FOREIGN KEY (`UserName`) REFERENCES `master_users` (`username`)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE;
-INSERT INTO maintenance_UserData (UserName) SELECT username
-                                            FROM master_users;
 
 CREATE TABLE `operationsData`.`grower_UserData` (
   `UserName` VARCHAR(255)              NOT NULL,
@@ -138,9 +120,6 @@ INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, 
 INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes)
 VALUES ('purchasing', '1', 'No Purchases', 'Orange', 'Can create items, take inventory, and receive inventory, but cannot register new purchases.');
 INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('purchasing', '2', 'Full', 'Green', 'Full access to all purchasing functions.');
-INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('maintenance', '1', 'Read-Only', 'Red', '');
-INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('maintenance', '2', 'Worker', 'Orange', '');
-INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('maintenance', '3', 'Full', 'Green', '');
 INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('storage', '1', 'Read-Only', 'Red', '');
 INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('storage', '2', 'Forklift', 'Orange', '');
 INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('storage', '3', 'Receiving', 'Orange', '');
@@ -392,152 +371,6 @@ DROP TABLE purchasing_EnvioAddon_envioAssets;
 DROP TABLE purchasing_EnvioAddon_ItemInventoryFractions;
 
 /* END REMOVE BOM TABLES */
-
-/* MAINTENANCE PACKAPP TABLES */
-
-/* Add integration into purchasing */
-INSERT INTO purchasing_ItemTypes (Type_Description, UnitOfMeasure, WeeksToResupply) VALUES ('Maintenance', 'Parts', 0);
-
-CREATE TABLE `maintenance_purposes` (
-  `purpose_id` INT(11)      NOT NULL AUTO_INCREMENT,
-  `Purpose`    VARCHAR(255) NOT NULL,
-  `Color`      VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`purpose_id`)
-)
-  ENGINE = InnoDB
-  DEFAULT CHARSET = latin1;
-
-/* Fill in seed data */
-INSERT INTO maintenance_purposes (Purpose, Color) VALUES ('Replacement', 'yellow');
-INSERT INTO maintenance_purposes (Purpose, Color) VALUES ('Repair', 'blue');
-INSERT INTO maintenance_purposes (Purpose, Color) VALUES ('Improvement', 'green');
-INSERT INTO maintenance_purposes (Purpose, Color) VALUES ('New System', 'orange');
-INSERT INTO maintenance_purposes (Purpose, Color) VALUES ('R&D', 'red');
-
-
-CREATE TABLE `maintenance_issues` (
-  `issue_id`             INT(11)       NOT NULL AUTO_INCREMENT,
-  `purpose_id`           INT(11)       NOT NULL,
-  `title`                VARCHAR(255)  NOT NULL,
-  `issue_description`    VARCHAR(1023) NOT NULL,
-  `createdBy`            VARCHAR(255)  NOT NULL,
-  `dateCreated`          DATETIME      NOT NULL,
-  `isConfirmed`          TINYINT(1)    NOT NULL,
-  `confirmedBy`          VARCHAR(255)  NULL,
-  `dateConfirmed`        DATETIME      NOT NULL,
-  `isInProgress`         TINYINT(1)    NOT NULL,
-  `inProgressBy`         VARCHAR(255)  NULL,
-  `dateInProgress`       DATETIME      NOT NULL,
-  `isCompleted`          TINYINT(1)    NOT NULL,
-  `completedBy`          VARCHAR(255)  NULL,
-  `solution_description` VARCHAR(1023) NOT NULL,
-  `dateCompleted`        DATETIME      NOT NULL,
-  `assignedTo`           VARCHAR(255)  NULL,
-  `Location`             INT(11)       NULL,
-  `hasPhotoAttached`     TINYINT(1)    NOT NULL,
-  `needsParts`           TINYINT(1)    NOT NULL,
-  PRIMARY KEY (`issue_id`),
-  KEY `createdBy` (`createdBy`),
-  KEY `title` (`title`),
-  KEY `confirmedBy` (`confirmedBy`),
-  KEY `inProgressBy` (`inProgressBy`),
-  KEY `completedBy` (`completedBy`),
-  KEY `Assignee` (`assignedTo`),
-  KEY `Location` (`Location`),
-  KEY `partsNeeded` (`needsParts`),
-  KEY `purpose` (`purpose_id`),
-  CONSTRAINT `maintenance_issues_ibfk_1` FOREIGN KEY (`assignedTo`) REFERENCES `packapps_master_users` (`username`),
-  CONSTRAINT `maintenance_issues_ibfk_2` FOREIGN KEY (`completedBy`) REFERENCES `packapps_master_users` (`username`),
-  CONSTRAINT `maintenance_issues_ibfk_3` FOREIGN KEY (`confirmedBy`) REFERENCES `packapps_master_users` (`username`),
-  CONSTRAINT `maintenance_issues_ibfk_4` FOREIGN KEY (`createdBy`) REFERENCES `packapps_master_users` (`username`),
-  CONSTRAINT `maintenance_issues_ibfk_5` FOREIGN KEY (`inProgressBy`) REFERENCES `packapps_master_users` (`username`),
-  CONSTRAINT `purpose` FOREIGN KEY (`purpose_id`) REFERENCES `maintenance_purposes` (`purpose_id`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-)
-  ENGINE = InnoDB
-  DEFAULT CHARSET = latin1;
-
-CREATE TABLE `maintenance_issues2purchasing_items` (
-  `issue_id`     INT(11) NOT NULL,
-  `part_id`      INT(11) NOT NULL,
-  `numberNeeded` INT(11) NOT NULL,
-  KEY `issue_id` (`issue_id`),
-  KEY `part_id` (`part_id`),
-  CONSTRAINT `issueid` FOREIGN KEY (`issue_id`) REFERENCES `maintenance_issues` (`issue_id`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `itemid` FOREIGN KEY (`part_id`) REFERENCES `purchasing_Items` (`Item_ID`)
-    ON DELETE RESTRICT
-    ON UPDATE RESTRICT
-)
-  ENGINE = InnoDB
-  DEFAULT CHARSET = latin1;
-
-CREATE TABLE `maintenance_systems` (
-  `system_id`   INT(11)      NOT NULL AUTO_INCREMENT,
-  `system_name` VARCHAR(255) NOT NULL,
-  `location_id` INT(11)      NOT NULL,
-  PRIMARY KEY (`system_id`)
-)
-  ENGINE = InnoDB
-  DEFAULT CHARSET = latin1;
-
-CREATE TABLE `maintenance_subsystems` (
-  `system_id`      INT(11)      NOT NULL,
-  `subsystem_id`   INT(11)      NOT NULL AUTO_INCREMENT,
-  `subsystem_name` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`subsystem_id`),
-  KEY `subsystem2systems` (`system_id`),
-  CONSTRAINT `subsystem2systems` FOREIGN KEY (`system_id`) REFERENCES `maintenance_systems` (`system_id`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-)
-  ENGINE = InnoDB
-  DEFAULT CHARSET = latin1;
-
-CREATE TABLE `maintenance_subsystemComponents` (
-  `subsystem_id`   INT(11) NOT NULL,
-  `component_id`   INT(11) NOT NULL AUTO_INCREMENT,
-  `component_name` INT(11) NOT NULL,
-  PRIMARY KEY (`component_id`),
-  KEY `components2subsystems` (`subsystem_id`),
-  CONSTRAINT `components2subsystems` FOREIGN KEY (`subsystem_id`) REFERENCES `maintenance_subsystems` (`subsystem_id`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-)
-  ENGINE = InnoDB
-  DEFAULT CHARSET = latin1;
-
-CREATE TABLE `maintenance_part_info` (
-  `item_id`      INT(11)      NOT NULL,
-  `Manufacturer` VARCHAR(255) NOT NULL,
-  `Part_number`  VARCHAR(255) NOT NULL,
-  `system_id`    INT(11) DEFAULT NULL,
-  `subsystem_id` INT(11) DEFAULT NULL,
-  `component_id` INT(11) DEFAULT NULL,
-  KEY `part_id` (`item_id`),
-  KEY `system` (`system_id`),
-  KEY `subsystem` (`subsystem_id`),
-  KEY `component` (`component_id`),
-  CONSTRAINT `component` FOREIGN KEY (`component_id`) REFERENCES `maintenance_subsystemComponents` (`component_id`)
-    ON DELETE SET NULL
-    ON UPDATE SET NULL,
-  CONSTRAINT `part_id` FOREIGN KEY (`item_id`) REFERENCES `purchasing_Items` (`Item_ID`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `subsystem` FOREIGN KEY (`subsystem_id`) REFERENCES `maintenance_subsystems` (`subsystem_id`)
-    ON DELETE SET NULL
-    ON UPDATE SET NULL,
-  CONSTRAINT `system` FOREIGN KEY (`system_id`) REFERENCES `maintenance_systems` (`system_id`)
-    ON DELETE SET NULL
-    ON UPDATE SET NULL
-)
-  ENGINE = InnoDB
-  DEFAULT CHARSET = latin1;
-
-
-/* END MAINTENANCE PACKAPP TABLES */
 
 /* MOVE GROWER_PORTAL TABLES into operationsData, for packapp-erization of grower portal */
 

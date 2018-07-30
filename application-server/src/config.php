@@ -21,10 +21,10 @@ $operationsDatabase = 'operationsData';
 
 //AWS S3 buckets
 $availableBuckets = array(
-    'purchasing' => 'packapps-purchasing-assets',
     'quality' => 'packapps-quality-uploadedimages',
     'backup' => 'packapps-sqldump-backups',
-    'maintenance' => 'packapps-maintenance-photos');
+    'grower' => 'packapps-grower-files',
+    );
 //To access a public obj, prepend bucket name and append object key.
 $amazonAWSURL = '.s3.amazonaws.com/';
 
