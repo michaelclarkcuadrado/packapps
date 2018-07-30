@@ -743,6 +743,7 @@ input[type="reset"]:active,
     background-color: #D5DFE5;
     cursor: pointer;
     max-height: fit-content;
+    max-width: 450px;
 }
 
 .farm_comm_var_selector > .fcv_selector_info_wrapper {
@@ -756,6 +757,7 @@ input[type="reset"]:active,
     border-radius: 5px;
     background-color: #D5DFE5;
     max-height: fit-content;
+    max-width: 650px;
 }
 
 .block-deleted-bar {

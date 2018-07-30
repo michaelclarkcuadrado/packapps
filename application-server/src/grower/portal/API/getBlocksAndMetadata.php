@@ -125,7 +125,7 @@ foreach ($blockOrganizationTree['farms'] as $farmID => &$farmObj) {
                     $numBlocksVar += 1;
 
                     //add estimates needed
-                    $isConfirmedEstimate = (($blockObj['bushelHistory'][$curYear]['est'] !== $blockObj['bushelHistory'][$curYear - 1]['act']) || ($blockObj['isSameAsLastYear'] > 0));
+                    $isConfirmedEstimate = ((count($blockObj['bushelHistory']) === 1) || ($blockObj['bushelHistory'][$curYear]['est'] !== $blockObj['bushelHistory'][$curYear - 1]['act']) || ($blockObj['isSameAsLastYear'] > 0));
                     if (!$isConfirmedEstimate) {
                         $farmEstimatesNeeded += 1;
                         $commEstimatesNeeded += 1;

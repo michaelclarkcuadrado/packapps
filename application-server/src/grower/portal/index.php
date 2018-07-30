@@ -99,12 +99,13 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
             <p v-if="deliveries.length >= 75">The last 75 trucks you sent to us.</p>
             <p v-else>All {{deliveries.length}} deliveries you sent to us this year.</p>
             <p>
-                <button id="hider"
+                <button v-on:click="isShowing = !isShowing"
                         class="button"><span
-                            class="icon fa-eye-slash"> View/Hide Receiving Data ({{deliveries.length}} receipts)</span>
+                            class="icon" :class="[isShowing ? 'fa-eye-slash' : 'fa-eye']"> {{ (isShowing ? 'Hide' : 'Show') }} Receiving Data ({{deliveries.length}} receipts)</span>
                 </button>
             </p>
-            <div id="longtab" style="display:none">
+            <transition>
+            <div v-show="isShowing"> <!-- TODO dear god rewrite me responsive -->
                 <table id="truckDeliveries" border='1px'>
                     <thead>
                     <tr>
@@ -164,6 +165,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                     </tbody>
                 </table>
             </div>
+            </transition>
         </div>
     </section>
     <!-- Crop Estimates -->
@@ -290,7 +292,11 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                                 <span v-else class="fa fa-repeat actionButtons" title="Open Block" v-on:click="retireBlock(block, curFarmIndex, curCommodityIndex, curVarietyIndex)"></span>
                             </div>
                             <transition name="needsEstimateEase">
-                                <div v-if="(block['isDeleted'] > 0 ? false : (block['isSameAsLastYear'] > 0 ? false : (block['bushelHistory'][curYear]['est'] == block['bushelHistory'][curYear - 1]['act'] ? true : false)))"
+                                <div v-if="(Object.keys(block.bushelHistory).length === 1 ? false :
+                                                (block['isDeleted'] > 0 ? false :
+                                                    (block['isSameAsLastYear'] > 0 ? false :
+                                                        (block['bushelHistory'][curYear]['est'] == block['bushelHistory'][curYear - 1]['act'] ? true
+                                                            : false))))"
                                      class="alert_estimates_pending mdl-shadow--2dp" style="padding-right:10px">
                                     <i class="fa fa-lg fa-exclamation-circle"></i>
                                     Needs Estimate
@@ -346,13 +352,13 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                                                 <input step="1" type="number" min="0" v-model.number="valueObj.est"
                                                        v-on:change="updateEstimate(block, curFarmIndex, curCommodityIndex, curVarietyIndex)"
                                                        :disabled="block['isSameAsLastYear'] > 0" min="0" style="width: 90px; margin: 5px 0;">
-                                                <span v-if="(block['bushelHistory'][curYear]['est'] == block['bushelHistory'][curYear - 1]['act'])" class="smallEstimatedTag">
+                                                <span v-if="(Object.keys(block.bushelHistory).length === 1 ? false : (block['bushelHistory'][curYear]['est'] == block['bushelHistory'][curYear - 1]['act']))" class="smallEstimatedTag">
                                                     <div>
                                                         <input v-model="block.isSameAsLastYear" true-value="1" false-value="0"
                                                                v-on:change="updateEstimate(block, curFarmIndex, curCommodityIndex, curVarietyIndex)" type="checkbox"> Keep this number?
                                                     </div>
                                                 </span>
-                                                <span v-else class="smallEstimatedTag">
+                                                <span v-else-if="Object.keys(block.bushelHistory).length !== 1" class="smallEstimatedTag">
                                                         <button v-on:click="resetBlockEstimate(block, curFarmIndex, curCommodityIndex, curVarietyIndex)">Reset</button>
                                                 </span>
                                             </div>
@@ -419,6 +425,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
     const deliveriesTableVue = new Vue({
         el: "#deliveriesvue",
         data: {
+            isShowing: false,
             deliveries: []
         },
         methods: {
@@ -519,7 +526,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                     $.getJSON('API/addFarm.php', {newFarmName: newFarmName}, function (data) {
                         let newIndex = self.blockManagementTree['farms'].push({
                             name: newFarmName,
-                            id: data.ID,
+                            ID: data.ID,
                             commodities: [],
                             bushelsReceived: 0,
                             bushelsAnticipated: 0,
@@ -595,6 +602,10 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                 blockTrend: function (bushelHistoryObj) {
                     const years = [];
                     const bushelVals = [];
+                    // bushel history will only be one year deep on new blocks. report no trend.
+                    if (Object.keys(bushelHistoryObj).length === 1){
+                        return 0;
+                    }
                     for (let year in bushelHistoryObj) {
                         if (bushelHistoryObj.hasOwnProperty(year)) {
                             years.push(year);
@@ -665,8 +676,8 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                     let newVarietyNumBlockTotal = 0;
                     for (let blockID in blocks) {
                         if (blocks.hasOwnProperty(blockID)) {
-                            newVarietyAnticipatedTotal += (blocks[blockID].isDeleted > 0 ? 0 : (blocks[blockID].isFinished > 0 ? parseInt(blocks[blockID].bushelsReceived) : parseInt(blocks[blockID].bushelHistory[this.curYear].est)));
-                            newVarietyEstimateNeededTotal += (blocks[blockID].isDeleted > 0 ? 0 : (blocks[blockID].isSameAsLastYear > 0 ? 0 : (blocks[blockID]['bushelHistory'][this.curYear]['est'] != blocks[blockID]['bushelHistory'][this.curYear - 1]['act'] ? 0 : 1)));
+                            newVarietyAnticipatedTotal += (blocks[blockID].isDeleted > 0 ? 0 : (blocks[blockID].isFinished > 0 ? parseInt(blocks[blockID].bushelsReceived) : parseInt(blocks[blockID]['bushelHistory'][this.curYear].est)));
+                            newVarietyEstimateNeededTotal += (Object.keys(blocks[blockID]['bushelHistory']).length === 1 ? 0 : blocks[blockID].isDeleted > 0 ? 0 : (blocks[blockID].isSameAsLastYear > 0 ? 0 : (blocks[blockID]['bushelHistory'][this.curYear]['est'] !== blocks[blockID]['bushelHistory'][this.curYear - 1]['act'] ? 0 : 1)));
                             newVarietyNumBlockTotal += (blocks[blockID].isDeleted > 0 ? 0 : 1);
                         }
                     }
@@ -702,7 +713,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                     }
                     this.blockManagementTree.farms[farmIndex]['bushelsAnticipated'] = newFarmAnticipatedtotal;
                     this.blockManagementTree.farms[farmIndex]['estimatesNeeded'] = newFarmEstimateNeededTotal;
-                    this.blockManagementTree.farms[farmIndex]['blockQuantity'] = newFarmNumBlocks0Total;
+                    this.blockManagementTree.farms[farmIndex]['blockQuantity'] = newFarmNumBlocksTotal;
                 },
                 toggleFinished: function (block, farmIndex, commIndex, varIndex) {
                     const self = this;
@@ -740,7 +751,6 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                     switch (this.curSelectionMode) {
                         case 0: {
                             //preserve nothing. No state.
-                            console.log("PRESERVING NOTHING");
                             replaceTree();
                             self.restoreCleanState();
                             break;
@@ -847,9 +857,6 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
     $(document).ready(function () {
         //attach listeners
         getCommoditiesTree();
-        $("#hider").click(function () {
-            $("#longtab").slideToggle();
-        });
         $("#optiontoggle").click(function () { //for desktop-view sidebar
             $("#options").slideToggle();
             $("#optionstab").toggleClass("fa-chevron-down fa-minus");
