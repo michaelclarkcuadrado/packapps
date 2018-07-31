@@ -37,7 +37,6 @@ INSERT INTO packapps_appProperties (short_app_name, long_app_name, material_icon
 INSERT INTO packapps_appProperties (short_app_name, long_app_name, material_icon_name, isEnabled, Notes) VALUES ('storage', 'Storage Insights', 'track_changes', 1, '');
 INSERT INTO packapps_appProperties (short_app_name, long_app_name, material_icon_name, isEnabled, Notes) VALUES ('grower', 'Grower Management', 'public', 1, '');
 INSERT INTO packapps_appProperties (short_app_name, long_app_name, material_icon_name, isEnabled, Notes) VALUES ('quality', 'Quality Assurance Panel', 'check_circle', 1, '');
-INSERT INTO packapps_appProperties (short_app_name, long_app_name, material_icon_name, isEnabled, Notes) VALUES ('purchasing', 'Purchasing Dashboard', 'dashboard', 1, '');
 
 /* END SYSTEM RECORD KEEPING */
 
@@ -48,17 +47,6 @@ ALTER TABLE `quality_UserData`
   DROP `isSectionManager`;
 ALTER TABLE `production_UserData`
   DROP `isSectionManager`;
-ALTER TABLE `purchasing_UserData`
-  DROP `isSectionManager`;
-
-/* Update purchasing permissions */
-ALTER TABLE `purchasing_UserData`
-  ADD `Role` INT NOT NULL DEFAULT '1'
-  AFTER `isAuthorizedForPurchases`;
-UPDATE `purchasing_UserData`
-SET Role = isAuthorizedForPurchases + 1;
-ALTER TABLE `purchasing_UserData`
-  DROP `isAuthorizedForPurchases`;
 
 /* Add storage, grower portal columns to master_users */
 ALTER TABLE master_users
@@ -117,9 +105,6 @@ INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, 
 INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('quality', '3', 'Full', 'Green', 'Complete access to QA system functions');
 INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('production', '1', 'Read-Only', 'Orange', 'Access to schedule, inventory, and chat, but no edits.');
 INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('production', '2', 'Full', 'Green', 'Complete access to production system with edits.');
-INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes)
-VALUES ('purchasing', '1', 'No Purchases', 'Orange', 'Can create items, take inventory, and receive inventory, but cannot register new purchases.');
-INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('purchasing', '2', 'Full', 'Green', 'Full access to all purchasing functions.');
 INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('storage', '1', 'Read-Only', 'Red', '');
 INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('storage', '2', 'Forklift', 'Orange', '');
 INSERT INTO packapps_app_permissions (packapp, permissionLevel, Meaning, Color, Notes) VALUES ('storage', '3', 'Receiving', 'Orange', '');
@@ -364,13 +349,21 @@ ALTER TABLE `quality_UserData`
 
 /* END MIGRATE OLD QUALITY TABLES */
 
-/* REMOVE BOM TABLES*/
+/* PURGE MAINTENANCE AND PURCHASING TABLES */
 
 DROP TABLE purchasing_EnvioAddon_EnvioAssets2purchasingItems;
 DROP TABLE purchasing_EnvioAddon_envioAssets;
 DROP TABLE purchasing_EnvioAddon_ItemInventoryFractions;
+DROP TABLE purchasing_Inventory_TimeSeries;
+DROP TABLE purchasing_items2suppliers;
+DROP TABLE purchasing_purchases2items;
+DROP TABLE purchasing_purchase_history;
+DROP TABLE purchasing_Items;
+DROP TABLE purchasing_ItemTypes;
+DROP TABLE purchasing_Suppliers;
+DROP TABLE purchasing_UserData;
 
-/* END REMOVE BOM TABLES */
+/* END PURGE MAINTENANCE AND PURCAHASING TABLES */
 
 /* MOVE GROWER_PORTAL TABLES into operationsData, for packapp-erization of grower portal */
 
