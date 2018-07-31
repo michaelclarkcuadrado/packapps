@@ -81,15 +81,15 @@ $userinfo = packapps_authenticate_user();
                     </div>
                     <Br>
                     <div class="mdl-grid">
-                        <div class="mdl-layout-spacer"></div>
-                        <div class="mdl-cell mdl-cell--4-col">
+<!--                        <div class="mdl-layout-spacer"></div>-->
+                        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-phone mdl-cell--8-col-tablet"  style="min-height: 125px">
                             <canvas v-bind:id="grower.GrowerCode + 'growthChart'"></canvas>
                         </div>
-                        <div class="mdl-cell mdl-cell--4-col">
+                        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-phone mdl-cell--8-col-tablet" style="min-height: 125px;">
                             <canvas v-bind:id="grower.GrowerCode + 'pieChart'"></canvas>
                             {{initChart(grower.GrowerCode)}}
                         </div>
-                        <div class="mdl-layout-spacer"></div>
+<!--                        <div class="mdl-layout-spacer"></div>-->
                     </div>
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
