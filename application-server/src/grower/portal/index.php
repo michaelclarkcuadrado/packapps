@@ -75,7 +75,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
 <!-- Main -->
 <div id="main">
     <!-- Intro -->
-    <section id="top" class="one dark cover" style="background-image: url('images/banner.jpg')">
+    <section id="top" class="one dark cover">
         <div class="container">
             <header>
                 <h2 class="alt"><strong><?php echo $userinfo['GrowerName'] ?></strong> Grower Control Panel<br/>
@@ -148,7 +148,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                         </td>
                         <td>
                             <abbr :title="delivery.commodity_name">
-                                <img :src="'images/' + delivery.commodity_name + '.png'" height="25px" width="25px"/>
+                                <img :src="'images/commodity_logos/' + delivery.commodity_name + '.png'" height="25px" width="25px"/>
                             </abbr>
                             {{delivery.VarietyName}}
                         </td>
@@ -226,7 +226,7 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
                         <div v-for="(comm, comm_id) in blockManagementTree['farms'][curFarmIndex]['commodities']" v-on:click="selectCommodity(comm_id)"
                              class="farm_comm_var_selector mdl-cell mdl-cell--4-col mdl-shadow--4dp">
                             <div style="display: inline-block">
-                                <h3 style="display: inline-block"><img :src="'images/'+comm.name+'.png'"> {{ comm.name }} </h3>
+                                <h3 style="display: inline-block"><img :src="'images/commodity_logos/'+comm.name+'.png'"> {{ comm.name }} </h3>
                             </div>
                             <hr style="width: 85%">
                             <div class="fcv_selector_info_wrapper">

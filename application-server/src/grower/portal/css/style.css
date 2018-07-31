@@ -696,14 +696,18 @@ input[type="reset"]:active,
 }
 
 #main > section.cover {
-    padding: 6em 0;
+    padding: 4em 0;
     background-size: cover;
     background-position: center center;
 }
 
 #main > section.one {
     background-color: #81918E;
-    background-image: url('../images/banner.jpg');
+    background-image: url('../images/basket.png');
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: bottom left;
+    background-blend-mode: soft-light;
 }
 
 #main > section.two {
@@ -883,7 +887,7 @@ input[type="reset"]:active,
     }
 
     #main section.cover {
-        padding: 5em 0;
+        padding: 4em 0;
     }
 }
 
