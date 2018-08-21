@@ -846,7 +846,11 @@ $numPreHarvest = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT COUNT(*) AS co
             },
             mounted: function () {
                 const self = this;
-                $.getJSON('API/getBlocksAndMetadata.php', function (data) {
+                let argsObj = {};
+                if(window.location.hash.substr(1) === "demodeliveries"){
+                    argsObj.demodeliveries = true;
+                }
+                $.getJSON('API/getBlocksAndMetadata.php', argsObj, function (data) {
                     self.blockManagementTree = data;
                 });
             },

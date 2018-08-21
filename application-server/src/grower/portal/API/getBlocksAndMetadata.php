@@ -94,10 +94,19 @@ while ($row = mysqli_fetch_assoc($query)) {
         //Because multiple rows (that share a PK) have the same bushel delivery number repeated, only sum the
         // first encounter of a PK. Use $blocksBushelsDeliveredSummed map to keep track of which they are
         if (!array_key_exists($row['PK'], $blocksBushelsDeliveredSummed)) {
-            $blockOrganizationTree['farms'][$row['farmID']]['bushelsReceived'] += $row['bushelsReceived'];
-            $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['bushelsReceived'] += $row['bushelsReceived'];
-            $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['varieties'][$row['variety_ID']]['bushelsReceived'] += $row['bushelsReceived'];
-            $blocksBushelsDeliveredSummed[$row['PK']] = true;
+            //demo mode adds random delivery numbers to the data, activated by get param.
+            if($_GET['demodeliveries']){
+                $rand = rand(0, 2000);
+                $blockOrganizationTree['farms'][$row['farmID']]['bushelsReceived'] += $rand;
+                $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['bushelsReceived'] += $rand;
+                $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['varieties'][$row['variety_ID']]['bushelsReceived'] += $rand;
+                $blocksBushelsDeliveredSummed[$row['PK']] = true;
+            } else {
+                $blockOrganizationTree['farms'][$row['farmID']]['bushelsReceived'] += $row['bushelsReceived'];
+                $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['bushelsReceived'] += $row['bushelsReceived'];
+                $blockOrganizationTree['farms'][$row['farmID']]['commodities'][$row['commodity_ID']]['varieties'][$row['variety_ID']]['bushelsReceived'] += $row['bushelsReceived'];
+                $blocksBushelsDeliveredSummed[$row['PK']] = true;
+            }
         }
     }
 }
