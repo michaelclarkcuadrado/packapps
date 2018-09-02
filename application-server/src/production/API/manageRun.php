@@ -5,7 +5,7 @@
  * Date: 5/25/2016
  * Time: 11:24 AM
  */
-require '../config.php';
+require '../../config.php';
 //authentication
 if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     die("<script>window.location.replace('/')</script>");

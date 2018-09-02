@@ -69,7 +69,6 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
 
     <!-- Your styles -->
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="scripts/themes/default/style.min.css"/>
 </head>
 <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -77,7 +76,7 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
         class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
         <div class="mdl-layout--large-screen-only mdl-layout__header-row">
             <h3>
-                Production Dashboard
+                Production Plan
                 <small style='vertical-align:bottom; font-size: small'><? echo $companyName ?></small>
             </h3>
             <div class="mdl-layout-spacer"></div>
@@ -217,9 +216,7 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
 </main>
 </div>
 <script src="scripts/material.min.js"></script>
-<script src="scripts/main.js"></script>
 <script src="scripts/jquery.min.js"></script>
-<script src="scripts/jstree.min.js"></script>
 <script language="JavaScript">
 
     //init page
@@ -311,7 +308,7 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
                     stringToReturn += " <li style='padding: 0; <?echo($RealName['Role'] == 'Restricted' ? "line-height: 65px" : '')?>' class=\"mdl-list__item\"><span <?echo($RealName['Role'] == 'Restricted' ? "style='margin:0; word-wrap: break-word; font-size: 255%; font-family: Overpass';" : '')?> class=\"mdl-list__item-primary-content\"><i class=\"material-icons mdl-list__item-icon\">chevron_right</i>" +
                         data[i]['madeArray'][j][0] + ' | ' + data[i]['madeArray'][j][2] + (data[i]['madeArray'][j][1] > 0 || data[i]['madeArray'][j][1].charAt(0) == '(' ? "<span style='margin-left:5px;padding:4px;background-color:#ff4081;color:white;font-weight:600;font-size:larger; border-radius:5px'>" + data[i]['madeArray'][j][1] + "</span>" : '') + "</span></li>";
                 }
-                stringToReturn += "</ul>Updated on " + data[i]['lastEdited'] + "</div>" + (numMatchingRuns == 1 && line != 'asdf' && line != 'singleRun' <?echo($RealName['Role'] != 'Production' ? "&& 1 == 2" : "")?>? "<div class=\"mdl-card__actions\"><a href=\"#\" onclick='$.get(\"manageRun.php\", {finish: " + data[i]['RunID'] + "});snack(\"One moment, please. Finishing run...\", 3000);$(this).parent().parent().parent().slideUp();' class=\"mdl-button\">FINISH AND LOAD NEXT RUN</a></div>" : '') + "</div><button class=\"mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon\" id=\"" + data[i]['RunID'] + "\"><i class=\"material-icons\">more_vert</i></button><ul class=\"mdl-menu mdl-js-menu mdl-menu--bottom-right\" for=\"" + data[i]['RunID'] + "\"><li onclick='window.open(\"editRun.php?run=" + data[i]['RunID'] + "\", \"Edit Run\", \"scrollbars=1,height=700,width=1050\");' class=\"mdl-menu__item\">Edit</li><li onclick='window.open(\"editRun.php?run=" + data[i]['RunID'] + "&duplicate=1\", \"Edit Run\", \"scrollbars=1,height=700,width=1050\");' class=\"mdl-menu__item\">Copy into new run</li><li onclick='$.get(\"manageRun.php\", {delete: " + data[i]['RunID'] + "});snack(\"One moment... Deleting Run.\", 3000);$(this).parent().parent().parent().slideUp();' class=\"mdl-menu__item\">Delete</li>" + (line == 'asdf' || line == 'singleRun' ? "<li onclick='$.get(\"manageRun.php\", {finish: " + data[i]['RunID'] + "});snack(\"One moment, please. Restoring run...\", 3000);$(this).parent().parent().parent().slideUp();' class=\"mdl-menu__item\">Unfinish run</li>" : '') + "</ul></section>";
+                stringToReturn += "</ul>Updated on " + data[i]['lastEdited'] + "</div>" + (numMatchingRuns == 1 && line != 'asdf' && line != 'singleRun' <?echo($RealName['Role'] != 'Production' ? "&& 1 == 2" : "")?>? "<div class=\"mdl-card__actions\"><a href=\"#\" onclick='$.get(\"API/manageRun.php\", {finish: " + data[i]['RunID'] + "});snack(\"One moment, please. Finishing run...\", 3000);$(this).parent().parent().parent().slideUp();' class=\"mdl-button\">FINISH AND LOAD NEXT RUN</a></div>" : '') + "</div><button class=\"mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon\" id=\"" + data[i]['RunID'] + "\"><i class=\"material-icons\">more_vert</i></button><ul class=\"mdl-menu mdl-js-menu mdl-menu--bottom-right\" for=\"" + data[i]['RunID'] + "\"><li onclick='window.open(\"editRun.php?run=" + data[i]['RunID'] + "\", \"Edit Run\", \"scrollbars=1,height=700,width=1050\");' class=\"mdl-menu__item\">Edit</li><li onclick='window.open(\"editRun.php?run=" + data[i]['RunID'] + "&duplicate=1\", \"Edit Run\", \"scrollbars=1,height=700,width=1050\");' class=\"mdl-menu__item\">Copy into new run</li><li onclick='$.get(\"API/manageRun.php\", {delete: " + data[i]['RunID'] + "});snack(\"One moment... Deleting Run.\", 3000);$(this).parent().parent().parent().slideUp();' class=\"mdl-menu__item\">Delete</li>" + (line == 'asdf' || line == 'singleRun' ? "<li onclick='$.get(\"API/manageRun.php\", {finish: " + data[i]['RunID'] + "});snack(\"One moment, please. Restoring run...\", 3000);$(this).parent().parent().parent().slideUp();' class=\"mdl-menu__item\">Unfinish run</li>" : '') + "</ul></section>";
             }
         }
         if (numMatchingRuns == 0) {
@@ -549,26 +546,26 @@ Protip: putting ?displayLine=blue or ?displayLine=gray at the end of the url wil
     }
 
     function sendMessage(line, message) {
-        $.post("chat_backend.php", {line: line, message: message}, function () {
+        $.post("API/chat_backend.php", {line: line, message: message}, function () {
             $("#" + line + "message").val("");
         })
     }
 
     function refreshChat() {
         if (readCookie('blue') != null) {
-            $.post("chat_backend.php", {line: "blue"}, function (data) {
+            $.post("API/chat_backend.php", {line: "blue"}, function (data) {
                 checkIfPinged(data, 0);
                 $("#Bluechat").val(data).scrollTop(($('#Bluechat').length ? $('#Bluechat')[0].scrollHeight : 0));
             });
         }
         if (readCookie('gray') != null) {
-            $.post("chat_backend.php", {line: "gray"}, function (data) {
+            $.post("API/chat_backend.php", {line: "gray"}, function (data) {
                 checkIfPinged(data, 1);
                 $("#Graychat").val(data).scrollTop(($('#Graychat').length ? $('#Graychat')[0].scrollHeight : 0));
             });
         }
         if (readCookie('presizer') != null) {
-            $.post("chat_backend.php", {line: "presizer"}, function (data) {
+            $.post("API/chat_backend.php", {line: "presizer"}, function (data) {
                 checkIfPinged(data, 2);
                 $("#Presizerchat").val(data).scrollTop(($('#Presizerchat').length ? $('#Presizerchat')[0].scrollHeight : 0));
             });

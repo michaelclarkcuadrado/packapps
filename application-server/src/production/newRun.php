@@ -43,7 +43,7 @@ while($line = mysqli_fetch_assoc($lines)){
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <form method="post" action="newRunSubmit.php">
+    <form method="post" action="API/newRunSubmit.php">
         <h4 class="mdl-dialog__title">Create New Run</h4>
         <div class="mdl-dialog__content">
             <table cellspacing="0" width="100%">
@@ -271,7 +271,6 @@ while($line = mysqli_fetch_assoc($lines)){
     </form>
 </body>
 <script src="scripts/material.min.js"></script>
-<script src="scripts/main.js"></script>
 <script src="scripts/jquery.min.js"></script>
 <script language="JavaScript">
     var amountMadeRows = 1;

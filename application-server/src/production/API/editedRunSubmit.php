@@ -1,6 +1,6 @@
 <?php
 //uploads an edited run
-require '../config.php';
+require '../../config.php';
 //authentication
 if (!isset($_COOKIE['auth']) || !isset($_COOKIE['username'])) {
     die("<script>window.location.replace('/')</script>");

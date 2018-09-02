@@ -68,7 +68,6 @@ if (isset($_GET['q'])) {
 ?>
 </body>
 <script src="scripts/material.min.js"></script>
-<script src="scripts/main.js"></script>
 <script src="scripts/jquery.min.js"></script>
 <script language="JavaScript">
 

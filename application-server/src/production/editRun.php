@@ -41,7 +41,7 @@ if ($RealName['Role'] != 'Production') {
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-<form method="post" action="editedRunSubmit.php">
+<form method="post" action="API/editedRunSubmit.php">
     <input type="hidden" name="RunID" id="RunID" value="">
     <input type="hidden" name="isQA" id="isQA" value="">
     <input type="hidden" name="isPreInspected" id="isPreInspected" value="">
@@ -275,7 +275,6 @@ if ($RealName['Role'] != 'Production') {
 </form>
 </body>
 <script src="scripts/material.min.js"></script>
-<script src="scripts/main.js"></script>
 <script src="scripts/jquery.min.js"></script>
 <script language="JavaScript">
     var amountMadeRows = 1;
